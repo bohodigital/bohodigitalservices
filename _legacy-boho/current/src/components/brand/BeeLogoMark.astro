@@ -1,0 +1,23 @@
+---
+interface Props {
+  className?: string;
+  decorative?: boolean;
+  alt?: string;
+}
+
+const {
+  className = "",
+  decorative = false,
+  alt = "Boho Digital bee logo mark"
+} = Astro.props;
+---
+<img
+  class:list={["bee-logo-mark", className]}
+  src="/assets/brand/bee-logo-mark.svg"
+  alt={decorative ? "" : alt}
+  aria-hidden={decorative ? "true" : undefined}
+  width="44"
+  height="44"
+  loading="eager"
+  decoding="async"
+/>

@@ -1,0 +1,354 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import HeroText from "~/components/widgets/HeroText.astro";
+import Features2 from "~/components/widgets/Features2.astro";
+import Steps from "~/components/widgets/Steps.astro";
+import CallToAction from "~/components/widgets/CallToAction.astro";
+import WidgetWrapper from "~/components/ui/WidgetWrapper.astro";
+import Headline from "~/components/ui/Headline.astro";
+import Button from "~/components/ui/Button.astro";
+import GlossaryText from "~/components/glossary/GlossaryText.astro";
+import {
+  getDictionaryTermHref,
+  getServiceCardBySlug,
+  providerTransferSteps,
+} from "~/data/boho";
+
+const metadata = {
+  title: "SEO & Hosting Provider Transfer",
+  description:
+    "Switch SEO, hosting, website, analytics, or domain providers without losing URLs, tracking, ownership, or search visibility.",
+};
+
+const relatedServices = [
+  "seo-growth-audit",
+  "analytics-reporting",
+  "technical-seo-cleanup",
+]
+  .map((slug) => getServiceCardBySlug(slug))
+  .filter((service): service is NonNullable<typeof service> =>
+    Boolean(service),
+  );
+
+const relatedTerms = [
+  "DNS",
+  "Hosting provider",
+  "Domain registrar",
+  "Redirect map",
+  "SEO migration",
+  "Provider lock-in",
+  "Google Search Console",
+];
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="SEO & Hosting Provider Transfer"
+    title="Switch providers without losing the trail."
+    subtitle="Moving away from an old SEO agency, hosting provider, website platform, or messy vendor setup can be stressful. Boho helps map the transfer, preserve search value, verify analytics, and clean up the handoff step by step."
+    callToAction={{ text: "Ask about a transfer", href: "/contact/" }}
+    callToAction2={{ text: "Open Ask the Owl", href: "/ask-the-owl/" }}
+  />
+
+  <Features2
+    title="Why transfers get messy"
+    subtitle="The real risk is usually not the move itself. It is the undocumented stack underneath it."
+    columns={3}
+    items={[
+      {
+        title: "Ownership is unclear",
+        description:
+          "Domains, hosting, analytics, and platforms may be controlled by the wrong account or the wrong vendor.",
+        icon: "tabler:key-off",
+      },
+      {
+        title: "Documentation is thin",
+        description:
+          "DNS records, redirects, metadata rules, and launch dependencies are often undocumented.",
+        icon: "tabler:file-x",
+      },
+      {
+        title: "Fear replaces planning",
+        description:
+          "People are told the move will destroy SEO without getting a usable explanation of what is actually at risk.",
+        icon: "tabler:alert-triangle",
+      },
+      {
+        title: "Search access is missing",
+        description:
+          "Search Console or analytics access may be missing right when you need it most.",
+        icon: "tabler:chart-bar-off",
+      },
+      {
+        title: "Old URLs disappear",
+        description:
+          "Important paths can vanish during launch if nobody prepares a redirect plan first.",
+        icon: "tabler:link-off",
+      },
+      {
+        title: "Hidden dependencies bite later",
+        description:
+          "Forms, email routing, and integrations may still be tied to the old provider in ways nobody documented.",
+        icon: "tabler:plug-connected-x",
+      },
+    ]}
+  />
+
+  <Features2
+    title="What Boho helps transfer"
+    columns={3}
+    items={[
+      {
+        title: "SEO agency setups and reporting layers",
+        description:
+          "Recover the real accounts, reporting views, and search ownership trail.",
+        icon: "tabler:chart-line",
+      },
+      {
+        title: "Hosting accounts and platform migrations",
+        description:
+          "Understand where the site lives now and what changes during the move.",
+        icon: "tabler:server-2",
+      },
+      {
+        title: "DNS and registrar changes",
+        description:
+          "Document the routing layer before anyone touches the records panel.",
+        icon: "tabler:world-www",
+      },
+      {
+        title: "Analytics and Search Console continuity",
+        description:
+          "Protect the visibility and measurement trail you still need after launch.",
+        icon: "tabler:chart-dots-3",
+      },
+      {
+        title: "Redirect planning and metadata review",
+        description:
+          "Preserve valuable paths instead of losing them to avoidable URL drift.",
+        icon: "tabler:arrow-fork",
+      },
+      {
+        title: "Owner-facing handoff documentation",
+        description:
+          "Leave the stack more legible after the move than before it.",
+        icon: "tabler:file-description",
+      },
+    ]}
+  />
+
+  <WidgetWrapper>
+    <Headline
+      title="Provider transfer terms you should know"
+      subtitle="A few boring terms become very expensive when they are ignored during a move."
+    />
+    <div
+      class="mx-auto max-w-4xl rounded-3xl border border-moss/15 bg-white/90 p-6 shadow-sm"
+    >
+      <p class="text-lg text-muted">
+        <GlossaryText
+          text="Boho helps map [[dns]], [[hosting-provider|hosting]], [[domain-registrar|domain registration]], [[redirect-map|redirect maps]], [[analytics-migration|analytics continuity]], and the [[ownership-trail|ownership trail]]."
+        />
+      </p>
+    </div>
+  </WidgetWrapper>
+
+  <Steps
+    tagline="Transfer process"
+    title="Controlled movement beats brave chaos."
+    items={providerTransferSteps}
+  />
+
+  <WidgetWrapper>
+    <Headline
+      title="Checklists and red flags"
+      subtitle="The handoff should not depend on panic. Keep the basics readable before anyone touches launch day."
+    />
+    <div class="mt-10 grid gap-4 lg:grid-cols-3">
+      <article
+        class="rounded-3xl border border-moss/15 bg-white/90 p-6 shadow-sm"
+      >
+        <p class="text-sm font-semibold uppercase tracking-[0.12em] text-moss">
+          SEO preservation checklist
+        </p>
+        <ul class="mt-4 space-y-3 text-muted">
+          <li>
+            Current high-value URLs and top organic landing pages identified
+          </li>
+          <li>Redirect map drafted before launch</li>
+          <li>Metadata and title logic reviewed</li>
+          <li>Search Console access confirmed</li>
+          <li>Sitemap and robots.txt reviewed before the move</li>
+          <li>Post-launch crawl and indexing checks scheduled</li>
+        </ul>
+      </article>
+      <article
+        class="rounded-3xl border border-moss/15 bg-white/90 p-6 shadow-sm"
+      >
+        <p class="text-sm font-semibold uppercase tracking-[0.12em] text-moss">
+          Hosting transfer checklist
+        </p>
+        <ul class="mt-4 space-y-3 text-muted">
+          <li>Domain registrar access identified</li>
+          <li>DNS records documented before changes</li>
+          <li>Hosting provider and platform access confirmed</li>
+          <li>CMS or repository access reviewed</li>
+          <li>Forms, email, and integrations noted</li>
+          <li>Owner-facing documentation created after the move</li>
+        </ul>
+      </article>
+      <article
+        class="rounded-3xl border border-terracotta/20 bg-white/90 p-6 shadow-sm shadow-terracotta/5"
+      >
+        <p
+          class="text-sm font-semibold uppercase tracking-[0.12em] text-terracotta-dark"
+        >
+          Provider red flags
+        </p>
+        <ul class="mt-4 space-y-3 text-muted">
+          <li>Your provider owns your domain.</li>
+          <li>You do not have Search Console access.</li>
+          <li>You cannot see analytics.</li>
+          <li>You do not know where your site is hosted.</li>
+          <li>Your provider refuses to document changes.</li>
+          <li>
+            Your provider says leaving will destroy SEO without explaining why.
+          </li>
+        </ul>
+      </article>
+    </div>
+  </WidgetWrapper>
+
+  <WidgetWrapper>
+    <Headline
+      title="What we will not pretend"
+      subtitle="Transfers carry real risk when they are rushed. Fear is not a strategy, and neither is improvising in the registrar panel."
+    />
+    <div class="mt-10 grid gap-4 xl:grid-cols-[1.35fr_1fr_1fr]">
+      <article
+        class="rounded-3xl border border-terracotta/20 bg-white/90 p-6 shadow-sm shadow-terracotta/5"
+      >
+        <p
+          class="text-sm font-semibold uppercase tracking-[0.12em] text-terracotta-dark"
+        >
+          No fear theater
+        </p>
+        <p class="mt-3 text-muted">
+          A provider transfer is not automatically dangerous, but careless moves
+          can cause real damage. The answer is not fear. The answer is
+          inventory, preservation, planning, verification, and documentation.
+        </p>
+      </article>
+      <article
+        class="rounded-3xl border border-moss/15 bg-white/90 p-6 shadow-sm"
+      >
+        <p class="text-sm font-semibold uppercase tracking-[0.12em] text-moss">
+          Good fit
+        </p>
+        <p class="mt-3 text-muted">
+          This is a good fit if you are leaving an SEO agency, moving hosting,
+          changing website platforms, recovering ownership, or trying to
+          understand what an old provider actually controls.
+        </p>
+      </article>
+      <article
+        class="rounded-3xl border border-moss/15 bg-white/90 p-6 shadow-sm"
+      >
+        <p class="text-sm font-semibold uppercase tracking-[0.12em] text-moss">
+          Not a fit
+        </p>
+        <p class="mt-3 text-muted">
+          This is not a fit if you want to rip everything out immediately
+          without preserving URLs, analytics, DNS, forms, or search visibility.
+        </p>
+      </article>
+    </div>
+  </WidgetWrapper>
+
+  <WidgetWrapper>
+    <Headline
+      title="Related Owl terms"
+      subtitle="Use the plain-English terms, then follow the service paths that usually matter during a transfer."
+    />
+    <div class="mt-10 flex flex-wrap gap-3">
+      {
+        relatedTerms.map((term) => (
+          <Button href={getDictionaryTermHref(term)} variant="secondary">
+            {term}
+          </Button>
+        ))
+      }
+    </div>
+    <div class="mt-10 grid gap-4 lg:grid-cols-2">
+      {
+        relatedServices.map((service) => (
+          <a
+            class="rounded-3xl border border-moss/15 bg-white/90 p-6 shadow-sm transition hover:-translate-y-0.5"
+            href={service.href}
+          >
+            <p class="text-sm font-semibold uppercase tracking-[0.12em] text-moss">
+              Related service
+            </p>
+            <h3 class="mt-3 text-xl font-bold text-charcoal">
+              {service.title}
+            </h3>
+            <p class="mt-3 text-muted">{service.description}</p>
+          </a>
+        ))
+      }
+      <a
+        class="rounded-3xl border border-moss/15 bg-white/90 p-6 shadow-sm transition hover:-translate-y-0.5"
+        href="/services/"
+      >
+        <p class="text-sm font-semibold uppercase tracking-[0.12em] text-moss">
+          Useful next path
+        </p>
+        <h3 class="mt-3 text-xl font-bold text-charcoal">Services overview</h3>
+        <p class="mt-3 text-muted">
+          See the full Boho service map if the provider mess turns out to be
+          only one layer of the problem.
+        </p>
+      </a>
+      <a
+        class="rounded-3xl border border-moss/15 bg-white/90 p-6 shadow-sm transition hover:-translate-y-0.5"
+        href="/pricing/"
+      >
+        <p class="text-sm font-semibold uppercase tracking-[0.12em] text-moss">
+          Useful next path
+        </p>
+        <h3 class="mt-3 text-xl font-bold text-charcoal">Pricing</h3>
+        <p class="mt-3 text-muted">
+          Use the current planning ranges for audits, cleanup, and ongoing
+          support when scoping the next move.
+        </p>
+      </a>
+      <a
+        class="rounded-3xl border border-moss/15 bg-white/90 p-6 shadow-sm transition hover:-translate-y-0.5"
+        href="/bad-seo-field-guide/"
+      >
+        <p class="text-sm font-semibold uppercase tracking-[0.12em] text-moss">
+          Useful next path
+        </p>
+        <h3 class="mt-3 text-xl font-bold text-charcoal">
+          Bad SEO Field Guide
+        </h3>
+        <p class="mt-3 text-muted">
+          Use the field guide when the old provider's language sounds impressive
+          but somehow never gets more specific.
+        </p>
+      </a>
+    </div>
+  </WidgetWrapper>
+
+  <CallToAction
+    title="Bring the messy stack. We'll help map the handoff."
+    subtitle="You do not need perfect documentation before reaching out. Send what you know and Boho will help identify the missing pieces."
+    actions={[
+      {
+        variant: "primary",
+        text: "Start the transfer conversation",
+        href: "/contact/",
+      },
+    ]}
+  />
+</Layout>

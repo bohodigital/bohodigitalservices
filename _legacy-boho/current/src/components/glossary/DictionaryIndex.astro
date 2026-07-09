@@ -1,0 +1,140 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Button from "../ui/Button.astro";
+import DictionaryEntryCard from "./DictionaryEntryCard.astro";
+import OwlDictionaryCallout from "./OwlDictionaryCallout.astro";
+
+interface Props {
+  entries: CollectionEntry<"dictionary">[];
+}
+
+const { entries } = Astro.props;
+const categories = Array.from(new Set(entries.map((entry) => entry.data.category)));
+const featuredEntries = entries.filter((entry) => entry.data.featured).slice(0, 4);
+const highlightedEntries = featuredEntries.length > 0 ? featuredEntries : entries.slice(0, 4);
+---
+<div class="dictionary-index">
+  <section class="dictionary-toolbar section-card" data-reveal>
+    <div class="dictionary-toolbar-copy">
+      <p class="eyebrow">Find a term</p>
+      <h2>Search the forest map.</h2>
+      <p>
+        Start with a short definition, then follow the fuller entry when you need more
+        context. This index is meant to help quickly, not trap you in jargon.
+      </p>
+    </div>
+    <div class="dictionary-toolbar-controls">
+      <label class="hidden-heading" for="dictionary-search">Search dictionary terms</label>
+      <input
+        class="dictionary-search"
+        id="dictionary-search"
+        type="search"
+        placeholder="Search SEO, DNS, migration, reporting..."
+        data-dictionary-search
+      />
+      <div class="dictionary-chip-row" role="group" aria-label="Dictionary categories">
+        <button class="dictionary-chip is-active" type="button" data-category-filter="all" aria-pressed="true">
+          All categories
+        </button>
+        {categories.map((category) => (
+          <button class="dictionary-chip" type="button" data-category-filter={category} aria-pressed="false">
+            {category}
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="dictionary-featured" data-reveal>
+    <div class="section-heading compact">
+      <p class="eyebrow">Featured terms</p>
+      <h2>Useful first stops.</h2>
+      <p>These are good entry points when the question is broader than a single definition.</p>
+    </div>
+    <div class="dictionary-card-grid dictionary-featured-grid">
+      {highlightedEntries.map((entry) => (
+        <DictionaryEntryCard entry={entry} featured={true} showCategory={true} />
+      ))}
+    </div>
+  </section>
+
+  {categories.map((category) => (
+    <section class="dictionary-category-band" data-dictionary-section data-category={category} data-reveal>
+      <div class="section-heading compact">
+        <p class="eyebrow">{category}</p>
+        <h2>{category}</h2>
+      </div>
+      <div class="dictionary-card-grid">
+        {entries
+          .filter((entry) => entry.data.category === category)
+          .map((entry) => <DictionaryEntryCard entry={entry} />)}
+      </div>
+    </section>
+  ))}
+
+  <section class="dictionary-support chapter-grid">
+    <OwlDictionaryCallout />
+    <article class="section-card" data-reveal="left">
+      <p class="eyebrow">Related services</p>
+      <h3>Need the definitions translated into actual work?</h3>
+      <p>
+        The dictionary is there to clarify language. The next step is usually a growth
+        audit, technical cleanup pass, or provider-transfer plan.
+      </p>
+      <div class="stack-actions">
+        <Button href="/services/seo-growth-audit/">See the Growth Audit</Button>
+        <Button href="/services/provider-transfer/" variant="secondary">Review provider-transfer support</Button>
+      </div>
+    </article>
+  </section>
+</div>
+<script is:inline>
+  const searchInput = document.querySelector("[data-dictionary-search]");
+  const filterButtons = Array.from(document.querySelectorAll("[data-category-filter]"));
+  const cards = Array.from(document.querySelectorAll("[data-dictionary-card]"));
+  const sections = Array.from(document.querySelectorAll("[data-dictionary-section]"));
+
+  if (searchInput instanceof HTMLInputElement && cards.length > 0) {
+    let activeCategory = "all";
+
+    const applyDictionaryFilters = () => {
+      const searchValue = searchInput.value.trim().toLowerCase();
+
+      cards.forEach((card) => {
+        if (!(card instanceof HTMLElement)) return;
+
+        const cardCategory = card.dataset.category ?? "";
+        const cardSearchText = card.dataset.searchText ?? "";
+        const matchesCategory = activeCategory === "all" || cardCategory === activeCategory;
+        const matchesSearch = searchValue.length === 0 || cardSearchText.includes(searchValue);
+        card.hidden = !(matchesCategory && matchesSearch);
+      });
+
+      sections.forEach((section) => {
+        if (!(section instanceof HTMLElement)) return;
+        const visibleCards = section.querySelectorAll("[data-dictionary-card]:not([hidden])").length;
+        section.hidden = visibleCards === 0;
+      });
+
+      filterButtons.forEach((button) => {
+        if (!(button instanceof HTMLButtonElement)) return;
+        const isActive = (button.dataset.categoryFilter ?? "all") === activeCategory;
+        button.classList.toggle("is-active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
+      });
+    };
+
+    searchInput.addEventListener("input", applyDictionaryFilters);
+
+    filterButtons.forEach((button) => {
+      if (!(button instanceof HTMLButtonElement)) return;
+
+      button.addEventListener("click", () => {
+        activeCategory = button.dataset.categoryFilter ?? "all";
+        applyDictionaryFilters();
+      });
+    });
+
+    applyDictionaryFilters();
+  }
+</script>

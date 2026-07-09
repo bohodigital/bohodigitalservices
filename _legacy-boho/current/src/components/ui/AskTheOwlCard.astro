@@ -1,0 +1,24 @@
+---
+import OwlAccent from "../mascots/OwlAccent.astro";
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  body: string;
+}
+
+const {
+  eyebrow = "Ask the Owl",
+  title,
+  body
+} = Astro.props;
+---
+<article class="owl-card" data-reveal>
+  <div class="owl-card-copy">
+    <p class="eyebrow">{eyebrow}</p>
+    <h3>{title}</h3>
+    <p>{body}</p>
+    <slot />
+  </div>
+  <OwlAccent decorative={true} />
+</article>

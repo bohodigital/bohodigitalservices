@@ -1,0 +1,17 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" role="img" aria-labelledby="title desc">
+  <title id="title">Ask the Owl mascot</title>
+  <desc id="desc">A calm sage-green owl with round glasses.</desc>
+  <rect width="320" height="320" rx="36" fill="#eef1ea"/>
+  <path d="M160 42c41 0 79 19 101 54 22 35 20 94 20 129 0 31-24 53-59 53H98c-35 0-59-22-59-53 0-35-2-94 20-129 22-35 60-54 101-54Z" fill="#5e6e56"/>
+  <path d="M91 112 67 83M229 112l24-29" fill="none" stroke="#2f3a2d" stroke-linecap="round" stroke-width="12"/>
+  <circle cx="124" cy="151" r="34" fill="#f7f3ec" stroke="#2f3a2d" stroke-width="10"/>
+  <circle cx="196" cy="151" r="34" fill="#f7f3ec" stroke="#2f3a2d" stroke-width="10"/>
+  <path d="M158 151h4" stroke="#2f3a2d" stroke-width="10"/>
+  <circle cx="124" cy="151" r="11" fill="#2f3a2d"/>
+  <circle cx="196" cy="151" r="11" fill="#2f3a2d"/>
+  <path d="M147 187 160 174l13 13-13 17Z" fill="#d4a043"/>
+  <path d="M110 228c17 17 37 25 50 25s33-8 50-25" fill="none" stroke="#2f3a2d" stroke-linecap="round" stroke-width="10"/>
+  <path d="M93 94c15-18 39-29 67-29 28 0 52 11 67 29" fill="none" stroke="#d4a043" stroke-linecap="round" stroke-width="8"/>
+</svg>
+
+

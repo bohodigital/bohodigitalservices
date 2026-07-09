@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/ui/Button.astro";
+---
+<BaseLayout title="404 | Boho Digital" description="This trail moved or never existed." noindex={true}>
+  <section class="page-hero section-forest image-backed">
+    <div class="container section-heading" data-reveal>
+      <p class="eyebrow">404</p>
+      <h1>This trail went missing.</h1>
+      <p>
+        The page may have moved into the new Astro structure. Head back to the main map
+        or try the services, dictionary, or work lane.
+      </p>
+      <div class="page-actions">
+        <Button href="/">Return home</Button>
+        <Button href="/ask-the-owl/dictionary/" variant="secondary">Open the Dictionary</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,27 @@
+---
+import AskTheOwlCard from "../ui/AskTheOwlCard.astro";
+import Button from "../ui/Button.astro";
+import GlossaryTerm from "../glossary/GlossaryTerm.astro";
+---
+<section class="section section-band-dark">
+  <div class="container owl-preview-grid">
+    <AskTheOwlCard
+      title="Bring the educational layer into the site itself."
+      body="Ask the Owl is the plain-English library for search, content, analytics, AI-assisted workflows, and provider transfers."
+    >
+      <div class="stack-actions">
+        <Button href="/ask-the-owl/">Visit Ask the Owl</Button>
+        <Button href="/ask-the-owl/dictionary/" variant="secondary">Open the Dictionary</Button>
+      </div>
+    </AskTheOwlCard>
+    <div class="section-card" data-reveal="left">
+      <p class="micro-label">Dictionary preview</p>
+      <ul class="ledger-list">
+        <li><GlossaryTerm slug="seo" /> and search intent basics.</li>
+        <li><GlossaryTerm slug="technical-seo" /> cleanup and internal-link logic.</li>
+        <li><GlossaryTerm slug="dns" />, hosting, and <GlossaryTerm slug="seo-migration" /> guidance.</li>
+        <li><GlossaryTerm slug="ai-assisted-workflow" /> and <GlossaryTerm slug="climate-aware-workflow" /> notes.</li>
+      </ul>
+    </div>
+  </div>
+</section>

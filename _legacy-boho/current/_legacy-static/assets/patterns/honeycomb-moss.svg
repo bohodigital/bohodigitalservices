@@ -1,0 +1,17 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="240" height="208" viewBox="0 0 240 208">
+  <g fill="none" stroke="#dde7d7" stroke-opacity=".18" stroke-width="2">
+    <path d="M40 14 68 30v32L40 78 12 62V30Z"/>
+    <path d="M96 14 124 30v32L96 78 68 62V30Z"/>
+    <path d="M152 14 180 30v32l-28 16-28-16V30Z"/>
+    <path d="M208 14 236 30v32l-28 16-28-16V30Z"/>
+    <path d="M68 62 96 78v32l-28 16-28-16V78Z"/>
+    <path d="M124 62 152 78v32l-28 16-28-16V78Z"/>
+    <path d="M180 62 208 78v32l-28 16-28-16V78Z"/>
+    <path d="M40 110 68 126v32L40 174 12 158v-32Z"/>
+    <path d="M96 110 124 126v32l-28 16-28-16v-32Z"/>
+    <path d="M152 110 180 126v32l-28 16-28-16v-32Z"/>
+    <path d="M208 110 236 126v32l-28 16-28-16v-32Z"/>
+  </g>
+</svg>
+
+

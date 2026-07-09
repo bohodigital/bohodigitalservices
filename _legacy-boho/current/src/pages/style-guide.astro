@@ -1,0 +1,113 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/ui/Button.astro";
+import ForestHero from "../components/sections/ForestHero.astro";
+import HoneycombGrid from "../components/ui/HoneycombGrid.astro";
+import HoneycombServiceCard from "../components/ui/HoneycombServiceCard.astro";
+import HexImageFrame from "../components/ui/HexImageFrame.astro";
+import ShortcutFoxWarning from "../components/ui/ShortcutFoxWarning.astro";
+import AskTheOwlCard from "../components/ui/AskTheOwlCard.astro";
+import ImpactBadge from "../components/ui/ImpactBadge.astro";
+import MigrationMap from "../components/ui/MigrationMap.astro";
+import GlossaryTerm from "../components/glossary/GlossaryTerm.astro";
+import ContactForm from "../components/ui/ContactForm.astro";
+---
+<BaseLayout
+  title="Style Guide | Boho Digital"
+  description="A working reference for the Boho Digital Astro component system, typography, motion, forms, and brand motifs."
+  image="/assets/backgrounds/cream-paper-texture.webp"
+  noindex={true}
+>
+  <section class="page-hero">
+    <div class="container section-heading" data-reveal>
+      <p class="eyebrow">Style guide</p>
+      <h1>System reference for the Boho Digital site.</h1>
+      <p>
+        This page shows the actual component language: honeycomb structure, image-backed
+        sections, buttons, warning modules, glossary behavior, and form styling.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container chapter-grid">
+      <article class="section-card" data-reveal>
+        <h1>Heading one</h1>
+        <h2>Heading two</h2>
+        <h3>Heading three</h3>
+      </article>
+      <article class="section-card" data-reveal="left">
+        <div class="stack-actions">
+          <Button href="#">Primary button</Button>
+          <Button href="#" variant="secondary">Secondary button</Button>
+          <Button href="#" variant="ghost">Ghost button</Button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <ForestHero />
+
+  <section class="section section-forest image-backed">
+    <div class="container page-hero-grid">
+      <div class="hero-panel" data-reveal>
+        <p class="eyebrow">Forest hero</p>
+        <h2>Image-backed section with overlay</h2>
+        <p>Text stays readable because the overlay does the contrast work instead of pretending the image will behave on its own.</p>
+      </div>
+      <HexImageFrame src="/assets/backgrounds/forest-path.webp" alt="Forest path art sample" />
+    </div>
+  </section>
+
+  <section class="section section-band-mist">
+    <div class="container">
+      <HoneycombGrid>
+        <HoneycombServiceCard href="#" label="Desktop" tone="honey" title="Honeycomb card" description="Honeycomb is structural here, not just decorative wallpaper." />
+        <HoneycombServiceCard href="#" label="Mobile" tone="moss" title="Readable geometry" description="The cards flatten gracefully on smaller viewports instead of breaking the layout." />
+        <HoneycombServiceCard href="#" label="Pattern" tone="sage" title="System language" description="Services, metrics, clusters, and badges all inherit the same family." />
+      </HoneycombGrid>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container chapter-grid">
+      <AskTheOwlCard title="Owl dictionary card" body="Educational support should feel helpful and integrated, not bolted on." />
+      <ShortcutFoxWarning title="Shortcut Fox warning" body="Warnings get terracotta contrast, clearer language, and a restrained accent instead of cartoon chaos." />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container chapter-grid">
+      <article class="section-card" data-reveal>
+        <p class="eyebrow">Impact badges</p>
+        <div class="impact-badge-grid">
+          <ImpactBadge>Climate-aware workflows</ImpactBadge>
+          <ImpactBadge>Lean website practices</ImpactBadge>
+        </div>
+      </article>
+      <article class="section-card" data-reveal="left">
+        <p class="eyebrow">Migration map</p>
+        <MigrationMap steps={["Inventory", "Preserve", "Plan", "Move", "Verify", "Document"]} />
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container chapter-grid">
+      <div class="section-card" data-reveal>
+        <p class="eyebrow">ContactForm</p>
+        <p>Inline terms like <GlossaryTerm slug="seo" /> should work on hover, focus, tap, and Escape-to-close handling.</p>
+        <ContactForm />
+      </div>
+      <article class="section-card" data-reveal="left">
+        <p class="eyebrow">Checklist</p>
+        <ul class="ledger-list">
+          <li>Honeycomb is not only a faint background.</li>
+          <li>Mascot accents stay consistent and restrained.</li>
+          <li>Dark sections keep readable copy.</li>
+          <li>The site avoids beige rectangle fatigue.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,236 @@
+---
+const nodes = [
+  { label: "Audit", class: "hive-node--top-left" },
+  { label: "Fix", class: "hive-node--top" },
+  { label: "Maintain", class: "hive-node--top-right" },
+  { label: "Rush", class: "hive-node--right" },
+  { label: "Report", class: "hive-node--bottom-right" },
+  { label: "Transfer", class: "hive-node--bottom" },
+  { label: "Automate", class: "hive-node--bottom-left" },
+  { label: "Document", class: "hive-node--left" },
+];
+---
+
+<figure
+  class="hive-diagram"
+  aria-label="Boho system diagram connecting audit, fix, maintain, rush, report, transfer, automate, and document"
+>
+  <div class="hive-diagram__grid" aria-hidden="true"></div>
+  <svg class="hive-diagram__lines" viewBox="0 0 560 560" aria-hidden="true">
+    <g fill="none" stroke="currentColor" stroke-linecap="round">
+      <circle cx="280" cy="280" r="96" opacity="0.24"></circle>
+      <path d="M280 184 176 126 M280 184 280 92 M280 184 384 126"></path>
+      <path d="M376 280 468 280 M348 348 416 424 M280 376 280 468"></path>
+      <path d="M212 348 144 424 M184 280 92 280"></path>
+    </g>
+  </svg>
+  <div class="hive-diagram__center">
+    <span>Boho</span>
+    <strong>System</strong>
+  </div>
+  {
+    nodes.map((node) => (
+      <div class={`hive-node ${node.class}`}>
+        <span>{node.label}</span>
+      </div>
+    ))
+  }
+</figure>
+
+<style>
+  .hive-diagram {
+    position: relative;
+    min-height: 34rem;
+    overflow: hidden;
+    border: 1px solid rgb(212 160 67 / 28%);
+    border-radius: 0.5rem;
+    background:
+      radial-gradient(
+        circle at 50% 50%,
+        rgb(212 160 67 / 18%),
+        transparent 36%
+      ),
+      linear-gradient(135deg, rgb(247 243 236 / 7%), rgb(212 160 67 / 6%)),
+      #10120f;
+    box-shadow: 0 1.5rem 5rem rgb(0 0 0 / 35%);
+    color: #d4a043;
+  }
+
+  .hive-diagram__grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.12;
+    background-image:
+      linear-gradient(
+        30deg,
+        rgb(212 160 67 / 65%) 12%,
+        transparent 12.5%,
+        transparent 87%,
+        rgb(212 160 67 / 65%) 87.5%,
+        rgb(212 160 67 / 65%)
+      ),
+      linear-gradient(
+        150deg,
+        rgb(212 160 67 / 65%) 12%,
+        transparent 12.5%,
+        transparent 87%,
+        rgb(212 160 67 / 65%) 87.5%,
+        rgb(212 160 67 / 65%)
+      ),
+      linear-gradient(
+        30deg,
+        rgb(212 160 67 / 65%) 12%,
+        transparent 12.5%,
+        transparent 87%,
+        rgb(212 160 67 / 65%) 87.5%,
+        rgb(212 160 67 / 65%)
+      ),
+      linear-gradient(
+        150deg,
+        rgb(212 160 67 / 65%) 12%,
+        transparent 12.5%,
+        transparent 87%,
+        rgb(212 160 67 / 65%) 87.5%,
+        rgb(212 160 67 / 65%)
+      );
+    background-position:
+      0 0,
+      0 0,
+      2rem 3.5rem,
+      2rem 3.5rem;
+    background-size: 4rem 7rem;
+  }
+
+  .hive-diagram__lines {
+    position: absolute;
+    inset: 2rem;
+    width: calc(100% - 4rem);
+    height: calc(100% - 4rem);
+    color: rgb(212 160 67 / 70%);
+  }
+
+  .hive-diagram__center,
+  .hive-node {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    border: 1px solid rgb(212 160 67 / 45%);
+    background: rgb(31 39 30 / 88%);
+    color: #f7f3ec;
+    box-shadow: 0 1rem 2rem rgb(0 0 0 / 26%);
+  }
+
+  .hive-diagram__center {
+    left: 50%;
+    top: 50%;
+    width: 9.25rem;
+    height: 9.25rem;
+    transform: translate(-50%, -50%);
+    border-radius: 0.5rem;
+  }
+
+  .hive-diagram__center span,
+  .hive-node span {
+    display: block;
+  }
+
+  .hive-diagram__center span {
+    color: #e8b84f;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .hive-diagram__center strong {
+    color: #f7f3ec;
+    font-size: 1.8rem;
+    line-height: 1;
+  }
+
+  .hive-node {
+    width: 7.4rem;
+    min-height: 3.6rem;
+    padding: 0.7rem 0.85rem;
+    border-radius: 0.5rem;
+    color: #f7f3ec;
+    font-size: 0.88rem;
+    font-weight: 800;
+  }
+
+  .hive-node--top-left {
+    left: 15%;
+    top: 12%;
+  }
+
+  .hive-node--top {
+    left: 50%;
+    top: 6%;
+    transform: translateX(-50%);
+  }
+
+  .hive-node--top-right {
+    right: 15%;
+    top: 12%;
+  }
+
+  .hive-node--right {
+    right: 6%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .hive-node--bottom-right {
+    right: 15%;
+    bottom: 12%;
+  }
+
+  .hive-node--bottom {
+    left: 50%;
+    bottom: 6%;
+    transform: translateX(-50%);
+  }
+
+  .hive-node--bottom-left {
+    left: 15%;
+    bottom: 12%;
+  }
+
+  .hive-node--left {
+    left: 6%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  @media (max-width: 640px) {
+    .hive-diagram {
+      min-height: auto;
+      padding: 1rem;
+    }
+
+    .hive-diagram__grid,
+    .hive-diagram__lines {
+      display: none;
+    }
+
+    .hive-diagram__center,
+    .hive-node {
+      position: static;
+      transform: none;
+      width: auto;
+    }
+
+    .hive-diagram {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .hive-diagram__center {
+      grid-column: 1 / -1;
+      height: auto;
+      min-height: 6rem;
+    }
+  }
+</style>

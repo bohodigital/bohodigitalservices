@@ -1,0 +1,32 @@
+---
+import LogoLockup from "../brand/LogoLockup.astro";
+import Button from "../ui/Button.astro";
+import { primaryNav } from "../../data/nav";
+import { SITE } from "../../data/site";
+
+const currentPath = Astro.url.pathname;
+---
+<header class="site-header">
+  <div class="container header-row">
+    <LogoLockup />
+    <button
+      class="nav-toggle"
+      type="button"
+      data-nav-toggle
+      aria-expanded="false"
+      aria-controls="site-nav"
+    >
+      Menu
+    </button>
+    <nav class="site-nav" id="site-nav" data-nav-panel aria-label="Primary">
+      {primaryNav.map((item) => (
+        <a href={item.href} aria-current={currentPath === item.href ? "page" : undefined}>
+          {item.label}
+        </a>
+      ))}
+    </nav>
+    <div class="header-actions">
+      <Button href={SITE.primaryCta.href}>{SITE.primaryCta.label}</Button>
+    </div>
+  </div>
+</header>

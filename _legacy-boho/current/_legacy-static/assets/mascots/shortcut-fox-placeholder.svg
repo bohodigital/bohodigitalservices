@@ -1,0 +1,16 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" role="img" aria-labelledby="title desc">
+  <title id="title">Shortcut Fox mascot</title>
+  <desc id="desc">A sly terracotta fox used for warning modules.</desc>
+  <rect width="320" height="320" rx="36" fill="#f7f3ec"/>
+  <path d="M66 112 124 44l30 65c3 6-1 13-8 13H66Z" fill="#c56a4a" stroke="#7c3e2d" stroke-width="8"/>
+  <path d="M254 112 196 44l-30 65c-3 6 1 13 8 13h80Z" fill="#c56a4a" stroke="#7c3e2d" stroke-width="8"/>
+  <path d="M160 83c53 0 103 39 103 101 0 57-44 92-103 92S57 241 57 184c0-62 50-101 103-101Z" fill="#c56a4a" stroke="#7c3e2d" stroke-width="10"/>
+  <path d="M160 118c22 0 42 13 54 35 12 23 2 81-54 108-56-27-66-85-54-108 12-22 32-35 54-35Z" fill="#f7f3ec"/>
+  <circle cx="124" cy="166" r="12" fill="#2b2b2b"/>
+  <circle cx="196" cy="166" r="12" fill="#2b2b2b"/>
+  <path d="M145 211c9 7 18 11 15 18-4 8-26 13-49 13" fill="none" stroke="#2b2b2b" stroke-linecap="round" stroke-width="9"/>
+  <path d="M175 211c-9 7-18 11-15 18 4 8 26 13 49 13" fill="none" stroke="#2b2b2b" stroke-linecap="round" stroke-width="9"/>
+  <path d="M149 193 160 178l11 15-11 16Z" fill="#d4a043"/>
+</svg>
+
+

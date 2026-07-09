@@ -1,0 +1,11 @@
+---
+interface Props {
+  tone?: "honey" | "sage" | "terracotta" | "forest";
+  className?: string;
+}
+
+const { tone = "honey", className = "" } = Astro.props;
+---
+<span class:list={["hex-badge", `hex-badge-${tone}`, className]}>
+  <slot />
+</span>

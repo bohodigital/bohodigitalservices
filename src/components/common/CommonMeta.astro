@@ -1,0 +1,13 @@
+---
+import { getBuildInfo } from "~/utils/buildInfo";
+import { getAsset } from "~/utils/permalinks";
+
+const buildInfo = getBuildInfo();
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="boho-build-commit" content={buildInfo.commit} />
+<meta name="boho-build-source" content={buildInfo.source} />
+
+<link rel="sitemap" href={getAsset("/sitemap-index.xml")} />

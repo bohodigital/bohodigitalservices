@@ -1,0 +1,100 @@
+---
+const useCases = [
+  "A launch happened and traffic or leads dropped",
+  "Important URLs are 404ing or redirecting badly",
+  "Analytics or Search Console access is missing",
+  "A provider transfer is stuck",
+  "DNS, hosting, forms, or tracking broke",
+  "A report shows a scary drop and nobody can explain it",
+  "The site needs a focused fix window before a campaign, deadline, or meeting",
+];
+
+const steps = [
+  {
+    title: "Triage",
+    body: "Send the site, symptoms, deadline, access status, and what changed.",
+  },
+  {
+    title: "Risk map",
+    body: "Boho identifies what is urgent, what is unknown, and what should not be touched blindly.",
+  },
+  {
+    title: "Focused fix window",
+    body: "A dedicated block of time goes to the highest-impact issue first.",
+  },
+  {
+    title: "Receipts",
+    body: "You get notes on what changed, what remains, and what to monitor next.",
+  },
+];
+---
+
+<section class="bg-moss-black text-cream">
+  <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-24">
+    <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+      <div>
+        <p
+          class="text-sm font-extrabold uppercase tracking-[0.2em] text-terracotta"
+        >
+          Premium rush support
+        </p>
+        <h2
+          class="mt-3 text-4xl font-black leading-tight text-cream md:text-5xl"
+        >
+          When the site breaks, the launch goes sideways, or the provider
+          disappears.
+        </h2>
+        <p class="mt-5 text-lg leading-8 text-cream/78">
+          Boho offers premium rush support for urgent website, SEO, analytics,
+          redirect, provider-transfer, and launch problems when availability
+          allows.
+        </p>
+        <a
+          class="mt-8 inline-flex rounded-full bg-terracotta px-6 py-3.5 text-base font-extrabold text-cream transition hover:bg-[#d47453]"
+          href="/contact/"
+        >
+          Request rush support
+        </a>
+      </div>
+      <div class="grid gap-6">
+        <div class="rounded-lg border border-terracotta/30 bg-black/20 p-5">
+          <h3 class="text-lg font-extrabold text-honey-bright">Use cases</h3>
+          <ul
+            class="mt-4 grid gap-2 text-sm leading-6 text-cream/80 md:grid-cols-2"
+          >
+            {
+              useCases.map((item) => (
+                <li class="flex gap-3">
+                  <span class="mt-2 h-2 w-2 flex-none rounded-full bg-terracotta" />
+                  <span>{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div class="grid gap-3 md:grid-cols-4">
+          {
+            steps.map((step, index) => (
+              <article class="rounded-lg border border-honey/20 bg-white/5 p-4">
+                <p class="text-xs font-extrabold text-honey-bright">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <h3 class="mt-2 text-base font-extrabold text-cream">
+                  {step.title}
+                </h3>
+                <p class="mt-2 text-sm leading-6 text-cream/72">{step.body}</p>
+              </article>
+            ))
+          }
+        </div>
+        <p
+          class="rounded-lg border border-terracotta/30 bg-terracotta/10 p-5 text-sm leading-6 text-cream/78"
+        >
+          Rush support is premium, availability-based, and scoped before work
+          starts. Boho does not promise magic rescues. We prioritize fast
+          clarity, controlled fixes, and honest risk notes.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

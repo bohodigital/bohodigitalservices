@@ -1,0 +1,76 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/ui/Button.astro";
+---
+<BaseLayout
+  title="Work | Boho Digital"
+  description="Every project leaves a trail. Boho Digital documents audits, migrations, reporting, and implementation notes instead of hiding the work."
+  image="/assets/backgrounds/moss-texture.webp"
+>
+  <section class="page-hero section-forest image-backed">
+    <div class="container page-hero-grid">
+      <div class="hero-panel" data-reveal>
+        <div class="breadcrumbs">
+          <a href="/">Home</a>
+          <span>/</span>
+          <strong>Work</strong>
+        </div>
+        <p class="eyebrow">Work</p>
+        <h1>Every project leaves a trail.</h1>
+        <p class="hero-lead">
+          Boho does not manufacture fake case studies or glossy testimonial wallpaper.
+          The real value is in the documents: what was found, what changed, what moved,
+          and what the next person needs to know.
+        </p>
+      </div>
+      <aside class="hero-side-panel" data-reveal="left">
+        <p class="micro-label">What the trail usually includes</p>
+        <ul class="ledger-list">
+          <li>Audit roadmaps and prioritization</li>
+          <li>Migration maps and redirect planning</li>
+          <li>Analytics continuity notes</li>
+          <li>Implementation records and handoff summaries</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container chapter-grid">
+      <article class="work-note-card" data-reveal>
+        <p class="micro-label">Audit lane</p>
+        <h2>Clarity before chaos.</h2>
+        <p>Audit work focuses on sequencing, visibility blockers, content structure, and the next useful decisions.</p>
+      </article>
+      <article class="work-note-card" data-reveal="left">
+        <p class="micro-label">Transfer lane</p>
+        <h2>Migrations with receipts.</h2>
+        <p>Transfer work records access recovery, redirect logic, DNS coordination, analytics checks, and post-launch QA.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section-band-mist">
+    <div class="container chapter-grid">
+      <article class="section-card" data-reveal>
+        <p class="eyebrow">What you will not find here</p>
+        <ul class="ledger-list">
+          <li>Fake testimonials</li>
+          <li>Invented revenue numbers</li>
+          <li>Case studies that say nothing about the real work</li>
+        </ul>
+      </article>
+      <article class="section-card" data-reveal="left">
+        <p class="eyebrow">What you will find instead</p>
+        <ul class="ledger-list">
+          <li>Language that explains the work plainly</li>
+          <li>Documentation and workflow examples</li>
+          <li>Project patterns grounded in ownership and search clarity</li>
+        </ul>
+      </article>
+    </div>
+    <div class="card-actions" data-reveal>
+      <Button href="/contact/">Ask about a project</Button>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,164 @@
+.glossary-inline {
+  position: relative;
+  display: inline-flex;
+}
+
+.glossary-inline-list,
+.related-term-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.glossary-term {
+  border: 0;
+  padding: 0 0.06rem;
+  background: transparent;
+  color: var(--moss-dark);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 0.18rem;
+}
+
+.glossary-popover {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 0.7rem);
+  z-index: 20;
+  width: min(19rem, 75vw);
+  display: grid;
+  gap: 0.55rem;
+  padding: 1rem;
+  border-radius: var(--radius-soft);
+  border: 1px solid rgba(94, 110, 86, 0.18);
+  background: rgba(31, 39, 30, 0.96);
+  color: var(--cream);
+  box-shadow: var(--shadow-soft);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0.35rem);
+  transition:
+    opacity var(--transition-soft),
+    transform var(--transition-soft);
+}
+
+.glossary-inline:hover .glossary-popover,
+.glossary-inline:focus-within .glossary-popover,
+.glossary-inline.is-open .glossary-popover {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.glossary-popover strong {
+  color: var(--honey-soft);
+}
+
+.glossary-popover a {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+.dictionary-index {
+  display: grid;
+  gap: 2rem;
+}
+
+.dictionary-toolbar,
+.dictionary-category-band,
+.dictionary-featured {
+  display: grid;
+  gap: 1rem;
+}
+
+.dictionary-toolbar {
+  align-items: start;
+}
+
+.dictionary-toolbar-controls {
+  display: grid;
+  gap: 1rem;
+}
+
+.dictionary-search {
+  width: 100%;
+  border: 1px solid rgba(94, 110, 86, 0.22);
+  border-radius: 999px;
+  padding: 0.9rem 1.1rem;
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.dictionary-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.dictionary-chip {
+  border: 1px solid rgba(94, 110, 86, 0.18);
+  border-radius: 999px;
+  padding: 0.55rem 0.95rem;
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--moss-dark);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+}
+
+.dictionary-chip.is-active {
+  border-color: rgba(94, 110, 86, 0.38);
+  background: rgba(221, 231, 215, 0.9);
+}
+
+.dictionary-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.dictionary-entry-card,
+.work-note-card {
+  padding: 1.4rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.dictionary-entry-card--featured {
+  background:
+    linear-gradient(150deg, rgba(247, 243, 236, 0.96), rgba(255, 255, 255, 0.92)),
+    url("/assets/backgrounds/cream-paper-texture.webp") center/cover no-repeat;
+}
+
+.dictionary-entry-card a,
+.inline-link {
+  color: var(--moss-dark);
+  font-weight: 600;
+}
+
+.related-terms {
+  margin-top: 2rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.related-term-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.3rem;
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid rgba(94, 110, 86, 0.18);
+  background: rgba(255, 255, 255, 0.82);
+}
+
+[data-dictionary-card][hidden],
+[data-dictionary-section][hidden] {
+  display: none !important;
+}
+
+@media (max-width: 980px) {
+  .dictionary-card-grid {
+    grid-template-columns: 1fr;
+  }
+}

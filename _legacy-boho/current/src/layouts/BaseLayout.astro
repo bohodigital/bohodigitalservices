@@ -1,0 +1,159 @@
+---
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/inter/700.css";
+import "@fontsource/fraunces/400.css";
+import "@fontsource/fraunces/600.css";
+import "@fontsource/ibm-plex-mono/400.css";
+import "@fontsource/ibm-plex-mono/500.css";
+import "@fontsource/ibm-plex-mono/600.css";
+import "../styles/tokens.css";
+import "../styles/base.css";
+import "../styles/typography.css";
+import "../styles/layout.css";
+import "../styles/buttons.css";
+import "../styles/forms.css";
+import "../styles/honeycomb.css";
+import "../styles/sections.css";
+import "../styles/glossary.css";
+import "../styles/animations.css";
+import "../styles/utilities.css";
+import BaseHead from "../components/layout/BaseHead.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import { SITE } from "../data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  noindex?: boolean;
+  bodyClass?: string;
+  canonical?: string;
+  metaRefresh?: string;
+}
+
+const {
+  title = `${SITE.name} | ${SITE.tagline}`,
+  description = SITE.defaultDescription,
+  image = SITE.defaultImage,
+  noindex = false,
+  bodyClass = "",
+  canonical,
+  metaRefresh
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title={title}
+      description={description}
+      image={image}
+      noindex={noindex}
+      canonical={canonical}
+      metaRefresh={metaRefresh}
+    />
+  </head>
+  <body class={bodyClass}>
+    <div class="site-shell">
+      <Header />
+      <main id="main-content" class="page-main">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+    <script define:vars={{ contactEmail: SITE.email, redirectTarget: metaRefresh }} is:inline>
+      const navToggle = document.querySelector("[data-nav-toggle]");
+      const navPanel = document.querySelector("[data-nav-panel]");
+
+      if (navToggle instanceof HTMLButtonElement && navPanel instanceof HTMLElement) {
+        navToggle.addEventListener("click", () => {
+          const next = navToggle.getAttribute("aria-expanded") !== "true";
+          navToggle.setAttribute("aria-expanded", String(next));
+          navPanel.classList.toggle("is-open", next);
+        });
+      }
+
+      const revealNodes = document.querySelectorAll("[data-reveal]");
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (!reducedMotion && revealNodes.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-revealed");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        revealNodes.forEach((node) => observer.observe(node));
+      } else {
+        revealNodes.forEach((node) => node.classList.add("is-revealed"));
+      }
+
+      const glossaryRoots = document.querySelectorAll("[data-glossary-root]");
+      const closeGlossaryRoot = (root) => {
+        if (!(root instanceof HTMLElement)) return;
+
+        root.classList.remove("is-open");
+        const button = root.querySelector("[data-glossary-toggle]");
+        if (button instanceof HTMLButtonElement) {
+          button.setAttribute("aria-expanded", "false");
+        }
+      };
+
+      const closeGlossaries = () => {
+        glossaryRoots.forEach((root) => closeGlossaryRoot(root));
+      };
+
+      glossaryRoots.forEach((root) => {
+        if (!(root instanceof HTMLElement)) return;
+
+        const button = root.querySelector("[data-glossary-toggle]");
+        if (!(button instanceof HTMLButtonElement)) return;
+
+        button.addEventListener("click", (event) => {
+          event.stopPropagation();
+          const open = !root.classList.contains("is-open");
+          closeGlossaries();
+          root.classList.toggle("is-open", open);
+          button.setAttribute("aria-expanded", String(open));
+        });
+
+        root.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") {
+            closeGlossaryRoot(root);
+            button.focus();
+          }
+        });
+      });
+
+      document.addEventListener("click", closeGlossaries);
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeGlossaries();
+        }
+      });
+
+      const mailtoForm = document.querySelector("[data-mailto-form]");
+      if (mailtoForm instanceof HTMLFormElement) {
+        mailtoForm.addEventListener("submit", (event) => {
+          event.preventDefault();
+          const data = new FormData(mailtoForm);
+          const lines = Array.from(data.entries())
+            .map(([key, value]) => `${key}: ${value}`)
+            .filter((line) => !line.endsWith(": "));
+          const subject = encodeURIComponent("Boho Digital inquiry");
+          const body = encodeURIComponent(lines.join("\n"));
+          window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
+        });
+      }
+
+      if (typeof redirectTarget === "string" && redirectTarget.length > 0) {
+        window.location.replace(redirectTarget);
+      }
+    </script>
+  </body>
+</html>

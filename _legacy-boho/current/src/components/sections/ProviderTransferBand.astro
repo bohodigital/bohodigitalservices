@@ -1,0 +1,31 @@
+---
+import Button from "../ui/Button.astro";
+import MigrationMap from "../ui/MigrationMap.astro";
+import GlossaryTerm from "../glossary/GlossaryTerm.astro";
+---
+<section class="section">
+  <div class="container chapter-grid">
+    <div class="section-card" data-reveal>
+      <p class="eyebrow">Provider-transfer support</p>
+      <h2>Already tangled in another provider's setup?</h2>
+      <p>
+        We help clients move away from old SEO agencies, hosting providers, platform
+        lock-ins, and undocumented website setups. That includes access inventory, SEO
+        preservation, redirect planning, analytics review, DNS and hosting
+        coordination, and post-transfer QA.
+      </p>
+      <div class="card-actions">
+        <Button href="/services/provider-transfer/">See provider transfer support</Button>
+      </div>
+    </div>
+    <div class="section-card transfer-panel" data-reveal="left">
+      <p class="micro-label">Migration map</p>
+      <p>
+        The transfer work protects the trail before, during, and after launch. That
+        includes <GlossaryTerm slug="redirect-map" />, <GlossaryTerm slug="dns" />,
+        analytics continuity, and handoff notes people can actually use.
+      </p>
+      <MigrationMap steps={["Inventory", "Preserve", "Plan", "Move", "Verify", "Document"]} />
+    </div>
+  </div>
+</section>

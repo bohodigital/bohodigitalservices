@@ -1,0 +1,74 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ServicesHoneycomb from "../../components/sections/ServicesHoneycomb.astro";
+import ProviderTransferBand from "../../components/sections/ProviderTransferBand.astro";
+import HoneycombClusterDiagram from "../../components/ui/HoneycombClusterDiagram.astro";
+import Button from "../../components/ui/Button.astro";
+---
+<BaseLayout
+  title="Services | Boho Digital"
+  description="SEO, content, website optimization, analytics, AI-assisted workflows, and provider-transfer support arranged like a connected ecosystem."
+  image="/assets/backgrounds/forest-mist.webp"
+>
+  <section class="page-hero section-forest image-backed">
+    <div class="container page-hero-grid">
+      <div class="hero-panel" data-reveal>
+        <div class="breadcrumbs">
+          <a href="/">Home</a>
+          <span>/</span>
+          <strong>Services</strong>
+        </div>
+        <p class="eyebrow">Services</p>
+        <h1>SEO, content, and web strategy built like an ecosystem.</h1>
+        <p class="hero-lead">
+          Boho Digital organizes growth work as a connected system: technical SEO,
+          content, local structure, analytics, AI-assisted operations, and provider
+          transfers that protect ownership instead of muddying it.
+        </p>
+        <div class="page-actions">
+          <Button href="/contact/">Get a Growth Audit</Button>
+          <Button href="/work/" variant="secondary">See how the work is documented</Button>
+        </div>
+      </div>
+      <aside class="hero-side-panel" data-reveal="left">
+        <HoneycombClusterDiagram
+          centerLabel="Service system"
+          centerTitle="Connected by design"
+          centerDescription="Every offering should strengthen the broader search, content, and ownership story instead of pulling it in random directions."
+          clusters={[
+            { title: "Audit", description: "Find the real order of operations." },
+            { title: "Cleanup", description: "Fix the structural drag first." },
+            { title: "Content", description: "Support service pages with context." },
+            { title: "Transfer", description: "Protect visibility during change." }
+          ]}
+        />
+      </aside>
+    </div>
+  </section>
+
+  <ServicesHoneycomb />
+
+  <section class="section">
+    <div class="container chapter-grid">
+      <article class="section-card" data-reveal>
+        <p class="eyebrow">How Boho scopes work</p>
+        <h2>Right-sized systems over giant retainers.</h2>
+        <p>
+          The goal is not to sell the most expensive package. It is to identify the
+          smallest useful system that still improves visibility, ownership, and decision
+          quality.
+        </p>
+      </article>
+      <article class="section-card" data-reveal="left">
+        <p class="eyebrow">What stays consistent</p>
+        <ul class="ledger-list">
+          <li>Readable documentation and handoff notes.</li>
+          <li>Careful language around impact and AI usage.</li>
+          <li>No fox traps, fake guarantees, or sticky exits.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <ProviderTransferBand />
+</BaseLayout>

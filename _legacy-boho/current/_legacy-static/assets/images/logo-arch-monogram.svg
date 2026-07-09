@@ -1,0 +1,10 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+  <title id="title">Boho Digital bee mark</title>
+  <desc id="desc">A BDS monogram framed by a simple architectural arch.</desc>
+  <rect width="96" height="96" rx="20" fill="#24150f"/>
+  <path d="M20 78V34c0-13 10-22 28-22s28 9 28 22v44" fill="none" stroke="#d8a94a" stroke-width="4" stroke-linecap="round"/>
+  <path d="M29 73V31h17c12 0 18 5 18 14 0 7-4 11-9 13 7 1 11 6 11 13 0 10-7 16-20 16H29Zm11-24h6c7 0 10-3 10-8s-3-8-10-8h-6v16Zm0 18h7c8 0 11-3 11-9 0-5-4-9-11-9h-7v18Z" fill="#f8f1e7"/>
+  <path d="M54 73h12c11 0 18-6 18-17 0-9-5-14-13-16 7-2 11-7 11-15 0-10-7-16-18-16H54v7h8c7 0 11 3 11 9 0 6-4 9-11 9h-8v7h10c8 0 12 3 12 10 0 6-4 10-12 10H54v12Z" fill="#d8a94a" opacity=".9"/>
+</svg>
+
+

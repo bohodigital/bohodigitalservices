@@ -1,0 +1,96 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import type { ServiceDetail } from "../../data/services";
+import Button from "../ui/Button.astro";
+import GlossaryTerm from "../glossary/GlossaryTerm.astro";
+import HexBadge from "../ui/HexBadge.astro";
+
+interface Props {
+  service: ServiceDetail;
+}
+
+const { service } = Astro.props;
+---
+<BaseLayout
+  title={`${service.title} | Boho Digital`}
+  description={service.metaDescription}
+  image="/assets/backgrounds/forest-mist.webp"
+>
+  <section class="page-hero section-forest image-backed">
+    <div class="container page-hero-grid">
+      <div class="hero-panel" data-reveal>
+        <div class="breadcrumbs">
+          <a href="/">Home</a>
+          <span>/</span>
+          <a href="/services/">Services</a>
+          <span>/</span>
+          <strong>{service.title}</strong>
+        </div>
+        <p class="eyebrow">{service.title}</p>
+        <h1>{service.heroTitle}</h1>
+        <p class="hero-lead">{service.heroDescription}</p>
+        <div class="page-actions">
+          <Button href="/contact/">Ask about this service</Button>
+          <Button href="/services/" variant="secondary">Back to services</Button>
+        </div>
+      </div>
+      <aside class="hero-side-panel" data-reveal="left">
+        <p class="micro-label">Good fit for</p>
+        <ul class="ledger-list">
+          {service.rightFor.map((item) => <li>{item}</li>)}
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container chapter-grid">
+      <article class="section-card" data-reveal>
+        <p class="eyebrow">Deliverables</p>
+        <ul class="ledger-list">
+          {service.deliverables.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+      <article class="section-card" data-reveal="left">
+        <p class="eyebrow">What this should change</p>
+        <ul class="ledger-list">
+          {service.outcomes.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section-band-mist">
+    <div class="container">
+      <div class="section-heading compact" data-reveal>
+        <p class="eyebrow">Related Owl terms</p>
+        <h2>Useful language around this service.</h2>
+      </div>
+      <div class="glossary-inline-list" data-reveal>
+        {service.glossary.map((slug) => (
+          <HexBadge tone="sage"><GlossaryTerm slug={slug} /></HexBadge>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading compact" data-reveal>
+        <p class="eyebrow">FAQ</p>
+        <h2>Questions that usually come up before the work starts.</h2>
+      </div>
+      <div class="chapter-grid">
+        {service.faqs.map((faq) => (
+          <article class="section-card" data-reveal>
+            <h3>{faq.question}</h3>
+            <p>{faq.answer}</p>
+          </article>
+        ))}
+      </div>
+      <div class="card-actions" data-reveal>
+        <Button href="/contact/">Start the conversation</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

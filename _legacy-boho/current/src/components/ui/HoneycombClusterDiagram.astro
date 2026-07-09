@@ -1,0 +1,30 @@
+---
+interface Cluster {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  centerLabel: string;
+  centerTitle: string;
+  centerDescription: string;
+  clusters: Cluster[];
+}
+
+const { centerLabel, centerTitle, centerDescription, clusters } = Astro.props;
+---
+<div class="cluster-diagram" data-reveal>
+  <article class="cluster-center">
+    <p class="micro-label">{centerLabel}</p>
+    <h3>{centerTitle}</h3>
+    <p>{centerDescription}</p>
+  </article>
+  <div class="cluster-grid">
+    {clusters.map((cluster) => (
+      <article class="cluster-cell">
+        <h4>{cluster.title}</h4>
+        <p>{cluster.description}</p>
+      </article>
+    ))}
+  </div>
+</div>

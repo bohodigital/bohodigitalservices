@@ -1,0 +1,19 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  className?: string;
+  pattern?: string;
+}
+
+const {
+  src,
+  alt,
+  className = "",
+  pattern = "/assets/patterns/honeycomb-light.svg"
+} = Astro.props;
+---
+<div class:list={["hex-image-frame", className]}>
+  <img class="hex-image-main" src={src} alt={alt} loading="eager" decoding="async" />
+  <img class="hex-image-pattern" src={pattern} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+</div>

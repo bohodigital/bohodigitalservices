@@ -1,0 +1,18 @@
+---
+interface Props {
+  tone?: "default" | "forest" | "mist" | "terracotta" | "sage";
+  className?: string;
+  tag?: keyof HTMLElementTagNameMap;
+}
+
+const {
+  tone = "default",
+  className = "",
+  tag = "div"
+} = Astro.props;
+
+const Tag = tag;
+---
+<Tag class:list={["ui-card", `ui-card-${tone}`, className]}>
+  <slot />
+</Tag>

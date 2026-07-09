@@ -1,0 +1,31 @@
+---
+import Button from "../ui/Button.astro";
+import ShortcutFoxWarning from "../ui/ShortcutFoxWarning.astro";
+import GlossaryTerm from "../glossary/GlossaryTerm.astro";
+---
+<section class="section section-band-terracotta">
+  <div class="container chapter-grid">
+    <ShortcutFoxWarning
+      title="Bad growth systems love vague confidence and sticky exits."
+      body="Guaranteed rankings, link farms, provider lock-in, and vanity metrics all sound cleaner when nobody translates them."
+    >
+      <div class="card-actions">
+        <Button href="/bad-seo-field-guide/" variant="secondary">Open the Field Guide</Button>
+      </div>
+    </ShortcutFoxWarning>
+    <div class="section-card" data-reveal="left">
+      <p class="eyebrow">No fox traps</p>
+      <h2>Good systems make leaving easier, not harder.</h2>
+      <p>
+        Boho leaves documentation behind, explains the language out loud, and keeps an
+        eye on things like <GlossaryTerm slug="provider-lock-in" />, suspicious
+        promises, and reporting that looks glossy but does not answer a real question.
+      </p>
+      <ul class="ledger-list">
+        <li>Plain-English explanations before technical theater.</li>
+        <li>Owner-facing transfer notes and accessible implementation records.</li>
+        <li>Strategy anchored in crawlability, content logic, and decision-ready reporting.</li>
+      </ul>
+    </div>
+  </div>
+</section>

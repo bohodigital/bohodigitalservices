@@ -1,0 +1,70 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/ui/Button.astro";
+import AskTheOwlCard from "../components/ui/AskTheOwlCard.astro";
+import ContactForm from "../components/ui/ContactForm.astro";
+---
+<BaseLayout
+  title="Contact | Boho Digital"
+  description="Simple static-friendly inquiry for growth audits, SEO cleanup, provider transfers, reporting, and Boho Digital support."
+  image="/assets/backgrounds/forest-mist.webp"
+>
+  <section class="page-hero section-forest image-backed">
+    <div class="container page-hero-grid">
+      <div class="hero-panel" data-reveal>
+        <div class="breadcrumbs">
+          <a href="/">Home</a>
+          <span>/</span>
+          <strong>Contact</strong>
+        </div>
+        <p class="eyebrow">Contact</p>
+        <h1>Let's map the forest.</h1>
+        <p class="hero-lead">Simple static-friendly inquiry.</p>
+      </div>
+      <aside class="hero-side-panel" data-reveal="left">
+        <p class="micro-label">Switching providers?</p>
+        <p>
+          You do not need to have everything organized before contacting us. Send
+          whatever you know: your current website, SEO provider, hosting platform,
+          domain registrar if known, analytics access if available, and what you are
+          trying to change. We will help identify the missing pieces.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact-grid">
+      <div class="contact-stack">
+        <article class="section-card" data-reveal>
+          <p class="eyebrow">Reach out</p>
+          <h2>Bring the actual situation.</h2>
+          <p>
+            Boho is most useful when the message includes the real context: what is
+            stuck, what already exists, and what ownership or visibility problem you are
+            trying to solve.
+          </p>
+        </article>
+        <article class="section-card" data-reveal>
+          <p class="eyebrow">Provider-transfer helper</p>
+          <ul class="ledger-list">
+            <li>Current website URL</li>
+            <li>Current SEO provider, host, or platform if known</li>
+            <li>Who holds domain, hosting, or analytics access</li>
+            <li>What you are trying to move, fix, or preserve</li>
+          </ul>
+        </article>
+        <AskTheOwlCard
+          title="The Owl can help translate the jargon first."
+          body="If the provider stack or SEO language feels dense, the dictionary is there to make the first conversation easier."
+        >
+          <div class="stack-actions">
+            <Button href="/ask-the-owl/dictionary/" variant="secondary">Open the Dictionary</Button>
+          </div>
+        </AskTheOwlCard>
+      </div>
+
+      <ContactForm className="section-card" reveal="left" />
+    </div>
+  </section>
+</BaseLayout>

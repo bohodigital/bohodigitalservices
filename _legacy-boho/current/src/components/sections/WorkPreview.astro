@@ -1,0 +1,36 @@
+---
+import Button from "../ui/Button.astro";
+import HoneycombMetricCard from "../ui/HoneycombMetricCard.astro";
+---
+<section class="section">
+  <div class="container">
+    <div class="section-heading" data-reveal>
+      <p class="eyebrow">Work preview</p>
+      <h2>Documented work, not mystery theater.</h2>
+      <p>
+        Boho work leaves a trail: audit roadmaps, implementation notes, migration
+        plans, and the practical decisions that let the next person pick up the map.
+      </p>
+    </div>
+    <div class="work-preview-grid">
+      <article class="work-note-card" data-reveal>
+        <p class="micro-label">Audit notes</p>
+        <h3>Growth audits that show order, not just issues.</h3>
+        <p>Priority stacks, content gaps, technical blockers, and next-step sequencing you can actually use.</p>
+      </article>
+      <article class="work-note-card" data-reveal="left">
+        <p class="micro-label">Transfer notes</p>
+        <h3>Migrations with receipts.</h3>
+        <p>Redirects, DNS, analytics continuity, and owner-facing handoff guidance instead of launch-day guesswork.</p>
+      </article>
+    </div>
+    <div class="honeycomb-grid impact-stat-grid">
+      <HoneycombMetricCard label="Records" value="Readable handoffs" note="Documentation that survives the project instead of disappearing into chat." />
+      <HoneycombMetricCard label="Scope" value="Right-sized systems" note="Enough structure to compound without turning into agency fog." />
+      <HoneycombMetricCard label="Rhythm" value="Steady momentum" note="Clarity about what to do next, not just what went wrong." />
+    </div>
+    <div class="card-actions" data-reveal>
+      <Button href="/work/" variant="secondary">Explore the work lane</Button>
+    </div>
+  </div>
+</section>

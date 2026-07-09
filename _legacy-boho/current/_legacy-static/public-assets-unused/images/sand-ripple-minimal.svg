@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" role="img" aria-labelledby="title desc">
+  <title id="title">Placeholder sand ripple minimal texture</title>
+  <desc id="desc">A minimal ripple pattern for decorative sand texture placeholders.</desc>
+  <!-- TODO: Replace with licensed or final generated sand ripple image. -->
+  <rect width="1200" height="860" fill="#fbf7ef"/>
+  <g fill="none" stroke="#d8c9b7" stroke-width="6" opacity=".42">
+    <path d="M90 180c74 22 142 22 206 0 68-22 138-22 210 0 72 22 142 22 210 0 66-22 138-22 214 0 74 22 144 22 210 0"/>
+    <path d="M60 286c84 24 162 24 236 0 78-24 156-24 234 0 78 24 156 24 236 0 76-24 154-24 234 0"/>
+    <path d="M102 398c70 18 138 18 206 0 70-18 138-18 204 0 72 18 140 18 206 0 68-18 138-18 210 0"/>
+    <path d="M74 510c84 24 162 24 236 0 78-24 156-24 234 0 78 24 156 24 236 0 76-24 154-24 234 0"/>
+    <path d="M112 624c74 22 142 22 206 0 68-22 138-22 210 0 72 22 142 22 210 0 66-22 138-22 214 0"/>
+  </g>
+</svg>

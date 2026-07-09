@@ -1,0 +1,108 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ImpactBadge from "../components/ui/ImpactBadge.astro";
+import Button from "../components/ui/Button.astro";
+---
+<BaseLayout
+  title="Impact | Boho Digital"
+  description="Growth should leave something good behind. Boho Digital shares climate-aware workflow principles and careful impact claims."
+  image="/assets/backgrounds/pollinator-meadow.webp"
+>
+  <section class="page-hero section-forest image-backed">
+    <div class="container page-hero-grid">
+      <div class="hero-panel" data-reveal>
+        <div class="breadcrumbs">
+          <a href="/">Home</a>
+          <span>/</span>
+          <strong>Impact</strong>
+        </div>
+        <p class="eyebrow">Impact</p>
+        <h1>Growth should leave something good behind.</h1>
+        <p class="hero-lead">
+          Boho uses powerful digital tools, including AI, while staying honest about
+          their footprint. The goal is leaner websites, cleaner workflows, useful
+          reporting, and support for verified climate action and pollinator-friendly
+          causes.
+        </p>
+        <div class="impact-badge-grid">
+          <ImpactBadge>Climate-aware workflows</ImpactBadge>
+          <ImpactBadge>Lean website practices</ImpactBadge>
+          <ImpactBadge>Pollinator support</ImpactBadge>
+          <ImpactBadge>Annual impact note</ImpactBadge>
+        </div>
+      </div>
+      <aside class="hero-side-panel" data-reveal="left">
+        <p class="micro-label">Launch claim</p>
+        <p>A portion of profits supports verified climate action and pollinator-friendly causes.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container chapter-grid">
+      <article class="section-card" data-reveal>
+        <p class="eyebrow">Climate &amp; tools acknowledgment</p>
+        <p>
+          Digital work is not footprint-free. Boho does not pretend otherwise. Climate
+          awareness here means making leaner choices, being careful with automation, and
+          reporting honestly instead of making empty purity claims.
+        </p>
+      </article>
+      <article class="section-card" data-reveal="left">
+        <p class="eyebrow">What we measure</p>
+        <ul class="ledger-list">
+          <li>Page weight and unnecessary front-end complexity</li>
+          <li>Workflow drag and repeated manual busywork</li>
+          <li>Documentation quality and handoff durability</li>
+          <li>Whether the reporting actually helps decisions</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section-band-mist">
+    <div class="container chapter-grid">
+      <article class="section-card" data-reveal>
+        <p class="eyebrow">What we reduce</p>
+        <ul class="ledger-list">
+          <li>Bloated websites that are heavier than they need to be</li>
+          <li>Unnecessary tooling sprawl and duplicate operational work</li>
+          <li>AI usage that adds noise without reducing drag</li>
+          <li>Reporting cycles that consume time without improving choices</li>
+        </ul>
+      </article>
+      <article class="section-card" data-reveal="left">
+        <p class="eyebrow">What we fund</p>
+        <p>
+          A portion of profits supports verified climate action and pollinator-friendly
+          causes. The point is modest, real support paired with honest language, not
+          decorative badge collecting.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container chapter-grid">
+      <article class="section-card" data-reveal>
+        <p class="eyebrow">Pollinator resources</p>
+        <p>
+          Pollinator support fits the brand for a reason: healthy ecosystems depend on
+          quiet connective work. The same is true for good websites and good digital
+          operations.
+        </p>
+      </article>
+      <article class="section-card" data-reveal="left">
+        <p class="eyebrow">Annual impact note</p>
+        <p>
+          As the studio matures, the impact note will document what was measured, what
+          changed, and where support was directed without inflating claims beyond the
+          evidence.
+        </p>
+      </article>
+    </div>
+    <div class="card-actions" data-reveal>
+      <Button href="/contact/">Ask a scope question</Button>
+    </div>
+  </section>
+</BaseLayout>

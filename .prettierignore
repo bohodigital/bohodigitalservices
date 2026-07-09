@@ -1,0 +1,6 @@
+_legacy-boho/
+dist/
+.astro/
+.wrangler/
+node_modules/
+coverage/

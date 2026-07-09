@@ -1,0 +1,19 @@
+---
+import BeeLogoMark from "./BeeLogoMark.astro";
+import { SITE } from "../../data/site";
+
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+<a class:list={["logo-lockup", compact && "logo-lockup-compact"]} href="/" aria-label={SITE.name}>
+  <span class="logo-mark-shell">
+    <BeeLogoMark decorative={true} />
+  </span>
+  <span class="logo-copy">
+    <strong>{SITE.name}</strong>
+    <span>{SITE.descriptor}</span>
+  </span>
+</a>

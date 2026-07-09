@@ -1,0 +1,228 @@
+---
+const signals = [
+  { label: "Market", x: 50, y: 12 },
+  { label: "Competitors", x: 81, y: 24 },
+  { label: "Search behavior", x: 88, y: 58 },
+  { label: "Buyer intent", x: 67, y: 84 },
+  { label: "Local realities", x: 34, y: 84 },
+  { label: "Current site", x: 12, y: 58 },
+  { label: "Analytics", x: 18, y: 25 },
+  { label: "Provider setup", x: 50, y: 50 },
+];
+---
+
+<section
+  class="research-radar boho-section home-motion-scope"
+  aria-labelledby="research-radar-title"
+>
+  <div class="boho-section__inner research-radar__grid">
+    <div class="research-radar__copy" data-home-reveal>
+      <p class="boho-kicker">Research desk</p>
+      <h2 id="research-radar-title">
+        Research first. Systems second. Useful work always.
+      </h2>
+      <p>
+        Boho does not sell the same SEO checklist to every business. A local
+        contractor, restaurant group, professional firm, ecommerce brand, and
+        niche B2B company all compete differently. The market decides the
+        strategy.
+      </p>
+      <p>
+        Proprietary does not mean mysterious. Boho may use internal systems, but
+        clients get readable priorities, implementation notes, and receipts.
+      </p>
+    </div>
+
+    <div class="radar-console" data-home-reveal>
+      <div class="radar-console__screen" aria-label="Research radar signals">
+        <div class="radar-console__sweep" aria-hidden="true"></div>
+        <div class="radar-console__rings" aria-hidden="true"></div>
+        {
+          signals.map((signal) => (
+            <span
+              class={`radar-signal ${signal.label === "Provider setup" ? "radar-signal--core" : ""}`}
+              style={`left:${signal.x}%;top:${signal.y}%`}
+            >
+              {signal.label}
+            </span>
+          ))
+        }
+      </div>
+      <div class="radar-console__readout">
+        <span>scan depth: practical</span>
+        <span>strategy: market-led</span>
+        <span>outputs: documented</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .research-radar {
+    background: linear-gradient(180deg, #080806, #12100a), #0f0e0b;
+    border-bottom: 1px solid rgb(244 190 62 / 13%);
+  }
+
+  .research-radar__grid {
+    align-items: center;
+    display: grid;
+    gap: clamp(2rem, 5vw, 5rem);
+    grid-template-columns: minmax(0, 0.85fr) minmax(20rem, 1.15fr);
+  }
+
+  .research-radar__copy {
+    display: grid;
+    gap: 1.1rem;
+  }
+
+  .research-radar__copy p:not(.boho-kicker) {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 44rem;
+  }
+
+  .radar-console {
+    background:
+      linear-gradient(135deg, rgb(244 190 62 / 16%), transparent 30%), #0b0a07;
+    border: 1px solid rgb(244 190 62 / 28%);
+    border-radius: 0.5rem;
+    padding: clamp(1rem, 3vw, 1.4rem);
+  }
+
+  .radar-console__screen {
+    aspect-ratio: 1;
+    background:
+      radial-gradient(
+        circle,
+        transparent 0 15%,
+        rgb(244 190 62 / 11%) 15.4% 15.8%,
+        transparent 16.2% 33%,
+        rgb(244 190 62 / 13%) 33.4% 33.8%,
+        transparent 34.2% 51%,
+        rgb(244 190 62 / 12%) 51.4% 51.8%,
+        transparent 52.2%
+      ),
+      linear-gradient(
+        90deg,
+        transparent calc(50% - 0.5px),
+        rgb(244 190 62 / 18%) 50%,
+        transparent calc(50% + 0.5px)
+      ),
+      linear-gradient(
+        0deg,
+        transparent calc(50% - 0.5px),
+        rgb(244 190 62 / 18%) 50%,
+        transparent calc(50% + 0.5px)
+      ),
+      radial-gradient(circle at center, rgb(244 190 62 / 12%), transparent 65%),
+      #080806;
+    border: 1px solid rgb(248 241 223 / 12%);
+    border-radius: 50%;
+    margin: 0 auto;
+    max-width: 34rem;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .radar-console__rings {
+    border: 1px solid rgb(244 190 62 / 20%);
+    border-radius: 50%;
+    inset: 10%;
+    position: absolute;
+  }
+
+  .radar-console__rings::before,
+  .radar-console__rings::after {
+    border: 1px solid rgb(244 190 62 / 18%);
+    border-radius: 50%;
+    content: "";
+    inset: 17%;
+    position: absolute;
+  }
+
+  .radar-console__rings::after {
+    inset: 34%;
+  }
+
+  .radar-console__sweep {
+    animation: radarSweep 6s linear infinite;
+    background: conic-gradient(
+      from 0deg,
+      rgb(244 190 62 / 0),
+      rgb(244 190 62 / 48%),
+      rgb(244 190 62 / 0) 46deg
+    );
+    inset: 0;
+    position: absolute;
+    transform-origin: center;
+  }
+
+  .radar-signal {
+    align-items: center;
+    background: rgb(8 8 6 / 74%);
+    border: 1px solid rgb(244 190 62 / 42%);
+    color: var(--boho-cream);
+    display: inline-flex;
+    font-family:
+      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: clamp(0.58rem, 1.5vw, 0.74rem);
+    font-weight: 850;
+    gap: 0.35rem;
+    max-width: 9rem;
+    padding: 0.36rem 0.45rem;
+    position: absolute;
+    text-transform: uppercase;
+    transform: translate(-50%, -50%);
+    white-space: normal;
+  }
+
+  .radar-signal::before {
+    background: var(--boho-honey);
+    box-shadow: 0 0 14px rgb(244 190 62 / 78%);
+    content: "";
+    flex: 0 0 auto;
+    height: 0.42rem;
+    width: 0.42rem;
+  }
+
+  .radar-signal--core {
+    background: var(--boho-honey);
+    color: #090806;
+  }
+
+  .radar-console__readout {
+    display: grid;
+    gap: 0.55rem;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 1rem;
+  }
+
+  .radar-console__readout span {
+    border: 1px solid rgb(248 241 223 / 12%);
+    color: rgb(248 241 223 / 70%);
+    font-family:
+      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 0.6rem;
+    text-transform: uppercase;
+  }
+
+  @keyframes radarSweep {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+
+  @media (max-width: 920px) {
+    .research-radar__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 540px) {
+    .radar-console__readout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
