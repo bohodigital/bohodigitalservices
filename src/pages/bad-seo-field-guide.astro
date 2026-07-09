@@ -1,0 +1,62 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import HeroText from "~/components/widgets/HeroText.astro";
+import WidgetWrapper from "~/components/ui/WidgetWrapper.astro";
+import Headline from "~/components/ui/Headline.astro";
+import CallToAction from "~/components/widgets/CallToAction.astro";
+import { warningCards } from "~/data/boho";
+
+const metadata = {
+  title: "Bad SEO Field Guide",
+  description:
+    "Shortcut Fox warnings for guaranteed rankings, link farms, vanity metrics, provider lock-in, and other classic traps.",
+};
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Bad SEO Field Guide"
+    title="Beware Shortcut Fox."
+    subtitle="Guaranteed rankings. Secret backlink packages. Confusing dashboards. Long contracts with no clear deliverables. Shortcut Fox loves clients who do not ask questions. This field guide helps you spot bad SEO before it eats your budget."
+  />
+
+  <WidgetWrapper>
+    <Headline
+      title="Terracotta warning cards"
+      subtitle="Shortcut language sounds efficient right before it gets expensive."
+    />
+    <div class="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      {
+        warningCards.map((card) => (
+          <article class="rounded-3xl border border-terracotta/20 bg-white/90 p-6 shadow-lg shadow-terracotta/5">
+            <p class="text-sm font-semibold uppercase tracking-[0.12em] text-terracotta-dark">
+              Shortcut Fox warning
+            </p>
+            <h2 class="mt-3 text-2xl font-bold text-charcoal">{card.title}</h2>
+            <p class="mt-3 text-muted">{card.description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </WidgetWrapper>
+
+  <CallToAction
+    isDark={true}
+    title="Beautiful systems. Honest growth. No fox traps."
+    subtitle="If the language gets slippery around rankings, backlinks, dashboards, or access, that is the signal to slow down and ask sharper questions."
+    actions={[
+      {
+        variant: "primary",
+        text: "Ask about a suspicious setup",
+        href: "/contact/",
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-moss-black via-terracotta-dark to-moss-dark"
+      >
+      </div>
+    </Fragment>
+  </CallToAction>
+</Layout>

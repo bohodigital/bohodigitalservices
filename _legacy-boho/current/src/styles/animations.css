@@ -1,0 +1,95 @@
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 700ms ease,
+    transform 700ms ease;
+}
+
+[data-reveal="left"] {
+  transform: translateX(22px);
+}
+
+[data-reveal].is-revealed {
+  opacity: 1;
+  transform: translate(0);
+}
+
+.glossary-term,
+.button,
+.site-nav a,
+.related-term-chip,
+.dictionary-entry-card,
+.honeycomb-card,
+.impact-badge {
+  transition:
+    transform var(--transition-soft),
+    color var(--transition-soft),
+    background var(--transition-soft),
+    border-color var(--transition-soft),
+    box-shadow var(--transition-soft);
+}
+
+.glossary-term:hover,
+.glossary-term:focus-visible {
+  color: var(--honey);
+  text-shadow: 0 0 20px rgba(212, 160, 67, 0.2);
+}
+
+.honeycomb-card:hover,
+.dictionary-entry-card:hover,
+.related-term-chip:hover {
+  transform: translateY(-3px);
+}
+
+.bee-trail-art {
+  animation: bee-drift 5.4s ease-in-out infinite alternate;
+}
+
+.fox-warning:hover .mascot-fox {
+  transform: translateX(-6px);
+}
+
+.mascot-fox,
+.mascot-bee,
+.mascot-owl {
+  transition: transform var(--transition-soft);
+}
+
+@keyframes bee-drift {
+  from {
+    transform: translateX(0) translateY(0);
+  }
+
+  to {
+    transform: translateX(12px) translateY(-4px);
+  }
+}
+
+@keyframes path-draw {
+  from {
+    transform: scaleX(0);
+    opacity: 0.45;
+  }
+
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}

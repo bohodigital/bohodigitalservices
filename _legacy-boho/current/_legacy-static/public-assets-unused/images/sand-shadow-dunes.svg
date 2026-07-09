@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" role="img" aria-labelledby="title desc">
+  <title id="title">Placeholder sand shadow dunes</title>
+  <desc id="desc">Soft dune-like curves used as a temporary placeholder for sand imagery.</desc>
+  <!-- TODO: Replace with licensed or final generated dune image. -->
+  <rect width="1200" height="860" fill="#f6ede0"/>
+  <path d="M0 602c156-124 278-186 418-186s270 82 410 82c132 0 230-44 372-140v502H0V602Z" fill="#e8d9c5"/>
+  <path d="M0 690c144-84 250-126 358-126 150 0 234 74 380 74 134 0 248-46 462-188v410H0V690Z" fill="#d8c9b7"/>
+</svg>

@@ -1,0 +1,77 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "./BaseLayout.astro";
+import RelatedTerms from "../components/glossary/RelatedTerms.astro";
+import OwlDictionaryCallout from "../components/glossary/OwlDictionaryCallout.astro";
+import HexBadge from "../components/ui/HexBadge.astro";
+
+interface Props {
+  entry: CollectionEntry<"dictionary">;
+}
+
+const { entry } = Astro.props;
+---
+<BaseLayout
+  title={`${entry.data.title} | Ask the Owl | Boho Digital`}
+  description={entry.data.shortDefinition}
+  image="/assets/backgrounds/forest-mist.webp"
+>
+  <section class="page-hero section-forest image-backed">
+    <div class="container page-hero-grid">
+      <div class="hero-panel" data-reveal>
+        <div class="breadcrumbs">
+          <a href="/">Home</a>
+          <span>/</span>
+          <a href="/ask-the-owl/">Ask the Owl</a>
+          <span>/</span>
+          <a href="/ask-the-owl/dictionary/">Dictionary</a>
+          <span>/</span>
+          <strong>{entry.data.title}</strong>
+        </div>
+        <p class="eyebrow">The Owl Dictionary</p>
+        <h1>{entry.data.title}</h1>
+        <p class="hero-lead">{entry.data.shortDefinition}</p>
+        <div class="stack-inline">
+          <HexBadge tone="sage">{entry.data.category}</HexBadge>
+          {entry.data.relatedServices.map((service) => <HexBadge tone="honey">{service}</HexBadge>)}
+        </div>
+      </div>
+      <aside class="hero-side-panel" data-reveal="left">
+        <p class="micro-label">Plain-English version</p>
+        <p>{entry.data.plainEnglish}</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container dictionary-entry-grid">
+      <article class="section-card" data-reveal>
+        <p class="eyebrow">Why it matters</p>
+        <p>{entry.data.whyItMatters}</p>
+      </article>
+      <article class="section-card" data-reveal="left">
+        <p class="eyebrow">Example</p>
+        <p>{entry.data.example}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section-band-mist">
+    <div class="container prose-wrap" data-reveal>
+      <div class="section-heading compact">
+        <p class="eyebrow">The longer answer</p>
+        <h2>Context the Owl would hand you in a meeting.</h2>
+      </div>
+      <div class="prose-body">
+        <slot />
+      </div>
+      <RelatedTerms slugs={entry.data.relatedTerms} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <OwlDictionaryCallout />
+    </div>
+  </section>
+</BaseLayout>

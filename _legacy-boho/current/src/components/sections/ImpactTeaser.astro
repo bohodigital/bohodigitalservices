@@ -1,0 +1,33 @@
+---
+import Button from "../ui/Button.astro";
+import HoneycombMetricCard from "../ui/HoneycombMetricCard.astro";
+import ImpactBadge from "../ui/ImpactBadge.astro";
+---
+<section class="section section-band-mist">
+  <div class="container">
+    <div class="section-heading" data-reveal>
+      <p class="eyebrow">Impact</p>
+      <h2>Growth that's good for brands, people, and the planet.</h2>
+      <p>
+        We use powerful digital tools, including AI, while staying honest about their
+        footprint. That means efficient workflows, lean websites, transparent impact
+        reporting, and a portion of profits directed toward verified climate action and
+        pollinator-friendly causes.
+      </p>
+    </div>
+    <div class="impact-badge-grid" data-reveal>
+      <ImpactBadge>Climate-aware workflows</ImpactBadge>
+      <ImpactBadge>Lean website practices</ImpactBadge>
+      <ImpactBadge>Pollinator support</ImpactBadge>
+      <ImpactBadge>Annual impact note</ImpactBadge>
+    </div>
+    <div class="honeycomb-grid impact-stat-grid">
+      <HoneycombMetricCard label="Measure" value="Lean by default" note="Smaller pages, calmer systems, and fewer unnecessary requests." />
+      <HoneycombMetricCard label="Reduce" value="Operational drag" note="Cleaner workflows and site patterns reduce waste before offsets are even discussed." />
+      <HoneycombMetricCard label="Fund" value="A portion of profits" note="Support goes to verified climate action and pollinator-friendly causes." />
+    </div>
+    <div class="card-actions" data-reveal>
+      <Button href="/impact/" variant="secondary">Read the full impact page</Button>
+    </div>
+  </div>
+</section>

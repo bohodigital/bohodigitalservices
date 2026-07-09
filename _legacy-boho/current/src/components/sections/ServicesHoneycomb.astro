@@ -1,0 +1,31 @@
+---
+import { services } from "../../data/services";
+import HoneycombGrid from "../ui/HoneycombGrid.astro";
+import HoneycombServiceCard from "../ui/HoneycombServiceCard.astro";
+
+const tones = ["honey", "moss", "sage", "terracotta"] as const;
+---
+<section class="section section-band-mist">
+  <div class="container">
+    <div class="section-heading" data-reveal>
+      <p class="eyebrow">Honeycomb services</p>
+      <h2>Services arranged like a living system.</h2>
+      <p>
+        Every service supports the rest. The point is not to sell the biggest package.
+        It is to build the smallest useful system that still strengthens the whole
+        forest.
+      </p>
+    </div>
+    <HoneycombGrid>
+      {services.map((service, index) => (
+        <HoneycombServiceCard
+          href={`/services/${service.slug}/`}
+          label={service.cardEyebrow}
+          title={service.title}
+          description={service.description}
+          tone={tones[index % tones.length]}
+        />
+      ))}
+    </HoneycombGrid>
+  </div>
+</section>

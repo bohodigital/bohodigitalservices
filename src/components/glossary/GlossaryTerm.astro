@@ -1,0 +1,42 @@
+---
+import { dictionaryBySlug, getDictionaryEntryHref } from "~/data/dictionary";
+
+interface Props {
+  slug: string;
+  label?: string;
+}
+
+const { slug, label } = Astro.props;
+const entry = dictionaryBySlug[slug];
+
+if (!entry) {
+  throw new Error(`Unknown glossary term slug: ${slug}`);
+}
+
+const popoverId = `glossary-${slug}-${Math.random().toString(36).slice(2, 10)}`;
+const displayLabel = label ?? entry.term;
+const href = getDictionaryEntryHref(entry.slug);
+---
+
+<span class="glossary-inline" data-glossary-inline>
+  <button
+    type="button"
+    class="glossary-term"
+    aria-expanded="false"
+    aria-controls={popoverId}
+    data-glossary-trigger
+  >
+    {displayLabel}
+  </button>
+  <span
+    id={popoverId}
+    class="glossary-popover"
+    role="tooltip"
+    data-glossary-popover
+  >
+    <span class="glossary-popover__category">{entry.category}</span>
+    <strong class="glossary-popover__title">{entry.term}</strong>
+    <span class="glossary-popover__definition">{entry.shortDefinition}</span>
+    <a class="glossary-popover__link" href={href}>Read the Owl entry</a>
+  </span>
+</span>

@@ -1,0 +1,52 @@
+---
+import BeeTrail from "../ui/BeeTrail.astro";
+import Button from "../ui/Button.astro";
+import HexImageFrame from "../ui/HexImageFrame.astro";
+import BeeAccent from "../mascots/BeeAccent.astro";
+import { SITE } from "../../data/site";
+---
+<section class="hero-home section-forest image-backed">
+  <div class="container hero-grid">
+    <div class="hero-panel" data-reveal>
+      <p class="hero-kicker"><BeeAccent decorative={true} className="hero-bee" />{SITE.name}</p>
+      <h1>{SITE.tagline}</h1>
+      <p class="hero-lead">
+        Boho Digital builds SEO, content, web optimization, analytics, and migration
+        systems for brands that want to be found, trusted, and chosen without getting
+        lost in agency fog.
+      </p>
+      <div class="hero-actions">
+        <Button href="/contact/">{SITE.primaryCta.label}</Button>
+        <Button href="/services/" variant="secondary">{SITE.secondaryCta.label}</Button>
+      </div>
+      <ul class="trust-strip" aria-label="Studio strengths">
+        <li>Search strategy with receipts.</li>
+        <li>Content ecosystems, not blog sprawl.</li>
+        <li>Provider-transfer support without panic spirals.</li>
+        <li>Lean reporting and climate-aware operational choices.</li>
+      </ul>
+      <BeeTrail />
+    </div>
+    <aside class="hero-side-panel" data-reveal="left">
+      <HexImageFrame
+        src="/assets/backgrounds/forest-path.webp"
+        alt="A layered forest path with moss hills and soft morning light"
+        pattern="/assets/patterns/honeycomb-light.svg"
+      />
+      <div class="hero-fact-row">
+        <div class="hero-fact">
+          <strong>Search</strong>
+          <span>Technical cleanup, content direction, and calmer visibility strategy.</span>
+        </div>
+        <div class="hero-fact">
+          <strong>Transfer</strong>
+          <span>Access inventory, redirects, DNS, analytics continuity, and post-launch QA.</span>
+        </div>
+        <div class="hero-fact">
+          <strong>Impact</strong>
+          <span>Lean websites, better documentation, and careful climate-aware messaging.</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>

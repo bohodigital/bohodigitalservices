@@ -1,0 +1,19 @@
+---
+interface Props {
+  steps: string[];
+  className?: string;
+}
+
+const { steps, className = "" } = Astro.props;
+---
+<div class:list={["migration-map", className]} data-reveal>
+  <div class="migration-path" aria-hidden="true"></div>
+  <ol class="migration-map-list">
+    {steps.map((step, index) => (
+      <li class="migration-step">
+        <span>{String(index + 1).padStart(2, "0")}</span>
+        <strong>{step}</strong>
+      </li>
+    ))}
+  </ol>
+</div>

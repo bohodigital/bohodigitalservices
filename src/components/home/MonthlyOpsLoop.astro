@@ -1,0 +1,260 @@
+---
+const stages = ["Watch", "Research", "Prioritize", "Fix", "Report", "Document"];
+---
+
+<section
+  class="monthly-ops boho-section home-motion-scope"
+  aria-labelledby="monthly-ops-title"
+>
+  <div class="boho-section__inner monthly-ops__grid">
+    <div class="ops-loop" data-home-reveal aria-label="Monthly operating loop">
+      <div class="ops-loop__track" aria-hidden="true">
+        <span class="ops-loop__dot"></span>
+      </div>
+      {
+        stages.map((stage, index) => (
+          <span class={`ops-loop__stage ops-loop__stage--${index + 1}`}>
+            {stage}
+          </span>
+        ))
+      }
+      <div class="ops-loop__center">
+        <span>Monthly</span>
+        <strong>Operating System</strong>
+      </div>
+    </div>
+
+    <div class="monthly-ops__copy" data-home-reveal>
+      <p class="boho-kicker">Monthly support</p>
+      <h2 id="monthly-ops-title">
+        Monthly support for the work that never stays fixed by itself.
+      </h2>
+      <p>
+        Markets shift. Search behavior changes. Competitors publish. Pages age.
+        Reports get weird. Providers move things. Monthly Growth Support keeps
+        the system watched, researched, prioritized, and documented.
+      </p>
+      <p>
+        Monthly support includes market watch, technical SEO monitoring, Search
+        Console and analytics review, content opportunities, website improvement
+        notes, implementation support, plain-English reporting, and
+        documentation.
+      </p>
+      <div class="monthly-ops__actions">
+        <a
+          class="boho-button boho-button--primary"
+          href="/services/monthly-growth-retainer/"
+        >
+          Build the monthly system
+        </a>
+        <a
+          class="boho-button boho-button--ghost"
+          href="/services/seo-growth-audit/"
+        >
+          Start with an audit first
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .monthly-ops {
+    background:
+      radial-gradient(
+        circle at 20% 70%,
+        rgb(244 190 62 / 14%),
+        transparent 24rem
+      ),
+      linear-gradient(180deg, #11100a, #070706);
+    border-bottom: 1px solid rgb(244 190 62 / 14%);
+  }
+
+  .monthly-ops__grid {
+    align-items: center;
+    display: grid;
+    gap: clamp(2.5rem, 6vw, 6rem);
+    grid-template-columns: minmax(19rem, 0.95fr) minmax(0, 1.05fr);
+  }
+
+  .monthly-ops__copy {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .monthly-ops__copy p:not(.boho-kicker) {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .monthly-ops__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 0.8rem;
+  }
+
+  .ops-loop {
+    aspect-ratio: 1;
+    background:
+      radial-gradient(circle at center, rgb(244 190 62 / 14%), transparent 48%),
+      #0b0a07;
+    border: 1px solid rgb(244 190 62 / 25%);
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px rgb(248 241 223 / 7%);
+    max-width: 33rem;
+    position: relative;
+  }
+
+  .ops-loop__track {
+    animation: loopSpin 16s linear infinite;
+    border: 2px solid rgb(244 190 62 / 42%);
+    border-radius: 50%;
+    inset: 14%;
+    position: absolute;
+  }
+
+  .ops-loop__track::before,
+  .ops-loop__track::after {
+    border: 1px dashed rgb(248 241 223 / 16%);
+    border-radius: 50%;
+    content: "";
+    inset: 15%;
+    position: absolute;
+  }
+
+  .ops-loop__track::after {
+    inset: 31%;
+  }
+
+  .ops-loop__dot {
+    background: var(--boho-honey);
+    box-shadow: 0 0 22px rgb(244 190 62 / 90%);
+    height: 1rem;
+    left: calc(50% - 0.5rem);
+    position: absolute;
+    top: -0.5rem;
+    width: 1rem;
+  }
+
+  .ops-loop__stage {
+    background: #14120c;
+    border: 1px solid rgb(244 190 62 / 34%);
+    color: var(--boho-cream);
+    font-family: var(--boho-display);
+    font-size: clamp(0.75rem, 1.8vw, 1rem);
+    font-weight: 850;
+    left: 50%;
+    min-width: 6.8rem;
+    padding: 0.65rem 0.7rem;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .ops-loop__stage--1 {
+    transform: translate(-50%, -50%) translateY(-14.4rem);
+  }
+
+  .ops-loop__stage--2 {
+    transform: translate(-50%, -50%) translate(12.4rem, -7.1rem);
+  }
+
+  .ops-loop__stage--3 {
+    transform: translate(-50%, -50%) translate(12.4rem, 7.1rem);
+  }
+
+  .ops-loop__stage--4 {
+    transform: translate(-50%, -50%) translateY(14.4rem);
+  }
+
+  .ops-loop__stage--5 {
+    transform: translate(-50%, -50%) translate(-12.4rem, 7.1rem);
+  }
+
+  .ops-loop__stage--6 {
+    transform: translate(-50%, -50%) translate(-12.4rem, -7.1rem);
+  }
+
+  .ops-loop__center {
+    align-items: center;
+    background: #0d0c08;
+    border: 1px solid rgb(244 190 62 / 44%);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    inset: 33%;
+    justify-content: center;
+    position: absolute;
+    text-align: center;
+  }
+
+  .ops-loop__center span {
+    color: var(--boho-honey-soft);
+    font-family:
+      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .ops-loop__center strong {
+    color: var(--boho-cream);
+    font-family: var(--boho-display);
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    line-height: 1.05;
+    max-width: 8rem;
+  }
+
+  @keyframes loopSpin {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+
+  @media (max-width: 980px) {
+    .monthly-ops__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .ops-loop {
+      margin-inline: auto;
+      max-width: 23rem;
+    }
+
+    .ops-loop__stage {
+      min-width: 5.6rem;
+      padding: 0.5rem;
+    }
+
+    .ops-loop__stage--1 {
+      transform: translate(-50%, -50%) translateY(-10.2rem);
+    }
+
+    .ops-loop__stage--2 {
+      transform: translate(-50%, -50%) translate(8.6rem, -5rem);
+    }
+
+    .ops-loop__stage--3 {
+      transform: translate(-50%, -50%) translate(8.6rem, 5rem);
+    }
+
+    .ops-loop__stage--4 {
+      transform: translate(-50%, -50%) translateY(10.2rem);
+    }
+
+    .ops-loop__stage--5 {
+      transform: translate(-50%, -50%) translate(-8.6rem, 5rem);
+    }
+
+    .ops-loop__stage--6 {
+      transform: translate(-50%, -50%) translate(-8.6rem, -5rem);
+    }
+  }
+</style>

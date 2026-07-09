@@ -1,0 +1,256 @@
+---
+const incidents = [
+  [
+    "Traffic dropped after launch",
+    "Unknown redirect, index, or tracking loss",
+    "Triage the changed surface",
+    "Risk notes and next watch points",
+  ],
+  [
+    "Important URLs are 404ing",
+    "Lost demand and broken paths",
+    "Map redirects before touching blindly",
+    "Redirect record",
+  ],
+  [
+    "Analytics access vanished",
+    "No trusted measurement",
+    "Recover access and verify tracking",
+    "Access and event notes",
+  ],
+  [
+    "Provider transfer stuck",
+    "Ownership and launch risk",
+    "Identify accounts, DNS, and handoff gaps",
+    "Ownership trail",
+  ],
+  [
+    "DNS or forms broke",
+    "Leads vanish quietly",
+    "Check records, forms, and notifications",
+    "Fix log",
+  ],
+  [
+    "Scary report needs translation",
+    "Bad decisions from panic",
+    "Separate signal from noise",
+    "Plain-English readout",
+  ],
+];
+---
+
+<section
+  class="rush-board boho-section home-motion-scope"
+  aria-labelledby="rush-board-title"
+>
+  <div class="boho-section__inner">
+    <div class="rush-board__header" data-home-reveal>
+      <p class="boho-kicker">Rush support</p>
+      <h2 id="rush-board-title">
+        When the site breaks, the launch goes sideways, or the provider
+        disappears.
+      </h2>
+      <p>
+        Boho offers premium rush support for urgent website, SEO, analytics,
+        redirect, provider-transfer, and launch problems when availability
+        allows.
+      </p>
+      <p>
+        Even urgent work needs context. Boho triages the symptoms, checks what
+        changed, researches the likely risk, and avoids blind fixes that make
+        the mess worse.
+      </p>
+    </div>
+
+    <div class="incident-board" data-home-reveal>
+      <div class="incident-board__head" aria-hidden="true">
+        <span>Signal</span>
+        <span>Risk</span>
+        <span>Action</span>
+        <span>Receipt</span>
+      </div>
+      {
+        incidents.map((row) => (
+          <article class="incident-row">
+            {row.map((cell) => (
+              <span>{cell}</span>
+            ))}
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="rush-board__footer" data-home-reveal>
+      <p>
+        Rush support is premium, availability-based, and scoped before work
+        starts. Boho does not promise magic rescues. We prioritize fast clarity,
+        controlled fixes, and honest risk notes.
+      </p>
+      <div>
+        <a class="boho-button boho-button--danger" href="/contact/"
+          >Request rush support</a
+        >
+        <a
+          class="boho-button boho-button--ghost"
+          href="/services/provider-transfer/"
+        >
+          Provider transfer stuck?
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .rush-board {
+    background:
+      radial-gradient(
+        circle at 86% 20%,
+        rgb(255 122 47 / 16%),
+        transparent 26rem
+      ),
+      linear-gradient(180deg, #0b0907, #060606);
+    border-bottom: 1px solid rgb(255 122 47 / 20%);
+  }
+
+  .rush-board__header {
+    display: grid;
+    gap: 1rem;
+    max-width: 980px;
+  }
+
+  .rush-board__header p:not(.boho-kicker) {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    max-width: 55rem;
+  }
+
+  .incident-board {
+    background:
+      linear-gradient(90deg, rgb(255 122 47 / 12%), transparent 42%), #100d09;
+    border: 1px solid rgb(255 122 47 / 27%);
+    margin-top: 2.2rem;
+    overflow: hidden;
+  }
+
+  .incident-board__head,
+  .incident-row {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr 1.25fr 0.9fr;
+  }
+
+  .incident-board__head {
+    background: rgb(255 122 47 / 14%);
+    color: var(--boho-honey-soft);
+    font-family:
+      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .incident-board__head span,
+  .incident-row span {
+    border-bottom: 1px solid rgb(248 241 223 / 10%);
+    border-right: 1px solid rgb(248 241 223 / 10%);
+    min-width: 0;
+    padding: 0.85rem;
+  }
+
+  .incident-row {
+    color: rgb(248 241 223 / 78%);
+    font-size: 0.93rem;
+    line-height: 1.45;
+  }
+
+  .incident-row span:first-child {
+    color: var(--boho-cream);
+    font-family: var(--boho-display);
+    font-weight: 850;
+  }
+
+  .incident-row:hover {
+    background: rgb(244 190 62 / 8%);
+  }
+
+  .rush-board__footer {
+    align-items: center;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: minmax(0, 1fr) auto;
+    margin-top: 1.2rem;
+  }
+
+  .rush-board__footer p {
+    border-left: 3px solid var(--boho-warning);
+    color: rgb(248 241 223 / 75%);
+    line-height: 1.6;
+    margin: 0;
+    padding-left: 1rem;
+  }
+
+  .rush-board__footer div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: flex-end;
+  }
+
+  @media (max-width: 920px) {
+    .incident-board {
+      display: grid;
+      gap: 0.75rem;
+      overflow: visible;
+    }
+
+    .incident-board__head {
+      display: none;
+    }
+
+    .incident-row {
+      border: 1px solid rgb(255 122 47 / 24%);
+      grid-template-columns: 1fr;
+    }
+
+    .incident-row span {
+      border-right: 0;
+      padding-left: 6.8rem;
+      position: relative;
+    }
+
+    .incident-row span::before {
+      color: var(--boho-honey-soft);
+      content: "Signal";
+      font-family:
+        ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.68rem;
+      font-weight: 900;
+      left: 0.85rem;
+      letter-spacing: 0.12em;
+      position: absolute;
+      text-transform: uppercase;
+      top: 0.9rem;
+    }
+
+    .incident-row span:nth-child(2)::before {
+      content: "Risk";
+    }
+
+    .incident-row span:nth-child(3)::before {
+      content: "Action";
+    }
+
+    .incident-row span:nth-child(4)::before {
+      content: "Receipt";
+    }
+
+    .rush-board__footer {
+      grid-template-columns: 1fr;
+    }
+
+    .rush-board__footer div {
+      justify-content: flex-start;
+    }
+  }
+</style>

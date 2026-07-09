@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import OwlDictionaryCallout from "../../components/glossary/OwlDictionaryCallout.astro";
+import GlossaryTerm from "../../components/glossary/GlossaryTerm.astro";
+import Button from "../../components/ui/Button.astro";
+---
+<BaseLayout
+  title="Ask the Owl | Boho Digital"
+  description="Plain-English digital guidance for the rest of the forest: search, provider transfers, reporting, and operations explained clearly."
+  image="/assets/backgrounds/forest-mist.webp"
+>
+  <section class="page-hero section-forest image-backed">
+    <div class="container page-hero-grid">
+      <div class="hero-panel" data-reveal>
+        <div class="breadcrumbs">
+          <a href="/">Home</a>
+          <span>/</span>
+          <strong>Ask the Owl</strong>
+        </div>
+        <p class="eyebrow">Ask the Owl</p>
+        <h1>Plain-English digital guidance for the rest of the forest.</h1>
+        <p class="hero-lead">
+          This is the educational layer for search, content, reporting, provider
+          transfers, and climate-aware digital operations. The point is translation, not
+          jargon performance.
+        </p>
+        <div class="page-actions">
+          <Button href="/ask-the-owl/dictionary/">Open the Dictionary</Button>
+          <Button href="/contact/" variant="secondary">Ask a scope question</Button>
+        </div>
+      </div>
+      <aside class="hero-side-panel" data-reveal="left">
+        <p class="micro-label">Good starting terms</p>
+        <ul class="ledger-list">
+          <li><GlossaryTerm slug="seo" /></li>
+          <li><GlossaryTerm slug="technical-seo" /></li>
+          <li><GlossaryTerm slug="dns" /></li>
+          <li><GlossaryTerm slug="provider-lock-in" /></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container chapter-grid">
+      <article class="section-card" data-reveal>
+        <p class="eyebrow">What lives here</p>
+        <p>
+          Search basics, technical explanations, provider-transfer language, reporting
+          cues, and terms that usually get waved around without being explained.
+        </p>
+      </article>
+      <article class="section-card" data-reveal="left">
+        <p class="eyebrow">How to use it</p>
+        <p>
+          Start with the short definition, then follow the full entry when the concept
+          affects a real decision. The dictionary is there to make the work easier to
+          navigate, not to pad the site with jargon.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section-band-mist">
+    <div class="container">
+      <OwlDictionaryCallout />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" role="img" aria-labelledby="title desc">
+  <title id="title">Placeholder plain paper texture</title>
+  <desc id="desc">A soft plain paper texture placeholder for subtle overlays.</desc>
+  <!-- TODO: Replace with licensed or final generated paper texture. -->
+  <rect width="1200" height="860" fill="#fbf7ef"/>
+  <g fill="#e8d9c5" opacity=".18">
+    <rect x="64" y="96" width="120" height="12" rx="6"/>
+    <rect x="280" y="184" width="160" height="10" rx="5"/>
+    <rect x="674" y="128" width="132" height="10" rx="5"/>
+    <rect x="1020" y="208" width="94" height="10" rx="5"/>
+    <rect x="204" y="504" width="174" height="10" rx="5"/>
+    <rect x="786" y="632" width="144" height="10" rx="5"/>
+  </g>
+</svg>

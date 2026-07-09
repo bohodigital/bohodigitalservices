@@ -1,0 +1,117 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import HeroText from "~/components/widgets/HeroText.astro";
+import Content from "~/components/widgets/Content.astro";
+import Features2 from "~/components/widgets/Features2.astro";
+import WidgetWrapper from "~/components/ui/WidgetWrapper.astro";
+import Headline from "~/components/ui/Headline.astro";
+
+const metadata = {
+  title: "Impact",
+  description:
+    "Growth should leave something good behind. Boho Digital shares climate-aware workflow principles and careful impact claims.",
+};
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Impact"
+    title="Growth should leave something good behind."
+    subtitle="We use powerful digital tools, including AI, while staying honest about their footprint. The goal is leaner websites, cleaner workflows, useful reporting, and support for verified climate action and pollinator-friendly causes."
+  />
+
+  <WidgetWrapper>
+    <Headline
+      title="A careful impact posture"
+      subtitle="A portion of profits supports verified climate action and pollinator-friendly causes."
+      classes={{
+        container: "text-left rtl:text-right max-w-4xl mx-auto",
+        title: "text-3xl md:text-4xl",
+        subtitle: "text-lg text-muted",
+      }}
+    />
+    <div class="mt-8 flex flex-wrap gap-3">
+      {
+        [
+          "Climate-aware workflows",
+          "Lean website practices",
+          "Pollinator support",
+          "Annual impact note",
+        ].map((badge) => (
+          <span class="inline-flex rounded-full border border-moss/15 bg-white/80 px-4 py-2 text-sm font-semibold text-moss-dark shadow-sm">
+            {badge}
+          </span>
+        ))
+      }
+    </div>
+  </WidgetWrapper>
+
+  <Features2
+    title="Climate & Tools Acknowledgment"
+    columns={2}
+    items={[
+      {
+        title: "Digital work is not footprint-free",
+        description:
+          "Boho does not pretend otherwise. The work is to make leaner choices and report honestly.",
+        icon: "tabler:cloud-data-connection",
+      },
+      {
+        title: "Automation needs judgment",
+        description:
+          "AI is useful when it reduces drag, not when it adds noise or hides weak reasoning.",
+        icon: "tabler:cpu-2",
+      },
+    ]}
+  />
+
+  <Content
+    tagline="What we measure"
+    title="The useful questions are operational."
+    items={[
+      {
+        title: "What we measure",
+        description:
+          "Page weight, unnecessary front-end complexity, workflow drag, and whether reporting helps real decisions.",
+      },
+      {
+        title: "What we reduce",
+        description:
+          "Bloated websites, duplicate busywork, tool sprawl, and AI use that does not improve the system.",
+      },
+      {
+        title: "What we fund",
+        description:
+          "A portion of profits supports verified climate action and pollinator-friendly causes.",
+      },
+      {
+        title: "Annual impact note",
+        description:
+          "As the studio matures, the note will document what changed and where support was directed without inflating claims beyond the evidence.",
+      },
+    ]}
+    image={{
+      src: "/assets/backgrounds/pollinator-meadow.webp",
+      alt: "Pollinator meadow representing careful environmental stewardship",
+    }}
+  />
+
+  <Features2
+    title="Pollinator resources"
+    columns={2}
+    items={[
+      {
+        title: "Habitat matters",
+        description:
+          "Pollinator-friendly support fits the brand because healthy ecosystems depend on quiet connective work.",
+        icon: "tabler:flower",
+      },
+      {
+        title: "Annual impact note",
+        description:
+          "Any future impact note should document what changed and where support was directed without inflating the language.",
+        icon: "tabler:notebook",
+      },
+    ]}
+  />
+</Layout>

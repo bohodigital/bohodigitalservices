@@ -1,0 +1,82 @@
+---
+import Button from "./Button.astro";
+
+interface Props {
+  className?: string;
+  reveal?: string;
+}
+
+const { className = "", reveal } = Astro.props;
+---
+<form
+  class:list={["contact-form", className]}
+  action="mailto:hello@bohodigitalservices.com"
+  method="post"
+  enctype="text/plain"
+  data-mailto-form
+  data-reveal={reveal}
+>
+  <div class="form-grid">
+    <div class="form-field">
+      <label for="contact-name">Name</label>
+      <input id="contact-name" name="name" type="text" autocomplete="name" required />
+    </div>
+
+    <div class="form-field">
+      <label for="contact-email">Email</label>
+      <input id="contact-email" name="email" type="email" autocomplete="email" required />
+    </div>
+
+    <div class="form-field">
+      <label for="contact-business">Business name</label>
+      <input id="contact-business" name="business" type="text" autocomplete="organization" />
+    </div>
+
+    <div class="form-field">
+      <label for="contact-website">Website URL</label>
+      <input id="contact-website" name="website" type="url" autocomplete="url" />
+    </div>
+
+    <div class="form-field field-span">
+      <label for="contact-provider">
+        Current SEO provider, hosting provider, or platform, if relevant
+      </label>
+      <input id="contact-provider" name="provider" type="text" />
+    </div>
+
+    <div class="form-field">
+      <label for="contact-help">What do you need help with?</label>
+      <select id="contact-help" name="help">
+        <option>Not sure yet</option>
+        <option>SEO Growth Audit</option>
+        <option>Technical SEO Cleanup</option>
+        <option>Content Strategy</option>
+        <option>Local SEO</option>
+        <option>Website Optimization</option>
+        <option>Analytics &amp; Reporting</option>
+        <option>AI-Assisted Workflows</option>
+        <option>SEO / Hosting Provider Transfer</option>
+        <option>Monthly Growth Retainer</option>
+      </select>
+    </div>
+
+    <div class="form-field">
+      <label for="contact-budget">Budget range</label>
+      <input id="contact-budget" name="budget" type="text" />
+    </div>
+
+    <div class="form-field">
+      <label for="contact-timeline">Timeline</label>
+      <input id="contact-timeline" name="timeline" type="text" />
+    </div>
+
+    <div class="form-field field-span">
+      <label for="contact-notes">Anything else worth knowing?</label>
+      <textarea id="contact-notes" name="notes" rows="6"></textarea>
+    </div>
+  </div>
+
+  <div class="card-actions">
+    <Button type="submit">Open the email draft</Button>
+  </div>
+</form>

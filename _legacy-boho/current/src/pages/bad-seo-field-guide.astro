@@ -1,0 +1,74 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ShortcutFoxWarning from "../components/ui/ShortcutFoxWarning.astro";
+import Button from "../components/ui/Button.astro";
+import GlossaryTerm from "../components/glossary/GlossaryTerm.astro";
+---
+<BaseLayout
+  title="Bad SEO Field Guide | Boho Digital"
+  description="Shortcut Fox warnings for guaranteed rankings, link farms, vanity metrics, provider lock-in, and other classic traps."
+  image="/assets/backgrounds/moss-texture.webp"
+>
+  <section class="page-hero section-forest image-backed">
+    <div class="container page-hero-grid">
+      <div class="hero-panel" data-reveal>
+        <div class="breadcrumbs">
+          <a href="/">Home</a>
+          <span>/</span>
+          <strong>Bad SEO Field Guide</strong>
+        </div>
+        <p class="eyebrow">Bad SEO Field Guide</p>
+        <h1>Shortcut language sounds efficient right before it gets expensive.</h1>
+        <p class="hero-lead">
+          This field guide translates the phrases, tactics, and reporting habits that
+          often show up when the provider stack is more interested in lock-in than in
+          clarity.
+        </p>
+      </div>
+      <aside class="hero-side-panel" data-reveal="left">
+        <p class="micro-label">Shortcut Fox</p>
+        <p>The fox is a warning symbol, not a mascot show. It appears when the language gets slippery.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section-band-terracotta">
+    <div class="container chapter-grid">
+      <ShortcutFoxWarning
+        title="Three common fox traps."
+        body="Guaranteed rankings, link farms, and provider lock-in all promise ease while quietly stealing flexibility."
+      />
+      <div class="section-card" data-reveal="left">
+        <ul class="ledger-list">
+          <li><GlossaryTerm slug="guaranteed-rankings" /> should trigger skepticism immediately.</li>
+          <li><GlossaryTerm slug="link-farm" /> tactics can burn trust instead of building it.</li>
+          <li><GlossaryTerm slug="provider-lock-in" /> usually reveals itself when you try to leave.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container chapter-grid">
+      <article class="section-card" data-reveal>
+        <p class="eyebrow">Reporting trap</p>
+        <h2>Pretty dashboards are not proof.</h2>
+        <p>
+          If a report is full of <GlossaryTerm slug="vanity-metrics" /> and short on
+          decisions, it is performance theater, not stewardship.
+        </p>
+      </article>
+      <article class="section-card" data-reveal="left">
+        <p class="eyebrow">Ownership trap</p>
+        <h2>Access should get clearer over time.</h2>
+        <p>
+          If no one can explain who controls hosting, DNS, analytics, content, and the
+          domain, the stack is already carrying unnecessary risk.
+        </p>
+      </article>
+    </div>
+    <div class="card-actions" data-reveal>
+      <Button href="/contact/">Ask about a suspicious setup</Button>
+    </div>
+  </section>
+</BaseLayout>

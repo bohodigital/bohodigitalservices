@@ -1,0 +1,18 @@
+---
+import { getCollection, render } from "astro:content";
+import DictionaryEntryLayout from "../../../layouts/DictionaryEntryLayout.astro";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("dictionary");
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry }
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+<DictionaryEntryLayout entry={entry}>
+  <Content />
+</DictionaryEntryLayout>

@@ -1,0 +1,23 @@
+---
+interface Props {
+  decorative?: boolean;
+  alt?: string;
+  className?: string;
+}
+
+const {
+  decorative = true,
+  alt = "Owl dictionary accent",
+  className = ""
+} = Astro.props;
+---
+<img
+  class:list={["mascot-accent", "mascot-owl", className]}
+  src="/assets/mascots/owl-dictionary.svg"
+  alt={decorative ? "" : alt}
+  aria-hidden={decorative ? "true" : undefined}
+  width="96"
+  height="96"
+  loading="lazy"
+  decoding="async"
+/>

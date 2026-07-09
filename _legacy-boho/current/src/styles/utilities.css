@@ -1,0 +1,55 @@
+.stack-inline,
+.stack-actions,
+.card-actions,
+.cta-actions,
+.page-actions,
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.stack-inline {
+  align-items: center;
+}
+
+.stack-actions {
+  margin-top: 1.25rem;
+}
+
+.prose-wrap {
+  max-width: var(--max-text);
+}
+
+.prose-body {
+  display: grid;
+  gap: 1rem;
+}
+
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  color: rgba(247, 243, 236, 0.72);
+  font-size: 0.75rem;
+}
+
+.breadcrumbs strong {
+  color: var(--white);
+}
+
+.breadcrumbs a:hover {
+  color: var(--honey-bright);
+}
+
+.hidden-heading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

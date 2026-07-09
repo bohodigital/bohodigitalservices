@@ -1,0 +1,40 @@
+---
+import GlossaryTerm from "../glossary/GlossaryTerm.astro";
+import HoneycombClusterDiagram from "../ui/HoneycombClusterDiagram.astro";
+---
+<section class="section">
+  <div class="container">
+    <div class="section-heading" data-reveal>
+      <p class="eyebrow">Search ecosystem</p>
+      <h2>A growth system works like an ecosystem, not a stack of disconnected chores.</h2>
+      <p>
+        Boho treats <GlossaryTerm slug="technical-seo" />, content architecture, local
+        visibility, analytics, migrations, and conversion clarity as connected habitat.
+        When one piece changes, the rest of the trail should still make sense.
+      </p>
+    </div>
+    <HoneycombClusterDiagram
+      centerLabel="The system"
+      centerTitle="Organic growth"
+      centerDescription="Trust compounds when search structure, content, measurement, and handoff behavior support one another."
+      clusters={[
+        {
+          title: "Discovery",
+          description: "Search intent, crawl paths, and high-friction visibility gaps."
+        },
+        {
+          title: "Structure",
+          description: "Metadata, internal links, hierarchy, and the parts search engines can actually reach."
+        },
+        {
+          title: "Content",
+          description: "Service pages, guides, glossary layers, and supporting clusters."
+        },
+        {
+          title: "Stewardship",
+          description: "Analytics continuity, ownership, transfer discipline, and climate-aware decisions."
+        }
+      ]}
+    />
+  </div>
+</section>

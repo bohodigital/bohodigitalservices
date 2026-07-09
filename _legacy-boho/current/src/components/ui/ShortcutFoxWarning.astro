@@ -1,0 +1,24 @@
+---
+import ShortcutFoxAccent from "../mascots/ShortcutFoxAccent.astro";
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  body: string;
+}
+
+const {
+  eyebrow = "Shortcut Fox warning",
+  title,
+  body
+} = Astro.props;
+---
+<aside class="fox-warning" data-reveal>
+  <div class="fox-warning-copy">
+    <p class="micro-label">{eyebrow}</p>
+    <h3>{title}</h3>
+    <p>{body}</p>
+    <slot />
+  </div>
+  <ShortcutFoxAccent decorative={true} />
+</aside>

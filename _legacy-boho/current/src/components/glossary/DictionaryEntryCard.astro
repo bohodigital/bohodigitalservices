@@ -1,0 +1,40 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  entry: CollectionEntry<"dictionary">;
+  className?: string;
+  featured?: boolean;
+  showCategory?: boolean;
+}
+
+const {
+  entry,
+  className = "",
+  featured = false,
+  showCategory = false
+} = Astro.props;
+const href = `/ask-the-owl/dictionary/${entry.id}/`;
+const searchText = [
+  entry.data.title,
+  entry.data.category,
+  entry.data.shortDefinition,
+  entry.data.plainEnglish
+].join(" ").toLowerCase();
+---
+<article
+  class:list={[
+    "dictionary-entry-card",
+    className,
+    featured && "dictionary-entry-card--featured"
+  ]}
+  data-reveal
+  data-dictionary-card
+  data-category={entry.data.category}
+  data-search-text={searchText}
+>
+  {showCategory && <p class="micro-label">{entry.data.category}</p>}
+  <h3><a href={href}>{entry.data.title}</a></h3>
+  <p>{entry.data.shortDefinition}</p>
+  <a class="inline-link" href={href}>Open the full entry</a>
+</article>

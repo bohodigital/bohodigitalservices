@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" role="img" aria-labelledby="title desc">
+  <title id="title">Placeholder recycled paper texture</title>
+  <desc id="desc">A soft paper texture placeholder for editorial backgrounds.</desc>
+  <!-- TODO: Replace with licensed or final generated paper texture. -->
+  <rect width="1200" height="860" fill="#f8f1e7"/>
+  <g fill="#d8c9b7" opacity=".16">
+    <circle cx="120" cy="92" r="14"/>
+    <circle cx="306" cy="214" r="10"/>
+    <circle cx="520" cy="88" r="12"/>
+    <circle cx="834" cy="146" r="16"/>
+    <circle cx="1098" cy="252" r="10"/>
+    <circle cx="218" cy="422" r="18"/>
+    <circle cx="612" cy="350" r="14"/>
+    <circle cx="1004" cy="454" r="20"/>
+    <circle cx="424" cy="612" r="11"/>
+    <circle cx="816" cy="678" r="16"/>
+  </g>
+</svg>

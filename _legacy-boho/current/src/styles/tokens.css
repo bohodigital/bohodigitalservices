@@ -1,0 +1,29 @@
+:root {
+  --cream: #f7f3ec;
+  --warm-bone: #ede6da;
+  --charcoal: #2b2b2b;
+  --moss: #5e6e56;
+  --moss-dark: #2f3a2d;
+  --moss-black: #1f271e;
+  --sage: #8aa08a;
+  --sage-light: #dde7d7;
+  --honey: #d4a043;
+  --honey-bright: #e8b84f;
+  --honey-soft: #e7c878;
+  --terracotta: #c56a4a;
+  --terracotta-dark: #7c3e2d;
+  --mist: #eef1ea;
+  --white: #ffffff;
+  --line: rgba(43, 43, 43, 0.16);
+  --line-strong: rgba(43, 43, 43, 0.32);
+  --shadow-soft: 0 24px 70px rgba(31, 39, 30, 0.12);
+  --shadow-card: 0 18px 54px rgba(31, 39, 30, 0.1);
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+  --max-page: 1180px;
+  --max-text: 760px;
+  --radius-card: 18px;
+  --radius-soft: 12px;
+  --transition-soft: 220ms ease;
+}

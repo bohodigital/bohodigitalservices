@@ -1,0 +1,150 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import HeroText from "~/components/widgets/HeroText.astro";
+import Prices from "~/components/widgets/Pricing.astro";
+import Content from "~/components/widgets/Content.astro";
+import FAQs from "~/components/widgets/FAQs.astro";
+import CallToAction from "~/components/widgets/CallToAction.astro";
+
+const metadata = {
+  title: "Pricing",
+  description: "Clear pricing. No fox traps.",
+};
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Pricing"
+    title="Clear pricing. No fox traps."
+    subtitle="Use these ranges as planning anchors, then scope the real work around the system in front of us."
+  />
+
+  <Prices
+    title="Core pricing anchors"
+    subtitle="These are the first-pass ranges most people need to compare."
+    prices={[
+      {
+        title: "SEO Growth Audit",
+        subtitle: "A written roadmap and order of operations",
+        price: 350,
+        period: "to 750",
+        items: [
+          { description: "Visibility review and technical observations" },
+          { description: "Content and internal-link notes" },
+          { description: "Priority-ordered next steps" },
+        ],
+        callToAction: {
+          text: "Ask about an audit",
+          href: "/contact/",
+        },
+      },
+      {
+        title: "Technical SEO Cleanup",
+        subtitle: "Focused structural fixes and QA",
+        price: 750,
+        period: "to 1,500",
+        items: [
+          { description: "Crawlability, indexing, and metadata cleanup" },
+          { description: "Redirects, internal links, and health checks" },
+          { description: "Implementation notes and follow-up QA" },
+        ],
+        callToAction: {
+          text: "Ask about cleanup",
+          href: "/contact/",
+        },
+        hasRibbon: true,
+        ribbonTitle: "popular",
+      },
+      {
+        title: "Website Optimization / Static Build",
+        subtitle: "Sharper structure, calmer pages, cleaner conversion paths",
+        price: 1200,
+        period: "to 3,500",
+        items: [
+          { description: "Page structure, trust signals, and CTA refinement" },
+          { description: "Static-first implementation where it fits" },
+          { description: "Search and reporting considerations built in" },
+        ],
+        callToAction: {
+          text: "Ask about a build",
+          href: "/contact/",
+        },
+      },
+      {
+        title: "Monthly Growth Retainer",
+        subtitle: "Ongoing optimization and reporting support",
+        price: 300,
+        period: "to 900 per month",
+        items: [
+          { description: "Ongoing SEO and content priorities" },
+          { description: "Technical monitoring and plain-English reporting" },
+          { description: "Steady implementation guidance" },
+        ],
+        callToAction: {
+          text: "Ask about a retainer",
+          href: "/contact/",
+        },
+      },
+    ]}
+  />
+
+  <Content
+    tagline="Scoped support"
+    title="SEO & Hosting Provider Transfer"
+    subtitle="Provider transfer work is scoped after audit or discovery because the real cost depends on access recovery, platform complexity, redirects, hosting changes, and how much of the ownership trail is missing."
+    items={[
+      {
+        title: "Best first step",
+        description:
+          "Bring the current website, providers, known accounts, and launch constraints into the first conversation.",
+      },
+      {
+        title: "What changes the scope",
+        description:
+          "Missing logins, undocumented DNS, platform lock-in, analytics continuity, and redirect complexity.",
+      },
+    ]}
+    callToAction={{
+      text: "See Provider Transfer Support",
+      href: "/services/provider-transfer/",
+    }}
+    image={{
+      src: "/assets/backgrounds/forest-path.webp",
+      alt: "Forest path representing a careful migration route",
+    }}
+  />
+
+  <FAQs
+    title="Pricing FAQs"
+    columns={1}
+    items={[
+      {
+        title: "Why are these ranges and not one flat number?",
+        description:
+          "The real work depends on the current system, access, urgency, and whether the need is an audit, implementation pass, or transfer.",
+      },
+      {
+        title: "Can we start small?",
+        description:
+          "Yes. The point is to choose the smallest useful first step, not the biggest package.",
+      },
+      {
+        title: "Do you do long contracts by default?",
+        description:
+          "No. Ongoing work should stay because it is useful, not because leaving is painful.",
+      },
+    ]}
+  />
+
+  <CallToAction
+    title="Want the scope translated into a real next step?"
+    subtitle="Tell Boho what is already in place, what is stuck, and what kind of ownership or visibility problem you are trying to solve."
+    actions={[
+      {
+        variant: "primary",
+        text: "Start the conversation",
+        href: "/contact/",
+      },
+    ]}
+  />
+</Layout>

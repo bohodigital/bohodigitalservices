@@ -1,0 +1,44 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980" role="img" aria-labelledby="title desc">
+  <title id="title">Forest path backdrop</title>
+  <desc id="desc">A layered forest scene with a soft path and honey-toned morning light.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef1ea"/>
+      <stop offset=".52" stop-color="#dfe8db"/>
+      <stop offset="1" stop-color="#c7d5c6"/>
+    </linearGradient>
+    <linearGradient id="path" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f7f3ec"/>
+      <stop offset="1" stop-color="#d8c9b7"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="980" fill="url(#sky)"/>
+  <circle cx="1220" cy="150" r="180" fill="#f4d99a" fill-opacity=".44"/>
+  <circle cx="1340" cy="120" r="260" fill="#f7f3ec" fill-opacity=".52"/>
+  <path d="M0 660c140-66 286-87 460-55 126 23 233 25 346-6 163-46 277-44 446 6 124 37 224 41 348 12v363H0Z" fill="#7b9178"/>
+  <path d="M0 724c149-54 297-65 448-38 147 27 256 25 367-9 137-42 265-39 418 13 127 43 247 54 367 34v256H0Z" fill="#5e6e56"/>
+  <path d="M0 786c153-42 304-45 451-11 154 35 283 34 413-11 138-47 287-45 455 10 113 37 206 48 281 33v173H0Z" fill="#2f3a2d"/>
+  <path d="M592 980c34-176 72-300 118-373 39-61 72-96 93-108 20 12 53 47 92 108 48 75 87 199 123 373Z" fill="url(#path)" opacity=".94"/>
+  <path d="M672 980c25-127 49-219 78-278 22-44 40-66 53-74 12 8 31 30 53 74 29 59 55 151 79 278Z" fill="#f0e7d6" opacity=".88"/>
+  <g fill="#2f3a2d">
+    <rect x="128" y="298" width="24" height="405" rx="12"/>
+    <rect x="242" y="245" width="20" height="420" rx="10"/>
+    <rect x="1348" y="265" width="26" height="428" rx="13"/>
+    <rect x="1453" y="228" width="20" height="404" rx="10"/>
+  </g>
+  <g fill="#5e6e56">
+    <circle cx="140" cy="262" r="86"/>
+    <circle cx="230" cy="223" r="74"/>
+    <circle cx="262" cy="274" r="68"/>
+    <circle cx="1360" cy="239" r="91"/>
+    <circle cx="1450" cy="213" r="79"/>
+    <circle cx="1486" cy="282" r="69"/>
+  </g>
+  <g fill="#8aa08a" fill-opacity=".36">
+    <ellipse cx="240" cy="520" rx="240" ry="92"/>
+    <ellipse cx="1300" cy="564" rx="270" ry="110"/>
+    <ellipse cx="810" cy="432" rx="520" ry="120"/>
+  </g>
+</svg>
+
+

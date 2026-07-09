@@ -1,0 +1,61 @@
+---
+import { SITE, SITE_KEYWORDS } from "../../data/site";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonical?: string;
+  noindex?: boolean;
+  metaRefresh?: string;
+}
+
+const {
+  title,
+  description,
+  image = SITE.defaultImage,
+  canonical = new URL(Astro.url.pathname, SITE.url).toString(),
+  noindex = false,
+  metaRefresh
+} = Astro.props;
+
+const imageUrl = new URL(image, SITE.url).toString();
+const robots = noindex ? "noindex, nofollow" : "index, follow";
+---
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="keywords" content={SITE_KEYWORDS.join(", ")} />
+<meta name="robots" content={robots} />
+<link rel="canonical" href={canonical} />
+{metaRefresh && <meta http-equiv="refresh" content={`0; url=${metaRefresh}`} />}
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={imageUrl} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+<link rel="icon" href="/assets/brand/bee-logo-mark.svg" type="image/svg+xml" />
+<script is:inline type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      name: SITE.name,
+      url: SITE.url,
+      logo: new URL("/assets/brand/bee-logo-mark.svg", SITE.url).toString(),
+      email: SITE.email,
+      description: `${SITE.name} is a ${SITE.descriptor.toLowerCase()} studio focused on organic growth, website clarity, analytics, and provider-transfer support.`
+    },
+    {
+      "@type": "WebSite",
+      name: SITE.name,
+      url: SITE.url,
+      description: SITE.tagline
+    }
+  ]
+})} />

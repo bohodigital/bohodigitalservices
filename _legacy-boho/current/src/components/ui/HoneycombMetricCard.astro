@@ -1,0 +1,14 @@
+---
+interface Props {
+  label: string;
+  value: string;
+  note: string;
+}
+
+const { label, value, note } = Astro.props;
+---
+<article class="hex-metric-card" data-reveal>
+  <p class="micro-label">{label}</p>
+  <strong>{value}</strong>
+  <p>{note}</p>
+</article>

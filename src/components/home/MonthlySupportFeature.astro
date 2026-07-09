@@ -1,0 +1,71 @@
+---
+const included = [
+  "Monthly priority plan",
+  "Technical SEO watchlist",
+  "Search Console and analytics review",
+  "Content and internal-link opportunities",
+  "Website improvement notes",
+  "Provider/account ownership notes",
+  "Implementation support",
+  "Plain-English reporting",
+  "Next-step recommendations",
+  "Documentation trail",
+];
+---
+
+<section class="relative overflow-hidden bg-[#090a08] text-cream">
+  <div
+    class="absolute inset-0 bg-[linear-gradient(120deg,rgba(212,160,67,0.16),transparent_30%),radial-gradient(circle_at_82%_28%,rgba(212,160,67,0.16),transparent_26%)]"
+  >
+  </div>
+  <div
+    class="relative mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-[0.86fr_1.14fr] lg:items-center"
+  >
+    <div>
+      <p
+        class="text-sm font-extrabold uppercase tracking-[0.2em] text-honey-bright"
+      >
+        Monthly Growth Support
+      </p>
+      <h2 class="mt-3 text-4xl font-black leading-tight text-cream md:text-5xl">
+        Monthly support for the work that never stays fixed by itself.
+      </h2>
+      <p class="mt-5 text-lg leading-8 text-cream/78">
+        SEO, content, analytics, and websites drift. Pages age. Reports get
+        weird. Providers change things. Search behavior shifts. Monthly Growth
+        Support keeps the system watched, prioritized, and documented.
+      </p>
+      <p
+        class="mt-5 border-l-2 border-honey pl-4 text-base leading-7 text-cream/76"
+      >
+        Because Boho runs lean, monthly support can stay focused on actual work:
+        monitoring, fixes, documentation, and next-step decisions.
+      </p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <a class="btn-primary" href="/services/monthly-growth-retainer/"
+          >Build the monthly system</a
+        >
+        <a
+          class="btn border-honey/45 bg-transparent text-cream hover:border-honey hover:bg-honey/10 hover:text-cream"
+          href="/services/seo-growth-audit/"
+        >
+          Start with an audit first
+        </a>
+      </div>
+    </div>
+    <div class="rounded-lg border border-honey/25 bg-white/5 p-5 shadow-2xl">
+      <h3 class="text-lg font-extrabold text-honey-bright">
+        Monthly support includes
+      </h3>
+      <div class="mt-5 grid gap-3 sm:grid-cols-2">
+        {
+          included.map((item) => (
+            <div class="rounded-lg border border-honey/20 bg-black/20 px-4 py-3 text-sm font-semibold text-cream/84">
+              {item}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

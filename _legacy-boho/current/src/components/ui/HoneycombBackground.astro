@@ -1,0 +1,22 @@
+---
+interface Props {
+  tone?: "light" | "moss" | "fox";
+  className?: string;
+}
+
+const { tone = "light", className = "" } = Astro.props;
+
+const sourceByTone = {
+  light: "/assets/patterns/honeycomb-light.svg",
+  moss: "/assets/patterns/honeycomb-moss.svg",
+  fox: "/assets/patterns/honeycomb-broken-fox.svg"
+} as const;
+---
+<img
+  class:list={["honeycomb-background", className]}
+  src={sourceByTone[tone]}
+  alt=""
+  aria-hidden="true"
+  loading="lazy"
+  decoding="async"
+/>

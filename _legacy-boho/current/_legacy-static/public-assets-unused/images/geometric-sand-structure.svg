@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" role="img" aria-labelledby="title desc">
+  <title id="title">Placeholder geometric sand structure</title>
+  <desc id="desc">Abstract layered geometry with warm sand and clay tones used as a temporary placeholder image.</desc>
+  <!-- TODO: Replace with licensed or final generated architecture image asset. -->
+  <rect width="1200" height="860" rx="36" fill="#f6ede0"/>
+  <polygon points="0,860 320,200 680,860" fill="#e8d9c5"/>
+  <polygon points="490,860 890,120 1200,860" fill="#d8c9b7"/>
+  <rect x="260" y="300" width="180" height="180" rx="26" fill="#fffdf8"/>
+  <rect x="590" y="256" width="220" height="220" rx="26" fill="#b45c3d"/>
+  <rect x="824" y="380" width="170" height="170" rx="26" fill="#303827"/>
+</svg>

@@ -1,0 +1,31 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 880" role="img" aria-labelledby="title desc">
+  <title id="title">Boho Digital process board</title>
+  <desc id="desc">A four-stage planning board labeled discover, build, refine, and support.</desc>
+  <rect width="1000" height="880" rx="28" fill="#f7f0e3"/>
+  <rect x="70" y="78" width="860" height="724" rx="28" fill="#fffaf4" stroke="#394436" stroke-opacity=".12"/>
+  <path d="M210 210h580" stroke="#d9ccb6" stroke-width="4" stroke-linecap="round"/>
+  <path d="M210 422h580" stroke="#d9ccb6" stroke-width="4" stroke-linecap="round"/>
+  <path d="M210 634h580" stroke="#d9ccb6" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="146" cy="210" r="44" fill="#b2603d"/>
+  <circle cx="146" cy="422" r="44" fill="#394436"/>
+  <circle cx="146" cy="634" r="44" fill="#7f8e65"/>
+  <circle cx="146" cy="746" r="44" fill="#d7c0a0"/>
+  <text x="146" y="220" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="22" fill="#fffaf4">01</text>
+  <text x="146" y="432" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="22" fill="#fffaf4">02</text>
+  <text x="146" y="644" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="22" fill="#fffaf4">03</text>
+  <text x="146" y="756" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="22" fill="#394436">04</text>
+  <text x="228" y="178" font-family="Fraunces, Georgia, serif" font-size="40" fill="#1e231f">Discover</text>
+  <text x="228" y="222" font-family="Manrope, Segoe UI, sans-serif" font-size="22" fill="#4a5348">Clarify audience, offer, and what the site needs to do first.</text>
+  <text x="228" y="390" font-family="Fraunces, Georgia, serif" font-size="40" fill="#1e231f">Build</text>
+  <text x="228" y="434" font-family="Manrope, Segoe UI, sans-serif" font-size="22" fill="#4a5348">Translate the message into a responsive and search-ready experience.</text>
+  <text x="228" y="602" font-family="Fraunces, Georgia, serif" font-size="40" fill="#1e231f">Refine</text>
+  <text x="228" y="646" font-family="Manrope, Segoe UI, sans-serif" font-size="22" fill="#4a5348">Tighten CTA flow, readability, and trust signals that matter most.</text>
+  <text x="228" y="714" font-family="Fraunces, Georgia, serif" font-size="40" fill="#1e231f">Support</text>
+  <text x="228" y="758" font-family="Manrope, Segoe UI, sans-serif" font-size="22" fill="#4a5348">Leave the site understandable, maintainable, and ready for the next layer.</text>
+  <rect x="714" y="128" width="130" height="90" rx="18" fill="#efe4d0"/>
+  <rect x="714" y="340" width="170" height="90" rx="18" fill="#b2603d"/>
+  <rect x="714" y="552" width="118" height="90" rx="18" fill="#394436"/>
+  <rect x="714" y="692" width="162" height="58" rx="18" fill="#d7c0a0"/>
+</svg>
+
+

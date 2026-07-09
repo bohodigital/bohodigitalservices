@@ -1,0 +1,121 @@
+---
+const paths = [
+  {
+    eyebrow: "Growth Audit",
+    title: "Map the mess.",
+    copy: "Start with an SEO Growth Audit when you need to know what is broken, missing, risky, or worth fixing first.",
+    bullets: [
+      "Technical SEO review",
+      "Content and service-page gaps",
+      "Analytics and reporting clarity",
+      "Provider and ownership risks",
+      "Priority fix list",
+    ],
+    cta: "Start with an audit",
+    href: "/services/seo-growth-audit/",
+  },
+  {
+    eyebrow: "Monthly Growth Support",
+    title: "Keep the hive moving.",
+    copy: "Use Monthly Growth Support when you need steady SEO, content, reporting, monitoring, and implementation help without long-contract fog.",
+    bullets: [
+      "Monthly priorities",
+      "Technical watchlist",
+      "Content improvements",
+      "Plain-English reporting",
+      "Implementation records",
+    ],
+    cta: "See monthly support",
+    href: "/services/monthly-growth-retainer/",
+  },
+  {
+    eyebrow: "Rush Support",
+    title: "Stabilize the swarm.",
+    copy: "Use Rush Support when something is broken, urgent, or about to get expensive: launch issues, provider lockout, analytics failure, redirect problems, or SEO traffic panic.",
+    bullets: [
+      "Priority triage",
+      "Same-day or next-day response when available",
+      "Focused fix window",
+      "Clear risk notes",
+      "Premium rush fee",
+    ],
+    cta: "Request rush help",
+    href: "/contact/",
+  },
+];
+---
+
+<section class="bg-cream text-charcoal">
+  <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20">
+    <div class="max-w-3xl">
+      <p class="text-sm font-extrabold uppercase tracking-[0.18em] text-moss">
+        Three entry paths
+      </p>
+      <h2
+        class="mt-3 text-4xl font-black tracking-normal text-charcoal md:text-5xl"
+      >
+        Start where the problem is loudest.
+      </h2>
+      <p class="mt-4 text-lg leading-8 text-muted">
+        You do not need to diagnose the whole hive before taking the first step.
+        Pick the path that matches what is happening right now.
+      </p>
+    </div>
+    <div class="mt-10 grid gap-4 lg:grid-cols-3">
+      {
+        paths.map((path, index) => (
+          <article
+            class={`relative overflow-hidden rounded-lg border p-6 shadow-sm ${index === 2 ? "border-terracotta/35 bg-moss-black text-cream" : "border-moss/15 bg-white"}`}
+          >
+            <p
+              class={`text-xs font-extrabold uppercase tracking-[0.18em] ${index === 2 ? "text-honey-bright" : "text-moss"}`}
+            >
+              {path.eyebrow}
+            </p>
+            <h3
+              class={`mt-4 text-3xl font-black ${index === 2 ? "text-cream" : "text-charcoal"}`}
+            >
+              {path.title}
+            </h3>
+            <p
+              class={`mt-4 text-base leading-7 ${index === 2 ? "text-cream/78" : "text-muted"}`}
+            >
+              {path.copy}
+            </p>
+            <ul class="mt-6 space-y-2">
+              {path.bullets.map((item) => (
+                <li class="flex gap-3 text-sm leading-6">
+                  <span
+                    class={`mt-2 h-2 w-2 flex-none rounded-full ${index === 2 ? "bg-terracotta" : "bg-honey"}`}
+                  />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <a
+              class={`mt-7 inline-flex rounded-full px-5 py-3 text-sm font-extrabold transition ${index === 2 ? "bg-honey text-moss-black hover:bg-honey-bright" : "bg-moss-black text-cream hover:bg-moss-dark"}`}
+              href={path.href}
+            >
+              {path.cta}
+            </a>
+          </article>
+        ))
+      }
+    </div>
+    <div
+      class="mt-8 rounded-lg border border-honey/25 bg-white/80 p-5 text-sm leading-6 text-muted"
+    >
+      <p>
+        Rush support is availability-based and billed at a premium. Boho will
+        not promise impossible fixes, but urgent problems get focused attention
+        fast when capacity is open.
+      </p>
+      <a
+        class="mt-3 inline-flex font-extrabold text-moss-dark underline decoration-honey underline-offset-4"
+        href="/services/provider-transfer/"
+      >
+        See Provider Transfer Support
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,46 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import DictionaryIndex from "../../../components/glossary/DictionaryIndex.astro";
+
+const entries = (await getCollection("dictionary")).sort((a, b) => {
+  const aOrder = a.data.order ?? 999;
+  const bOrder = b.data.order ?? 999;
+  return aOrder - bOrder || a.data.title.localeCompare(b.data.title);
+});
+---
+<BaseLayout
+  title="SEO Dictionary | Ask the Owl | Boho Digital"
+  description="The Owl Dictionary explains SEO, provider transfers, reporting, and digital operations in plain language."
+  image="/assets/backgrounds/forest-mist.webp"
+>
+  <section class="page-hero section-forest image-backed">
+    <div class="container page-hero-grid">
+      <div class="hero-panel" data-reveal>
+        <div class="breadcrumbs">
+          <a href="/">Home</a>
+          <span>/</span>
+          <a href="/ask-the-owl/">Ask the Owl</a>
+          <span>/</span>
+          <strong>Dictionary</strong>
+        </div>
+        <p class="eyebrow">Ask the Owl</p>
+        <h1>The Owl Dictionary</h1>
+        <p class="hero-lead">
+          Short definitions first. Full context when you need it. This index stays
+          small, navigable, and tied to real Boho work instead of becoming a jargon dump.
+        </p>
+      </div>
+      <aside class="hero-side-panel" data-reveal="left">
+        <p class="micro-label">Coverage</p>
+        <p>Search basics, provider transfers, reporting traps, AI-assisted workflows, and careful impact language.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <DictionaryIndex entries={entries} />
+    </div>
+  </section>
+</BaseLayout>

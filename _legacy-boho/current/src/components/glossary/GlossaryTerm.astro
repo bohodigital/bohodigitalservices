@@ -1,0 +1,33 @@
+---
+import { glossaryBySlug } from "../../data/glossary";
+
+interface Props {
+  slug: string;
+  label?: string;
+}
+
+const { slug, label } = Astro.props;
+const item = glossaryBySlug[slug];
+
+if (!item) {
+  throw new Error(`Unknown glossary term: ${slug}`);
+}
+
+const popoverId = `glossary-${slug}`;
+---
+<span class="glossary-inline" data-glossary-root>
+  <button
+    class="glossary-term"
+    type="button"
+    data-glossary-toggle
+    aria-expanded="false"
+    aria-controls={popoverId}
+  >
+    {label ?? item.term}
+  </button>
+  <span class="glossary-popover" id={popoverId} role="tooltip">
+    <strong>{item.term}</strong>
+    <span>{item.shortDefinition}</span>
+    <a href={item.href}>Read the full entry</a>
+  </span>
+</span>

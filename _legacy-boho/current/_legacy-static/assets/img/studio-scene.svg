@@ -1,0 +1,39 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Boho Digital studio scene</title>
+  <desc id="desc">A warm-toned desk scene showing a website mockup, analytics cards, and planning notes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#efe4d0"/>
+      <stop offset="100%" stop-color="#d7c0a0"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fffaf2"/>
+      <stop offset="100%" stop-color="#f2e7d2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" rx="32" fill="url(#bg)"/>
+  <circle cx="988" cy="132" r="148" fill="#d36f4d" opacity=".22"/>
+  <circle cx="180" cy="180" r="120" fill="#778563" opacity=".18"/>
+  <rect x="160" y="150" width="880" height="520" rx="28" fill="#fbf7f1" stroke="#86735b" stroke-opacity=".2"/>
+  <rect x="204" y="194" width="792" height="432" rx="20" fill="url(#screen)"/>
+  <rect x="242" y="230" width="224" height="18" rx="9" fill="#b2603d" opacity=".84"/>
+  <rect x="242" y="270" width="460" height="76" rx="18" fill="#efe4d0"/>
+  <rect x="242" y="366" width="220" height="130" rx="18" fill="#394436"/>
+  <rect x="484" y="366" width="220" height="130" rx="18" fill="#d8c4a7"/>
+  <rect x="726" y="366" width="232" height="130" rx="18" fill="#fffdf8" stroke="#394436" stroke-opacity=".12"/>
+  <rect x="242" y="526" width="330" height="48" rx="24" fill="#b2603d"/>
+  <rect x="760" y="240" width="174" height="92" rx="20" fill="#394436"/>
+  <path d="M790 300h34l24-34 32 26 24-42 30 50" fill="none" stroke="#efe4d0" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+  <rect x="118" y="626" width="250" height="150" rx="22" fill="#fff7eb" stroke="#86735b" stroke-opacity=".16"/>
+  <rect x="392" y="690" width="256" height="126" rx="22" fill="#6e7d59"/>
+  <rect x="694" y="650" width="392" height="164" rx="28" fill="#fff9f2" stroke="#86735b" stroke-opacity=".16"/>
+  <rect x="726" y="690" width="128" height="18" rx="9" fill="#394436" opacity=".84"/>
+  <rect x="726" y="728" width="306" height="14" rx="7" fill="#d5c0a0"/>
+  <rect x="726" y="760" width="256" height="14" rx="7" fill="#d5c0a0"/>
+  <circle cx="247" cy="700" r="38" fill="#d36f4d"/>
+  <rect x="300" y="668" width="38" height="64" rx="14" fill="#394436"/>
+  <rect x="446" y="718" width="150" height="18" rx="9" fill="#efe4d0"/>
+  <rect x="446" y="752" width="102" height="18" rx="9" fill="#efe4d0" opacity=".86"/>
+</svg>
+
+

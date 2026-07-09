@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/ui/Button.astro";
+---
+<BaseLayout
+  title="Planning | Boho Digital"
+  description="Boho Digital scopes work around the right-sized system: audits, focused cleanup, transfer support, and ongoing retainers."
+  image="/assets/backgrounds/cream-paper-texture.webp"
+>
+  <section class="page-hero">
+    <div class="container page-hero-grid">
+      <div class="hero-panel" data-reveal>
+        <div class="breadcrumbs">
+          <a href="/">Home</a>
+          <span>/</span>
+          <strong>Planning</strong>
+        </div>
+        <p class="eyebrow">Planning</p>
+        <h1>Scope should match the real system, not the biggest package.</h1>
+        <p class="hero-lead">
+          Boho uses the audit, focused service engagements, provider-transfer support,
+          and monthly retainers to fit the situation without padding it into agency fog.
+        </p>
+      </div>
+      <aside class="hero-side-panel" data-reveal="left">
+        <p class="micro-label">Common starting points</p>
+        <ul class="ledger-list">
+          <li>Growth Audit for clarity and sequencing</li>
+          <li>Technical cleanup for structural drag</li>
+          <li>Provider transfer when ownership is tangled</li>
+          <li>Retainer when the direction is clear and the work needs rhythm</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container card-actions" data-reveal>
+      <Button href="/contact/">Ask for a scope recommendation</Button>
+    </div>
+  </section>
+</BaseLayout>
