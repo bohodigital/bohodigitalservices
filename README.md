@@ -1,86 +1,90 @@
-# Boho Digital
+# Boho Digital Services Website
 
-Astro-based marketing site for `bohodigitalservices.com`, rebuilt on top of AstroWind as a clean reset from the earlier custom implementation.
+This repository contains the complete review-draft Boho Digital Services
+website produced from the **Boho Digital Services Full Website Design and
+Content Work Order v1.0**.
 
-## Brand
+The site is a multi-route Next-compatible React application built with vinext,
+Vite, and Cloudflare's Vite plugin. Its normal build emits a Cloudflare
+Worker-compatible server entry plus static client assets. The Pages build adds
+an advanced-mode adapter so both are deployed together. It does not use Astro
+or AstroWind.
 
-- `Boho Digital`
-- `Bohemian Digital Marketing & SEO`
-- `Organic growth, engineered beautifully.`
+## Current status
 
-## Current routes
+- Review draft; all routes are `noindex, nofollow`.
+- Forms are visually and accessibly complete but intentionally disconnected.
+- No analytics account, external form processor, paid service, custom domain,
+  or DNS change is introduced by this source snapshot.
+- Fictional UI examples are labeled **Concept interface**.
+- No invented clients, testimonials, performance metrics, rankings, revenue,
+  reviews, offices, staff, awards, or certifications are present.
 
-- `/`
-- `/services/`
-- `/services/provider-transfer/`
-- `/ask-the-owl/`
-- `/ask-the-owl/dictionary/`
-- `/bad-seo-field-guide/`
-- `/impact/`
-- `/work/`
-- `/about/`
-- `/contact/`
-- `/pricing/`
-- `/privacy/`
-- `/terms/`
-- `/404/`
+## Requirements
 
-## Project structure
+- Node.js 22.13 or newer
+- pnpm 11.7.0 (pinned in `package.json`)
 
-- `src/pages/` - route source of truth
-- `src/data/boho.ts` - approved Boho content blocks, cards, and glossary data
-- `src/components/` - AstroWind-based widgets, shared UI, and layout pieces used by the reset
-- `src/assets/styles/tailwind.css` - theme tokens and shared utility styling
-- `public/assets/` - Boho brand assets, patterns, and background imagery
-- `wrangler.toml` - Cloudflare Pages deployment config
-- `wrangler.worker.toml` - preserved Workers Static Assets fallback config; not the normal production path
-- `vendor/integration/` - AstroWind integration used by the site config
-- `_legacy-boho/current/` - archive of the pre-reset implementation kept for reference only
-
-## Commands
-
-Use Node 22 or newer, then run:
+## Work locally
 
 ```bash
-npm ci
-npm run build
-npm run preview
+pnpm install --frozen-lockfile
+pnpm run dev
 ```
 
-Optional verification:
+The dev server prints the local URL. On the Windows Codex review machine,
+`BOHO_LOCAL_REVIEW=1` may be set for a local-only preview that does not start
+the Cloudflare runtime plugin.
+
+## Validate
 
 ```bash
-npm run check
+pnpm exec tsc --noEmit
+pnpm run build
+node --test tests/rendered-html.test.mjs
+
+# Build the Cloudflare Pages advanced-mode output
+pnpm run build:pages
 ```
 
-## Deployment
+The rendered HTML suite verifies the complete homepage, private/noindex
+guardrails, design-system requirements, absence of starter artifacts, all
+configured routes and fragment targets, glossary propagation, section
+navigation, scalable glossary controls, and safe external-link behavior.
 
-Production is served from Cloudflare Pages project `bohodigitalservices`.
+GitHub Actions repeats the typecheck, Pages build, and rendered HTML tests for
+published branches. Production deployments are made from the exact pushed
+commit by the Pi's fixed-reference Cloudflare deploy wrapper, so the API token
+does not need to leave the encrypted local broker.
 
-Current state:
+## Important directories
 
-- `bohodigitalservices.com` and `www.bohodigitalservices.com` are attached to the Cloudflare Pages project.
-- The Cloudflare Pages project is not currently Git-provider connected, so production deploys are direct uploads from this repo.
-- GitHub remains the source of truth for code. Push `main` first, then deploy the exact pushed commit.
-- GitHub Pages is not used for production, and this repo intentionally does not ship a `public/CNAME` file.
+- `app/Homepage.tsx`: homepage narrative and homepage-specific modules.
+- `app/components/`: shared chrome, cards, forms, mobile navigation, section
+  sidebars, glossary explorer, definition popovers, and reusable interior-page
+  renderer.
+- `app/content/`: the structured content source for every interior route.
+- `scripts/analyze-glossary-usage.mjs`: repeatable current-copy frequency scan.
+- `app/globals.css`: design system, responsive behavior, motifs, and styling.
+- `public/`: favicon and the bespoke social-preview image.
+- `worker/index.ts`: Cloudflare Worker entry point.
+- `scripts/prepare-pages.mjs`: writes the Pages advanced-mode adapter after a
+  successful vinext build.
+- `wrangler.jsonc`: production Pages output and runtime compatibility settings.
+- `.github/workflows/validate-cloudflare-pages.yml`: validates deployable output.
+- `.openai/hosting.json`: existing private Sites project identity; do not
+  replace or invent its ID.
 
-Deploy the current commit:
+## Source of truth and handoff
 
-```powershell
-npm run build
-$commit = (git rev-parse HEAD).Trim()
-$message = (git log -1 --pretty=%s).Trim()
-wrangler pages deploy dist --project-name bohodigitalservices --branch main --commit-hash $commit --commit-message $message --commit-dirty=false
-```
+Read these before changing the site:
 
-Use `wrangler pages deploy` for the production Pages project. Do not use plain
-`wrangler deploy` for production site updates unless intentionally publishing a
-separate Workers Static Assets deployment from `wrangler.worker.toml`.
+1. `docs/source/boho_digital_full_site_work_order_v1.md`
+2. `docs/site-handoff/README.md`
+3. `docs/site-handoff/ROUTES.md`
+4. `docs/site-handoff/OPERATIONS.md`
+5. `docs/site-handoff/TRANSFER-MANIFEST.md`
 
-Verify the live site:
-
-```bash
-curl https://bohodigitalservices.com/build-info.json
-```
-
-The returned `commit` should match `git rev-parse HEAD`.
+The work order controls content, information architecture, safety constraints,
+and design direction. The handoff documents record the implemented state and
+how to continue without losing the current review build.
