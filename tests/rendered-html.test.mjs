@@ -66,6 +66,15 @@ test("server-renders the complete private Boho homepage", async () => {
   assert.match(html, /href="\/emergency\/"/i);
   assert.match(html, /Concept interfaces showing how one design system can adapt/i);
   assert.ok((html.match(/Concept interface/g) ?? []).length >= 3);
+  assert.match(html, /googletagmanager\.com\/gtag\/js\?id=G-5CV8L2SE2R/i);
+  assert.match(html, /analytics\.bohodigitalservices\.com\/script\.js/i);
+  assert.match(html, /data-website-id="aecddac8-8ad4-49c4-b791-60b161c95155"/i);
+  assert.match(
+    html,
+    /data-domains="bohodigitalservices\.com,www\.bohodigitalservices\.com"/i,
+  );
+  assert.match(html, /data-do-not-track="true"/i);
+  assert.match(html, /data-exclude-search="true"/i);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Your site is taking shape/i);
 }
 );
@@ -85,6 +94,13 @@ test("keeps the design system accessible, private, and free of starter artifacts
   assert.doesNotMatch(page, /SkeletonPreview|codex-preview/);
   assert.match(layout, /index:\s*false/);
   assert.match(layout, /follow:\s*false/);
+  assert.match(layout, /G-5CV8L2SE2R/);
+  assert.match(layout, /aecddac8-8ad4-49c4-b791-60b161c95155/);
+  assert.match(layout, /data-domains="bohodigitalservices\.com,www\.bohodigitalservices\.com"/);
+  assert.match(layout, /data-do-not-track="true"/);
+  assert.match(layout, /data-exclude-search="true"/);
+  assert.equal((layout.match(/googletagmanager\.com/g) ?? []).length, 1);
+  assert.equal((layout.match(/analytics\.bohodigitalservices\.com/g) ?? []).length, 1);
   assert.match(homepage, /className="home-section hero"/);
   assert.equal((homepage.match(/className="home-section/g) ?? []).length, 11);
   assert.equal((homepage.match(/<ConceptCaption \/>/g) ?? []).length, 3);
