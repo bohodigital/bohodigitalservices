@@ -84,6 +84,28 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-5CV8L2SE2R"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-5CV8L2SE2R');`,
+          }}
+        />
+        <script
+          defer
+          src="https://analytics.bohodigitalservices.com/script.js"
+          data-website-id="aecddac8-8ad4-49c4-b791-60b161c95155"
+          data-domains="bohodigitalservices.com,www.bohodigitalservices.com"
+          data-do-not-track="true"
+          data-exclude-search="true"
+        />
+      </head>
       <body>{children}</body>
     </html>
   );
