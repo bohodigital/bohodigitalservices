@@ -84,6 +84,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          defer
+          src="https://analytics.bohodigitalservices.com/script.js"
+          data-website-id="aecddac8-8ad4-49c4-b791-60b161c95155"
+          data-domains="bohodigitalservices.com,www.bohodigitalservices.com"
+          data-do-not-track="true"
+          data-exclude-search="true"
+        />
+      </head>
       <body>{children}</body>
     </html>
   );
