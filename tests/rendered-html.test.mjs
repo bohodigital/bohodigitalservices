@@ -1,0 +1,234 @@
+import assert from "node:assert/strict";
+import { access, readFile } from "node:fs/promises";
+import test from "node:test";
+
+const templateRoot = new URL("../", import.meta.url);
+
+let handlerPromise;
+
+async function loadHandler() {
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("test", `${process.pid}`);
+  handlerPromise ??= import(workerUrl.href).then((module) => module.default);
+  return handlerPromise;
+}
+
+async function render(pathname = "/") {
+  const handler = await loadHandler();
+  const request = new Request(`http://localhost${pathname}`, {
+    headers: { accept: "text/html" },
+  });
+
+  return typeof handler === "function"
+    ? handler(request)
+    : handler.fetch(
+        request,
+        {
+          ASSETS: {
+            fetch: async () => new Response("Not found", { status: 404 }),
+          },
+        },
+        {
+          waitUntil() {},
+          passThroughOnException() {},
+        },
+      );
+}
+
+test("server-renders the complete private Boho homepage", async () => {
+  const response = await render();
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
+
+  const html = await response.text();
+  const requiredHeadings = [
+    "Research-led website design, local SEO, and digital growth.",
+    "A digital marketing package is not a business strategy.",
+    "Research before recommendations.",
+    "Website design built around clarity, trust, search, and action.",
+    "Website, SEO, migration, and lead-generation services.",
+    "Website migration and provider rescue without losing what works.",
+    "Website and SEO strategy shaped by how customers choose.",
+    "Research, experiments, and proof you can inspect.",
+    "Ongoing SEO tied to visible priorities and decisions.",
+    "Lean overhead, practical pricing, and more useful work.",
+    "Start with a Local Visibility Check.",
+  ];
+
+  for (const heading of requiredHeadings) {
+    assert.ok(html.includes(heading), `missing homepage heading: ${heading}`);
+  }
+
+  assert.match(html, /<meta[^>]+name="robots"[^>]+noindex/i);
+  assert.match(html, /href="#main-content"[^>]*>\s*Skip to content/i);
+  assert.match(html, /aria-expanded="false"/i);
+  assert.match(html, /aria-controls="mobile-menu-/i);
+  assert.match(html, /href="\/emergency\/"/i);
+  assert.match(html, /Concept interfaces showing how one design system can adapt/i);
+  assert.ok((html.match(/Concept interface/g) ?? []).length >= 3);
+  assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Your site is taking shape/i);
+}
+);
+
+test("keeps the design system accessible, private, and free of starter artifacts", async () => {
+  const [page, layout, homepage, components, mobileMenu, css, packageJson] = await Promise.all([
+    readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/Homepage.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/components/SiteChrome.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/components/MobileMenu.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
+    readFile(new URL("../package.json", import.meta.url), "utf8"),
+  ]);
+
+  assert.match(page, /import Homepage from/);
+  assert.doesNotMatch(page, /SkeletonPreview|codex-preview/);
+  assert.match(layout, /index:\s*false/);
+  assert.match(layout, /follow:\s*false/);
+  assert.match(homepage, /className="home-section hero"/);
+  assert.equal((homepage.match(/className="home-section/g) ?? []).length, 11);
+  assert.equal((homepage.match(/<ConceptCaption \/>/g) ?? []).length, 3);
+  assert.match(components, /className="skip-link"/);
+  assert.match(components, /<MobileMenu navigation=/);
+  assert.match(mobileMenu, /aria-expanded=\{open\}/);
+  assert.match(mobileMenu, /event\.key === "Escape"/);
+  assert.match(mobileMenu, /aria-modal="true"/);
+  assert.match(components, /export function FormField/);
+  assert.match(components, /export function FormStatusMessage/);
+  assert.match(css, /--burnished-gold:\s*#e3ae3d/i);
+  assert.match(css, /--verdigris:\s*#1e5e5b/i);
+  assert.match(css, /prefers-reduced-motion:\s*reduce/i);
+  assert.match(css, /@media \(max-width:\s*30rem\)/i);
+  assert.doesNotMatch(packageJson, /react-loading-skeleton/);
+
+  await assert.rejects(access(new URL("../app/_sites-preview/", import.meta.url)));
+  await assert.rejects(access(new URL("public/_sites-preview", templateRoot)));
+});
+
+test("server-renders all configured routes with working fragment targets", async () => {
+  const [coreSource, audienceSource] = await Promise.all([
+    readFile(new URL("../app/content/corePages.ts", import.meta.url), "utf8"),
+    readFile(new URL("../app/content/audiencePages.ts", import.meta.url), "utf8"),
+  ]);
+  const slugs = [...`${coreSource}\n${audienceSource}`.matchAll(/slug:\s*"([^"]+)"/g)]
+    .map((match) => match[1]);
+
+  assert.equal(slugs.length, 44);
+  assert.equal(new Set(slugs).size, slugs.length);
+
+  for (const slug of slugs) {
+    const route = slug === "/" ? "/" : slug.replace(/\/$/, "");
+    const response = await render(route);
+    assert.equal(response.status, 200, `${route} did not render`);
+    const html = await response.text();
+
+    assert.match(html, /<main\b/i, `${route} is missing its main landmark`);
+    assert.match(html, /<h1\b/i, `${route} is missing its page heading`);
+
+    const fragmentTargets = [
+      ...html.matchAll(/href="#([a-zA-Z][a-zA-Z0-9_-]*)"/g),
+    ].map((match) => match[1]);
+
+    for (const target of fragmentTargets) {
+      assert.ok(
+        html.includes(`id="${target}"`),
+        `${route} links to missing fragment #${target}`,
+      );
+    }
+  }
+});
+
+test("renders the source-backed glossary, tools catalog, definitions, and diagrams", async () => {
+  const [toolsResponse, glossaryResponse, definitionComponent, knowledgeSource] = await Promise.all([
+    render("/tools"),
+    render("/learn/glossary"),
+    readFile(new URL("../app/components/DefinitionTerm.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/content/knowledge.ts", import.meta.url), "utf8"),
+  ]);
+
+  assert.equal(toolsResponse.status, 200);
+  assert.equal(glossaryResponse.status, 200);
+
+  const toolsHtml = await toolsResponse.text();
+  const glossaryHtml = await glossaryResponse.text();
+
+  for (const name of [
+    "GitHub",
+    "Cloudflare",
+    "Cloudflare Pages",
+    "API keys",
+    "MCP servers",
+    "Python automation",
+    "Web crawling",
+    "Google Analytics",
+    "Google Search Console",
+    "Google Business Profile",
+  ]) {
+    assert.ok(toolsHtml.includes(name), `tools page is missing ${name}`);
+  }
+
+  assert.match(toolsHtml, /Boho Central Servers/);
+  assert.match(toolsHtml, /How the name becomes a page/);
+  assert.match(toolsHtml, /Private work stays private/);
+  assert.match(toolsHtml, /Rank Builder SEO/);
+  assert.match(toolsHtml, /How Biscuit/);
+  assert.match(toolsHtml, /developers\.cloudflare\.com/);
+  assert.match(toolsHtml, /docs\.github\.com/);
+  assert.match(toolsHtml, /modelcontextprotocol\.io/);
+  assert.match(toolsHtml, /developers\.google\.com/);
+  assert.match(glossaryHtml, /Most used in the current site copy/);
+  assert.match(glossaryHtml, /Master glossary/);
+  assert.match(glossaryHtml, /Search the glossary/);
+  assert.match(glossaryHtml, /Filter by system/);
+  assert.match(glossaryHtml, /Glossary table of contents/);
+  assert.match(glossaryHtml, /class="glossary-row"/);
+  assert.match(glossaryHtml, /Read more/);
+  assert.match(glossaryHtml, /Section menu/);
+  assert.match(glossaryHtml, /id="term-dns"/);
+  assert.match(glossaryHtml, /id="term-server"/);
+  assert.match(glossaryHtml, /id="term-mcp-server"/);
+  assert.match(glossaryHtml, /Deeper tool documentation/);
+  assert.doesNotMatch(glossaryHtml, /class="glossary-entry-grid"/);
+  assert.doesNotMatch(glossaryHtml, /Glossary migration in progress/);
+
+  for (const html of [toolsHtml, glossaryHtml]) {
+    const externalAnchors = [...html.matchAll(/<a\s+([^>]*href="https?:\/\/[^>]+)>/gi)];
+    assert.ok(externalAnchors.length > 0, "expected official external links");
+    for (const [, attributes] of externalAnchors) {
+      assert.match(attributes, /target="_blank"/i, "external link must open a new tab");
+      assert.match(attributes, /rel="noopener noreferrer"/i, "external link must isolate the opener");
+    }
+  }
+
+  assert.match(definitionComponent, /event\.key === "Escape"/);
+  assert.match(definitionComponent, /onMouseEnter/);
+  assert.match(definitionComponent, /onFocus/);
+  assert.match(definitionComponent, /onClick/);
+  assert.match(definitionComponent, /onClick=\{\(\) => setOpen\(true\)\}/);
+  assert.doesNotMatch(definitionComponent, /setOpen\(\(value\) => !value\)/);
+  assert.match(definitionComponent, /role="group"/);
+  assert.match(definitionComponent, /pointerdown/);
+
+  assert.ok((knowledgeSource.match(/term:/g) ?? []).length >= 55);
+  assert.ok((knowledgeSource.match(/name: "/g) ?? []).length >= 10);
+});
+
+test("propagates glossary popovers and section menus through primary page families", async () => {
+  for (const route of [
+    "/",
+    "/services",
+    "/services/technical-seo-site-health",
+    "/industries/local-service-businesses",
+    "/learn/small-business-seo",
+    "/lab",
+    "/pricing",
+  ]) {
+    const response = await render(route);
+    assert.equal(response.status, 200, `${route} did not render`);
+    const html = await response.text();
+    assert.match(html, /class="definition-term"/, `${route} has no glossary popup term`);
+    if (route !== "/") {
+      assert.match(html, /class="section-sidebar"/, `${route} has no section navigation`);
+    }
+  }
+});
