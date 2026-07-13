@@ -546,18 +546,34 @@ export const audiencePages: PageConfig[] = [
     ],
   },
   {
+    pageKind: "resources",
+    slug: "/resources/",
+    title: "Resources | Guides, Glossary, Tools & the Boho Lab",
+    metaDescription:
+      "Browse Boho practical guides, a plain-language glossary, tool documentation, research routes, work logs, and evidence standards.",
+    eyebrow: "Resources",
+    headline: "Useful answers, working systems, and evidence you can inspect.",
+    intro: [
+      "The shared home for guides, definitions, tool documentation, and the Boho Lab.",
+    ],
+    theme: "research",
+    primaryCta: { label: "Choose a resource", href: "#resource-collections" },
+    secondaryCta: { label: "Open the Lab", href: "/lab/" },
+    sections: [],
+  },
+  {
     slug: "/lab/",
     title: "The Boho Lab | Market Research, Work Logs, Experiments & Tools",
     metaDescription:
       "Explore Boho market reports, success-signal studies, website teardowns, example reports, in-house experiments, tools, and documented digital work.",
-    eyebrow: "The Boho Lab",
+    eyebrow: "Resources · The Boho Lab",
     headline: "Research, proof, and public work without the trophy-wall theater.",
     intro: [
       "Boho uses the Lab to document market research, in-house experiments, website teardowns, technical breakdowns, example reports, tools, and the decisions behind the work.",
     ],
     theme: "research",
     primaryCta: { label: "Explore the Lab", href: "#lab-categories" },
-    secondaryCta: { label: "Read Practical Guides", href: "/learn/" },
+    secondaryCta: { label: "Browse Practical Guides", href: "/learn/" },
     sections: [
       {
         eyebrow: "Method before theater",
@@ -664,9 +680,9 @@ export const audiencePages: PageConfig[] = [
         items: [
           {
             title: "Practical education is available separately",
-            body: "Learn explains concepts and buying decisions while the Lab documents research and work.",
+            body: "The practical guides explain concepts and buying decisions while the Lab documents research and work.",
             href: "/learn/",
-            linkLabel: "Read the Learn section",
+            linkLabel: "Browse practical guides",
           },
         ],
         tone: "blue",
@@ -749,10 +765,10 @@ export const audiencePages: PageConfig[] = [
   },
   {
     slug: "/learn/",
-    title: "Learn | Websites, SEO, Local Search, Provider Rescue & Digital Growth",
+    title: "Practical Guides | Websites, SEO, Local Search & Provider Rescue",
     metaDescription:
       "Practical guides to website buying, local SEO, provider rescue, lead generation, analytics, AI search, and digital growth for business owners.",
-    eyebrow: "Learn",
+    eyebrow: "Resources · Practical guides",
     headline: "Useful digital strategy without the agency fog machine.",
     intro: [
       "Plain-language guides for business owners, plus selected Rank Builder research for readers who want the deeper technical version.",
@@ -765,7 +781,7 @@ export const audiencePages: PageConfig[] = [
         eyebrow: "The reading room",
         title: "Practical concepts and buying decisions, organized by the job at hand.",
         body: [
-          "The Lab shows work and research. Learn explains concepts and buying decisions. Planned guide shelves remain clearly labeled until substantial, reviewed material is ready.",
+          "The Lab shows work and research. The practical guides explain concepts and buying decisions. Planned shelves remain clearly labeled until substantial, reviewed material is ready.",
         ],
         tone: "parchment",
       },
@@ -1269,13 +1285,13 @@ export const audiencePages: PageConfig[] = [
     title: "Small-Business SEO | Planned Guide Shelf | Boho",
     metaDescription:
       "A noindexed guide-shelf draft for practical small-business SEO concepts, priorities, measurement, and buying decisions without guarantees or filler articles.",
-    eyebrow: "Learn · Planned guide shelf",
+    eyebrow: "Resources · Planned guide shelf",
     headline: "Small-business SEO should start with the business, not a universal checklist.",
     intro: [
       "This is an honest route reservation, not a finished article library. It remains noindexed while Boho develops substantial guidance around services, customers, markets, search access, trust, and valuable actions.",
     ],
     theme: "editorial",
-    primaryCta: { label: "Return to Learn", href: "/learn/" },
+    primaryCta: { label: "Back to practical guides", href: "/learn/" },
     secondaryCta: { label: "Explore SEO Services", href: "/services/local-seo-search-visibility/" },
     noIndex: true,
     draftLabel: "Draft guide shelf — no thin articles",
@@ -1296,13 +1312,13 @@ export const audiencePages: PageConfig[] = [
     title: "Local Search | Planned Guide Shelf | Boho",
     metaDescription:
       "A noindexed guide-shelf draft for practical local search, business profiles, reviews, service areas, location pages, and reporting guidance.",
-    eyebrow: "Learn · Planned guide shelf",
+    eyebrow: "Resources · Planned guide shelf",
     headline: "Local search is a system of clarity, relevance, trust, and technical support.",
     intro: [
       "This planned shelf contains no filler articles or ranking promises. It remains noindexed until useful guides to local profiles, reviews, service areas, location information, competitors, and reporting are ready.",
     ],
     theme: "editorial",
-    primaryCta: { label: "Return to Learn", href: "/learn/" },
+    primaryCta: { label: "Back to practical guides", href: "/learn/" },
     secondaryCta: { label: "Explore Local SEO", href: "/services/local-seo-search-visibility/" },
     noIndex: true,
     draftLabel: "Draft guide shelf — content in development",
@@ -1322,13 +1338,13 @@ export const audiencePages: PageConfig[] = [
     title: "Website Buying & Redesign | Planned Guide Shelf | Boho",
     metaDescription:
       "A noindexed guide-shelf draft for planning, buying, repairing, redesigning, and reviewing small-business websites while preserving ownership and search value.",
-    eyebrow: "Learn · Planned guide shelf",
+    eyebrow: "Resources · Planned guide shelf",
     headline: "Buy the website around the job it needs to do.",
     intro: [
       "This route is reserved for substantial website-buying guidance. It remains noindexed rather than presenting a stack of thin articles as a finished resource.",
     ],
     theme: "editorial",
-    primaryCta: { label: "Return to Learn", href: "/learn/" },
+    primaryCta: { label: "Back to practical guides", href: "/learn/" },
     secondaryCta: { label: "Explore Website Design", href: "/services/website-design-redesign/" },
     noIndex: true,
     draftLabel: "Draft guide shelf — content in development",
@@ -1349,13 +1365,13 @@ export const audiencePages: PageConfig[] = [
     title: "Provider Rescue & Migration | Planned Guide Shelf | Boho",
     metaDescription:
       "A noindexed guide-shelf draft for leaving a web, hosting, or SEO provider while protecting ownership, access, URLs, analytics, and working assets.",
-    eyebrow: "Learn · Planned guide shelf",
+    eyebrow: "Resources · Planned guide shelf",
     headline: "Leave the provider without abandoning the parts that still work.",
     intro: [
       "This planned shelf remains noindexed until complete migration and provider-rescue guides are ready. It does not invent emergencies or imply that every provider relationship is harmful.",
     ],
     theme: "editorial",
-    primaryCta: { label: "Return to Learn", href: "/learn/" },
+    primaryCta: { label: "Back to practical guides", href: "/learn/" },
     secondaryCta: {
       label: "Explore Provider Rescue",
       href: "/services/website-migration-provider-rescue/",
@@ -1379,13 +1395,13 @@ export const audiencePages: PageConfig[] = [
     title: "AI Search Visibility | Planned Guide Shelf | Boho",
     metaDescription:
       "A noindexed guide-shelf draft for sober, practical guidance on answer-ready content, entity clarity, citations, consistent information, and measurement limits.",
-    eyebrow: "Learn · Planned guide shelf",
+    eyebrow: "Resources · Planned guide shelf",
     headline: "AI search does not replace a clear, credible website.",
     intro: [
       "This planned shelf contains no AI-citation promises, secret access claims, or invented visibility results. It remains noindexed until reviewed guidance is ready.",
     ],
     theme: "editorial",
-    primaryCta: { label: "Return to Learn", href: "/learn/" },
+    primaryCta: { label: "Back to practical guides", href: "/learn/" },
     secondaryCta: { label: "Read Boho's Claim Boundaries", href: "/lab/claims-we-refuse-to-make/" },
     noIndex: true,
     draftLabel: "Draft guide shelf — content in development",
@@ -1405,13 +1421,13 @@ export const audiencePages: PageConfig[] = [
     title: "Featured Rank Builder Research | Planned Shelf | Boho",
     metaDescription:
       "A noindexed planned shelf for selected, verified Rank Builder research with plain-language Boho summaries and no implied client results.",
-    eyebrow: "Learn · Planned research shelf",
+    eyebrow: "Resources · Planned research shelf",
     headline: "Technical research belongs here only when a business owner can understand why it matters.",
     intro: [
       "No Rank Builder articles or findings are claimed in this draft because verified published links have not been supplied. This route remains noindexed until a curated selection can be reviewed.",
     ],
     theme: "editorial",
-    primaryCta: { label: "Return to Learn", href: "/learn/" },
+    primaryCta: { label: "Back to practical guides", href: "/learn/" },
     secondaryCta: { label: "Explore the Boho Lab", href: "/lab/" },
     noIndex: true,
     draftLabel: "Draft shelf — verified links required",

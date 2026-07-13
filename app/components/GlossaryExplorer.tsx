@@ -139,7 +139,7 @@ export function GlossaryExplorer() {
           <h2 id="common-terms-title">The terms a reader is most likely to meet first.</h2>
           <p>
             This starter ranking comes from a repeatable scan of the homepage,
-            services, industries, Learn, Lab, and business-page source—not from
+            services, industries, the Resources library, and business pages—not from
             traffic data. Search-demand data can replace it later.
           </p>
         </div>

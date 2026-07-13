@@ -40,7 +40,7 @@ export type DraftFormConfig = {
 };
 
 export type PageConfig = {
-  pageKind?: "standard" | "glossary" | "tools";
+  pageKind?: "standard" | "glossary" | "tools" | "resources";
   slug: string;
   title: string;
   metaDescription: string;

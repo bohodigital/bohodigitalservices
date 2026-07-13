@@ -6,6 +6,8 @@ import type {
   SelectHTMLAttributes,
   TextareaHTMLAttributes,
 } from "react";
+import { primaryNavigation } from "../content/navigation";
+import { DesktopNavigation } from "./DesktopNavigation";
 import { MobileMenu } from "./MobileMenu";
 
 type LocalHref = "/" | `/${string}` | `#${string}`;
@@ -88,16 +90,6 @@ type EvidenceStatus =
   | "public-experiment"
   | "concept";
 
-const primaryNavigation: ReadonlyArray<LinkItem> = [
-  { label: "Services", href: "/services/" },
-  { label: "Industries", href: "/industries/" },
-  { label: "Lab", href: "/lab/" },
-  { label: "Learn", href: "/learn/" },
-  { label: "Tools", href: "/tools/" },
-  { label: "Pricing", href: "/pricing/" },
-  { label: "About", href: "/about/" },
-];
-
 const footerGroups: ReadonlyArray<{
   title: string;
   links: ReadonlyArray<LinkItem>;
@@ -125,14 +117,14 @@ const footerGroups: ReadonlyArray<{
     ],
   },
   {
-    title: "Explore",
+    title: "Resources",
     links: [
-      { label: "Industries", href: "/industries/" },
-      { label: "Lab", href: "/lab/" },
-      { label: "Learn", href: "/learn/" },
-      { label: "Tools", href: "/tools/" },
-      { label: "Glossary", href: "/learn/glossary/" },
-      { label: "Pricing", href: "/pricing/" },
+      { label: "Resources overview", href: "/resources/" },
+      { label: "Practical guides", href: "/learn/" },
+      { label: "Plain-language glossary", href: "/learn/glossary/" },
+      { label: "Tools & systems", href: "/tools/" },
+      { label: "Open the Lab", href: "/lab/" },
+      { label: "Claims & evidence standards", href: "/lab/claims-we-refuse-to-make/" },
     ],
   },
   {
@@ -479,17 +471,7 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="site-header__desktop-nav" aria-label="Primary navigation">
-          <ul className="site-header__nav-list">
-            {primaryNavigation.map((item) => (
-              <li key={item.href}>
-                <a className="site-header__nav-link" href={item.href}>
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <DesktopNavigation navigation={primaryNavigation} />
 
         <div className="site-header__desktop-actions">
           <Link className="site-header__utility-link" href="/contact/">

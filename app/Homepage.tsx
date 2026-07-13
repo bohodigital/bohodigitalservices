@@ -8,6 +8,14 @@ import {
   TextLink,
 } from "./components/SiteChrome";
 import { DefinedText } from "./components/DefinedText";
+import {
+  MapPin,
+  MousePointerClick,
+  PanelsTopLeft,
+  RefreshCw,
+  Route,
+  SearchCheck,
+} from "lucide-react";
 
 const methodStages = [
   {
@@ -35,6 +43,7 @@ const serviceCards = [
     label: "Design a better website",
     href: "/services/website-design-redesign/",
     tone: "gold",
+    icon: PanelsTopLeft,
   },
   {
     category: "Ownership",
@@ -43,6 +52,7 @@ const serviceCards = [
     label: "Plan the rescue",
     href: "/services/website-migration-provider-rescue/",
     tone: "copper",
+    icon: Route,
   },
   {
     category: "Visibility",
@@ -51,6 +61,7 @@ const serviceCards = [
     label: "Improve local visibility",
     href: "/services/local-seo-search-visibility/",
     tone: "verdigris",
+    icon: MapPin,
   },
   {
     category: "Action",
@@ -59,6 +70,7 @@ const serviceCards = [
     label: "Improve lead paths",
     href: "/services/lead-generation-conversion/",
     tone: "blue",
+    icon: MousePointerClick,
   },
   {
     category: "Momentum",
@@ -67,6 +79,7 @@ const serviceCards = [
     label: "Build ongoing momentum",
     href: "/services/ongoing-seo-growth/",
     tone: "plum",
+    icon: RefreshCw,
   },
   {
     category: "Evidence",
@@ -75,6 +88,7 @@ const serviceCards = [
     label: "Start with evidence",
     href: "/services/research-audits-analytics/",
     tone: "graphite",
+    icon: SearchCheck,
   },
 ] as const;
 
@@ -393,7 +407,9 @@ export default function Homepage() {
             </div>
 
             <div className="service-grid">
-              {serviceCards.map((service, index) => (
+              {serviceCards.map((service, index) => {
+                const Icon = service.icon;
+                return (
                 <article
                   className={`service-card service-card--${service.tone} service-card--${index + 1}`}
                   key={service.title}
@@ -401,9 +417,12 @@ export default function Homepage() {
                   <h3>{service.title}</h3>
                   <p>{define(service.body)}</p>
                   <TextLink href={service.href}>{service.label}</TextLink>
-                  <span className="service-card__pattern" aria-hidden="true" />
+                  <span className="service-card__pattern" aria-hidden="true">
+                    <Icon size={38} strokeWidth={1.65} />
+                  </span>
                 </article>
-              ))}
+                );
+              })}
             </div>
             <div className="section-action">
               <ButtonLink href="/services/">View All Services</ButtonLink>
@@ -504,13 +523,13 @@ export default function Homepage() {
           <div className="section-shell lab-proof__layout">
             <div className="lab-proof__copy">
               <h2 id="lab-title">
-                Research, experiments, and proof you can inspect.
+                Resources, research, and proof you can inspect.
               </h2>
-              <p>{define("Boho is building proof in public. We use in-house brands, market research, website teardowns, technical breakdowns, example reports, tools, and work logs to make the method visible.")}</p>
+              <p>{define("Resources brings practical guides, a plain-language glossary, tool documentation, and the Boho Lab into one place. Use the guides to understand a decision, the tools pages to inspect the system, and the Lab to review the method and evidence standards.")}</p>
               <p>{define("When a result is real, we show it. When an experiment is early, we label it early. When something fails, we learn from it instead of hiding it behind a stock photo of a handshake.")}</p>
               <div className="button-row">
-                <ButtonLink href="/lab/">Enter the Lab</ButtonLink>
-                <TextLink href="/learn/">Read practical guides</TextLink>
+                <ButtonLink href="/resources/">Browse Resources</ButtonLink>
+                <TextLink href="/lab/">Open the Lab</TextLink>
               </div>
             </div>
 

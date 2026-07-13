@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import InteriorPage from "../components/InteriorPage";
 import { ToolsPage } from "../components/KnowledgePages";
 import { GlossaryPage } from "../components/GlossaryPage";
+import { ResourcesPage } from "../components/ResourcesPage";
 import { audiencePages } from "../content/audiencePages";
 import { corePages } from "../content/corePages";
 
@@ -54,6 +55,7 @@ export default async function InteriorRoute({ params }: InteriorRouteProps) {
 
   if (page.pageKind === "glossary") return <GlossaryPage />;
   if (page.pageKind === "tools") return <ToolsPage />;
+  if (page.pageKind === "resources") return <ResourcesPage />;
 
   return <InteriorPage page={page} />;
 }

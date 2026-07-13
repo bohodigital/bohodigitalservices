@@ -1,14 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { ChevronDown } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
-
-type LocalHref = "/" | `/${string}` | `#${string}`;
-
-type NavigationItem = {
-  label: string;
-  href: LocalHref;
-};
+import type { PrimaryNavigationItem } from "../content/navigation";
 
 const focusableSelector = [
   "a[href]",
@@ -22,7 +17,7 @@ const focusableSelector = [
 export function MobileMenu({
   navigation,
 }: {
-  navigation: ReadonlyArray<NavigationItem>;
+  navigation: ReadonlyArray<PrimaryNavigationItem>;
 }) {
   const [open, setOpen] = useState(false);
   const reactId = useId().replace(/[^a-zA-Z0-9_-]/g, "");
@@ -124,13 +119,32 @@ export function MobileMenu({
               <ul className="mobile-menu__nav-list">
                 {navigation.map((item) => (
                   <li key={item.href}>
-                    <a
-                      className="mobile-menu__nav-link"
-                      href={item.href}
-                      onClick={closeMenu}
-                    >
-                      {item.label}
-                    </a>
+                    {item.children?.length ? (
+                      <details className="mobile-menu__group">
+                        <summary>
+                          <span>{item.label}</span>
+                          <ChevronDown aria-hidden="true" size={21} strokeWidth={2} />
+                        </summary>
+                        <ul className="mobile-menu__subnav">
+                          {item.children.map((child) => (
+                            <li key={child.href}>
+                              <a href={child.href} onClick={closeMenu}>
+                                <strong>{child.label}</strong>
+                                {child.description ? <span>{child.description}</span> : null}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </details>
+                    ) : (
+                      <a
+                        className="mobile-menu__nav-link"
+                        href={item.href}
+                        onClick={closeMenu}
+                      >
+                        {item.label}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>

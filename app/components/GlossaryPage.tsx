@@ -23,13 +23,6 @@ export function GlossaryPage() {
         <div className="knowledge-section-layout">
           <SectionSidebar
             currentPath="/learn/glossary/"
-            title="Glossary"
-            items={[
-              { label: "Glossary home", href: "/learn/glossary/" },
-              { label: "Tools documentation", href: "/tools/" },
-              { label: "Learn overview", href: "/learn/" },
-              { label: "Bad SEO Field Guide", href: "/learn/bad-seo-field-guide/" },
-            ]}
             anchors={[
               { label: "Common terms", href: "#common-terms" },
               { label: `All ${glossaryEntries.length} terms`, href: "#all-terms" },

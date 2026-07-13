@@ -3,6 +3,7 @@ import type {
   ContentSection,
   PageConfig,
 } from "../content/types";
+import { BookOpenCheck, FlaskConical, PanelsTopLeft, SearchCheck } from "lucide-react";
 import DraftForm from "./DraftForm";
 import { DefinedText } from "./DefinedText";
 import { SectionSidebar, type SectionAnchor } from "./SectionNavigation";
@@ -64,6 +65,21 @@ function buildBreadcrumbs(page: PageConfig) {
   const items: Array<{ label: string; href?: LocalHref }> = [
     { label: "Home", href: "/" },
   ];
+
+  if (segments[0] === "learn" || segments[0] === "lab") {
+    const root = segments[0];
+    const rootLabel = root === "learn" ? "Practical guides" : "The Lab";
+    items.push({ label: "Resources", href: "/resources/" });
+
+    if (segments.length === 1) {
+      items.push({ label: rootLabel });
+    } else {
+      items.push({ label: rootLabel, href: `/${root}/` as `/${string}` });
+      items.push({ label: humanizeSlug(segments.at(-1) ?? root) });
+    }
+
+    return items;
+  }
 
   segments.forEach((segment, index) => {
     const isCurrent = index === segments.length - 1;
@@ -302,10 +318,10 @@ export function InteriorPage(props: InteriorPageProps) {
           aria-labelledby="interior-hero-title"
         >
           <div className="interior-hero__motif" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-            <span />
+            <span><PanelsTopLeft size={32} strokeWidth={1.6} /></span>
+            <span><SearchCheck size={30} strokeWidth={1.6} /></span>
+            <span><BookOpenCheck size={31} strokeWidth={1.6} /></span>
+            <span><FlaskConical size={33} strokeWidth={1.6} /></span>
           </div>
           <div className="section-shell interior-hero__inner">
             <Breadcrumbs items={breadcrumbs} />

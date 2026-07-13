@@ -49,7 +49,7 @@ test("server-renders the complete private Boho homepage", async () => {
     "Website, SEO, migration, and lead-generation services.",
     "Website migration and provider rescue without losing what works.",
     "Website and SEO strategy shaped by how customers choose.",
-    "Research, experiments, and proof you can inspect.",
+    "Resources, research, and proof you can inspect.",
     "Ongoing SEO tied to visible priorities and decisions.",
     "Lean overhead, practical pricing, and more useful work.",
     "Start with a Local Visibility Check.",
@@ -175,7 +175,7 @@ test("server-renders all configured routes with working fragment targets", async
   const slugs = [...`${coreSource}\n${audienceSource}`.matchAll(/slug:\s*"([^"]+)"/g)]
     .map((match) => match[1]);
 
-  assert.equal(slugs.length, 44);
+  assert.equal(slugs.length, 45);
   assert.equal(new Set(slugs).size, slugs.length);
 
   for (const slug of slugs) {
@@ -200,6 +200,54 @@ test("server-renders all configured routes with working fragment targets", async
   }
 });
 
+test("consolidates Learn, Tools, and Lab under an accessible Resources hub", async () => {
+  const [resourcesResponse, learnResponse, toolsResponse, labResponse, mobileMenuSource, resourceNavigationSource] = await Promise.all([
+    render("/resources"),
+    render("/learn"),
+    render("/tools"),
+    render("/lab"),
+    readFile(new URL("../app/components/MobileMenu.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/content/navigation.ts", import.meta.url), "utf8"),
+  ]);
+
+  for (const response of [resourcesResponse, learnResponse, toolsResponse, labResponse]) {
+    assert.equal(response.status, 200);
+  }
+
+  const resourcesHtml = await resourcesResponse.text();
+  for (const text of [
+    "Useful answers, working systems, and evidence you can inspect.",
+    "Practical guides",
+    "Plain-language glossary",
+    "Tools &amp; systems",
+    "The Boho Lab",
+    "Skip the taxonomy. Name the problem.",
+    "Open the Lab when the method matters as much as the answer.",
+  ]) {
+    assert.ok(resourcesHtml.includes(text), `Resources hub is missing: ${text}`);
+  }
+
+  assert.match(resourcesHtml, /href="\/learn\/"/);
+  assert.match(resourcesHtml, /href="\/tools\/"/);
+  assert.match(resourcesHtml, /href="\/lab\/"/);
+  assert.match(resourcesHtml, /aria-label="Open Resources menu"/);
+  assert.match(resourcesHtml, /aria-expanded="false"/);
+  assert.match(mobileMenuSource, /className="mobile-menu__group"/);
+  assert.match(mobileMenuSource, /className="mobile-menu__subnav"/);
+  assert.match(resourcesHtml, /class="section-sidebar__groups"/);
+  assert.match(resourcesHtml, /aria-label="Resource collections"/);
+  assert.match(resourcesHtml, /href="\/resources\/"[^>]*aria-current="page"|aria-current="page"[^>]*href="\/resources\/"/);
+  assert.match(resourcesHtml, /href="\/learn\/glossary\/#term-technical-seo"/);
+  for (const route of [
+    "/lab/market-map-examples/",
+    "/lab/success-signal-studies/",
+    "/lab/in-house-brands/",
+    "/lab/public-teardowns/",
+  ]) {
+    assert.ok(resourceNavigationSource.includes(route), `Resources sidebar is missing ${route}`);
+  }
+});
+
 test("renders the source-backed glossary, tools catalog, definitions, and diagrams", async () => {
   const [toolsResponse, glossaryResponse, definitionComponent, knowledgeSource] = await Promise.all([
     render("/tools"),
@@ -213,6 +261,9 @@ test("renders the source-backed glossary, tools catalog, definitions, and diagra
 
   const toolsHtml = await toolsResponse.text();
   const glossaryHtml = await glossaryResponse.text();
+
+  assert.equal((toolsHtml.match(/<a[^>]+aria-current="page"[^>]*>/g) ?? []).length, 1);
+  assert.match(glossaryHtml, /id="term-technical-seo"/);
 
   for (const name of [
     "GitHub",

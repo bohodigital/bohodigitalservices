@@ -1,6 +1,23 @@
+"use client";
+
+import {
+  ArrowRight,
+  BookOpenCheck,
+  ChevronDown,
+  FlaskConical,
+  Wrench,
+} from "lucide-react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+
+import {
+  resourceNavigationGroups,
+  type LocalHref,
+} from "../content/navigation";
+
 type SectionNavigationItem = {
   label: string;
-  href: `/${string}` | `#${string}`;
+  href: LocalHref;
 };
 
 export type SectionAnchor = {
@@ -9,7 +26,7 @@ export type SectionAnchor = {
 };
 
 const sectionMenus: Record<
-  "services" | "industries" | "learn" | "lab" | "company",
+  "services" | "industries" | "company",
   { title: string; items: SectionNavigationItem[] }
 > = {
   services: {
@@ -36,38 +53,6 @@ const sectionMenus: Record<
       { label: "Professional & B2B", href: "/industries/professional-b2b-services/" },
     ],
   },
-  learn: {
-    title: "Learn",
-    items: [
-      { label: "Learn overview", href: "/learn/" },
-      { label: "Glossary", href: "/learn/glossary/" },
-      { label: "Tools documentation", href: "/tools/" },
-      { label: "Bad SEO Field Guide", href: "/learn/bad-seo-field-guide/" },
-      { label: "Small-business SEO", href: "/learn/small-business-seo/" },
-      { label: "Local search", href: "/learn/local-search/" },
-      { label: "Website buying", href: "/learn/website-buying/" },
-      { label: "Provider rescue", href: "/learn/provider-rescue/" },
-      { label: "AI search visibility", href: "/learn/ai-search-visibility/" },
-      { label: "Rank Builder research", href: "/learn/featured-rank-builder/" },
-    ],
-  },
-  lab: {
-    title: "The Boho Lab",
-    items: [
-      { label: "Lab overview", href: "/lab/" },
-      { label: "Claims we refuse", href: "/lab/claims-we-refuse-to-make/" },
-      { label: "Local market reports", href: "/lab/local-market-reports/" },
-      { label: "Market maps", href: "/lab/market-map-examples/" },
-      { label: "Website surveys", href: "/lab/website-quality-surveys/" },
-      { label: "Success-signal studies", href: "/lab/success-signal-studies/" },
-      { label: "Public experiments", href: "/lab/public-experiments/" },
-      { label: "Work log", href: "/lab/work-log/" },
-      { label: "In-house brands", href: "/lab/in-house-brands/" },
-      { label: "Example reports", href: "/lab/example-reports/" },
-      { label: "Public teardowns", href: "/lab/public-teardowns/" },
-      { label: "Tools & templates", href: "/lab/tools-and-templates/" },
-    ],
-  },
   company: {
     title: "Plan a project",
     items: [
@@ -83,13 +68,34 @@ const sectionMenus: Record<
   },
 };
 
+function isResourcePath(path: string) {
+  return (
+    path.startsWith("/resources/") ||
+    path.startsWith("/learn/") ||
+    path.startsWith("/lab/") ||
+    path === "/tools/"
+  );
+}
+
 function menuForPath(path: string) {
   if (path.startsWith("/services/")) return sectionMenus.services;
   if (path.startsWith("/industries/")) return sectionMenus.industries;
-  if (path.startsWith("/learn/") || path === "/tools/") return sectionMenus.learn;
-  if (path.startsWith("/lab/")) return sectionMenus.lab;
   return sectionMenus.company;
 }
+
+function hrefPath(href: string) {
+  return href.split("#", 1)[0];
+}
+
+function isCurrentItem(href: string, currentPath: string) {
+  return !href.includes("#") && hrefPath(href) === currentPath;
+}
+
+const resourceIcons = {
+  guides: BookOpenCheck,
+  tools: Wrench,
+  lab: FlaskConical,
+};
 
 export function SectionSidebar({
   currentPath,
@@ -104,35 +110,109 @@ export function SectionSidebar({
   items?: SectionNavigationItem[];
   note?: string;
 }) {
+  const resourceMode = isResourcePath(currentPath) && !items;
   const defaultMenu = menuForPath(currentPath);
-  const menuTitle = title ?? defaultMenu.title;
+  const menuTitle = title ?? (resourceMode ? "Resources" : defaultMenu.title);
   const menuItems = items ?? defaultMenu.items;
+  const [panelOpen, setPanelOpen] = useState(false);
+  const [groupState, setGroupState] = useState<Record<string, boolean>>({});
+
+  useEffect(() => {
+    const query = window.matchMedia("(min-width: 72.01rem)");
+    const sync = () => setPanelOpen(query.matches);
+    sync();
+    query.addEventListener("change", sync);
+    return () => query.removeEventListener("change", sync);
+  }, []);
 
   return (
     <aside className="section-sidebar" aria-label={`${menuTitle} section navigation`}>
-      <details className="section-sidebar__panel" open>
+      <details
+        className="section-sidebar__panel"
+        open={panelOpen}
+        onToggle={(event) => setPanelOpen(event.currentTarget.open)}
+      >
         <summary>
           <span>Section menu</span>
           <strong>{menuTitle}</strong>
+          <ChevronDown className="section-sidebar__summary-icon" aria-hidden="true" size={20} />
         </summary>
         <div className="section-sidebar__body">
-          <nav aria-label={`${menuTitle} pages`}>
-            <p className="section-sidebar__label">Explore this section</p>
-            <ul>
-              {menuItems.map((item) => (
-                <li key={item.href}>
-                  <a
-                    aria-current={item.href === currentPath ? "page" : undefined}
-                    href={item.href}
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          {resourceMode ? (
+            <nav aria-label="Resource collections">
+              <Link
+                className="section-sidebar__home-link"
+                aria-current={currentPath === "/resources/" ? "page" : undefined}
+                href="/resources/"
+              >
+                <BookOpenCheck aria-hidden="true" size={18} />
+                <span>Resources overview</span>
+              </Link>
+              <div className="section-sidebar__groups">
+                {resourceNavigationGroups.map((group) => {
+                  const Icon = resourceIcons[group.icon];
+                  const containsCurrent = group.items.some(
+                    (item) => isCurrentItem(item.href, currentPath),
+                  );
+                  const open = groupState[group.label] ?? containsCurrent;
+
+                  return (
+                    <details
+                      className="section-sidebar__group"
+                      key={group.label}
+                      open={open}
+                      onToggle={(event) => {
+                        const next = event.currentTarget.open;
+                        setGroupState((current) => ({ ...current, [group.label]: next }));
+                      }}
+                    >
+                      <summary>
+                        <Icon aria-hidden="true" size={18} />
+                        <span>{group.label}</span>
+                        <ChevronDown aria-hidden="true" size={16} />
+                      </summary>
+                      <ul>
+                        {group.items.map((item) => (
+                          <li key={item.href}>
+                            <a
+                              aria-current={isCurrentItem(item.href, currentPath) ? "page" : undefined}
+                              href={item.href}
+                            >
+                              {item.label}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </details>
+                  );
+                })}
+              </div>
+              {currentPath !== "/lab/" ? (
+                <Link className="section-sidebar__lab-link" href="/lab/">
+                  <span>Open the Lab</span>
+                  <ArrowRight aria-hidden="true" size={16} />
+                </Link>
+              ) : null}
+            </nav>
+          ) : (
+            <nav aria-label={`${menuTitle} pages`}>
+              <p className="section-sidebar__label">Explore this section</p>
+              <ul>
+                {menuItems.map((item) => (
+                  <li key={item.href}>
+                    <a
+                      aria-current={isCurrentItem(item.href, currentPath) ? "page" : undefined}
+                      href={item.href}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
           {anchors.length ? (
-            <nav aria-label="On this page">
+            <nav className="section-sidebar__on-page" aria-label="On this page">
               <p className="section-sidebar__label">On this page</p>
               <ul className="section-sidebar__anchors">
                 {anchors.map((anchor) => (

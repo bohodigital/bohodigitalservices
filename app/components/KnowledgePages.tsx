@@ -7,6 +7,13 @@ import {
   type GlossaryCategory,
 } from "../content/knowledge";
 import {
+  BookOpenCheck,
+  FlaskConical,
+  SearchCheck,
+  ServerCog,
+  Wrench,
+} from "lucide-react";
+import {
   Breadcrumbs,
   ButtonLink,
   EditorialHeadline,
@@ -66,19 +73,24 @@ export function KnowledgeHero({
 
   return (
     <section className="knowledge-hero" aria-labelledby="knowledge-hero-title">
-      <div className="knowledge-hero__mosaic" aria-hidden="true">
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
+      <div className="knowledge-hero__constellation" aria-hidden="true">
+        <span><BookOpenCheck size={42} strokeWidth={1.6} /></span>
+        <span><SearchCheck size={34} strokeWidth={1.7} /></span>
+        <span><Wrench size={38} strokeWidth={1.6} /></span>
+        <span><FlaskConical size={44} strokeWidth={1.6} /></span>
+        <span><ServerCog size={32} strokeWidth={1.7} /></span>
       </div>
       <div className="section-shell knowledge-hero__inner">
         <Breadcrumbs
-          items={[
-            { label: "Home", href: "/" },
-            { label: eyebrow },
-          ]}
+          items={
+            eyebrow === "Resources"
+              ? [{ label: "Home", href: "/" }, { label: "Resources" }]
+              : [
+                  { label: "Home", href: "/" },
+                  { label: "Resources", href: "/resources/" },
+                  { label: eyebrow },
+                ]
+          }
         />
         <div className="knowledge-hero__copy">
           <p className="eyebrow">{eyebrow}</p>
@@ -393,7 +405,7 @@ export function ToolsPage() {
       <Header />
       <main className="knowledge-page tools-page" id="main-content" tabIndex={-1}>
         <KnowledgeHero
-          eyebrow="Tools"
+          eyebrow="Tools & systems"
           title="Use the smallest reliable system that keeps the owner in control."
           intro={[
             "This is part tool catalog, part operating documentation. It explains what each system does, how Boho uses it, what can be automated through an [[api|API]], what it can save, and where the boundaries belong.",
@@ -406,13 +418,6 @@ export function ToolsPage() {
         <div className="knowledge-section-layout">
           <SectionSidebar
             currentPath="/tools/"
-            title="Tools documentation"
-            items={[
-              { label: "Tools overview", href: "/tools/" },
-              { label: "Plain-language glossary", href: "/learn/glossary/" },
-              { label: "Learn overview", href: "/learn/" },
-              { label: "Research lab", href: "/lab/" },
-            ]}
             anchors={[
               { label: "Selection rules", href: "#tool-principles" },
               { label: "How the systems work", href: "#how-it-works" },
