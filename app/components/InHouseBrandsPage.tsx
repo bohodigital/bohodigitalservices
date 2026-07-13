@@ -1,4 +1,5 @@
 import { Beaker, BookOpenCheck, SearchCheck } from "lucide-react";
+import Link from "next/link";
 
 import { inHouseBrands } from "../content/inHouseBrands";
 import { BrandPreviewCarousel } from "./BrandPreviewCarousel";
@@ -62,6 +63,9 @@ export function InHouseBrandsPage() {
                       <p className="brand-lab__domain">{brand.displayUrl}</p>
                       <h3>{brand.name}</h3>
                       <p>{brand.role}</p>
+                      <Link className="brand-lab__file-link" href={brand.labPath}>
+                        Open this property file
+                      </Link>
                       <p className="brand-lab__boundary">
                         Owned property · live preview above · no client-result claim
                       </p>

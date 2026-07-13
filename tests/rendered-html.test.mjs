@@ -75,9 +75,11 @@ test("server-renders the complete private Boho homepage", async () => {
   assert.match(html, /href="\/start\/"[^>]*>[\s\S]*?Claim Your Territory/i);
   assert.match(html, /Representative editorial photography, not Boho staff or client work/i);
   assert.match(html, /aria-label="Homepage journey"/i);
-  assert.match(html, /href="#design"/i);
-  assert.match(html, /href="#services"/i);
-  assert.match(html, /href="#growth"/i);
+  for (const stage of ["Discover", "Prioritize", "Build", "Measure", "Improve"]) {
+    assert.match(html, new RegExp(`>${stage}<`, "i"));
+  }
+  assert.match(html, /href="\/services\/research-audits-analytics\/"/i);
+  assert.match(html, /href="\/services\/ongoing-seo-growth\/"/i);
   assert.match(html, /Photography shows representative business settings/i);
   assert.doesNotMatch(html, /Concept interface/i);
   assert.match(html, /googletagmanager\.com\/gtag\/js\?id=G-5CV8L2SE2R/i);
@@ -208,7 +210,7 @@ test("resolves every local asset referenced by every rendered route", async () =
 });
 
 test("keeps the design system accessible, private, and free of starter artifacts", async () => {
-  const [page, layout, homepage, components, mobileMenu, brandCarousel, brandData, brandsPage, css, packageJson] = await Promise.all([
+  const [page, layout, homepage, components, mobileMenu, brandCarousel, brandData, brandsPage, brandPage, operatingCycle, css, packageJson] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/Homepage.tsx", import.meta.url), "utf8"),
@@ -217,6 +219,8 @@ test("keeps the design system accessible, private, and free of starter artifacts
     readFile(new URL("../app/components/BrandPreviewCarousel.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/content/inHouseBrands.ts", import.meta.url), "utf8"),
     readFile(new URL("../app/components/InHouseBrandsPage.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/components/InHouseBrandPage.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/content/operatingCycle.ts", import.meta.url), "utf8"),
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
   ]);
@@ -266,15 +270,27 @@ test("keeps the design system accessible, private, and free of starter artifacts
   }
   assert.match(brandCarousel, /sandbox="allow-same-origin allow-scripts"/);
   assert.match(brandCarousel, /brand-preview-frame__guard/);
-  assert.match(brandCarousel, /\/lab\/in-house-brands\/#/);
+  assert.match(brandCarousel, /activeBrand\.labPath/);
+  assert.match(brandCarousel, /setInterval/);
+  assert.match(brandCarousel, /6500/);
+  assert.match(brandCarousel, /prefers-reduced-motion/);
+  assert.match(brandCarousel, /Pause automatic brand previews/);
   assert.match(brandCarousel, /aria-controls="brand-preview-panel"/);
   assert.doesNotMatch(brandCarousel, /href=\{brand\.url\}/);
   assert.match(brandsPage, /id=\{brand\.id\}/);
+  assert.match(brandsPage, /href=\{brand\.labPath\}/);
+  assert.match(brandPage, /BrandPreviewFrame brand=\{brand\}/);
+  for (const stage of ["Discover", "Prioritize", "Build", "Measure", "Improve"]) {
+    assert.ok(operatingCycle.includes(`title: "${stage}"`), `operating cycle is missing ${stage}`);
+  }
+  assert.equal((operatingCycle.match(/href:/g) ?? []).length, 5);
+  assert.doesNotMatch(homepage, /Prioritize, Improve, Measure, Adjust|Discover, Design, Build, Grow/);
   assert.match(components, /export function FormField/);
   assert.match(components, /export function FormStatusMessage/);
   assert.match(css, /--burnished-gold:\s*#e3ae3d/i);
   assert.match(css, /--verdigris:\s*#1e5e5b/i);
   assert.match(css, /prefers-reduced-motion:\s*reduce/i);
+  assert.match(css, /brand-preview-progress 6500ms/i);
   assert.match(css, /@media \(max-width:\s*30rem\)/i);
   for (let index = 1; index <= 6; index += 1) {
     assert.match(css, new RegExp(`\\.service-card--${index} \\.service-card__pattern`));
@@ -306,6 +322,22 @@ test("renders the in-house brand Lab with live, non-navigating previews", async 
   assert.match(html, /noindex, nofollow/);
 });
 
+test("renders dedicated internal Lab files for every owned property", async () => {
+  for (const [route, name, url] of [
+    ["/lab/in-house-brands/how-biscuit", "How Biscuit", "https://howbiscuit.com/"],
+    ["/lab/in-house-brands/rank-builder-seo", "RankBuilder SEO", "https://rankbuilderseo.com/"],
+    ["/lab/in-house-brands/better-grades", "Better Grades", "https://bettergrades.net/"],
+  ]) {
+    const response = await render(route);
+    assert.equal(response.status, 200, `${route} did not render`);
+    const html = await response.text();
+    assert.ok(html.includes(name), `${route} is missing ${name}`);
+    assert.ok(html.includes(`src="${url}"`), `${route} is missing its live preview`);
+    assert.match(html, /Owned work, not a client claim/);
+    assert.doesNotMatch(html, new RegExp(`<a[^>]+href="${url.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`, "i"));
+  }
+});
+
 test("server-renders all configured routes with working fragment targets", async () => {
   const [coreSource, audienceSource] = await Promise.all([
     readFile(new URL("../app/content/corePages.ts", import.meta.url), "utf8"),
@@ -314,7 +346,7 @@ test("server-renders all configured routes with working fragment targets", async
   const slugs = [...`${coreSource}\n${audienceSource}`.matchAll(/slug:\s*"([^"]+)"/g)]
     .map((match) => match[1]);
 
-  assert.equal(slugs.length, 45);
+  assert.equal(slugs.length, 48);
   assert.equal(new Set(slugs).size, slugs.length);
 
   for (const slug of slugs) {
@@ -381,6 +413,9 @@ test("consolidates Learn, Tools, and Lab under an accessible Resources hub", asy
     "/lab/market-map-examples/",
     "/lab/success-signal-studies/",
     "/lab/in-house-brands/",
+    "/lab/in-house-brands/how-biscuit/",
+    "/lab/in-house-brands/rank-builder-seo/",
+    "/lab/in-house-brands/better-grades/",
     "/lab/public-teardowns/",
   ]) {
     assert.ok(resourceNavigationSource.includes(route), `Resources sidebar is missing ${route}`);

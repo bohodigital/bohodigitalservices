@@ -1,4 +1,5 @@
 import type { PageConfig } from "./types";
+import { operatingCycle } from "./operatingCycle";
 
 export const corePages: PageConfig[] = [
   {
@@ -481,14 +482,9 @@ export const corePages: PageConfig[] = [
       },
       {
         eyebrow: "The monthly rhythm",
-        title: "Prioritize, improve, measure, adjust.",
+        title: "Discover → Prioritize → Build → Measure → Improve",
         layout: "steps",
-        items: [
-          { title: "Prioritize", body: "Choose a small number of meaningful tasks based on business value, current signals, seasonality, market activity, and available capacity." },
-          { title: "Improve", body: "Implement content, technical, local, website, or conversion changes with clear scope." },
-          { title: "Measure", body: "Review relevant signals, note uncertainty, and compare movement against the intended outcome." },
-          { title: "Adjust", body: "Continue what has a case, change what does not, and define the next useful cycle." },
-        ],
+        items: operatingCycle.map(({ title, body, href, linkLabel }) => ({ title, body, href, linkLabel })),
       },
       {
         eyebrow: "Possible work categories",
@@ -785,15 +781,9 @@ export const corePages: PageConfig[] = [
       },
       {
         eyebrow: "How Boho operates",
-        title: "Learn → Map → Prioritize → Build → Measure",
+        title: "Discover → Prioritize → Build → Measure → Improve",
         layout: "steps",
-        items: [
-          { title: "Learn", body: "Understand the business model, customer, value, and constraints." },
-          { title: "Map", body: "Study the website, provider system, market, competitors, search environment, and visible trust." },
-          { title: "Prioritize", body: "Rank possible work by business value, impact, confidence, measurability, effort, and risk." },
-          { title: "Build", body: "Design, repair, migrate, write, configure, or optimize the selected system." },
-          { title: "Measure", body: "Review relevant signals, document uncertainty, and decide what deserves the next cycle." },
-        ],
+        items: operatingCycle.map(({ title, body, href, linkLabel }) => ({ title, body, href, linkLabel })),
       },
       {
         eyebrow: "Lean by design",

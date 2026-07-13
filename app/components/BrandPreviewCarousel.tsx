@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, FlaskConical } from "lucide-react";
-import { useState } from "react";
+import { ArrowLeft, ArrowRight, FlaskConical, Pause, Play } from "lucide-react";
+import { useEffect, useState } from "react";
 
 import { inHouseBrands, type InHouseBrand } from "../content/inHouseBrands";
 
@@ -34,7 +34,17 @@ export function BrandPreviewFrame({ brand }: { brand: InHouseBrand }) {
 
 export function BrandPreviewCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isInteracting, setIsInteracting] = useState(false);
   const activeBrand = inHouseBrands[activeIndex];
+
+  useEffect(() => {
+    if (isPaused || isInteracting || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const interval = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % inHouseBrands.length);
+    }, 6500);
+    return () => window.clearInterval(interval);
+  }, [isPaused, isInteracting]);
 
   const move = (direction: -1 | 1) => {
     setActiveIndex((current) =>
@@ -43,7 +53,16 @@ export function BrandPreviewCarousel() {
   };
 
   return (
-    <section className="brand-carousel" aria-labelledby="brand-carousel-title">
+    <section
+      className={`brand-carousel${isPaused || isInteracting ? " is-paused" : ""}`}
+      aria-labelledby="brand-carousel-title"
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setIsInteracting(false);
+      }}
+      onFocus={() => setIsInteracting(true)}
+      onMouseEnter={() => setIsInteracting(true)}
+      onMouseLeave={() => setIsInteracting(false)}
+    >
       <div className="brand-carousel__heading">
         <div>
           <span className="brand-carousel__eyebrow">
@@ -56,6 +75,14 @@ export function BrandPreviewCarousel() {
           <button type="button" onClick={() => move(-1)} aria-label="Show previous brand">
             <ArrowLeft size={19} aria-hidden="true" />
           </button>
+          <button
+            aria-label={isPaused ? "Resume automatic brand previews" : "Pause automatic brand previews"}
+            aria-pressed={isPaused}
+            onClick={() => setIsPaused((current) => !current)}
+            type="button"
+          >
+            {isPaused ? <Play size={17} aria-hidden="true" /> : <Pause size={17} aria-hidden="true" />}
+          </button>
           <span aria-live="polite">
             {String(activeIndex + 1).padStart(2, "0")} / {String(inHouseBrands.length).padStart(2, "0")}
           </span>
@@ -66,7 +93,6 @@ export function BrandPreviewCarousel() {
       </div>
 
       <div
-        aria-live="polite"
         className="brand-carousel__stage"
         id="brand-preview-panel"
         role="tabpanel"
@@ -78,10 +104,13 @@ export function BrandPreviewCarousel() {
             <h4>{activeBrand.name}</h4>
             <p>{activeBrand.role}</p>
           </div>
-          <Link href={`/lab/in-house-brands/#${activeBrand.id}`}>
+          <Link href={activeBrand.labPath}>
             Open the Lab file
           </Link>
         </div>
+      </div>
+      <div className="brand-carousel__progress" aria-hidden="true" key={`progress-${activeBrand.id}`}>
+        <i />
       </div>
 
       <div className="brand-carousel__tabs" role="tablist" aria-label="In-house brands">

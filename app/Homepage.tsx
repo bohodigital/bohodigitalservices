@@ -8,6 +8,7 @@ import {
 } from "./components/SiteChrome";
 import { DefinedText } from "./components/DefinedText";
 import { BrandPreviewCarousel } from "./components/BrandPreviewCarousel";
+import { operatingCycle } from "./content/operatingCycle";
 import {
   AlignLeft,
   BarChart3,
@@ -32,26 +33,13 @@ import {
   Wrench,
 } from "lucide-react";
 
-const methodStages = [
-  {
-    number: "01",
-    title: "Study the market",
-    body: "Review the business, competitors, search results, website quality, customer expectations, and trust signals around the real market.",
-    icon: Search,
-  },
-  {
-    number: "02",
-    title: "Find the signals",
-    body: "Identify what is weak, controllable, measurable, and plausibly connected to revenue or qualified customer action.",
-    icon: Crosshair,
-  },
-  {
-    number: "03",
-    title: "Fix what matters",
-    body: "Design, migrate, repair, write, track, and optimize around the highest-leverage work first.",
-    icon: Wrench,
-  },
-] as const;
+const operatingCycleIcons = {
+  discover: Search,
+  prioritize: Crosshair,
+  build: Wrench,
+  measure: BarChart3,
+  improve: RefreshCw,
+} as const;
 
 const serviceCards = [
   {
@@ -245,8 +233,6 @@ const labPanels = [
   },
 ] as const;
 
-const growthCycle = ["Prioritize", "Improve", "Measure", "Adjust"] as const;
-
 export default function Homepage() {
   const seenTerms = new Set<string>();
   const define = (text: string) => <DefinedText text={text} seenTerms={seenTerms} />;
@@ -296,10 +282,14 @@ export default function Homepage() {
           <div className="section-shell journey-rail__inner">
             <span className="journey-rail__label">Follow the work</span>
             <ol>
-              <li><a href="#method"><span>01</span> Discover</a></li>
-              <li><a href="#design"><span>02</span> Design</a></li>
-              <li><a href="#services"><span>03</span> Build</a></li>
-              <li><a href="#growth"><span>04</span> Grow</a></li>
+              {operatingCycle.map((stage) => (
+                <li key={stage.id}>
+                  <a href={stage.href}>
+                    <span>{stage.number}</span>
+                    {stage.title}
+                  </a>
+                </li>
+              ))}
             </ol>
           </div>
         </nav>
@@ -349,20 +339,23 @@ export default function Homepage() {
             </div>
 
             <ol className="method-summary-list" aria-label="Research-led working sequence">
-              {methodStages.map((stage) => {
-                const Icon = stage.icon;
+              {operatingCycle.map((stage) => {
+                const Icon = operatingCycleIcons[stage.id];
                 return (
                 <li key={stage.number}>
-                  <div className="method-summary-list__marker" aria-hidden="true">
-                    <span className="method-summary-list__icon">
-                      <Icon size={24} strokeWidth={1.8} />
-                    </span>
-                    <span className="method-summary-list__number">{stage.number}</span>
-                  </div>
-                  <div>
-                    <h3>{stage.title}</h3>
-                    <p>{define(stage.body)}</p>
-                  </div>
+                  <a className="method-summary-list__link" href={stage.href}>
+                    <div className="method-summary-list__marker" aria-hidden="true">
+                      <span className="method-summary-list__icon">
+                        <Icon size={24} strokeWidth={1.8} />
+                      </span>
+                      <span className="method-summary-list__number">{stage.number}</span>
+                    </div>
+                    <div>
+                      <h3>{stage.title}</h3>
+                      <p>{define(stage.body)}</p>
+                      <span className="method-summary-list__cta">{stage.linkLabel} →</span>
+                    </div>
+                  </a>
                 </li>
                 );
               })}
@@ -661,13 +654,13 @@ export default function Homepage() {
                   <i /><i /><i /><i /><i /><i />
                 </div>
               </div>
-              <ol className="growth-cycle" aria-label="Ongoing work cycle">
-                {growthCycle.map((phase, index) => (
-                  <li className={`growth-cycle__phase growth-cycle__phase--${index + 1}`} key={phase}>
-                    <span className="growth-cycle__index" aria-hidden="true">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <strong>{phase}</strong>
+              <ol className="growth-cycle" aria-label="Discover, prioritize, build, measure, improve">
+                {operatingCycle.map((stage, index) => (
+                  <li className={`growth-cycle__phase growth-cycle__phase--${index + 1}`} key={stage.id}>
+                    <a href={stage.href}>
+                      <span className="growth-cycle__index" aria-hidden="true">{stage.number}</span>
+                      <strong>{stage.title}</strong>
+                    </a>
                   </li>
                 ))}
               </ol>
