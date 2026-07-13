@@ -8,12 +8,18 @@ import {
 } from "./components/SiteChrome";
 import { DefinedText } from "./components/DefinedText";
 import {
+  AlignLeft,
+  Compass,
+  Crosshair,
   MapPin,
   MousePointerClick,
   PanelsTopLeft,
   RefreshCw,
   Route,
+  Search,
   SearchCheck,
+  ShieldCheck,
+  Wrench,
 } from "lucide-react";
 
 const methodStages = [
@@ -21,16 +27,19 @@ const methodStages = [
     number: "01",
     title: "Study the market",
     body: "Review the business, competitors, search results, website quality, customer expectations, and trust signals around the real market.",
+    icon: Search,
   },
   {
     number: "02",
     title: "Find the signals",
     body: "Identify what is weak, controllable, measurable, and plausibly connected to revenue or qualified customer action.",
+    icon: Crosshair,
   },
   {
     number: "03",
     title: "Fix what matters",
     body: "Design, migrate, repair, write, track, and optimize around the highest-leverage work first.",
+    icon: Wrench,
   },
 ] as const;
 
@@ -115,21 +124,29 @@ const designPrinciples = [
     number: "01",
     title: "Clarity",
     body: "Make the offer, audience, and next step understandable without making a buyer decode the page.",
+    termSlug: "website-clarity",
+    icon: AlignLeft,
   },
   {
     number: "02",
     title: "Trust",
     body: "Use proof, ownership, useful detail, and honest boundaries instead of decoration pretending to be credibility.",
+    termSlug: "trust-signal",
+    icon: ShieldCheck,
   },
   {
     number: "03",
     title: "Discovery",
     body: "Build structure and content around the language and decisions people actually use to find a business.",
+    termSlug: "customer-discovery",
+    icon: Compass,
   },
   {
     number: "04",
     title: "Action",
     body: "Give a qualified buyer a clear, low-friction route to call, book, request, buy, or keep learning.",
+    termSlug: "customer-action",
+    icon: MousePointerClick,
   },
 ] as const;
 
@@ -140,10 +157,10 @@ const buyerPanels = [
     href: "/industries/home-improvement-contractors/",
     label: "Explore home improvement and contractors",
     image: "/visuals/industry-contractors.webp",
-    imageAlt: "Hands selecting a tool from an organized mechanic's kit.",
+    imageAlt: "A carpenter working within the timber frame of a new home.",
     imageWidth: 1000,
-    imageHeight: 666,
-    position: "center",
+    imageHeight: 667,
+    position: "center 48%",
   },
   {
     title: "Local Service Businesses",
@@ -151,10 +168,10 @@ const buyerPanels = [
     href: "/industries/local-service-businesses/",
     label: "Explore local service businesses",
     image: "/visuals/industry-local-service.webp",
-    imageAlt: "A barber carefully trimming a customer's hair in a local shop.",
+    imageAlt: "An experienced repair technician servicing an appliance indoors.",
     imageWidth: 1000,
-    imageHeight: 1500,
-    position: "center 42%",
+    imageHeight: 1333,
+    position: "center 38%",
   },
   {
     title: "Brick-and-Mortar Retail & Hospitality",
@@ -162,10 +179,10 @@ const buyerPanels = [
     href: "/industries/brick-and-mortar-retail-hospitality/",
     label: "Explore retail and hospitality",
     image: "/visuals/industry-retail.webp",
-    imageAlt: "Wooden shelves and refill jars inside a small retail shop.",
+    imageAlt: "Customers gathering inside a bright modern coffee shop.",
     imageWidth: 1000,
-    imageHeight: 666,
-    position: "center 44%",
+    imageHeight: 800,
+    position: "center 52%",
   },
   {
     title: "Online Retail & Ecommerce",
@@ -173,9 +190,9 @@ const buyerPanels = [
     href: "/industries/online-retail-ecommerce/",
     label: "Explore online retail and ecommerce",
     image: "/visuals/industry-ecommerce.webp",
-    imageAlt: "A small online retailer packing products beside a laptop.",
+    imageAlt: "A small ecommerce team packing a customer order beside a laptop.",
     imageWidth: 1000,
-    imageHeight: 666,
+    imageHeight: 668,
     position: "center",
   },
   {
@@ -184,10 +201,10 @@ const buyerPanels = [
     href: "/industries/professional-b2b-services/",
     label: "Explore professional and B2B services",
     image: "/visuals/industry-b2b.webp",
-    imageAlt: "Business strategy documents arranged across a worktable.",
+    imageAlt: "A professional team reviewing strategy together around a laptop.",
     imageWidth: 1000,
-    imageHeight: 750,
-    position: "center",
+    imageHeight: 667,
+    position: "center 44%",
   },
 ] as const;
 
@@ -252,7 +269,10 @@ export default function Homepage() {
                 </ButtonLink>
               </div>
             </div>
-            <figure className="hero-editorial hero-editorial--process">
+            <figure
+              className="hero-editorial hero-editorial--process"
+              aria-label="How Boho Works: Discover, Design, Build, and Launch"
+            >
               <div
                 className="hero-editorial__process-viewport"
                 tabIndex={0}
@@ -266,14 +286,6 @@ export default function Homepage() {
                   fetchPriority="high"
                 />
               </div>
-              <figcaption>
-                <span>How Boho works</span>
-                <strong>Discover, design, build, launch.</strong>
-                <small>
-                  A simplified path. Scope, review, and launch gates are
-                  confirmed for each engagement.
-                </small>
-              </figcaption>
             </figure>
           </div>
         </section>
@@ -311,15 +323,23 @@ export default function Homepage() {
             </div>
 
             <ol className="method-summary-list" aria-label="Research-led working sequence">
-              {methodStages.map((stage) => (
+              {methodStages.map((stage) => {
+                const Icon = stage.icon;
+                return (
                 <li key={stage.number}>
-                  <span aria-hidden="true">{stage.number}</span>
+                  <div className="method-summary-list__marker" aria-hidden="true">
+                    <span className="method-summary-list__icon">
+                      <Icon size={24} strokeWidth={1.8} />
+                    </span>
+                    <span className="method-summary-list__number">{stage.number}</span>
+                  </div>
                   <div>
                     <h3>{stage.title}</h3>
                     <p>{define(stage.body)}</p>
                   </div>
                 </li>
-              ))}
+                );
+              })}
             </ol>
             <TextLink href="/lab/" className="section-link">
               See the research approach
@@ -367,15 +387,23 @@ export default function Homepage() {
               </figure>
 
               <ol className="design-principles" aria-label="Four website design principles">
-                {designPrinciples.map((principle) => (
+                {designPrinciples.map((principle) => {
+                  const Icon = principle.icon;
+                  return (
                   <li key={principle.number}>
-                    <span aria-hidden="true">{principle.number}</span>
+                    <div className="design-principle__marker" aria-hidden="true">
+                      <span className="design-principle__icon">
+                        <Icon size={26} strokeWidth={1.7} />
+                      </span>
+                      <span>{principle.number}</span>
+                    </div>
                     <div>
-                      <h3>{principle.title}</h3>
+                      <h3>{define(`[[${principle.termSlug}|${principle.title}]]`)}</h3>
                       <p>{define(principle.body)}</p>
                     </div>
                   </li>
-                ))}
+                  );
+                })}
               </ol>
             </div>
           </div>
@@ -581,6 +609,23 @@ export default function Homepage() {
                 </li>
               ))}
             </ol>
+          </div>
+        </section>
+
+        <section
+          className="home-section territory-cta"
+          aria-labelledby="territory-cta-title"
+        >
+          <div className="section-shell territory-cta__inner">
+            <div className="territory-cta__copy">
+              <p className="eyebrow eyebrow--on-dark">Protected market focus</p>
+              <h2 id="territory-cta-title">
+                We only work with one client per industry and service area,
+                claim your territory today!
+              </h2>
+              <p>{define("Tell us the industry and service area you want to protect. Boho confirms availability before proposing an engagement, so the boundary is clear before work begins.")}</p>
+            </div>
+            <ButtonLink href="/start/">Claim Your Territory</ButtonLink>
           </div>
         </section>
 

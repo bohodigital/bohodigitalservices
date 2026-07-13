@@ -51,6 +51,7 @@ test("server-renders the complete private Boho homepage", async () => {
     "Website and SEO strategy shaped by how customers choose.",
     "Resources, research, and proof you can inspect.",
     "Ongoing SEO tied to visible priorities and decisions.",
+    "We only work with one client per industry and service area, claim your territory today!",
     "Lean overhead, practical pricing, and more useful work.",
     "Start with a Local Visibility Check.",
   ];
@@ -65,8 +66,13 @@ test("server-renders the complete private Boho homepage", async () => {
   assert.match(html, /aria-controls="mobile-menu-/i);
   assert.match(html, /href="\/emergency\/"/i);
   assert.match(html, /How Boho Works: Discover, we review your goals/i);
-  assert.match(html, /Discover, design, build, launch/i);
-  assert.match(html, /Scope, review, and launch gates are/i);
+  assert.doesNotMatch(html, /Discover, design, build, launch/i);
+  assert.doesNotMatch(html, /Scope, review, and launch gates are/i);
+  assert.match(html, /definition-website-clarity-/i);
+  assert.match(html, /definition-trust-signal-/i);
+  assert.match(html, /definition-customer-discovery-/i);
+  assert.match(html, /definition-customer-action-/i);
+  assert.match(html, /href="\/start\/"[^>]*>[\s\S]*?Claim Your Territory/i);
   assert.match(html, /Public-domain textile detail from The Met Open Access collection/i);
   assert.match(html, /Photography shows representative business settings/i);
   assert.doesNotMatch(html, /Concept interface/i);
@@ -154,12 +160,14 @@ test("keeps the design system accessible, private, and free of starter artifacts
   assert.match(homepage, /className="home-section hero"/);
   assert.match(homepage, /className="hero-editorial hero-editorial--process"/);
   assert.match(homepage, /className="method-summary-list"/);
+  assert.match(homepage, /className="method-summary-list__icon"/);
+  assert.match(homepage, /className="design-principle__icon"/);
   assert.match(homepage, /how-boho-works-v1\.png/);
   assert.match(homepage, /className="design-reference"/);
   assert.match(homepage, /className="buyer-panel__image"/);
   assert.doesNotMatch(homepage, /ResearchRouteVisual|ConceptCaption|signal-path/);
   assert.doesNotMatch(homepage, /function MosaicWing/);
-  assert.equal((homepage.match(/className="home-section/g) ?? []).length, 11);
+  assert.equal((homepage.match(/className="home-section/g) ?? []).length, 12);
   assert.match(components, /className="skip-link"/);
   assert.match(components, /boho-bee-logo-v2-transparent\.png/);
   assert.match(components, /mailto:contact@bohemiandigital\.org/);
@@ -323,6 +331,10 @@ test("renders the source-backed glossary, tools catalog, definitions, and diagra
   assert.match(glossaryHtml, /id="term-dns"/);
   assert.match(glossaryHtml, /id="term-server"/);
   assert.match(glossaryHtml, /id="term-mcp-server"/);
+  assert.match(glossaryHtml, /id="term-website-clarity"/);
+  assert.match(glossaryHtml, /id="term-trust-signal"/);
+  assert.match(glossaryHtml, /id="term-customer-discovery"/);
+  assert.match(glossaryHtml, /id="term-customer-action"/);
   assert.match(glossaryHtml, /Deeper tool documentation/);
   assert.doesNotMatch(glossaryHtml, /class="glossary-entry-grid"/);
   assert.doesNotMatch(glossaryHtml, /Glossary migration in progress/);

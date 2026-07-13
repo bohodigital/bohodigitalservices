@@ -13,9 +13,14 @@ Reviewed 2026-07-12 for the private Boho Digital Services Resources and homepage
 - Treatment: preserved byte-for-byte; not redrawn, regenerated, recolored,
   cropped, compressed, or passed through image generation.
 - Accessibility: the page supplies a full text alternative for Discover,
-  Design, Build, and Launch, plus a visible scope/review/launch-gate caption.
+  Design, Build, and Launch. The redundant visible caption was removed because
+  the same words are already part of the supplied graphic.
 - Small-screen behavior: the exact hero graphic remains legible in a keyboard-
   focusable horizontal viewport instead of being reduced to unreadable text.
+- Visual treatment: the fully opaque original remains unchanged and sits in a
+  warm light reading panel inside the dark homepage hero. True transparency
+  would require altering the owner's baked checkerboard pixels, so no
+  destructive transparency conversion is shipped.
 
 ## Homepage editorial imagery
 
@@ -30,17 +35,18 @@ business endorses Boho.
 
 | Local output | Creator | Official source | Use | Output SHA-256 |
 | --- | --- | --- | --- | --- |
-| `public/visuals/research-notebook.webp` (1600x1068) | Mikael Blomkvist | [Pexels photo 6476777](https://www.pexels.com/photo/man-drawing-a-graph-on-notebook-6476777/) | Hero research-and-planning image | `6df4fb3d22e5b230d9df4622d9812389895a8b120d7d7ce2f4f7b9c7fbb5505f` |
-| `public/visuals/industry-contractors.webp` (1000x666) | Anastasia Shuraeva | [Pexels photo 9607203](https://www.pexels.com/photo/tools-in-a-toolbox-9607203/) | Contractor representative setting | `3bd4fbc0e5c944ab2111cb4121301fda1619fb41e4f3dd21c8d26b4cb5745d3c` |
-| `public/visuals/industry-local-service.webp` (1000x1500) | Kawê Rodrigues | [Pexels photo 19664890](https://www.pexels.com/photo/barber-and-customer-in-barbershop-19664890/) | Local-service representative setting | `d00b694354971cdb498e8c32d05202b36084b51d04fa50104656437f57235338` |
-| `public/visuals/industry-retail.webp` (1000x666) | Polina Tankilevitch | [Pexels photo 3735183](https://www.pexels.com/photo/shop-interior-3735183/) | Retail representative setting | `9973ba23eb007b2a02a9187c59ae61202245c470592429d9e1f91b960ac419d6` |
-| `public/visuals/industry-ecommerce.webp` (1000x666) | Kampus Production | [Pexels photo 7289725](https://www.pexels.com/photo/man-preparing-packages-7289725/) | Ecommerce representative setting | `eaff77dfe1b1c39cb3c50521382eb5b3c8a76e102c834501029af6781fccd4d6` |
-| `public/visuals/industry-b2b.webp` (1000x750) | Kindel Media | [Pexels photo 7688432](https://www.pexels.com/photo/strategy-documents-on-desk-7688432/) | Professional-services representative setting | `b55de033c59a2a70f7ee5435cbbe7c13b9b38843d872629b550272f872ad9f62` |
+| `public/visuals/research-notebook.webp` (1600x1068) | Mikael Blomkvist | [Pexels photo 6476777](https://www.pexels.com/photo/man-drawing-a-graph-on-notebook-6476777/) | Retained prior asset; no longer rendered on the homepage | `6df4fb3d22e5b230d9df4622d9812389895a8b120d7d7ce2f4f7b9c7fbb5505f` |
+| `public/visuals/industry-contractors.webp` (1000x667) | Ron Lach | [Pexels photo 8830265](https://www.pexels.com/photo/a-man-working-at-a-construction-site-8830265/) | Carpenter working inside a residential timber frame | `54397c59ab6abc4a9269863e22c4e2f5d02a86d934ae8e74d069c0a0b6bd30af` |
+| `public/visuals/industry-local-service.webp` (1000x1333) | Bulat843 | [Pexels photo 38190070](https://www.pexels.com/photo/repair-technician-working-on-appliance-38190070/) | Skilled local repair-service setting | `76a5b8fcd86e4414c4c48299987efcab55697e27d99ff4a94b3f0e759a34eef2` |
+| `public/visuals/industry-retail.webp` (1000x800) | Raphael Loquellano | [Pexels photo 19367174](https://www.pexels.com/photo/people-sitting-in-a-coffee-shop-19367174/) | Bright hospitality setting with customers | `d94e6579051a61e2ebd0572a69482106b99b6b72db8b78b876c20c0188e5f7fa` |
+| `public/visuals/industry-ecommerce.webp` (1000x668) | Kampus Production | [Pexels photo 7857532](https://www.pexels.com/photo/woman-sitting-at-the-table-and-packing-orders-7857532/) | Small ecommerce team packing customer orders | `117469cd8928e3b44e4ce50fe802c692a281640be9eab6d943cd417481800ad7` |
+| `public/visuals/industry-b2b.webp` (1000x667) | Alena Darmel | [Pexels photo 7710178](https://www.pexels.com/photo/colleagues-having-a-business-meeting-7710178/) | Professional team reviewing strategy | `58ac78233316b332c8b087ecdd0bc189480d6741da6b69eebfd419af80ebfe10` |
 
 Downloaded source files are retained in
 `asset-sources/homepage-2026-07-12/`. The deterministic preparation script is
 `scripts/prepare_homepage_assets.py`; it normalizes orientation, constrains
-dimensions, and writes quality-82 WebP files. Retrieval date: 2026-07-12.
+dimensions, and writes quality-82 WebP files. Industry-image retrieval date:
+2026-07-13.
 
 ### Public-domain design reference
 
