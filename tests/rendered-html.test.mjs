@@ -94,6 +94,50 @@ test("server-renders the complete private Boho homepage", async () => {
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Your site is taking shape/i);
 });
 
+test("publishes crawl-ready controls without lifting the noindex hold", async () => {
+  const robots = await readFile(
+    new URL("../dist/client/robots.txt", import.meta.url),
+    "utf8",
+  );
+  assert.match(robots, /User-agent: GPTBot[\s\S]*Allow: \//);
+  assert.match(robots, /User-agent: OAI-SearchBot/);
+  assert.match(robots, /User-agent: ClaudeBot/);
+  assert.match(robots, /User-agent: \*[\s\S]*Allow: \//);
+  assert.doesNotMatch(robots, /Disallow:\s*\//);
+  assert.match(
+    robots,
+    /Sitemap: https:\/\/bohodigitalservices\.com\/sitemap\.xml/,
+  );
+
+  const sitemapResponse = await render("/sitemap.xml");
+  assert.equal(sitemapResponse.status, 200);
+  assert.match(
+    sitemapResponse.headers.get("content-type") ?? "",
+    /(?:application|text)\/xml/i,
+  );
+  const sitemap = await sitemapResponse.text();
+  assert.match(sitemap, /https:\/\/bohodigitalservices\.com\//);
+  assert.match(sitemap, /https:\/\/bohodigitalservices\.com\/services\//);
+  assert.match(sitemap, /https:\/\/bohodigitalservices\.com\/resources\//);
+  assert.doesNotMatch(sitemap, /\/lab\/in-house-brands\//);
+
+  const homeResponse = await render();
+  const home = await homeResponse.text();
+  assert.match(
+    home,
+    /<link[^>]+rel="canonical"[^>]+href="https:\/\/bohodigitalservices\.com\/"/i,
+  );
+  assert.match(home, /<meta[^>]+name="robots"[^>]+noindex/i);
+
+  const serviceResponse = await render("/services");
+  const service = await serviceResponse.text();
+  assert.match(
+    service,
+    /<link[^>]+rel="canonical"[^>]+href="https:\/\/bohodigitalservices\.com\/services\/"/i,
+  );
+  assert.match(service, /<meta[^>]+name="robots"[^>]+noindex/i);
+});
+
 test("keeps compiled styles and approved public assets on the Pages static path", async () => {
   const response = await render();
   const html = await response.text();

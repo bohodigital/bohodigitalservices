@@ -1,43 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { headers } from "next/headers";
 import "./globals.css";
 
+const siteUrl = new URL("https://bohodigitalservices.com");
 const siteTitle =
   "Boho Digital Services | Website Design, Local SEO & Digital Growth";
 const siteDescription =
   "Research-led website design, local SEO, provider migration, technical SEO, lead generation, and digital growth services for businesses across the United States.";
 
-function requestOrigin(headerList: Headers) {
-  const rawHost =
-    headerList.get("x-forwarded-host") ?? headerList.get("host") ?? "";
-  const host = rawHost.split(",")[0]?.trim();
-  const rawProtocol = headerList.get("x-forwarded-proto") ?? "";
-  const protocol =
-    rawProtocol.split(",")[0]?.trim() ||
-    (host?.startsWith("localhost") || host?.startsWith("127.0.0.1")
-      ? "http"
-      : "https");
-
-  if (!host || !/^[a-z0-9.:[\]-]+$/i.test(host)) {
-    return new URL("http://localhost:3000");
-  }
-
-  try {
-    return new URL(`${protocol}://${host}`);
-  } catch {
-    return new URL("http://localhost:3000");
-  }
-}
-
-export async function generateMetadata(): Promise<Metadata> {
-  const origin = requestOrigin(await headers());
+export function generateMetadata(): Metadata {
   const socialImage = new URL(
     "/boho-digital-services-social-v2.png",
-    origin,
+    siteUrl,
   ).toString();
 
   return {
-    metadataBase: origin,
+    metadataBase: siteUrl,
     title: {
       default: siteTitle,
       template: "%s | Boho Digital Services",
@@ -54,12 +31,15 @@ export async function generateMetadata(): Promise<Metadata> {
       index: false,
       follow: false,
     },
+    alternates: {
+      canonical: "/",
+    },
     openGraph: {
       title: siteTitle,
       description:
         "Website design, local SEO, provider rescue, lead generation, and practical digital growth built from research.",
       type: "website",
-      url: origin,
+      url: siteUrl,
       images: [
         {
           url: socialImage,
