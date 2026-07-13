@@ -32,7 +32,7 @@ function requestOrigin(headerList: Headers) {
 export async function generateMetadata(): Promise<Metadata> {
   const origin = requestOrigin(await headers());
   const socialImage = new URL(
-    "/boho-digital-services-social.png",
+    "/boho-digital-services-social-v2.png",
     origin,
   ).toString();
 
@@ -43,6 +43,13 @@ export async function generateMetadata(): Promise<Metadata> {
       template: "%s | Boho Digital Services",
     },
     description: siteDescription,
+    icons: {
+      icon: [
+        { url: "/favicon.ico", sizes: "any" },
+        { url: "/brand/boho-bee-logo-v2-256.png", type: "image/png", sizes: "256x256" },
+      ],
+      apple: "/brand/boho-bee-logo-v2-256.png",
+    },
     robots: {
       index: false,
       follow: false,
@@ -58,7 +65,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: socialImage,
           width: 1200,
           height: 630,
-          alt: "Boho Digital Services editorial mosaic-wing social card",
+          alt: "Boho Digital Services — research-led website design, local SEO, and digital growth",
         },
       ],
     },

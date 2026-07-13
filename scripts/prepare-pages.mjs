@@ -10,6 +10,9 @@ const clientDirectory = fileURLToPath(
 const pagesEntry = fileURLToPath(
   new URL("../dist/client/_worker.js", import.meta.url),
 );
+const pagesRoutes = fileURLToPath(
+  new URL("../dist/client/_routes.json", import.meta.url),
+);
 
 await Promise.all([access(serverEntry), access(clientDirectory)]);
 
@@ -18,6 +21,29 @@ await Promise.all([access(serverEntry), access(clientDirectory)]);
 await writeFile(
   pagesEntry,
   'export { default } from "../server/index.js";\n',
+  "utf8",
+);
+
+// Advanced-mode Pages Workers otherwise receive every request. Keep immutable
+// build output and owner-approved public files on Pages' static-asset path so a
+// server route cannot turn a valid stylesheet or image into a 404 response.
+await writeFile(
+  pagesRoutes,
+  `${JSON.stringify(
+    {
+      version: 1,
+      include: ["/*"],
+      exclude: [
+        "/assets/*",
+        "/brand/*",
+        "/diagrams/*",
+        "/favicon.ico",
+        "/boho-digital-services-social-v2.png",
+      ],
+    },
+    null,
+    2,
+  )}\n`,
   "utf8",
 );
 

@@ -76,8 +76,42 @@ test("server-renders the complete private Boho homepage", async () => {
   assert.match(html, /data-do-not-track="true"/i);
   assert.match(html, /data-exclude-search="true"/i);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Your site is taking shape/i);
-}
-);
+});
+
+test("keeps compiled styles and approved public assets on the Pages static path", async () => {
+  const response = await render();
+  const html = await response.text();
+  const stylesheet = html.match(/<link[^>]+rel="stylesheet"[^>]+href="([^"]+)"/i)?.[1]
+    ?? html.match(/<link[^>]+href="([^"]+)"[^>]+rel="stylesheet"/i)?.[1];
+
+  assert.ok(stylesheet, "rendered homepage is missing its compiled stylesheet");
+  assert.match(stylesheet, /^\/assets\/[^?]+\.css(?:\?|$)/);
+  await access(new URL(`../dist/client${stylesheet}`, import.meta.url));
+
+  const routes = JSON.parse(
+    await readFile(new URL("../dist/client/_routes.json", import.meta.url), "utf8"),
+  );
+  assert.deepEqual(routes.include, ["/*"]);
+  for (const route of [
+    "/assets/*",
+    "/brand/*",
+    "/diagrams/*",
+    "/favicon.ico",
+    "/boho-digital-services-social-v2.png",
+  ]) {
+    assert.ok(routes.exclude.includes(route), `Pages routes must exclude ${route}`);
+  }
+
+  for (const asset of [
+    "../dist/client/brand/boho-bee-logo-v2-256.png",
+    "../dist/client/brand/github-invertocat-white.svg",
+    "../dist/client/diagrams/boho-hosting-architecture-v2.png",
+    "../dist/client/favicon.ico",
+    "../dist/client/boho-digital-services-social-v2.png",
+  ]) {
+    await access(new URL(asset, import.meta.url));
+  }
+});
 
 test("keeps the design system accessible, private, and free of starter artifacts", async () => {
   const [page, layout, homepage, components, mobileMenu, css, packageJson] = await Promise.all([
@@ -99,12 +133,20 @@ test("keeps the design system accessible, private, and free of starter artifacts
   assert.match(layout, /data-domains="bohodigitalservices\.com,www\.bohodigitalservices\.com"/);
   assert.match(layout, /data-do-not-track="true"/);
   assert.match(layout, /data-exclude-search="true"/);
+  assert.match(layout, /boho-digital-services-social-v2\.png/);
+  assert.match(layout, /favicon\.ico/);
   assert.equal((layout.match(/googletagmanager\.com/g) ?? []).length, 1);
   assert.equal((layout.match(/analytics\.bohodigitalservices\.com/g) ?? []).length, 1);
   assert.match(homepage, /className="home-section hero"/);
+  assert.match(homepage, /ResearchRouteVisual/);
+  assert.doesNotMatch(homepage, /function MosaicWing/);
   assert.equal((homepage.match(/className="home-section/g) ?? []).length, 11);
   assert.equal((homepage.match(/<ConceptCaption \/>/g) ?? []).length, 3);
   assert.match(components, /className="skip-link"/);
+  assert.match(components, /boho-bee-logo-v2-256\.png/);
+  assert.match(components, /mailto:contact@bohemiandigital\.org/);
+  assert.match(components, /mailto:webmaster@bohemiandigital\.org/);
+  assert.match(components, /https:\/\/github\.com\/bohodigital/);
   assert.match(components, /<MobileMenu navigation=/);
   assert.match(mobileMenu, /aria-expanded=\{open\}/);
   assert.match(mobileMenu, /event\.key === "Escape"/);
@@ -115,6 +157,10 @@ test("keeps the design system accessible, private, and free of starter artifacts
   assert.match(css, /--verdigris:\s*#1e5e5b/i);
   assert.match(css, /prefers-reduced-motion:\s*reduce/i);
   assert.match(css, /@media \(max-width:\s*30rem\)/i);
+  for (let index = 1; index <= 6; index += 1) {
+    assert.match(css, new RegExp(`\\.service-card--${index} \\.service-card__pattern`));
+  }
+  assert.doesNotMatch(css, /mosaic-wing|boho-flow|system-node|system-connector/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
 
   await assert.rejects(access(new URL("../app/_sites-preview/", import.meta.url)));
@@ -185,7 +231,12 @@ test("renders the source-backed glossary, tools catalog, definitions, and diagra
 
   assert.match(toolsHtml, /Boho Central Servers/);
   assert.match(toolsHtml, /How the name becomes a page/);
-  assert.match(toolsHtml, /Private work stays private/);
+  assert.match(toolsHtml, /A reviewable path from owner access to the live website/);
+  assert.match(toolsHtml, /boho-hosting-architecture-v2\.png/);
+  assert.match(toolsHtml, /Read the diagram as text/);
+  assert.match(toolsHtml, /class="delivery-route"/);
+  assert.match(toolsHtml, /Static assets stay on the asset path/);
+  assert.doesNotMatch(toolsHtml, /mosaic-wing|boho-flow/);
   assert.match(toolsHtml, /Rank Builder SEO/);
   assert.match(toolsHtml, /How Biscuit/);
   assert.match(toolsHtml, /developers\.cloudflare\.com/);

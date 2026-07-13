@@ -116,29 +116,36 @@ function WebDeliveryDiagram() {
           boundaries remain recognizable.
         </p>
       </figcaption>
-      <div className="system-diagram__canvas system-diagram__canvas--web">
-        <div className="system-node system-node--blue">
-          <span>01</span>
-          <strong>Visitor browser</strong>
-          <p>Requests a URL over HTTPS.</p>
-        </div>
-        <span className="system-connector" aria-hidden="true">DNS lookup →</span>
-        <div className="system-node system-node--gold">
-          <span>02</span>
-          <strong>DNS</strong>
-          <p>Directs the hostname to the approved web service.</p>
-        </div>
-        <span className="system-connector" aria-hidden="true">HTTP request →</span>
-        <div className="system-node system-node--verdigris">
-          <span>03</span>
-          <strong>Cloudflare edge</strong>
-          <p>Receives the request near the visitor.</p>
-        </div>
-        <span className="system-connector" aria-hidden="true">asset or function →</span>
-        <div className="system-node system-node--plum">
-          <span>04</span>
-          <strong>Pages + optional APIs</strong>
-          <p>Returns static files or invokes approved dynamic logic.</p>
+      <div className="delivery-route">
+        <ol className="delivery-route__stages" aria-label="Four stages of a public website request">
+          <li className="delivery-route__stage delivery-route__stage--request">
+            <span className="delivery-route__number">01</span>
+            <span className="delivery-route__verb">Request</span>
+            <strong>Visitor browser</strong>
+            <p>Asks for a named page over HTTPS.</p>
+          </li>
+          <li className="delivery-route__stage delivery-route__stage--resolve">
+            <span className="delivery-route__number">02</span>
+            <span className="delivery-route__verb">Resolve</span>
+            <strong>DNS</strong>
+            <p>Points the hostname toward the approved web service.</p>
+          </li>
+          <li className="delivery-route__stage delivery-route__stage--route">
+            <span className="delivery-route__number">03</span>
+            <span className="delivery-route__verb">Route</span>
+            <strong>Cloudflare edge</strong>
+            <p>Receives the request and applies the configured route.</p>
+          </li>
+          <li className="delivery-route__stage delivery-route__stage--return">
+            <span className="delivery-route__number">04</span>
+            <span className="delivery-route__verb">Return</span>
+            <strong>Page or approved function</strong>
+            <p>Returns the requested asset or invokes bounded server logic.</p>
+          </li>
+        </ol>
+        <div className="delivery-route__key">
+          <span>Delivery boundary</span>
+          <p>Static assets stay on the asset path. Only configured application requests enter server logic.</p>
         </div>
       </div>
       <div className="diagram-source-note">
@@ -149,61 +156,39 @@ function WebDeliveryDiagram() {
   );
 }
 
-function BohoWorkflowDiagram() {
+function HostingArchitectureDiagram() {
   return (
-    <figure className="system-diagram system-diagram--dark" aria-labelledby="boho-diagram-title">
+    <figure className="system-diagram system-diagram--dark approved-hosting-diagram" aria-labelledby="boho-diagram-title">
       <figcaption>
-        <p className="eyebrow">Diagram 02 · The Boho operating route</p>
-        <h2 id="boho-diagram-title">Private work stays private. Reviewed public work gets a clean route out.</h2>
+        <p className="eyebrow">Diagram 02 · Hosting and ownership route</p>
+        <h2 id="boho-diagram-title">A reviewable path from owner access to the live website.</h2>
         <p>
-          “Boho Central Servers” is the public-safe name for the local network
-          and Raspberry Pi systems used for private working data, research, and
-          automation. This diagram intentionally omits internal addresses,
-          paths, credentials, and defensive topology.
+          This owner-supplied conceptual diagram shows the working relationship
+          between the client, Boho systems, GitHub, Cloudflare Workers, and the
+          live website. It does not expose secret values or prove the current
+          state of any account or deployment.
         </p>
       </figcaption>
-      <div className="boho-flow">
-        <div className="boho-flow__lane boho-flow__lane--private">
-          <span className="boho-flow__label">Private working lane</span>
-          <div className="system-node system-node--copper">
-            <span>Input</span>
-            <strong>Approved client + owned-entity material</strong>
-            <p>Access, source records, public observations, and owner decisions.</p>
-          </div>
-          <span className="system-connector" aria-hidden="true">bounded intake →</span>
-          <div className="system-node system-node--gold">
-            <span>Private core</span>
-            <strong>Boho Central Servers</strong>
-            <p>Research, crawling, Python automation, restricted records, and selected MCP capabilities.</p>
-          </div>
-        </div>
-        <div className="boho-flow__gate">
-          <span>Human review gate</span>
-          <strong>Verify → sanitize → approve</strong>
-          <p>No raw credentials, private client data, or internal network details cross this boundary.</p>
-        </div>
-        <div className="boho-flow__lane boho-flow__lane--public">
-          <span className="boho-flow__label">Public-facing lane</span>
-          <div className="system-node system-node--blue">
-            <span>Source</span>
-            <strong>GitHub repositories</strong>
-            <p>Reviewed website source, public content, documentation, tests, and release history.</p>
-          </div>
-          <span className="system-connector" aria-hidden="true">build + verify →</span>
-          <div className="system-node system-node--verdigris">
-            <span>Delivery</span>
-            <strong>Cloudflare Pages</strong>
-            <p>Preview or public website delivery within approved configuration and current limits.</p>
-          </div>
-        </div>
-        <div className="boho-flow__signals">
-          <span>Evidence and management APIs</span>
-          <strong>Analytics · Search Console · Business Profile</strong>
-          <p>Connected only with owner authorization, least privilege, documented purpose, and appropriate privacy behavior.</p>
-        </div>
+      <div className="approved-hosting-diagram__image-wrap">
+        <img
+          src="/diagrams/boho-hosting-architecture-v2.png"
+          width="1672"
+          height="941"
+          alt="Client or owner exchanges work with Boho servers. Reviewed source moves through GitHub and Cloudflare Workers to the live website. Client-owned API keys and secrets grant bounded access to approved systems."
+        />
       </div>
+      <details className="approved-hosting-diagram__transcript">
+        <summary>Read the diagram as text</summary>
+        <ol>
+          <li>Client or owner and Boho servers exchange approved project information.</li>
+          <li>Boho servers support development, preview, and tools and are owned by Boho and operated in the United States.</li>
+          <li>Reviewed public source moves from Boho servers to GitHub.</li>
+          <li>Approved builds move from GitHub to Cloudflare Workers and then to the live website.</li>
+          <li>API keys and secrets remain client-owned; access is granted to Boho only for approved work.</li>
+        </ol>
+      </details>
       <div className="diagram-source-note">
-        <DefinedText text="The route uses [[git|Git]], [[repository|repositories]], [[deployment|deployments]], [[api|APIs]], [[oauth|OAuth]], [[automation|automation]], and [[mcp|MCP]] as separate, documented layers." />
+        <DefinedText text="The route uses [[git|Git]], [[repository|repositories]], [[deployment|deployments]], [[api|APIs]], and [[automation|automation]] as separate, documented layers." />
         <SourceLinks sourceIds={["github-repositories", "github-pages", "cloudflare-pages-limits", "mcp-architecture"]} />
       </div>
     </figure>
@@ -456,7 +441,7 @@ export function ToolsPage() {
         <section className="tools-diagrams" id="how-it-works">
           <div className="section-shell tools-diagrams__inner">
             <WebDeliveryDiagram />
-            <BohoWorkflowDiagram />
+            <HostingArchitectureDiagram />
           </div>
         </section>
 

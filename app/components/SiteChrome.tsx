@@ -447,12 +447,15 @@ export function GlossaryCrossLink({
   );
 }
 
-function BrandMosaicBee() {
+function BrandBee() {
   return (
-    <span className="brand-mosaic-bee" aria-hidden="true">
-      <span className="brand-mosaic-bee__wing brand-mosaic-bee__wing--left" />
-      <span className="brand-mosaic-bee__body" />
-      <span className="brand-mosaic-bee__wing brand-mosaic-bee__wing--right" />
+    <span className="brand-bee" aria-hidden="true">
+      <img
+        src="/brand/boho-bee-logo-v2-256.png"
+        width="256"
+        height="256"
+        alt=""
+      />
     </span>
   );
 }
@@ -469,7 +472,7 @@ export function Header() {
           href="/"
           aria-label="Boho Digital Services home"
         >
-          <BrandMosaicBee />
+          <BrandBee />
           <span className="site-header__brand-copy">
             <span className="site-header__brand-word">Boho</span>
             <span className="site-header__brand-service">Digital Services</span>
@@ -517,13 +520,21 @@ export function Footer() {
       <div className="site-footer__inner">
         <div className="site-footer__brand-block">
           <Link className="site-footer__brand" href="/">
-            <BrandMosaicBee />
+            <BrandBee />
             <span>Boho Digital Services</span>
           </Link>
           <p className="site-footer__brand-statement">
             Creative, research-led digital work for businesses that need their
             website to be useful, findable, and theirs to control.
           </p>
+          <div className="site-footer__contact-links">
+            <a href="mailto:contact@bohemiandigital.org">
+              contact@bohemiandigital.org
+            </a>
+            <a href="mailto:webmaster@bohemiandigital.org">
+              Webmaster
+            </a>
+          </div>
           <ButtonLink href="/start/">Get a Visibility Check</ButtonLink>
         </div>
 
@@ -562,8 +573,24 @@ export function Footer() {
             </ul>
           </nav>
 
+          <a
+            className="site-footer__github"
+            href="https://github.com/bohodigital"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Boho Digital on GitHub"
+            title="Boho Digital on GitHub"
+          >
+            <img
+              src="/brand/github-invertocat-white.svg"
+              width="24"
+              height="24"
+              alt=""
+            />
+          </a>
+
           <p className="site-footer__copyright">
-            © {currentYear} Boho Digital Services
+            {"©"} {currentYear} Boho Digital Services
           </p>
         </div>
       </div>

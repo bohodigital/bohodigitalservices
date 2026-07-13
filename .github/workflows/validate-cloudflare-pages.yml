@@ -52,4 +52,11 @@ jobs:
       - name: Confirm deployable output
         run: |
           test -f dist/client/_worker.js
+          test -f dist/client/_routes.json
           test -f dist/server/index.js
+          test -n "$(find dist/client/assets -maxdepth 1 -type f -name '*.css' -print -quit)"
+          test -f dist/client/brand/boho-bee-logo-v2-256.png
+          test -f dist/client/brand/github-invertocat-white.svg
+          test -f dist/client/diagrams/boho-hosting-architecture-v2.png
+          test -f dist/client/favicon.ico
+          test -f dist/client/boho-digital-services-social-v2.png

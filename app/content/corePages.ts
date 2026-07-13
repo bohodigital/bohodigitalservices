@@ -744,6 +744,7 @@ export const corePages: PageConfig[] = [
     headline: "Independent thinking, careful craft, and digital work tied to the business in front of us.",
     intro: [
       "Boho Digital Services is a small, research-led shop that combines website design, SEO, provider rescue, migration, lead generation, and ongoing growth support.",
+      "Boho currently serves businesses across the United States without presenting a public office address.",
     ],
     theme: "editorial",
     primaryCta: { label: "See How Boho Works", href: "#how-boho-operates" },
@@ -821,6 +822,7 @@ export const corePages: PageConfig[] = [
     headline: "Tell us what is stuck.",
     intro: [
       "Send the business, website, market, and the problem you are trying to solve. Boho will help identify the most useful first step.",
+      "For a direct email, use contact@bohemiandigital.org. Website issues may be reported to webmaster@bohemiandigital.org. These public links do not promise a response time.",
     ],
     theme: "editorial",
     primaryCta: { label: "Go to the inquiry form", href: "#request-form" },
@@ -1041,7 +1043,7 @@ export const corePages: PageConfig[] = [
       {
         title: "Business identity and contact",
         body: [
-          "The legal business identity, mailing address if required, jurisdiction, and approved privacy contact method have not been supplied. Those details must replace this note before publication.",
+          "The public-facing trade name is Boho Digital Services. The legal entity is identified in the Website Terms. No public street address is presented. A final privacy-contact and response process still requires operational and legal review.",
         ],
         tone: "plum",
       },
@@ -1138,7 +1140,7 @@ export const corePages: PageConfig[] = [
       {
         title: "Contact and effective date",
         body: [
-          "An approved business contact method, legal identity, jurisdiction, and effective date have not been supplied. Add them only after review; do not publish this draft as final terms.",
+          "Boho Digital Services is operated by Republic of Bohemia LLC. The current service area is the United States, and no public street address is presented. General inquiries may be sent to contact@bohemiandigital.org and website issues to webmaster@bohemiandigital.org. These public email links do not create a client relationship, guarantee monitoring, or promise a response time. Governing law, jurisdiction, and an effective date still require legal review before these terms become final.",
         ],
         note: "These website terms do not replace estimates, statements of work, service agreements, privacy obligations, or project contracts.",
         tone: "dark",

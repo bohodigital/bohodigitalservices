@@ -164,54 +164,41 @@ const labPanels = [
 
 const growthCycle = ["Prioritize", "Improve", "Measure", "Adjust"] as const;
 
-function MosaicWing() {
+const researchRouteStages = [
+  { number: "01", label: "Context", detail: "Business + market" },
+  { number: "02", label: "Evidence", detail: "Signals + constraints" },
+  { number: "03", label: "Structure", detail: "Priority + plan" },
+  { number: "04", label: "Delivery", detail: "Build + verify" },
+] as const;
+
+function ResearchRouteVisual() {
   return (
-    <div className="mosaic-wing" aria-hidden="true">
-      <div className="mosaic-wing__halo" />
-      <div className="mosaic-wing__lobe mosaic-wing__lobe--left">
-        <div className="mosaic-wing__cells">
-          {Array.from({ length: 14 }, (_, index) => (
-            <span
-              className={`mosaic-wing__cell mosaic-wing__cell--${index + 1}`}
-              key={`left-${index}`}
-            />
+    <div className="research-route" aria-hidden="true">
+      <div className="research-route__frame">
+        <div className="research-route__header">
+          <span>Research route</span>
+          <span>Boho / 01—04</span>
+        </div>
+        <div className="research-route__stages">
+          {researchRouteStages.map((stage) => (
+            <div className="research-route__stage" key={stage.number}>
+              <span className="research-route__number">{stage.number}</span>
+              <span className="research-route__label">{stage.label}</span>
+              <span className="research-route__detail">{stage.detail}</span>
+            </div>
           ))}
         </div>
-      </div>
-      <div className="mosaic-wing__lobe mosaic-wing__lobe--right">
-        <div className="mosaic-wing__cells">
-          {Array.from({ length: 14 }, (_, index) => (
-            <span
-              className={`mosaic-wing__cell mosaic-wing__cell--${index + 1}`}
-              key={`right-${index}`}
-            />
-          ))}
+        <div className="research-route__signal-line">
+          <span />
+          <span />
+          <span />
+          <span />
         </div>
-      </div>
-      <div className="mosaic-wing__bee-axis">
-        <span className="mosaic-wing__bee-head" />
-        <span className="mosaic-wing__bee-thorax" />
-        <span className="mosaic-wing__bee-abdomen" />
-        <span className="mosaic-wing__bee-tail" />
-      </div>
-      <div className="mosaic-wing__antennae">
-        <span />
-        <span />
-      </div>
-      <div className="mosaic-wing__flight-path">
-        <span />
-        <span />
-        <span />
-        <span />
-      </div>
-      <div className="mosaic-wing__signal mosaic-wing__signal--one">
-        <span />
-        <span />
-        <span />
-      </div>
-      <div className="mosaic-wing__signal mosaic-wing__signal--two">
-        <span />
-        <span />
+        <div className="research-route__note">
+          <span>Observe</span>
+          <span>Decide</span>
+          <span>Document</span>
+        </div>
       </div>
     </div>
   );
@@ -242,7 +229,7 @@ export default function Homepage() {
               </div>
             </div>
             <div className="hero__art">
-              <MosaicWing />
+              <ResearchRouteVisual />
             </div>
           </div>
         </section>
