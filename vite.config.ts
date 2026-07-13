@@ -33,16 +33,24 @@ const localBindingConfig = {
     : [],
 };
 
-export default defineConfig(async () => {
+export default defineConfig(async ({ command }) => {
   // Keep Wrangler and Miniflare state project-local. These are non-secret tool
   // settings; application environment belongs in ignored `.env*` files.
   process.env.WRANGLER_WRITE_LOGS ??= "false";
   process.env.WRANGLER_LOG_PATH ??= ".wrangler/logs";
   process.env.MINIFLARE_REGISTRY_PATH ??= ".wrangler/registry";
 
-  // Local-only Windows review can run without Miniflare while the normal
-  // build path keeps the Cloudflare worker plugin intact.
-  const isLocalReview = process.env.BOHO_LOCAL_REVIEW === "1";
+  // Cloudflare's local worker emulator can fail with `write EOF` on Windows,
+  // leaving the preview process present but no longer serving pages or assets.
+  // Default Windows `vite serve` to vinext-native review; production builds
+  // keep the Cloudflare plugin, and the explicit override remains available
+  // when local worker bindings genuinely need to be exercised.
+  const isNativeWindowsReview =
+    process.platform === "win32" &&
+    command === "serve" &&
+    process.env.VINEXT_USE_CLOUDFLARE_DEV !== "1";
+  const isLocalReview =
+    process.env.BOHO_LOCAL_REVIEW === "1" || isNativeWindowsReview;
   const cloudflarePlugins = isLocalReview
     ? []
     : [

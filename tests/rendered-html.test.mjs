@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { access, readFile } from "node:fs/promises";
+import { access, readFile, stat } from "node:fs/promises";
 import test from "node:test";
 
 const templateRoot = new URL("../", import.meta.url);
@@ -138,6 +138,67 @@ test("keeps compiled styles and approved public assets on the Pages static path"
   ]) {
     await access(new URL(asset, import.meta.url));
   }
+});
+
+test("resolves every local asset referenced by every rendered route", async () => {
+  const [coreSource, audienceSource] = await Promise.all([
+    readFile(new URL("../app/content/corePages.ts", import.meta.url), "utf8"),
+    readFile(new URL("../app/content/audiencePages.ts", import.meta.url), "utf8"),
+  ]);
+  const slugs = [...`${coreSource}\n${audienceSource}`.matchAll(/slug:\s*"([^"]+)"/g)]
+    .map((match) => match[1]);
+  const routes = [...new Set(slugs.map((slug) => slug === "/" ? "/" : slug.replace(/\/$/, "")))];
+  const assetPaths = new Set();
+
+  function collectAsset(reference) {
+    if (!reference || reference.startsWith("data:")) return;
+
+    const url = new URL(reference, "http://localhost");
+    if (url.origin !== "http://localhost") return;
+
+    const pathname = url.pathname;
+    if (
+      pathname.startsWith("/assets/") ||
+      pathname.startsWith("/brand/") ||
+      pathname.startsWith("/diagrams/") ||
+      pathname.startsWith("/visuals/") ||
+      pathname === "/favicon.ico" ||
+      pathname === "/boho-digital-services-social-v2.png"
+    ) {
+      assetPaths.add(pathname);
+    }
+  }
+
+  for (const route of routes) {
+    const response = await render(route);
+    assert.equal(response.status, 200, `${route} did not render for asset audit`);
+    const html = await response.text();
+
+    for (const match of html.matchAll(/(?:src|href|content)="([^"]+)"/g)) {
+      collectAsset(match[1]);
+    }
+  }
+
+  for (const pathname of [...assetPaths]) {
+    const fileUrl = new URL(`../dist/client${pathname}`, import.meta.url);
+    const fileStat = await stat(fileUrl);
+    assert.ok(fileStat.isFile(), `${pathname} is not a file in the packaged client`);
+    assert.ok(fileStat.size > 0, `${pathname} is empty in the packaged client`);
+
+    if (pathname.endsWith(".css")) {
+      const css = await readFile(fileUrl, "utf8");
+      for (const match of css.matchAll(/url\(["']?([^"')]+)["']?\)/g)) {
+        collectAsset(new URL(match[1], `http://localhost${pathname}`).toString());
+      }
+    }
+  }
+
+  for (const pathname of assetPaths) {
+    const fileStat = await stat(new URL(`../dist/client${pathname}`, import.meta.url));
+    assert.ok(fileStat.size > 0, `${pathname} is missing or empty after CSS dependency expansion`);
+  }
+
+  assert.ok(assetPaths.size >= 16, `asset audit found only ${assetPaths.size} local assets`);
 });
 
 test("keeps the design system accessible, private, and free of starter artifacts", async () => {
