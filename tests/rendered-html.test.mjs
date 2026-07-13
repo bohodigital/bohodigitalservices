@@ -64,7 +64,6 @@ test("server-renders the complete private Boho homepage", async () => {
   assert.match(html, /aria-expanded="false"/i);
   assert.match(html, /aria-controls="mobile-menu-/i);
   assert.match(html, /href="\/emergency\/"/i);
-  assert.match(html, /Look closely before choosing the work/i);
   assert.match(html, /How Boho Works: Discover, we review your goals/i);
   assert.match(html, /Discover, design, build, launch/i);
   assert.match(html, /Scope, review, and launch gates are/i);
@@ -153,8 +152,8 @@ test("keeps the design system accessible, private, and free of starter artifacts
   assert.equal((layout.match(/googletagmanager\.com/g) ?? []).length, 1);
   assert.equal((layout.match(/analytics\.bohodigitalservices\.com/g) ?? []).length, 1);
   assert.match(homepage, /className="home-section hero"/);
-  assert.match(homepage, /className="hero-editorial"/);
-  assert.match(homepage, /className="method-process-figure"/);
+  assert.match(homepage, /className="hero-editorial hero-editorial--process"/);
+  assert.match(homepage, /className="method-summary-list"/);
   assert.match(homepage, /how-boho-works-v1\.png/);
   assert.match(homepage, /className="design-reference"/);
   assert.match(homepage, /className="buyer-panel__image"/);

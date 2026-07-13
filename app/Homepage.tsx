@@ -16,6 +16,24 @@ import {
   SearchCheck,
 } from "lucide-react";
 
+const methodStages = [
+  {
+    number: "01",
+    title: "Study the market",
+    body: "Review the business, competitors, search results, website quality, customer expectations, and trust signals around the real market.",
+  },
+  {
+    number: "02",
+    title: "Find the signals",
+    body: "Identify what is weak, controllable, measurable, and plausibly connected to revenue or qualified customer action.",
+  },
+  {
+    number: "03",
+    title: "Fix what matters",
+    body: "Design, migrate, repair, write, track, and optimize around the highest-leverage work first.",
+  },
+] as const;
+
 const serviceCards = [
   {
     category: "Design",
@@ -234,18 +252,27 @@ export default function Homepage() {
                 </ButtonLink>
               </div>
             </div>
-            <figure className="hero-editorial">
-              <img
-                src="/visuals/research-notebook.webp"
-                width="1600"
-                height="1068"
-                alt="Hands drawing a marketing growth graph in a spiral notebook."
-                fetchPriority="high"
-              />
+            <figure className="hero-editorial hero-editorial--process">
+              <div
+                className="hero-editorial__process-viewport"
+                tabIndex={0}
+                aria-label="Scrollable How Boho Works process diagram"
+              >
+                <img
+                  src="/diagrams/how-boho-works-v1.png"
+                  width="1672"
+                  height="941"
+                  alt="How Boho Works: Discover, we review your goals; Design, we plan the right solution; Build, we create and refine; Launch, you go live with confidence."
+                  fetchPriority="high"
+                />
+              </div>
               <figcaption>
-                <span>Research + planning</span>
-                <strong>Look closely before choosing the work.</strong>
-                <small>Representative editorial imagery, not client work.</small>
+                <span>How Boho works</span>
+                <strong>Discover, design, build, launch.</strong>
+                <small>
+                  A simplified path. Scope, review, and launch gates are
+                  confirmed for each engagement.
+                </small>
               </figcaption>
             </figure>
           </div>
@@ -283,29 +310,17 @@ export default function Homepage() {
               </div>
             </div>
 
-            <figure className="method-process-figure">
-              <div
-                className="method-process-figure__viewport"
-                tabIndex={0}
-                aria-label="Scrollable How Boho Works process diagram"
-              >
-                <img
-                  src="/diagrams/how-boho-works-v1.png"
-                  width="1672"
-                  height="941"
-                  alt="How Boho Works: Discover, we review your goals; Design, we plan the right solution; Build, we create and refine; Launch, you go live with confidence."
-                  loading="lazy"
-                />
-              </div>
-              <figcaption>
-                <span>Delivery path</span>
-                <strong>Discover, design, build, launch.</strong>
-                <small>
-                  A simplified project path. Scope, review, and launch gates are
-                  confirmed for each engagement.
-                </small>
-              </figcaption>
-            </figure>
+            <ol className="method-summary-list" aria-label="Research-led working sequence">
+              {methodStages.map((stage) => (
+                <li key={stage.number}>
+                  <span aria-hidden="true">{stage.number}</span>
+                  <div>
+                    <h3>{stage.title}</h3>
+                    <p>{define(stage.body)}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
             <TextLink href="/lab/" className="section-link">
               See the research approach
             </TextLink>
