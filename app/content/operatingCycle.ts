@@ -40,4 +40,3 @@ export const operatingCycle = [
     linkLabel: "See how ongoing improvement works",
   },
 ] as const;
-
