@@ -25,6 +25,9 @@ PHOTO_OUTPUTS = (
     ("industry-ecommerce-source.jpg", "industry-ecommerce.webp", 1000),
     ("industry-b2b-source.jpg", "industry-b2b.webp", 1000),
     ("met-water-textile-source.jpg", "met-water-textile.webp", 1600),
+    ("creative-process-source.jpg", "creative-process.webp", 1200),
+    ("migration-infrastructure-source.jpg", "migration-infrastructure.webp", 1200),
+    ("growth-analysis-source.jpg", "growth-analysis.webp", 1400),
 )
 
 

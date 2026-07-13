@@ -24,9 +24,10 @@ Reviewed 2026-07-12 for the private Boho Digital Services Resources and homepage
 
 ## Homepage editorial imagery
 
-All photography is self-hosted. It represents the kinds of business settings
-Boho serves; it is not client work, does not show Boho staff, and does not imply
-endorsement. The homepage states that boundary next to the industry image grid.
+All photography is self-hosted. It represents the kinds of business settings,
+creative work, infrastructure, or visual metaphors used in the page; it is not
+client work, does not show Boho staff, and does not imply endorsement. The
+homepage states that boundary in captions and next to the industry image grid.
 
 Pexels permits free website and commercial use, modification, and use without
 required attribution under the [Pexels License](https://www.pexels.com/license/).
@@ -41,11 +42,14 @@ business endorses Boho.
 | `public/visuals/industry-retail.webp` (1000x800) | Raphael Loquellano | [Pexels photo 19367174](https://www.pexels.com/photo/people-sitting-in-a-coffee-shop-19367174/) | Bright hospitality setting with customers | `d94e6579051a61e2ebd0572a69482106b99b6b72db8b78b876c20c0188e5f7fa` |
 | `public/visuals/industry-ecommerce.webp` (1000x668) | Kampus Production | [Pexels photo 7857532](https://www.pexels.com/photo/woman-sitting-at-the-table-and-packing-orders-7857532/) | Small ecommerce team packing customer orders | `117469cd8928e3b44e4ce50fe802c692a281640be9eab6d943cd417481800ad7` |
 | `public/visuals/industry-b2b.webp` (1000x667) | Alena Darmel | [Pexels photo 7710178](https://www.pexels.com/photo/colleagues-having-a-business-meeting-7710178/) | Professional team reviewing strategy | `58ac78233316b332c8b087ecdd0bc189480d6741da6b69eebfd419af80ebfe10` |
+| `public/visuals/creative-process.webp` (1200x1800) | AI25.Studio | [Pexels photo 6322370](https://www.pexels.com/photo/people-sitting-at-desk-working-on-laptop-in-team-6322370/) | Editorial design-planning image in the website-design section | `dfad16c75306425e52c6722633c8283f0f8b2c1d16cf9a7a2200e6cf34f67d08` |
+| `public/visuals/migration-infrastructure.webp` (1200x1800) | cottonbro studio | [Pexels photo 6804586](https://www.pexels.com/photo/man-connecting-computer-cables-6804586/) | Infrastructure-maintenance image supporting the ownership and migration section | `0424427b99fcef2f93d3b200d97f8b219d0e836b18bc98d52545d30caaeff1f7` |
+| `public/visuals/growth-analysis.webp` (1400x933) | ROMAN ODINTSOV | [Pexels photo 7931203](https://www.pexels.com/photo/fern-leaves-basked-in-sunlight-7931203/) | Botanical metaphor for steady, compounding improvement | `e9bbbf38f7049c379ccc3c630ec337a09773937854c9d9d0a0ee3cf7fdc4bfde` |
 
 Downloaded source files are retained in
 `asset-sources/homepage-2026-07-12/`. The deterministic preparation script is
 `scripts/prepare_homepage_assets.py`; it normalizes orientation, constrains
-dimensions, and writes quality-82 WebP files. Industry-image retrieval date:
+dimensions, and writes quality-82 WebP files. Homepage-image retrieval date:
 2026-07-13.
 
 ### Public-domain design reference
@@ -56,7 +60,8 @@ dimensions, and writes quality-82 WebP files. Industry-image retrieval date:
 - Rights: Public Domain through [The Met Open Access](https://www.metmuseum.org/hubs/open-access), which makes public-domain works available under CC0.
 - Local output: `public/visuals/met-water-textile.webp` (1200x1004)
 - Output SHA-256: `1f8d3d8040d9fb443980be8728331ef20e573e7c59102e6599faceb75fad2560`
-- Use: explicitly captioned visual reference in the website-design section.
+- Use: retained approved asset; no longer rendered on the homepage after the
+  design section moved to human, process-oriented editorial photography.
 
 ## Supplied bee on dark chrome
 

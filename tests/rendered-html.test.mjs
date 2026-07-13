@@ -46,11 +46,11 @@ test("server-renders the complete private Boho homepage", async () => {
     "A digital marketing package is not a business strategy.",
     "Research before recommendations.",
     "Website design built around clarity, trust, search, and action.",
-    "Website, SEO, migration, and lead-generation services.",
+    "Website design, local SEO, website migration, and lead-generation services.",
     "Website migration and provider rescue without losing what works.",
-    "Website and SEO strategy shaped by how customers choose.",
+    "Website and local SEO strategy shaped by how customers choose.",
     "Resources, research, and proof you can inspect.",
-    "Ongoing SEO tied to visible priorities and decisions.",
+    "Ongoing SEO and website growth tied to visible priorities and decisions.",
     "We only work with one client per industry and service area, claim your territory today!",
     "Lean overhead, practical pricing, and more useful work.",
     "Start with a Local Visibility Check.",
@@ -73,7 +73,11 @@ test("server-renders the complete private Boho homepage", async () => {
   assert.match(html, /definition-customer-discovery-/i);
   assert.match(html, /definition-customer-action-/i);
   assert.match(html, /href="\/start\/"[^>]*>[\s\S]*?Claim Your Territory/i);
-  assert.match(html, /Public-domain textile detail from The Met Open Access collection/i);
+  assert.match(html, /Representative editorial photography, not Boho staff or client work/i);
+  assert.match(html, /aria-label="Homepage journey"/i);
+  assert.match(html, /href="#design"/i);
+  assert.match(html, /href="#services"/i);
+  assert.match(html, /href="#growth"/i);
   assert.match(html, /Photography shows representative business settings/i);
   assert.doesNotMatch(html, /Concept interface/i);
   assert.match(html, /googletagmanager\.com\/gtag\/js\?id=G-5CV8L2SE2R/i);
@@ -126,6 +130,9 @@ test("keeps compiled styles and approved public assets on the Pages static path"
     "../dist/client/visuals/industry-ecommerce.webp",
     "../dist/client/visuals/industry-b2b.webp",
     "../dist/client/visuals/met-water-textile.webp",
+    "../dist/client/visuals/creative-process.webp",
+    "../dist/client/visuals/migration-infrastructure.webp",
+    "../dist/client/visuals/growth-analysis.webp",
     "../dist/client/favicon.ico",
     "../dist/client/boho-digital-services-social-v2.png",
   ]) {

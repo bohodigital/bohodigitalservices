@@ -5,7 +5,7 @@ import "./globals.css";
 const siteTitle =
   "Boho Digital Services | Website Design, Local SEO & Digital Growth";
 const siteDescription =
-  "Research-led website design, local SEO, provider migration, technical SEO, lead generation, and digital growth services for local and growing businesses.";
+  "Research-led website design, local SEO, provider migration, technical SEO, lead generation, and digital growth services for businesses across the United States.";
 
 function requestOrigin(headerList: Headers) {
   const rawHost =

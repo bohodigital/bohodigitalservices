@@ -260,8 +260,8 @@ export default function Homepage() {
               <h1 id="hero-title">
                 Research-led website design, local SEO, and digital growth.
               </h1>
-              <p className="hero__body">{define("Boho Digital Services designs distinctive websites, improves local search visibility, rescues difficult provider situations, and builds practical lead-generation systems around how customers find, trust, and contact a business.")}</p>
-              <p className="hero__supporting-line">{define("Every business has a different market. We study yours before deciding what to fix.")}</p>
+              <p className="hero__body">{define("Boho Digital Services creates distinctive small-business websites, improves local SEO and search visibility, handles website migration and provider rescue, and builds practical lead-generation paths around how customers discover, trust, and contact a business.")}</p>
+              <p className="hero__supporting-line">{define("Serving businesses across the United States. Every market is different, so we study yours before deciding what to fix.")}</p>
               <div className="button-row hero__actions">
                 <ButtonLink href="/start/">Get a Visibility Check</ButtonLink>
                 <ButtonLink href="#method" variant="secondary">
@@ -289,6 +289,18 @@ export default function Homepage() {
             </figure>
           </div>
         </section>
+
+        <nav className="journey-rail" aria-label="Homepage journey">
+          <div className="section-shell journey-rail__inner">
+            <span className="journey-rail__label">Follow the work</span>
+            <ol>
+              <li><a href="#method"><span>01</span> Discover</a></li>
+              <li><a href="#design"><span>02</span> Design</a></li>
+              <li><a href="#services"><span>03</span> Build</a></li>
+              <li><a href="#growth"><span>04</span> Grow</a></li>
+            </ol>
+          </div>
+        </nav>
 
         <section
           className="home-section editorial-problem"
@@ -349,6 +361,7 @@ export default function Homepage() {
 
         <section
           className="home-section design-spotlight"
+          id="design"
           aria-labelledby="design-title"
         >
           <div className="section-shell">
@@ -373,16 +386,16 @@ export default function Homepage() {
             <div className="design-reference-grid">
               <figure className="design-reference">
                 <img
-                  src="/visuals/met-water-textile.webp"
+                  src="/visuals/creative-process.webp"
                   width="1200"
-                  height="1004"
-                  alt="Historic blue and cream textile with a repeating water pattern."
+                  height="1800"
+                  alt="Designers comparing ideas, color samples, and sketches around a laptop."
                   loading="lazy"
                 />
                 <figcaption>
-                  <span>Visual reference</span>
-                  <strong>Distinctive does not have to mean noisy.</strong>
-                  <small>Public-domain textile detail from The Met Open Access collection.</small>
+                  <span>Design with a reason</span>
+                  <strong>Every visual choice should help someone understand, trust, or act.</strong>
+                  <small>Representative editorial photography, not Boho staff or client work.</small>
                 </figcaption>
               </figure>
 
@@ -411,13 +424,15 @@ export default function Homepage() {
 
         <section
           className="home-section services-mosaic"
+          id="services"
           aria-labelledby="services-title"
         >
           <div className="section-shell">
             <div className="section-heading section-heading--split">
               <div>
                 <h2 id="services-title">
-                  Website, SEO, migration, and lead-generation services.
+                  Website design, local SEO, website migration, and
+                  lead-generation services.
                 </h2>
               </div>
               <p className="reading-width">{define("Websites, search visibility, technical health, content, tracking, and conversion usually work as one system. Pulling one lever while ignoring the rest is how businesses end up paying for motion instead of progress.")}</p>
@@ -470,21 +485,33 @@ export default function Homepage() {
               <p className="migration-rescue__trust-line">{define("Careful inventory. Clear redirect planning. Post-launch verification. Client-owned access wherever possible.")}</p>
             </div>
 
-            <div className="migration-map" aria-label="Provider migration route">
-              <ol className="migration-map__route">
-                {migrationSteps.map((step, index) => (
-                  <li key={step}>
-                    <span className="migration-map__index" aria-hidden="true">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <span className="migration-map__step">{step}</span>
-                  </li>
-                ))}
-              </ol>
-              <div className="migration-map__systems" aria-label="Systems inventoried">
-                {migrationSystems.map((system) => (
-                  <span key={system}>{system}</span>
-                ))}
+            <div className="migration-rescue__visual">
+              <figure className="migration-rescue__photo">
+                <img
+                  src="/visuals/migration-infrastructure.webp"
+                  width="1200"
+                  height="1800"
+                  alt="A technician carefully working with network infrastructure."
+                  loading="lazy"
+                />
+                <figcaption>Ownership is operational, not decorative.</figcaption>
+              </figure>
+              <div className="migration-map" aria-label="Provider migration route">
+                <ol className="migration-map__route">
+                  {migrationSteps.map((step, index) => (
+                    <li key={step}>
+                      <span className="migration-map__index" aria-hidden="true">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <span className="migration-map__step">{step}</span>
+                    </li>
+                  ))}
+                </ol>
+                <div className="migration-map__systems" aria-label="Systems inventoried">
+                  {migrationSystems.map((system) => (
+                    <span key={system}>{system}</span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -498,7 +525,8 @@ export default function Homepage() {
             <div className="section-heading section-heading--split">
               <div>
                 <h2 id="buyers-title">
-                  Website and SEO strategy shaped by how customers choose.
+                  Website and local SEO strategy shaped by how customers
+                  choose.
                 </h2>
               </div>
               <p className="reading-width">{define("A contractor selling large projects does not need the same website strategy as a restaurant. An ecommerce store does not need the same search plan as a clinic. Boho groups businesses by how customers discover them, how trust is earned, and which actions are most valuable.")}</p>
@@ -581,12 +609,14 @@ export default function Homepage() {
 
         <section
           className="home-section ongoing-growth"
+          id="growth"
           aria-labelledby="growth-title"
         >
           <div className="section-shell ongoing-growth__layout">
             <div className="ongoing-growth__copy">
               <h2 id="growth-title">
-                Ongoing SEO tied to visible priorities and decisions.
+                Ongoing SEO and website growth tied to visible priorities and
+                decisions.
               </h2>
               <p>{define("Ongoing work makes sense when the market is active, the site needs steady improvement, content supports real services, technical health needs monitoring, or lead paths need continued testing.")}</p>
               <p>{define("It should not become a subscription to vague activity.")}</p>
@@ -599,16 +629,28 @@ export default function Homepage() {
               </div>
             </div>
 
-            <ol className="growth-cycle" aria-label="Ongoing work cycle">
-              {growthCycle.map((phase, index) => (
-                <li className={`growth-cycle__phase growth-cycle__phase--${index + 1}`} key={phase}>
-                  <span className="growth-cycle__index" aria-hidden="true">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <strong>{phase}</strong>
-                </li>
-              ))}
-            </ol>
+            <div className="ongoing-growth__visual">
+              <figure className="ongoing-growth__photo">
+                <img
+                  src="/visuals/growth-analysis.webp"
+                  width="1400"
+                  height="933"
+                  alt="Sunlight moving across layered green fern leaves."
+                  loading="lazy"
+                />
+                <figcaption>Useful momentum compounds.</figcaption>
+              </figure>
+              <ol className="growth-cycle" aria-label="Ongoing work cycle">
+                {growthCycle.map((phase, index) => (
+                  <li className={`growth-cycle__phase growth-cycle__phase--${index + 1}`} key={phase}>
+                    <span className="growth-cycle__index" aria-hidden="true">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <strong>{phase}</strong>
+                  </li>
+                ))}
+              </ol>
+            </div>
           </div>
         </section>
 
