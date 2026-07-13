@@ -2,6 +2,21 @@
 
 Reviewed 2026-07-12 for the private Boho Digital Services Resources and homepage redesign.
 
+## Owner-supplied process graphic
+
+- Local path: `public/diagrams/how-boho-works-v1.png`
+- Dimensions: 1672x941 RGBA PNG; the supplied file is fully opaque and its
+  light checkerboard is part of the image pixels.
+- Owner-supplied SHA-256:
+  `ae90e5075bbb7b64789cac16e48435ffb7bdb875b5ae536b0ff22e20c2de2761`
+- Use: responsive process figure in the homepage research/method section.
+- Treatment: preserved byte-for-byte; not redrawn, regenerated, recolored,
+  cropped, compressed, or passed through image generation.
+- Accessibility: the page supplies a full text alternative for Discover,
+  Design, Build, and Launch, plus a visible scope/review/launch-gate caption.
+- Small-screen behavior: the exact graphic remains legible in a keyboard-
+  focusable horizontal viewport instead of being reduced to unreadable text.
+
 ## Homepage editorial imagery
 
 All photography is self-hosted. It represents the kinds of business settings

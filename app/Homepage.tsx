@@ -16,24 +16,6 @@ import {
   SearchCheck,
 } from "lucide-react";
 
-const methodStages = [
-  {
-    number: "01",
-    title: "Study the market",
-    body: "We review the business, competitors, search results, website quality, local visibility, customer expectations, and trust signals around the actual market.",
-  },
-  {
-    number: "02",
-    title: "Find the signals",
-    body: "We identify which signals are weak, controllable, measurable, and plausibly connected to revenue or qualified customer action.",
-  },
-  {
-    number: "03",
-    title: "Fix what matters",
-    body: "We design, migrate, repair, write, track, and optimize around the highest-leverage work first.",
-  },
-] as const;
-
 const serviceCards = [
   {
     category: "Design",
@@ -301,26 +283,29 @@ export default function Homepage() {
               </div>
             </div>
 
-            <ol className="signal-path" aria-label="The three-stage Boho method">
-              {methodStages.map((stage, index) => (
-                <li className="signal-path__stage" key={stage.title}>
-                  <div className="signal-path__marker" aria-hidden="true">
-                    <span>{stage.number}</span>
-                  </div>
-                  <div className="signal-path__content">
-                    <h3>{stage.title}</h3>
-                    <p>{define(stage.body)}</p>
-                  </div>
-                  {index < methodStages.length - 1 ? (
-                    <span className="signal-path__connector" aria-hidden="true" />
-                  ) : (
-                    <span className="signal-path__destination" aria-hidden="true">
-                      business value
-                    </span>
-                  )}
-                </li>
-              ))}
-            </ol>
+            <figure className="method-process-figure">
+              <div
+                className="method-process-figure__viewport"
+                tabIndex={0}
+                aria-label="Scrollable How Boho Works process diagram"
+              >
+                <img
+                  src="/diagrams/how-boho-works-v1.png"
+                  width="1672"
+                  height="941"
+                  alt="How Boho Works: Discover, we review your goals; Design, we plan the right solution; Build, we create and refine; Launch, you go live with confidence."
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>
+                <span>Delivery path</span>
+                <strong>Discover, design, build, launch.</strong>
+                <small>
+                  A simplified project path. Scope, review, and launch gates are
+                  confirmed for each engagement.
+                </small>
+              </figcaption>
+            </figure>
             <TextLink href="/lab/" className="section-link">
               See the research approach
             </TextLink>

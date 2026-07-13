@@ -65,6 +65,9 @@ test("server-renders the complete private Boho homepage", async () => {
   assert.match(html, /aria-controls="mobile-menu-/i);
   assert.match(html, /href="\/emergency\/"/i);
   assert.match(html, /Look closely before choosing the work/i);
+  assert.match(html, /How Boho Works: Discover, we review your goals/i);
+  assert.match(html, /Discover, design, build, launch/i);
+  assert.match(html, /Scope, review, and launch gates are/i);
   assert.match(html, /Public-domain textile detail from The Met Open Access collection/i);
   assert.match(html, /Photography shows representative business settings/i);
   assert.doesNotMatch(html, /Concept interface/i);
@@ -110,6 +113,7 @@ test("keeps compiled styles and approved public assets on the Pages static path"
     "../dist/client/brand/boho-bee-logo-v2-transparent.png",
     "../dist/client/brand/github-invertocat-white.svg",
     "../dist/client/diagrams/boho-hosting-architecture-v2.png",
+    "../dist/client/diagrams/how-boho-works-v1.png",
     "../dist/client/visuals/research-notebook.webp",
     "../dist/client/visuals/industry-contractors.webp",
     "../dist/client/visuals/industry-local-service.webp",
@@ -150,9 +154,11 @@ test("keeps the design system accessible, private, and free of starter artifacts
   assert.equal((layout.match(/analytics\.bohodigitalservices\.com/g) ?? []).length, 1);
   assert.match(homepage, /className="home-section hero"/);
   assert.match(homepage, /className="hero-editorial"/);
+  assert.match(homepage, /className="method-process-figure"/);
+  assert.match(homepage, /how-boho-works-v1\.png/);
   assert.match(homepage, /className="design-reference"/);
   assert.match(homepage, /className="buyer-panel__image"/);
-  assert.doesNotMatch(homepage, /ResearchRouteVisual|ConceptCaption/);
+  assert.doesNotMatch(homepage, /ResearchRouteVisual|ConceptCaption|signal-path/);
   assert.doesNotMatch(homepage, /function MosaicWing/);
   assert.equal((homepage.match(/className="home-section/g) ?? []).length, 11);
   assert.match(components, /className="skip-link"/);
