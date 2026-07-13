@@ -5,6 +5,7 @@ import InteriorPage from "../components/InteriorPage";
 import { ToolsPage } from "../components/KnowledgePages";
 import { GlossaryPage } from "../components/GlossaryPage";
 import { ResourcesPage } from "../components/ResourcesPage";
+import { InHouseBrandsPage } from "../components/InHouseBrandsPage";
 import { audiencePages } from "../content/audiencePages";
 import { corePages } from "../content/corePages";
 
@@ -56,6 +57,7 @@ export default async function InteriorRoute({ params }: InteriorRouteProps) {
   if (page.pageKind === "glossary") return <GlossaryPage />;
   if (page.pageKind === "tools") return <ToolsPage />;
   if (page.pageKind === "resources") return <ResourcesPage />;
+  if (page.pageKind === "brands") return <InHouseBrandsPage />;
 
   return <InteriorPage page={page} />;
 }

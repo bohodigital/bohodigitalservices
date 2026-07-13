@@ -1160,19 +1160,20 @@ export const audiencePages: PageConfig[] = [
   },
   {
     slug: "/lab/in-house-brands/",
+    pageKind: "brands",
     title: "In-House Brands | Owned Boho Properties",
     metaDescription:
-      "A noindexed draft shelf reserved for transparently disclosed properties Boho owns and may use for testing and public learning.",
+      "Live previews and transparent Lab files for How Biscuit, Rank Builder SEO, and Better Grades, three in-house Boho properties.",
     eyebrow: "The Boho Lab · Draft shelf",
     headline: "Owned properties can support experiments when ownership stays visible.",
     intro: [
-      "Rank Builder SEO and How Biscuit are owned by Boho. They are listed as placeholders for future reviewed entity descriptions, research, or transparent experiments—not as clients or evidence of outcomes.",
+      "How Biscuit, Rank Builder SEO, and Better Grades are operated in-house. They are shown as owned working properties, not clients or evidence that a result will transfer to another business.",
     ],
     theme: "research",
     primaryCta: { label: "Return to the Lab", href: "/lab/" },
     secondaryCta: { label: "See Boho's Operating Boundaries", href: "/lab/claims-we-refuse-to-make/" },
     noIndex: true,
-    draftLabel: "Owned entities confirmed · descriptions and links pending",
+    draftLabel: "Owned entities confirmed · live previews available",
     sections: [
       {
         eyebrow: "Disclosure standard",

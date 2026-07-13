@@ -122,7 +122,7 @@ test("keeps compiled styles and approved public assets on the Pages static path"
     "../dist/client/brand/boho-bee-logo-v2-transparent.png",
     "../dist/client/brand/github-invertocat-white.svg",
     "../dist/client/diagrams/boho-hosting-architecture-v2.png",
-    "../dist/client/diagrams/how-boho-works-v1.png",
+    "../dist/client/diagrams/how-boho-works-v2-transparent.png",
     "../dist/client/visuals/research-notebook.webp",
     "../dist/client/visuals/industry-contractors.webp",
     "../dist/client/visuals/industry-local-service.webp",
@@ -133,6 +133,12 @@ test("keeps compiled styles and approved public assets on the Pages static path"
     "../dist/client/visuals/creative-process.webp",
     "../dist/client/visuals/migration-infrastructure.webp",
     "../dist/client/visuals/growth-analysis.webp",
+    "../dist/client/visuals/homepage-design-studio-v2.webp",
+    "../dist/client/visuals/homepage-industry-contractors-v2.webp",
+    "../dist/client/visuals/homepage-industry-local-service-v2.webp",
+    "../dist/client/visuals/homepage-industry-retail-v2.webp",
+    "../dist/client/visuals/homepage-industry-ecommerce-v2.webp",
+    "../dist/client/visuals/homepage-industry-b2b-v2.webp",
     "../dist/client/favicon.ico",
     "../dist/client/boho-digital-services-social-v2.png",
   ]) {
@@ -202,12 +208,15 @@ test("resolves every local asset referenced by every rendered route", async () =
 });
 
 test("keeps the design system accessible, private, and free of starter artifacts", async () => {
-  const [page, layout, homepage, components, mobileMenu, css, packageJson] = await Promise.all([
+  const [page, layout, homepage, components, mobileMenu, brandCarousel, brandData, brandsPage, css, packageJson] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/Homepage.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/components/SiteChrome.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/components/MobileMenu.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/components/BrandPreviewCarousel.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/content/inHouseBrands.ts", import.meta.url), "utf8"),
+    readFile(new URL("../app/components/InHouseBrandsPage.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
   ]);
@@ -230,7 +239,8 @@ test("keeps the design system accessible, private, and free of starter artifacts
   assert.match(homepage, /className="method-summary-list"/);
   assert.match(homepage, /className="method-summary-list__icon"/);
   assert.match(homepage, /className="design-principle__icon"/);
-  assert.match(homepage, /how-boho-works-v1\.png/);
+  assert.match(homepage, /how-boho-works-v2-transparent\.png/);
+  assert.match(homepage, /<BrandPreviewCarousel \/>/);
   assert.match(homepage, /className="design-reference"/);
   assert.match(homepage, /className="buyer-panel__image"/);
   assert.doesNotMatch(homepage, /ResearchRouteVisual|ConceptCaption|signal-path/);
@@ -245,6 +255,21 @@ test("keeps the design system accessible, private, and free of starter artifacts
   assert.match(mobileMenu, /aria-expanded=\{open\}/);
   assert.match(mobileMenu, /event\.key === "Escape"/);
   assert.match(mobileMenu, /aria-modal="true"/);
+  for (const [name, url, id] of [
+    ["How Biscuit", "https://howbiscuit.com", "how-biscuit"],
+    ["RankBuilder SEO", "https://rankbuilderseo.com", "rank-builder-seo"],
+    ["Better Grades", "https://bettergrades.net", "better-grades"],
+  ]) {
+    assert.ok(brandData.includes(name), `brand data is missing ${name}`);
+    assert.ok(brandData.includes(url), `brand data is missing ${url}`);
+    assert.ok(brandData.includes(id), `brand data is missing ${id}`);
+  }
+  assert.match(brandCarousel, /sandbox="allow-same-origin allow-scripts"/);
+  assert.match(brandCarousel, /brand-preview-frame__guard/);
+  assert.match(brandCarousel, /\/lab\/in-house-brands\/#/);
+  assert.match(brandCarousel, /aria-controls="brand-preview-panel"/);
+  assert.doesNotMatch(brandCarousel, /href=\{brand\.url\}/);
+  assert.match(brandsPage, /id=\{brand\.id\}/);
   assert.match(components, /export function FormField/);
   assert.match(components, /export function FormStatusMessage/);
   assert.match(css, /--burnished-gold:\s*#e3ae3d/i);
@@ -259,6 +284,26 @@ test("keeps the design system accessible, private, and free of starter artifacts
 
   await assert.rejects(access(new URL("../app/_sites-preview/", import.meta.url)));
   await assert.rejects(access(new URL("public/_sites-preview", templateRoot)));
+});
+
+test("renders the in-house brand Lab with live, non-navigating previews", async () => {
+  const response = await render("/lab/in-house-brands");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+
+  for (const [name, id] of [
+    ["How Biscuit", "how-biscuit"],
+    ["RankBuilder SEO", "rank-builder-seo"],
+    ["Better Grades", "better-grades"],
+  ]) {
+    assert.ok(html.includes(name), `brand Lab is missing ${name}`);
+    assert.ok(html.includes(`id="${id}"`), `brand Lab is missing #${id}`);
+  }
+
+  assert.match(html, /src="https:\/\/howbiscuit\.com\/"/i);
+  assert.doesNotMatch(html, /<a[^>]+href="https:\/\/(?:howbiscuit\.com|rankbuilderseo\.com|bettergrades\.net)/i);
+  assert.match(html, /Live, non-interactive preview/);
+  assert.match(html, /noindex, nofollow/);
 });
 
 test("server-renders all configured routes with working fragment targets", async () => {

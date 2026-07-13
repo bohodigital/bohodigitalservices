@@ -7,10 +7,18 @@ import {
   TextLink,
 } from "./components/SiteChrome";
 import { DefinedText } from "./components/DefinedText";
+import { BrandPreviewCarousel } from "./components/BrandPreviewCarousel";
 import {
   AlignLeft,
+  BarChart3,
+  BriefcaseBusiness,
   Compass,
   Crosshair,
+  Database,
+  FileCheck2,
+  Globe2,
+  KeyRound,
+  LineChart,
   MapPin,
   MousePointerClick,
   PanelsTopLeft,
@@ -19,6 +27,8 @@ import {
   Search,
   SearchCheck,
   ShieldCheck,
+  Sparkles,
+  Target,
   Wrench,
 } from "lucide-react";
 
@@ -156,67 +166,59 @@ const buyerPanels = [
     body: "For project-based businesses where one strong lead can be worth thousands. Focus areas often include estimate requests, high-value service pages, local visibility, project proof, reviews, and service-area clarity.",
     href: "/industries/home-improvement-contractors/",
     label: "Explore home improvement and contractors",
-    image: "/visuals/industry-contractors.webp",
-    imageAlt: "A carpenter working within the timber frame of a new home.",
-    imageWidth: 1000,
-    imageHeight: 667,
-    position: "center 48%",
+    image: "/visuals/homepage-industry-contractors-v2.webp",
+    imageAlt: "An electrician installing wiring during a residential renovation.",
+    imageWidth: 1067,
+    imageHeight: 1600,
+    position: "center 56%",
   },
   {
     title: "Local Service Businesses",
     body: "For appointment-based, service-area, and trust-heavy businesses that need calls, bookings, visits, or qualified inquiries.",
     href: "/industries/local-service-businesses/",
     label: "Explore local service businesses",
-    image: "/visuals/industry-local-service.webp",
-    imageAlt: "An experienced repair technician servicing an appliance indoors.",
-    imageWidth: 1000,
-    imageHeight: 1333,
-    position: "center 38%",
+    image: "/visuals/homepage-industry-local-service-v2.webp",
+    imageAlt: "A professional pet groomer carefully trimming a small dog.",
+    imageWidth: 1067,
+    imageHeight: 1600,
+    position: "center 54%",
   },
   {
     title: "Brick-and-Mortar Retail & Hospitality",
     body: "For businesses that depend on local discovery, reputation, directions, reservations, events, and in-person attention.",
     href: "/industries/brick-and-mortar-retail-hospitality/",
     label: "Explore retail and hospitality",
-    image: "/visuals/industry-retail.webp",
-    imageAlt: "Customers gathering inside a bright modern coffee shop.",
-    imageWidth: 1000,
-    imageHeight: 800,
-    position: "center 52%",
+    image: "/visuals/homepage-industry-retail-v2.webp",
+    imageAlt: "Customers ordering inside a warm, carefully designed neighborhood cafe.",
+    imageWidth: 1067,
+    imageHeight: 1600,
+    position: "center 58%",
   },
   {
     title: "Online Retail & Ecommerce",
     body: "For stores that need stronger product discovery, category structure, technical SEO, trust, and the path from browsing to purchase.",
     href: "/industries/online-retail-ecommerce/",
     label: "Explore online retail and ecommerce",
-    image: "/visuals/industry-ecommerce.webp",
-    imageAlt: "A small ecommerce team packing a customer order beside a laptop.",
-    imageWidth: 1000,
-    imageHeight: 668,
-    position: "center",
+    image: "/visuals/homepage-industry-ecommerce-v2.webp",
+    imageAlt: "A small online retailer packing an order beside a laptop and inventory sheet.",
+    imageWidth: 1600,
+    imageHeight: 1068,
+    position: "center 52%",
   },
   {
     title: "Professional & B2B Services",
     body: "For firms that need clear positioning, credibility, useful education, and qualified conversations before a buyer commits.",
     href: "/industries/professional-b2b-services/",
     label: "Explore professional and B2B services",
-    image: "/visuals/industry-b2b.webp",
-    imageAlt: "A professional team reviewing strategy together around a laptop.",
-    imageWidth: 1000,
-    imageHeight: 667,
-    position: "center 44%",
+    image: "/visuals/homepage-industry-b2b-v2.webp",
+    imageAlt: "A professional team reviewing research, documents, and digital work together.",
+    imageWidth: 1600,
+    imageHeight: 1068,
+    position: "center 46%",
   },
 ] as const;
 
 const labPanels = [
-  {
-    title: "In-house brands",
-    body: "Properties we control and use to test content systems, publishing workflows, technical structure, and search visibility.",
-    status: "In progress",
-    badge: "in-progress" as const,
-    href: "/lab/in-house-brands/",
-    label: "View in-house brands",
-  },
   {
     title: "Example reports",
     body: "Clear demonstrations of what a market review, signal audit, or technical roadmap can contain.",
@@ -279,7 +281,7 @@ export default function Homepage() {
                 aria-label="Scrollable How Boho Works process diagram"
               >
                 <img
-                  src="/diagrams/how-boho-works-v1.png"
+                  src="/diagrams/how-boho-works-v2-transparent.png"
                   width="1672"
                   height="941"
                   alt="How Boho Works: Discover, we review your goals; Design, we plan the right solution; Build, we create and refine; Launch, you go live with confidence."
@@ -313,8 +315,20 @@ export default function Homepage() {
               </h2>
             </div>
             <div className="editorial-problem__body reading-width">
-              <p>{define("A lot of agencies start with the package before they understand the business. They sell traffic before defining what a good lead looks like. They sell redesigns before studying what the current site is supposed to do.")}</p>
-              <p>{define("They sell reports before deciding which numbers should change the next decision. Boho starts with the business model, the market, the website, and the customer actions worth improving.")}</p>
+              <p className="editorial-problem__lead">
+                Most agencies start with a package. Boho starts with the business.
+              </p>
+              <p>
+                First we learn what you sell, who needs it, and which customer action would
+                actually matter. Then we decide whether the next move is a stronger website,
+                better search visibility, a safer migration, or clearer measurement.
+              </p>
+              <div className="business-first-signals" aria-label="Business-first decision inputs">
+                <span><BriefcaseBusiness size={19} aria-hidden="true" /> Offer</span>
+                <span><Target size={19} aria-hidden="true" /> Market</span>
+                <span><MousePointerClick size={19} aria-hidden="true" /> Action</span>
+                <span><BarChart3 size={19} aria-hidden="true" /> Signal</span>
+              </div>
             </div>
           </div>
         </section>
@@ -386,10 +400,10 @@ export default function Homepage() {
             <div className="design-reference-grid">
               <figure className="design-reference">
                 <img
-                  src="/visuals/creative-process.webp"
-                  width="1200"
-                  height="1800"
-                  alt="Designers comparing ideas, color samples, and sketches around a laptop."
+                  src="/visuals/homepage-design-studio-v2.webp"
+                  width="1067"
+                  height="1600"
+                  alt="A carefully arranged design workspace with color studies, typography, and material samples."
                   loading="lazy"
                 />
                 <figcaption>
@@ -486,16 +500,17 @@ export default function Homepage() {
             </div>
 
             <div className="migration-rescue__visual">
-              <figure className="migration-rescue__photo">
-                <img
-                  src="/visuals/migration-infrastructure.webp"
-                  width="1200"
-                  height="1800"
-                  alt="A technician carefully working with network infrastructure."
-                  loading="lazy"
-                />
-                <figcaption>Ownership is operational, not decorative.</figcaption>
-              </figure>
+              <div className="migration-ledger" aria-label="Migration ownership dossier">
+                <div className="migration-ledger__heading">
+                  <KeyRound size={28} strokeWidth={1.6} aria-hidden="true" />
+                  <div><span>Transfer file</span><strong>Ownership dossier</strong></div>
+                </div>
+                <ul>
+                  <li><Globe2 size={20} aria-hidden="true" /><span><strong>Domain</strong> registrar and DNS control</span></li>
+                  <li><Database size={20} aria-hidden="true" /><span><strong>Content</strong> pages, media, forms, and data</span></li>
+                  <li><FileCheck2 size={20} aria-hidden="true" /><span><strong>Continuity</strong> redirects, tracking, and verification</span></li>
+                </ul>
+              </div>
               <div className="migration-map" aria-label="Provider migration route">
                 <ol className="migration-map__route">
                   {migrationSteps.map((step, index) => (
@@ -586,6 +601,8 @@ export default function Homepage() {
               </div>
             </div>
 
+            <BrandPreviewCarousel />
+
             <div className="evidence-board" aria-label="Boho Lab evidence board">
               {labPanels.map((panel, index) => (
                 <article
@@ -630,16 +647,20 @@ export default function Homepage() {
             </div>
 
             <div className="ongoing-growth__visual">
-              <figure className="ongoing-growth__photo">
-                <img
-                  src="/visuals/growth-analysis.webp"
-                  width="1400"
-                  height="933"
-                  alt="Sunlight moving across layered green fern leaves."
-                  loading="lazy"
-                />
-                <figcaption>Useful momentum compounds.</figcaption>
-              </figure>
+              <div className="growth-monitor" aria-label="Ongoing improvement signal monitor">
+                <div className="growth-monitor__heading">
+                  <LineChart size={28} strokeWidth={1.6} aria-hidden="true" />
+                  <div><span>Decision rhythm</span><strong>Watch what changes the next move.</strong></div>
+                </div>
+                <div className="growth-monitor__signals">
+                  <span><SearchCheck size={19} aria-hidden="true" /> Visibility</span>
+                  <span><PanelsTopLeft size={19} aria-hidden="true" /> Experience</span>
+                  <span><MousePointerClick size={19} aria-hidden="true" /> Qualified action</span>
+                </div>
+                <div className="growth-monitor__chart" aria-hidden="true">
+                  <i /><i /><i /><i /><i /><i />
+                </div>
+              </div>
               <ol className="growth-cycle" aria-label="Ongoing work cycle">
                 {growthCycle.map((phase, index) => (
                   <li className={`growth-cycle__phase growth-cycle__phase--${index + 1}`} key={phase}>
@@ -659,6 +680,7 @@ export default function Homepage() {
           aria-labelledby="territory-cta-title"
         >
           <div className="section-shell territory-cta__inner">
+            <span className="territory-cta__mark" aria-hidden="true"><Target size={70} strokeWidth={1.2} /></span>
             <div className="territory-cta__copy">
               <p className="eyebrow eyebrow--on-dark">Protected market focus</p>
               <h2 id="territory-cta-title">
@@ -676,6 +698,11 @@ export default function Homepage() {
           aria-labelledby="pricing-title"
         >
           <div className="section-shell pricing-philosophy__inner">
+            <div className="pricing-philosophy__signals" aria-label="How Boho keeps work practical">
+              <span><Sparkles size={20} aria-hidden="true" /> Less ceremony</span>
+              <span><BriefcaseBusiness size={20} aria-hidden="true" /> More useful work</span>
+              <span><BarChart3 size={20} aria-hidden="true" /> Visible priorities</span>
+            </div>
             <h2 id="pricing-title">
               Lean overhead, practical pricing, and more useful work.
             </h2>

@@ -4,23 +4,43 @@ Reviewed 2026-07-12 for the private Boho Digital Services Resources and homepage
 
 ## Owner-supplied process graphic
 
-- Local path: `public/diagrams/how-boho-works-v1.png`
-- Dimensions: 1672x941 RGBA PNG; the supplied file is fully opaque and its
-  light checkerboard is part of the image pixels.
+- Original local path: `public/diagrams/how-boho-works-v1.png`
+- Homepage derivative: `public/diagrams/how-boho-works-v2-transparent.png`
+- Dimensions: 1672x941 RGBA PNG.
 - Owner-supplied SHA-256:
   `ae90e5075bbb7b64789cac16e48435ffb7bdb875b5ae536b0ff22e20c2de2761`
+- Transparent derivative SHA-256:
+  `f32345ee1312ef5fd799956d8e874cc24dda91619d0faf5a2d64bd4283fc9f12`
 - Use: replaces the homepage's primary hero image in a responsive process figure.
-- Treatment: preserved byte-for-byte; not redrawn, regenerated, recolored,
-  cropped, compressed, or passed through image generation.
+- Treatment: an edge-connected flood fill changes only the alpha channel of
+  near-neutral checkerboard pixels that connect to the outer canvas. Every RGB
+  pixel is byte-for-byte identical to the owner-supplied file; interior white
+  details remain opaque. Validation recorded 1,086,683 fully transparent pixels,
+  a transparent corner, and exact RGB equality between original and derivative.
 - Accessibility: the page supplies a full text alternative for Discover,
   Design, Build, and Launch. The redundant visible caption was removed because
   the same words are already part of the supplied graphic.
 - Small-screen behavior: the exact hero graphic remains legible in a keyboard-
   focusable horizontal viewport instead of being reduced to unreadable text.
-- Visual treatment: the fully opaque original remains unchanged and sits in a
-  warm light reading panel inside the dark homepage hero. True transparency
-  would require altering the owner's baked checkerboard pixels, so no
-  destructive transparency conversion is shipped.
+- Visual treatment: the transparent derivative sits on a deliberate warm-light
+  reading panel inside the dark homepage hero so its black typography remains
+  legible without showing the source checkerboard.
+
+## Homepage editorial imagery v2
+
+The current homepage pass replaces the earlier rendered photography with the
+following self-hosted, compressed WebP derivatives. Source photographs remain
+subject to the Pexels License described below. They are representative editorial
+imagery only and do not depict Boho staff, clients, results, or endorsements.
+
+| Local output | Official source | Use | Output SHA-256 |
+| --- | --- | --- | --- |
+| `public/visuals/homepage-design-studio-v2.webp` (1067x1600) | [Pexels photo 37663437](https://www.pexels.com/photo/creative-design-workspace-with-color-swatches-37663437/) | Color, material, and layout workspace for the design section | `191eeaa0712089d204c3fb28959dda3910ba27e5499f354ed85c91e1e51bf551` |
+| `public/visuals/homepage-industry-contractors-v2.webp` (1067x1600) | [Pexels photo 29871587](https://www.pexels.com/photo/electrician-working-on-renovation-project-in-turkiye-29871587/) | Skilled contractor at work | `4ba6c2164a98da316e19a0e5217eb990d1c8eb8fda2775328d215d4d526066bb` |
+| `public/visuals/homepage-industry-local-service-v2.webp` (1067x1600) | [Pexels photo 6130989](https://www.pexels.com/photo/terrier-dog-being-groomed-by-a-professional-groomer-6130989/) | Recognizable appointment-based local service | `ac7deac63540a39d30018e8a5404e4fadd79c61776b8c2626675b187c0e87806` |
+| `public/visuals/homepage-industry-retail-v2.webp` (1067x1600) | [Pexels photo 29036509](https://www.pexels.com/photo/modern-cafe-interior-with-customers-at-counter-29036509/) | Active hospitality and retail environment | `0e23f4e58b238195006b13b4f623122dec55c7c2c14cbdc8a63140ddb4686ede` |
+| `public/visuals/homepage-industry-ecommerce-v2.webp` (1600x1068) | [Pexels photo 7857532](https://www.pexels.com/photo/woman-sitting-at-the-table-and-packing-orders-7857532/) | Small-business ecommerce fulfillment | `f4be83fba1467cd56e91c5c80ec11de12e46365d26710c8256d3eb75459e90c0` |
+| `public/visuals/homepage-industry-b2b-v2.webp` (1600x1068) | [Pexels photo 7988692](https://www.pexels.com/photo/people-working-on-laptops-7988692/) | Collaborative professional-services team | `f7f757324b7907ea308b60687ad4373b7e1a55def697c59e6ed7b8f9e1ba7b87` |
 
 ## Homepage editorial imagery
 
