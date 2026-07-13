@@ -1,6 +1,5 @@
 import {
   ButtonLink,
-  ConceptCaption,
   CtaBand,
   EvidenceBadge,
   Footer,
@@ -111,41 +110,84 @@ const migrationSystems = [
   "Redirects",
 ] as const;
 
+const designPrinciples = [
+  {
+    number: "01",
+    title: "Clarity",
+    body: "Make the offer, audience, and next step understandable without making a buyer decode the page.",
+  },
+  {
+    number: "02",
+    title: "Trust",
+    body: "Use proof, ownership, useful detail, and honest boundaries instead of decoration pretending to be credibility.",
+  },
+  {
+    number: "03",
+    title: "Discovery",
+    body: "Build structure and content around the language and decisions people actually use to find a business.",
+  },
+  {
+    number: "04",
+    title: "Action",
+    body: "Give a qualified buyer a clear, low-friction route to call, book, request, buy, or keep learning.",
+  },
+] as const;
+
 const buyerPanels = [
   {
     title: "Home Improvement & Contractors",
     body: "For project-based businesses where one strong lead can be worth thousands. Focus areas often include estimate requests, high-value service pages, local visibility, project proof, reviews, and service-area clarity.",
     href: "/industries/home-improvement-contractors/",
     label: "Explore home improvement and contractors",
-    pattern: "blueprint",
+    image: "/visuals/industry-contractors.webp",
+    imageAlt: "Hands selecting a tool from an organized mechanic's kit.",
+    imageWidth: 1000,
+    imageHeight: 666,
+    position: "center",
   },
   {
     title: "Local Service Businesses",
     body: "For appointment-based, service-area, and trust-heavy businesses that need calls, bookings, visits, or qualified inquiries.",
     href: "/industries/local-service-businesses/",
     label: "Explore local service businesses",
-    pattern: "neighborhood",
+    image: "/visuals/industry-local-service.webp",
+    imageAlt: "A barber carefully trimming a customer's hair in a local shop.",
+    imageWidth: 1000,
+    imageHeight: 1500,
+    position: "center 42%",
   },
   {
     title: "Brick-and-Mortar Retail & Hospitality",
     body: "For businesses that depend on local discovery, reputation, directions, reservations, events, and in-person attention.",
     href: "/industries/brick-and-mortar-retail-hospitality/",
     label: "Explore retail and hospitality",
-    pattern: "storefront",
+    image: "/visuals/industry-retail.webp",
+    imageAlt: "Wooden shelves and refill jars inside a small retail shop.",
+    imageWidth: 1000,
+    imageHeight: 666,
+    position: "center 44%",
   },
   {
     title: "Online Retail & Ecommerce",
     body: "For stores that need stronger product discovery, category structure, technical SEO, trust, and the path from browsing to purchase.",
     href: "/industries/online-retail-ecommerce/",
     label: "Explore online retail and ecommerce",
-    pattern: "product-grid",
+    image: "/visuals/industry-ecommerce.webp",
+    imageAlt: "A small online retailer packing products beside a laptop.",
+    imageWidth: 1000,
+    imageHeight: 666,
+    position: "center",
   },
   {
     title: "Professional & B2B Services",
     body: "For firms that need clear positioning, credibility, useful education, and qualified conversations before a buyer commits.",
     href: "/industries/professional-b2b-services/",
     label: "Explore professional and B2B services",
-    pattern: "documents",
+    image: "/visuals/industry-b2b.webp",
+    imageAlt: "Business strategy documents arranged across a worktable.",
+    imageWidth: 1000,
+    imageHeight: 750,
+    position: "center",
   },
 ] as const;
 
@@ -155,68 +197,36 @@ const labPanels = [
     body: "Properties we control and use to test content systems, publishing workflows, technical structure, and search visibility.",
     status: "In progress",
     badge: "in-progress" as const,
+    href: "/lab/in-house-brands/",
+    label: "View in-house brands",
   },
   {
     title: "Example reports",
     body: "Clear demonstrations of what a market review, signal audit, or technical roadmap can contain.",
     status: "Example format",
     badge: "example-format" as const,
+    href: "/lab/example-reports/",
+    label: "View example reports",
   },
   {
     title: "Market maps",
     body: "Visual studies of competitors, service areas, website quality, local visibility, and opportunity.",
     status: "In progress",
     badge: "in-progress" as const,
+    href: "/lab/market-research/",
+    label: "View market research",
   },
   {
     title: "Work log",
     body: "A running record of what Boho is building, testing, fixing, and learning.",
     status: "In progress",
     badge: "in-progress" as const,
+    href: "/lab/work-log/",
+    label: "View the work log",
   },
 ] as const;
 
 const growthCycle = ["Prioritize", "Improve", "Measure", "Adjust"] as const;
-
-const researchRouteStages = [
-  { number: "01", label: "Context", detail: "Business + market" },
-  { number: "02", label: "Evidence", detail: "Signals + constraints" },
-  { number: "03", label: "Structure", detail: "Priority + plan" },
-  { number: "04", label: "Delivery", detail: "Build + verify" },
-] as const;
-
-function ResearchRouteVisual() {
-  return (
-    <div className="research-route" aria-hidden="true">
-      <div className="research-route__frame">
-        <div className="research-route__header">
-          <span>Research route</span>
-          <span>Boho / 01—04</span>
-        </div>
-        <div className="research-route__stages">
-          {researchRouteStages.map((stage) => (
-            <div className="research-route__stage" key={stage.number}>
-              <span className="research-route__number">{stage.number}</span>
-              <span className="research-route__label">{stage.label}</span>
-              <span className="research-route__detail">{stage.detail}</span>
-            </div>
-          ))}
-        </div>
-        <div className="research-route__signal-line">
-          <span />
-          <span />
-          <span />
-          <span />
-        </div>
-        <div className="research-route__note">
-          <span>Observe</span>
-          <span>Decide</span>
-          <span>Document</span>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default function Homepage() {
   const seenTerms = new Set<string>();
@@ -242,9 +252,20 @@ export default function Homepage() {
                 </ButtonLink>
               </div>
             </div>
-            <div className="hero__art">
-              <ResearchRouteVisual />
-            </div>
+            <figure className="hero-editorial">
+              <img
+                src="/visuals/research-notebook.webp"
+                width="1600"
+                height="1068"
+                alt="Hands drawing a marketing growth graph in a spiral notebook."
+                fetchPriority="high"
+              />
+              <figcaption>
+                <span>Research + planning</span>
+                <strong>Look closely before choosing the work.</strong>
+                <small>Representative editorial imagery, not client work.</small>
+              </figcaption>
+            </figure>
           </div>
         </section>
 
@@ -329,66 +350,34 @@ export default function Homepage() {
               </div>
             </div>
 
-            <div className="concept-studio" aria-label="Fictional website concepts">
-              <figure className="concept-studio__concept concept-studio__concept--contractor">
-                <div className="concept-ui concept-ui--contractor" aria-hidden="true">
-                  <div className="concept-ui__chrome">
-                    <span />
-                    <span />
-                    <span />
-                  </div>
-                  <p className="concept-ui__kicker">Project services</p>
-                  <p className="concept-ui__headline">Build confidence before the estimate.</p>
-                  <div className="concept-ui__lines">
-                    <span />
-                    <span />
-                  </div>
-                  <div className="concept-ui__action">Request an estimate</div>
-                </div>
-                <ConceptCaption />
+            <div className="design-reference-grid">
+              <figure className="design-reference">
+                <img
+                  src="/visuals/met-water-textile.webp"
+                  width="1200"
+                  height="1004"
+                  alt="Historic blue and cream textile with a repeating water pattern."
+                  loading="lazy"
+                />
+                <figcaption>
+                  <span>Visual reference</span>
+                  <strong>Distinctive does not have to mean noisy.</strong>
+                  <small>Public-domain textile detail from The Met Open Access collection.</small>
+                </figcaption>
               </figure>
 
-              <figure className="concept-studio__concept concept-studio__concept--hospitality">
-                <div className="concept-ui concept-ui--hospitality" aria-hidden="true">
-                  <div className="concept-ui__photo-field">
-                    <span />
-                    <span />
-                  </div>
-                  <p className="concept-ui__kicker">Local hospitality</p>
-                  <p className="concept-ui__headline">A clear reason to visit.</p>
-                  <div className="concept-ui__nav-row">
-                    <span>Menu</span>
-                    <span>Hours</span>
-                    <span>Visit</span>
-                  </div>
-                </div>
-                <ConceptCaption />
-              </figure>
-
-              <figure className="concept-studio__concept concept-studio__concept--ecommerce">
-                <div className="concept-ui concept-ui--ecommerce" aria-hidden="true">
-                  <div className="concept-ui__commerce-head">
-                    <p>Browse the collection</p>
-                    <span>Filter</span>
-                  </div>
-                  <div className="concept-ui__product-grid">
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                  </div>
-                  <div className="concept-ui__lines">
-                    <span />
-                    <span />
-                  </div>
-                </div>
-                <ConceptCaption />
-              </figure>
+              <ol className="design-principles" aria-label="Four website design principles">
+                {designPrinciples.map((principle) => (
+                  <li key={principle.number}>
+                    <span aria-hidden="true">{principle.number}</span>
+                    <div>
+                      <h3>{principle.title}</h3>
+                      <p>{define(principle.body)}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
             </div>
-            <p className="concept-studio__caption">
-              Concept interfaces showing how one design system can adapt to
-              different business models. Not client work.
-            </p>
           </div>
         </section>
 
@@ -457,11 +446,10 @@ export default function Homepage() {
               <ol className="migration-map__route">
                 {migrationSteps.map((step, index) => (
                   <li key={step}>
-                    <span className="migration-map__node" aria-hidden="true" />
+                    <span className="migration-map__index" aria-hidden="true">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
                     <span className="migration-map__step">{step}</span>
-                    {index < migrationSteps.length - 1 ? (
-                      <span className="migration-map__line" aria-hidden="true" />
-                    ) : null}
                   </li>
                 ))}
               </ol>
@@ -491,13 +479,18 @@ export default function Homepage() {
             <div className="buyer-panels">
               {buyerPanels.map((buyer, index) => (
                 <article
-                  className={`buyer-panel buyer-panel--${buyer.pattern} buyer-panel--${index + 1}`}
+                  className={`buyer-panel buyer-panel--${index + 1}`}
                   key={buyer.title}
                 >
-                  <div className="buyer-panel__pattern" aria-hidden="true">
-                    <span />
-                    <span />
-                    <span />
+                  <div className="buyer-panel__image">
+                    <img
+                      src={buyer.image}
+                      width={buyer.imageWidth}
+                      height={buyer.imageHeight}
+                      alt={buyer.imageAlt}
+                      loading="lazy"
+                      style={{ objectPosition: buyer.position }}
+                    />
                   </div>
                   <div className="buyer-panel__content">
                     <p className="buyer-panel__number" aria-hidden="true">
@@ -513,6 +506,10 @@ export default function Homepage() {
             <div className="section-action">
               <ButtonLink href="/industries/">Find Your Business Type</ButtonLink>
             </div>
+            <p className="buyer-panels__disclosure">
+              Photography shows representative business settings. It is not
+              client work and does not imply endorsement.
+            </p>
           </div>
         </section>
 
@@ -534,7 +531,6 @@ export default function Homepage() {
             </div>
 
             <div className="evidence-board" aria-label="Boho Lab evidence board">
-              <div className="evidence-board__grid" aria-hidden="true" />
               {labPanels.map((panel, index) => (
                 <article
                   className={`evidence-card evidence-card--${index + 1}`}
@@ -548,10 +544,7 @@ export default function Homepage() {
                   </div>
                   <h3>{panel.title}</h3>
                   <p>{define(panel.body)}</p>
-                  <div className="evidence-card__marks" aria-hidden="true">
-                    <span />
-                    <span />
-                  </div>
+                  <TextLink href={panel.href}>{panel.label}</TextLink>
                 </article>
               ))}
             </div>
@@ -585,14 +578,8 @@ export default function Homepage() {
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <strong>{phase}</strong>
-                  <span className="growth-cycle__connector" aria-hidden="true" />
                 </li>
               ))}
-              <li className="growth-cycle__center" aria-hidden="true">
-                next
-                <br />
-                decision
-              </li>
             </ol>
           </div>
         </section>
@@ -615,13 +602,6 @@ export default function Homepage() {
           className="home-section final-cta"
           aria-labelledby="final-cta-title"
         >
-          <div className="final-cta__mosaic" aria-hidden="true">
-            <span className="final-cta__cell final-cta__cell--one" />
-            <span className="final-cta__cell final-cta__cell--two" />
-            <span className="final-cta__cell final-cta__cell--three" />
-            <span className="final-cta__path" />
-            <span className="final-cta__destination" />
-          </div>
           <div className="section-shell">
             <CtaBand
               className="final-cta__band"

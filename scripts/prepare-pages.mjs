@@ -37,6 +37,7 @@ await writeFile(
         "/assets/*",
         "/brand/*",
         "/diagrams/*",
+        "/visuals/*",
         "/favicon.ico",
         "/boho-digital-services-social-v2.png",
       ],

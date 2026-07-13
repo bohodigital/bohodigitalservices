@@ -64,8 +64,10 @@ test("server-renders the complete private Boho homepage", async () => {
   assert.match(html, /aria-expanded="false"/i);
   assert.match(html, /aria-controls="mobile-menu-/i);
   assert.match(html, /href="\/emergency\/"/i);
-  assert.match(html, /Concept interfaces showing how one design system can adapt/i);
-  assert.ok((html.match(/Concept interface/g) ?? []).length >= 3);
+  assert.match(html, /Look closely before choosing the work/i);
+  assert.match(html, /Public-domain textile detail from The Met Open Access collection/i);
+  assert.match(html, /Photography shows representative business settings/i);
+  assert.doesNotMatch(html, /Concept interface/i);
   assert.match(html, /googletagmanager\.com\/gtag\/js\?id=G-5CV8L2SE2R/i);
   assert.match(html, /analytics\.bohodigitalservices\.com\/script\.js/i);
   assert.match(html, /data-website-id="aecddac8-8ad4-49c4-b791-60b161c95155"/i);
@@ -96,6 +98,7 @@ test("keeps compiled styles and approved public assets on the Pages static path"
     "/assets/*",
     "/brand/*",
     "/diagrams/*",
+    "/visuals/*",
     "/favicon.ico",
     "/boho-digital-services-social-v2.png",
   ]) {
@@ -104,8 +107,16 @@ test("keeps compiled styles and approved public assets on the Pages static path"
 
   for (const asset of [
     "../dist/client/brand/boho-bee-logo-v2-256.png",
+    "../dist/client/brand/boho-bee-logo-v2-transparent.png",
     "../dist/client/brand/github-invertocat-white.svg",
     "../dist/client/diagrams/boho-hosting-architecture-v2.png",
+    "../dist/client/visuals/research-notebook.webp",
+    "../dist/client/visuals/industry-contractors.webp",
+    "../dist/client/visuals/industry-local-service.webp",
+    "../dist/client/visuals/industry-retail.webp",
+    "../dist/client/visuals/industry-ecommerce.webp",
+    "../dist/client/visuals/industry-b2b.webp",
+    "../dist/client/visuals/met-water-textile.webp",
     "../dist/client/favicon.ico",
     "../dist/client/boho-digital-services-social-v2.png",
   ]) {
@@ -138,12 +149,14 @@ test("keeps the design system accessible, private, and free of starter artifacts
   assert.equal((layout.match(/googletagmanager\.com/g) ?? []).length, 1);
   assert.equal((layout.match(/analytics\.bohodigitalservices\.com/g) ?? []).length, 1);
   assert.match(homepage, /className="home-section hero"/);
-  assert.match(homepage, /ResearchRouteVisual/);
+  assert.match(homepage, /className="hero-editorial"/);
+  assert.match(homepage, /className="design-reference"/);
+  assert.match(homepage, /className="buyer-panel__image"/);
+  assert.doesNotMatch(homepage, /ResearchRouteVisual|ConceptCaption/);
   assert.doesNotMatch(homepage, /function MosaicWing/);
   assert.equal((homepage.match(/className="home-section/g) ?? []).length, 11);
-  assert.equal((homepage.match(/<ConceptCaption \/>/g) ?? []).length, 3);
   assert.match(components, /className="skip-link"/);
-  assert.match(components, /boho-bee-logo-v2-256\.png/);
+  assert.match(components, /boho-bee-logo-v2-transparent\.png/);
   assert.match(components, /mailto:contact@bohemiandigital\.org/);
   assert.match(components, /mailto:webmaster@bohemiandigital\.org/);
   assert.match(components, /https:\/\/github\.com\/bohodigital/);

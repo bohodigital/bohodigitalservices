@@ -443,7 +443,7 @@ function BrandBee() {
   return (
     <span className="brand-bee" aria-hidden="true">
       <img
-        src="/brand/boho-bee-logo-v2-256.png"
+        src="/brand/boho-bee-logo-v2-transparent.png"
         width="256"
         height="256"
         alt=""
@@ -869,23 +869,6 @@ export function EvidenceBadge({
       <span className="evidence-badge__dot" aria-hidden="true" />
       <span>{children ?? evidenceLabels[status]}</span>
     </span>
-  );
-}
-
-export function ConceptCaption({
-  children,
-  className,
-}: {
-  children?: ReactNode;
-  className?: string;
-}) {
-  return (
-    <figcaption className={classNames("concept-caption", className)}>
-      <strong className="concept-caption__label">Concept interface</strong>
-      {children ? (
-        <span className="concept-caption__detail">{children}</span>
-      ) : null}
-    </figcaption>
   );
 }
 
