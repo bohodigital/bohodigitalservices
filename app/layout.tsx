@@ -6,6 +6,23 @@ const siteTitle =
   "Boho Digital Services | Website Design, Local SEO & Digital Growth";
 const siteDescription =
   "Research-led website design, local SEO, provider migration, technical SEO, lead generation, and digital growth services for businesses across the United States.";
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://bohodigitalservices.com/#organization",
+  name: "Boho Digital Services",
+  url: "https://bohodigitalservices.com/",
+  description: siteDescription,
+  logo: {
+    "@type": "ImageObject",
+    url: "https://bohodigitalservices.com/brand/boho-organization-logo-v2.png",
+    contentUrl:
+      "https://bohodigitalservices.com/brand/boho-organization-logo-v2.png",
+    width: 720,
+    height: 720,
+  },
+  sameAs: ["https://github.com/bohodigital"],
+};
 
 export function generateMetadata(): Metadata {
   const socialImage = new URL(
@@ -22,9 +39,13 @@ export function generateMetadata(): Metadata {
     description: siteDescription,
     icons: {
       icon: [
-        { url: "/favicon.ico", sizes: "any" },
-        { url: "/brand/boho-bee-logo-v2-256.png", type: "image/png", sizes: "256x256" },
+        {
+          url: "/brand/boho-search-icon-v2.png",
+          type: "image/png",
+          sizes: "256x256",
+        },
       ],
+      shortcut: "/brand/boho-search-icon-v2.png",
       apple: "/brand/boho-bee-logo-v2-256.png",
     },
     robots: {
@@ -72,6 +93,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-5CV8L2SE2R"

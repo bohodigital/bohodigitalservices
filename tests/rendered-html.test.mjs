@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { access, readFile, stat } from "node:fs/promises";
 import test from "node:test";
 
@@ -91,6 +92,25 @@ test("server-renders the complete private Boho homepage", async () => {
   );
   assert.match(html, /data-do-not-track="true"/i);
   assert.match(html, /data-exclude-search="true"/i);
+  assert.match(
+    html,
+    /<link[^>]+rel="icon"[^>]+href="https:\/\/bohodigitalservices\.com\/brand\/boho-search-icon-v2\.png"/i,
+  );
+  assert.doesNotMatch(html, /<link[^>]+rel="icon"[^>]+href="[^\"]*\/favicon\.ico"/i);
+  const organizationJson = html.match(
+    /<script[^>]+type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/i,
+  )?.[1];
+  assert.ok(organizationJson, "homepage is missing Organization structured data");
+  const organization = JSON.parse(organizationJson);
+  assert.equal(organization["@type"], "Organization");
+  assert.equal(organization.name, "Boho Digital Services");
+  assert.equal(organization.url, "https://bohodigitalservices.com/");
+  assert.equal(
+    organization.logo.url,
+    "https://bohodigitalservices.com/brand/boho-organization-logo-v2.png",
+  );
+  assert.equal(organization.logo.width, 720);
+  assert.equal(organization.logo.height, 720);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Your site is taking shape/i);
 });
 
@@ -166,6 +186,8 @@ test("keeps compiled styles and approved public assets on the Pages static path"
   for (const asset of [
     "../dist/client/brand/boho-bee-logo-v2-256.png",
     "../dist/client/brand/boho-bee-logo-v2-transparent.png",
+    "../dist/client/brand/boho-search-icon-v2.png",
+    "../dist/client/brand/boho-organization-logo-v2.png",
     "../dist/client/brand/github-invertocat-white.svg",
     "../dist/client/diagrams/boho-hosting-architecture-v2.png",
     "../dist/client/diagrams/how-boho-works-v2-transparent.png",
@@ -189,6 +211,20 @@ test("keeps compiled styles and approved public assets on the Pages static path"
     "../dist/client/boho-digital-services-social-v2.png",
   ]) {
     await access(new URL(asset, import.meta.url));
+  }
+
+  for (const [asset, expectedHash] of [
+    [
+      "../dist/client/brand/boho-search-icon-v2.png",
+      "1e81e960e5482bac8d90d79b0f3f30bf80e8cfcaba474e199c001a396060052b",
+    ],
+    [
+      "../dist/client/brand/boho-organization-logo-v2.png",
+      "150794420fc0b94df35105efa9ef2e5d7c5c4a49dfb3e2853a3581e8151790e7",
+    ],
+  ]) {
+    const bytes = await readFile(new URL(asset, import.meta.url));
+    assert.equal(createHash("sha256").update(bytes).digest("hex"), expectedHash);
   }
 });
 
@@ -279,7 +315,8 @@ test("keeps the design system accessible, private, and free of starter artifacts
   assert.match(layout, /data-do-not-track="true"/);
   assert.match(layout, /data-exclude-search="true"/);
   assert.match(layout, /boho-digital-services-social-v2\.png/);
-  assert.match(layout, /favicon\.ico/);
+  assert.match(layout, /boho-search-icon-v2\.png/);
+  assert.match(layout, /boho-organization-logo-v2\.png/);
   assert.equal((layout.match(/googletagmanager\.com/g) ?? []).length, 1);
   assert.equal((layout.match(/analytics\.bohodigitalservices\.com/g) ?? []).length, 1);
   assert.match(homepage, /className="home-section hero"/);
