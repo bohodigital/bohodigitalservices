@@ -48,7 +48,7 @@ export async function generateMetadata({
     openGraph: { url: page.slug },
     robots: page.noIndex
       ? { index: false, follow: false }
-      : { index: false, follow: false },
+      : { index: true, follow: true },
   };
 }
 

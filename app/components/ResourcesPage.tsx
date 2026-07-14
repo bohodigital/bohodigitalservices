@@ -9,7 +9,6 @@ import {
   SearchCheck,
   ServerCog,
   ShieldCheck,
-  Wrench,
   type LucideIcon,
 } from "lucide-react";
 import Link from "next/link";
@@ -29,12 +28,12 @@ type ResourceCard = {
 
 const resourceCollections: ResourceCard[] = [
   {
-    title: "Practical guides",
-    description: "Make a website, search, provider, or ownership decision with less jargon and a clearer list of tradeoffs.",
-    href: "/learn/",
-    label: "Browse the guides",
-    icon: BookOpenCheck,
-    meta: "Decisions & explanations",
+    title: "Website buying",
+    description: "Evaluate scope, ownership, content responsibility, accessibility, hosting, migration risk, and the claims inside a website proposal.",
+    href: "/learn/website-buying/",
+    label: "Read the buyer guide",
+    icon: PanelsTopLeft,
+    meta: "Commercial decision",
   },
   {
     title: "Plain-language glossary",
@@ -45,20 +44,20 @@ const resourceCollections: ResourceCard[] = [
     meta: "Definitions & cross-links",
   },
   {
-    title: "Tools & systems",
-    description: "See what the working systems do, where ownership belongs, how delivery works, and which boundaries should stay visible.",
-    href: "/tools/",
-    label: "Inspect the tool catalog",
-    icon: Wrench,
-    meta: "Technology & ownership",
+    title: "Provider rescue",
+    description: "Prepare for an exit by mapping ownership, access, URLs, data, forms, analytics, dependencies, redirects, and rollback.",
+    href: "/learn/provider-rescue/",
+    label: "Read the rescue guide",
+    icon: ShieldCheck,
+    meta: "Ownership & continuity",
   },
   {
-    title: "The Boho Lab",
-    description: "Open the evidence room for research routes, experiments, work logs, example formats, and the claims Boho refuses to make.",
-    href: "/lab/",
-    label: "Open the Lab",
-    icon: FlaskConical,
-    meta: "Research & evidence",
+    title: "Practical guide index",
+    description: "Browse selected commercial guidance. Broad SEO education and experiments remain secondary while a separate Rank Builder migration is deferred.",
+    href: "/learn/",
+    label: "Browse selected guides",
+    icon: BookOpenCheck,
+    meta: "Selected explanations",
   },
 ];
 
@@ -76,15 +75,15 @@ const decisionRoutes = [
     icon: PanelsTopLeft,
   },
   {
-    title: "Improve findability",
-    description: "Understand the local and organic signals that make a useful page easier to discover and trust.",
-    href: "/learn/local-search/" as const,
+    title: "Leave a provider",
+    description: "Map ownership, dependencies, useful URLs, access, and launch risk before the current relationship or platform changes.",
+    href: "/learn/provider-rescue/" as const,
     icon: SearchCheck,
   },
   {
-    title: "Improve conversion",
-    description: "Connect page intent, proof, friction, and calls to action instead of treating button color as the whole problem.",
-    href: "/services/lead-generation-conversion/" as const,
+    title: "Improve the local lead system",
+    description: "Connect local discovery, trust, page clarity, qualified action, and measurement instead of buying isolated activity.",
+    href: "/services/local-seo-search-visibility/" as const,
     icon: MousePointerClick,
   },
 ];
@@ -92,25 +91,24 @@ const decisionRoutes = [
 const toolShortcuts = [
   { label: "Website delivery", href: "/tools/#how-it-works" as const, icon: ServerCog },
   { label: "Performance", href: "/learn/glossary/#term-technical-seo" as const, icon: Gauge },
-  { label: "Security boundaries", href: "/tools/#tool-api-keys" as const, icon: ShieldCheck },
+  { label: "Capability classifications", href: "/tools/#classifications" as const, icon: ShieldCheck },
   { label: "Evidence standards", href: "/lab/claims-we-refuse-to-make/" as const, icon: FlaskConical },
 ];
 
 export function ResourcesPage() {
   return (
     <>
-      <meta name="robots" content="noindex, nofollow" />
       <Header />
       <main className="knowledge-page resources-page" id="main-content" tabIndex={-1}>
         <KnowledgeHero
           eyebrow="Resources"
-          title="Useful answers, working systems, and evidence you can inspect."
+          title="Buyer guidance for decisions that change ownership, cost, or risk."
           intro={[
-            "This is the shared home for Boho guides, plain-language definitions, tool documentation, and the Lab. Start with the decision you need to make; go deeper only when the detail earns its place.",
-            "Guides, definitions, systems documentation, and evidence now share one clear route through the site.",
+            "Resources stays focused on commercial decisions a buyer may need to make before a website, provider exit, local lead-system project, or technical engagement.",
+            "Broad SEO education and experiments are not primary Boho navigation. They remain secondary and noindexed while a later Rank Builder migration is handled in a separate approved project.",
           ]}
           primary={{ label: "Choose a resource", href: "#resource-collections" }}
-          secondary={{ label: "Open the Lab", href: "/lab/" }}
+          secondary={{ label: "Talk to Someone Technical", href: "/contact/" }}
         />
 
         <div className="knowledge-section-layout">
@@ -119,7 +117,7 @@ export function ResourcesPage() {
             anchors={[
               { label: "Resource collections", href: "#resource-collections" },
               { label: "Choose by decision", href: "#choose-by-decision" },
-              { label: "Open the Lab", href: "#open-the-lab" },
+              { label: "Evidence boundaries", href: "#open-the-lab" },
               { label: "Tool shortcuts", href: "#tool-shortcuts" },
             ]}
             note="Use the collections to move between practical guidance, technical detail, and evidence without losing your place."
@@ -129,9 +127,9 @@ export function ResourcesPage() {
             <section className="resources-collections" id="resource-collections" aria-labelledby="resource-collections-title">
               <div className="section-shell">
                 <header className="resources-heading">
-                  <p className="eyebrow">Four connected collections</p>
+                  <p className="eyebrow">Four selected buyer resources</p>
                   <h2 id="resource-collections-title">Start with the kind of answer you need.</h2>
-                  <p>Each collection has a distinct job. The links underneath remain real pages—not decorative cards or dead-end tabs.</p>
+                  <p>Each collection supports a real commercial or ownership decision. Secondary research shelves remain accessible without dominating this route.</p>
                 </header>
                 <div className="resources-collection-grid">
                   {resourceCollections.map(({ icon: Icon, ...resource }) => (
@@ -175,12 +173,12 @@ export function ResourcesPage() {
             <section className="resources-lab" id="open-the-lab" aria-labelledby="resources-lab-title">
               <div className="section-shell resources-lab__layout">
                 <div className="resources-lab__copy">
-                  <p className="eyebrow eyebrow--on-dark">Research & evidence</p>
-                  <h2 id="resources-lab-title">Open the Lab when the method matters as much as the answer.</h2>
-                  <p>The Lab holds research routes, public experiments, example formats, work logs, and evidence standards. Draft shelves stay visibly labeled; an empty shelf is not padded with invented findings.</p>
+                  <p className="eyebrow eyebrow--on-dark">Secondary evidence archive</p>
+                  <h2 id="resources-lab-title">Evidence rules stay available without becoming the primary sales path.</h2>
+                  <p>The active claim standard is useful to a buyer. Draft experiments, work logs, broad SEO research, and empty proof shelves remain noindexed and secondary. No Rank Builder redirect or migration is part of this review.</p>
                   <div className="button-row">
                     <Link className="button-link button-link--primary" href="/lab/">
-                      <span className="button-link__label">Open the Lab</span>
+                      <span className="button-link__label">View the Secondary Archive</span>
                       <ArrowRight aria-hidden="true" size={17} />
                     </Link>
                     <Link className="resources-lab__text-link" href="/lab/claims-we-refuse-to-make/">Read the evidence boundaries</Link>
@@ -188,8 +186,8 @@ export function ResourcesPage() {
                 </div>
                 <div className="resources-lab__index" aria-label="Featured Lab routes">
                   <Link href="/lab/claims-we-refuse-to-make/"><strong>Claims we refuse to make</strong><span>Documented operating boundaries</span></Link>
-                  <Link href="/lab/website-quality-surveys/"><strong>Website quality surveys</strong><span>Draft research route</span></Link>
-                  <Link href="/lab/work-log/"><strong>Work log</strong><span>Draft documentation route</span></Link>
+                  <Link href="/tools/"><strong>Capability classifications</strong><span>Governed evidence states</span></Link>
+                  <Link href="/learn/glossary/"><strong>Plain-language glossary</strong><span>Reviewed definitions</span></Link>
                 </div>
               </div>
             </section>
@@ -199,7 +197,7 @@ export function ResourcesPage() {
                 <header className="resources-heading resources-heading--split">
                   <div>
                     <p className="eyebrow">Direct shortcuts</p>
-                    <h2 id="resource-tools-title">Use the index without reading the whole catalog.</h2>
+                    <h2 id="resource-tools-title">Use a direct route without reading the whole library.</h2>
                   </div>
                   <p>Jump straight to a working diagram, definition, boundary, or evidence standard. Every shortcut has a durable URL.</p>
                 </header>

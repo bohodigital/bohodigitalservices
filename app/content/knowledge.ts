@@ -290,7 +290,7 @@ export const glossaryEntries: GlossaryEntry[] = [
     shortDefinition: "The service and infrastructure that make website files or application responses available to internet visitors.",
     definition: "Hosting makes a website reachable. Traditional hosting may provide a server account; static hosting distributes prepared files; application platforms execute code and connect data services. The price can be zero within a platform's current free limits, but domain registration, email, forms, maintenance, and professional work remain separate.",
     whyItMatters: "The right hosting model depends on the site's functionality, traffic, ownership needs, support requirements, and tolerance for platform limits.",
-    commonMisunderstanding: "A $0 hosting line item does not mean the entire website costs nothing to build, maintain, support, or operate.",
+    commonMisunderstanding: "No separate hosting line item does not mean the website costs nothing to build, maintain, support, or operate.",
     relatedToolSlugs: ["cloudflare-pages", "github"],
     relatedTermSlugs: ["server", "static-site", "deployment", "domain-name"],
     sourceIds: ["mdn-server", "cloudflare-pages-limits", "cloudflare-pages-pricing"],

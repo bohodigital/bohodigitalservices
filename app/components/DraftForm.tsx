@@ -58,6 +58,10 @@ export function DraftForm({ config, className }: DraftFormProps) {
           {config.title}
         </h2>
         <p className="draft-form__body">{config.body}</p>
+        <p className="draft-form__body">
+          This form cannot send a message. Use the working fallback: {" "}
+          <a href="mailto:contact@bohemiandigital.org">contact@bohemiandigital.org</a>.
+        </p>
       </div>
 
       <form
@@ -176,6 +180,7 @@ export function DraftForm({ config, className }: DraftFormProps) {
               title="Nothing was sent."
             >
               This preview does not transmit or store entries.
+              Use contact@bohemiandigital.org to send the inquiry.
             </FormStatusMessage>
           ) : null}
         </div>

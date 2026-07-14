@@ -4,10 +4,10 @@ import Homepage from "./Homepage";
 export const metadata: Metadata = {
   title: {
     absolute:
-      "Boho Digital Services | Website Design, Local SEO & Migration",
+      "Boho Digital Services | Digital Engineering for Visibility, Leads & Websites",
   },
   description:
-    "Research-led website design, local SEO, website migration, provider rescue, and lead-generation services for businesses across the United States.",
+    "Digital engineering for local visibility and lead systems, websites and managed hosting, provider rescue, custom tools, automation, analytics, and improvement.",
 };
 
 export default function Home() {

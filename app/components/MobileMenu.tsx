@@ -106,10 +106,10 @@ export function MobileMenu({
           <div className="mobile-menu__panel-inner">
             <Link
               className="button-link button-link--primary mobile-menu__primary-cta"
-              href="/start/"
+              href="/contact/"
               onClick={closeMenu}
             >
-              <span className="button-link__label">Get a Visibility Check</span>
+              <span className="button-link__label">Talk to Someone Technical</span>
               <span className="button-link__arrow" aria-hidden="true">
                 {"\u2192"}
               </span>

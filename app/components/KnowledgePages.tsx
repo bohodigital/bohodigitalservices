@@ -1,8 +1,6 @@
 import {
   glossaryEntries,
-  knowledgeSources,
   sourcesById,
-  toolProfiles,
   toolProfilesBySlug,
   type GlossaryCategory,
 } from "../content/knowledge";
@@ -13,6 +11,7 @@ import {
   ServerCog,
   Wrench,
 } from "lucide-react";
+import Link from "next/link";
 import {
   Breadcrumbs,
   ButtonLink,
@@ -210,7 +209,6 @@ function HostingArchitectureDiagram() {
 export function GlossaryPage() {
   return (
     <>
-      <meta name="robots" content="noindex, nofollow" />
       <Header />
       <main className="knowledge-page glossary-page" id="main-content" tabIndex={-1}>
         <KnowledgeHero
@@ -296,10 +294,10 @@ export function GlossaryPage() {
                         </div>
                         {entry.relatedToolSlugs?.length ? (
                           <div className="glossary-entry__relations">
-                            <strong>Read the deeper tool documentation</strong>
+                            <strong>Related system terms</strong>
                             {entry.relatedToolSlugs.map((slug) => {
                               const tool = toolProfilesBySlug.get(slug);
-                              return tool ? <a href={`/tools/#tool-${slug}`} key={slug}>{tool.name}</a> : null;
+                              return tool ? <span key={slug}>{tool.name}</span> : null;
                             })}
                           </div>
                         ) : null}
@@ -330,74 +328,6 @@ export function GlossaryPage() {
   );
 }
 
-function ToolProfileArticle({ tool, index }: { tool: (typeof toolProfiles)[number]; index: number }) {
-  const seenTerms = new Set<string>();
-  const define = (text: string) => <DefinedText text={text} seenTerms={seenTerms} />;
-
-  return (
-    <article className="tool-profile" id={`tool-${tool.slug}`}>
-      <header className="tool-profile__header">
-        <div>
-          <span className="tool-profile__number">{String(index + 1).padStart(2, "0")}</span>
-          <p className="eyebrow">{tool.category}</p>
-        </div>
-        <div>
-          <h2>{tool.name}</h2>
-          <p className="tool-profile__summary">{define(tool.summary)}</p>
-        </div>
-      </header>
-      <div className="tool-profile__overview">
-        <section>
-          <h3>What it is</h3>
-          {tool.whatItIs.map((paragraph) => <p key={paragraph.slice(0, 30)}>{define(paragraph)}</p>)}
-        </section>
-        <section>
-          <h3>How Boho uses it</h3>
-          {tool.howBohoUsesIt.map((paragraph) => <p key={paragraph.slice(0, 30)}>{define(paragraph)}</p>)}
-        </section>
-      </div>
-      <div className="tool-profile__detail-grid">
-        <section>
-          <h3>Practical use cases</h3>
-          <ul>{tool.useCases.map((item) => <li key={item}>{define(item)}</li>)}</ul>
-        </section>
-        <section>
-          <h3>Subtools and building blocks</h3>
-          <dl>
-            {tool.subtools.map((subtool) => (
-              <div key={subtool.name}>
-                <dt>{subtool.name}</dt>
-                <dd>{define(subtool.description)}</dd>
-              </div>
-            ))}
-          </dl>
-        </section>
-        <section>
-          <h3>API and automation examples</h3>
-          <ol>{tool.automationExamples.map((item) => <li key={item}>{define(item)}</li>)}</ol>
-        </section>
-        <section>
-          <h3>Why it can be cost-efficient</h3>
-          <ul>{tool.costNotes.map((item) => <li key={item}>{define(item)}</li>)}</ul>
-        </section>
-      </div>
-      <aside className="tool-profile__boundaries">
-        <h3>Operating boundaries</h3>
-        <ul>{tool.boundaries.map((item) => <li key={item}>{define(item)}</li>)}</ul>
-      </aside>
-      <div className="tool-profile__terms">
-        <strong>Start with the glossary</strong>
-        {tool.relatedTermSlugs.map((slug) => {
-          const entry = glossaryEntries.find((candidate) => candidate.slug === slug);
-          return entry ? <a href={`/learn/glossary/#term-${slug}`} key={slug}>{entry.term}</a> : null;
-        })}
-      </div>
-      <SourceLinks sourceIds={tool.sourceIds} />
-      <p className="knowledge-reviewed">Reviewed against linked official sources · July 11, 2026</p>
-    </article>
-  );
-}
-
 export function ToolsPage() {
   return (
     <>
@@ -405,40 +335,58 @@ export function ToolsPage() {
       <Header />
       <main className="knowledge-page tools-page" id="main-content" tabIndex={-1}>
         <KnowledgeHero
-          eyebrow="Tools & systems"
-          title="Use the smallest reliable system that keeps the owner in control."
+          eyebrow="Tools"
+          title="Governed capabilities, not a software-logo catalog."
           intro={[
-            "This is part tool catalog, part operating documentation. It explains what each system does, how Boho uses it, what can be automated through an [[api|API]], what it can save, and where the boundaries belong.",
-            "The architecture separates private work on Boho Central Servers from reviewed public-facing source in [[github|GitHub]] and public delivery through [[hosting|hosting]] such as [[static-site|static-site]] platforms. Cost efficiency comes from choosing the right layer—not from pretending every service is free or every task should be automated.",
+            "This index is for Boho capabilities and working systems that have an evidence trail. It does not promote third-party software as a Boho product, turn an internal experiment into a client promise, or pad the page with planned tools.",
+            "The current Bohopi proof program has no accepted proofEligible=true record, so this review publishes no verified capability profile. The page explains the gate, classifications, architecture, and what must exist before a profile can become public proof.",
           ]}
-          primary={{ label: "See the operating diagrams", href: "#how-it-works" }}
-          secondary={{ label: "Open the plain-language Glossary", href: "/learn/glossary/" }}
+          primary={{ label: "See the Evidence Gate", href: "#evidence-gate" }}
+          secondary={{ label: "Discuss Custom Engineering", href: "/services/custom-tools-automation/" }}
         />
 
         <div className="knowledge-section-layout">
           <SectionSidebar
             currentPath="/tools/"
             anchors={[
-              { label: "Selection rules", href: "#tool-principles" },
+              { label: "Evidence gate", href: "#evidence-gate" },
+              { label: "Classifications", href: "#classifications" },
               { label: "How the systems work", href: "#how-it-works" },
-              ...toolProfiles.map((tool) => ({ label: tool.name, href: `#tool-${tool.slug}` as `#${string}` })),
-              { label: "Owned entities", href: "#owned-entities" },
-              { label: "Official sources", href: "#official-sources" },
+              { label: "Public capability profiles", href: "#capability-profiles" },
+              { label: "What Boho can scope", href: "#custom-engineering" },
             ]}
-            note="Jump between architecture, individual tool profiles, and official documentation."
+            note="A classification describes evidence state. It is not a quality score or an invitation to treat planned work as available."
           />
           <div className="knowledge-section-layout__content">
-        <section className="tools-principles" id="tool-principles" aria-labelledby="tools-principles-title">
+        <section className="tools-principles" id="evidence-gate" aria-labelledby="tools-principles-title">
           <div className="section-shell tools-principles__inner">
-            <p className="eyebrow">The selection rule</p>
+            <p className="eyebrow">The evidence gate</p>
             <EditorialHeadline as="h2">
-              <span id="tools-principles-title">The tool earns its place by making ownership, quality, or useful work better.</span>
+              <span id="tools-principles-title">A public capability profile needs current Bohopi evidence.</span>
             </EditorialHeadline>
             <div className="tools-principles__grid">
-              <article><strong>Client control</strong><p>Domains, production accounts, source, and recovery paths should remain visible and transferable.</p></article>
-              <article><strong>Private by design</strong><p>Credentials, raw research, client data, and internal network detail stay out of public repositories and pages.</p></article>
-              <article><strong>Automation with gates</strong><p>Machines handle repeatable collection and checks; humans approve claims, consequential changes, and publication.</p></article>
-              <article><strong>Cost in context</strong><p>A $0 platform line can be real within current limits, but domain, email, forms, maintenance, support, and labor remain separate.</p></article>
+              <article><strong>Evidence before promotion</strong><p>A current record must identify what exists, where it runs, how it was checked, and which public claim the evidence supports.</p></article>
+              <article><strong>Owner and boundary</strong><p>The profile must distinguish Boho-owned, client-owned, third-party, internal, public, and restricted layers.</p></article>
+              <article><strong>Failure and limitation</strong><p>A profile must state important limits, known failure modes, maintenance responsibility, and what it does not prove.</p></article>
+              <article><strong>Human publication gate</strong><p>Even verified evidence does not publish itself. Consequential claims and public release remain human-approved.</p></article>
+            </div>
+          </div>
+        </section>
+
+        <section className="tools-principles" id="classifications" aria-labelledby="classifications-title">
+          <div className="section-shell tools-principles__inner">
+            <p className="eyebrow">Required capability classifications</p>
+            <EditorialHeadline as="h2">
+              <span id="classifications-title">Name the evidence state without promotional translation.</span>
+            </EditorialHeadline>
+            <div className="tools-principles__grid">
+              <article><strong>Verified current</strong><p>Current Bohopi evidence supports the capability and the precise public description.</p></article>
+              <article><strong>Demonstrated public</strong><p>A public demonstration can be inspected, but it is not automatically proof of client results or general production readiness.</p></article>
+              <article><strong>Internal working system</strong><p>The system is used internally and may support delivery without being offered as a public product.</p></article>
+              <article><strong>Prototype or experiment</strong><p>The work is exploratory, incomplete, or under test and must not be presented as stable delivery.</p></article>
+              <article><strong>Planned</strong><p>The capability is intended or proposed but does not yet exist as verified working evidence.</p></article>
+              <article><strong>Historical or archived</strong><p>The record explains past work and is not a statement of current availability or behavior.</p></article>
+              <article><strong>Prohibited claim</strong><p>The claim is unsupported, misleading, forbidden by governance, or outside the evidence available.</p></article>
             </div>
           </div>
         </section>
@@ -450,65 +398,34 @@ export function ToolsPage() {
           </div>
         </section>
 
-        <section className="tool-directory" aria-labelledby="tool-directory-title">
+        <section className="tool-directory" id="capability-profiles" aria-labelledby="tool-directory-title">
           <div className="section-shell">
             <header className="tool-directory__heading">
-              <p className="eyebrow">Working catalog · {toolProfiles.length} detailed profiles</p>
+              <p className="eyebrow">Public capability profiles · 0 accepted</p>
               <EditorialHeadline as="h2">
-                <span id="tool-directory-title">Tools are documented as systems, not logos.</span>
+                <span id="tool-directory-title">No empty proof shelf is being filled with claims.</span>
               </EditorialHeadline>
               <p>
-                Each profile includes practical use, subtools, automation
-                examples, cost reasoning, operating boundaries, glossary links,
-                and official sources. No profile activates a service on this
-                private draft.
+                The current proof program has not accepted a public capability
+                candidate as proof-eligible. This non-indexable review page
+                therefore includes the standard and the architecture, but no
+                promotional profile. A later profile must cite the accepted
+                Bohopi record and use one of the classifications above.
               </p>
-              <nav className="tool-directory__nav" aria-label="Tool profiles">
-                {toolProfiles.map((tool) => <a href={`#tool-${tool.slug}`} key={tool.slug}>{tool.name}</a>)}
-              </nav>
             </header>
-            <div className="tool-directory__profiles">
-              {toolProfiles.map((tool, index) => <ToolProfileArticle index={index} key={tool.slug} tool={tool} />)}
-            </div>
           </div>
         </section>
 
-        <section className="owned-entities-note" id="owned-entities" aria-labelledby="owned-entities-title">
+        <section className="owned-entities-note" id="custom-engineering" aria-labelledby="owned-entities-title">
           <div className="section-shell owned-entities-note__inner">
-            <p className="eyebrow">Owned entities · placeholders only</p>
+            <p className="eyebrow">Commercial capability lane</p>
             <EditorialHeadline as="h2">
-              <span id="owned-entities-title">Two in-house properties can support future, disclosed learning.</span>
+              <span id="owned-entities-title">Custom Tools & Automation is scoped from the operational problem.</span>
             </EditorialHeadline>
             <div>
-              <article><h3>Rank Builder SEO</h3><p>Owned by Boho. Reserved for a future reviewed entity description and selected technical research. No public link is included yet.</p></article>
-              <article><h3>How Biscuit</h3><p>Owned by Boho. Reserved for a future reviewed entity description or transparent experiment record. No public link is included yet.</p></article>
+              <article><h3>What the service can cover</h3><p>Focused workflow automation, internal utilities, integrations, validation, and reporting when the business case and operating owner are clear.</p></article>
+              <article><h3>What the page does not claim</h3><p>No public product catalog, client result, production-ready prototype, or unlimited automation capability is implied by the service lane.</p><p><Link href="/services/custom-tools-automation/">Review the service boundaries →</Link></p></article>
             </div>
-          </div>
-        </section>
-
-        <section className="knowledge-source-register" id="official-sources" aria-labelledby="source-register-title">
-          <div className="section-shell knowledge-source-register__inner">
-            <p className="eyebrow">Source register</p>
-            <EditorialHeadline as="h2">
-              <span id="source-register-title">Official documentation behind this first pass.</span>
-            </EditorialHeadline>
-            <p>
-              Product limits, pricing, APIs, and policies change. These links
-              were reviewed on July 11, 2026 and should be checked again before
-              production publication or a client proposal relies on a volatile
-              detail.
-            </p>
-            <ol>
-              {knowledgeSources.map((source) => (
-                <li key={source.id}>
-                  <a href={source.url} target="_blank" rel="noopener noreferrer">
-                    {source.label} <span aria-hidden="true">↗</span>
-                    <span className="sr-only"> (opens in a new tab)</span>
-                  </a>
-                  <span>{source.publisher}</span>
-                </li>
-              ))}
-            </ol>
           </div>
         </section>
           </div>

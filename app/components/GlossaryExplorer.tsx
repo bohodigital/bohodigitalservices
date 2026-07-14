@@ -83,11 +83,11 @@ function GlossaryRow({ entry, expand }: { entry: GlossaryEntry; expand: boolean 
         ) : null}
         {entry.relatedToolSlugs?.length ? (
           <div className="glossary-row__related">
-            <strong>Deeper tool documentation</strong>
+            <strong>Related system terms</strong>
             {entry.relatedToolSlugs.map((slug) => (
-              <a href={`/tools/#tool-${slug}`} key={slug}>
+              <span key={slug}>
                 {slug.split("-").map((word) => `${word.charAt(0).toUpperCase()}${word.slice(1)}`).join(" ")}
-              </a>
+              </span>
             ))}
           </div>
         ) : null}
