@@ -80,7 +80,7 @@ export function DesktopNavigation({
 
               {open ? (
                 <div className="site-header__dropdown" id={menuId}>
-                  <p className="site-header__dropdown-eyebrow">Browse Resources</p>
+                  <p className="site-header__dropdown-eyebrow">Browse {item.label}</p>
                   <ul>
                     {item.children.map((child) => (
                       <li key={child.href}>

@@ -23,44 +23,54 @@ export const resourceNavigationGroups: ReadonlyArray<ResourceNavigationGroup> = 
     items: [
       { label: "Practical guides", href: "/learn/" },
       { label: "Plain-language glossary", href: "/learn/glossary/" },
-      { label: "Bad SEO Field Guide", href: "/learn/bad-seo-field-guide/" },
-      { label: "Small-business SEO", href: "/learn/small-business-seo/" },
-      { label: "Local search", href: "/learn/local-search/" },
       { label: "Website buying", href: "/learn/website-buying/" },
       { label: "Provider rescue", href: "/learn/provider-rescue/" },
-      { label: "AI search visibility", href: "/learn/ai-search-visibility/" },
-      { label: "Rank Builder research", href: "/learn/featured-rank-builder/" },
     ],
   },
   {
     label: "Tools & systems",
     icon: "tools",
     items: [
-      { label: "Tool catalog", href: "/tools/" },
+      { label: "Governed capability index", href: "/tools/" },
       { label: "How website delivery works", href: "/tools/#how-it-works" },
-      { label: "Official source register", href: "/tools/#official-sources" },
+      { label: "Capability classifications", href: "/tools/#classifications" },
     ],
   },
   {
     label: "Lab & evidence",
     icon: "lab",
     items: [
-      { label: "Open the Lab", href: "/lab/" },
       { label: "Claims we refuse to make", href: "/lab/claims-we-refuse-to-make/" },
-      { label: "Local market reports", href: "/lab/local-market-reports/" },
-      { label: "Market map examples", href: "/lab/market-map-examples/" },
-      { label: "Website quality surveys", href: "/lab/website-quality-surveys/" },
-      { label: "Success-signal studies", href: "/lab/success-signal-studies/" },
-      { label: "Public experiments", href: "/lab/public-experiments/" },
-      { label: "Work log", href: "/lab/work-log/" },
-      { label: "In-house brands", href: "/lab/in-house-brands/" },
-      { label: "How Biscuit", href: "/lab/in-house-brands/how-biscuit/" },
-      { label: "RankBuilder SEO", href: "/lab/in-house-brands/rank-builder-seo/" },
-      { label: "Better Grades", href: "/lab/in-house-brands/better-grades/" },
-      { label: "Example reports", href: "/lab/example-reports/" },
-      { label: "Public teardowns", href: "/lab/public-teardowns/" },
-      { label: "Tools & templates", href: "/lab/tools-and-templates/" },
+      { label: "Archive and experiments", href: "/lab/" },
     ],
+  },
+];
+
+export const serviceHeaderLinks: ReadonlyArray<NavigationLink> = [
+  {
+    label: "Local Visibility & Lead Systems",
+    href: "/services/local-seo-search-visibility/",
+    description: "Local discovery, trust, lead paths, and measurement working as one system.",
+  },
+  {
+    label: "Websites & Managed Hosting",
+    href: "/services/website-design-redesign/",
+    description: "Useful, owned websites with an explicit managed-hosting provision.",
+  },
+  {
+    label: "Provider Rescue & Migration",
+    href: "/services/website-migration-provider-rescue/",
+    description: "Recover control, preserve value, migrate carefully, and document the result.",
+  },
+  {
+    label: "Custom Tools & Automation",
+    href: "/services/custom-tools-automation/",
+    description: "Practical internal tools and automations for repeated operational work.",
+  },
+  {
+    label: "Research, Analytics & Improvement",
+    href: "/services/research-audits-analytics/",
+    description: "Evidence, measurement, and improvement tied to a real decision.",
   },
 ];
 
@@ -68,7 +78,7 @@ export const resourceHeaderLinks: ReadonlyArray<NavigationLink> = [
   {
     label: "Resources overview",
     href: "/resources/",
-    description: "Start with a question, guide, tool, or evidence trail.",
+    description: "Commercial buyer guidance and plain-language definitions.",
   },
   {
     label: "Practical guides",
@@ -81,16 +91,6 @@ export const resourceHeaderLinks: ReadonlyArray<NavigationLink> = [
     description: "Translate technical language into business decisions.",
   },
   {
-    label: "Tools & systems",
-    href: "/tools/",
-    description: "Inspect the technology, ownership, and delivery model.",
-  },
-  {
-    label: "Open the Lab",
-    href: "/lab/",
-    description: "Review research, experiments, work logs, and evidence rules.",
-  },
-  {
     label: "Claims & evidence standards",
     href: "/lab/claims-we-refuse-to-make/",
     description: "See the promises and proof shortcuts Boho will not sell.",
@@ -98,9 +98,9 @@ export const resourceHeaderLinks: ReadonlyArray<NavigationLink> = [
 ];
 
 export const primaryNavigation: ReadonlyArray<PrimaryNavigationItem> = [
-  { label: "Services", href: "/services/" },
+  { label: "Services", href: "/services/", children: serviceHeaderLinks },
   { label: "Industries", href: "/industries/" },
+  { label: "Tools", href: "/tools/" },
   { label: "Resources", href: "/resources/", children: resourceHeaderLinks },
-  { label: "Pricing", href: "/pricing/" },
   { label: "About", href: "/about/" },
 ];

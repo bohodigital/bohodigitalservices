@@ -29,10 +29,13 @@ type InteriorPageProps =
   | { config: PageConfig; page?: never };
 
 type EvidenceStatus =
-  | "in-progress"
-  | "example-format"
-  | "public-experiment"
-  | "concept";
+  | "verified-current"
+  | "demonstrated-public"
+  | "internal-working-system"
+  | "prototype-or-experiment"
+  | "planned"
+  | "historical-or-archived"
+  | "prohibited-claim";
 
 function classNames(...values: Array<string | false | null | undefined>) {
   return values.filter(Boolean).join(" ");
@@ -109,15 +112,21 @@ function sectionId(section: ContentSection, index: number) {
 
 function evidenceStatus(status: ContentItem["status"]): EvidenceStatus {
   switch (status) {
-    case "Example format":
-      return "example-format";
-    case "Public experiment":
-      return "public-experiment";
-    case "Draft":
-      return "concept";
-    case "In progress":
+    case "Verified current":
+      return "verified-current";
+    case "Demonstrated public":
+      return "demonstrated-public";
+    case "Internal working system":
+      return "internal-working-system";
+    case "Prototype or experiment":
+      return "prototype-or-experiment";
+    case "Historical or archived":
+      return "historical-or-archived";
+    case "Prohibited claim":
+      return "prohibited-claim";
+    case "Planned":
     default:
-      return "in-progress";
+      return "planned";
   }
 }
 
@@ -139,9 +148,7 @@ function ItemStatus({ item }: { item: ContentItem }) {
   if (!item.status) return null;
 
   return (
-    <EvidenceBadge status={evidenceStatus(item.status)}>
-      {item.status}
-    </EvidenceBadge>
+    <EvidenceBadge status={evidenceStatus(item.status)} />
   );
 }
 
@@ -328,9 +335,7 @@ export function InteriorPage(props: InteriorPageProps) {
 
             {page.draftLabel ? (
               <div className="interior-hero__draft-status" role="status">
-                <EvidenceBadge status="concept">
-                  {page.draftLabel}
-                </EvidenceBadge>
+                <EvidenceBadge status="planned">{page.draftLabel}</EvidenceBadge>
               </div>
             ) : null}
 

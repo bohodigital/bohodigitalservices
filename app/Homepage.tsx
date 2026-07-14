@@ -7,7 +7,6 @@ import {
   TextLink,
 } from "./components/SiteChrome";
 import { DefinedText } from "./components/DefinedText";
-import { BrandPreviewCarousel } from "./components/BrandPreviewCarousel";
 import { operatingCycle } from "./content/operatingCycle";
 import {
   AlignLeft,
@@ -25,75 +24,65 @@ import {
   PanelsTopLeft,
   RefreshCw,
   Route,
-  Search,
   SearchCheck,
   ShieldCheck,
-  Sparkles,
   Target,
   Wrench,
 } from "lucide-react";
 
 const operatingCycleIcons = {
-  discover: Search,
+  diagnose: SearchCheck,
   prioritize: Crosshair,
-  build: Wrench,
+  engineer: Wrench,
+  deploy: Route,
   measure: BarChart3,
   improve: RefreshCw,
 } as const;
 
 const serviceCards = [
   {
-    category: "Design",
-    title: "Website Design & Redesign",
-    body: "Clear, distinctive, search-aware websites built around services, trust, and customer action.",
-    label: "Design a better website",
+    category: "Priority lane",
+    title: "Local Visibility & Lead Systems",
+    body: "Local discovery, website clarity, trust, calls to action, inquiry paths, and measurement engineered as one commercial system.",
+    label: "Build the lead system",
+    href: "/services/local-seo-search-visibility/",
+    tone: "verdigris",
+    icon: MapPin,
+  },
+  {
+    category: "Web platform",
+    title: "Websites & Managed Hosting",
+    body: "Useful, distinctive websites built around ownership, performance, search structure, customer action, and a clearly governed hosting provision.",
+    label: "Plan the website system",
     href: "/services/website-design-redesign/",
     tone: "gold",
     icon: PanelsTopLeft,
   },
   {
     category: "Ownership",
-    title: "Migration & Provider Rescue",
-    body: "Careful help leaving bad SEO companies, messy hosting setups, unclear ownership, and fragile platforms.",
+    title: "Provider Rescue & Migration",
+    body: "Careful help leaving bad providers, recovering control, preserving useful assets and URLs, and verifying a safer move.",
     label: "Plan the rescue",
     href: "/services/website-migration-provider-rescue/",
     tone: "copper",
     icon: Route,
   },
   {
-    category: "Visibility",
-    title: "Local SEO & Search Visibility",
-    body: "Local pages, business-profile alignment, reviews, market relevance, and competitor-aware search work.",
-    label: "Improve local visibility",
-    href: "/services/local-seo-search-visibility/",
-    tone: "verdigris",
-    icon: MapPin,
-  },
-  {
-    category: "Action",
-    title: "Lead Generation & Conversion",
-    body: "Service pages, forms, calls to action, booking paths, and trust signals built to turn attention into inquiries.",
-    label: "Improve lead paths",
-    href: "/services/lead-generation-conversion/",
+    category: "Operations",
+    title: "Custom Tools & Automation",
+    body: "Focused internal tools, integrations, and automations for repeated work that costs too much time or fails too easily by hand.",
+    label: "Explore practical automation",
+    href: "/services/custom-tools-automation/",
     tone: "blue",
-    icon: MousePointerClick,
-  },
-  {
-    category: "Momentum",
-    title: "Ongoing SEO & Growth",
-    body: "Steady search, content, technical monitoring, reporting, and optimization without the mystery-retainer fog.",
-    label: "Build ongoing momentum",
-    href: "/services/ongoing-seo-growth/",
-    tone: "plum",
-    icon: RefreshCw,
+    icon: Wrench,
   },
   {
     category: "Evidence",
-    title: "Research, Audits & Site Health",
-    body: "Market maps, success-signal analysis, technical inspection, measurement planning, and prioritized recommendations.",
+    title: "Research, Analytics & Improvement",
+    body: "Diagnosis, market research, technical inspection, measurement, and an improvement rhythm tied to the next useful decision.",
     label: "Start with evidence",
     href: "/services/research-audits-analytics/",
-    tone: "graphite",
+    tone: "plum",
     icon: SearchCheck,
   },
 ] as const;
@@ -206,30 +195,30 @@ const buyerPanels = [
   },
 ] as const;
 
-const labPanels = [
+const capabilityPanels = [
   {
-    title: "Example reports",
-    body: "Clear demonstrations of what a market review, signal audit, or technical roadmap can contain.",
-    status: "Example format",
-    badge: "example-format" as const,
-    href: "/lab/example-reports/",
-    label: "View example reports",
+    title: "Public capability proof",
+    body: "A capability is not promoted as verified until Bohopi contains current evidence that supports the public claim.",
+    status: "Planned",
+    badge: "planned" as const,
+    href: "/tools/",
+    label: "See the governed index",
   },
   {
-    title: "Market maps",
-    body: "Visual studies of competitors, service areas, website quality, local visibility, and opportunity.",
-    status: "In progress",
-    badge: "in-progress" as const,
-    href: "/lab/market-research/",
-    label: "View market research",
+    title: "Working systems",
+    body: "Internal systems may support delivery without becoming a public product claim, case study, or promise to a buyer.",
+    status: "Internal working system",
+    badge: "internal-working-system" as const,
+    href: "/tools/#classifications",
+    label: "Read the classifications",
   },
   {
-    title: "Work log",
-    body: "A running record of what Boho is building, testing, fixing, and learning.",
-    status: "In progress",
-    badge: "in-progress" as const,
-    href: "/lab/work-log/",
-    label: "View the work log",
+    title: "Experiments and archives",
+    body: "Prototypes, planned work, and historical material remain clearly labeled and outside the primary commercial path.",
+    status: "Prototype or experiment",
+    badge: "prototype-or-experiment" as const,
+    href: "/lab/",
+    label: "Open the secondary archive",
   },
 ] as const;
 
@@ -246,35 +235,31 @@ export default function Homepage() {
             <div className="hero__copy">
               <p className="eyebrow eyebrow--on-dark">Boho Digital Services</p>
               <h1 id="hero-title">
-                Research-led website design, local SEO, and digital growth.
+                Local visibility, lead systems, and websites built by people who understand the machinery.
               </h1>
-              <p className="hero__body">{define("Boho Digital Services creates distinctive small-business websites, improves local SEO and search visibility, handles website migration and provider rescue, and builds practical lead-generation paths around how customers discover, trust, and contact a business.")}</p>
-              <p className="hero__supporting-line">{define("Serving businesses across the United States. Every market is different, so we study yours before deciding what to fix.")}</p>
+              <p className="hero__body">{define("Boho Digital Services is a digital-engineering firm for businesses that need local visibility, lead systems, websites, provider rescue, custom operational tools, and measurable improvement to work together.")}</p>
+              <p className="hero__supporting-line">{define("We diagnose the system, explain the tradeoffs, engineer the smallest useful change, and verify what actually happened.")}</p>
               <div className="button-row hero__actions">
-                <ButtonLink href="/start/">Get a Visibility Check</ButtonLink>
-                <ButtonLink href="#method" variant="secondary">
-                  See How We Work
+                <ButtonLink href="/contact/">Talk to Someone Technical</ButtonLink>
+                <ButtonLink href="/tools/" variant="secondary">
+                  See What We Build
                 </ButtonLink>
               </div>
             </div>
-            <figure
-              className="hero-editorial hero-editorial--process"
-              aria-label="How Boho Works: Discover, Design, Build, and Launch"
-            >
-              <div
-                className="hero-editorial__process-viewport"
-                tabIndex={0}
-                aria-label="Scrollable How Boho Works process diagram"
-              >
-                <img
-                  src="/diagrams/how-boho-works-v2-transparent.png"
-                  width="1672"
-                  height="941"
-                  alt="How Boho Works: Discover, we review your goals; Design, we plan the right solution; Build, we create and refine; Launch, you go live with confidence."
-                  fetchPriority="high"
-                />
+            <div className="hero-editorial hero-editorial--process" aria-label="Boho digital engineering scope">
+              <div className="migration-ledger">
+                <div className="migration-ledger__heading">
+                  <Wrench size={28} strokeWidth={1.6} aria-hidden="true" />
+                  <div><span>Digital engineering</span><strong>Understand the machinery before changing it.</strong></div>
+                </div>
+                <ul>
+                  <li><MapPin size={20} aria-hidden="true" /><span><strong>Visibility</strong> local discovery and trust</span></li>
+                  <li><MousePointerClick size={20} aria-hidden="true" /><span><strong>Lead systems</strong> clear routes to qualified action</span></li>
+                  <li><PanelsTopLeft size={20} aria-hidden="true" /><span><strong>Web platforms</strong> useful, owned, and maintainable</span></li>
+                  <li><Route size={20} aria-hidden="true" /><span><strong>Operations</strong> migrations, tools, automation, and records</span></li>
+                </ul>
               </div>
-            </figure>
+            </div>
           </div>
         </section>
 
@@ -301,17 +286,15 @@ export default function Homepage() {
           <div className="section-shell editorial-problem__grid">
             <div className="editorial-problem__statement">
               <h2 id="problem-title">
-                A digital marketing package is not a business strategy.
+                Marketing systems are still systems.
               </h2>
             </div>
             <div className="editorial-problem__body reading-width">
               <p className="editorial-problem__lead">
-                Most agencies start with a package. Boho starts with the business.
+                The website, local presence, lead path, hosting, analytics, accounts, and operational tools affect one another.
               </p>
               <p>
-                First we learn what you sell, who needs it, and which customer action would
-                actually matter. Then we decide whether the next move is a stronger website,
-                better search visibility, a safer migration, or clearer measurement.
+                Boho brings technical competence into the commercial conversation. We learn what the business needs, inspect the machinery underneath it, and explain whether the useful next move is stronger visibility, a better website, a safer migration, an operational tool, or clearer measurement.
               </p>
               <div className="business-first-signals" aria-label="Business-first decision inputs">
                 <span><BriefcaseBusiness size={19} aria-hidden="true" /> Offer</span>
@@ -330,7 +313,7 @@ export default function Homepage() {
         >
           <div className="section-shell">
             <div className="section-heading section-heading--research">
-              <h2 id="method-title">Research before recommendations.</h2>
+              <h2 id="method-title">A six-stage engineering method.</h2>
               <div className="section-heading__intro reading-width">
                 <p>{define("Boho looks for the relationship between visible digital signals and real business outcomes.")}</p>
                 <p>{define("For one business, the useful signal may be quote requests. For another, it may be calls, bookings, product-page visits, local profile actions, consultations, or visibility for a high-value service.")}</p>
@@ -338,7 +321,7 @@ export default function Homepage() {
               </div>
             </div>
 
-            <ol className="method-summary-list" aria-label="Research-led working sequence">
+            <ol className="method-summary-list" aria-label="Diagnose, prioritize, engineer, deploy, measure, improve">
               {operatingCycle.map((stage) => {
                 const Icon = operatingCycleIcons[stage.id];
                 return (
@@ -360,8 +343,8 @@ export default function Homepage() {
                 );
               })}
             </ol>
-            <TextLink href="/lab/" className="section-link">
-              See the research approach
+            <TextLink href="/services/research-audits-analytics/" className="section-link">
+              See how diagnosis and measurement work
             </TextLink>
           </div>
         </section>
@@ -438,11 +421,10 @@ export default function Homepage() {
             <div className="section-heading section-heading--split">
               <div>
                 <h2 id="services-title">
-                  Website design, local SEO, website migration, and
-                  lead-generation services.
+                  Five service lanes, one accountable system.
                 </h2>
               </div>
-              <p className="reading-width">{define("Websites, search visibility, technical health, content, tracking, and conversion usually work as one system. Pulling one lever while ignoring the rest is how businesses end up paying for motion instead of progress.")}</p>
+              <p className="reading-width">{define("Local visibility, lead paths, websites, hosting, migrations, operational tools, analytics, and improvement frequently share the same dependencies. The lane names make the work understandable without pretending the systems are isolated.")}</p>
             </div>
 
             <div className="service-grid">
@@ -584,26 +566,24 @@ export default function Homepage() {
           <div className="section-shell lab-proof__layout">
             <div className="lab-proof__copy">
               <h2 id="lab-title">
-                Resources, research, and proof you can inspect.
+                Tools and proof governed by evidence.
               </h2>
-              <p>{define("Resources brings practical guides, a plain-language glossary, tool documentation, and the Boho Lab into one place. Use the guides to understand a decision, the tools pages to inspect the system, and the Lab to review the method and evidence standards.")}</p>
-              <p>{define("When a result is real, we show it. When an experiment is early, we label it early. When something fails, we learn from it instead of hiding it behind a stock photo of a handshake.")}</p>
+              <p>{define("The Tools area is a governed capability index, not a catalog of third-party software or an empty shelf of future claims. Every profile must say what exists, how it was verified, and what remains internal, experimental, planned, historical, or prohibited.")}</p>
+              <p>{define("No public capability candidate is promoted as verified in this review because the current Bohopi proof program has not accepted one as proof-eligible. Broad SEO education and experiments remain secondary while their eventual Rank Builder destination is handled in a separate approved project.")}</p>
               <div className="button-row">
-                <ButtonLink href="/resources/">Browse Resources</ButtonLink>
-                <TextLink href="/lab/">Open the Lab</TextLink>
+                <ButtonLink href="/tools/">See What We Build</ButtonLink>
+                <TextLink href="/resources/">Browse Buyer Resources</TextLink>
               </div>
             </div>
 
-            <BrandPreviewCarousel />
-
             <div className="evidence-board" aria-label="Boho Lab evidence board">
-              {labPanels.map((panel, index) => (
+              {capabilityPanels.map((panel, index) => (
                 <article
                   className={`evidence-card evidence-card--${index + 1}`}
                   key={panel.title}
                 >
                   <div className="evidence-card__meta">
-                    <span>Lab file {String(index + 1).padStart(2, "0")}</span>
+                    <span>Governance file {String(index + 1).padStart(2, "0")}</span>
                     <EvidenceBadge status={panel.badge}>
                       {panel.status}
                     </EvidenceBadge>
@@ -654,7 +634,7 @@ export default function Homepage() {
                   <i /><i /><i /><i /><i /><i />
                 </div>
               </div>
-              <ol className="growth-cycle" aria-label="Discover, prioritize, build, measure, improve">
+              <ol className="growth-cycle" aria-label="Diagnose, prioritize, engineer, deploy, measure, improve">
                 {operatingCycle.map((stage, index) => (
                   <li className={`growth-cycle__phase growth-cycle__phase--${index + 1}`} key={stage.id}>
                     <a href={stage.href}>
@@ -670,19 +650,18 @@ export default function Homepage() {
 
         <section
           className="home-section territory-cta"
-          aria-labelledby="territory-cta-title"
+          aria-labelledby="technical-opinion-title"
         >
           <div className="section-shell territory-cta__inner">
             <span className="territory-cta__mark" aria-hidden="true"><Target size={70} strokeWidth={1.2} /></span>
             <div className="territory-cta__copy">
-              <p className="eyebrow eyebrow--on-dark">Protected market focus</p>
-              <h2 id="territory-cta-title">
-                We only work with one client per industry and service area,
-                claim your territory today!
+              <p className="eyebrow eyebrow--on-dark">Provider frustration</p>
+              <h2 id="technical-opinion-title">
+                Tired of talking to people who cannot explain the system?
               </h2>
-              <p>{define("Tell us the industry and service area you want to protect. Boho confirms availability before proposing an engagement, so the boundary is clear before work begins.")}</p>
+              <p>{define("Bring the proposal, migration plan, dashboard, hosting setup, automation idea, or provider explanation that does not add up. Boho will separate what is verified from what is assumed and identify the smallest useful next check.")}</p>
             </div>
-            <ButtonLink href="/start/">Claim Your Territory</ButtonLink>
+            <ButtonLink href="/contact/">Get a Technical Second Opinion</ButtonLink>
           </div>
         </section>
 
@@ -692,16 +671,16 @@ export default function Homepage() {
         >
           <div className="section-shell pricing-philosophy__inner">
             <div className="pricing-philosophy__signals" aria-label="How Boho keeps work practical">
-              <span><Sparkles size={20} aria-hidden="true" /> Less ceremony</span>
+              <span><Wrench size={20} aria-hidden="true" /> Direct technical work</span>
               <span><BriefcaseBusiness size={20} aria-hidden="true" /> More useful work</span>
               <span><BarChart3 size={20} aria-hidden="true" /> Visible priorities</span>
             </div>
             <h2 id="pricing-title">
-              Lean overhead, practical pricing, and more useful work.
+              Scope follows diagnosis, not a package menu.
             </h2>
-            <p className="pricing-philosophy__body reading-width">{define("Boho stays lean so more of the budget can go toward research, design, implementation, documentation, and ongoing improvement. You are not paying for a giant sales team, an account-management maze, or elaborate reporting rituals designed to make ordinary work look mysterious.")}</p>
-            <p className="pricing-philosophy__comparison">{define("Start small. Prove the need. Scale only when the work has a clear business case.")}</p>
-            <ButtonLink href="/pricing/">See Pricing</ButtonLink>
+            <p className="pricing-philosophy__body reading-width">{define("Boho stays lean so more of the budget can go toward diagnosis, engineering, deployment, documentation, and improvement. A scope should name the actual system, the evidence available, the expected business effect, the risks, and how the result will be checked.")}</p>
+            <p className="pricing-philosophy__comparison">{define("Start with the smallest useful intervention. Expand only when the next investment has a defensible case.")}</p>
+            <ButtonLink href="/contact/">Discuss the Actual Problem</ButtonLink>
           </div>
         </section>
 
@@ -712,18 +691,18 @@ export default function Homepage() {
           <div className="section-shell">
             <CtaBand
               className="final-cta__band"
-              title="Start with a Local Visibility Check."
+              title="Talk to someone who can explain the machinery."
               body={
                 <div className="final-cta__body">
-                  <p>{define("Send the business, website, service area, and what feels stuck. Boho will look for obvious leaks, weak signals, provider risks, and the most useful next step.")}</p>
-                  <p>{define("You do not need to know whether the answer is a redesign, migration, SEO work, better lead paths, or ongoing support. Figuring that out is the first part of the work.")}</p>
+                  <p>{define("Send the business, website, service area, system, and what feels stuck. Do not send passwords or sensitive records. Until an approved form endpoint exists, use the public email path on the contact page.")}</p>
+                  <p>{define("You do not need to diagnose the solution before the conversation. Naming what is verified, what is inferred, and what needs inspection is the first part of the work.")}</p>
                 </div>
               }
-              primary={{ label: "Start the Check", href: "/start/" }}
-              secondary={{ label: "Contact Boho", href: "/contact/" }}
+              primary={{ label: "Talk to Someone Technical", href: "/contact/" }}
+              secondary={{ label: "See What We Build", href: "/tools/" }}
             />
             <span id="final-cta-title" className="sr-only">
-              Start with a Local Visibility Check.
+              Talk to someone technical.
             </span>
           </div>
         </section>

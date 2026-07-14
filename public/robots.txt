@@ -1,5 +1,5 @@
 # Boho Digital Services welcomes standards-compliant search and AI crawlers.
-# Page-level robots metadata currently controls the temporary indexing hold.
+# Route metadata and the selective sitemap control which reviewed pages are indexable.
 
 User-agent: GPTBot
 User-agent: OAI-SearchBot

@@ -5,7 +5,14 @@ export type ContentItem = {
   body: string;
   href?: string;
   linkLabel?: string;
-  status?: "In progress" | "Example format" | "Public experiment" | "Draft";
+  status?:
+    | "Verified current"
+    | "Demonstrated public"
+    | "Internal working system"
+    | "Prototype or experiment"
+    | "Planned"
+    | "Historical or archived"
+    | "Prohibited claim";
 };
 
 export type ContentSection = {

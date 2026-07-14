@@ -3,9 +3,9 @@ import "./globals.css";
 
 const siteUrl = new URL("https://bohodigitalservices.com");
 const siteTitle =
-  "Boho Digital Services | Website Design, Local SEO & Digital Growth";
+  "Boho Digital Services | Digital Engineering for Visibility, Leads & Websites";
 const siteDescription =
-  "Research-led website design, local SEO, provider migration, technical SEO, lead generation, and digital growth services for businesses across the United States.";
+  "Digital engineering for local visibility and lead systems, websites and managed hosting, provider rescue, custom tools, automation, analytics, and improvement.";
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -49,8 +49,8 @@ export function generateMetadata(): Metadata {
       apple: "/brand/boho-bee-logo-v2-256.png",
     },
     robots: {
-      index: false,
-      follow: false,
+      index: true,
+      follow: true,
     },
     alternates: {
       canonical: "/",
@@ -58,7 +58,7 @@ export function generateMetadata(): Metadata {
     openGraph: {
       title: siteTitle,
       description:
-        "Website design, local SEO, provider rescue, lead generation, and practical digital growth built from research.",
+        "Local visibility, lead systems, websites, provider rescue, and operational tools built by people who understand the machinery.",
       type: "website",
       url: siteUrl,
       images: [
@@ -66,7 +66,7 @@ export function generateMetadata(): Metadata {
           url: socialImage,
           width: 1200,
           height: 630,
-          alt: "Boho Digital Services — research-led website design, local SEO, and digital growth",
+          alt: "Boho Digital Services — digital engineering for visibility, lead systems, websites, and operational tools",
         },
       ],
     },
@@ -74,7 +74,7 @@ export function generateMetadata(): Metadata {
       card: "summary_large_image",
       title: siteTitle,
       description:
-        "Research-led website design, local SEO, and digital growth.",
+        "Digital engineering for local visibility, lead systems, websites, and operational tools.",
       images: [socialImage],
     },
   };

@@ -33,13 +33,11 @@ const sectionMenus: Record<
     title: "Services",
     items: [
       { label: "Service overview", href: "/services/" },
-      { label: "Website design", href: "/services/website-design-redesign/" },
-      { label: "Migration & provider rescue", href: "/services/website-migration-provider-rescue/" },
-      { label: "Local SEO", href: "/services/local-seo-search-visibility/" },
-      { label: "Lead generation", href: "/services/lead-generation-conversion/" },
-      { label: "Ongoing growth", href: "/services/ongoing-seo-growth/" },
-      { label: "Technical SEO", href: "/services/technical-seo-site-health/" },
-      { label: "Research & analytics", href: "/services/research-audits-analytics/" },
+      { label: "Local visibility & lead systems", href: "/services/local-seo-search-visibility/" },
+      { label: "Websites & managed hosting", href: "/services/website-design-redesign/" },
+      { label: "Provider rescue & migration", href: "/services/website-migration-provider-rescue/" },
+      { label: "Custom tools & automation", href: "/services/custom-tools-automation/" },
+      { label: "Research, analytics & improvement", href: "/services/research-audits-analytics/" },
     ],
   },
   industries: {
@@ -56,10 +54,9 @@ const sectionMenus: Record<
   company: {
     title: "Plan a project",
     items: [
-      { label: "Pricing", href: "/pricing/" },
       { label: "About", href: "/about/" },
       { label: "Contact", href: "/contact/" },
-      { label: "Visibility Check", href: "/start/" },
+      { label: "Tools", href: "/tools/" },
       { label: "Emergency help", href: "/emergency/" },
       { label: "Privacy draft", href: "/privacy/" },
       { label: "Terms draft", href: "/terms/" },

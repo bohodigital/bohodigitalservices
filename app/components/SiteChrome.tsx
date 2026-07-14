@@ -83,12 +83,13 @@ type FormFieldProps =
 type StatusKind = "success" | "error" | "info";
 
 type EvidenceStatus =
-  | "verified"
-  | "documented"
-  | "in-progress"
-  | "example-format"
-  | "public-experiment"
-  | "concept";
+  | "verified-current"
+  | "demonstrated-public"
+  | "internal-working-system"
+  | "prototype-or-experiment"
+  | "planned"
+  | "historical-or-archived"
+  | "prohibited-claim";
 
 const footerGroups: ReadonlyArray<{
   title: string;
@@ -99,20 +100,24 @@ const footerGroups: ReadonlyArray<{
     links: [
       { label: "All services", href: "/services/" },
       {
-        label: "Website design & redesign",
-        href: "/services/website-design-redesign/",
-      },
-      {
-        label: "Migration & provider rescue",
-        href: "/services/website-migration-provider-rescue/",
-      },
-      {
-        label: "Local SEO & search visibility",
+        label: "Local visibility & lead systems",
         href: "/services/local-seo-search-visibility/",
       },
       {
-        label: "Lead generation & conversion",
-        href: "/services/lead-generation-conversion/",
+        label: "Websites & managed hosting",
+        href: "/services/website-design-redesign/",
+      },
+      {
+        label: "Provider rescue & migration",
+        href: "/services/website-migration-provider-rescue/",
+      },
+      {
+        label: "Custom tools & automation",
+        href: "/services/custom-tools-automation/",
+      },
+      {
+        label: "Research, analytics & improvement",
+        href: "/services/research-audits-analytics/",
       },
     ],
   },
@@ -122,8 +127,6 @@ const footerGroups: ReadonlyArray<{
       { label: "Resources overview", href: "/resources/" },
       { label: "Practical guides", href: "/learn/" },
       { label: "Plain-language glossary", href: "/learn/glossary/" },
-      { label: "Tools & systems", href: "/tools/" },
-      { label: "Open the Lab", href: "/lab/" },
       { label: "Claims & evidence standards", href: "/lab/claims-we-refuse-to-make/" },
     ],
   },
@@ -270,7 +273,7 @@ export function MosaicCard({
 }
 
 export function ResearchCard({
-  status = "in-progress",
+  status = "planned",
   title,
   children,
   href,
@@ -477,14 +480,14 @@ export function Header() {
           <Link className="site-header__utility-link" href="/contact/">
             Contact
           </Link>
-          <ButtonLink className="site-header__desktop-cta" href="/start/">
-            Get a Visibility Check
+          <ButtonLink className="site-header__desktop-cta" href="/contact/">
+            Talk to Someone Technical
           </ButtonLink>
         </div>
 
         <div className="site-header__mobile-actions">
-          <ButtonLink className="site-header__mobile-cta" href="/start/">
-            Visibility Check
+          <ButtonLink className="site-header__mobile-cta" href="/contact/">
+            Talk Technical
           </ButtonLink>
 
           <MobileMenu navigation={primaryNavigation} />
@@ -506,8 +509,8 @@ export function Footer() {
             <span>Boho Digital Services</span>
           </Link>
           <p className="site-footer__brand-statement">
-            Creative, research-led digital work for businesses that need their
-            website to be useful, findable, and theirs to control.
+            Digital engineering for businesses that need visibility, lead
+            systems, websites, and operational tools they can understand.
           </p>
           <div className="site-footer__contact-links">
             <a href="mailto:contact@bohemiandigital.org">
@@ -517,7 +520,7 @@ export function Footer() {
               Webmaster
             </a>
           </div>
-          <ButtonLink href="/start/">Get a Visibility Check</ButtonLink>
+          <ButtonLink href="/contact/">Talk to Someone Technical</ButtonLink>
         </div>
 
         <div className="site-footer__link-groups">
@@ -541,8 +544,7 @@ export function Footer() {
 
         <div className="site-footer__bottom">
           <p className="site-footer__system-line">
-            Websites, search visibility, migration, and growth systems built
-            from research.
+            Diagnose. Prioritize. Engineer. Deploy. Measure. Improve.
           </p>
 
           <nav className="site-footer__legal" aria-label="Legal">
@@ -841,16 +843,17 @@ export function FaqItem({
 }
 
 const evidenceLabels: Record<EvidenceStatus, string> = {
-  verified: "Verified",
-  documented: "Documented",
-  "in-progress": "In progress",
-  "example-format": "Example format",
-  "public-experiment": "Public experiment",
-  concept: "Concept",
+  "verified-current": "Verified current",
+  "demonstrated-public": "Demonstrated public",
+  "internal-working-system": "Internal working system",
+  "prototype-or-experiment": "Prototype or experiment",
+  planned: "Planned",
+  "historical-or-archived": "Historical or archived",
+  "prohibited-claim": "Prohibited claim",
 };
 
 export function EvidenceBadge({
-  status = "in-progress",
+  status = "planned",
   children,
   className,
 }: {

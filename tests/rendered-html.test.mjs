@@ -14,9 +14,9 @@ async function loadHandler() {
   return handlerPromise;
 }
 
-async function render(pathname = "/") {
+async function render(pathname = "/", origin = "http://localhost") {
   const handler = await loadHandler();
-  const request = new Request(`http://localhost${pathname}`, {
+  const request = new Request(`${origin}${pathname}`, {
     headers: { accept: "text/html" },
   });
 
@@ -36,51 +36,55 @@ async function render(pathname = "/") {
       );
 }
 
-test("server-renders the complete private Boho homepage", async () => {
+test("server-renders the governed Boho digital-engineering homepage", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
   const requiredHeadings = [
-    "Research-led website design, local SEO, and digital growth.",
-    "A digital marketing package is not a business strategy.",
-    "Research before recommendations.",
+    "Local visibility, lead systems, and websites built by people who understand the machinery.",
+    "Marketing systems are still systems.",
+    "A six-stage engineering method.",
     "Website design built around clarity, trust, search, and action.",
-    "Website design, local SEO, website migration, and lead-generation services.",
+    "Five service lanes, one accountable system.",
     "Website migration and provider rescue without losing what works.",
     "Website and local SEO strategy shaped by how customers choose.",
-    "Resources, research, and proof you can inspect.",
+    "Tools and proof governed by evidence.",
     "Ongoing SEO and website growth tied to visible priorities and decisions.",
-    "We only work with one client per industry and service area, claim your territory today!",
-    "Lean overhead, practical pricing, and more useful work.",
-    "Start with a Local Visibility Check.",
+    "Tired of talking to people who cannot explain the system?",
+    "Scope follows diagnosis, not a package menu.",
+    "Talk to someone who can explain the machinery.",
   ];
 
   for (const heading of requiredHeadings) {
     assert.ok(html.includes(heading), `missing homepage heading: ${heading}`);
   }
 
-  assert.match(html, /<meta[^>]+name="robots"[^>]+noindex/i);
+  assert.match(html, /<meta[^>]+name="robots"[^>]+index, follow/i);
   assert.match(html, /href="#main-content"[^>]*>\s*Skip to content/i);
   assert.match(html, /aria-expanded="false"/i);
   assert.match(html, /aria-controls="mobile-menu-/i);
   assert.match(html, /href="\/emergency\/"/i);
-  assert.match(html, /How Boho Works: Discover, we review your goals/i);
-  assert.doesNotMatch(html, /Discover, design, build, launch/i);
+  assert.doesNotMatch(html, /how-boho-works-v2-transparent\.png/i);
+  assert.doesNotMatch(html, /Discover, Design, Build, Launch/i);
   assert.doesNotMatch(html, /Scope, review, and launch gates are/i);
   assert.match(html, /definition-website-clarity-/i);
   assert.match(html, /definition-trust-signal-/i);
   assert.match(html, /definition-customer-discovery-/i);
   assert.match(html, /definition-customer-action-/i);
-  assert.match(html, /href="\/start\/"[^>]*>[\s\S]*?Claim Your Territory/i);
+  assert.match(html, /href="\/contact\/"[^>]*>[\s\S]*?Talk to Someone Technical/i);
+  assert.match(html, /href="\/tools\/"[^>]*>[\s\S]*?See What We Build/i);
+  assert.doesNotMatch(html, /Claim Your Territory|one client per industry/i);
   assert.match(html, /Representative editorial photography, not Boho staff or client work/i);
   assert.match(html, /aria-label="Homepage journey"/i);
-  for (const stage of ["Discover", "Prioritize", "Build", "Measure", "Improve"]) {
+  for (const stage of ["Diagnose", "Prioritize", "Engineer", "Deploy", "Measure", "Improve"]) {
     assert.match(html, new RegExp(`>${stage}<`, "i"));
   }
   assert.match(html, /href="\/services\/research-audits-analytics\/"/i);
   assert.match(html, /href="\/services\/ongoing-seo-growth\/"/i);
+  assert.match(html, /href="\/services\/custom-tools-automation\/"/i);
+  assert.equal((html.match(/class="service-card /g) ?? []).length, 5);
   assert.match(html, /Photography shows representative business settings/i);
   assert.doesNotMatch(html, /Concept interface/i);
   assert.match(html, /googletagmanager\.com\/gtag\/js\?id=G-5CV8L2SE2R/i);
@@ -114,7 +118,7 @@ test("server-renders the complete private Boho homepage", async () => {
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Your site is taking shape/i);
 });
 
-test("publishes crawl-ready controls without lifting the noindex hold", async () => {
+test("publishes selective crawl controls and blocks preview-host indexing", async () => {
   const robots = await readFile(
     new URL("../dist/client/robots.txt", import.meta.url),
     "utf8",
@@ -138,7 +142,16 @@ test("publishes crawl-ready controls without lifting the noindex hold", async ()
   const sitemap = await sitemapResponse.text();
   assert.match(sitemap, /https:\/\/bohodigitalservices\.com\//);
   assert.match(sitemap, /https:\/\/bohodigitalservices\.com\/services\//);
+  assert.match(sitemap, /https:\/\/bohodigitalservices\.com\/services\/custom-tools-automation\//);
   assert.match(sitemap, /https:\/\/bohodigitalservices\.com\/resources\//);
+  assert.match(sitemap, /https:\/\/bohodigitalservices\.com\/learn\/website-buying\//);
+  assert.match(sitemap, /https:\/\/bohodigitalservices\.com\/learn\/provider-rescue\//);
+  assert.match(sitemap, /https:\/\/bohodigitalservices\.com\/learn\/glossary\//);
+  assert.doesNotMatch(sitemap, /https:\/\/bohodigitalservices\.com\/tools\//);
+  assert.doesNotMatch(sitemap, /https:\/\/bohodigitalservices\.com\/pricing\//);
+  assert.doesNotMatch(sitemap, /<loc>https:\/\/bohodigitalservices\.com\/lab\/<\/loc>/);
+  assert.doesNotMatch(sitemap, /https:\/\/bohodigitalservices\.com\/lab\/claims-we-refuse-to-make\//);
+  assert.doesNotMatch(sitemap, /https:\/\/bohodigitalservices\.com\/learn\/small-business-seo\//);
   assert.doesNotMatch(sitemap, /\/lab\/in-house-brands\//);
 
   const homeResponse = await render();
@@ -147,7 +160,7 @@ test("publishes crawl-ready controls without lifting the noindex hold", async ()
     home,
     /<link[^>]+rel="canonical"[^>]+href="https:\/\/bohodigitalservices\.com\/"/i,
   );
-  assert.match(home, /<meta[^>]+name="robots"[^>]+noindex/i);
+  assert.match(home, /<meta[^>]+name="robots"[^>]+index, follow/i);
 
   const serviceResponse = await render("/services");
   const service = await serviceResponse.text();
@@ -155,7 +168,21 @@ test("publishes crawl-ready controls without lifting the noindex hold", async ()
     service,
     /<link[^>]+rel="canonical"[^>]+href="https:\/\/bohodigitalservices\.com\/services\/"/i,
   );
-  assert.match(service, /<meta[^>]+name="robots"[^>]+noindex/i);
+  assert.match(service, /<meta[^>]+name="robots"[^>]+index, follow/i);
+
+  for (const route of ["/tools", "/pricing", "/lab", "/lab/claims-we-refuse-to-make", "/learn/small-business-seo"]) {
+    const response = await render(route);
+    assert.equal(response.status, 200);
+    assert.match(await response.text(), /<meta[^>]+name="robots"[^>]+noindex, nofollow/i);
+  }
+
+  const previewResponse = await render("/", "https://governance-review.pages.dev");
+  assert.equal(previewResponse.headers.get("X-Robots-Tag"), "noindex, nofollow");
+  const previewRobots = await render("/robots.txt", "https://governance-review.pages.dev");
+  assert.equal(previewRobots.headers.get("X-Robots-Tag"), "noindex, nofollow");
+  assert.match(await previewRobots.text(), /User-agent: \*[\s\S]*Disallow: \//);
+  const canonicalResponse = await render("/", "https://bohodigitalservices.com");
+  assert.equal(canonicalResponse.headers.get("X-Robots-Tag"), null);
 });
 
 test("keeps compiled styles and approved public assets on the Pages static path", async () => {
@@ -289,7 +316,7 @@ test("resolves every local asset referenced by every rendered route", async () =
   assert.ok(assetPaths.size >= 16, `asset audit found only ${assetPaths.size} local assets`);
 });
 
-test("keeps the design system accessible, private, and free of starter artifacts", async () => {
+test("keeps the design system accessible, governed, and free of starter artifacts", async () => {
   const [page, layout, homepage, components, mobileMenu, brandCarousel, brandData, brandsPage, brandPage, operatingCycle, css, packageJson] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
@@ -307,8 +334,8 @@ test("keeps the design system accessible, private, and free of starter artifacts
 
   assert.match(page, /import Homepage from/);
   assert.doesNotMatch(page, /SkeletonPreview|codex-preview/);
-  assert.match(layout, /index:\s*false/);
-  assert.match(layout, /follow:\s*false/);
+  assert.match(layout, /index:\s*true/);
+  assert.match(layout, /follow:\s*true/);
   assert.match(layout, /G-5CV8L2SE2R/);
   assert.match(layout, /aecddac8-8ad4-49c4-b791-60b161c95155/);
   assert.match(layout, /data-domains="bohodigitalservices\.com,www\.bohodigitalservices\.com"/);
@@ -324,8 +351,8 @@ test("keeps the design system accessible, private, and free of starter artifacts
   assert.match(homepage, /className="method-summary-list"/);
   assert.match(homepage, /className="method-summary-list__icon"/);
   assert.match(homepage, /className="design-principle__icon"/);
-  assert.match(homepage, /how-boho-works-v2-transparent\.png/);
-  assert.match(homepage, /<BrandPreviewCarousel \/>/);
+  assert.doesNotMatch(homepage, /how-boho-works-v2-transparent\.png/);
+  assert.doesNotMatch(homepage, /<BrandPreviewCarousel \/>/);
   assert.match(homepage, /className="design-reference"/);
   assert.match(homepage, /className="buyer-panel__image"/);
   assert.doesNotMatch(homepage, /ResearchRouteVisual|ConceptCaption|signal-path/);
@@ -361,10 +388,10 @@ test("keeps the design system accessible, private, and free of starter artifacts
   assert.match(brandsPage, /id=\{brand\.id\}/);
   assert.match(brandsPage, /href=\{brand\.labPath\}/);
   assert.match(brandPage, /BrandPreviewFrame brand=\{brand\}/);
-  for (const stage of ["Discover", "Prioritize", "Build", "Measure", "Improve"]) {
+  for (const stage of ["Diagnose", "Prioritize", "Engineer", "Deploy", "Measure", "Improve"]) {
     assert.ok(operatingCycle.includes(`title: "${stage}"`), `operating cycle is missing ${stage}`);
   }
-  assert.equal((operatingCycle.match(/href:/g) ?? []).length, 5);
+  assert.equal((operatingCycle.match(/href:/g) ?? []).length, 6);
   assert.doesNotMatch(homepage, /Prioritize, Improve, Measure, Adjust|Discover, Design, Build, Grow/);
   assert.match(components, /export function FormField/);
   assert.match(components, /export function FormStatusMessage/);
@@ -427,7 +454,7 @@ test("server-renders all configured routes with working fragment targets", async
   const slugs = [...`${coreSource}\n${audienceSource}`.matchAll(/slug:\s*"([^"]+)"/g)]
     .map((match) => match[1]);
 
-  assert.equal(slugs.length, 48);
+  assert.equal(slugs.length, 49);
   assert.equal(new Set(slugs).size, slugs.length);
 
   for (const slug of slugs) {
@@ -452,7 +479,99 @@ test("server-renders all configured routes with working fragment targets", async
   }
 });
 
-test("consolidates Learn, Tools, and Lab under an accessible Resources hub", async () => {
+test("renders the governed commercial lanes, claims, and honest contact fallback", async () => {
+  const [websiteResponse, customResponse, researchResponse, aboutResponse, contactResponse, pricingResponse, navigationSource, coreSource] = await Promise.all([
+    render("/services/website-design-redesign"),
+    render("/services/custom-tools-automation"),
+    render("/services/research-audits-analytics"),
+    render("/about"),
+    render("/contact"),
+    render("/pricing"),
+    readFile(new URL("../app/content/navigation.ts", import.meta.url), "utf8"),
+    readFile(new URL("../app/content/corePages.ts", import.meta.url), "utf8"),
+  ]);
+
+  for (const response of [websiteResponse, customResponse, researchResponse, aboutResponse, contactResponse, pricingResponse]) {
+    assert.equal(response.status, 200);
+  }
+
+  const websiteHtml = await websiteResponse.text();
+  const customHtml = await customResponse.text();
+  const researchHtml = await researchResponse.text();
+  const aboutHtml = await aboutResponse.text();
+  const contactHtml = await contactResponse.text();
+  const pricingHtml = await pricingResponse.text();
+
+  assert.ok(coreSource.includes("Standard managed hosting is included at no separate hosting charge for eligible websites while an active qualifying retainer remains in good standing."));
+  assert.match(websiteHtml, /<title>Websites &amp; Managed Hosting \| Boho Digital Services<\/title>/i);
+  assert.match(customHtml, /Custom Tools &amp; Automation/);
+  assert.match(customHtml, /Automate a stable decision, not a vague frustration/);
+  assert.match(customHtml, /Build the Missing Tool/);
+  assert.match(customHtml, /Dashboards, analytics, and monitoring/);
+  assert.match(customHtml, /APIs, data normalization, and publishing/);
+  assert.match(researchHtml, /A dashboard is not a decision/);
+  assert.match(researchHtml, /where platforms disagree/);
+  assert.match(customHtml, /Diagnose → Prioritize → Engineer → Deploy → Measure → Improve/);
+  assert.match(aboutHtml, /practical operating description, not a licensed-profession claim/i);
+  assert.match(aboutHtml, /does not represent professional-engineer licensure/i);
+  assert.match(contactHtml, /This form cannot send a message/i);
+  assert.match(contactHtml, /mailto:contact@bohemiandigital\.org/);
+  assert.match(contactHtml, /Preview form — not connected/);
+  assert.doesNotMatch(contactHtml, /<form[^>]+action=/i);
+  assert.match(pricingHtml, /no current public rates are approved/i);
+  const pricingVisibleMarkup = pricingHtml.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "");
+  assert.doesNotMatch(pricingVisibleMarkup, /\$\d/);
+
+  for (const label of [
+    "Local Visibility & Lead Systems",
+    "Websites & Managed Hosting",
+    "Provider Rescue & Migration",
+    "Custom Tools & Automation",
+    "Research, Analytics & Improvement",
+  ]) {
+    assert.ok(navigationSource.includes(label), `service navigation is missing ${label}`);
+  }
+  assert.ok(navigationSource.indexOf('{ label: "Tools"') < navigationSource.indexOf('{ label: "Resources"'));
+});
+
+test("resolves every rendered local link and cross-page fragment", async () => {
+  const [coreSource, audienceSource] = await Promise.all([
+    readFile(new URL("../app/content/corePages.ts", import.meta.url), "utf8"),
+    readFile(new URL("../app/content/audiencePages.ts", import.meta.url), "utf8"),
+  ]);
+  const slugs = [...`${coreSource}\n${audienceSource}`.matchAll(/slug:\s*"([^"]+)"/g)]
+    .map((match) => match[1]);
+  const knownPaths = new Set(["/", ...slugs.map((slug) => slug.endsWith("/") ? slug : `${slug}/`)]);
+  const rendered = new Map();
+
+  async function htmlFor(path) {
+    const canonicalPath = path === "/" ? "/" : `${path.replace(/\/+$/, "")}/`;
+    if (!rendered.has(canonicalPath)) {
+      const response = await render(canonicalPath === "/" ? "/" : canonicalPath.slice(0, -1));
+      assert.equal(response.status, 200, `${canonicalPath} did not render`);
+      rendered.set(canonicalPath, await response.text());
+    }
+    return rendered.get(canonicalPath);
+  }
+
+  for (const sourcePath of knownPaths) {
+    const html = await htmlFor(sourcePath);
+    for (const match of html.matchAll(/href="(\/[^"]*)"/g)) {
+      const url = new URL(match[1], "https://bohodigitalservices.com");
+      if (["/assets/", "/brand/", "/diagrams/", "/visuals/"].some((prefix) => url.pathname.startsWith(prefix))) continue;
+      if (["/favicon.ico", "/boho-digital-services-social-v2.png", "/sitemap.xml", "/robots.txt"].includes(url.pathname)) continue;
+      const targetPath = url.pathname === "/" ? "/" : `${url.pathname.replace(/\/+$/, "")}/`;
+      assert.ok(knownPaths.has(targetPath), `${sourcePath} links to unknown route ${url.pathname}`);
+      if (url.hash) {
+        const targetHtml = await htmlFor(targetPath);
+        const id = decodeURIComponent(url.hash.slice(1));
+        assert.ok(targetHtml.includes(`id="${id}"`), `${sourcePath} links to missing ${targetPath}#${id}`);
+      }
+    }
+  }
+});
+
+test("keeps buyer resources primary and broad research secondary", async () => {
   const [resourcesResponse, learnResponse, toolsResponse, labResponse, mobileMenuSource, resourceNavigationSource] = await Promise.all([
     render("/resources"),
     render("/learn"),
@@ -468,13 +587,12 @@ test("consolidates Learn, Tools, and Lab under an accessible Resources hub", asy
 
   const resourcesHtml = await resourcesResponse.text();
   for (const text of [
-    "Useful answers, working systems, and evidence you can inspect.",
-    "Practical guides",
+    "Buyer guidance for decisions that change ownership, cost, or risk.",
+    "Website buying",
+    "Provider rescue",
     "Plain-language glossary",
-    "Tools &amp; systems",
-    "The Boho Lab",
     "Skip the taxonomy. Name the problem.",
-    "Open the Lab when the method matters as much as the answer.",
+    "Evidence rules stay available without becoming the primary sales path.",
   ]) {
     assert.ok(resourcesHtml.includes(text), `Resources hub is missing: ${text}`);
   }
@@ -491,24 +609,26 @@ test("consolidates Learn, Tools, and Lab under an accessible Resources hub", asy
   assert.match(resourcesHtml, /href="\/resources\/"[^>]*aria-current="page"|aria-current="page"[^>]*href="\/resources\/"/);
   assert.match(resourcesHtml, /href="\/learn\/glossary\/#term-technical-seo"/);
   for (const route of [
-    "/lab/market-map-examples/",
-    "/lab/success-signal-studies/",
-    "/lab/in-house-brands/",
-    "/lab/in-house-brands/how-biscuit/",
-    "/lab/in-house-brands/rank-builder-seo/",
-    "/lab/in-house-brands/better-grades/",
-    "/lab/public-teardowns/",
+    "/learn/website-buying/",
+    "/learn/provider-rescue/",
+    "/learn/glossary/",
+    "/lab/claims-we-refuse-to-make/",
   ]) {
-    assert.ok(resourceNavigationSource.includes(route), `Resources sidebar is missing ${route}`);
+    assert.ok(resourceNavigationSource.includes(route), `Resources navigation is missing ${route}`);
   }
+  assert.doesNotMatch(resourceNavigationSource, /label: "Small-business SEO"/);
+  assert.doesNotMatch(resourceNavigationSource, /label: "Local search"/);
+  assert.doesNotMatch(resourceNavigationSource, /label: "Rank Builder research"/);
 });
 
-test("renders the source-backed glossary, tools catalog, definitions, and diagrams", async () => {
-  const [toolsResponse, glossaryResponse, definitionComponent, knowledgeSource] = await Promise.all([
+test("renders the governed capability index, glossary, definitions, and diagrams", async () => {
+  const [toolsResponse, glossaryResponse, definitionComponent, knowledgeSource, typesSource, audienceSource] = await Promise.all([
     render("/tools"),
     render("/learn/glossary"),
     readFile(new URL("../app/components/DefinitionTerm.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/content/knowledge.ts", import.meta.url), "utf8"),
+    readFile(new URL("../app/content/types.ts", import.meta.url), "utf8"),
+    readFile(new URL("../app/content/audiencePages.ts", import.meta.url), "utf8"),
   ]);
 
   assert.equal(toolsResponse.status, 200);
@@ -521,21 +641,21 @@ test("renders the source-backed glossary, tools catalog, definitions, and diagra
   assert.match(glossaryHtml, /id="term-technical-seo"/);
 
   for (const name of [
-    "GitHub",
-    "Cloudflare",
-    "Cloudflare Pages",
-    "API keys",
-    "MCP servers",
-    "Python automation",
-    "Web crawling",
-    "Google Analytics",
-    "Google Search Console",
-    "Google Business Profile",
+    "Verified current",
+    "Demonstrated public",
+    "Internal working system",
+    "Prototype or experiment",
+    "Planned",
+    "Historical or archived",
+    "Prohibited claim",
   ]) {
-    assert.ok(toolsHtml.includes(name), `tools page is missing ${name}`);
+    assert.ok(toolsHtml.includes(name), `capability index is missing ${name}`);
   }
+  assert.doesNotMatch(typesSource, /\|\s*"Draft"/);
+  assert.doesNotMatch(audienceSource, /status:\s*"Draft"/);
 
-  assert.match(toolsHtml, /Boho Central Servers/);
+  assert.match(toolsHtml, /Public capability profiles · 0 accepted/);
+  assert.match(toolsHtml, /no accepted proofEligible=true record/i);
   assert.match(toolsHtml, /How the name becomes a page/);
   assert.match(toolsHtml, /A reviewable path from owner access to the live website/);
   assert.match(toolsHtml, /boho-hosting-architecture-v2\.png/);
@@ -543,12 +663,11 @@ test("renders the source-backed glossary, tools catalog, definitions, and diagra
   assert.match(toolsHtml, /class="delivery-route"/);
   assert.match(toolsHtml, /Static assets stay on the asset path/);
   assert.doesNotMatch(toolsHtml, /mosaic-wing|boho-flow/);
-  assert.match(toolsHtml, /Rank Builder SEO/);
-  assert.match(toolsHtml, /How Biscuit/);
+  assert.doesNotMatch(toolsHtml, /Working catalog ·/);
+  assert.doesNotMatch(toolsHtml, /Rank Builder SEO/);
+  assert.doesNotMatch(toolsHtml, /How Biscuit/);
   assert.match(toolsHtml, /developers\.cloudflare\.com/);
   assert.match(toolsHtml, /docs\.github\.com/);
-  assert.match(toolsHtml, /modelcontextprotocol\.io/);
-  assert.match(toolsHtml, /developers\.google\.com/);
   assert.match(glossaryHtml, /Most used in the current site copy/);
   assert.match(glossaryHtml, /Master glossary/);
   assert.match(glossaryHtml, /Search the glossary/);
@@ -564,7 +683,7 @@ test("renders the source-backed glossary, tools catalog, definitions, and diagra
   assert.match(glossaryHtml, /id="term-trust-signal"/);
   assert.match(glossaryHtml, /id="term-customer-discovery"/);
   assert.match(glossaryHtml, /id="term-customer-action"/);
-  assert.match(glossaryHtml, /Deeper tool documentation/);
+  assert.match(glossaryHtml, /Related system terms/);
   assert.doesNotMatch(glossaryHtml, /class="glossary-entry-grid"/);
   assert.doesNotMatch(glossaryHtml, /Glossary migration in progress/);
 
