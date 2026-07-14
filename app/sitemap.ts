@@ -2,14 +2,15 @@ import type { MetadataRoute } from "next";
 
 import { audiencePages } from "./content/audiencePages";
 import { corePages } from "./content/corePages";
+import { isRetiredPublicPage } from "./content/publicPages";
 
 const siteUrl = "https://bohodigitalservices.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [
     "/",
-    ...corePages.filter((page) => !page.noIndex).map((page) => page.slug),
-    ...audiencePages.filter((page) => !page.noIndex).map((page) => page.slug),
+    ...corePages.filter((page) => !page.noIndex && !isRetiredPublicPage(page.slug)).map((page) => page.slug),
+    ...audiencePages.filter((page) => !page.noIndex && !isRetiredPublicPage(page.slug)).map((page) => page.slug),
   ];
 
   return [...new Set(paths)].map((path) => ({

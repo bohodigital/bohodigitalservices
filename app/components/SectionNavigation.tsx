@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  ArrowRight,
-  BookOpenCheck,
-  ChevronDown,
-  FlaskConical,
-  Wrench,
-} from "lucide-react";
+import { BookOpenCheck, ChevronDown, Wrench } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -58,8 +52,8 @@ const sectionMenus: Record<
       { label: "Contact", href: "/contact/" },
       { label: "Tools", href: "/tools/" },
       { label: "Emergency help", href: "/emergency/" },
-      { label: "Privacy draft", href: "/privacy/" },
-      { label: "Terms draft", href: "/terms/" },
+      { label: "Privacy", href: "/privacy/" },
+      { label: "Terms", href: "/terms/" },
       { label: "Accessibility", href: "/accessibility/" },
     ],
   },
@@ -69,7 +63,6 @@ function isResourcePath(path: string) {
   return (
     path.startsWith("/resources/") ||
     path.startsWith("/learn/") ||
-    path.startsWith("/lab/") ||
     path === "/tools/"
   );
 }
@@ -91,7 +84,6 @@ function isCurrentItem(href: string, currentPath: string) {
 const resourceIcons = {
   guides: BookOpenCheck,
   tools: Wrench,
-  lab: FlaskConical,
 };
 
 export function SectionSidebar({
@@ -184,12 +176,6 @@ export function SectionSidebar({
                   );
                 })}
               </div>
-              {currentPath !== "/lab/" ? (
-                <Link className="section-sidebar__lab-link" href="/lab/">
-                  <span>Open the Lab</span>
-                  <ArrowRight aria-hidden="true" size={16} />
-                </Link>
-              ) : null}
             </nav>
           ) : (
             <nav aria-label={`${menuTitle} pages`}>

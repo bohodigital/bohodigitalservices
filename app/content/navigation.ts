@@ -12,7 +12,7 @@ export type PrimaryNavigationItem = NavigationLink & {
 
 export type ResourceNavigationGroup = {
   label: string;
-  icon: "guides" | "tools" | "lab";
+  icon: "guides" | "tools";
   items: ReadonlyArray<NavigationLink>;
 };
 
@@ -31,17 +31,9 @@ export const resourceNavigationGroups: ReadonlyArray<ResourceNavigationGroup> = 
     label: "Tools & systems",
     icon: "tools",
     items: [
-      { label: "Governed capability index", href: "/tools/" },
-      { label: "How website delivery works", href: "/tools/#how-it-works" },
-      { label: "Capability classifications", href: "/tools/#classifications" },
-    ],
-  },
-  {
-    label: "Lab & evidence",
-    icon: "lab",
-    items: [
-      { label: "Claims we refuse to make", href: "/lab/claims-we-refuse-to-make/" },
-      { label: "Archive and experiments", href: "/lab/" },
+      { label: "Custom tools & systems", href: "/tools/" },
+      { label: "How Boho builds tools", href: "/tools/#how-it-works" },
+      { label: "Custom tools & automation service", href: "/services/custom-tools-automation/" },
     ],
   },
 ];
@@ -91,9 +83,9 @@ export const resourceHeaderLinks: ReadonlyArray<NavigationLink> = [
     description: "Translate technical language into business decisions.",
   },
   {
-    label: "Claims & evidence standards",
-    href: "/lab/claims-we-refuse-to-make/",
-    description: "See the promises and proof shortcuts Boho will not sell.",
+    label: "Website buying",
+    href: "/learn/website-buying/",
+    description: "Plan scope, ownership, content, hosting, and migration risk.",
   },
 ];
 

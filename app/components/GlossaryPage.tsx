@@ -7,7 +7,6 @@ import { SectionSidebar } from "./SectionNavigation";
 export function GlossaryPage() {
   return (
     <>
-      <meta name="robots" content="noindex, nofollow" />
       <Header />
       <main className="knowledge-page glossary-page" id="main-content" tabIndex={-1}>
         <KnowledgeHero
@@ -15,7 +14,7 @@ export function GlossaryPage() {
           title="Technical language, translated before it becomes leverage."
           intro={[
             "This glossary gives the short version first, then explains why the term changes an ownership, website, search, measurement, or automation decision.",
-            "Throughout the site, a dotted keyword with a small question mark can be hovered, focused with a keyboard, or tapped to reveal the short definition. Every popup links back to the same canonical entry here.",
+            "Search by term or topic, then use the related links to move between the concepts that shape the same business decision.",
           ]}
           primary={{ label: "Browse definitions", href: "#common-terms" }}
           secondary={{ label: "Read how Boho uses the tools", href: "/tools/" }}

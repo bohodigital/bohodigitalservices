@@ -10,7 +10,7 @@ import { primaryNavigation } from "../content/navigation";
 import { DesktopNavigation } from "./DesktopNavigation";
 import { MobileMenu } from "./MobileMenu";
 
-type LocalHref = "/" | `/${string}` | `#${string}`;
+type LocalHref = "/" | `/${string}` | `#${string}` | `mailto:${string}`;
 
 type LocalLinkProps = Omit<
   AnchorHTMLAttributes<HTMLAnchorElement>,
@@ -127,7 +127,7 @@ const footerGroups: ReadonlyArray<{
       { label: "Resources overview", href: "/resources/" },
       { label: "Practical guides", href: "/learn/" },
       { label: "Plain-language glossary", href: "/learn/glossary/" },
-      { label: "Claims & evidence standards", href: "/lab/claims-we-refuse-to-make/" },
+      { label: "Website buying", href: "/learn/website-buying/" },
     ],
   },
   {
