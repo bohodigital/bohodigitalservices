@@ -331,62 +331,57 @@ export function GlossaryPage() {
 export function ToolsPage() {
   return (
     <>
-      <meta name="robots" content="noindex, nofollow" />
       <Header />
       <main className="knowledge-page tools-page" id="main-content" tabIndex={-1}>
         <KnowledgeHero
           eyebrow="Tools"
-          title="Governed capabilities, not a software-logo catalog."
+          title="When the right tool does not exist, we build it."
           intro={[
-            "This index is for Boho capabilities and working systems that have an evidence trail. It does not promote third-party software as a Boho product, turn an internal experiment into a client promise, or pad the page with planned tools.",
-            "The current Bohopi proof program has no accepted proofEligible=true record, so this review publishes no verified capability profile. The page explains the gate, classifications, architecture, and what must exist before a profile can become public proof.",
+            "Boho builds focused digital systems for repeated work that is too important for a spreadsheet, too specific for off-the-shelf software, or too fragmented across existing tools.",
+            "The goal is useful operational leverage: clearer inputs, fewer manual handoffs, visible failure states, and ownership the business can understand.",
           ]}
-          primary={{ label: "See the Evidence Gate", href: "#evidence-gate" }}
-          secondary={{ label: "Discuss Custom Engineering", href: "/services/custom-tools-automation/" }}
+          primary={{ label: "See what Boho builds", href: "#capabilities" }}
+          secondary={{ label: "Build the missing tool", href: "/contact/" }}
         />
 
         <div className="knowledge-section-layout">
           <SectionSidebar
             currentPath="/tools/"
             anchors={[
-              { label: "Evidence gate", href: "#evidence-gate" },
-              { label: "Classifications", href: "#classifications" },
+              { label: "Capabilities", href: "#capabilities" },
               { label: "How the systems work", href: "#how-it-works" },
-              { label: "Public capability profiles", href: "#capability-profiles" },
-              { label: "What Boho can scope", href: "#custom-engineering" },
+              { label: "A useful first scope", href: "#first-scope" },
+              { label: "Start a conversation", href: "#custom-engineering" },
             ]}
-            note="A classification describes evidence state. It is not a quality score or an invitation to treat planned work as available."
+            note="A useful tool starts with one repeated operational problem, a clear owner, and a measurable definition of working."
           />
           <div className="knowledge-section-layout__content">
-        <section className="tools-principles" id="evidence-gate" aria-labelledby="tools-principles-title">
+        <section className="tools-principles" id="capabilities" aria-labelledby="tools-principles-title">
           <div className="section-shell tools-principles__inner">
-            <p className="eyebrow">The evidence gate</p>
+            <p className="eyebrow">Practical capability lanes</p>
             <EditorialHeadline as="h2">
-              <span id="tools-principles-title">A public capability profile needs current Bohopi evidence.</span>
+              <span id="tools-principles-title">Build the smallest system that removes the repeated friction.</span>
             </EditorialHeadline>
             <div className="tools-principles__grid">
-              <article><strong>Evidence before promotion</strong><p>A current record must identify what exists, where it runs, how it was checked, and which public claim the evidence supports.</p></article>
-              <article><strong>Owner and boundary</strong><p>The profile must distinguish Boho-owned, client-owned, third-party, internal, public, and restricted layers.</p></article>
-              <article><strong>Failure and limitation</strong><p>A profile must state important limits, known failure modes, maintenance responsibility, and what it does not prove.</p></article>
-              <article><strong>Human publication gate</strong><p>Even verified evidence does not publish itself. Consequential claims and public release remain human-approved.</p></article>
+              <article><strong>Workflow automation</strong><p>Move repeated intake, routing, approval, publishing, and follow-up work through a visible process.</p></article>
+              <article><strong>Analytics and reporting</strong><p>Turn scattered data into a decision-ready view with clear sources and useful business signals.</p></article>
+              <article><strong>Validation and monitoring</strong><p>Check important pages, feeds, records, or integrations and make failures easier to find and act on.</p></article>
+              <article><strong>Integrations and APIs</strong><p>Connect the systems the business already uses without making the handoff harder to operate.</p></article>
             </div>
           </div>
         </section>
 
-        <section className="tools-principles" id="classifications" aria-labelledby="classifications-title">
+        <section className="tools-principles" id="first-scope" aria-labelledby="classifications-title">
           <div className="section-shell tools-principles__inner">
-            <p className="eyebrow">Required capability classifications</p>
+            <p className="eyebrow">A useful first scope</p>
             <EditorialHeadline as="h2">
-              <span id="classifications-title">Name the evidence state without promotional translation.</span>
+              <span id="classifications-title">Start with one workflow and a definition of done.</span>
             </EditorialHeadline>
             <div className="tools-principles__grid">
-              <article><strong>Verified current</strong><p>Current Bohopi evidence supports the capability and the precise public description.</p></article>
-              <article><strong>Demonstrated public</strong><p>A public demonstration can be inspected, but it is not automatically proof of client results or general production readiness.</p></article>
-              <article><strong>Internal working system</strong><p>The system is used internally and may support delivery without being offered as a public product.</p></article>
-              <article><strong>Prototype or experiment</strong><p>The work is exploratory, incomplete, or under test and must not be presented as stable delivery.</p></article>
-              <article><strong>Planned</strong><p>The capability is intended or proposed but does not yet exist as verified working evidence.</p></article>
-              <article><strong>Historical or archived</strong><p>The record explains past work and is not a statement of current availability or behavior.</p></article>
-              <article><strong>Prohibited claim</strong><p>The claim is unsupported, misleading, forbidden by governance, or outside the evidence available.</p></article>
+              <article><strong>Users and owner</strong><p>Name who uses the tool, who owns the process, and who decides when the workflow changes.</p></article>
+              <article><strong>Inputs and outputs</strong><p>Define what enters the system, what useful result comes out, and which data must stay protected.</p></article>
+              <article><strong>Failure handling</strong><p>Make errors visible, preserve recovery paths, and decide which actions require human approval.</p></article>
+              <article><strong>Operating fit</strong><p>Use infrastructure, maintenance, and documentation appropriate to the business that will run it.</p></article>
             </div>
           </div>
         </section>
@@ -398,19 +393,18 @@ export function ToolsPage() {
           </div>
         </section>
 
-        <section className="tool-directory" id="capability-profiles" aria-labelledby="tool-directory-title">
+        <section className="tool-directory" id="tool-fit" aria-labelledby="tool-directory-title">
           <div className="section-shell">
             <header className="tool-directory__heading">
-              <p className="eyebrow">Public capability profiles · 0 accepted</p>
+              <p className="eyebrow">Good tool fit</p>
               <EditorialHeadline as="h2">
-                <span id="tool-directory-title">No empty proof shelf is being filled with claims.</span>
+                <span id="tool-directory-title">Custom software should earn its place in the workflow.</span>
               </EditorialHeadline>
               <p>
-                The current proof program has not accepted a public capability
-                candidate as proof-eligible. This non-indexable review page
-                therefore includes the standard and the architecture, but no
-                promotional profile. A later profile must cite the accepted
-                Bohopi record and use one of the classifications above.
+                The best candidates are repeated, costly, error-prone tasks with
+                a clear owner and a result that can be checked. If a reliable
+                existing tool solves the problem cleanly, Boho will recommend
+                using it instead of inventing another system.
               </p>
             </header>
           </div>
@@ -418,13 +412,13 @@ export function ToolsPage() {
 
         <section className="owned-entities-note" id="custom-engineering" aria-labelledby="owned-entities-title">
           <div className="section-shell owned-entities-note__inner">
-            <p className="eyebrow">Commercial capability lane</p>
+            <p className="eyebrow">Custom tools and automation</p>
             <EditorialHeadline as="h2">
               <span id="owned-entities-title">Custom Tools & Automation is scoped from the operational problem.</span>
             </EditorialHeadline>
             <div>
-              <article><h3>What the service can cover</h3><p>Focused workflow automation, internal utilities, integrations, validation, and reporting when the business case and operating owner are clear.</p></article>
-              <article><h3>What the page does not claim</h3><p>No public product catalog, client result, production-ready prototype, or unlimited automation capability is implied by the service lane.</p><p><Link href="/services/custom-tools-automation/">Review the service boundaries →</Link></p></article>
+              <article><h3>Bring the repeated work</h3><p>Describe the handoffs, spreadsheets, copy-and-paste steps, missed checks, or reporting gaps that consume time or create avoidable risk.</p></article>
+              <article><h3>Choose the smallest useful build</h3><p>Boho will help decide whether the answer is an integration, a focused internal tool, a reporting layer, automation, or a simpler process change.</p><p><Link href="/services/custom-tools-automation/">Explore custom tools and automation →</Link></p></article>
             </div>
           </div>
         </section>

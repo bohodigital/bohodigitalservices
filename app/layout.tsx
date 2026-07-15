@@ -26,7 +26,7 @@ const organizationSchema = {
 
 export function generateMetadata(): Metadata {
   const socialImage = new URL(
-    "/boho-digital-services-social-v2.png",
+    "/og-boho-digital-engineering-20260714.png",
     siteUrl,
   ).toString();
 
@@ -64,9 +64,9 @@ export function generateMetadata(): Metadata {
       images: [
         {
           url: socialImage,
-          width: 1200,
-          height: 630,
-          alt: "Boho Digital Services — digital engineering for visibility, lead systems, websites, and operational tools",
+          width: 1536,
+          height: 1024,
+          alt: "Warm editorial collage representing Boho Digital Services digital engineering systems",
         },
       ],
     },

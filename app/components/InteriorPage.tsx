@@ -4,7 +4,6 @@ import type {
   PageConfig,
 } from "../content/types";
 import { BookOpenCheck, FlaskConical, PanelsTopLeft, SearchCheck } from "lucide-react";
-import DraftForm from "./DraftForm";
 import { DefinedText } from "./DefinedText";
 import { SectionSidebar, type SectionAnchor } from "./SectionNavigation";
 import {
@@ -22,7 +21,7 @@ import {
   TextLink,
 } from "./SiteChrome";
 
-type LocalHref = "/" | `/${string}` | `#${string}`;
+type LocalHref = "/" | `/${string}` | `#${string}` | `mailto:${string}`;
 
 type InteriorPageProps =
   | { page: PageConfig; config?: never }
@@ -45,6 +44,7 @@ function toLocalHref(href: string | undefined): LocalHref | undefined {
   if (!href) return undefined;
   if (href === "/") return "/";
   if (href.startsWith("#")) return href as `#${string}`;
+  if (href.startsWith("mailto:")) return href as `mailto:${string}`;
   if (href.startsWith("/") && !href.startsWith("//")) {
     return href as `/${string}`;
   }
@@ -293,26 +293,16 @@ export function InteriorPage(props: InteriorPageProps) {
   const primaryHref = toLocalHref(page.primaryCta.href);
   const secondaryHref = toLocalHref(page.secondaryCta?.href);
   const breadcrumbs = buildBreadcrumbs(page);
-  const requestedFormAnchor = [page.primaryCta.href, page.secondaryCta?.href]
-    .find((href) => href?.startsWith("#") && page.form)
-    ?.slice(1);
-  const formAnchor = requestedFormAnchor || "draft-form";
   const shouldRenderRelatedCta =
-    Boolean(primaryHref) && !primaryHref?.startsWith("#");
+    Boolean(primaryHref) && !primaryHref?.startsWith("#") && !primaryHref?.startsWith("mailto:");
   const seenTerms = new Set<string>();
   const pageAnchors: SectionAnchor[] = page.sections.map((section, index) => ({
     label: section.title,
     href: `#${sectionId(section, index)}` as `#${string}`,
   }));
-  if (page.form) {
-    pageAnchors.push({ label: page.form.title, href: `#${formAnchor}` });
-  }
 
   return (
     <>
-      {page.noIndex ? (
-        <meta name="robots" content="noindex, nofollow" />
-      ) : null}
       <Header />
       <main
         className={`interior-page interior-page--${page.theme}`}
@@ -332,12 +322,6 @@ export function InteriorPage(props: InteriorPageProps) {
           </div>
           <div className="section-shell interior-hero__inner">
             <Breadcrumbs items={breadcrumbs} />
-
-            {page.draftLabel ? (
-              <div className="interior-hero__draft-status" role="status">
-                <EvidenceBadge status="planned">{page.draftLabel}</EvidenceBadge>
-              </div>
-            ) : null}
 
             <div className="interior-hero__copy">
               <p className="eyebrow interior-hero__eyebrow">{page.eyebrow}</p>
@@ -381,14 +365,6 @@ export function InteriorPage(props: InteriorPageProps) {
                 seenTerms={seenTerms}
               />
             ))}
-
-            {page.form ? (
-              <section className="interior-form-section" id={formAnchor}>
-                <div className="section-shell interior-form-section__inner">
-                  <DraftForm config={page.form} />
-                </div>
-              </section>
-            ) : null}
 
             {shouldRenderRelatedCta && primaryHref ? (
               <div className="section-shell interior-page__related-cta">

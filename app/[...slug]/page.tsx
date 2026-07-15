@@ -10,8 +10,11 @@ import { InHouseBrandPage } from "../components/InHouseBrandPage";
 import { inHouseBrandsByLabPath } from "../content/inHouseBrands";
 import { audiencePages } from "../content/audiencePages";
 import { corePages } from "../content/corePages";
+import { isRetiredPublicPage } from "../content/publicPages";
 
-const pages = [...corePages, ...audiencePages];
+const pages = [...corePages, ...audiencePages].filter(
+  (page) => !isRetiredPublicPage(page.slug),
+);
 const pagesBySlug = new Map(pages.map((page) => [page.slug, page]));
 
 type InteriorRouteProps = {

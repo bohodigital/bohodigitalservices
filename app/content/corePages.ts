@@ -544,7 +544,7 @@ export const corePages: PageConfig[] = [
     ],
     theme: "editorial",
     primaryCta: { label: "Ask About Ongoing Support", href: "/contact/" },
-    secondaryCta: { label: "See Pricing", href: "/pricing/" },
+    secondaryCta: { label: "Talk About Ongoing Work", href: "/contact/" },
     sections: [
       {
         title: "A monthly retainer should earn its right to exist.",
@@ -814,8 +814,8 @@ export const corePages: PageConfig[] = [
     eyebrow: "About Boho",
     headline: "Commercial digital problems deserve people who understand the machinery.",
     intro: [
-      "Boho Digital Services is a small digital-engineering firm that combines local visibility, lead systems, websites, provider rescue, migration, custom tools, automation, research, analytics, and improvement.",
-      "Boho currently serves businesses across the United States without presenting a public office address.",
+      "Boho Digital Services connects local visibility, lead systems, websites, provider rescue, custom tools, automation, research, analytics, and improvement around the way a business actually works.",
+      "Built by digital engineers. Explained in plain English.",
     ],
     theme: "editorial",
     primaryCta: { label: "See How Boho Works", href: "#how-boho-operates" },
@@ -823,10 +823,10 @@ export const corePages: PageConfig[] = [
     sections: [
       {
         eyebrow: "What digital engineering means here",
-        title: "A practical operating description, not a licensed-profession claim.",
+        title: "Marketing systems are still systems.",
         body: [
           "At Boho, digital engineering means diagnosing, designing, building, deploying, measuring, and improving digital systems that support a commercial or operational outcome.",
-          "The term does not represent professional-engineer licensure, a regulated engineering service, a security certification, or a guarantee of performance. When a project needs licensed legal, financial, structural, electrical, security, accessibility, or other regulated expertise, that responsibility must be identified rather than implied.",
+          "Websites, search visibility, lead paths, analytics, integrations, content, and operational tools work better when they are treated as connected machinery instead of unrelated deliverables.",
         ],
         tone: "verdigris",
       },
@@ -896,16 +896,17 @@ export const corePages: PageConfig[] = [
     headline: "Talk to someone who can explain the machinery.",
     intro: [
       "Send the business, website, market, system, and the problem you are trying to solve. Boho will help identify the most useful first step.",
-      "No approved form endpoint was found for this review. The honest working contact path is contact@bohemiandigital.org. Website issues may be reported to webmaster@bohemiandigital.org. These public links do not promise a response time.",
+      "Email contact@bohemiandigital.org with the details you already have. Website issues can be reported to webmaster@bohemiandigital.org.",
     ],
     theme: "editorial",
-    primaryCta: { label: "Use the Email Fallback", href: "#request-form" },
+    primaryCta: { label: "Email Boho", href: "mailto:contact@bohemiandigital.org" },
     secondaryCta: { label: "See What We Build", href: "/tools/" },
     sections: [
       {
         title: "Bring the actual situation.",
         body: [
           "You do not need perfect documentation. Share what you know: the website, business type, market, current provider, what has been tried, what feels broken, and which customer actions matter most.",
+          "Do not email passwords, payment data, private customer records, health information, or private keys. Access can be arranged through authorized platform invitations when needed.",
         ],
         tone: "parchment",
       },
@@ -976,7 +977,7 @@ export const corePages: PageConfig[] = [
       "Boho will take a focused first look at the website, local presence, visible competitors, lead path, and provider risks to identify the most useful next diagnostic.",
     ],
     theme: "research",
-    primaryCta: { label: "Start the Check", href: "#request-form" },
+    primaryCta: { label: "Request a Visibility Check", href: "mailto:contact@bohemiandigital.org?subject=Local%20Visibility%20Check" },
     secondaryCta: { label: "See all services", href: "/services/" },
     sections: [
       {
@@ -992,11 +993,11 @@ export const corePages: PageConfig[] = [
         ],
       },
       {
-        eyebrow: "Scope boundary",
-        title: "A first look, not a free consulting novel.",
+        eyebrow: "Focused diagnosis",
+        title: "Find the next useful investigation.",
         body: [
-          "The Local Visibility Check asks whether there is an obvious problem, a plausible opportunity, a useful next investigation, a justified paid project, or something the business should ignore for now.",
-          "It is not a complete technical crawl, full market report, custom strategy, redesign plan, or implementation scope. It does not guarantee results.",
+          "The Local Visibility Check looks for an obvious problem, a plausible opportunity, and the next investigation most likely to improve the decision.",
+          "The result is a clear recommendation: investigate further, scope a focused project, or stop spending attention on the wrong signal.",
         ],
         tone: "plum",
       },
@@ -1041,7 +1042,7 @@ export const corePages: PageConfig[] = [
       "Boho helps triage urgent website, launch, migration, provider, tracking, form, redirect, and access problems when waiting politely is not a strategy.",
     ],
     theme: "cinematic",
-    primaryCta: { label: "Request Emergency Review", href: "#request-form" },
+    primaryCta: { label: "Request Emergency Review", href: "mailto:contact@bohemiandigital.org?subject=Emergency%20Website%20Review" },
     secondaryCta: { label: "Provider rescue", href: "/services/website-migration-provider-rescue/" },
     sections: [
       {
@@ -1058,11 +1059,11 @@ export const corePages: PageConfig[] = [
         ],
       },
       {
-        eyebrow: "Triage boundaries",
-        title: "Urgent does not mean unlimited.",
+        eyebrow: "Calm triage",
+        title: "Stabilize the highest-impact failure first.",
         body: [
-          "Emergency work is priced differently because it interrupts planned work and may require rapid investigation. Boho will not pretend every warning is an emergency; if the issue can safely wait for a standard project, we will say so.",
-          "Boho cannot promise immediate availability, unauthorized account recovery, platform cooperation, or repair of systems outside the agreed access and competence.",
+          "Boho begins with business impact, recent changes, access, and the fastest safe way to stop further damage.",
+          "If the issue can safely move into a normal project, that recommendation will be clear. Account access always stays within authorized platform and provider processes.",
         ],
         tone: "plum",
       },
@@ -1099,146 +1100,138 @@ export const corePages: PageConfig[] = [
   },
   {
     slug: "/privacy/",
-    title: "Privacy Policy Draft | Boho Digital Services",
-    metaDescription: "Draft privacy notice for review before the Boho Digital Services website is published.",
-    eyebrow: "Legal review draft",
+    title: "Privacy Policy | Boho Digital Services",
+    metaDescription: "How Boho Digital Services handles website analytics, email inquiries, operational data, and privacy requests.",
+    eyebrow: "Privacy",
     headline: "Privacy",
     intro: [
-      "This is a restrained working draft, not a final privacy policy or legal advice. It must be reconciled with the actual business identity, jurisdiction, hosting, forms, analytics, cookies, email tools, and data flows before production publication.",
+      "This notice explains the information involved when you visit the Boho Digital Services website or contact the business by email.",
     ],
     theme: "editorial",
     primaryCta: { label: "Review accessibility", href: "/accessibility/" },
     secondaryCta: { label: "Return home", href: "/" },
-    noIndex: true,
-    draftLabel: "Draft — noindex — requires legal and operational review before publication.",
     sections: [
       {
         title: "Business identity and contact",
         body: [
-          "The public-facing trade name is Boho Digital Services. The legal entity is identified in the Website Terms. No public street address is presented. A final privacy-contact and response process still requires operational and legal review.",
+          "Boho Digital Services is operated by Republic of Bohemia LLC. Privacy questions and requests may be sent to contact@bohemiandigital.org.",
         ],
         tone: "plum",
       },
       {
-        title: "Information collected through forms",
+        title: "Information you send",
         body: [
-          "The proposed contact, Visibility Check, and emergency forms ask for business and project context such as name, email, business name, website, service area, provider details, budget context, timing, and a description of the problem.",
-          "The current review forms are disconnected and are not intended to transmit or retain entries. Visitors must not submit passwords, payment data, private customer information, health information, private keys, or other sensitive records.",
+          "When you email Boho, the message may include your name, email address, business name, website, service area, provider details, timing, and the project or problem you describe.",
+          "Please do not email passwords, payment data, private customer information, health information, private keys, or other sensitive records. Secure access can be arranged through authorized platform invitations when needed.",
         ],
       },
       {
         title: "Analytics, cookies, hosting, and processors",
         body: [
-          "No Boho analytics account or external form processor has been approved or activated for this draft. A final notice must name the analytics, cookies, hosting, form processing, spam protection, email tools, embeds, and operational logging actually used at launch.",
-          "Do not infer that a service is absent merely because it is not named here; verify the production configuration and describe only what is actually active.",
+          "The website uses Google Analytics and a first-party analytics service at analytics.bohodigitalservices.com to understand broad traffic and interaction patterns. The first-party tracker honors the browser's Do Not Track setting. Google may process device, browser, approximate location, referral, page-view, and interaction information according to its own privacy terms.",
+          "The site is delivered through Cloudflare, which may process network, security, and request-log information needed to serve and protect the website. Browser storage or cookies may be used by these services.",
         ],
         tone: "parchment",
       },
       {
         title: "Use, retention, and security",
         body: [
-          "A final policy should state that submitted information is used to review and respond to inquiries and should define the approved retention period, deletion process, lawful basis where applicable, access controls, and reasonable security practices.",
-          "No website can promise perfect security. Production handling should use HTTPS, least-privilege access, platform-native secret management, input validation, accessible spam protection, and authorized invitations for account access.",
+          "Information is used to respond to inquiries, evaluate potential work, operate and secure the website, understand site performance, and maintain business records connected to a conversation or project.",
+          "Records are kept only as long as reasonably useful for those purposes, contractual or accounting needs, security, or applicable legal obligations. Access is limited to people and providers that need it for the relevant work.",
         ],
       },
       {
-        title: "Third-party links, rights, and contact process",
+        title: "Your choices and requests",
         body: [
-          "External sites have their own practices. A final policy should explain relevant privacy rights for the applicable jurisdiction and provide a real way to request access, correction, deletion, restriction, or another supported action.",
-          "An approved privacy contact method is still missing and must be added before publication.",
+          "You may use browser controls to limit cookies or tracking. Blocking some technology can change how a site behaves.",
+          "To ask about information connected to an email conversation, request a correction, or request deletion where appropriate, contact contact@bohemiandigital.org. External sites linked from this website follow their own privacy practices.",
         ],
       },
       {
         title: "Updates and effective date",
         body: [
-          "No effective date has been approved. Add one only after the policy matches the production site, and describe how material updates will be reflected.",
+          "Effective July 14, 2026. Material changes will be reflected on this page with an updated effective date.",
         ],
-        note: "Required pre-publication review: business identity, jurisdiction, hosting, form processor, notification address, analytics, cookies, email tool, embeds, retention, contact process, and effective date.",
         tone: "dark",
       },
     ],
   },
   {
     slug: "/terms/",
-    title: "Website Terms Draft | Boho Digital Services",
-    metaDescription: "Draft website terms for review before the Boho Digital Services website is published.",
-    eyebrow: "Legal review draft",
+    title: "Website Terms | Boho Digital Services",
+    metaDescription: "Terms for using the Boho Digital Services website and contacting the business about potential work.",
+    eyebrow: "Website terms",
     headline: "Website Terms",
     intro: [
-      "These restrained terms are a working draft for site review. They are not a substitute for a project agreement and require legal review, business identity, jurisdiction, contact details, and an effective date before publication.",
+      "These terms cover use of the Boho Digital Services website. Project work is governed by the separate agreement accepted for that engagement.",
     ],
     theme: "editorial",
     primaryCta: { label: "Review privacy", href: "/privacy/" },
     secondaryCta: { label: "Return home", href: "/" },
-    noIndex: true,
-    draftLabel: "Draft — noindex — requires legal review before publication.",
     sections: [
       {
         title: "Informational site",
         body: [
-          "The website describes Boho's proposed services, philosophy, planning ranges, and ways to begin a conversation. Site content is general information and is not legal, financial, security, or other regulated professional advice.",
-          "Planning ranges are provisional anchors, not quotes or promises of availability.",
+          "The website describes Boho's services, approach, resources, and ways to begin a conversation. Content is provided for general business information.",
+          "A website page, email exchange, or conversation does not replace a written project scope, quote, or agreement.",
         ],
       },
       {
-        title: "No client relationship from browsing or form submission",
+        title: "Starting a client relationship",
         body: [
-          "Browsing this site, using a draft form, or sending an inquiry does not create a client relationship. Any project begins only through a separately approved agreement that defines scope, responsibilities, price, timing, ownership, access, and other terms.",
-          "The forms in this review build are disconnected and do not send or store submissions.",
+          "Browsing the site or sending an inquiry does not create a client relationship. A project begins through a separately accepted agreement that defines scope, responsibilities, price, timing, ownership, access, and other terms.",
         ],
         tone: "parchment",
       },
       {
         title: "No guarantee of results",
         body: [
-          "Boho does not guarantee rankings, traffic, leads, conversion, revenue, platform cooperation, account recovery, or uninterrupted availability. Digital outcomes depend on many variables outside a single provider's control.",
-          "Where work is approved, Boho should explain the hypothesis, evidence, scope, limitations, and what can reasonably be measured.",
+          "Search visibility, traffic, leads, conversion, revenue, platform behavior, and account recovery depend on factors beyond a single provider's control.",
+          "Each engagement defines the work Boho is responsible for, the assumptions behind it, and the signals that can reasonably be measured.",
         ],
         tone: "plum",
       },
       {
         title: "Intellectual property and permitted use",
         body: [
-          "A final version should identify the owner of original site text, design, marks, and other materials, and explain the limited personal or business-reference use permitted to visitors. It should not claim rights Boho does not own.",
+          "Original Boho site text, design, marks, and other materials may not be copied, republished, or used commercially without permission, except where a separate license applies.",
           "Project deliverables and client ownership are governed by the separate project agreement, including any platform, font, stock, open-source, or third-party limitations.",
         ],
       },
       {
-        title: "Third-party links and limitation language",
+        title: "Third-party services and links",
         body: [
-          "Links to third-party websites do not control or endorse those sites' availability, accuracy, security, or practices. Any warranty disclaimer, limitation of liability, indemnity, governing-law, or dispute language must be written or approved for the actual business and jurisdiction by qualified counsel.",
+          "Links to third-party websites are provided for convenience. Those services control their own content, availability, security, and privacy practices.",
         ],
       },
       {
         title: "Contact and effective date",
         body: [
-          "Boho Digital Services is operated by Republic of Bohemia LLC. The current service area is the United States, and no public street address is presented. General inquiries may be sent to contact@bohemiandigital.org and website issues to webmaster@bohemiandigital.org. These public email links do not create a client relationship, guarantee monitoring, or promise a response time. Governing law, jurisdiction, and an effective date still require legal review before these terms become final.",
+          "Boho Digital Services is operated by Republic of Bohemia LLC. General inquiries may be sent to contact@bohemiandigital.org and website issues to webmaster@bohemiandigital.org.",
+          "Effective July 14, 2026.",
         ],
-        note: "These website terms do not replace estimates, statements of work, service agreements, privacy obligations, or project contracts.",
         tone: "dark",
       },
     ],
   },
   {
     slug: "/accessibility/",
-    title: "Accessibility Draft | Boho Digital Services",
-    metaDescription: "Draft accessibility statement for the Boho Digital Services website review build.",
-    eyebrow: "Review draft",
+    title: "Accessibility | Boho Digital Services",
+    metaDescription: "Accessibility approach and barrier-reporting contact for the Boho Digital Services website.",
+    eyebrow: "Accessibility",
     headline: "Accessibility",
     intro: [
       "Boho Digital Services aims to make this website usable by a broad range of visitors and to improve accessibility over time.",
-      "If you encounter a barrier, contact Boho with the page, device, browser, and problem. We will review the issue and identify a practical correction where possible.",
+      "If you encounter a barrier, email webmaster@bohemiandigital.org with the page, device, browser, and problem so it can be investigated.",
     ],
     theme: "editorial",
     primaryCta: { label: "Review the site", href: "/" },
     secondaryCta: { label: "Contact page", href: "/contact/" },
-    noIndex: true,
-    draftLabel: "Draft — noindex — add a real accessibility contact method before publication.",
     sections: [
       {
         title: "The current target",
         body: [
-          "The site is being built toward WCAG 2.2 AA principles. That is a practical design and testing target, not an unsupported certification claim or a promise that every barrier has already been found.",
+          "The site uses WCAG 2.2 AA principles as its design and testing target, including keyboard access, readable contrast, useful structure, and adaptable layouts.",
         ],
         tone: "parchment",
       },
@@ -1248,22 +1241,22 @@ export const corePages: PageConfig[] = [
         items: [
           { title: "Structure and navigation", body: "Heading hierarchy, landmarks, skip navigation, reading order, descriptive links, keyboard operation, visible focus, and an accessible mobile menu." },
           { title: "Readable presentation", body: "Color contrast, text sizing, touch targets, reduced-motion support, and no essential information available only on hover." },
-          { title: "Forms and media", body: "Accessible labels, required and optional indication, adjacent validation, useful alternatives for images, and no normal body text embedded in imagery." },
+          { title: "Links and media", body: "Descriptive links, useful alternatives for meaningful images, decorative-image handling, and no essential body text embedded in imagery." },
           { title: "Real output", body: "Testing the rendered site and its key routes instead of assuming a builder or component handled accessibility automatically." },
         ],
       },
       {
         title: "Report a barrier",
         body: [
-          "Provide the page address, device, browser, assistive technology if relevant, what you tried to do, and what happened. Do not include passwords or sensitive records.",
-          "A real, monitored contact method and response process have not been approved. They must be added before this statement is published as final.",
+          "Email webmaster@bohemiandigital.org with the page address, device, browser, assistive technology if relevant, what you tried to do, and what happened.",
         ],
         tone: "plum",
       },
       {
-        title: "Status of this statement",
+        title: "Ongoing improvement",
         body: [
-          "This page describes the intended accessibility process for a review build. It requires an updated test date, known limitations if any, approved contact path, and final operational review before publication.",
+          "Accessibility is reviewed as the site changes. Reported barriers are investigated and prioritized according to impact and the practical path to correction.",
+          "Statement updated July 14, 2026.",
         ],
         tone: "dark",
       },

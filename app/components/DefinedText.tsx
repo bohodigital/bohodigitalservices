@@ -55,7 +55,7 @@ function renderAutomaticTerms(
 export function DefinedText({
   text,
   seenTerms,
-  autoDefine = true,
+  autoDefine = false,
 }: {
   text: string;
   seenTerms?: Set<string>;
