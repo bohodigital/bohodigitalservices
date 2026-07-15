@@ -208,6 +208,13 @@ test("publishes the three production form contracts without stale caveats", asyn
     assert.deepEqual(names, [...expected.fields].sort(), `${expected.route} field contract`);
   }
 
+  const contactHtml = await (await render("/contact/")).text();
+  assert.doesNotMatch(
+    contactHtml,
+    /Use the project inquiry below, or email contact@bohemiandigital\.org/i,
+    "contact hero must not expose a Cloudflare-rewritable email text node",
+  );
+
   const formRouteSet = new Set(formRoutes.map((item) => item.route));
   for (const route of publicRoutes.filter((item) => !formRouteSet.has(item))) {
     const html = await (await render(route)).text();

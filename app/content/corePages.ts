@@ -901,7 +901,7 @@ export const corePages: PageConfig[] = [
     headline: "Talk to someone who can explain the machinery.",
     intro: [
       "Send the business, website, market, system, and the problem you are trying to solve. Boho will help identify the most useful first step.",
-      "Use the project inquiry below, or email contact@bohemiandigital.org. Website issues can be reported to webmaster@bohemiandigital.org.",
+      "Use the project inquiry below, or the contact links in the site footer. Website issues can go directly to the webmaster link.",
     ],
     theme: "editorial",
     primaryCta: { label: "Start a Project", href: "#project-inquiry" },
