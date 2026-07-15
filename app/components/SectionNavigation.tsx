@@ -1,6 +1,6 @@
 "use client";
 
-import { BookOpenCheck, ChevronDown, Wrench } from "lucide-react";
+import { BookOpenCheck, ChevronDown, SearchCheck } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -62,8 +62,7 @@ const sectionMenus: Record<
 function isResourcePath(path: string) {
   return (
     path.startsWith("/resources/") ||
-    path.startsWith("/learn/") ||
-    path === "/tools/"
+    path.startsWith("/learn/")
   );
 }
 
@@ -83,7 +82,7 @@ function isCurrentItem(href: string, currentPath: string) {
 
 const resourceIcons = {
   guides: BookOpenCheck,
-  tools: Wrench,
+  reference: SearchCheck,
 };
 
 export function SectionSidebar({

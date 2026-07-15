@@ -1,11 +1,9 @@
 import {
   ArrowRight,
-  BookOpenCheck,
   MousePointerClick,
   PanelsTopLeft,
   SearchCheck,
   ShieldCheck,
-  Wrench,
   type LucideIcon,
 } from "lucide-react";
 import Link from "next/link";
@@ -33,14 +31,6 @@ const resourceCollections: ResourceCard[] = [
     meta: "Planning",
   },
   {
-    title: "Plain-language glossary",
-    description: "Translate technical language into the business decision hiding underneath it.",
-    href: "/learn/glossary/",
-    label: "Search the glossary",
-    icon: SearchCheck,
-    meta: "Definitions",
-  },
-  {
     title: "Provider rescue",
     description: "Map ownership, access, URLs, data, forms, analytics, redirects, and rollback before changing providers.",
     href: "/learn/provider-rescue/",
@@ -49,37 +39,45 @@ const resourceCollections: ResourceCard[] = [
     meta: "Continuity",
   },
   {
-    title: "Custom tools and systems",
-    description: "See how Boho approaches useful automation, reporting, monitoring, integrations, and internal software.",
-    href: "/tools/",
-    label: "See what we build",
-    icon: Wrench,
-    meta: "Engineering",
+    title: "Plain-language glossary",
+    description: "Translate technical language into the business decision hiding underneath it.",
+    href: "/learn/glossary/",
+    label: "Search the glossary",
+    icon: SearchCheck,
+    meta: "Definitions",
+  },
+  {
+    title: "Websites & managed hosting",
+    description: "Review how a useful website, explicit ownership, managed hosting, maintenance, and recovery fit together as one operating system.",
+    href: "/services/website-design-redesign/",
+    label: "Review the website service",
+    icon: PanelsTopLeft,
+    meta: "Ownership",
   },
 ];
 
 const decisionRoutes = [
   {
-    title: "Diagnose a weak website",
-    description: "Start with technical health, page clarity, ownership, and the path from a visit to a useful action.",
-    href: "/services/technical-seo-site-health/" as const,
-    icon: BookOpenCheck,
-  },
-  {
-    title: "Plan a redesign",
-    description: "Separate visual preference from structure, accessibility, search continuity, and business value.",
+    title: "Plan a website",
+    description: "Review scope, content, accessibility, hosting, ownership, and migration before comparing proposals.",
     href: "/learn/website-buying/" as const,
     icon: PanelsTopLeft,
   },
   {
-    title: "Leave a provider",
-    description: "Protect accounts, useful URLs, data, integrations, and launch continuity before the relationship changes.",
+    title: "Review ownership and access",
+    description: "Identify who controls the domain, source, hosting, analytics, profiles, content, and recovery paths.",
     href: "/learn/provider-rescue/" as const,
     icon: ShieldCheck,
   },
   {
-    title: "Improve local lead flow",
-    description: "Connect local discovery, trust, page clarity, qualified action, and measurement as one system.",
+    title: "Understand the machinery",
+    description: "Translate domains, DNS, hosting, search, analytics, automation, and ownership into practical decisions.",
+    href: "/learn/glossary/" as const,
+    icon: SearchCheck,
+  },
+  {
+    title: "Review visibility and lead flow",
+    description: "Connect local discovery, trust, page clarity, qualified action, and measurement as one business system.",
     href: "/services/local-seo-search-visibility/" as const,
     icon: MousePointerClick,
   },
@@ -92,9 +90,10 @@ export function ResourcesPage() {
       <main className="knowledge-page resources-page" id="main-content" tabIndex={-1}>
         <KnowledgeHero
           eyebrow="Resources"
-          title="Plain-language guidance for expensive digital decisions."
+          breadcrumbMode="resources-root"
+          title="Buyer guidance for decisions that change ownership, cost, or risk."
           intro={[
-            "Use these guides to understand ownership, scope, risk, and the machinery behind a website or lead system before committing money or access.",
+            "Use these guides to understand scope, ownership, continuity, and the machinery behind a website or lead system before committing money or access.",
             "Built by digital engineers. Explained in plain English.",
           ]}
           primary={{ label: "Choose a resource", href: "#resource-collections" }}
@@ -117,8 +116,8 @@ export function ResourcesPage() {
               <div className="section-shell">
                 <header className="resources-heading">
                   <p className="eyebrow">Selected resources</p>
-                  <h2 id="resource-collections-title">Start with the kind of answer you need.</h2>
-                  <p>Every collection supports a real commercial, ownership, or continuity decision.</p>
+                  <h2 id="resource-collections-title">Start with the decision in front of you.</h2>
+                  <p>Each collection supports a real buying, ownership, visibility, or continuity decision.</p>
                 </header>
                 <div className="resources-collection-grid">
                   {resourceCollections.map(({ icon: Icon, ...resource }) => (
@@ -166,11 +165,11 @@ export function ResourcesPage() {
                   <h2 id="technical-second-opinion-title">Get a technical second opinion before the expensive decision.</h2>
                   <p>Send the website, proposal, provider situation, or system that feels unclear. Boho will help identify the useful question and the smallest credible next step.</p>
                   <div className="button-row">
-                    <a className="button-link button-link--primary" href="mailto:contact@bohemiandigital.org">
-                      <span className="button-link__label">Email Boho</span>
+                    <Link className="button-link button-link--primary" href="/contact/">
+                      <span className="button-link__label">Talk to someone technical</span>
                       <ArrowRight aria-hidden="true" size={17} />
-                    </a>
-                    <Link className="resources-lab__text-link" href="/contact/">What to include</Link>
+                    </Link>
+                    <Link className="resources-lab__text-link" href="/learn/provider-rescue/">Planning a provider exit?</Link>
                   </div>
                 </div>
               </div>

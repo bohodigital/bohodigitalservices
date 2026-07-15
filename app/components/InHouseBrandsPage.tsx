@@ -10,7 +10,6 @@ const brandIcons = [BookOpenCheck, SearchCheck, Beaker] as const;
 export function InHouseBrandsPage() {
   return (
     <>
-      <meta name="robots" content="noindex, nofollow" />
       <Header />
       <main className="brand-lab" id="main-content" tabIndex={-1}>
         <section className="brand-lab__hero" aria-labelledby="brand-lab-title">

@@ -59,6 +59,5 @@ export type PageConfig = {
   secondaryCta?: { label: string; href: string };
   sections: ContentSection[];
   form?: DraftFormConfig;
-  noIndex?: boolean;
   draftLabel?: string;
 };

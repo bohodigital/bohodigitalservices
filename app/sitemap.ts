@@ -9,8 +9,8 @@ const siteUrl = "https://bohodigitalservices.com";
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [
     "/",
-    ...corePages.filter((page) => !page.noIndex && !isRetiredPublicPage(page.slug)).map((page) => page.slug),
-    ...audiencePages.filter((page) => !page.noIndex && !isRetiredPublicPage(page.slug)).map((page) => page.slug),
+    ...corePages.filter((page) => !isRetiredPublicPage(page.slug)).map((page) => page.slug),
+    ...audiencePages.filter((page) => !isRetiredPublicPage(page.slug)).map((page) => page.slug),
   ];
 
   return [...new Set(paths)].map((path) => ({

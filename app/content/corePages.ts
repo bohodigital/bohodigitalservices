@@ -750,7 +750,7 @@ export const corePages: PageConfig[] = [
     slug: "/pricing/",
     title: "Pricing Status | Boho Digital Services",
     metaDescription:
-      "Boho pricing is scoped after diagnosis; this non-indexable review page does not publish unapproved rates or automatic quotes.",
+      "Boho pricing is scoped after diagnosis; this retired review page does not publish unapproved rates or automatic quotes.",
     eyebrow: "Pricing",
     headline: "No public rate is current until the business approves it.",
     intro: [
@@ -760,7 +760,6 @@ export const corePages: PageConfig[] = [
     primaryCta: { label: "Discuss the Actual Problem", href: "/contact/" },
     secondaryCta: { label: "View the Five Service Lanes", href: "/services/" },
     draftLabel: "Historical pricing draft — no current public rates are approved.",
-    noIndex: true,
     sections: [
       {
         title: "Scope follows diagnosis.",

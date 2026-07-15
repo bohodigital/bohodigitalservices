@@ -40,7 +40,6 @@ export async function generateMetadata({
   if (!page) {
     return {
       title: { absolute: "Page not found | Boho Digital Services" },
-      robots: { index: false, follow: false },
     };
   }
 
@@ -49,9 +48,7 @@ export async function generateMetadata({
     description: page.metaDescription,
     alternates: { canonical: page.slug },
     openGraph: { url: page.slug },
-    robots: page.noIndex
-      ? { index: false, follow: false }
-      : { index: true, follow: true },
+    robots: { index: true, follow: true },
   };
 }
 

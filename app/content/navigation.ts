@@ -12,28 +12,24 @@ export type PrimaryNavigationItem = NavigationLink & {
 
 export type ResourceNavigationGroup = {
   label: string;
-  icon: "guides" | "tools";
+  icon: "guides" | "reference";
   items: ReadonlyArray<NavigationLink>;
 };
 
 export const resourceNavigationGroups: ReadonlyArray<ResourceNavigationGroup> = [
   {
-    label: "Guides & definitions",
+    label: "Buyer guidance",
     icon: "guides",
     items: [
-      { label: "Practical guides", href: "/learn/" },
-      { label: "Plain-language glossary", href: "/learn/glossary/" },
       { label: "Website buying", href: "/learn/website-buying/" },
       { label: "Provider rescue", href: "/learn/provider-rescue/" },
     ],
   },
   {
-    label: "Tools & systems",
-    icon: "tools",
+    label: "Reference",
+    icon: "reference",
     items: [
-      { label: "Custom tools & systems", href: "/tools/" },
-      { label: "How Boho builds tools", href: "/tools/#how-it-works" },
-      { label: "Custom tools & automation service", href: "/services/custom-tools-automation/" },
+      { label: "Plain-language glossary", href: "/learn/glossary/" },
     ],
   },
 ];
@@ -73,19 +69,19 @@ export const resourceHeaderLinks: ReadonlyArray<NavigationLink> = [
     description: "Commercial buyer guidance and plain-language definitions.",
   },
   {
-    label: "Practical guides",
-    href: "/learn/",
-    description: "Understand website, search, and provider decisions.",
+    label: "Website buying",
+    href: "/learn/website-buying/",
+    description: "Plan scope, ownership, content, hosting, and migration risk.",
+  },
+  {
+    label: "Provider rescue",
+    href: "/learn/provider-rescue/",
+    description: "Protect ownership, access, useful URLs, data, and continuity.",
   },
   {
     label: "Glossary",
     href: "/learn/glossary/",
     description: "Translate technical language into business decisions.",
-  },
-  {
-    label: "Website buying",
-    href: "/learn/website-buying/",
-    description: "Plan scope, ownership, content, hosting, and migration risk.",
   },
 ];
 

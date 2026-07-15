@@ -550,11 +550,11 @@ export const audiencePages: PageConfig[] = [
     slug: "/resources/",
     title: "Buyer Resources | Boho Digital Services",
     metaDescription:
-      "Use selected Boho buyer guides and a plain-language glossary for website, provider, ownership, visibility, and technical decisions.",
+      "Buyer guides and plain-language definitions for website, provider, ownership, visibility, continuity, and technical decisions.",
     eyebrow: "Resources",
     headline: "Buyer guidance for decisions that change ownership, cost, or risk.",
     intro: [
-      "Selected commercial guidance for website buying, provider exits, ownership, local lead systems, and technical language.",
+      "Focused guidance for website buying, provider exits, ownership, local lead systems, and technical language.",
     ],
     theme: "research",
     primaryCta: { label: "Choose a resource", href: "#resource-collections" },
@@ -574,7 +574,6 @@ export const audiencePages: PageConfig[] = [
     theme: "research",
     primaryCta: { label: "Explore the Lab", href: "#lab-categories" },
     secondaryCta: { label: "Browse Practical Guides", href: "/learn/" },
-    noIndex: true,
     draftLabel: "Secondary research archive — no verified proof profiles",
     sections: [
       {
@@ -592,7 +591,7 @@ export const audiencePages: PageConfig[] = [
         id: "lab-categories",
         eyebrow: "Evidence shelves",
         title: "Research routes with their status visible.",
-        note: "Draft shelves contain no synthetic findings. They remain noindexed until real, reviewable material exists.",
+        note: "Draft shelves contain no synthetic findings. They remain retired until real, reviewable material exists.",
         layout: "grid",
         items: [
           {
@@ -725,7 +724,6 @@ export const audiencePages: PageConfig[] = [
     theme: "research",
     primaryCta: { label: "See How Boho Works", href: "/about/" },
     secondaryCta: { label: "Read the Bad SEO Field Guide", href: "/learn/bad-seo-field-guide/" },
-    noIndex: true,
     draftLabel: "Secondary operating-boundary reference",
     sections: [
       {
@@ -769,99 +767,57 @@ export const audiencePages: PageConfig[] = [
   },
   {
     slug: "/learn/",
-    title: "Practical Guides | Websites, SEO, Local Search & Provider Rescue",
+    title: "Practical Buyer Guides | Websites, Ownership & Provider Rescue",
     metaDescription:
-      "Practical guides to website buying, local SEO, provider rescue, lead generation, analytics, AI search, and digital growth for business owners.",
-    eyebrow: "Resources · Practical guides",
-    headline: "Useful digital strategy without the agency fog machine.",
+      "Plain-language buyer guides for website planning, digital ownership, provider rescue, continuity, and common technical terms.",
+    eyebrow: "Resources · Buyer guides",
+    headline: "Make the expensive digital decision with fewer unknowns.",
     intro: [
-      "Plain-language guidance for website, ownership, provider, visibility, and technical decisions.",
+      "Focused guidance for buying a website, protecting ownership, changing providers, and translating technical language before it becomes leverage.",
     ],
     theme: "editorial",
-    primaryCta: { label: "Browse the Guides", href: "#guide-shelves" },
+    primaryCta: { label: "Choose a Guide", href: "#guide-shelves" },
     secondaryCta: { label: "Open the Glossary", href: "/learn/glossary/" },
     sections: [
       {
-        eyebrow: "The reading room",
-        title: "Practical concepts and buying decisions, organized by the job at hand.",
+        eyebrow: "Buyer guidance",
+        title: "Start with the decision, the ownership risk, and the continuity plan.",
         body: [
-          "Use these guides to understand the decision, ask better provider questions, and protect the parts of the system the business needs to own.",
+          "These resources help business owners inspect a proposal, identify the access and assets they must control, and plan a provider change without losing the parts that still work.",
         ],
         tone: "parchment",
       },
       {
         id: "guide-shelves",
-        eyebrow: "Topic shelves",
-        title: "Choose the problem you are trying to understand.",
+        eyebrow: "Choose a guide",
+        title: "Three focused references for common buying and ownership decisions.",
         layout: "grid",
         items: [
           {
-            title: "Website Buying and Redesign",
-            body: "How to plan, buy, rebuild, or repair a website without losing ownership, search value, accessibility, or the will to live.",
+            title: "Website buying",
+            body: "Plan scope, content responsibility, accessibility, hosting, ownership, and migration risk before comparing proposals.",
             href: "/learn/website-buying/",
-            linkLabel: "Read the website buying guide",
+            linkLabel: "Read the buyer guide",
           },
           {
-            title: "Provider Rescue and Migration",
-            body: "How to leave a web, hosting, or SEO provider without breaking the parts that still work.",
+            title: "Provider rescue",
+            body: "Map the domain, hosting, source, data, forms, analytics, useful URLs, and recovery paths before changing providers.",
             href: "/learn/provider-rescue/",
             linkLabel: "Read the provider rescue guide",
           },
           {
-            title: "Local SEO",
-            body: "Local search, business profiles, reviews, service areas, location pages, and visibility explained in practical language, without fake-location spam or ranking guarantees.",
-            href: "/services/local-seo-search-visibility/",
-            linkLabel: "Explore local visibility and leads",
-          },
-          {
-            title: "Lead Generation and Conversion",
-            body: "How websites turn attention into calls, bookings, estimates, purchases, and qualified inquiries—and why traffic is not the same as demand.",
-            href: "/services/lead-generation-conversion/",
-            linkLabel: "Explore lead generation and conversion",
-          },
-          {
-            title: "SEO and Site Health",
-            body: "Crawlability, indexing, internal links, metadata, redirects, content systems, and technical health without tool-generated panic.",
-            href: "/services/technical-seo-site-health/",
-            linkLabel: "See the technical service",
-          },
-          {
-            title: "Research, Analytics, and Improvement",
-            body: "Use research and measurement to choose the next useful action instead of collecting dashboards for their own sake.",
-            href: "/services/research-audits-analytics/",
-            linkLabel: "Explore research and analytics",
-          },
-          {
-            title: "Custom Tools and Automation",
-            body: "When the right tool does not exist, Boho builds focused systems for repeated operational work.",
-            href: "/tools/",
-            linkLabel: "See what Boho builds",
+            title: "Plain-language glossary",
+            body: "Translate website, ownership, migration, search, analytics, and provider language into the business decision underneath it.",
+            href: "/learn/glossary/",
+            linkLabel: "Open the glossary",
           },
         ],
       },
       {
-        eyebrow: "Three practical references",
-        title: "Translate the language. Inspect the system. Question the sales pitch.",
-        layout: "grid",
-        items: [
-          {
-            title: "Glossary",
-            body: "Digital terms translated into language a business owner can use. Definitions will be added only when they provide context, significance, and related concepts—not as thin keyword targets.",
-            href: "/learn/glossary/",
-            linkLabel: "Open the Glossary",
-          },
-          {
-            title: "Local visibility and lead systems",
-            body: "See how local discovery, trust, page clarity, lead paths, and measurement work as one commercial system.",
-            href: "/services/local-seo-search-visibility/",
-            linkLabel: "Review the service",
-          },
-          {
-            title: "Tools and operating documentation",
-            body: "Detailed, source-backed explanations of GitHub, Cloudflare, APIs, MCP servers, Python automation, crawling, analytics, Search Console, Business Profile, and the way Boho connects them without exposing private infrastructure.",
-            href: "/tools/",
-            linkLabel: "Open the Tools catalog",
-          },
+        eyebrow: "Before you commit",
+        title: "A second opinion is cheaper than rebuilding around the wrong assumption.",
+        body: [
+          "Send the proposal, provider situation, website, or ownership concern. Boho will help identify the useful question, the missing evidence, and the smallest credible next step.",
         ],
         tone: "blue",
       },
@@ -879,38 +835,37 @@ export const audiencePages: PageConfig[] = [
       "Short definitions for the terms that tend to appear right before a website, SEO, migration, or analytics project becomes harder to understand than necessary.",
     ],
     theme: "editorial",
-    primaryCta: { label: "Browse Practical Guides", href: "/learn/" },
+    primaryCta: { label: "Choose a Buyer Guide", href: "/learn/" },
     secondaryCta: { label: "Ask a Project Question", href: "/contact/" },
     sections: [
       {
-        eyebrow: "Reviewed reference",
-        title: "Useful definitions should support a real decision.",
+        eyebrow: "Use the glossary",
+        title: "Translate the term, then inspect the decision underneath it.",
         body: [
-          "The public label is Glossary. The old mascot-led dictionary framing is retired, and no entries are fabricated merely to make the reference look full.",
-          "Closely related concepts are combined when separate pages would add no value. Published definitions are reviewed for plain language, context, significance, and related concepts.",
+          "Use a definition to clarify a proposal, understand an ownership or migration risk, or ask a provider a more useful question.",
         ],
         tone: "parchment",
       },
       {
-        eyebrow: "Definition standard",
-        title: "Every published entry should help with a real decision.",
+        eyebrow: "Common decisions",
+        title: "The language usually matters because money, access, or continuity is attached to it.",
         layout: "grid",
         items: [
           {
-            title: "Plain-language definition",
-            body: "Explain the term without requiring another dictionary to understand it.",
+            title: "Website and hosting",
+            body: "Clarify domains, DNS, hosting, servers, redirects, and the systems that keep a website available.",
           },
           {
-            title: "Why it matters",
-            body: "Connect the term to a website, search, migration, analytics, or business decision.",
+            title: "Ownership and access",
+            body: "Understand who controls the domain, source, accounts, data, credentials, and recovery paths.",
           },
           {
-            title: "Common misunderstanding",
-            body: "Name the confusion that can lead to a weak decision or misleading sales pitch.",
+            title: "Search and measurement",
+            body: "Separate crawl, index, visibility, analytics, and conversion language before judging a report or recommendation.",
           },
           {
-            title: "Useful relationships",
-            body: "Include related terms, a related service, and a visible last-reviewed date.",
+            title: "Provider changes",
+            body: "Identify the terminology tied to migration scope, continuity, rollback, and what the business must receive at handoff.",
           },
         ],
       },
@@ -948,7 +903,6 @@ export const audiencePages: PageConfig[] = [
       label: "Read the Claims Boho Refuses to Make",
       href: "/lab/claims-we-refuse-to-make/",
     },
-    noIndex: true,
     draftLabel: "Broad SEO education — deferred for Rank Builder review",
     sections: [
       {
@@ -1001,16 +955,15 @@ export const audiencePages: PageConfig[] = [
     slug: "/lab/local-market-reports/",
     title: "Local Market Reports | Boho Lab Draft",
     metaDescription:
-      "A noindexed draft shelf reserved for future Boho local market reports built from defined questions, documented sources, and honest limitations.",
+      "A retired draft shelf reserved for future Boho local market reports built from defined questions, documented sources, and honest limitations.",
     eyebrow: "The Boho Lab · Draft shelf",
     headline: "Local market reports will publish here after the research is complete.",
     intro: [
-      "This route is reserved for studies of how businesses appear in a defined market. It contains no synthetic findings and remains noindexed until a real report is ready for review.",
+      "This route is reserved for studies of how businesses appear in a defined market. It contains no synthetic findings and remains retired until a real report is ready for review.",
     ],
     theme: "research",
     primaryCta: { label: "Return to the Lab", href: "/lab/" },
     secondaryCta: { label: "Ask About a Market Review", href: "/contact/" },
-    noIndex: true,
     draftLabel: "Draft — awaiting real research",
     sections: [
       {
@@ -1028,7 +981,7 @@ export const audiencePages: PageConfig[] = [
     slug: "/lab/market-map-examples/",
     title: "Market Map Examples | Boho Lab Draft",
     metaDescription:
-      "A noindexed draft shelf for future market maps that connect visible competitor, service-area, website-quality, and local-search patterns to decisions.",
+      "A retired draft shelf for future market maps that connect visible competitor, service-area, website-quality, and local-search patterns to decisions.",
     eyebrow: "The Boho Lab · Draft shelf",
     headline: "A market map should expose a decision, not merely decorate a report.",
     intro: [
@@ -1037,7 +990,6 @@ export const audiencePages: PageConfig[] = [
     theme: "research",
     primaryCta: { label: "Return to the Lab", href: "/lab/" },
     secondaryCta: { label: "Ask About a Market Map", href: "/contact/" },
-    noIndex: true,
     draftLabel: "Draft — awaiting a documented map",
     sections: [
       {
@@ -1054,7 +1006,7 @@ export const audiencePages: PageConfig[] = [
     slug: "/lab/website-quality-surveys/",
     title: "Website Quality Surveys | Boho Lab Draft",
     metaDescription:
-      "A noindexed draft shelf for structured reviews of observable website strengths and failures across a defined market or business category.",
+      "A retired draft shelf for structured reviews of observable website strengths and failures across a defined market or business category.",
     eyebrow: "The Boho Lab · Draft shelf",
     headline: "Website-quality surveys need a repeatable rubric and a real sample.",
     intro: [
@@ -1063,7 +1015,6 @@ export const audiencePages: PageConfig[] = [
     theme: "research",
     primaryCta: { label: "Return to the Lab", href: "/lab/" },
     secondaryCta: { label: "Ask About a Website Review", href: "/contact/" },
-    noIndex: true,
     draftLabel: "Draft — awaiting a real survey",
     sections: [
       {
@@ -1080,7 +1031,7 @@ export const audiencePages: PageConfig[] = [
     slug: "/lab/success-signal-studies/",
     title: "Success Signal Studies | Boho Lab Draft",
     metaDescription:
-      "A noindexed draft shelf for future research into possible relationships among visibility, page quality, trust, customer action, and business value.",
+      "A retired draft shelf for future research into possible relationships among visibility, page quality, trust, customer action, and business value.",
     eyebrow: "The Boho Lab · Draft shelf",
     headline: "A visible signal can support a hypothesis without proving the outcome.",
     intro: [
@@ -1089,7 +1040,6 @@ export const audiencePages: PageConfig[] = [
     theme: "research",
     primaryCta: { label: "Return to the Lab", href: "/lab/" },
     secondaryCta: { label: "Ask About a Signal Review", href: "/contact/" },
-    noIndex: true,
     draftLabel: "Draft — awaiting measured evidence",
     sections: [
       {
@@ -1106,16 +1056,15 @@ export const audiencePages: PageConfig[] = [
     slug: "/lab/public-experiments/",
     title: "Public Experiments | Boho Lab Draft",
     metaDescription:
-      "A noindexed draft shelf for owned digital experiments with an ownership disclosure, baseline, change, measurement window, result, and limitations.",
+      "A retired draft shelf for owned digital experiments with an ownership disclosure, baseline, change, measurement window, result, and limitations.",
     eyebrow: "The Boho Lab · Draft shelf",
     headline: "Public experiments need a real property, baseline, change, and measurement window.",
     intro: [
-      "No experiment or result is presented here yet. This route remains noindexed until Boho can disclose ownership and document a real test from question through next decision.",
+      "No experiment or result is presented here yet. This route remains retired until Boho can disclose ownership and document a real test from question through next decision.",
     ],
     theme: "research",
     primaryCta: { label: "Return to the Lab", href: "/lab/" },
     secondaryCta: { label: "See Boho's Operating Boundaries", href: "/lab/claims-we-refuse-to-make/" },
-    noIndex: true,
     draftLabel: "Draft — no experiment published",
     sections: [
       {
@@ -1132,16 +1081,15 @@ export const audiencePages: PageConfig[] = [
     slug: "/lab/work-log/",
     title: "Work Log | Boho Lab Draft",
     metaDescription:
-      "A noindexed draft route reserved for dated records of meaningful Boho design, technical, research, and content work.",
+      "A retired draft route reserved for dated records of meaningful Boho design, technical, research, and content work.",
     eyebrow: "The Boho Lab · Draft shelf",
     headline: "The work log will record what changed, why, and what should be watched next.",
     intro: [
-      "There are no fabricated milestones or retrospective entries here. This route remains noindexed until dated, verifiable work records are ready.",
+      "There are no fabricated milestones or retrospective entries here. This route remains retired until dated, verifiable work records are ready.",
     ],
     theme: "research",
     primaryCta: { label: "Return to the Lab", href: "/lab/" },
     secondaryCta: { label: "See How Boho Works", href: "/about/" },
-    noIndex: true,
     draftLabel: "Draft — work records not yet published",
     sections: [
       {
@@ -1168,7 +1116,6 @@ export const audiencePages: PageConfig[] = [
     theme: "research",
     primaryCta: { label: "Return to the Lab", href: "/lab/" },
     secondaryCta: { label: "See Boho's Operating Boundaries", href: "/lab/claims-we-refuse-to-make/" },
-    noIndex: true,
     draftLabel: "Owned entities confirmed · live previews available",
     sections: [
       {
@@ -1210,7 +1157,6 @@ export const audiencePages: PageConfig[] = [
     theme: "research",
     primaryCta: { label: "All in-house brands", href: "/lab/in-house-brands/" },
     secondaryCta: { label: "Open the Lab", href: "/lab/" },
-    noIndex: true,
     sections: [],
   },
   {
@@ -1224,7 +1170,6 @@ export const audiencePages: PageConfig[] = [
     theme: "research",
     primaryCta: { label: "All in-house brands", href: "/lab/in-house-brands/" },
     secondaryCta: { label: "Open the Lab", href: "/lab/" },
-    noIndex: true,
     sections: [],
   },
   {
@@ -1238,23 +1183,21 @@ export const audiencePages: PageConfig[] = [
     theme: "research",
     primaryCta: { label: "All in-house brands", href: "/lab/in-house-brands/" },
     secondaryCta: { label: "Open the Lab", href: "/lab/" },
-    noIndex: true,
     sections: [],
   },
   {
     slug: "/lab/example-reports/",
     title: "Example Reports | Boho Lab Draft",
     metaDescription:
-      "A noindexed draft shelf for sanitized or clearly fictionalized report formats that demonstrate organization without inventing client results.",
+      "A retired draft shelf for sanitized or clearly fictionalized report formats that demonstrate organization without inventing client results.",
     eyebrow: "The Boho Lab · Draft shelf",
     headline: "An example can show the format without pretending a client result exists.",
     intro: [
-      "No report sample has been supplied for this draft. This route remains noindexed until a sanitized real format or clearly fictionalized presentation example is ready.",
+      "No report sample has been supplied for this draft. This route remains retired until a sanitized real format or clearly fictionalized presentation example is ready.",
     ],
     theme: "research",
     primaryCta: { label: "Return to the Lab", href: "/lab/" },
     secondaryCta: { label: "Ask About a Research Deliverable", href: "/contact/" },
-    noIndex: true,
     draftLabel: "Draft — example format pending",
     sections: [
       {
@@ -1271,16 +1214,15 @@ export const audiencePages: PageConfig[] = [
     slug: "/lab/public-teardowns/",
     title: "Public Teardowns | Boho Lab Draft",
     metaDescription:
-      "A noindexed draft shelf for evidence-based critiques of observable website or market patterns, with scope, evidence, practical fixes, and limitations.",
+      "A retired draft shelf for evidence-based critiques of observable website or market patterns, with scope, evidence, practical fixes, and limitations.",
     eyebrow: "The Boho Lab · Draft shelf",
     headline: "Critique the artifact, not the character of the owner.",
     intro: [
-      "No company or public website is reviewed in this draft. This route remains noindexed until an evidence-based teardown can be published responsibly.",
+      "No company or public website is reviewed in this draft. This route remains retired until an evidence-based teardown can be published responsibly.",
     ],
     theme: "research",
     primaryCta: { label: "Return to the Lab", href: "/lab/" },
     secondaryCta: { label: "Request a Private Review", href: "/start/" },
-    noIndex: true,
     draftLabel: "Draft — no teardown published",
     sections: [
       {
@@ -1297,16 +1239,15 @@ export const audiencePages: PageConfig[] = [
     slug: "/lab/tools-and-templates/",
     title: "Tools & Templates | Boho Lab Draft",
     metaDescription:
-      "A noindexed draft shelf reserved for useful Boho checklists, calculators, templates, and small tools that can be verified before release.",
+      "A retired draft shelf reserved for useful Boho checklists, calculators, templates, and small tools that can be verified before release.",
     eyebrow: "The Boho Lab · Draft shelf",
     headline: "A free tool should solve a real problem before it earns a public page.",
     intro: [
-      "No calculators, downloads, or templates are claimed in this draft. This route remains noindexed until a working resource can be tested and described accurately.",
+      "No calculators, downloads, or templates are claimed in this draft. This route remains retired until a working resource can be tested and described accurately.",
     ],
     theme: "research",
     primaryCta: { label: "Return to the Lab", href: "/lab/" },
     secondaryCta: { label: "Read Practical Guides", href: "/learn/" },
-    noIndex: true,
     draftLabel: "Draft — no tool released",
     sections: [
       {
@@ -1323,16 +1264,15 @@ export const audiencePages: PageConfig[] = [
     slug: "/learn/small-business-seo/",
     title: "Small-Business SEO | Planned Guide Shelf | Boho",
     metaDescription:
-      "A noindexed guide-shelf draft for practical small-business SEO concepts, priorities, measurement, and buying decisions without guarantees or filler articles.",
+      "A retired guide-shelf draft for practical small-business SEO concepts, priorities, measurement, and buying decisions without guarantees or filler articles.",
     eyebrow: "Resources · Planned guide shelf",
     headline: "Small-business SEO should start with the business, not a universal checklist.",
     intro: [
-      "This is an honest route reservation, not a finished article library. It remains noindexed while Boho develops substantial guidance around services, customers, markets, search access, trust, and valuable actions.",
+      "This is an honest route reservation, not a finished article library. It remains retired while Boho develops substantial guidance around services, customers, markets, search access, trust, and valuable actions.",
     ],
     theme: "editorial",
     primaryCta: { label: "Back to practical guides", href: "/learn/" },
     secondaryCta: { label: "Explore SEO Services", href: "/services/local-seo-search-visibility/" },
-    noIndex: true,
     draftLabel: "Draft guide shelf — no thin articles",
     sections: [
       {
@@ -1350,16 +1290,15 @@ export const audiencePages: PageConfig[] = [
     slug: "/learn/local-search/",
     title: "Local Search | Planned Guide Shelf | Boho",
     metaDescription:
-      "A noindexed guide-shelf draft for practical local search, business profiles, reviews, service areas, location pages, and reporting guidance.",
+      "A retired guide-shelf draft for practical local search, business profiles, reviews, service areas, location pages, and reporting guidance.",
     eyebrow: "Resources · Planned guide shelf",
     headline: "Local search is a system of clarity, relevance, trust, and technical support.",
     intro: [
-      "This planned shelf contains no filler articles or ranking promises. It remains noindexed until useful guides to local profiles, reviews, service areas, location information, competitors, and reporting are ready.",
+      "This planned shelf contains no filler articles or ranking promises. It remains retired until useful guides to local profiles, reviews, service areas, location information, competitors, and reporting are ready.",
     ],
     theme: "editorial",
     primaryCta: { label: "Back to practical guides", href: "/learn/" },
     secondaryCta: { label: "Explore Local SEO", href: "/services/local-seo-search-visibility/" },
-    noIndex: true,
     draftLabel: "Draft guide shelf — content in development",
     sections: [
       {
@@ -1487,16 +1426,15 @@ export const audiencePages: PageConfig[] = [
     slug: "/learn/ai-search-visibility/",
     title: "AI Search Visibility | Planned Guide Shelf | Boho",
     metaDescription:
-      "A noindexed guide-shelf draft for sober, practical guidance on answer-ready content, entity clarity, citations, consistent information, and measurement limits.",
+      "A retired guide-shelf draft for sober, practical guidance on answer-ready content, entity clarity, citations, consistent information, and measurement limits.",
     eyebrow: "Resources · Planned guide shelf",
     headline: "AI search does not replace a clear, credible website.",
     intro: [
-      "This planned shelf contains no AI-citation promises, secret access claims, or invented visibility results. It remains noindexed until reviewed guidance is ready.",
+      "This planned shelf contains no AI-citation promises, secret access claims, or invented visibility results. It remains retired until reviewed guidance is ready.",
     ],
     theme: "editorial",
     primaryCta: { label: "Back to practical guides", href: "/learn/" },
     secondaryCta: { label: "Read Boho's Claim Boundaries", href: "/lab/claims-we-refuse-to-make/" },
-    noIndex: true,
     draftLabel: "Draft guide shelf — content in development",
     sections: [
       {
@@ -1513,16 +1451,15 @@ export const audiencePages: PageConfig[] = [
     slug: "/learn/featured-rank-builder/",
     title: "Featured Rank Builder Research | Planned Shelf | Boho",
     metaDescription:
-      "A noindexed planned shelf for selected, verified Rank Builder research with plain-language Boho summaries and no implied client results.",
+      "A retired planned shelf for selected, verified Rank Builder research with plain-language Boho summaries and no implied client results.",
     eyebrow: "Resources · Planned research shelf",
     headline: "Technical research belongs here only when a business owner can understand why it matters.",
     intro: [
-      "No Rank Builder articles or findings are claimed in this draft because verified published links have not been supplied. This route remains noindexed until a curated selection can be reviewed.",
+      "No Rank Builder articles or findings are claimed in this draft because verified published links have not been supplied. This route remains retired until a curated selection can be reviewed.",
     ],
     theme: "editorial",
     primaryCta: { label: "Back to practical guides", href: "/learn/" },
     secondaryCta: { label: "Explore the Boho Lab", href: "/lab/" },
-    noIndex: true,
     draftLabel: "Draft shelf — verified links required",
     sections: [
       {

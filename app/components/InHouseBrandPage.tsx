@@ -9,7 +9,6 @@ export function InHouseBrandPage({ brand }: { brand: InHouseBrand }) {
 
   return (
     <>
-      <meta name="robots" content="noindex, nofollow" />
       <Header />
       <main className={`brand-detail brand-detail--${brand.accent}`} id="main-content" tabIndex={-1}>
         <section className="brand-detail__hero">

@@ -18,6 +18,13 @@ const categories: Array<"All categories" | GlossaryCategory> = [
   "Search and measurement",
 ];
 
+const relatedSystemTermsByCategory: Record<GlossaryCategory, string[]> = {
+  "Web foundations": ["Domains, hosting, and delivery"],
+  "Source and delivery": ["Ownership, versioning, and release"],
+  "APIs and automation": ["Integrations and workflow automation"],
+  "Search and measurement": ["Visibility, analytics, and reporting"],
+};
+
 function ExternalSourceLinks({ entry }: { entry: GlossaryEntry }) {
   const sources = entry.sourceIds
     .map((sourceId) => sourcesById.get(sourceId))
@@ -81,18 +88,14 @@ function GlossaryRow({ entry, expand }: { entry: GlossaryEntry; expand: boolean 
             })}
           </div>
         ) : null}
-        {entry.relatedToolSlugs?.length ? (
-          <div className="glossary-row__related">
-            <strong>Related system terms</strong>
-            {entry.relatedToolSlugs.map((slug) => (
-              <span key={slug}>
-                {slug.split("-").map((word) => `${word.charAt(0).toUpperCase()}${word.slice(1)}`).join(" ")}
-              </span>
-            ))}
-          </div>
-        ) : null}
+        <div className="glossary-row__related">
+          <strong>Related system terms</strong>
+          {relatedSystemTermsByCategory[entry.category].map((label) => (
+            <span key={label}>{label}</span>
+          ))}
+        </div>
         <ExternalSourceLinks entry={entry} />
-        <p className="knowledge-reviewed">Reviewed against linked sources · July 11, 2026</p>
+        <p className="knowledge-reviewed">Last reviewed July 11, 2026</p>
       </div>
     </details>
   );
@@ -135,12 +138,11 @@ export function GlossaryExplorer() {
     <div className="glossary-explorer">
       <section className="glossary-common" id="common-terms" aria-labelledby="common-terms-title">
         <div className="glossary-explorer__section-heading">
-          <p className="eyebrow">Most used in the current site copy</p>
-          <h2 id="common-terms-title">The terms a reader is most likely to meet first.</h2>
+          <p className="eyebrow">Start here</p>
+          <h2 id="common-terms-title">Common terms behind website and ownership decisions.</h2>
           <p>
-            This starter ranking comes from a repeatable scan of the homepage,
-            services, industries, the Resources library, and business pages—not from
-            traffic data. Search-demand data can replace it later.
+            Use these definitions to clarify a proposal, a provider conversation,
+            or the parts of the system the business needs to control.
           </p>
         </div>
         <div className="glossary-common__grid">
@@ -156,12 +158,11 @@ export function GlossaryExplorer() {
 
       <section className="glossary-master" id="all-terms" aria-labelledby="all-terms-title">
         <div className="glossary-explorer__section-heading">
-          <p className="eyebrow">Master glossary · {glossaryEntries.length} current entries</p>
-          <h2 id="all-terms-title">Compact until the reader asks for the deeper layer.</h2>
+          <p className="eyebrow">All glossary terms · {glossaryEntries.length} entries</p>
+          <h2 id="all-terms-title">Find the term, then inspect why it matters.</h2>
           <p>
-            Search definitions and explanations, filter by system, then expand
-            only the entries you need. This layout can grow without turning the
-            page into hundreds of full-size cards.
+            Search or filter the glossary, then expand an entry for the business
+            impact, common misunderstanding, related terms, and official sources.
           </p>
         </div>
         <div className="glossary-controls" role="search">
@@ -169,7 +170,7 @@ export function GlossaryExplorer() {
             <span>Search the glossary</span>
             <input
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Try DNS, hosting, conversion, MCP…"
+              placeholder="Try DNS, hosting, redirects…"
               type="search"
               value={query}
             />

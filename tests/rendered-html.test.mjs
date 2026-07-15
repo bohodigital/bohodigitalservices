@@ -181,21 +181,43 @@ test("publishes factual privacy, terms, and accessibility pages", async () => {
   assert.match(accessibility, /Statement updated July 14, 2026/i);
 });
 
-test("keeps tools and resources commercial, indexable, and free of internal governance UI", async () => {
+test("keeps tools and resources distinct, commercial, and free of stale machinery", async () => {
   const tools = await (await render("/tools/")).text();
   assert.match(tools, /When the right tool does not exist, we build it\./i);
-  assert.match(tools, /Workflow automation/i);
-  assert.match(tools, /Analytics and reporting/i);
-  assert.match(tools, /Validation and monitoring/i);
-  assert.match(tools, /Integrations and APIs/i);
+  assert.match(tools, /Custom software should earn its place/i);
+  assert.match(tools, /What Boho can engineer around the workflow/i);
+  assert.match(tools, /Diagnose before you automate/i);
+  assert.match(tools, /Build the missing tool/i);
+  assert.match(tools, /<h3[^>]*>\s*<strong>Repeated cost<\/strong>\s*<\/h3>/i);
+  assert.match(tools, /<h3[^>]*>\s*<strong>Workflow automation<\/strong>\s*<\/h3>/i);
+  for (const anchor of ["first-scope", "capabilities", "how-it-works", "custom-engineering"]) {
+    assert.match(tools, new RegExp(`id="${anchor}"`, "i"), `missing stable Tools anchor #${anchor}`);
+  }
   assert.match(tools, /<meta[^>]+name="robots"[^>]+index, follow/i);
   assert.doesNotMatch(tools, /0 accepted|prohibited claim|capability classifications|no empty proof shelf/i);
+  assert.doesNotMatch(tools, /<h[1-4][^>]*>\s*(?:GitHub|Cloudflare|Google Analytics)\s*</i);
 
   const resources = await (await render("/resources/")).text();
-  assert.match(resources, /Plain-language guidance for expensive digital decisions/i);
+  assert.match(resources, /Buyer guidance for decisions that change ownership, cost, or risk/i);
+  assert.match(resources, /Website buying/i);
+  assert.match(resources, /Provider rescue/i);
+  assert.match(resources, /Plain-language glossary/i);
+  assert.match(resources, /Websites &amp; managed hosting/i);
   assert.match(resources, /Get a technical second opinion before the expensive decision/i);
-  assert.doesNotMatch(resources, />\s*Lab\s*</i);
-  assert.doesNotMatch(resources, /secondary evidence|Rank Builder/i);
+  assert.doesNotMatch(resources, />\s*Lab\s*<|Tools &amp; systems|How Boho builds tools|secondary evidence|Rank Builder/i);
+
+  const guides = await (await render("/learn/")).text();
+  const guidesMain = guides.match(/<main\b[\s\S]*?<\/main>/i)?.[0] ?? guides;
+  assert.match(guides, /Website buying/i);
+  assert.match(guides, /Provider rescue/i);
+  assert.match(guides, /Plain-language glossary/i);
+  assert.doesNotMatch(guidesMain, /Local SEO|AI search|Search Console|Business Profile|Custom Tools and Automation|GitHub|Cloudflare|MCP servers|Python automation/i);
+
+  const knowledgeSource = await readFile(new URL("../app/content/knowledge.ts", import.meta.url), "utf8");
+  const knowledgePageSource = await readFile(new URL("../app/components/KnowledgePages.tsx", import.meta.url), "utf8");
+  assert.doesNotMatch(knowledgeSource, /export (?:type|const) ToolProfile|export const toolProfiles/i);
+  assert.doesNotMatch(knowledgeSource, /relatedToolSlugs|cloudflare-workers-pricing|github-pages-api/i);
+  assert.doesNotMatch(knowledgePageSource, /export function GlossaryPage|toolProfilesBySlug/i);
 });
 
 test("uses link-based glossary definitions without popovers or horizontal-overflow machinery", async () => {
@@ -207,7 +229,10 @@ test("uses link-based glossary definitions without popovers or horizontal-overfl
 
   const glossary = await (await render("/learn/glossary/")).text();
   assert.match(glossary, /Technical language, translated before it becomes leverage/i);
+  assert.match(glossary, /Related system terms/i);
+  assert.match(glossary, /Last reviewed July 11, 2026/i);
   assert.doesNotMatch(glossary, /small question mark|Every popup/i);
+  assert.doesNotMatch(glossary, /old mascot-led|no entries are fabricated|definition standard|published definitions are reviewed|repeatable scan|traffic data can replace|reviewed against linked sources|MCP…/i);
 });
 
 test("publishes clean crawl controls and a sitemap containing only public routes", async () => {
@@ -233,6 +258,28 @@ test("publishes clean crawl controls and a sitemap containing only public routes
   }
   for (const route of retiredRoutes) {
     assert.doesNotMatch(sitemap, new RegExp(`https://bohodigitalservices\\.com${route.replaceAll("/", "\\/")}`), `${route} leaked into sitemap`);
+  }
+});
+
+test("contains no residual indexing blocks in source while keeping retired routes unavailable", async () => {
+  const crawlControlSources = [
+    "../app/[...slug]/page.tsx",
+    "../app/sitemap.ts",
+    "../app/content/types.ts",
+    "../app/content/corePages.ts",
+    "../app/content/audiencePages.ts",
+    "../app/components/InHouseBrandPage.tsx",
+    "../app/components/InHouseBrandsPage.tsx",
+  ];
+
+  for (const path of crawlControlSources) {
+    const source = await readFile(new URL(path, import.meta.url), "utf8");
+    assert.doesNotMatch(source, /noindex|nofollow|noIndex/i, `${path} retains an indexing block`);
+  }
+
+  for (const route of retiredRoutes) {
+    const response = await render(route);
+    assert.equal(response.status, 404, `${route} should remain retired`);
   }
 });
 
