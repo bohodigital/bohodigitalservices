@@ -364,7 +364,21 @@ test("publishes clean crawl controls and a sitemap containing only public routes
     assert.equal(robotsTags.length, 1, `${route} robots meta count`);
     assert.match(robotsTags[0], /content="index, follow"/i, `${route} is not indexable`);
     assert.doesNotMatch(robotsTags[0], /noindex|nofollow/i, `${route} retains an indexing block`);
+
+    const pagesResponse = await render(route, "https://bohodigitalservices.pages.dev");
+    assert.equal(pagesResponse.headers.get("x-robots-tag"), null, `${route} has a Pages indexing-block header`);
+    const pagesHtml = await pagesResponse.text();
+    const pagesRobotsTags = [...pagesHtml.matchAll(/<meta\b[^>]*\bname="robots"[^>]*>/gi)].map((match) => match[0]);
+    assert.equal(pagesRobotsTags.length, 1, `${route} Pages robots meta count`);
+    assert.match(pagesRobotsTags[0], /content="index, follow"/i, `${route} is not indexable on Pages`);
+    assert.doesNotMatch(pagesRobotsTags[0], /noindex|nofollow/i, `${route} retains a Pages indexing block`);
   }
+
+  const pagesRobotsResponse = await render("/robots.txt", "https://bohodigitalservices.pages.dev");
+  assert.equal(pagesRobotsResponse.headers.get("x-robots-tag"), null, "Pages robots.txt has an indexing-block header");
+  const pagesRobots = await pagesRobotsResponse.text();
+  assert.match(pagesRobots, /User-agent: \*[\s\S]*Allow: \//i);
+  assert.doesNotMatch(pagesRobots, /Disallow: \//i);
 
   const sitemapResponse = await render("/sitemap.xml");
   assert.equal(sitemapResponse.status, 200);
@@ -386,6 +400,7 @@ test("contains no residual indexing blocks in source while keeping retired route
     "../app/content/audiencePages.ts",
     "../app/components/InHouseBrandPage.tsx",
     "../app/components/InHouseBrandsPage.tsx",
+    "../worker/index.ts",
   ];
 
   for (const path of crawlControlSources) {
