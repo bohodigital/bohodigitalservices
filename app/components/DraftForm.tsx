@@ -63,6 +63,8 @@ const TURNSTILE_SITEKEY = "0x4AAAAAAD2AbgQjicGIajbI";
 const TURNSTILE_SCRIPT =
   "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
 const REQUEST_TIMEOUT_MS = 20_000;
+const CONTACT_EMAIL_FALLBACK_HTML =
+  'Prefer email? <!--email_off--><a href="mailto:contact@bohemiandigital.org">contact@bohemiandigital.org</a><!--/email_off-->.';
 
 function classNames(...values: Array<string | false | null | undefined>) {
   return values.filter(Boolean).join(" ");
@@ -353,9 +355,10 @@ export function DraftForm({ config, className }: DraftFormProps) {
           {config.title}
         </h2>
         <p className="draft-form__body">{config.body}</p>
-        <p className="draft-form__body">
-          Prefer email? <a href="mailto:contact@bohemiandigital.org">contact@bohemiandigital.org</a>.
-        </p>
+        <p
+          className="draft-form__body"
+          dangerouslySetInnerHTML={{ __html: CONTACT_EMAIL_FALLBACK_HTML }}
+        />
       </div>
 
       <form

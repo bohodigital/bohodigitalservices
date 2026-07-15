@@ -197,6 +197,11 @@ test("publishes the three production form contracts without stale caveats", asyn
     assert.match(form, /data-turnstile-sitekey="0x4AAAAAAD2AbgQjicGIajbI"/i);
     assert.match(form, /href="\/privacy\/"/i);
     assert.match(html, /href="mailto:contact@bohemiandigital\.org/i);
+    assert.match(
+      html,
+      /<!--email_off--><a href="mailto:contact@bohemiandigital\.org">contact@bohemiandigital\.org<\/a><!--\/email_off-->/i,
+      `${expected.route} must prevent Cloudflare from rewriting the client-rendered fallback email`,
+    );
     const names = [...form.matchAll(/\bname="([^"]+)"/gi)]
       .map((match) => match[1])
       .sort();
