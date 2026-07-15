@@ -2909,6 +2909,27 @@ body,
   font-size: 0.66rem;
 }
 
+.hero-editorial--artwork {
+  min-height: 0;
+  aspect-ratio: 3 / 2;
+  align-self: center;
+  background: #efe3cb;
+  box-shadow:
+    1.2rem 1.2rem 0 rgba(84, 169, 157, 0.14),
+    0 1.5rem 4rem rgba(0, 0, 0, 0.24);
+}
+
+.hero-editorial--artwork::after {
+  display: none;
+}
+
+.hero-editorial--artwork img {
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+  object-position: center;
+}
+
 .editorial-problem {
   background: #ead8b7;
 }
@@ -7384,6 +7405,8 @@ body,
 
 /* Public release overrides: keep these last so legacy layers cannot win. */
 .home-section { padding-block: clamp(3.5rem, 5.5vw, 5.5rem); }
+.hero .hero-editorial--artwork { width: 100%; min-height: 0; aspect-ratio: 3 / 2; }
+.hero .hero-editorial--artwork img { width: 100%; height: 100%; min-height: 0; }
 .method-summary-list { gap: 0.85rem; margin-block: 2.5rem 0; }
 .method-summary-list li { min-height: 0; padding: 0; }
 .method-summary-list__link { min-height: 14rem; gap: 1.25rem; padding: 1.25rem; }

@@ -150,20 +150,15 @@ export default function Homepage() {
                 <ButtonLink href="/tools/" variant="secondary">See What We Build</ButtonLink>
               </div>
             </div>
-            <div className="hero-editorial hero-editorial--process" aria-label="Boho digital engineering scope">
-              <div className="migration-ledger">
-                <div className="migration-ledger__heading">
-                  <Wrench size={28} strokeWidth={1.6} aria-hidden="true" />
-                  <div><span>Digital engineering</span><strong>Understand the machinery before changing it.</strong></div>
-                </div>
-                <ul>
-                  <li><MapPin size={20} aria-hidden="true" /><span><strong>Visibility</strong> local discovery and trust</span></li>
-                  <li><MousePointerClick size={20} aria-hidden="true" /><span><strong>Lead systems</strong> clear routes to qualified action</span></li>
-                  <li><PanelsTopLeft size={20} aria-hidden="true" /><span><strong>Web platforms</strong> useful, owned, and maintainable</span></li>
-                  <li><Route size={20} aria-hidden="true" /><span><strong>Operations</strong> migrations, tools, automation, and records</span></li>
-                </ul>
-              </div>
-            </div>
+            <figure className="hero-editorial hero-editorial--artwork">
+              <img
+                src="/og-boho-digital-engineering-20260714.png"
+                width="1536"
+                height="1024"
+                alt="Boho editorial collage with a bee, botanical forms, mapped routes, and engineering-grid details"
+                fetchPriority="high"
+              />
+            </figure>
           </div>
         </section>
 

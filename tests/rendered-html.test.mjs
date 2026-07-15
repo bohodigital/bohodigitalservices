@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
@@ -122,6 +123,8 @@ test("server-renders the focused Boho homepage and approved marketing message", 
   assert.match(html, /analytics\.bohodigitalservices\.com\/script\.js/i);
   assert.match(html, /data-do-not-track="true"/i);
   assert.match(html, /og-boho-digital-engineering-20260714\.png/i);
+  assert.match(html, /class="hero-editorial hero-editorial--artwork"/i);
+  assert.match(html, /alt="Boho editorial collage with a bee, botanical forms, mapped routes, and engineering-grid details"/i);
   assert.match(html, /class="definition-term__link"/i);
   assert.doesNotMatch(html, /definition-term__popover|definition-term__mark/i);
   assert.doesNotMatch(html, /Representative editorial photography|Homepage journey|proof-eligible/i);
@@ -212,6 +215,16 @@ test("publishes clean crawl controls and a sitemap containing only public routes
   assert.match(robots, /User-agent: \*[\s\S]*Allow: \//i);
   assert.match(robots, /Sitemap: https:\/\/bohodigitalservices\.com\/sitemap\.xml/i);
 
+  for (const route of publicRoutes) {
+    const response = await render(route, "https://bohodigitalservices.com");
+    assert.equal(response.headers.get("x-robots-tag"), null, `${route} has an indexing-block header`);
+    const html = await response.text();
+    const robotsTags = [...html.matchAll(/<meta\b[^>]*\bname="robots"[^>]*>/gi)].map((match) => match[0]);
+    assert.equal(robotsTags.length, 1, `${route} robots meta count`);
+    assert.match(robotsTags[0], /content="index, follow"/i, `${route} is not indexable`);
+    assert.doesNotMatch(robotsTags[0], /noindex|nofollow/i, `${route} retains an indexing block`);
+  }
+
   const sitemapResponse = await render("/sitemap.xml");
   assert.equal(sitemapResponse.status, 200);
   const sitemap = await sitemapResponse.text();
@@ -221,6 +234,12 @@ test("publishes clean crawl controls and a sitemap containing only public routes
   for (const route of retiredRoutes) {
     assert.doesNotMatch(sitemap, new RegExp(`https://bohodigitalservices\\.com${route.replaceAll("/", "\\/")}`), `${route} leaked into sitemap`);
   }
+});
+
+test("ships the exact owner-supplied Boho collage", async () => {
+  const artwork = await readFile(new URL("../public/og-boho-digital-engineering-20260714.png", import.meta.url));
+  const digest = createHash("sha256").update(artwork).digest("hex");
+  assert.equal(digest, "aba7d7ffa937fc604621543d408920c4228f948df2fa912299b9620b355c5131");
 });
 
 test("resolves every rendered local link and fragment on the public surface", async () => {
