@@ -17,13 +17,14 @@ export function GlossaryPage() {
             "Search by term or topic, then use the related links to move between the concepts that shape the same business decision.",
           ]}
           primary={{ label: "Browse definitions", href: "#common-terms" }}
-          secondary={{ label: "Read how Boho uses the tools", href: "/tools/" }}
+          secondary={{ label: "Explore Boho systems", href: "/tools/" }}
         />
         <div className="knowledge-section-layout">
           <SectionSidebar
             currentPath="/learn/glossary/"
             anchors={[
               { label: "Common terms", href: "#common-terms" },
+              { label: "System clusters", href: "#glossary-clusters" },
               { label: `All ${glossaryEntries.length} terms`, href: "#all-terms" },
             ]}
             note="Search first, scan by letter, then expand only the definition you need."

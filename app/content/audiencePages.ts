@@ -874,16 +874,16 @@ export const audiencePages: PageConfig[] = [
   {
     slug: "/tools/",
     pageKind: "tools",
-    title: "Custom Tools and Automation | Boho Digital Services",
+    title: "Tools, Systems and Websites | Boho Digital Services",
     metaDescription:
-      "Focused workflow automation, reporting, monitoring, integrations, and internal tools designed around a real operational problem.",
-    eyebrow: "Tools",
-    headline: "When the right tool does not exist, we build it.",
+      "See how Boho combines mature infrastructure with focused engineering, selected custom tools, owned websites, and plain-language system explanations.",
+    eyebrow: "Tools, systems, and proof",
+    headline: "Systems built to make digital work cheaper, clearer, and easier to operate.",
     intro: [
-      "Focused digital systems for repeated work that is too important, too specific, or too fragmented for the tools already in place.",
+      "Mature platforms handle commodity infrastructure. Boho engineers the operating layer around the business.",
     ],
     theme: "research",
-    primaryCta: { label: "See What Boho Builds", href: "#capabilities" },
+    primaryCta: { label: "Explore Boho Systems", href: "#system-families" },
     secondaryCta: { label: "Build the Missing Tool", href: "/contact/" },
     sections: [],
   },

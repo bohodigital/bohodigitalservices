@@ -118,7 +118,8 @@ test("server-renders the focused Boho homepage and approved marketing message", 
   assert.equal((html.match(/class="service-card /g) ?? []).length, 5);
   assert.equal((html.match(/class="method-summary-list__link"/g) ?? []).length, 6);
   assert.match(html, /href="\/contact\/"[^>]*>[\s\S]*?Talk to Someone Technical/i);
-  assert.match(html, /href="\/tools\/"[^>]*>[\s\S]*?See What We Build/i);
+  assert.match(html, /href="\/tools\/"[^>]*>[\s\S]*?Explore Boho Systems/i);
+  assert.match(html, /We use mature platforms for mature problems and custom engineering for the gaps that matter\./i);
   assert.match(html, /googletagmanager\.com\/gtag\/js\?id=G-5CV8L2SE2R/i);
   assert.match(html, /analytics\.bohodigitalservices\.com\/script\.js/i);
   assert.match(html, /data-do-not-track="true"/i);
@@ -231,18 +232,27 @@ test("publishes factual privacy, terms, and accessibility pages", async () => {
   assert.match(accessibility, /Statement updated July 14, 2026/i);
 });
 
-test("keeps tools and resources distinct, commercial, and free of stale machinery", async () => {
+test("realigns Tools around five system families, two decision visuals, and exactly three selected identities", async () => {
   const tools = await (await render("/tools/")).text();
-  assert.match(tools, /When the right tool does not exist, we build it\./i);
-  assert.match(tools, /Custom software should earn its place/i);
-  assert.match(tools, /What Boho can engineer around the workflow/i);
-  assert.match(tools, /Diagnose before you automate/i);
+  assert.match(tools, /Systems built to make digital work cheaper, clearer, and easier to operate\./i);
+  assert.match(tools, /Mature platforms handle the commodity infrastructure\. Boho engineers the operating system around the business\./i);
+  assert.match(tools, /Custom software is one option, not the opening assumption\./i);
+  assert.match(tools, /We repair before replacing, integrate before rebuilding, and write custom software only when the missing capability is worth owning\./i);
+  assert.match(tools, /Websites are part of the proof\./i);
+  assert.match(tools, /Tools explains what Boho builds and operates\. The glossary explains the technical language underneath it\./i);
   assert.match(tools, /Build the missing tool/i);
-  assert.match(tools, /<h3[^>]*>\s*<strong>Repeated cost<\/strong>\s*<\/h3>/i);
-  assert.match(tools, /<h3[^>]*>\s*<strong>Workflow automation<\/strong>\s*<\/h3>/i);
-  for (const anchor of ["first-scope", "capabilities", "how-it-works", "custom-engineering"]) {
+  for (const anchor of ["visual-layered-infrastructure", "system-families", "repair-integrate-build", "visual-repair-integrate-build", "selected-tools", "websites", "visual-systems-library", "glossary-bridge"]) {
     assert.match(tools, new RegExp(`id="${anchor}"`, "i"), `missing stable Tools anchor #${anchor}`);
   }
+  assert.equal((tools.match(/data-system-family="[^"]+"/g) ?? []).length, 5);
+  const selectedIds = [...tools.matchAll(/data-selected-tool-id="([^"]+)"/g)].map((match) => match[1]);
+  assert.deepEqual(selectedIds, ["bsuite-mcp-monitor", "secret-broker", "analysis-dashboard"]);
+  assert.equal((tools.match(/data-proof-category="owned-website"/g) ?? []).length, 4);
+  assert.match(tools, /bohodigitalservices\.com/i);
+  assert.match(tools, /howbiscuit\.com/i);
+  assert.match(tools, /bettergrades\.net/i);
+  assert.match(tools, /rankbuilderseo\.com/i);
+  assert.equal((tools.match(/class="systems-visual /g) ?? []).length, 2);
   assert.match(tools, /<meta[^>]+name="robots"[^>]+index, follow/i);
   assert.doesNotMatch(tools, /0 accepted|prohibited claim|capability classifications|no empty proof shelf/i);
   assert.doesNotMatch(tools, /<h[1-4][^>]*>\s*(?:GitHub|Cloudflare|Google Analytics)\s*</i);
@@ -265,9 +275,13 @@ test("keeps tools and resources distinct, commercial, and free of stale machiner
 
   const knowledgeSource = await readFile(new URL("../app/content/knowledge.ts", import.meta.url), "utf8");
   const knowledgePageSource = await readFile(new URL("../app/components/KnowledgePages.tsx", import.meta.url), "utf8");
+  const systemsSource = await readFile(new URL("../app/content/systems.ts", import.meta.url), "utf8");
   assert.doesNotMatch(knowledgeSource, /export (?:type|const) ToolProfile|export const toolProfiles/i);
   assert.doesNotMatch(knowledgeSource, /relatedToolSlugs|cloudflare-workers-pricing|github-pages-api/i);
   assert.doesNotMatch(knowledgePageSource, /export function GlossaryPage|toolProfilesBySlug/i);
+  assert.match(systemsSource, /export const systemFamilies/);
+  assert.match(systemsSource, /export const selectedTools/);
+  assert.match(systemsSource, /export const ownedWebsites/);
 });
 
 test("uses link-based glossary definitions without popovers or horizontal-overflow machinery", async () => {
@@ -279,10 +293,50 @@ test("uses link-based glossary definitions without popovers or horizontal-overfl
 
   const glossary = await (await render("/learn/glossary/")).text();
   assert.match(glossary, /Technical language, translated before it becomes leverage/i);
-  assert.match(glossary, /Related system terms/i);
+  assert.match(glossary, /Related system family/i);
+  assert.match(glossary, /System clusters/i);
+  assert.equal((glossary.match(/id="cluster-[^"]+"/g) ?? []).length, 11);
+  assert.match(glossary, /Filter by cluster/i);
   assert.match(glossary, /Last reviewed July 11, 2026/i);
   assert.doesNotMatch(glossary, /small question mark|Every popup/i);
   assert.doesNotMatch(glossary, /old mascot-led|no entries are fabricated|definition standard|published definitions are reviewed|repeatable scan|traffic data can replace|reviewed against linked sources|MCP…/i);
+});
+
+test("keeps the expanded glossary architecture complete and connected", async () => {
+  const knowledgeSource = await readFile(new URL("../app/content/knowledge.ts", import.meta.url), "utf8");
+  const systemsSource = await readFile(new URL("../app/content/systems.ts", import.meta.url), "utf8");
+  assert.match(knowledgeSource, /ownershipImplications\?: string/);
+  assert.match(knowledgeSource, /businessImplications\?: string/);
+  assert.match(knowledgeSource, /relatedSystemFamilies\?: SystemFamilyId\[\]/);
+  assert.match(knowledgeSource, /relatedVisualIds\?: SystemVisualId\[\]/);
+  assert.match(knowledgeSource, /lastReviewed:/);
+  assert.equal((knowledgeSource.match(/^    slug: /gm) ?? []).length, 61);
+  assert.equal((systemsSource.match(/id: "(?:websites-publishing|hosting-release|measurement-search-signals|operations-automation|secure-integrations-custom-tools)"/g) ?? []).length, 5);
+
+  const glossary = await (await render("/learn/glossary/")).text();
+  for (const familyAnchor of [
+    "family-websites-publishing",
+    "family-hosting-release",
+    "family-measurement-search-signals",
+    "family-operations-automation",
+    "family-secure-integrations-custom-tools",
+  ]) {
+    assert.match(glossary, new RegExp(`href="/tools/#${familyAnchor}"`, "i"));
+  }
+});
+
+test("keeps claim and release boundaries persistent for this private review candidate", async () => {
+  const systemsSource = await readFile(new URL("../app/content/systems.ts", import.meta.url), "utf8");
+  const toolsSource = await readFile(new URL("../app/components/KnowledgePages.tsx", import.meta.url), "utf8");
+  const homepageSource = await readFile(new URL("../app/Homepage.tsx", import.meta.url), "utf8");
+  const serviceSource = await readFile(new URL("../app/content/corePages.ts", import.meta.url), "utf8");
+  const releaseGuard = JSON.parse(await readFile(new URL("../artifacts/CR-2026-07-15-BOHO-TOOLS-SYSTEMS-REALIGNMENT-001/release-guard.json", import.meta.url), "utf8"));
+  const scanned = [systemsSource, toolsSource, homepageSource, serviceSource].join("\n");
+  assert.doesNotMatch(scanned, /built from the ground up/i);
+  assert.equal(releaseGuard.productionDeployment, false);
+  assert.equal(releaseGuard.productionFormsChanged, false);
+  assert.equal(releaseGuard.selectedToolIds.length, 3);
+  assert.deepEqual(releaseGuard.selectedToolIds, ["bsuite-mcp-monitor", "secret-broker", "analysis-dashboard"]);
 });
 
 test("publishes clean crawl controls and a sitemap containing only public routes", async () => {

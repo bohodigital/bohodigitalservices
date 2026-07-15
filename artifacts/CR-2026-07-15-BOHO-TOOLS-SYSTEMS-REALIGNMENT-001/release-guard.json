@@ -1,0 +1,11 @@
+{
+  "codexRequest": "CR-2026-07-15-BOHO-TOOLS-SYSTEMS-REALIGNMENT-001",
+  "reviewMode": "private-candidate",
+  "productionDeployment": false,
+  "productionFormsChanged": false,
+  "selectedToolIds": [
+    "bsuite-mcp-monitor",
+    "secret-broker",
+    "analysis-dashboard"
+  ]
+}

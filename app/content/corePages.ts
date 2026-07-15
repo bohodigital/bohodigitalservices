@@ -303,7 +303,7 @@ export const corePages: PageConfig[] = [
     ],
     theme: "mosaic",
     primaryCta: { label: "Build the Missing Tool", href: "/contact/" },
-    secondaryCta: { label: "See the Capability Rules", href: "/tools/" },
+    secondaryCta: { label: "See the Systems and Proof", href: "/tools/" },
     sections: [
       {
         eyebrow: "The right starting point",
@@ -348,12 +348,18 @@ export const corePages: PageConfig[] = [
         items: operatingCycle.map(({ title, body, href, linkLabel }) => ({ title, body, href, linkLabel })),
       },
       {
-        eyebrow: "Claims boundary",
-        title: "A capability page is not evidence that a specific product already exists.",
+        eyebrow: "Repair, integrate, or build",
+        title: "Custom software is one option, not the opening assumption.",
         body: [
-          "Public profiles must use the governed capability classifications and cite current Bohopi evidence. This review does not promote an unverified client tool, prototype, or planned system as production-ready.",
+          "We repair before replacing, integrate before rebuilding, and write custom software only when the missing capability is worth owning.",
         ],
+        layout: "grid",
         tone: "plum",
+        items: [
+          { title: "Review the decision model", body: "Follow the repair, integrate, or build path before adding another system.", href: "/tools/#repair-integrate-build", linkLabel: "Open the decision model" },
+          { title: "Inspect selected proof", body: "Keep named Boho systems separate from the mature infrastructure that supports them.", href: "/tools/#selected-tools", linkLabel: "View selected tools" },
+          { title: "Translate the technical layer", body: "Use the glossary for deeper explanations of APIs, access, automation, delivery, and ownership.", href: "/learn/glossary/#cluster-apis-and-integrations", linkLabel: "Open the glossary cluster" },
+        ],
       },
       {
         title: "Bring the repeated task, its owner, and the cost of getting it wrong.",

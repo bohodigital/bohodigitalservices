@@ -1,3 +1,5 @@
+import type { SystemFamilyId, SystemVisualId } from "./systems";
+
 export type KnowledgeSource = {
   id: string;
   label: string;
@@ -11,17 +13,105 @@ export type GlossaryCategory =
   | "APIs and automation"
   | "Search and measurement";
 
+export const glossaryClusters = [
+  "Domains and ownership",
+  "Hosting and delivery",
+  "Source control and deployment",
+  "Websites and content systems",
+  "Search and local visibility",
+  "Analytics and measurement",
+  "APIs and integrations",
+  "Automation and agent systems",
+  "Security and access",
+  "Leads and conversion",
+  "AI and language-model infrastructure",
+] as const;
+
+export type GlossaryCluster = (typeof glossaryClusters)[number];
+
 export type GlossaryEntry = {
   term: string;
   slug: string;
   aliases?: string[];
   category: GlossaryCategory;
+  cluster: GlossaryCluster;
   shortDefinition: string;
   definition: string;
   whyItMatters: string;
   commonMisunderstanding: string;
+  ownershipImplications?: string;
+  businessImplications?: string;
   relatedTermSlugs?: string[];
+  relatedSystemFamilies?: SystemFamilyId[];
+  relatedVisualIds?: SystemVisualId[];
   sourceIds: string[];
+  lastReviewed: `${number}-${number}-${number}`;
+};
+
+type GlossaryEntrySeed = Omit<GlossaryEntry, "cluster" | "lastReviewed">;
+
+const glossaryClusterBySlug: Record<string, GlossaryCluster> = {
+  server: "Hosting and delivery",
+  "web-server": "Hosting and delivery",
+  client: "Hosting and delivery",
+  browser: "Hosting and delivery",
+  "domain-name": "Domains and ownership",
+  dns: "Domains and ownership",
+  nameserver: "Domains and ownership",
+  "dns-record": "Domains and ownership",
+  hosting: "Hosting and delivery",
+  "static-site": "Websites and content systems",
+  cdn: "Hosting and delivery",
+  http: "Hosting and delivery",
+  tls: "Security and access",
+  url: "Hosting and delivery",
+  redirect: "Hosting and delivery",
+  "responsive-design": "Websites and content systems",
+  git: "Source control and deployment",
+  github: "Source control and deployment",
+  repository: "Source control and deployment",
+  branch: "Source control and deployment",
+  commit: "Source control and deployment",
+  deployment: "Source control and deployment",
+  "ci-cd": "Source control and deployment",
+  api: "APIs and integrations",
+  "api-key": "Security and access",
+  oauth: "Security and access",
+  "environment-variable": "Security and access",
+  webhook: "APIs and integrations",
+  json: "APIs and integrations",
+  automation: "Automation and agent systems",
+  mcp: "AI and language-model infrastructure",
+  "mcp-server": "AI and language-model infrastructure",
+  "mcp-client": "AI and language-model infrastructure",
+  "mcp-tool": "Automation and agent systems",
+  "mcp-resource": "Automation and agent systems",
+  "web-crawling": "Search and local visibility",
+  crawler: "Search and local visibility",
+  "robots-txt": "Search and local visibility",
+  "xml-sitemap": "Search and local visibility",
+  indexing: "Search and local visibility",
+  "google-analytics": "Analytics and measurement",
+  event: "Analytics and measurement",
+  conversion: "Leads and conversion",
+  "google-search-console": "Search and local visibility",
+  "google-business-profile": "Search and local visibility",
+  seo: "Search and local visibility",
+  "local-seo": "Search and local visibility",
+  "technical-seo": "Search and local visibility",
+  analytics: "Analytics and measurement",
+  metadata: "Websites and content systems",
+  "canonical-url": "Search and local visibility",
+  "structured-data": "Websites and content systems",
+  cms: "Websites and content systems",
+  cache: "Hosting and delivery",
+  "website-clarity": "Websites and content systems",
+  "trust-signal": "Leads and conversion",
+  "customer-discovery": "Search and local visibility",
+  "customer-action": "Leads and conversion",
+  "call-to-action": "Leads and conversion",
+  "search-intent": "Search and local visibility",
+  keyword: "Search and local visibility",
 };
 
 export const knowledgeSources: KnowledgeSource[] = [
@@ -157,7 +247,7 @@ export const sourcesById = new Map(
   knowledgeSources.map((source) => [source.id, source]),
 );
 
-export const glossaryEntries: GlossaryEntry[] = [
+const glossaryEntrySeeds: GlossaryEntrySeed[] = [
   {
     term: "Server",
     slug: "server",
@@ -855,6 +945,12 @@ export const glossaryEntries: GlossaryEntry[] = [
     sourceIds: ["google-search-console"],
   },
 ];
+
+export const glossaryEntries: GlossaryEntry[] = glossaryEntrySeeds.map((entry) => ({
+  ...entry,
+  cluster: glossaryClusterBySlug[entry.slug],
+  lastReviewed: "2026-07-11",
+}));
 
 export const glossaryBySlug = new Map(
   glossaryEntries.map((entry) => [entry.slug, entry]),

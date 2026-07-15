@@ -147,7 +147,7 @@ export default function Homepage() {
               <p className="hero__supporting-line">Built by digital engineers. Explained in plain English.</p>
               <div className="button-row hero__actions">
                 <ButtonLink href="/contact/">Talk to Someone Technical</ButtonLink>
-                <ButtonLink href="/tools/" variant="secondary">See What We Build</ButtonLink>
+                <ButtonLink href="/tools/" variant="secondary">Explore Boho Systems</ButtonLink>
               </div>
             </div>
             <figure className="hero-editorial hero-editorial--artwork">
@@ -294,8 +294,9 @@ export default function Homepage() {
               <p className="eyebrow eyebrow--on-dark">Custom tools and automation</p>
               <h2 id="tools-title">When the right tool does not exist, we build it.</h2>
               <p>Boho builds focused systems for repeated operational work that is too important, too specific, or too fragmented for the tools already in place.</p>
+              <p className="lab-proof__principle">We use mature platforms for mature problems and custom engineering for the gaps that matter.</p>
               <div className="button-row">
-                <ButtonLink href="/tools/">See What We Build</ButtonLink>
+                <ButtonLink href="/tools/">Explore Boho Systems</ButtonLink>
                 <TextLink href="/services/custom-tools-automation/">Explore the Service</TextLink>
               </div>
             </div>
@@ -343,7 +344,7 @@ export default function Homepage() {
               title="Talk to someone who can explain the machinery."
               body={<p>Send the business, website, service area, system, and what feels stuck. You do not need to diagnose the solution before the conversation.</p>}
               primary={{ label: "Talk to Someone Technical", href: "/contact/" }}
-              secondary={{ label: "See What We Build", href: "/tools/" }}
+              secondary={{ label: "Explore Boho Systems", href: "/tools/" }}
             />
             <span id="final-cta-title" className="sr-only">Talk to someone technical.</span>
           </div>
