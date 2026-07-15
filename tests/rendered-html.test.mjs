@@ -146,19 +146,66 @@ test("renders every intentional public route and retires internal placeholder sh
   }
 });
 
-test("removes public draft caveats, address commentary, and disconnected forms", async () => {
-  const forbidden = /preview form|not connected|working draft|private draft|review build|no public (?:street|office) address|without presenting a public office address|proof-eligible|awaiting real|secondary archive|Rank Builder migration/i;
+test("publishes the three production form contracts without stale caveats", async () => {
+  const forbidden = /preview form|not connected|working draft|private draft|review build|no public (?:street|office) address|without presenting a public office address|proof-eligible|awaiting real|secondary archive|Rank Builder migration|does not transmit|cannot send a message|nothing was sent|form is disconnected/i;
+  const formRoutes = [
+    {
+      route: "/contact/",
+      formId: "contact",
+      action: "boho_contact",
+      fields: [
+        "budget", "businessName", "businessType", "companyWebsite", "consent",
+        "email", "message", "name", "provider", "service", "serviceArea",
+        "timing", "valuableAction", "valuableOffer", "website",
+      ],
+    },
+    {
+      route: "/start/",
+      formId: "visibility-check",
+      action: "boho_visibility_check",
+      fields: [
+        "budget", "businessName", "businessType", "companyWebsite", "competitors",
+        "consent", "email", "name", "provider", "scopeAcknowledgement",
+        "serviceArea", "stuck", "timing", "topOffer", "valuableAction", "website",
+      ],
+    },
+    {
+      route: "/emergency/",
+      formId: "emergency",
+      action: "boho_emergency",
+      fields: [
+        "authorizedAccess", "began", "businessName", "companyWebsite", "consent",
+        "deadline", "email", "error", "impact", "name", "platform", "priorChange",
+        "problem", "providerContact", "website",
+      ],
+    },
+  ];
 
   for (const route of publicRoutes) {
     const response = await render(route);
     const html = await response.text();
     assert.doesNotMatch(html, forbidden, `${route} contains internal caveat copy`);
-    assert.doesNotMatch(html, /<form\b/i, `${route} contains a disconnected form`);
   }
 
-  for (const route of ["/contact/", "/start/", "/emergency/"]) {
+  for (const expected of formRoutes) {
+    const html = await (await render(expected.route)).text();
+    const form = html.match(/<form\b[\s\S]*?<\/form>/i)?.[0];
+    assert.ok(form, `${expected.route} lacks its production form`);
+    assert.match(form, new RegExp(`data-form-id="${expected.formId}"`, "i"));
+    assert.match(form, new RegExp(`data-turnstile-action="${expected.action}"`, "i"));
+    assert.match(form, /data-turnstile-sitekey="0x4AAAAAAD2AbgQjicGIajbI"/i);
+    assert.match(form, /href="\/privacy\/"/i);
+    assert.match(html, /href="mailto:contact@bohemiandigital\.org/i);
+    const names = [...form.matchAll(/\bname="([^"]+)"/gi)]
+      .map((match) => match[1])
+      .sort();
+    assert.deepEqual(names, [...expected.fields].sort(), `${expected.route} field contract`);
+  }
+
+  const formRouteSet = new Set(formRoutes.map((item) => item.route));
+  for (const route of publicRoutes.filter((item) => !formRouteSet.has(item))) {
     const html = await (await render(route)).text();
-    assert.match(html, /href="mailto:contact@bohemiandigital\.org/i, `${route} lacks working email action`);
+    assert.doesNotMatch(html, /<form\b/i, `${route} unexpectedly contains a form`);
   }
 });
 
@@ -168,7 +215,10 @@ test("publishes factual privacy, terms, and accessibility pages", async () => {
   assert.match(privacy, /Google Analytics/i);
   assert.match(privacy, /analytics\.bohodigitalservices\.com/i);
   assert.match(privacy, /Cloudflare/i);
-  assert.match(privacy, /Effective July 14, 2026/i);
+  assert.match(privacy, /Turnstile/i);
+  assert.match(privacy, /Cloudflare D1/i);
+  assert.match(privacy, /scheduled for deletion after 90 days/i);
+  assert.match(privacy, /Effective July 15, 2026/i);
 
   const terms = await (await render("/terms/")).text();
   assert.match(terms, /separately accepted agreement/i);

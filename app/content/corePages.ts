@@ -895,10 +895,10 @@ export const corePages: PageConfig[] = [
     headline: "Talk to someone who can explain the machinery.",
     intro: [
       "Send the business, website, market, system, and the problem you are trying to solve. Boho will help identify the most useful first step.",
-      "Email contact@bohemiandigital.org with the details you already have. Website issues can be reported to webmaster@bohemiandigital.org.",
+      "Use the project inquiry below, or email contact@bohemiandigital.org. Website issues can be reported to webmaster@bohemiandigital.org.",
     ],
     theme: "editorial",
-    primaryCta: { label: "Email Boho", href: "mailto:contact@bohemiandigital.org" },
+    primaryCta: { label: "Start a Project", href: "#project-inquiry" },
     secondaryCta: { label: "See What We Build", href: "/tools/" },
     sections: [
       {
@@ -921,9 +921,11 @@ export const corePages: PageConfig[] = [
       },
     ],
     form: {
+      formId: "contact",
+      sectionId: "project-inquiry",
       title: "Project inquiry",
       body: "Share enough context to help Boho identify the right starting point.",
-      submitLabel: "Review inquiry",
+      submitLabel: "Send inquiry",
       fields: [
         { name: "name", label: "Name", type: "text", required: true, placeholder: "Your name" },
         { name: "email", label: "Email", type: "email", required: true, placeholder: "you@example.com" },
@@ -960,9 +962,9 @@ export const corePages: PageConfig[] = [
         { name: "timing", label: "Desired timing", type: "text" },
       ],
       privacyNote:
-        "Do not submit passwords, payment data, private customer information, health information, or other sensitive records. This preview form does not transmit or retain entries. Send a normal email to contact@bohemiandigital.org instead.",
+        "Boho uses this information to review and respond to the inquiry. Do not submit passwords, payment data, private customer information, health information, private keys, or other sensitive records.",
       consent:
-        "By submitting a future connected form, you would agree that Boho may use the information to review and respond to your inquiry. Submission would not create a client relationship or guarantee availability.",
+        "I agree that Boho may use this information to review and respond to my inquiry. I understand that submission does not create a client relationship or guarantee availability.",
     },
   },
   {
@@ -976,7 +978,7 @@ export const corePages: PageConfig[] = [
       "Boho will take a focused first look at the website, local presence, visible competitors, lead path, and provider risks to identify the most useful next diagnostic.",
     ],
     theme: "research",
-    primaryCta: { label: "Request a Visibility Check", href: "mailto:contact@bohemiandigital.org?subject=Local%20Visibility%20Check" },
+    primaryCta: { label: "Request a Visibility Check", href: "#visibility-check-request" },
     secondaryCta: { label: "See all services", href: "/services/" },
     sections: [
       {
@@ -1002,9 +1004,11 @@ export const corePages: PageConfig[] = [
       },
     ],
     form: {
+      formId: "visibility-check",
+      sectionId: "visibility-check-request",
       title: "Visibility Check request",
       body: "Give Boho enough context to understand the business and the visible problem.",
-      submitLabel: "Review request",
+      submitLabel: "Request visibility check",
       fields: [
         { name: "name", label: "Name", type: "text", required: true },
         { name: "email", label: "Email", type: "email", required: true },
@@ -1027,7 +1031,7 @@ export const corePages: PageConfig[] = [
         },
       ],
       privacyNote:
-        "Boho would use this information only to review the request and respond about the project. Do not submit passwords, private customer information, health information, payment data, or other sensitive material. This preview form does not transmit or retain entries.",
+        "Boho uses this information only to review the request and respond about the project. Do not submit passwords, private customer information, health information, payment data, private keys, or other sensitive material.",
     },
   },
   {
@@ -1041,7 +1045,7 @@ export const corePages: PageConfig[] = [
       "Boho helps triage urgent website, launch, migration, provider, tracking, form, redirect, and access problems when waiting politely is not a strategy.",
     ],
     theme: "cinematic",
-    primaryCta: { label: "Request Emergency Review", href: "mailto:contact@bohemiandigital.org?subject=Emergency%20Website%20Review" },
+    primaryCta: { label: "Request Emergency Review", href: "#emergency-triage" },
     secondaryCta: { label: "Provider rescue", href: "/services/website-migration-provider-rescue/" },
     sections: [
       {
@@ -1075,9 +1079,11 @@ export const corePages: PageConfig[] = [
       },
     ],
     form: {
+      formId: "emergency",
+      sectionId: "emergency-triage",
       title: "Emergency website triage",
       body: "Describe the incident with facts, timing, business impact, and the systems involved.",
-      submitLabel: "Review emergency request",
+      submitLabel: "Send emergency request",
       fields: [
         { name: "name", label: "Name", type: "text", required: true },
         { name: "email", label: "Email", type: "email", required: true },
@@ -1094,17 +1100,17 @@ export const corePages: PageConfig[] = [
         { name: "deadline", label: "Deadline caused by the problem", type: "text" },
       ],
       privacyNote:
-        "Do not submit passwords or private keys. Boho would request access through authorized platform invitations or another secure method. Screenshot upload is unavailable while this review form is disconnected, and no entries are transmitted or retained.",
+        "Do not submit passwords, private keys, private customer records, payment data, or health information. Boho requests access through authorized platform invitations or another secure method. Screenshot upload is not available; describe the visible error instead.",
     },
   },
   {
     slug: "/privacy/",
     title: "Privacy Policy | Boho Digital Services",
-    metaDescription: "How Boho Digital Services handles website analytics, email inquiries, operational data, and privacy requests.",
+    metaDescription: "How Boho Digital Services handles website analytics, form and email inquiries, operational data, and privacy requests.",
     eyebrow: "Privacy",
     headline: "Privacy",
     intro: [
-      "This notice explains the information involved when you visit the Boho Digital Services website or contact the business by email.",
+      "This notice explains the information involved when you visit the Boho Digital Services website or contact the business through a form or email.",
     ],
     theme: "editorial",
     primaryCta: { label: "Review accessibility", href: "/accessibility/" },
@@ -1120,9 +1126,17 @@ export const corePages: PageConfig[] = [
       {
         title: "Information you send",
         body: [
-          "When you email Boho, the message may include your name, email address, business name, website, service area, provider details, timing, and the project or problem you describe.",
-          "Please do not email passwords, payment data, private customer information, health information, private keys, or other sensitive records. Secure access can be arranged through authorized platform invitations when needed.",
+          "When you submit a form or email Boho, the message may include your name, email address, business name, website, service area, provider details, timing, and the project or problem you describe.",
+          "Please do not submit passwords, payment data, private customer information, health information, private keys, or other sensitive records. Secure access can be arranged through authorized platform invitations when needed.",
         ],
+      },
+      {
+        title: "Forms, verification, and delivery",
+        body: [
+          "The project inquiry, Local Visibility Check, and Emergency forms use Cloudflare Turnstile to reduce automated abuse. Cloudflare may process network, browser, and security information needed to perform that check under its own privacy terms.",
+          "Accepted form fields, submission and consent timestamps, the website origin, the verified Turnstile hostname and action, and notification status are stored in a Cloudflare D1 database before a notification is sent to Boho's approved operational inbox. The form database does not intentionally store your IP address, browser user agent, or Turnstile token.",
+        ],
+        tone: "plum",
       },
       {
         title: "Analytics, cookies, hosting, and processors",
@@ -1136,7 +1150,7 @@ export const corePages: PageConfig[] = [
         title: "Use, retention, and security",
         body: [
           "Information is used to respond to inquiries, evaluate potential work, operate and secure the website, understand site performance, and maintain business records connected to a conversation or project.",
-          "Records are kept only as long as reasonably useful for those purposes, contractual or accounting needs, security, or applicable legal obligations. Access is limited to people and providers that need it for the relevant work.",
+          "Form intake database records are scheduled for deletion after 90 days. A notification copy delivered to business email, later correspondence, and records connected to an active or completed engagement may be retained only as long as reasonably useful for the conversation, contractual or accounting needs, security, or applicable legal obligations. Access is limited to people and providers that need it for the relevant work.",
         ],
       },
       {
@@ -1149,7 +1163,7 @@ export const corePages: PageConfig[] = [
       {
         title: "Updates and effective date",
         body: [
-          "Effective July 14, 2026. Material changes will be reflected on this page with an updated effective date.",
+          "Effective July 15, 2026. Material changes will be reflected on this page with an updated effective date.",
         ],
         tone: "dark",
       },

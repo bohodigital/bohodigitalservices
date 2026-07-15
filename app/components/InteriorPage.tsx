@@ -5,6 +5,7 @@ import type {
 } from "../content/types";
 import { BookOpenCheck, FlaskConical, PanelsTopLeft, SearchCheck } from "lucide-react";
 import { DefinedText } from "./DefinedText";
+import { DraftForm } from "./DraftForm";
 import { SectionSidebar, type SectionAnchor } from "./SectionNavigation";
 import {
   Breadcrumbs,
@@ -300,6 +301,12 @@ export function InteriorPage(props: InteriorPageProps) {
     label: section.title,
     href: `#${sectionId(section, index)}` as `#${string}`,
   }));
+  if (page.form) {
+    pageAnchors.push({
+      label: page.form.title,
+      href: `#${page.form.sectionId}` as `#${string}`,
+    });
+  }
 
   return (
     <>
@@ -365,6 +372,18 @@ export function InteriorPage(props: InteriorPageProps) {
                 seenTerms={seenTerms}
               />
             ))}
+
+            {page.form ? (
+              <section
+                className="interior-form-section"
+                id={page.form.sectionId}
+                aria-label={page.form.title}
+              >
+                <div className="section-shell">
+                  <DraftForm config={page.form} />
+                </div>
+              </section>
+            ) : null}
 
             {shouldRenderRelatedCta && primaryHref ? (
               <div className="section-shell interior-page__related-cta">

@@ -3860,14 +3860,61 @@ body,
   font-weight: 750;
 }
 
+.form-field--honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+.draft-form__consent {
+  padding: 1rem;
+  border: 1px solid rgba(17, 18, 20, 0.18);
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.draft-form__consent a,
+.draft-form__heading a {
+  color: var(--verdigris-text);
+  font-weight: 750;
+  text-underline-offset: 0.18em;
+}
+
+.draft-form__turnstile {
+  display: grid;
+  gap: 0.5rem;
+  width: min(100%, 20rem);
+}
+
+.draft-form__turnstile-widget {
+  min-height: 4.1rem;
+  outline-offset: 0.25rem;
+}
+
 .draft-form__submit {
   width: max-content;
   cursor: pointer;
 }
 
+.draft-form__submit:disabled {
+  cursor: wait;
+  opacity: 0.68;
+}
+
 .draft-form__idle-status {
   color: rgba(17, 18, 20, 0.62);
   font-size: 0.72rem;
+}
+
+.draft-form__noscript {
+  color: var(--copper-text);
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+
+.draft-form__result code {
+  overflow-wrap: anywhere;
 }
 
 .interior-page__related-cta {

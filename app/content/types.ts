@@ -1,3 +1,5 @@
+import type { FormFieldName, FormId } from "./formContract";
+
 export type InteriorTheme = "cinematic" | "editorial" | "research" | "mosaic";
 
 export type ContentItem = {
@@ -28,7 +30,7 @@ export type ContentSection = {
 };
 
 export type DraftField = {
-  name: string;
+  name: FormFieldName;
   label: string;
   type: "text" | "email" | "url" | "textarea" | "select" | "checkbox";
   required?: boolean;
@@ -38,6 +40,8 @@ export type DraftField = {
 };
 
 export type DraftFormConfig = {
+  formId: FormId;
+  sectionId: string;
   title: string;
   body: string;
   submitLabel: string;
