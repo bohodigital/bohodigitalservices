@@ -813,84 +813,16 @@ export const corePages: PageConfig[] = [
   },
   {
     slug: "/about/",
-    title: "About Boho Digital Services | Digital Engineering",
+    title: "About Boho Digital Services | Research-Led Digital Engineering",
     metaDescription:
-      "Boho is a digital-engineering firm connecting commercial goals to websites, visibility systems, lead paths, provider infrastructure, operational tools, analytics, and improvement.",
-    eyebrow: "About Boho",
-    headline: "Commercial digital problems deserve people who understand the machinery.",
-    intro: [
-      "Boho Digital Services connects local visibility, lead systems, websites, provider rescue, custom tools, automation, research, analytics, and improvement around the way a business actually works.",
-      "Built by digital engineers. Explained in plain English.",
-    ],
+      "Learn how professional experience in mathematical modeling, behavioral science, medical-image processing, scientific programming, and software engineering shaped Boho Digital Services and its direct, research-led approach to websites, search, analytics, and digital infrastructure.",
+    eyebrow: "ABOUT BOHO DIGITAL SERVICES",
+    headline: "I come from professional scientific research. I built Boho because this problem has a clear answer.",
+    intro: [],
     theme: "editorial",
-    primaryCta: { label: "See How Boho Works", href: "#how-boho-operates" },
-    secondaryCta: { label: "Start a Conversation", href: "/contact/" },
-    sections: [
-      {
-        eyebrow: "What digital engineering means here",
-        title: "Marketing systems are still systems.",
-        body: [
-          "At Boho, digital engineering means diagnosing, designing, building, deploying, measuring, and improving digital systems that support a commercial or operational outcome.",
-          "Websites, search visibility, lead paths, analytics, integrations, content, and operational tools work better when they are treated as connected machinery instead of unrelated deliverables.",
-        ],
-        tone: "verdigris",
-      },
-      {
-        title: "Small businesses are often sold digital work that is too vague, too expensive, or too generic.",
-        body: [
-          "The package arrives before the diagnosis. Reports show activity without explaining the decision. Websites are redesigned without understanding how the business earns trust. SEO becomes a recurring ritual nobody can clearly defend.",
-          "Boho exists to work differently: study the business and market, identify the useful signals, choose the smallest credible intervention, do the work, document it, and adjust when the evidence changes.",
-          "That may mean building a distinctive new website. It may mean repairing the current site, rescuing the business from a bad provider, improving local visibility, strengthening lead paths, or supporting steady growth over time.",
-        ],
-        tone: "parchment",
-      },
-      {
-        eyebrow: "The name",
-        title: "Bohemian is an operating philosophy, not a costume.",
-        body: [
-          "For Boho, bohemian means independent, adaptive, curious, multidisciplinary, and willing to reject stale agency habits when they do not serve the business.",
-          "It means meeting each company where it is rather than forcing every company through the same package. It means combining design, research, code, content, SEO, measurement, and practical business reasoning when the problem crosses boundaries.",
-          "It means staying lean enough to change direction when the evidence changes. It does not mean every page needs a bee joke.",
-        ],
-        tone: "blue",
-      },
-      {
-        eyebrow: "Operating principles",
-        title: "Seven ways the philosophy enters the work.",
-        layout: "list",
-        items: [
-          { title: "Research before prescription", body: "Understand the business, market, customer, valuable actions, and constraints before recommending the largest project." },
-          { title: "Creativity with a job", body: "Use visual and strategic creativity to solve the real problem, not to decorate around it." },
-          { title: "Signals before vanity", body: "Pay attention to visibility, trust, customer action, lead quality, ownership, and business value—not a metric merely because software can chart it." },
-          { title: "Small by design", body: "Keep the work close to the people doing it. Reduce layers, overhead, and translation loss." },
-          { title: "Client ownership", body: "Prefer client-owned accounts, portable assets, readable documentation, and relationships that continue because they are useful." },
-          { title: "Show the work", body: "Explain assumptions, actions, limitations, and next steps. Build public proof through owned experiments and documented projects." },
-          { title: "Honest uncertainty", body: "Do not turn probability into a guarantee. State what is known, what is inferred, and what needs testing." },
-        ],
-      },
-      {
-        eyebrow: "How Boho operates",
-        title: "Diagnose → Prioritize → Engineer → Deploy → Measure → Improve",
-        layout: "steps",
-        items: operatingCycle.map(({ title, body, href, linkLabel }) => ({ title, body, href, linkLabel })),
-      },
-      {
-        eyebrow: "Lean by design",
-        title: "Low overhead is part of the product.",
-        body: [
-          "Boho uses a small operating structure, reusable workflows, automation-assisted research, direct technical work, and clear documentation. The goal is to put more of the client's budget into useful output.",
-          "This does not mean every project is cheap. It means the price should reflect the actual work rather than a large internal machine.",
-        ],
-        tone: "plum",
-      },
-      {
-        title: "Bring the real situation, not a polished brief.",
-        body: [
-          "Boho is built for businesses that need clarity before they spend more on websites, SEO, migration, or growth.",
-        ],
-        tone: "dark",
-      },
-    ],
+    primaryCta: { label: "Talk to Someone Technical", href: "/contact/" },
+    secondaryCta: { label: "Review Boho’s Services", href: "/services/" },
+    sections: [],
   },
   {
     slug: "/contact/",

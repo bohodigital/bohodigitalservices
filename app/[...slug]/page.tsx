@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import InteriorPage from "../components/InteriorPage";
+import { AboutPage } from "../components/AboutPage";
 import { ToolsPage } from "../components/KnowledgePages";
 import { GlossaryPage } from "../components/GlossaryPage";
 import { ResourcesPage } from "../components/ResourcesPage";
@@ -59,6 +60,7 @@ export default async function InteriorRoute({ params }: InteriorRouteProps) {
   if (!page) notFound();
 
   if (page.pageKind === "glossary") return <GlossaryPage />;
+  if (page.slug === "/about/") return <AboutPage />;
   if (page.pageKind === "tools") return <ToolsPage />;
   if (page.pageKind === "resources") return <ResourcesPage />;
   if (page.pageKind === "brands") return <InHouseBrandsPage />;

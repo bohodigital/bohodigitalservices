@@ -1,0 +1,186 @@
+{
+  "method": "Playwright with headless Microsoft Edge; no interactive browser or computer control",
+  "results": [
+    {
+      "viewport": {
+        "name": "mobile-320",
+        "width": 320,
+        "height": 900
+      },
+      "httpStatus": 200,
+      "title": "About Boho Digital Services | Research-Led Digital Engineering",
+      "statusReady": "complete",
+      "h1Count": 1,
+      "sceneCount": 12,
+      "scrollWidth": 320,
+      "clientWidth": 320,
+      "horizontalOverflow": false,
+      "imageCount": 3,
+      "imagesLoaded": true,
+      "imageAlts": [
+        "Rank Builder SEO homepage showing its independent SEO research desk masthead and Clear SEO Answers editorial hero.",
+        "How Biscuit homepage showing category navigation, a practical guide hero, and supporting article sections.",
+        "Better Grades homepage showing its math-help search interface and interactive calculus method card."
+      ],
+      "projectLinks": [
+        "http://localhost:4175/learn/glossary/#term-seo",
+        "http://localhost:4175/learn/glossary/#term-technical-seo",
+        "https://rankbuilderseo.com/",
+        "http://localhost:4175/learn/glossary/#term-search-intent",
+        "https://howbiscuit.com/",
+        "http://localhost:4175/learn/glossary/#term-integration",
+        "https://bettergrades.net/"
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "blockedExternalRequests": [
+        "https://www.googletagmanager.com/gtag/js?id=G-5CV8L2SE2R",
+        "https://analytics.bohodigitalservices.com/script.js"
+      ]
+    },
+    {
+      "viewport": {
+        "name": "tablet-768",
+        "width": 768,
+        "height": 1000
+      },
+      "httpStatus": 200,
+      "title": "About Boho Digital Services | Research-Led Digital Engineering",
+      "statusReady": "complete",
+      "h1Count": 1,
+      "sceneCount": 12,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "horizontalOverflow": false,
+      "imageCount": 3,
+      "imagesLoaded": true,
+      "imageAlts": [
+        "Rank Builder SEO homepage showing its independent SEO research desk masthead and Clear SEO Answers editorial hero.",
+        "How Biscuit homepage showing category navigation, a practical guide hero, and supporting article sections.",
+        "Better Grades homepage showing its math-help search interface and interactive calculus method card."
+      ],
+      "projectLinks": [
+        "http://localhost:4175/learn/glossary/#term-seo",
+        "http://localhost:4175/learn/glossary/#term-technical-seo",
+        "https://rankbuilderseo.com/",
+        "http://localhost:4175/learn/glossary/#term-search-intent",
+        "https://howbiscuit.com/",
+        "http://localhost:4175/learn/glossary/#term-integration",
+        "https://bettergrades.net/"
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "blockedExternalRequests": [
+        "https://www.googletagmanager.com/gtag/js?id=G-5CV8L2SE2R",
+        "https://analytics.bohodigitalservices.com/script.js"
+      ]
+    },
+    {
+      "viewport": {
+        "name": "laptop-1024",
+        "width": 1024,
+        "height": 1000
+      },
+      "httpStatus": 200,
+      "title": "About Boho Digital Services | Research-Led Digital Engineering",
+      "statusReady": "complete",
+      "h1Count": 1,
+      "sceneCount": 12,
+      "scrollWidth": 1024,
+      "clientWidth": 1024,
+      "horizontalOverflow": false,
+      "imageCount": 3,
+      "imagesLoaded": true,
+      "imageAlts": [
+        "Rank Builder SEO homepage showing its independent SEO research desk masthead and Clear SEO Answers editorial hero.",
+        "How Biscuit homepage showing category navigation, a practical guide hero, and supporting article sections.",
+        "Better Grades homepage showing its math-help search interface and interactive calculus method card."
+      ],
+      "projectLinks": [
+        "http://localhost:4175/learn/glossary/#term-seo",
+        "http://localhost:4175/learn/glossary/#term-technical-seo",
+        "https://rankbuilderseo.com/",
+        "http://localhost:4175/learn/glossary/#term-search-intent",
+        "https://howbiscuit.com/",
+        "http://localhost:4175/learn/glossary/#term-integration",
+        "https://bettergrades.net/"
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "blockedExternalRequests": [
+        "https://www.googletagmanager.com/gtag/js?id=G-5CV8L2SE2R",
+        "https://analytics.bohodigitalservices.com/script.js"
+      ]
+    },
+    {
+      "viewport": {
+        "name": "desktop-1440",
+        "width": 1440,
+        "height": 1000
+      },
+      "httpStatus": 200,
+      "title": "About Boho Digital Services | Research-Led Digital Engineering",
+      "statusReady": "complete",
+      "h1Count": 1,
+      "sceneCount": 12,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "horizontalOverflow": false,
+      "imageCount": 3,
+      "imagesLoaded": true,
+      "imageAlts": [
+        "Rank Builder SEO homepage showing its independent SEO research desk masthead and Clear SEO Answers editorial hero.",
+        "How Biscuit homepage showing category navigation, a practical guide hero, and supporting article sections.",
+        "Better Grades homepage showing its math-help search interface and interactive calculus method card."
+      ],
+      "projectLinks": [
+        "http://localhost:4175/learn/glossary/#term-seo",
+        "http://localhost:4175/learn/glossary/#term-technical-seo",
+        "https://rankbuilderseo.com/",
+        "http://localhost:4175/learn/glossary/#term-search-intent",
+        "https://howbiscuit.com/",
+        "http://localhost:4175/learn/glossary/#term-integration",
+        "https://bettergrades.net/"
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "blockedExternalRequests": [
+        "https://www.googletagmanager.com/gtag/js?id=G-5CV8L2SE2R",
+        "https://analytics.bohodigitalservices.com/script.js"
+      ]
+    }
+  ],
+  "popup": {
+    "opened": true,
+    "zIndex": "2147483000",
+    "box": {
+      "x": 145.4375,
+      "y": 547.34375,
+      "width": 384,
+      "height": 189.0625
+    },
+    "withinViewport": true,
+    "closedWithEscape": true
+  },
+  "keyboard": {
+    "reachedRankBuilder": true,
+    "reachedHowBiscuit": true,
+    "reachedBetterGrades": true,
+    "reachedContact": true
+  },
+  "zoom200": {
+    "method": "1440px physical output at a 720px CSS viewport (200% equivalent)",
+    "scrollWidth": 720,
+    "clientWidth": 720,
+    "horizontalOverflow": false,
+    "bodyFontSize": "16.24px"
+  },
+  "blockedExternalRequests": [
+    "https://www.googletagmanager.com/gtag/js?id=G-5CV8L2SE2R",
+    "https://analytics.bohodigitalservices.com/script.js"
+  ],
+  "zoomBlockedExternalRequests": [
+    "https://www.googletagmanager.com/gtag/js?id=G-5CV8L2SE2R",
+    "https://analytics.bohodigitalservices.com/script.js"
+  ]
+}

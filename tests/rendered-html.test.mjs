@@ -155,6 +155,51 @@ test("renders every intentional public route and retires internal placeholder sh
   }
 });
 
+test("renders the exact twelve-scene About storyboard with live-property proof", async () => {
+  const response = await render("/about/");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+
+  assert.equal((html.match(/<h1\b/gi) ?? []).length, 1);
+  for (const heading of [
+    "I come from professional scientific research. I built Boho because this problem has a clear answer.",
+    "Scientific research, software engineering, and original technical problem-solving.",
+    "I am used to problems without known answers. This one already has an answer.",
+    "Custom where necessary. Reusable where sensible.",
+    "We test on our own properties before asking clients to carry the risk.",
+    "The subject changed. The underlying work did not.",
+    "Too much digital work is expensive because of the organization around it, not the difficulty of the work itself.",
+    "You do not meet a salesperson and disappear into a delivery system.",
+    "Boho uses automation and artificial intelligence because useful tools should be used.",
+    "Boho is new. The professional background is real. The missing client history will not be invented.",
+    "Boho operating beliefs",
+    "Tell Boho what your business is facing.",
+  ]) {
+    assert.ok(html.includes(heading), `missing About storyboard heading: ${heading}`);
+  }
+
+  for (const image of [
+    "/proof/about/rank-builder-seo-homepage.png",
+    "/proof/about/how-biscuit-homepage.png",
+    "/proof/about/better-grades-homepage.png",
+  ]) {
+    assert.match(html, new RegExp(`src="${image.replaceAll("/", "\\/")}"`, "i"));
+  }
+
+  for (const url of [
+    "https://rankbuilderseo.com/",
+    "https://howbiscuit.com/",
+    "https://bettergrades.net/",
+  ]) {
+    assert.match(html, new RegExp(`href="${url.replaceAll("/", "\\/")}"`, "i"));
+  }
+
+  assert.match(html, /href="\/contact\/"[^>]*>[\s\S]*?Talk to Someone Technical/i);
+  assert.match(html, /href="\/services\/"[^>]*>[\s\S]*?Review Boho’s Services/i);
+  assert.match(html, /class="definition-term__popover"/i);
+  assert.doesNotMatch(html, /Bohemian is an operating philosophy|Seven ways the philosophy enters the work|Low overhead is part of the product/i);
+});
+
 test("publishes the three production form contracts without stale caveats", async () => {
   const forbidden = /preview form|not connected|working draft|private draft|review build|no public (?:street|office) address|without presenting a public office address|proof-eligible|awaiting real|secondary archive|Rank Builder migration|does not transmit|cannot send a message|nothing was sent|form is disconnected/i;
   const formRoutes = [
