@@ -126,8 +126,10 @@ test("server-renders the focused Boho homepage and approved marketing message", 
   assert.match(html, /og-boho-digital-engineering-20260714\.png/i);
   assert.match(html, /class="hero__background" aria-hidden="true"/i);
   assert.match(html, /og-boho-digital-engineering-20260714\.png[^>]+alt=""/i);
-  assert.match(html, /class="definition-term__link"/i);
-  assert.doesNotMatch(html, /definition-term__popover|definition-term__mark/i);
+  assert.match(html, /class="definition-term__trigger"/i);
+  assert.match(html, /class="definition-term__mark"/i);
+  assert.match(html, /class="definition-term__popover"/i);
+  assert.match(html, /Read the full definition/i);
   assert.doesNotMatch(html, /Representative editorial photography|Homepage journey|proof-eligible/i);
 });
 
@@ -250,7 +252,7 @@ test("realigns Tools around five system families, two decision visuals, and exac
   assert.match(tools, /Mature platforms handle the commodity infrastructure\. Boho engineers the operating system around the business\./i);
   assert.match(tools, /Custom software is one option, not the opening assumption\./i);
   assert.match(tools, /We repair before replacing, integrate before rebuilding, and write custom software only when the missing capability is worth owning\./i);
-  assert.match(tools, /Websites are part of the proof\./i);
+  assert.match(tools, /Three public brands, three different search questions\./i);
   assert.match(tools, /Tools explains what Boho builds and operates\. The glossary explains the technical language underneath it\./i);
   assert.match(tools, /Build the missing tool/i);
   for (const anchor of ["visual-layered-infrastructure", "system-families", "repair-integrate-build", "visual-repair-integrate-build", "selected-tools", "websites", "visual-systems-library", "glossary-bridge"]) {
@@ -259,11 +261,31 @@ test("realigns Tools around five system families, two decision visuals, and exac
   assert.equal((tools.match(/data-system-family="[^"]+"/g) ?? []).length, 5);
   const selectedIds = [...tools.matchAll(/data-selected-tool-id="([^"]+)"/g)].map((match) => match[1]);
   assert.deepEqual(selectedIds, ["bsuite-mcp-monitor", "secret-broker", "analysis-dashboard"]);
-  assert.equal((tools.match(/data-proof-category="owned-website"/g) ?? []).length, 4);
-  assert.match(tools, /bohodigitalservices\.com/i);
-  assert.match(tools, /howbiscuit\.com/i);
-  assert.match(tools, /bettergrades\.net/i);
-  assert.match(tools, /rankbuilderseo\.com/i);
+  const selectedToolsSection = tools.match(/<section\b[^>]*id="selected-tools"[\s\S]*?<\/section>/i)?.[0] ?? "";
+  assert.ok(selectedToolsSection, "missing selected-tools section");
+  assert.equal((selectedToolsSection.match(/data-evidence-type="[^"]+"/g) ?? []).length, 3);
+  assert.match(selectedToolsSection, /Short memo/i);
+  assert.match(selectedToolsSection, /github\.com\/bohodigital\/bsuite-mcp-monitor/i);
+  assert.match(selectedToolsSection, /github\.com\/bohodigital\/boho-secret-broker/i);
+  assert.match(selectedToolsSection, /github\.com\/bohodigital\/boho-analytics-platform/i);
+  assert.match(selectedToolsSection, /proof\/tools\/bsuite-mcp-monitor\.png/i);
+  assert.match(selectedToolsSection, /proof\/tools\/boho-secret-broker\.png/i);
+  assert.match(selectedToolsSection, /proof\/tools\/boho-analytics-platform\.png/i);
+
+  const websitesSection = tools.match(/<section\b[^>]*id="websites"[\s\S]*?<\/section>/i)?.[0] ?? "";
+  assert.ok(websitesSection, "missing websites section");
+  assert.equal((websitesSection.match(/data-proof-category="owned-website"/g) ?? []).length, 3);
+  assert.doesNotMatch(websitesSection, /bohodigitalservices\.com/i);
+  assert.match(websitesSection, /howbiscuit\.com/i);
+  assert.match(websitesSection, /bettergrades\.net/i);
+  assert.match(websitesSection, /rankbuilderseo\.com/i);
+  assert.match(websitesSection, /SEO learning lens/i);
+  assert.match(websitesSection, /github\.com\/bohodigital\/howbiscuit/i);
+  assert.match(websitesSection, /github\.com\/bohodigital\/rankbuilderseo/i);
+  assert.match(websitesSection, /github\.com\/bohodigital\/bettergrades/i);
+  assert.match(websitesSection, /proof\/properties\/howbiscuit\.png/i);
+  assert.match(websitesSection, /proof\/properties\/rankbuilderseo\.png/i);
+  assert.match(websitesSection, /proof\/properties\/bettergrades\.png/i);
   assert.equal((tools.match(/class="systems-visual /g) ?? []).length, 2);
   assert.match(tools, /<meta[^>]+name="robots"[^>]+index, follow/i);
   assert.doesNotMatch(tools, /0 accepted|prohibited claim|capability classifications|no empty proof shelf/i);
@@ -296,12 +318,24 @@ test("realigns Tools around five system families, two decision visuals, and exac
   assert.match(systemsSource, /export const ownedWebsites/);
 });
 
-test("uses link-based glossary definitions without popovers or horizontal-overflow machinery", async () => {
+test("uses accessible glossary definition popups with direct glossary fallbacks", async () => {
   const homepage = await (await render("/")).text();
   for (const slug of ["website-clarity", "trust-signal", "customer-discovery", "customer-action"]) {
     assert.match(homepage, new RegExp(`href="/learn/glossary/#term-${slug}"`, "i"));
   }
-  assert.doesNotMatch(homepage, /aria-expanded="true"[^>]+definition|definition-term__popover/i);
+  assert.match(homepage, /class="definition-term__trigger"/i);
+  assert.match(homepage, /aria-expanded="false"/i);
+  assert.match(homepage, /class="definition-term__popover"/i);
+  assert.match(homepage, /role="group"/i);
+  assert.match(homepage, /Close [^"]+ definition/i);
+  assert.doesNotMatch(homepage, /class="definition-term__link"/i);
+
+  const definitionSource = await readFile(new URL("../app/components/DefinitionTerm.tsx", import.meta.url), "utf8");
+  assert.match(definitionSource, /onMouseEnter=/);
+  assert.match(definitionSource, /onFocusCapture=/);
+  assert.match(definitionSource, /event\.key === "Escape"/);
+  assert.match(definitionSource, /pointerdown/);
+  assert.match(definitionSource, /--definition-shift-x/);
 
   const glossary = await (await render("/learn/glossary/")).text();
   assert.match(glossary, /Technical language, translated before it becomes leverage/i);

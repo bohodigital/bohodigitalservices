@@ -71,14 +71,15 @@ export type SelectedToolId =
 export type SelectedToolProfile = {
   id: SelectedToolId;
   displayName: string;
-  shortPublicSummary?: string;
+  shortPublicSummary: string;
+  publicMemo: string;
   problemAddressed?: string;
   bohoRole?: "built" | "integrated" | "extended" | "automated" | "operated" | "adapted";
   systemFamily?: SystemFamilyId;
   currentStatus?: string;
   publicAvailability?: string;
   openSourceStatus?: string;
-  repositoryUrl?: `https://${string}`;
+  repositoryUrl: `https://github.com/${string}`;
   demonstrationUrl?: `https://${string}`;
   maturePlatformsUsed?: ReadonlyArray<string>;
   dataHandled?: ReadonlyArray<string>;
@@ -86,7 +87,12 @@ export type SelectedToolProfile = {
   ownershipAndPortabilityNote?: string;
   relatedService?: `/${string}`;
   relatedGlossaryTerms?: ReadonlyArray<string>;
-  visualReference?: string;
+  image: {
+    src: `/proof/tools/${string}.png`;
+    alt: string;
+    sourceUrl: `https://${string}`;
+    evidenceType: "repository-screenshot" | "github-repository-preview";
+  };
   lastVerified: `${number}-${number}-${number}`;
   evidenceSource: string;
 };
@@ -95,13 +101,28 @@ export const selectedTools: ReadonlyArray<SelectedToolProfile> = [
   {
     id: "bsuite-mcp-monitor",
     displayName: "bSuite MCP Monitor",
-    lastVerified: "2026-07-15",
-    evidenceSource: "Bohopi CR-2026-07-15-BOHO-TOOLS-SYSTEMS-REALIGNMENT-001",
+    shortPublicSummary: "A lightweight Linux terminal dashboard for operating MCP servers and the host, network, tunnel, usage, and authentication signals around them.",
+    publicMemo: "bSuite brings service health, local listeners, tunnel reachability, command telemetry, usage limits, SSH posture, and configured authentication checks into one operator view. It helps make the automation layer observable before anyone relies on it.",
+    systemFamily: "operations-automation",
+    publicAvailability: "Public GitHub repository",
+    openSourceStatus: "MIT licensed",
+    repositoryUrl: "https://github.com/bohodigital/bsuite-mcp-monitor",
+    relatedService: "/services/custom-tools-automation/",
+    relatedGlossaryTerms: ["mcp", "monitoring", "automation"],
+    image: {
+      src: "/proof/tools/bsuite-mcp-monitor.png",
+      alt: "GitHub repository preview for bohodigital/bsuite-mcp-monitor.",
+      sourceUrl: "https://github.com/bohodigital/bsuite-mcp-monitor",
+      evidenceType: "github-repository-preview",
+    },
+    lastVerified: "2026-07-16",
+    evidenceSource: "Public repository bohodigital/bsuite-mcp-monitor main branch reviewed 2026-07-16",
   },
   {
     id: "secret-broker",
     displayName: "Boho Secret Broker",
     shortPublicSummary: "A public, self-hosted tool for moving secrets and small configuration files over SSH.",
+    publicMemo: "Secret Broker makes the configuration boundary visible: values are entered locally and delivered through a restricted OpenSSH path to host-approved records or file targets. It supports analytics, search, and deployment work without turning ordinary documents or chat into secret transport.",
     systemFamily: "secure-integrations-custom-tools",
     currentStatus: "Alpha · v0.2.0",
     publicAvailability: "Public GitHub repository",
@@ -109,19 +130,39 @@ export const selectedTools: ReadonlyArray<SelectedToolProfile> = [
     repositoryUrl: "https://github.com/bohodigital/boho-secret-broker",
     relatedService: "/services/custom-tools-automation/",
     relatedGlossaryTerms: ["mcp", "api-key", "tls"],
-    lastVerified: "2026-07-15",
-    evidenceSource: "Public repository bohodigital/boho-secret-broker at c35b15be110f9fa5dabf749b297b72e171543895",
+    image: {
+      src: "/proof/tools/boho-secret-broker.png",
+      alt: "Boho Secret Broker desktop overview showing transfer operations and connection details with demo data.",
+      sourceUrl: "https://github.com/bohodigital/boho-secret-broker/blob/main/docs/images/boho-secret-broker-overview.png",
+      evidenceType: "repository-screenshot",
+    },
+    lastVerified: "2026-07-16",
+    evidenceSource: "Public repository bohodigital/boho-secret-broker main branch reviewed 2026-07-16",
   },
   {
     id: "analysis-dashboard",
-    displayName: "Boho Analysis Dashboard",
-    lastVerified: "2026-07-15",
-    evidenceSource: "Bohopi CR-2026-07-15-BOHO-TOOLS-SYSTEMS-REALIGNMENT-001",
+    displayName: "Boho Analytics Platform",
+    shortPublicSummary: "A lightweight dashboard for source-labeled website analytics, search performance, traffic infrastructure, and form-delivery monitoring.",
+    publicMemo: "The dashboard puts Umami, Cloudflare, Google Analytics, Search Console, and form-monitoring records into one source-labeled view. For SEO work, it helps separate discovery signals from on-site behavior and infrastructure traffic instead of silently treating unlike metrics as the same thing.",
+    systemFamily: "measurement-search-signals",
+    currentStatus: "Stable · v0.1.0",
+    publicAvailability: "Public GitHub repository",
+    openSourceStatus: "MIT licensed",
+    repositoryUrl: "https://github.com/bohodigital/boho-analytics-platform",
+    relatedService: "/services/research-audits-analytics/",
+    relatedGlossaryTerms: ["analytics", "google-search-console", "measurement-plan"],
+    image: {
+      src: "/proof/tools/boho-analytics-platform.png",
+      alt: "Boho Analytics time-series plot builder using public example Search Console data.",
+      sourceUrl: "https://github.com/bohodigital/boho-analytics-platform/blob/main/docs/images/boho-analytics-plot-builder.png",
+      evidenceType: "repository-screenshot",
+    },
+    lastVerified: "2026-07-16",
+    evidenceSource: "Public repository bohodigital/boho-analytics-platform main branch reviewed 2026-07-16",
   },
 ];
 
 export type OwnedWebsiteId =
-  | "boho-digital-services"
   | "how-biscuit"
   | "better-grades"
   | "rank-builder-seo";
@@ -132,6 +173,14 @@ export type OwnedWebsiteProfile = {
   domain: string;
   url: `https://${string}`;
   role: string;
+  publicMemo: string;
+  seoLens: ReadonlyArray<string>;
+  repositoryUrl: `https://github.com/${string}`;
+  image: {
+    src: `/proof/properties/${string}.png`;
+    alt: string;
+    sourceUrl: `https://${string}`;
+  };
   proofCategory: "owned-website";
   lastVerified: `${number}-${number}-${number}`;
   evidenceSource: string;
@@ -139,44 +188,58 @@ export type OwnedWebsiteProfile = {
 
 export const ownedWebsites = [
   {
-    id: "boho-digital-services",
-    name: "Boho Digital Services",
-    domain: "bohodigitalservices.com",
-    url: "https://bohodigitalservices.com/",
-    role: "Service-revenue and project-intake property.",
-    proofCategory: "owned-website",
-    lastVerified: "2026-07-15",
-    evidenceSource: "Bohopi company constitution and WO-2026-07-12-UMAMI-FOUR-SITE-ACTIVE",
-  },
-  {
     id: "how-biscuit",
     name: "How Biscuit",
     domain: "howbiscuit.com",
     url: "https://howbiscuit.com/",
-    role: "Practical how-to and buying-guidance editorial property.",
+    role: "An answer-first field guide for school, cooking, home technology, everyday science, and practical problem solving.",
+    publicMemo: "How Biscuit gives broad, mixed-intent questions a plain-language home. It helps us study how concise answers, useful context, content-type organization, and internal paths can serve people who arrive with very different levels of knowledge.",
+    seoLens: ["Mixed-intent queries", "Answer-first structure", "Editorial information architecture"],
+    repositoryUrl: "https://github.com/bohodigital/howbiscuit",
+    image: {
+      src: "/proof/properties/howbiscuit.png",
+      alt: "How Biscuit brand card reading ‘How Biscuit? Plain answers, no sludge’ with colorful subject tiles.",
+      sourceUrl: "https://github.com/bohodigital/howbiscuit/blob/main/public/og.png",
+    },
     proofCategory: "owned-website",
-    lastVerified: "2026-07-15",
-    evidenceSource: "Bohopi company constitution and WO-2026-07-12-UMAMI-FOUR-SITE-ACTIVE",
-  },
-  {
-    id: "better-grades",
-    name: "Better Grades",
-    domain: "bettergrades.net",
-    url: "https://bettergrades.net/",
-    role: "Free educational search and practice property.",
-    proofCategory: "owned-website",
-    lastVerified: "2026-07-15",
-    evidenceSource: "Bohopi company constitution and WO-2026-07-12-UMAMI-FOUR-SITE-ACTIVE",
+    lastVerified: "2026-07-16",
+    evidenceSource: "Bohopi ownership records and public repository bohodigital/howbiscuit reviewed 2026-07-16",
   },
   {
     id: "rank-builder-seo",
     name: "Rank Builder SEO",
     domain: "rankbuilderseo.com",
     url: "https://rankbuilderseo.com/",
-    role: "SEO research and authority property.",
+    role: "An independent SEO research desk publishing evidence-aware articles, guides, definitions, and experiments.",
+    publicMemo: "Rank Builder SEO is the brand where search claims are treated as research questions. It helps us examine source quality, replicable tests, buyer-defense content, technical definitions, and the difference between useful evidence and industry ritual.",
+    seoLens: ["Evidence quality", "Search experiments", "Buyer-defense content"],
+    repositoryUrl: "https://github.com/bohodigital/rankbuilderseo",
+    image: {
+      src: "/proof/properties/rankbuilderseo.png",
+      alt: "Rank Builder SEO evidence-file brand card focused on primary records and replicable tests.",
+      sourceUrl: "https://github.com/bohodigital/rankbuilderseo/blob/main/public/og.png",
+    },
     proofCategory: "owned-website",
-    lastVerified: "2026-07-15",
-    evidenceSource: "Bohopi company constitution and WO-2026-07-12-UMAMI-FOUR-SITE-ACTIVE",
+    lastVerified: "2026-07-16",
+    evidenceSource: "Bohopi ownership records and public repository bohodigital/rankbuilderseo reviewed 2026-07-16",
+  },
+  {
+    id: "better-grades",
+    name: "Better Grades",
+    domain: "bettergrades.net",
+    url: "https://bettergrades.net/",
+    role: "A free academic answer, explanation, calculator, practice, and diagnostic platform spanning Algebra and Calculus.",
+    publicMemo: "Better Grades connects direct answers to methods, topic maps, calculators, practice, and diagnostics. It helps us study topic depth, search-to-tool journeys, structured content relationships, and the point where an explanation should lead to active practice.",
+    seoLens: ["Topic clusters", "Search-to-tool journeys", "Structured learning paths"],
+    repositoryUrl: "https://github.com/bohodigital/bettergrades",
+    image: {
+      src: "/proof/properties/bettergrades.png",
+      alt: "Better Grades brand card reading ‘Find the answer. Understand the method. The answer is free.’",
+      sourceUrl: "https://github.com/bohodigital/bettergrades/blob/main/public/og.png",
+    },
+    proofCategory: "owned-website",
+    lastVerified: "2026-07-16",
+    evidenceSource: "Bohopi ownership records and public repository bohodigital/bettergrades reviewed 2026-07-16",
   },
 ] as const satisfies ReadonlyArray<OwnedWebsiteProfile>;
 

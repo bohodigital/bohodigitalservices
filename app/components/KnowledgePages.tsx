@@ -198,25 +198,36 @@ export function ToolsPage() {
                 <div className="selected-tool-grid">
                   {selectedTools.map((tool, index) => (
                     <article className="selected-tool-card" data-selected-tool-id={tool.id} key={tool.id}>
-                      <div className="selected-tool-card__identity">
-                        <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-                        <code>{tool.id}</code>
-                      </div>
-                      <h3>{tool.displayName}</h3>
-                      {tool.shortPublicSummary ? <p>{define(tool.shortPublicSummary)}</p> : null}
-                      {tool.currentStatus || tool.publicAvailability || tool.openSourceStatus ? (
-                        <dl>
-                          {tool.currentStatus ? <div><dt>Status</dt><dd>{tool.currentStatus}</dd></div> : null}
-                          {tool.publicAvailability ? <div><dt>Availability</dt><dd>{tool.publicAvailability}</dd></div> : null}
-                          {tool.openSourceStatus ? <div><dt>License</dt><dd>{tool.openSourceStatus}</dd></div> : null}
-                        </dl>
-                      ) : null}
-                      {tool.repositoryUrl ? (
+                      <figure
+                        className="selected-tool-card__media"
+                        data-evidence-type={tool.image.evidenceType}
+                      >
+                        <img alt={tool.image.alt} loading="lazy" src={tool.image.src} />
+                        <figcaption>{tool.image.evidenceType === "repository-screenshot" ? "Public repository screenshot" : "Public GitHub repository preview"}</figcaption>
+                      </figure>
+                      <div className="selected-tool-card__body">
+                        <div className="selected-tool-card__identity">
+                          <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                          <code>{tool.id}</code>
+                        </div>
+                        <h3>{tool.displayName}</h3>
+                        <p className="selected-tool-card__summary">{define(tool.shortPublicSummary)}</p>
+                        <div className="selected-tool-card__memo">
+                          <strong>Short memo</strong>
+                          <p>{define(tool.publicMemo)}</p>
+                        </div>
+                        {tool.currentStatus || tool.publicAvailability || tool.openSourceStatus ? (
+                          <dl>
+                            {tool.currentStatus ? <div><dt>Status</dt><dd>{tool.currentStatus}</dd></div> : null}
+                            {tool.publicAvailability ? <div><dt>Availability</dt><dd>{tool.publicAvailability}</dd></div> : null}
+                            {tool.openSourceStatus ? <div><dt>License</dt><dd>{tool.openSourceStatus}</dd></div> : null}
+                          </dl>
+                        ) : null}
                         <a className="selected-tool-card__link" href={tool.repositoryUrl} rel="noopener noreferrer" target="_blank">
                           View public repository <ExternalLink size={15} aria-hidden="true" />
                           <span className="sr-only"> (opens in a new tab)</span>
                         </a>
-                      ) : null}
+                      </div>
                     </article>
                   ))}
                 </div>
@@ -226,28 +237,38 @@ export function ToolsPage() {
             <section className="tools-systems-section tools-systems-section--websites" id="websites" aria-labelledby="websites-title">
               <div className="section-shell">
                 <header className="tools-systems-heading">
-                  <p className="eyebrow">Websites we build and operate</p>
-                  <EditorialHeadline as="h2"><span id="websites-title">Websites are part of the proof.</span></EditorialHeadline>
-                  <p>{define("Boho’s owned properties demonstrate website design, publishing systems, educational architecture, editorial operations, search strategy, deployment, and ongoing technical stewardship in public.")}</p>
+                  <p className="eyebrow">Independent brand properties</p>
+                  <EditorialHeadline as="h2"><span id="websites-title">Three public brands, three different search questions.</span></EditorialHeadline>
+                  <p>{define("These independent Boho brands each serve a distinct audience and editorial job. Together they help us study how answer-first content, topic depth, interactive tools, definitions, and evidence-aware publishing support different kinds of search behavior.")}</p>
                 </header>
                 <div className="website-proof-grid">
-                  {ownedWebsites.map((website, index) => (
+                  {ownedWebsites.map((website) => (
                     <article className="website-proof-card" data-proof-category={website.proofCategory} key={website.id}>
-                      <div className={`website-proof-card__preview website-proof-card__preview--${index + 1}`} aria-hidden="true">
-                        <div className="website-proof-card__browser-bar"><span /><span /><span /><strong>{website.domain}</strong></div>
-                        <div className="website-proof-card__canvas">
-                          <span>{String(index + 1).padStart(2, "0")}</span>
-                          <Globe2 size={44} strokeWidth={1.25} />
-                        </div>
-                      </div>
+                      <figure className="website-proof-card__preview">
+                        <img alt={website.image.alt} loading="lazy" src={website.image.src} />
+                        <figcaption>Public brand preview from the project repository</figcaption>
+                      </figure>
                       <div className="website-proof-card__copy">
                         <p className="website-proof-card__domain">{website.domain}</p>
                         <h3>{website.name}</h3>
-                        <p>{define(website.role)}</p>
-                        <a href={website.url} rel="noopener noreferrer" target="_blank">
-                          Visit property <ExternalLink size={15} aria-hidden="true" />
-                          <span className="sr-only"> (opens in a new tab)</span>
-                        </a>
+                        <p className="website-proof-card__role">{define(website.role)}</p>
+                        <div className="website-proof-card__memo">
+                          <strong>SEO learning lens</strong>
+                          <p>{define(website.publicMemo)}</p>
+                          <ul aria-label={`${website.name} SEO learning themes`}>
+                            {website.seoLens.map((item) => <li key={item}>{item}</li>)}
+                          </ul>
+                        </div>
+                        <div className="website-proof-card__actions">
+                          <a href={website.url} rel="noopener noreferrer" target="_blank">
+                            Visit brand <ExternalLink size={15} aria-hidden="true" />
+                            <span className="sr-only"> (opens in a new tab)</span>
+                          </a>
+                          <a href={website.repositoryUrl} rel="noopener noreferrer" target="_blank">
+                            View GitHub <ExternalLink size={15} aria-hidden="true" />
+                            <span className="sr-only"> (opens in a new tab)</span>
+                          </a>
+                        </div>
                       </div>
                     </article>
                   ))}

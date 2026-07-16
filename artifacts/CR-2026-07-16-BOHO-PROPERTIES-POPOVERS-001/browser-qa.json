@@ -1,0 +1,106 @@
+{
+  "desktop": {
+    "tools": {
+      "selectedToolCards": 3,
+      "propertyCards": 3,
+      "bodyOverflow": 0,
+      "images": [
+        {
+          "src": "/proof/tools/bsuite-mcp-monitor.png",
+          "complete": true,
+          "naturalWidth": 1200,
+          "naturalHeight": 600
+        },
+        {
+          "src": "/proof/tools/boho-secret-broker.png",
+          "complete": true,
+          "naturalWidth": 1180,
+          "naturalHeight": 720
+        },
+        {
+          "src": "/proof/tools/boho-analytics-platform.png",
+          "complete": true,
+          "naturalWidth": 1440,
+          "naturalHeight": 1050
+        },
+        {
+          "src": "/proof/properties/howbiscuit.png",
+          "complete": true,
+          "naturalWidth": 1734,
+          "naturalHeight": 907
+        },
+        {
+          "src": "/proof/properties/rankbuilderseo.png",
+          "complete": true,
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        },
+        {
+          "src": "/proof/properties/bettergrades.png",
+          "complete": true,
+          "naturalWidth": 1731,
+          "naturalHeight": 909
+        }
+      ]
+    },
+    "hover": {
+      "open": "true",
+      "expanded": "true",
+      "hidden": "false",
+      "bounds": {
+        "left": 16,
+        "right": 368,
+        "top": 506.078125,
+        "bottom": 646.59375
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "insideViewport": true
+    },
+    "escapeClosed": "false",
+    "focusOpened": "true",
+    "outsideClickClosed": "false"
+  },
+  "mobile": {
+    "tools": {
+      "selectedToolCards": 3,
+      "propertyCards": 3,
+      "bodyOverflow": 0
+    },
+    "popup": {
+      "open": "true",
+      "hidden": "false",
+      "closeTabIndex": "0",
+      "linkTabIndex": "0",
+      "bounds": {
+        "left": 16,
+        "right": 374,
+        "top": 687.484375,
+        "bottom": 828
+      },
+      "insideViewport": true
+    },
+    "closeButtonClosed": "false"
+  },
+  "errors": [],
+  "warnings": [
+    "desktop request: https://www.googletagmanager.com/gtag/js?id=G-5CV8L2SE2R (net::ERR_NETWORK_ACCESS_DENIED)",
+    "desktop request: https://analytics.bohodigitalservices.com/script.js (net::ERR_NETWORK_ACCESS_DENIED)",
+    "desktop request: https://bohodigitalservices.com/brand/boho-search-icon-v2.png (net::ERR_NETWORK_ACCESS_DENIED)",
+    "desktop request: https://bohodigitalservices.com/brand/boho-search-icon-v2.png (net::ERR_NETWORK_ACCESS_DENIED)",
+    "desktop request: https://www.googletagmanager.com/gtag/js?id=G-5CV8L2SE2R (net::ERR_NETWORK_ACCESS_DENIED)",
+    "desktop request: https://analytics.bohodigitalservices.com/script.js (net::ERR_NETWORK_ACCESS_DENIED)",
+    "desktop request: https://bohodigitalservices.com/brand/boho-search-icon-v2.png (net::ERR_NETWORK_ACCESS_DENIED)",
+    "desktop request: https://bohodigitalservices.com/brand/boho-search-icon-v2.png (net::ERR_NETWORK_ACCESS_DENIED)",
+    "mobile request: https://www.googletagmanager.com/gtag/js?id=G-5CV8L2SE2R (net::ERR_NETWORK_ACCESS_DENIED)",
+    "mobile request: https://analytics.bohodigitalservices.com/script.js (net::ERR_NETWORK_ACCESS_DENIED)",
+    "mobile request: https://bohodigitalservices.com/brand/boho-search-icon-v2.png (net::ERR_NETWORK_ACCESS_DENIED)",
+    "mobile request: https://bohodigitalservices.com/brand/boho-search-icon-v2.png (net::ERR_NETWORK_ACCESS_DENIED)",
+    "mobile request: https://www.googletagmanager.com/gtag/js?id=G-5CV8L2SE2R (net::ERR_NETWORK_ACCESS_DENIED)",
+    "mobile request: https://analytics.bohodigitalservices.com/script.js (net::ERR_NETWORK_ACCESS_DENIED)",
+    "mobile request: https://bohodigitalservices.com/brand/boho-search-icon-v2.png (net::ERR_NETWORK_ACCESS_DENIED)",
+    "mobile request: https://bohodigitalservices.com/brand/boho-search-icon-v2.png (net::ERR_NETWORK_ACCESS_DENIED)"
+  ]
+}
