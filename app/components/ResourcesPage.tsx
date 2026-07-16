@@ -9,6 +9,7 @@ import {
 import Link from "next/link";
 
 import { Footer, Header } from "./SiteChrome";
+import { DefinedText } from "./DefinedText";
 import { KnowledgeHero } from "./KnowledgePages";
 import { SectionSidebar } from "./SectionNavigation";
 
@@ -84,6 +85,9 @@ const decisionRoutes = [
 ];
 
 export function ResourcesPage() {
+  const seenTerms = new Set<string>();
+  const define = (text: string) => <DefinedText autoDefine seenTerms={seenTerms} text={text} />;
+
   return (
     <>
       <Header />
@@ -117,7 +121,7 @@ export function ResourcesPage() {
                 <header className="resources-heading">
                   <p className="eyebrow">Selected resources</p>
                   <h2 id="resource-collections-title">Start with the decision in front of you.</h2>
-                  <p>Each collection supports a real buying, ownership, visibility, or continuity decision.</p>
+                  <p>{define("Each collection supports a real buying, ownership, visibility, or continuity decision.")}</p>
                 </header>
                 <div className="resources-collection-grid">
                   {resourceCollections.map(({ icon: Icon, ...resource }) => (
@@ -125,7 +129,7 @@ export function ResourcesPage() {
                       <div className="resource-icon" aria-hidden="true"><Icon size={25} strokeWidth={1.9} /></div>
                       <p className="resource-collection-card__meta">{resource.meta}</p>
                       <h3>{resource.title}</h3>
-                      <p>{resource.description}</p>
+                      <p>{define(resource.description)}</p>
                       <a href={resource.href}>
                         <span>{resource.label}</span>
                         <ArrowRight aria-hidden="true" size={17} />
@@ -163,7 +167,7 @@ export function ResourcesPage() {
                 <div className="resources-lab__copy">
                   <p className="eyebrow eyebrow--on-dark">A practical next step</p>
                   <h2 id="technical-second-opinion-title">Get a technical second opinion before the expensive decision.</h2>
-                  <p>Send the website, proposal, provider situation, or system that feels unclear. Boho will help identify the useful question and the smallest credible next step.</p>
+                  <p>{define("Send the website, proposal, provider situation, or system that feels unclear. Boho will help identify the useful question and the smallest credible next step.")}</p>
                   <div className="button-row">
                     <Link className="button-link button-link--primary" href="/contact/">
                       <span className="button-link__label">Talk to someone technical</span>

@@ -181,7 +181,7 @@ function SectionItems({
               linkLabel={item.linkLabel}
             >
               <ItemStatus item={item} />
-              <p><DefinedText seenTerms={seenTerms} text={item.body} /></p>
+              <p><DefinedText autoDefine seenTerms={seenTerms} text={item.body} /></p>
             </BuyerBucketPanel>
           </li>
         ))}
@@ -197,7 +197,7 @@ function SectionItems({
             <article className="interior-list__card">
               <ItemStatus item={item} />
               <h3>{item.title}</h3>
-              <p><DefinedText seenTerms={seenTerms} text={item.body} /></p>
+              <p><DefinedText autoDefine seenTerms={seenTerms} text={item.body} /></p>
               <ItemLink item={item} />
             </article>
           </li>
@@ -223,7 +223,7 @@ function SectionItems({
           tone={cardTone(section.tone, index)}
         >
           <ItemStatus item={item} />
-          <p><DefinedText seenTerms={seenTerms} text={item.body} /></p>
+          <p><DefinedText autoDefine seenTerms={seenTerms} text={item.body} /></p>
         </MosaicCard>
       ))}
     </div>
@@ -264,7 +264,7 @@ function InteriorSection({
             <div className="interior-section__body reading-width">
               {section.body.map((paragraph, paragraphIndex) => (
                 <p key={`${paragraph.slice(0, 32)}-${paragraphIndex}`}>
-                  <DefinedText seenTerms={seenTerms} text={paragraph} />
+                  <DefinedText autoDefine seenTerms={seenTerms} text={paragraph} />
                 </p>
               ))}
             </div>
@@ -272,13 +272,13 @@ function InteriorSection({
 
           {section.quote ? (
             <PullQuote className="interior-section__quote">
-              <DefinedText seenTerms={seenTerms} text={section.quote} />
+              <DefinedText autoDefine seenTerms={seenTerms} text={section.quote} />
             </PullQuote>
           ) : null}
 
           {section.note ? (
             <MarginNote className="interior-section__note" label="Field note">
-              <p><DefinedText seenTerms={seenTerms} text={section.note} /></p>
+              <p><DefinedText autoDefine seenTerms={seenTerms} text={section.note} /></p>
             </MarginNote>
           ) : null}
 
@@ -340,7 +340,7 @@ export function InteriorPage(props: InteriorPageProps) {
               </EditorialHeadline>
               <div className="interior-hero__intro reading-width">
                 {page.intro.map((paragraph, index) => (
-                  <p key={`${paragraph.slice(0, 32)}-${index}`}><DefinedText seenTerms={seenTerms} text={paragraph} /></p>
+                  <p key={`${paragraph.slice(0, 32)}-${index}`}><DefinedText autoDefine seenTerms={seenTerms} text={paragraph} /></p>
                 ))}
               </div>
               {primaryHref || secondaryHref ? (

@@ -81,7 +81,7 @@ export function KnowledgeHero({
           <div className="knowledge-hero__intro reading-width">
             {intro.map((paragraph) => (
               <p key={paragraph.slice(0, 30)}>
-                <DefinedText text={paragraph} seenTerms={seenTerms} />
+                <DefinedText autoDefine text={paragraph} seenTerms={seenTerms} />
               </p>
             ))}
           </div>
@@ -107,6 +107,8 @@ const familyIcons: Record<SystemFamilyId, typeof Globe2> = {
 
 export function ToolsPage() {
   const publicVisuals = systemVisuals.filter((visual) => visual.publicInThisRelease);
+  const seenTerms = new Set<string>();
+  const define = (text: string) => <DefinedText autoDefine seenTerms={seenTerms} text={text} />;
 
   return (
     <>
@@ -156,7 +158,7 @@ export function ToolsPage() {
                 <header className="tools-systems-heading">
                   <p className="eyebrow">Five system families</p>
                   <EditorialHeadline as="h2"><span id="system-families-title">One operating story, organized around the work.</span></EditorialHeadline>
-                  <p>Each family connects a commercial service, plain-language reference material, relevant proof, and a visual explanation without turning the underlying platforms into products.</p>
+                  <p>{define("Each family connects a commercial service, plain-language reference material, relevant proof, and a visual explanation without turning the underlying platforms into products.")}</p>
                 </header>
                 <div className="system-family-grid">
                   {systemFamilies.map((family, index) => {
@@ -168,7 +170,7 @@ export function ToolsPage() {
                           <span>{String(index + 1).padStart(2, "0")}</span>
                         </div>
                         <h3>{family.title}</h3>
-                        <p>{family.summary}</p>
+                        <p>{define(family.summary)}</p>
                         <nav aria-label={`${family.title} related pages`}>
                           <Link href={family.serviceHref}>Service <ArrowRight size={15} aria-hidden="true" /></Link>
                           <Link href={family.glossaryHref}>Glossary <ArrowRight size={15} aria-hidden="true" /></Link>
@@ -191,7 +193,7 @@ export function ToolsPage() {
                 <header className="tools-systems-heading">
                   <p className="eyebrow eyebrow--on-dark">Selected custom tools</p>
                   <EditorialHeadline as="h2"><span id="selected-tools-title">A deliberately narrow custom-tool registry.</span></EditorialHeadline>
-                  <p>These three identities remain separate from the mature infrastructure that supports Boho work.</p>
+                  <p>{define("These three identities remain separate from the mature infrastructure that supports Boho work.")}</p>
                 </header>
                 <div className="selected-tool-grid">
                   {selectedTools.map((tool, index) => (
@@ -201,7 +203,7 @@ export function ToolsPage() {
                         <code>{tool.id}</code>
                       </div>
                       <h3>{tool.displayName}</h3>
-                      {tool.shortPublicSummary ? <p>{tool.shortPublicSummary}</p> : null}
+                      {tool.shortPublicSummary ? <p>{define(tool.shortPublicSummary)}</p> : null}
                       {tool.currentStatus || tool.publicAvailability || tool.openSourceStatus ? (
                         <dl>
                           {tool.currentStatus ? <div><dt>Status</dt><dd>{tool.currentStatus}</dd></div> : null}
@@ -226,7 +228,7 @@ export function ToolsPage() {
                 <header className="tools-systems-heading">
                   <p className="eyebrow">Websites we build and operate</p>
                   <EditorialHeadline as="h2"><span id="websites-title">Websites are part of the proof.</span></EditorialHeadline>
-                  <p>Boho’s owned properties demonstrate website design, publishing systems, educational architecture, editorial operations, search strategy, deployment, and ongoing technical stewardship in public.</p>
+                  <p>{define("Boho’s owned properties demonstrate website design, publishing systems, educational architecture, editorial operations, search strategy, deployment, and ongoing technical stewardship in public.")}</p>
                 </header>
                 <div className="website-proof-grid">
                   {ownedWebsites.map((website, index) => (
@@ -241,7 +243,7 @@ export function ToolsPage() {
                       <div className="website-proof-card__copy">
                         <p className="website-proof-card__domain">{website.domain}</p>
                         <h3>{website.name}</h3>
-                        <p>{website.role}</p>
+                        <p>{define(website.role)}</p>
                         <a href={website.url} rel="noopener noreferrer" target="_blank">
                           Visit property <ExternalLink size={15} aria-hidden="true" />
                           <span className="sr-only"> (opens in a new tab)</span>
@@ -258,7 +260,7 @@ export function ToolsPage() {
                 <header className="tools-systems-heading">
                   <p className="eyebrow">Visual systems library</p>
                   <EditorialHeadline as="h2"><span id="visual-systems-library-title">See the relationship before the implementation detail.</span></EditorialHeadline>
-                  <p>The visual library explains how the parts work together without turning internal architecture into a wall of software names.</p>
+                  <p>{define("The visual library explains how the parts work together without turning internal architecture into a wall of software names.")}</p>
                 </header>
                 <div className="visual-library-index">
                   {publicVisuals.map((visual, index) => (
@@ -279,7 +281,7 @@ export function ToolsPage() {
                   <EditorialHeadline as="h2"><span id="glossary-bridge-title">Tools explains what Boho builds and operates. The glossary explains the technical language underneath it.</span></EditorialHeadline>
                 </div>
                 <div>
-                  <p>Move from the systems view into a focused cluster without repeating full technical definitions here.</p>
+                  <p>{define("Move from the systems view into a focused cluster without repeating full technical definitions here.")}</p>
                   <nav aria-label="Related glossary clusters">
                     {systemFamilies.map((family) => <Link href={family.glossaryHref} key={family.id}>{family.title}<ArrowRight size={15} aria-hidden="true" /></Link>)}
                   </nav>
@@ -291,7 +293,7 @@ export function ToolsPage() {
               <div className="section-shell">
                 <CtaBand
                   title="Bring the repeated work, the current system, and the part that keeps breaking."
-                  body={<p>Boho will help decide whether the useful move is repair, integration, focused custom engineering, or no new software at all.</p>}
+                  body={<p>{define("Boho will help decide whether the useful move is repair, integration, focused custom engineering, or no new software at all.")}</p>}
                   primary={{ label: "Build the Missing Tool", href: "/contact/" }}
                   secondary={{ label: "Review the Service", href: "/services/custom-tools-automation/" }}
                 />

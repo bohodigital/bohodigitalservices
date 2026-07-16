@@ -1,0 +1,38 @@
+{
+  "date": "2026-07-16",
+  "public_routes": 29,
+  "viewports": [
+    { "name": "desktop", "width": 1440, "height": 900 },
+    { "name": "mobile", "width": 390, "height": 844 }
+  ],
+  "route_viewport_checks": 58,
+  "runtime_errors": 0,
+  "nested_links": 0,
+  "horizontal_overflow_failures": 0,
+  "hero": {
+    "desktop": {
+      "viewport": [1440, 1000],
+      "section": [1440, 871],
+      "image": [1306.5, 871],
+      "natural_image": [1536, 1024],
+      "object_fit": "contain",
+      "mirrored": true,
+      "horizontal_overflow": 0
+    },
+    "mobile": {
+      "viewport": [390, 844],
+      "image": [390, 260],
+      "natural_image": [1536, 1024],
+      "object_fit": "contain",
+      "mirrored": true,
+      "horizontal_overflow": 0
+    }
+  },
+  "glossary": {
+    "clusters": 12,
+    "terms": 103,
+    "keyboard_filter": "Privacy and data governance",
+    "keyboard_visible_terms": 5,
+    "horizontal_overflow": 0
+  }
+}

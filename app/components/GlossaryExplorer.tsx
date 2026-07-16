@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 
 import {
   commonGlossarySlugs,
+  glossaryClusterDescriptions,
   glossaryClusters,
   glossaryEntries,
   sourcesById,
@@ -23,6 +24,7 @@ const relatedSystemFamilyByCluster: Record<GlossaryCluster, { label: string; hre
   "APIs and integrations": { label: "Secure Integrations & Custom Tools", href: "/tools/#family-secure-integrations-custom-tools" },
   "Automation and agent systems": { label: "Operations & Automation", href: "/tools/#family-operations-automation" },
   "Security and access": { label: "Secure Integrations & Custom Tools", href: "/tools/#family-secure-integrations-custom-tools" },
+  "Privacy and data governance": { label: "Secure Integrations & Custom Tools", href: "/tools/#family-secure-integrations-custom-tools" },
   "Leads and conversion": { label: "Measurement & Search Signals", href: "/tools/#family-measurement-search-signals" },
   "AI and language-model infrastructure": { label: "Operations & Automation", href: "/tools/#family-operations-automation" },
 };
@@ -151,6 +153,8 @@ export function GlossaryExplorer() {
       entry.definition,
       entry.whyItMatters,
       entry.commonMisunderstanding,
+      entry.ownershipImplications ?? "",
+      entry.businessImplications ?? "",
       entry.cluster,
     ].join(" ").toLocaleLowerCase();
     return searchable.includes(normalizedQuery);
@@ -190,7 +194,7 @@ export function GlossaryExplorer() {
         <div className="glossary-explorer__section-heading">
           <p className="eyebrow">System clusters</p>
           <h2 id="glossary-clusters-title">Move through the machinery by business context.</h2>
-          <p>Eleven clusters keep the current glossary useful while giving future entries a stable place to live.</p>
+          <p>Twelve clusters separate ownership, delivery, operations, access, privacy, measurement, and customer outcomes without breaking their relationships.</p>
         </div>
         <div className="glossary-cluster-grid" aria-label="Filter glossary by system cluster">
           {glossaryClusters.map((item, index) => (
@@ -203,6 +207,8 @@ export function GlossaryExplorer() {
             >
               <span>{String(index + 1).padStart(2, "0")}</span>
               <strong>{item}</strong>
+              <em>{glossaryEntries.filter((entry) => entry.cluster === item).length} terms</em>
+              <small>{glossaryClusterDescriptions[item]}</small>
             </button>
           ))}
         </div>

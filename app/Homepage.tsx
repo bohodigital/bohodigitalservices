@@ -132,33 +132,33 @@ const toolCapabilities = [
 
 export default function Homepage() {
   const seenTerms = new Set<string>();
-  const define = (text: string) => <DefinedText text={text} seenTerms={seenTerms} />;
+  const define = (text: string) => <DefinedText autoDefine text={text} seenTerms={seenTerms} />;
 
   return (
     <>
       <Header />
       <main id="main-content">
         <section className="home-section hero" aria-labelledby="hero-title">
+          <div className="hero__background" aria-hidden="true">
+            <img
+              src="/og-boho-digital-engineering-20260714.png"
+              width="1536"
+              height="1024"
+              alt=""
+              fetchPriority="high"
+            />
+          </div>
           <div className="section-shell hero__layout">
             <div className="hero__copy">
               <p className="eyebrow eyebrow--on-dark">Boho Digital Services</p>
               <h1 id="hero-title">Local visibility, lead systems, and websites built by people who understand the machinery.</h1>
-              <p className="hero__body">Boho is a digital-engineering firm for businesses that need visibility, lead paths, websites, provider rescue, operational tools, and measurable improvement to work together.</p>
+              <p className="hero__body">{define("Boho is a digital-engineering firm for businesses that need visibility, lead paths, websites, provider rescue, operational tools, and measurable improvement to work together.")}</p>
               <p className="hero__supporting-line">Built by digital engineers. Explained in plain English.</p>
               <div className="button-row hero__actions">
                 <ButtonLink href="/contact/">Talk to Someone Technical</ButtonLink>
                 <ButtonLink href="/tools/" variant="secondary">Explore Boho Systems</ButtonLink>
               </div>
             </div>
-            <figure className="hero-editorial hero-editorial--artwork">
-              <img
-                src="/og-boho-digital-engineering-20260714.png"
-                width="1536"
-                height="1024"
-                alt="Boho editorial collage with a bee, botanical forms, mapped routes, and engineering-grid details"
-                fetchPriority="high"
-              />
-            </figure>
           </div>
         </section>
 
@@ -166,7 +166,7 @@ export default function Homepage() {
           <div className="section-shell editorial-problem__grid">
             <div className="editorial-problem__statement"><h2 id="problem-title">Marketing systems are still systems.</h2></div>
             <div className="editorial-problem__body reading-width">
-              <p className="editorial-problem__lead">The website, local presence, lead path, hosting, analytics, accounts, and operational tools affect one another.</p>
+              <p className="editorial-problem__lead">{define("The website, local presence, lead path, hosting, analytics, accounts, and operational tools affect one another.")}</p>
               <p>Most agencies start with a package. Boho starts with the business. We inspect the machinery underneath it and identify the smallest useful next move.</p>
               <div className="business-first-signals" aria-label="Business-first decision inputs">
                 <span><BriefcaseBusiness size={19} aria-hidden="true" /> Offer</span>
@@ -215,7 +215,7 @@ export default function Homepage() {
                 return (
                   <article className={`service-card service-card--${service.tone} service-card--${index + 1}`} key={service.title}>
                     <h3>{service.title}</h3>
-                    <p>{service.body}</p>
+                    <p>{define(service.body)}</p>
                     <TextLink href={service.href}>{service.label}</TextLink>
                     <span className="service-card__pattern" aria-hidden="true"><Icon size={38} strokeWidth={1.65} /></span>
                   </article>
@@ -250,7 +250,7 @@ export default function Homepage() {
                       <span className="design-principle__icon"><Icon size={26} strokeWidth={1.7} /></span>
                       <span>{principle.number}</span>
                     </div>
-                    <div><h3>{define(`[[${principle.termSlug}|${principle.title}]]`)}</h3><p>{principle.body}</p></div>
+                    <div><h3>{define(`[[${principle.termSlug}|${principle.title}]]`)}</h3><p>{define(principle.body)}</p></div>
                   </li>
                 );
               })}
@@ -262,7 +262,7 @@ export default function Homepage() {
           <div className="section-shell migration-rescue__layout">
             <div className="migration-rescue__copy">
               <h2 id="migration-title">Provider rescue without losing what still works.</h2>
-              <p>Boho maps the domain, hosting, content, analytics, forms, redirects, and account ownership before changing the system.</p>
+              <p>{define("Boho maps the domain, hosting, content, analytics, forms, redirects, and account ownership before changing the system.")}</p>
               <p>The goal is a controlled move, preserved value, verified behavior, and cleaner records.</p>
               <div className="button-row">
                 <ButtonLink href="/contact/">Plan the Rescue</ButtonLink>
@@ -293,7 +293,7 @@ export default function Homepage() {
             <div className="lab-proof__copy">
               <p className="eyebrow eyebrow--on-dark">Custom tools and automation</p>
               <h2 id="tools-title">When the right tool does not exist, we build it.</h2>
-              <p>Boho builds focused systems for repeated operational work that is too important, too specific, or too fragmented for the tools already in place.</p>
+              <p>{define("Boho builds focused systems for repeated operational work that is too important, too specific, or too fragmented for the tools already in place.")}</p>
               <p className="lab-proof__principle">We use mature platforms for mature problems and custom engineering for the gaps that matter.</p>
               <div className="button-row">
                 <ButtonLink href="/tools/">Explore Boho Systems</ButtonLink>
@@ -305,7 +305,7 @@ export default function Homepage() {
                 <article className={`evidence-card evidence-card--${index + 1}`} key={capability.title}>
                   <div className="evidence-card__meta"><span>Capability {String(index + 1).padStart(2, "0")}</span></div>
                   <h3>{capability.title}</h3>
-                  <p>{capability.body}</p>
+                  <p>{define(capability.body)}</p>
                 </article>
               ))}
             </div>

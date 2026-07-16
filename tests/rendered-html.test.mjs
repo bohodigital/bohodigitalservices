@@ -124,8 +124,8 @@ test("server-renders the focused Boho homepage and approved marketing message", 
   assert.match(html, /analytics\.bohodigitalservices\.com\/script\.js/i);
   assert.match(html, /data-do-not-track="true"/i);
   assert.match(html, /og-boho-digital-engineering-20260714\.png/i);
-  assert.match(html, /class="hero-editorial hero-editorial--artwork"/i);
-  assert.match(html, /alt="Boho editorial collage with a bee, botanical forms, mapped routes, and engineering-grid details"/i);
+  assert.match(html, /class="hero__background" aria-hidden="true"/i);
+  assert.match(html, /og-boho-digital-engineering-20260714\.png[^>]+alt=""/i);
   assert.match(html, /class="definition-term__link"/i);
   assert.doesNotMatch(html, /definition-term__popover|definition-term__mark/i);
   assert.doesNotMatch(html, /Representative editorial photography|Homepage journey|proof-eligible/i);
@@ -307,9 +307,9 @@ test("uses link-based glossary definitions without popovers or horizontal-overfl
   assert.match(glossary, /Technical language, translated before it becomes leverage/i);
   assert.match(glossary, /Related system family/i);
   assert.match(glossary, /System clusters/i);
-  assert.equal((glossary.match(/id="cluster-[^"]+"/g) ?? []).length, 11);
+  assert.equal((glossary.match(/id="cluster-[^"]+"/g) ?? []).length, 12);
   assert.match(glossary, /Filter by cluster/i);
-  assert.match(glossary, /Last reviewed July 11, 2026/i);
+  assert.match(glossary, /Last reviewed July 16, 2026/i);
   assert.doesNotMatch(glossary, /small question mark|Every popup/i);
   assert.doesNotMatch(glossary, /old mascot-led|no entries are fabricated|definition standard|published definitions are reviewed|repeatable scan|traffic data can replace|reviewed against linked sources|MCP…/i);
 });
@@ -322,8 +322,30 @@ test("keeps the expanded glossary architecture complete and connected", async ()
   assert.match(knowledgeSource, /relatedSystemFamilies\?: SystemFamilyId\[\]/);
   assert.match(knowledgeSource, /relatedVisualIds\?: SystemVisualId\[\]/);
   assert.match(knowledgeSource, /lastReviewed:/);
-  assert.equal((knowledgeSource.match(/^    slug: /gm) ?? []).length, 61);
+  assert.equal((knowledgeSource.match(/^    slug: /gm) ?? []).length, 103);
+  assert.match(knowledgeSource, /"Privacy and data governance"/);
   assert.equal((systemsSource.match(/id: "(?:websites-publishing|hosting-release|measurement-search-signals|operations-automation|secure-integrations-custom-tools)"/g) ?? []).length, 5);
+
+  const sourceCatalog = knowledgeSource.slice(
+    knowledgeSource.indexOf("export const knowledgeSources"),
+    knowledgeSource.indexOf("export const sourcesById"),
+  );
+  const sourceIds = new Set([...sourceCatalog.matchAll(/^    id: "([^"]+)",/gm)].map((match) => match[1]));
+  const entryCatalog = knowledgeSource.slice(
+    knowledgeSource.indexOf("const glossaryEntrySeeds"),
+    knowledgeSource.indexOf("export const glossaryEntries"),
+  );
+  const entrySlugs = new Set([...entryCatalog.matchAll(/^    slug: "([^"]+)",/gm)].map((match) => match[1]));
+  for (const match of entryCatalog.matchAll(/relatedTermSlugs: \[([^\]]*)\]/g)) {
+    for (const slug of [...match[1].matchAll(/"([^"]+)"/g)].map((item) => item[1])) {
+      assert.ok(entrySlugs.has(slug), `unknown related glossary slug ${slug}`);
+    }
+  }
+  for (const match of entryCatalog.matchAll(/sourceIds: \[([^\]]*)\]/g)) {
+    for (const sourceId of [...match[1].matchAll(/"([^"]+)"/g)].map((item) => item[1])) {
+      assert.ok(sourceIds.has(sourceId), `unknown glossary source ${sourceId}`);
+    }
+  }
 
   const glossary = await (await render("/learn/glossary/")).text();
   for (const familyAnchor of [
@@ -334,6 +356,28 @@ test("keeps the expanded glossary architecture complete and connected", async ()
     "family-secure-integrations-custom-tools",
   ]) {
     assert.match(glossary, new RegExp(`href="/tools/#${familyAnchor}"`, "i"));
+  }
+});
+
+test("keeps the mirrored hero uncropped and glossary links connected across the site", async () => {
+  const homepageSource = await readFile(new URL("../app/Homepage.tsx", import.meta.url), "utf8");
+  const cssSource = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  const knowledgeSource = await readFile(new URL("../app/content/knowledge.ts", import.meta.url), "utf8");
+
+  assert.match(homepageSource, /className="hero__background" aria-hidden="true"/);
+  assert.match(cssSource, /\.hero__background img[\s\S]*?object-fit:\s*contain[\s\S]*?scaleX\(-1\)/);
+  assert.match(cssSource, /@media \(max-width: 48rem\)[\s\S]*?\.hero__background img[\s\S]*?width:\s*100%[\s\S]*?height:\s*auto[\s\S]*?scaleX\(-1\)/);
+
+  const glossary = await (await render("/learn/glossary/")).text();
+  const entrySlugs = [...knowledgeSource.matchAll(/^    slug: "([^"]+)",/gm)].map((match) => match[1]);
+  assert.equal(new Set(entrySlugs).size, entrySlugs.length, "glossary slugs must be unique");
+  for (const slug of entrySlugs) {
+    assert.match(glossary, new RegExp(`id="term-${slug}"`, "i"), `missing rendered glossary entry ${slug}`);
+  }
+
+  for (const route of ["/", "/services/", "/services/website-design-redesign/", "/learn/website-buying/", "/learn/provider-rescue/", "/resources/", "/tools/", "/privacy/"]) {
+    const html = await (await render(route)).text();
+    assert.match(html, /href="\/learn\/glossary\/#term-[a-z0-9-]+"/i, `${route} lacks a glossary definition link`);
   }
 });
 
