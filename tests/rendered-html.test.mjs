@@ -326,16 +326,23 @@ test("uses accessible glossary definition popups with direct glossary fallbacks"
   assert.match(homepage, /class="definition-term__trigger"/i);
   assert.match(homepage, /aria-expanded="false"/i);
   assert.match(homepage, /class="definition-term__popover"/i);
+  assert.match(homepage, /class="definition-term__ornament"/i);
+  assert.match(homepage, /class="definition-term__heading"/i);
+  assert.match(homepage, /class="definition-term__badge"/i);
   assert.match(homepage, /role="group"/i);
   assert.match(homepage, /Close [^"]+ definition/i);
   assert.doesNotMatch(homepage, /class="definition-term__link"/i);
 
   const definitionSource = await readFile(new URL("../app/components/DefinitionTerm.tsx", import.meta.url), "utf8");
+  const globalStyles = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
   assert.match(definitionSource, /onMouseEnter=/);
   assert.match(definitionSource, /onFocusCapture=/);
   assert.match(definitionSource, /event\.key === "Escape"/);
   assert.match(definitionSource, /pointerdown/);
   assert.match(definitionSource, /--definition-shift-x/);
+  assert.match(globalStyles, /\.definition-term__ornament/);
+  assert.match(globalStyles, /linear-gradient\(145deg, #fffaf0 0%, #efe2c9 100%\)/);
+  assert.match(globalStyles, /\.definition-term__popover a:hover/);
 
   const glossary = await (await render("/learn/glossary/")).text();
   assert.match(glossary, /Technical language, translated before it becomes leverage/i);

@@ -145,6 +145,12 @@ export function DefinitionTerm({
         ref={popoverRef}
         role="group"
       >
+        <span aria-hidden="true" className="definition-term__ornament">
+          <i />
+          <i />
+          <i />
+          <i />
+        </span>
         <button
           aria-label={`Close ${term} definition`}
           className="definition-term__close"
@@ -154,10 +160,14 @@ export function DefinitionTerm({
         >
           ×
         </button>
-        <strong>{term}</strong>
-        <span>{shortDefinition}</span>
+        <span className="definition-term__heading">
+          <span aria-hidden="true" className="definition-term__badge">?</span>
+          <strong>{term}</strong>
+        </span>
+        <span className="definition-term__definition">{shortDefinition}</span>
         <a href={`/learn/glossary/#term-${slug}`} tabIndex={open ? 0 : -1}>
-          Read the full definition
+          <span>Read the full definition</span>
+          <span aria-hidden="true">↗</span>
         </a>
       </span>
     </span>
