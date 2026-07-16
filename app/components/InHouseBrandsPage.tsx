@@ -3,11 +3,15 @@ import Link from "next/link";
 
 import { inHouseBrands } from "../content/inHouseBrands";
 import { BrandPreviewCarousel } from "./BrandPreviewCarousel";
+import { DefinedText } from "./DefinedText";
 import { Footer, Header, TextLink } from "./SiteChrome";
 
 const brandIcons = [BookOpenCheck, SearchCheck, Beaker] as const;
 
 export function InHouseBrandsPage() {
+  const seenTerms = new Set<string>();
+  const define = (text: string) => <DefinedText autoDefine seenTerms={seenTerms} text={text} />;
+
   return (
     <>
       <Header />
@@ -61,7 +65,7 @@ export function InHouseBrandsPage() {
                     <div>
                       <p className="brand-lab__domain">{brand.displayUrl}</p>
                       <h3>{brand.name}</h3>
-                      <p>{brand.role}</p>
+              <p>{define(brand.role)}</p>
                       <Link className="brand-lab__file-link" href={brand.labPath}>
                         Open this property file
                       </Link>

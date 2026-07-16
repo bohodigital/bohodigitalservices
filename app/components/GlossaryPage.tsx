@@ -5,6 +5,8 @@ import { KnowledgeHero } from "./KnowledgePages";
 import { SectionSidebar } from "./SectionNavigation";
 
 export function GlossaryPage() {
+  const seenTerms = new Set<string>();
+
   return (
     <>
       <Header />
@@ -18,6 +20,7 @@ export function GlossaryPage() {
           ]}
           primary={{ label: "Browse definitions", href: "#common-terms" }}
           secondary={{ label: "Explore Boho systems", href: "/tools/" }}
+          seenTerms={seenTerms}
         />
         <div className="knowledge-section-layout">
           <SectionSidebar

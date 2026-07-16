@@ -5,8 +5,11 @@ import {
   Header,
   TextLink,
 } from "./components/SiteChrome";
+import { DefinedText } from "./components/DefinedText";
 
 export default function NotFound() {
+  const seenTerms = new Set<string>();
+
   return (
     <>
       <Header />
@@ -17,7 +20,9 @@ export default function NotFound() {
           <span />
         </div>
         <div className="section-shell not-found__inner">
-          <p className="eyebrow">404 / Signal lost</p>
+          <p className="eyebrow">
+            <DefinedText autoDefine seenTerms={seenTerms} text="404 / Signal lost" />
+          </p>
           <EditorialHeadline as="h1" className="not-found__title">
             This path wandered off the map.
           </EditorialHeadline>

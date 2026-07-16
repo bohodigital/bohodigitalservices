@@ -2,10 +2,13 @@ import Link from "next/link";
 
 import { inHouseBrands, type InHouseBrand } from "../content/inHouseBrands";
 import { BrandPreviewFrame } from "./BrandPreviewCarousel";
+import { DefinedText } from "./DefinedText";
 import { Footer, Header, TextLink } from "./SiteChrome";
 
 export function InHouseBrandPage({ brand }: { brand: InHouseBrand }) {
   const siblings = inHouseBrands.filter((candidate) => candidate.id !== brand.id);
+  const seenTerms = new Set<string>();
+  const define = (text: string) => <DefinedText autoDefine seenTerms={seenTerms} text={text} />;
 
   return (
     <>
@@ -19,7 +22,7 @@ export function InHouseBrandPage({ brand }: { brand: InHouseBrand }) {
               <p className="brand-detail__domain">{brand.displayUrl}</p>
             </div>
             <div className="brand-detail__intro">
-              <p>{brand.role}</p>
+              <p>{define(brand.role)}</p>
               <TextLink href="/lab/in-house-brands/" className="text-link--on-dark">
                 View all in-house brands
               </TextLink>
@@ -35,7 +38,7 @@ export function InHouseBrandPage({ brand }: { brand: InHouseBrand }) {
           <article>
             <p className="eyebrow">Current focus</p>
             <h2>What this property helps us study.</h2>
-            <p>{brand.focus}</p>
+            <p>{define(brand.focus)}</p>
           </article>
           <article>
             <p className="eyebrow">Boundary</p>

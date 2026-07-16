@@ -1,0 +1,51 @@
+{
+  "desktop": {
+    "hoverOpened": "true",
+    "priority": {
+      "bodyChild": true,
+      "escapedClippedCard": true,
+      "clippingAncestorOverflow": "hidden",
+      "position": "fixed",
+      "zIndex": "2147483000",
+      "topmost": true,
+      "insideViewport": true,
+      "horizontalOverflow": 0
+    },
+    "hoverBridgeOpen": true,
+    "escapeClosed": "false"
+  },
+  "mobile": {
+    "priority": {
+      "bodyChild": true,
+      "position": "fixed",
+      "zIndex": "2147483000",
+      "topmost": true,
+      "insideViewport": true,
+      "horizontalOverflow": 0,
+      "closeTabIndex": "0",
+      "linkTabIndex": "0"
+    },
+    "closeButtonClosed": "false"
+  },
+  "coverage": {
+    "/": {
+      "dashboard": 1,
+      "platform": 1
+    },
+    "/tools/": {
+      "codebase": 1,
+      "platform": 1
+    },
+    "/services/technical-seo-site-health/": {
+      "http-status-code": 1
+    },
+    "/learn/provider-rescue/": {
+      "baseline": 1,
+      "cutover": 1
+    },
+    "/definitely-not-a-real-page/": {
+      "not-found-404": 1
+    }
+  },
+  "errors": []
+}

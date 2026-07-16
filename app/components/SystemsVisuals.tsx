@@ -4,8 +4,11 @@ import {
   infrastructureLayers,
   repairIntegrateBuildSteps,
 } from "../content/systems";
+import { DefinedText } from "./DefinedText";
 
-export function LayeredInfrastructureVisual() {
+export function LayeredInfrastructureVisual({ seenTerms }: { seenTerms: Set<string> }) {
+  const define = (text: string) => <DefinedText autoDefine seenTerms={seenTerms} text={text} />;
+
   return (
     <figure
       className="systems-visual systems-visual--layers"
@@ -16,7 +19,7 @@ export function LayeredInfrastructureVisual() {
       <div className="systems-visual__heading">
         <p className="eyebrow">Layered infrastructure</p>
         <h2 id="layered-infrastructure-title">The business stays at the center of the machinery.</h2>
-        <p>Mature platforms handle the commodity infrastructure. Boho engineers the operating system around the business.</p>
+        <p>{define("Mature platforms handle the commodity infrastructure. Boho engineers the operating system around the business.")}</p>
       </div>
 
       <ol className="infrastructure-layers" aria-label="Four infrastructure layers">
@@ -37,13 +40,13 @@ export function LayeredInfrastructureVisual() {
         {infrastructureLayers.map((layer) => (
           <article key={layer.number}>
             <h3><span>{layer.number}</span>{layer.title}</h3>
-            <p>{layer.explanation}</p>
+            <p>{define(layer.explanation)}</p>
           </article>
         ))}
       </div>
 
       <figcaption id="layered-infrastructure-caption">
-        Customer benefit and accountable operation come first; platform labels remain secondary to the work they support.
+        {define("Customer benefit and accountable operation come first; platform labels remain secondary to the work they support.")}
       </figcaption>
     </figure>
   );
@@ -51,7 +54,9 @@ export function LayeredInfrastructureVisual() {
 
 const decisionIcons = [Wrench, Wrench, PlugZap, Blocks, ArrowDown] as const;
 
-export function RepairIntegrateBuildVisual() {
+export function RepairIntegrateBuildVisual({ seenTerms }: { seenTerms: Set<string> }) {
+  const define = (text: string) => <DefinedText autoDefine seenTerms={seenTerms} text={text} />;
+
   return (
     <figure
       className="systems-visual systems-visual--decision"
@@ -62,7 +67,7 @@ export function RepairIntegrateBuildVisual() {
       <div className="systems-visual__heading">
         <p className="eyebrow">Repair, integrate, or build</p>
         <h2 id="repair-integrate-build-title">Custom software is one option, not the opening assumption.</h2>
-        <p id="repair-integrate-build-principle">We repair before replacing, integrate before rebuilding, and write custom software only when the missing capability is worth owning.</p>
+        <p id="repair-integrate-build-principle">{define("We repair before replacing, integrate before rebuilding, and write custom software only when the missing capability is worth owning.")}</p>
       </div>
 
       <ol className="decision-path" aria-label="Repair, integrate, or build decision path">
@@ -76,7 +81,7 @@ export function RepairIntegrateBuildVisual() {
               </div>
               <div>
                 <h3>{step.title}</h3>
-                <p>{step.body}</p>
+                <p>{define(step.body)}</p>
               </div>
             </li>
           );
@@ -84,7 +89,7 @@ export function RepairIntegrateBuildVisual() {
       </ol>
 
       <figcaption>
-        Every route ends with the same operating questions: who owns it, how it fails, how it is maintained, and how the business exits cleanly.
+        {define("Every route ends with the same operating questions: who owns it, how it fails, how it is maintained, and how the business exits cleanly.")}
       </figcaption>
     </figure>
   );

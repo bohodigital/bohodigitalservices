@@ -40,6 +40,7 @@ export function KnowledgeHero({
   primary,
   secondary,
   breadcrumbMode = "resource-child",
+  seenTerms,
 }: {
   eyebrow: string;
   title: string;
@@ -47,8 +48,9 @@ export function KnowledgeHero({
   primary: { label: string; href: `/${string}` | `#${string}` };
   secondary: { label: string; href: `/${string}` | `#${string}` };
   breadcrumbMode?: "resources-root" | "tools-root" | "resource-child";
+  seenTerms?: Set<string>;
 }) {
-  const seenTerms = new Set<string>();
+  const pageTerms = seenTerms ?? new Set<string>();
 
   return (
     <section className="knowledge-hero" aria-labelledby="knowledge-hero-title">
@@ -81,7 +83,7 @@ export function KnowledgeHero({
           <div className="knowledge-hero__intro reading-width">
             {intro.map((paragraph) => (
               <p key={paragraph.slice(0, 30)}>
-                <DefinedText autoDefine text={paragraph} seenTerms={seenTerms} />
+                <DefinedText autoDefine text={paragraph} seenTerms={pageTerms} />
               </p>
             ))}
           </div>
@@ -124,6 +126,7 @@ export function ToolsPage() {
           ]}
           primary={{ label: "Explore Boho Systems", href: "#system-families" }}
           secondary={{ label: "Build the Missing Tool", href: "/contact/" }}
+          seenTerms={seenTerms}
         />
 
         <div className="knowledge-section-layout">
@@ -150,7 +153,7 @@ export function ToolsPage() {
 
           <div className="knowledge-section-layout__content tools-systems-page__content">
             <section className="tools-systems-section tools-systems-section--layers" aria-label="Layered infrastructure explanation">
-              <div className="section-shell"><LayeredInfrastructureVisual /></div>
+              <div className="section-shell"><LayeredInfrastructureVisual seenTerms={seenTerms} /></div>
             </section>
 
             <section className="tools-systems-section tools-systems-section--families" id="system-families" aria-labelledby="system-families-title">
@@ -185,7 +188,7 @@ export function ToolsPage() {
             </section>
 
             <section className="tools-systems-section tools-systems-section--decision" id="repair-integrate-build" aria-label="Repair, integrate, or build doctrine">
-              <div className="section-shell"><RepairIntegrateBuildVisual /></div>
+              <div className="section-shell"><RepairIntegrateBuildVisual seenTerms={seenTerms} /></div>
             </section>
 
             <section className="tools-systems-section tools-systems-section--selected" id="selected-tools" aria-labelledby="selected-tools-title">
@@ -256,7 +259,7 @@ export function ToolsPage() {
                           <strong>SEO learning lens</strong>
                           <p>{define(website.publicMemo)}</p>
                           <ul aria-label={`${website.name} SEO learning themes`}>
-                            {website.seoLens.map((item) => <li key={item}>{item}</li>)}
+                            {website.seoLens.map((item) => <li key={item}>{define(item)}</li>)}
                           </ul>
                         </div>
                         <div className="website-proof-card__actions">

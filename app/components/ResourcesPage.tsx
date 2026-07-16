@@ -102,6 +102,7 @@ export function ResourcesPage() {
           ]}
           primary={{ label: "Choose a resource", href: "#resource-collections" }}
           secondary={{ label: "Talk to someone technical", href: "/contact/" }}
+          seenTerms={seenTerms}
         />
 
         <div className="knowledge-section-layout">

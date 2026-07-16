@@ -167,7 +167,7 @@ export default function Homepage() {
             <div className="editorial-problem__statement"><h2 id="problem-title">Marketing systems are still systems.</h2></div>
             <div className="editorial-problem__body reading-width">
               <p className="editorial-problem__lead">{define("The website, local presence, lead path, hosting, analytics, accounts, and operational tools affect one another.")}</p>
-              <p>Most agencies start with a package. Boho starts with the business. We inspect the machinery underneath it and identify the smallest useful next move.</p>
+              <p>{define("Most agencies start with a package. Boho starts with the business. We inspect the machinery underneath it and identify the smallest useful next move.")}</p>
               <div className="business-first-signals" aria-label="Business-first decision inputs">
                 <span><BriefcaseBusiness size={19} aria-hidden="true" /> Offer</span>
                 <span><Target size={19} aria-hidden="true" /> Market</span>
@@ -182,7 +182,7 @@ export default function Homepage() {
           <div className="section-shell">
             <div className="section-heading section-heading--split">
               <h2 id="method-title">A six-stage engineering method.</h2>
-              <p className="reading-width">Diagnose the system, prioritize the business case, engineer the change, deploy carefully, measure the right signal, and improve what the evidence supports.</p>
+              <p className="reading-width">{define("Diagnose the system, prioritize the business case, engineer the change, deploy carefully, measure the right signal, and improve what the evidence supports.")}</p>
             </div>
             <ol className="method-summary-list" aria-label="Diagnose, prioritize, engineer, deploy, measure, improve">
               {operatingCycle.map((stage) => {
@@ -207,7 +207,7 @@ export default function Homepage() {
           <div className="section-shell">
             <div className="section-heading section-heading--split">
               <h2 id="services-title">Five service lanes, one accountable system.</h2>
-              <p className="reading-width">The lane names make the work understandable without pretending the systems are isolated.</p>
+              <p className="reading-width">{define("The lane names make the work understandable without pretending the systems are isolated.")}</p>
             </div>
             <div className="service-grid">
               {serviceCards.map((service, index) => {
@@ -234,7 +234,7 @@ export default function Homepage() {
             <div className="design-spotlight__intro">
               <div className="section-heading"><h2 id="design-title">Website design built around clarity, trust, discovery, and action.</h2></div>
               <div className="reading-width">
-                <p>A strong website explains the offer, earns trust, supports discovery, and gives the right customer a clear next step.</p>
+                <p>{define("A strong website explains the offer, earns trust, supports discovery, and gives the right customer a clear next step.")}</p>
                 <div className="button-row">
                   <ButtonLink href="/contact/">Plan a Better Website</ButtonLink>
                   <TextLink href="/learn/website-buying/">Read the Buyer Guide</TextLink>
@@ -263,7 +263,7 @@ export default function Homepage() {
             <div className="migration-rescue__copy">
               <h2 id="migration-title">Provider rescue without losing what still works.</h2>
               <p>{define("Boho maps the domain, hosting, content, analytics, forms, redirects, and account ownership before changing the system.")}</p>
-              <p>The goal is a controlled move, preserved value, verified behavior, and cleaner records.</p>
+              <p>{define("The goal is a controlled move, preserved value, verified behavior, and cleaner records.")}</p>
               <div className="button-row">
                 <ButtonLink href="/contact/">Plan the Rescue</ButtonLink>
                 <TextLink href="/learn/provider-rescue/" className="text-link--on-dark">Read the Rescue Guide</TextLink>
@@ -294,7 +294,7 @@ export default function Homepage() {
               <p className="eyebrow eyebrow--on-dark">Custom tools and automation</p>
               <h2 id="tools-title">When the right tool does not exist, we build it.</h2>
               <p>{define("Boho builds focused systems for repeated operational work that is too important, too specific, or too fragmented for the tools already in place.")}</p>
-              <p className="lab-proof__principle">We use mature platforms for mature problems and custom engineering for the gaps that matter.</p>
+              <p className="lab-proof__principle">{define("We use mature platforms for mature problems and custom engineering for the gaps that matter.")}</p>
               <div className="button-row">
                 <ButtonLink href="/tools/">Explore Boho Systems</ButtonLink>
                 <TextLink href="/services/custom-tools-automation/">Explore the Service</TextLink>
@@ -318,7 +318,7 @@ export default function Homepage() {
             <div className="territory-cta__copy">
               <p className="eyebrow eyebrow--on-dark">Provider frustration</p>
               <h2 id="technical-opinion-title">Tired of talking to people who cannot explain the system?</h2>
-              <p>Bring the proposal, migration plan, dashboard, hosting setup, automation idea, or provider explanation that does not add up.</p>
+              <p>{define("Bring the proposal, migration plan, dashboard, hosting setup, automation idea, or provider explanation that does not add up.")}</p>
             </div>
             <ButtonLink href="/contact/">Get a Technical Second Opinion</ButtonLink>
           </div>
@@ -332,7 +332,7 @@ export default function Homepage() {
               <span><BarChart3 size={20} aria-hidden="true" /> Visible priorities</span>
             </div>
             <h2 id="pricing-title">Scope follows diagnosis, not a package menu.</h2>
-            <p className="pricing-philosophy__body reading-width">Start with the smallest useful intervention. Expand when the next investment has a defensible business case.</p>
+            <p className="pricing-philosophy__body reading-width">{define("Start with the smallest useful intervention. Expand when the next investment has a defensible business case.")}</p>
             <ButtonLink href="/contact/">Discuss the Actual Problem</ButtonLink>
           </div>
         </section>
@@ -342,7 +342,7 @@ export default function Homepage() {
             <CtaBand
               className="final-cta__band"
               title="Talk to someone who can explain the machinery."
-              body={<p>Send the business, website, service area, system, and what feels stuck. You do not need to diagnose the solution before the conversation.</p>}
+              body={<p>{define("Send the business, website, service area, system, and what feels stuck. You do not need to diagnose the solution before the conversation.")}</p>}
               primary={{ label: "Talk to Someone Technical", href: "/contact/" }}
               secondary={{ label: "Explore Boho Systems", href: "/tools/" }}
             />

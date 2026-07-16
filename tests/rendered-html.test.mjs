@@ -119,7 +119,9 @@ test("server-renders the focused Boho homepage and approved marketing message", 
   assert.equal((html.match(/class="method-summary-list__link"/g) ?? []).length, 6);
   assert.match(html, /href="\/contact\/"[^>]*>[\s\S]*?Talk to Someone Technical/i);
   assert.match(html, /href="\/tools\/"[^>]*>[\s\S]*?Explore Boho Systems/i);
-  assert.match(html, /We use mature platforms for mature problems and custom engineering for the gaps that matter\./i);
+  assert.match(html, /We use mature/i);
+  assert.match(html, /href="\/learn\/glossary\/#term-platform"/i);
+  assert.match(html, /for mature problems and custom engineering for the gaps that matter\./i);
   assert.match(html, /googletagmanager\.com\/gtag\/js\?id=G-5CV8L2SE2R/i);
   assert.match(html, /analytics\.bohodigitalservices\.com\/script\.js/i);
   assert.match(html, /data-do-not-track="true"/i);
@@ -141,6 +143,10 @@ test("renders every intentional public route and retires internal placeholder sh
     assert.equal((html.match(/<main\b/gi) ?? []).length, 1, `${route} main count`);
     assert.equal((html.match(/<h1\b/gi) ?? []).length, 1, `${route} h1 count`);
     assert.equal((html.match(/<footer\b/gi) ?? []).length, 1, `${route} footer count`);
+    const renderedLinks = html.match(/<a\b[^>]*>[\s\S]*?<\/a>/gi) ?? [];
+    for (const link of renderedLinks) {
+      assert.doesNotMatch(link, /definition-term__trigger/i, `${route} nests a glossary trigger inside a link`);
+    }
   }
 
   for (const route of retiredRoutes) {
@@ -249,7 +255,9 @@ test("publishes factual privacy, terms, and accessibility pages", async () => {
 test("realigns Tools around five system families, two decision visuals, and exactly three selected identities", async () => {
   const tools = await (await render("/tools/")).text();
   assert.match(tools, /Systems built to make digital work cheaper, clearer, and easier to operate\./i);
-  assert.match(tools, /Mature platforms handle the commodity infrastructure\. Boho engineers the operating system around the business\./i);
+  assert.match(tools, /Mature/i);
+  assert.match(tools, /href="\/learn\/glossary\/#term-platform"/i);
+  assert.match(tools, /handle the commodity infrastructure\. Boho engineers the operating system around the business\./i);
   assert.match(tools, /Custom software is one option, not the opening assumption\./i);
   assert.match(tools, /We repair before replacing, integrate before rebuilding, and write custom software only when the missing capability is worth owning\./i);
   assert.match(tools, /Three public brands, three different search questions\./i);
@@ -339,10 +347,15 @@ test("uses accessible glossary definition popups with direct glossary fallbacks"
   assert.match(definitionSource, /onFocusCapture=/);
   assert.match(definitionSource, /event\.key === "Escape"/);
   assert.match(definitionSource, /pointerdown/);
-  assert.match(definitionSource, /--definition-shift-x/);
+  assert.match(definitionSource, /createPortal\(popover, document\.body\)/);
+  assert.match(definitionSource, /containsInteractiveTarget/);
+  assert.match(definitionSource, /--definition-(?:anchor-x|left|top)/);
   assert.match(globalStyles, /\.definition-term__ornament/);
   assert.match(globalStyles, /linear-gradient\(145deg, #fffaf0 0%, #efe2c9 100%\)/);
   assert.match(globalStyles, /\.definition-term__popover a:hover/);
+  assert.match(globalStyles, /\.definition-term__popover\s*\{[\s\S]*?position:\s*fixed/);
+  assert.match(globalStyles, /z-index:\s*2147483000/);
+  assert.doesNotMatch(globalStyles, /--definition-shift-x/);
 
   const glossary = await (await render("/learn/glossary/")).text();
   assert.match(glossary, /Technical language, translated before it becomes leverage/i);
@@ -363,7 +376,7 @@ test("keeps the expanded glossary architecture complete and connected", async ()
   assert.match(knowledgeSource, /relatedSystemFamilies\?: SystemFamilyId\[\]/);
   assert.match(knowledgeSource, /relatedVisualIds\?: SystemVisualId\[\]/);
   assert.match(knowledgeSource, /lastReviewed:/);
-  assert.equal((knowledgeSource.match(/^    slug: /gm) ?? []).length, 103);
+  assert.equal((knowledgeSource.match(/^    slug: /gm) ?? []).length, 113);
   assert.match(knowledgeSource, /"Privacy and data governance"/);
   assert.equal((systemsSource.match(/id: "(?:websites-publishing|hosting-release|measurement-search-signals|operations-automation|secure-integrations-custom-tools)"/g) ?? []).length, 5);
 
@@ -389,6 +402,27 @@ test("keeps the expanded glossary architecture complete and connected", async ()
   }
 
   const glossary = await (await render("/learn/glossary/")).text();
+  const addedSlugs = [
+    "platform",
+    "website-architecture",
+    "dashboard",
+    "baseline",
+    "source-code",
+    "codebase",
+    "cutover",
+    "http-status-code",
+    "not-found-404",
+    "redirect-301",
+  ];
+  for (const slug of addedSlugs) {
+    const row = glossary.match(new RegExp(`<details\\b[^>]*id="term-${slug}"[\\s\\S]*?<\\/details>`, "i"))?.[0] ?? "";
+    assert.ok(row, `missing expanded glossary row ${slug}`);
+    assert.match(row, /Why it matters/i, `${slug} lacks why-it-matters copy`);
+    assert.match(row, /Common misunderstanding/i, `${slug} lacks misconception copy`);
+    assert.match(row, /Ownership implications/i, `${slug} lacks ownership copy`);
+    assert.match(row, /Business implications/i, `${slug} lacks business copy`);
+    assert.match(row, /Official sources/i, `${slug} lacks source links`);
+  }
   for (const familyAnchor of [
     "family-websites-publishing",
     "family-hosting-release",

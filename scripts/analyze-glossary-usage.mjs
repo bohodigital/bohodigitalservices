@@ -2,13 +2,19 @@ import { readFile } from "node:fs/promises";
 
 const sourceFiles = [
   new URL("../app/Homepage.tsx", import.meta.url),
+  new URL("../app/not-found.tsx", import.meta.url),
   new URL("../app/content/corePages.ts", import.meta.url),
   new URL("../app/content/audiencePages.ts", import.meta.url),
   new URL("../app/content/publicPages.ts", import.meta.url),
+  new URL("../app/content/inHouseBrands.ts", import.meta.url),
   new URL("../app/content/systems.ts", import.meta.url),
   new URL("../app/content/operatingCycle.ts", import.meta.url),
+  new URL("../app/components/InHouseBrandPage.tsx", import.meta.url),
+  new URL("../app/components/InHouseBrandsPage.tsx", import.meta.url),
   new URL("../app/components/KnowledgePages.tsx", import.meta.url),
   new URL("../app/components/ResourcesPage.tsx", import.meta.url),
+  new URL("../app/components/SiteChrome.tsx", import.meta.url),
+  new URL("../app/components/SystemsVisuals.tsx", import.meta.url),
 ];
 const knowledgeFile = new URL("../app/content/knowledge.ts", import.meta.url);
 
