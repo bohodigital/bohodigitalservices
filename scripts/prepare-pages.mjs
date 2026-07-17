@@ -48,11 +48,14 @@ async function materializeFlightAliases(directory) {
 // not perform that mapping, so publish explicit aliases alongside each route.
 await materializeFlightAliases(outputDirectory);
 
-// Pages serves this artifact directly. Content-hashed Next assets can be cached
-// indefinitely; HTML keeps the platform default so a deployment replaces it.
+// Pages serves this artifact directly. Prevent edge HTML rewrites that would
+// diverge from React's pre-rendered markup; cache content-hashed assets forever.
 await writeFile(
   headersFile,
   [
+    "/*",
+    "  Cache-Control: public, max-age=0, must-revalidate, no-transform",
+    "",
     "/_next/static/*",
     "  Cache-Control: public, max-age=31536000, immutable",
     "",

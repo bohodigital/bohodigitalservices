@@ -654,6 +654,7 @@ test("ships public pages as static assets without a Worker runtime", async () =>
   );
 
   const headers = await readFile(new URL("../out/_headers", import.meta.url), "utf8");
+  assert.match(headers, /\/\*[\s\S]*Cache-Control:[^\n]*no-transform/i);
   assert.match(headers, /\/_next\/static\/\*[\s\S]*max-age=31536000[\s\S]*immutable/i);
   assert.doesNotMatch(headers, /noindex|nofollow|x-robots-tag/i);
 
