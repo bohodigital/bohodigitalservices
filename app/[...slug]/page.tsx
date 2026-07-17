@@ -8,12 +8,17 @@ import { GlossaryPage } from "../components/GlossaryPage";
 import { ResourcesPage } from "../components/ResourcesPage";
 import { InHouseBrandsPage } from "../components/InHouseBrandsPage";
 import { InHouseBrandPage } from "../components/InHouseBrandPage";
+import { PricingPage } from "../components/PricingPage";
+import { ServiceDetailPage } from "../components/ServiceDetailPage";
+import { ServicesPage } from "../components/ServicesPage";
+import { WorkEvidencePage } from "../components/WorkEvidencePage";
 import { inHouseBrandsByLabPath } from "../content/inHouseBrands";
 import { audiencePages } from "../content/audiencePages";
 import { corePages } from "../content/corePages";
 import { isRetiredPublicPage } from "../content/publicPages";
+import { servicePagesByRoute, serviceRoutePages } from "../content/serviceRoutePages";
 
-const pages = [...corePages, ...audiencePages].filter(
+const pages = [...corePages, ...audiencePages, ...serviceRoutePages].filter(
   (page) => !isRetiredPublicPage(page.slug),
 );
 const pagesBySlug = new Map(pages.map((page) => [page.slug, page]));
@@ -63,6 +68,11 @@ export default async function InteriorRoute({ params }: InteriorRouteProps) {
 
   if (page.pageKind === "glossary") return <GlossaryPage />;
   if (page.slug === "/about/") return <AboutPage />;
+  if (page.slug === "/services/") return <ServicesPage />;
+  if (page.slug === "/pricing/") return <PricingPage />;
+  if (page.slug === "/work/") return <WorkEvidencePage />;
+  const servicePage = servicePagesByRoute.get(page.slug);
+  if (servicePage) return <ServiceDetailPage page={servicePage} />;
   if (page.pageKind === "tools") return <ToolsPage />;
   if (page.pageKind === "resources") return <ResourcesPage />;
   if (page.pageKind === "brands") return <InHouseBrandsPage />;

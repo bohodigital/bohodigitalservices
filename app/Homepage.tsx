@@ -40,42 +40,42 @@ const operatingCycleIcons = {
 
 const serviceCards = [
   {
-    title: "Local Visibility & Lead Systems",
+    title: "Ongoing SEO & Search Growth",
     body: "Local discovery, website clarity, trust, calls to action, inquiry paths, and measurement engineered as one commercial system.",
     label: "Build the lead system",
-    href: "/services/local-seo-search-visibility/",
+    href: "/services/ongoing-seo/",
     tone: "verdigris",
     icon: MapPin,
   },
   {
-    title: "Websites & Managed Hosting",
+    title: "Web Design & Website Redesign",
     body: "Useful, distinctive websites built around ownership, performance, search structure, customer action, and a clearly governed hosting provision.",
     label: "Plan the website system",
-    href: "/services/website-design-redesign/",
+    href: "/services/web-design-redesign/",
     tone: "gold",
     icon: PanelsTopLeft,
   },
   {
-    title: "Provider Rescue & Migration",
+    title: "Website Migration & Provider Rescue",
     body: "Careful help leaving bad providers, recovering control, preserving useful assets and URLs, and verifying a safer move.",
     label: "Plan the rescue",
-    href: "/services/website-migration-provider-rescue/",
+    href: "/services/provider-rescue/",
     tone: "copper",
     icon: Route,
   },
   {
-    title: "Custom Tools & Automation",
+    title: "Custom Web & Digital Solutions",
     body: "Focused internal tools, integrations, and automations for repeated work that costs too much time or fails too easily by hand.",
     label: "Build the missing tool",
-    href: "/services/custom-tools-automation/",
+    href: "/services/custom-digital-solutions/",
     tone: "blue",
     icon: Wrench,
   },
   {
-    title: "Research, Analytics & Improvement",
+    title: "Digital Research, SEO Audits & Strategy",
     body: "Diagnosis, market research, technical inspection, measurement, and an improvement rhythm tied to the next useful decision.",
     label: "Start with evidence",
-    href: "/services/research-audits-analytics/",
+    href: "/services/research-audits-strategy/",
     tone: "plum",
     icon: SearchCheck,
   },
@@ -297,7 +297,7 @@ export default function Homepage() {
               <p className="lab-proof__principle">{define("We use mature platforms for mature problems and custom engineering for the gaps that matter.")}</p>
               <div className="button-row">
                 <ButtonLink href="/tools/">Explore Boho Systems</ButtonLink>
-                <TextLink href="/services/custom-tools-automation/">Explore the Service</TextLink>
+                <TextLink href="/services/custom-digital-solutions/">Explore the Service</TextLink>
               </div>
             </div>
             <div className="evidence-board" aria-label="Custom tool capabilities">

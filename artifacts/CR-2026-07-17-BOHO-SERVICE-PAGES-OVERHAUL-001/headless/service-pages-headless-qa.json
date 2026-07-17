@@ -1,0 +1,5042 @@
+{
+  "baseUrl": "http://127.0.0.1:4177",
+  "generatedAt": "2026-07-17T23:18:51.432Z",
+  "routeCount": 10,
+  "scenarioCount": 4,
+  "checkedPages": 40,
+  "scenarios": {
+    "desktop-1440": {
+      "/services/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/services/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [
+            {
+              "pathname": "/services/ongoing-seo/",
+              "labelPattern": "ongoing seo|search growth",
+              "matchCount": 3,
+              "labelMatchCount": 1,
+              "labels": [
+                "Ongoing SEO & Search Growth",
+                "Review the service",
+                ""
+              ]
+            },
+            {
+              "pathname": "/services/web-design-redesign/",
+              "labelPattern": "web design|website redesign",
+              "matchCount": 3,
+              "labelMatchCount": 1,
+              "labels": [
+                "Web Design & Website Redesign",
+                "Review the service",
+                ""
+              ]
+            },
+            {
+              "pathname": "/services/provider-rescue/",
+              "labelPattern": "provider rescue|migration",
+              "matchCount": 3,
+              "labelMatchCount": 1,
+              "labels": [
+                "Website Migration & Provider Rescue",
+                "Review the service",
+                ""
+              ]
+            },
+            {
+              "pathname": "/services/research-audits-strategy/",
+              "labelPattern": "research|audit|strategy",
+              "matchCount": 3,
+              "labelMatchCount": 1,
+              "labels": [
+                "Digital Research, SEO Audits & Strategy",
+                "Review the service",
+                ""
+              ]
+            },
+            {
+              "pathname": "/services/custom-digital-solutions/",
+              "labelPattern": "custom|digital solutions",
+              "matchCount": 3,
+              "labelMatchCount": 1,
+              "labels": [
+                "Custom Web & Digital Solutions",
+                "Review the service",
+                ""
+              ]
+            }
+          ],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 8
+        },
+        "faq": {
+          "detailsCount": 0,
+          "tested": [],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 8,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/services/ongoing-seo/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/services/ongoing-seo/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [
+            {
+              "pathname": "/start/",
+              "labelPattern": "free review",
+              "matchCount": 2,
+              "labelMatchCount": 2,
+              "labels": [
+                "Start the free review→",
+                "Start the free review→"
+              ]
+            },
+            {
+              "pathname": "/pricing/",
+              "hash": "#ongoing-seo",
+              "labelPattern": "pricing",
+              "matchCount": 3,
+              "labelMatchCount": 3,
+              "labels": [
+                "See monthly pricing→",
+                "See the detailed Pricing & Scope Guide",
+                "See detailed pricing→"
+              ]
+            }
+          ],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 36
+        },
+        "faq": {
+          "detailsCount": 12,
+          "tested": [
+            {
+              "label": "Do you guarantee rankings, traffic, leads, or revenue?+",
+              "focused": true,
+              "initialOpen": true,
+              "afterEnter": false,
+              "afterSpace": true
+            },
+            {
+              "label": "How long does SEO take?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What happens every month?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What is the difference between reporting-only and implementation?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do I need a redesign before starting SEO?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is local SEO included?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is content included?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do you work on AI search visibility?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Are hosting and email included?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do you require a long contract?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can we start smaller?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Who owns the accounts and work?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 33,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/services/web-design-redesign/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/services/web-design-redesign/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [
+            {
+              "pathname": "/start/",
+              "labelPattern": "website review|free review",
+              "matchCount": 2,
+              "labelMatchCount": 2,
+              "labels": [
+                "Start the free website review→",
+                "Start the free website review→"
+              ]
+            },
+            {
+              "pathname": "/pricing/",
+              "hash": "#web-design",
+              "labelPattern": "pricing",
+              "matchCount": 3,
+              "labelMatchCount": 3,
+              "labels": [
+                "See website pricing→",
+                "See the detailed Pricing & Scope Guide",
+                "See detailed website pricing→"
+              ]
+            }
+          ],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 31
+        },
+        "faq": {
+          "detailsCount": 12,
+          "tested": [
+            {
+              "label": "Can you really build a website starting at $1,500?+",
+              "focused": true,
+              "initialOpen": true,
+              "afterEnter": false,
+              "afterSpace": true
+            },
+            {
+              "label": "How do I know whether I need a redesign or a focused repair?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is copywriting included?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is SEO included in a website project?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do you build ecommerce websites?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Which platform will you use?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Will the website be accessible?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is hosting included?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is business email included?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Will I own the website?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "How long will the project take?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What happens after launch?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 26,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/services/provider-rescue/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/services/provider-rescue/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [
+            {
+              "pathname": "/start/",
+              "labelPattern": "rescue assessment|start",
+              "matchCount": 2,
+              "labelMatchCount": 2,
+              "labels": [
+                "Start a Rescue Assessment→",
+                "Start a Rescue Assessment→"
+              ]
+            },
+            {
+              "pathname": "/emergency/",
+              "labelPattern": "emergency",
+              "matchCount": 3,
+              "labelMatchCount": 3,
+              "labels": [
+                "Request Emergency Help→",
+                "Request Emergency Help",
+                "Request Emergency Help→"
+              ]
+            },
+            {
+              "pathname": "/pricing/",
+              "hash": "#provider-rescue",
+              "labelPattern": "pricing",
+              "matchCount": 2,
+              "labelMatchCount": 2,
+              "labels": [
+                "See the detailed Pricing & Scope Guide",
+                "See detailed rescue and migration pricing→"
+              ]
+            }
+          ],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 30
+        },
+        "faq": {
+          "detailsCount": 12,
+          "tested": [
+            {
+              "label": "Can you guarantee that we will recover every account?+",
+              "focused": true,
+              "initialOpen": true,
+              "afterEnter": false,
+              "afterSpace": true
+            },
+            {
+              "label": "Can you contact our current provider for us?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Will a migration hurt our search visibility?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do we need a Rescue Assessment before migration?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What qualifies for the $1,000 migration minimum?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you migrate our email too?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you move an ecommerce website?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What if the former provider refuses to cooperate?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do you handle emergency migrations?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Will we own the new setup?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you preserve our existing content and URLs?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What happens after the migration?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 27,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/services/research-audits-strategy/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/services/research-audits-strategy/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [
+            {
+              "pathname": "/start/",
+              "labelPattern": "free review",
+              "matchCount": 3,
+              "labelMatchCount": 3,
+              "labels": [
+                "Start the free review→",
+                "Start the free review",
+                "Start the free review→"
+              ]
+            },
+            {
+              "pathname": "/pricing/",
+              "hash": "#analytics-reporting",
+              "labelPattern": "pricing",
+              "matchCount": 3,
+              "labelMatchCount": 1,
+              "labels": [
+                "See audit and reporting prices→",
+                "See monthly reporting prices",
+                "See audit and reporting pricing→"
+              ]
+            },
+            {
+              "pathname": "/resources/",
+              "hash": "#analysis-dashboard",
+              "labelPattern": "analytics|platform|repository",
+              "matchCount": 1,
+              "labelMatchCount": 1,
+              "labels": [
+                "Explore the public repository"
+              ]
+            }
+          ],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 31
+        },
+        "faq": {
+          "detailsCount": 12,
+          "tested": [
+            {
+              "label": "Is the initial review really free?+",
+              "focused": true,
+              "initialOpen": true,
+              "afterEnter": false,
+              "afterSpace": true
+            },
+            {
+              "label": "Is the Boho Analytics Platform really free?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What am I paying for in the monthly report?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Why does reporting cost more for ecommerce or large websites?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Does a report include implementation?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do you guarantee that an audit will improve rankings or revenue?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What happens if the data is bad or missing?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you review another provider’s reports?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can a paid audit be credited toward implementation?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "How many competitors do you review?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you analyze payment or ecommerce information?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Will the report tell us what not to buy?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 29,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/services/custom-digital-solutions/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/services/custom-digital-solutions/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [
+            {
+              "pathname": "/start/",
+              "labelPattern": "discovery|free review",
+              "matchCount": 2,
+              "labelMatchCount": 2,
+              "labels": [
+                "Start with discovery→",
+                "Start with the free review→"
+              ]
+            },
+            {
+              "pathname": "/pricing/",
+              "hash": "#custom-solutions",
+              "labelPattern": "pricing",
+              "matchCount": 3,
+              "labelMatchCount": 3,
+              "labels": [
+                "See custom-project pricing→",
+                "See the detailed Pricing & Scope Guide",
+                "See custom-project pricing→"
+              ]
+            }
+          ],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 20
+        },
+        "faq": {
+          "detailsCount": 12,
+          "tested": [
+            {
+              "label": "How do I know whether we need a custom build?+",
+              "focused": true,
+              "initialOpen": true,
+              "afterEnter": false,
+              "afterSpace": true
+            },
+            {
+              "label": "What can be built for the $2,500 minimum?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is discovery required?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is the discovery fee credited toward the build?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Will we own the code?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you integrate with our existing software?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do you build AI automation?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you handle sensitive or regulated data?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Does the build include hosting?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What happens when an API or provider changes?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you automate sending, publishing, deleting, or account changes?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What happens after launch?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 19,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/pricing/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/pricing/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [],
+          "requiredIdChecks": [
+            {
+              "id": "ongoing-seo",
+              "count": 1
+            },
+            {
+              "id": "analytics-reporting",
+              "count": 1
+            },
+            {
+              "id": "web-design",
+              "count": 1
+            },
+            {
+              "id": "hosting-email",
+              "count": 1
+            },
+            {
+              "id": "provider-rescue",
+              "count": 1
+            },
+            {
+              "id": "audits-strategy",
+              "count": 1
+            },
+            {
+              "id": "custom-solutions",
+              "count": 1
+            }
+          ],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 14
+        },
+        "faq": {
+          "detailsCount": 0,
+          "tested": [],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 14,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/work/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/work/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [],
+          "requiredIdChecks": [
+            {
+              "id": "website-work",
+              "count": 1
+            },
+            {
+              "id": "provider-rescue",
+              "count": 1
+            },
+            {
+              "id": "report-method",
+              "count": 1
+            },
+            {
+              "id": "public-tools",
+              "count": 1
+            }
+          ],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 10
+        },
+        "faq": {
+          "detailsCount": 0,
+          "tested": [],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 10,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/resources/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/resources/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [],
+          "requiredIdChecks": [
+            {
+              "id": "analysis-dashboard",
+              "count": 1
+            },
+            {
+              "id": "provider-rescue-checklist",
+              "count": 1
+            },
+            {
+              "id": "report-standard",
+              "count": 1
+            }
+          ],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 7
+        },
+        "faq": {
+          "detailsCount": 3,
+          "tested": [
+            {
+              "label": "Section menuResources",
+              "focused": true,
+              "initialOpen": true,
+              "afterEnter": false,
+              "afterSpace": true
+            },
+            {
+              "label": "Buyer guidance",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Reference",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 7,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/start/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/start/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": true,
+            "formCount": 1,
+            "submitControlCount": 1
+          },
+          "glossaryTriggerCount": 5
+        },
+        "faq": {
+          "detailsCount": 1,
+          "tested": [
+            {
+              "label": "Section menuPlan a project",
+              "focused": true,
+              "initialOpen": true,
+              "afterEnter": false,
+              "afterSpace": true
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 5,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      }
+    },
+    "mobile-390": {
+      "/services/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/services/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [
+            {
+              "pathname": "/services/ongoing-seo/",
+              "labelPattern": "ongoing seo|search growth",
+              "matchCount": 3,
+              "labelMatchCount": 1,
+              "labels": [
+                "Ongoing SEO & Search Growth",
+                "Review the service",
+                ""
+              ]
+            },
+            {
+              "pathname": "/services/web-design-redesign/",
+              "labelPattern": "web design|website redesign",
+              "matchCount": 3,
+              "labelMatchCount": 1,
+              "labels": [
+                "Web Design & Website Redesign",
+                "Review the service",
+                ""
+              ]
+            },
+            {
+              "pathname": "/services/provider-rescue/",
+              "labelPattern": "provider rescue|migration",
+              "matchCount": 3,
+              "labelMatchCount": 1,
+              "labels": [
+                "Website Migration & Provider Rescue",
+                "Review the service",
+                ""
+              ]
+            },
+            {
+              "pathname": "/services/research-audits-strategy/",
+              "labelPattern": "research|audit|strategy",
+              "matchCount": 3,
+              "labelMatchCount": 1,
+              "labels": [
+                "Digital Research, SEO Audits & Strategy",
+                "Review the service",
+                ""
+              ]
+            },
+            {
+              "pathname": "/services/custom-digital-solutions/",
+              "labelPattern": "custom|digital solutions",
+              "matchCount": 3,
+              "labelMatchCount": 1,
+              "labels": [
+                "Custom Web & Digital Solutions",
+                "Review the service",
+                ""
+              ]
+            }
+          ],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 8
+        },
+        "faq": {
+          "detailsCount": 0,
+          "tested": [],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 8,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/services/ongoing-seo/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/services/ongoing-seo/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [
+            {
+              "pathname": "/start/",
+              "labelPattern": "free review",
+              "matchCount": 2,
+              "labelMatchCount": 2,
+              "labels": [
+                "Start the free review→",
+                "Start the free review→"
+              ]
+            },
+            {
+              "pathname": "/pricing/",
+              "hash": "#ongoing-seo",
+              "labelPattern": "pricing",
+              "matchCount": 3,
+              "labelMatchCount": 3,
+              "labels": [
+                "See monthly pricing→",
+                "See the detailed Pricing & Scope Guide",
+                "See detailed pricing→"
+              ]
+            }
+          ],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 36
+        },
+        "faq": {
+          "detailsCount": 12,
+          "tested": [
+            {
+              "label": "Do you guarantee rankings, traffic, leads, or revenue?+",
+              "focused": true,
+              "initialOpen": true,
+              "afterEnter": false,
+              "afterSpace": true
+            },
+            {
+              "label": "How long does SEO take?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What happens every month?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What is the difference between reporting-only and implementation?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do I need a redesign before starting SEO?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is local SEO included?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is content included?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do you work on AI search visibility?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Are hosting and email included?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do you require a long contract?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can we start smaller?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Who owns the accounts and work?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 33,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/services/web-design-redesign/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/services/web-design-redesign/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [
+            {
+              "pathname": "/start/",
+              "labelPattern": "website review|free review",
+              "matchCount": 2,
+              "labelMatchCount": 2,
+              "labels": [
+                "Start the free website review→",
+                "Start the free website review→"
+              ]
+            },
+            {
+              "pathname": "/pricing/",
+              "hash": "#web-design",
+              "labelPattern": "pricing",
+              "matchCount": 3,
+              "labelMatchCount": 3,
+              "labels": [
+                "See website pricing→",
+                "See the detailed Pricing & Scope Guide",
+                "See detailed website pricing→"
+              ]
+            }
+          ],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 31
+        },
+        "faq": {
+          "detailsCount": 12,
+          "tested": [
+            {
+              "label": "Can you really build a website starting at $1,500?+",
+              "focused": true,
+              "initialOpen": true,
+              "afterEnter": false,
+              "afterSpace": true
+            },
+            {
+              "label": "How do I know whether I need a redesign or a focused repair?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is copywriting included?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is SEO included in a website project?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do you build ecommerce websites?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Which platform will you use?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Will the website be accessible?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is hosting included?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is business email included?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Will I own the website?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "How long will the project take?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What happens after launch?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 26,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/services/provider-rescue/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/services/provider-rescue/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [
+            {
+              "pathname": "/start/",
+              "labelPattern": "rescue assessment|start",
+              "matchCount": 2,
+              "labelMatchCount": 2,
+              "labels": [
+                "Start a Rescue Assessment→",
+                "Start a Rescue Assessment→"
+              ]
+            },
+            {
+              "pathname": "/emergency/",
+              "labelPattern": "emergency",
+              "matchCount": 3,
+              "labelMatchCount": 3,
+              "labels": [
+                "Request Emergency Help→",
+                "Request Emergency Help",
+                "Request Emergency Help→"
+              ]
+            },
+            {
+              "pathname": "/pricing/",
+              "hash": "#provider-rescue",
+              "labelPattern": "pricing",
+              "matchCount": 2,
+              "labelMatchCount": 2,
+              "labels": [
+                "See the detailed Pricing & Scope Guide",
+                "See detailed rescue and migration pricing→"
+              ]
+            }
+          ],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 30
+        },
+        "faq": {
+          "detailsCount": 12,
+          "tested": [
+            {
+              "label": "Can you guarantee that we will recover every account?+",
+              "focused": true,
+              "initialOpen": true,
+              "afterEnter": false,
+              "afterSpace": true
+            },
+            {
+              "label": "Can you contact our current provider for us?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Will a migration hurt our search visibility?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do we need a Rescue Assessment before migration?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What qualifies for the $1,000 migration minimum?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you migrate our email too?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you move an ecommerce website?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What if the former provider refuses to cooperate?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do you handle emergency migrations?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Will we own the new setup?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you preserve our existing content and URLs?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What happens after the migration?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 27,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/services/research-audits-strategy/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/services/research-audits-strategy/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [
+            {
+              "pathname": "/start/",
+              "labelPattern": "free review",
+              "matchCount": 3,
+              "labelMatchCount": 3,
+              "labels": [
+                "Start the free review→",
+                "Start the free review",
+                "Start the free review→"
+              ]
+            },
+            {
+              "pathname": "/pricing/",
+              "hash": "#analytics-reporting",
+              "labelPattern": "pricing",
+              "matchCount": 3,
+              "labelMatchCount": 1,
+              "labels": [
+                "See audit and reporting prices→",
+                "See monthly reporting prices",
+                "See audit and reporting pricing→"
+              ]
+            },
+            {
+              "pathname": "/resources/",
+              "hash": "#analysis-dashboard",
+              "labelPattern": "analytics|platform|repository",
+              "matchCount": 1,
+              "labelMatchCount": 1,
+              "labels": [
+                "Explore the public repository"
+              ]
+            }
+          ],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 31
+        },
+        "faq": {
+          "detailsCount": 12,
+          "tested": [
+            {
+              "label": "Is the initial review really free?+",
+              "focused": true,
+              "initialOpen": true,
+              "afterEnter": false,
+              "afterSpace": true
+            },
+            {
+              "label": "Is the Boho Analytics Platform really free?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What am I paying for in the monthly report?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Why does reporting cost more for ecommerce or large websites?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Does a report include implementation?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do you guarantee that an audit will improve rankings or revenue?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What happens if the data is bad or missing?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you review another provider’s reports?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can a paid audit be credited toward implementation?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "How many competitors do you review?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you analyze payment or ecommerce information?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Will the report tell us what not to buy?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 29,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/services/custom-digital-solutions/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/services/custom-digital-solutions/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [
+            {
+              "pathname": "/start/",
+              "labelPattern": "discovery|free review",
+              "matchCount": 2,
+              "labelMatchCount": 2,
+              "labels": [
+                "Start with discovery→",
+                "Start with the free review→"
+              ]
+            },
+            {
+              "pathname": "/pricing/",
+              "hash": "#custom-solutions",
+              "labelPattern": "pricing",
+              "matchCount": 3,
+              "labelMatchCount": 3,
+              "labels": [
+                "See custom-project pricing→",
+                "See the detailed Pricing & Scope Guide",
+                "See custom-project pricing→"
+              ]
+            }
+          ],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 20
+        },
+        "faq": {
+          "detailsCount": 12,
+          "tested": [
+            {
+              "label": "How do I know whether we need a custom build?+",
+              "focused": true,
+              "initialOpen": true,
+              "afterEnter": false,
+              "afterSpace": true
+            },
+            {
+              "label": "What can be built for the $2,500 minimum?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is discovery required?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is the discovery fee credited toward the build?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Will we own the code?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you integrate with our existing software?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do you build AI automation?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you handle sensitive or regulated data?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Does the build include hosting?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What happens when an API or provider changes?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you automate sending, publishing, deleting, or account changes?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What happens after launch?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 19,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/pricing/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/pricing/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [],
+          "requiredIdChecks": [
+            {
+              "id": "ongoing-seo",
+              "count": 1
+            },
+            {
+              "id": "analytics-reporting",
+              "count": 1
+            },
+            {
+              "id": "web-design",
+              "count": 1
+            },
+            {
+              "id": "hosting-email",
+              "count": 1
+            },
+            {
+              "id": "provider-rescue",
+              "count": 1
+            },
+            {
+              "id": "audits-strategy",
+              "count": 1
+            },
+            {
+              "id": "custom-solutions",
+              "count": 1
+            }
+          ],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 14
+        },
+        "faq": {
+          "detailsCount": 0,
+          "tested": [],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 14,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/work/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/work/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [],
+          "requiredIdChecks": [
+            {
+              "id": "website-work",
+              "count": 1
+            },
+            {
+              "id": "provider-rescue",
+              "count": 1
+            },
+            {
+              "id": "report-method",
+              "count": 1
+            },
+            {
+              "id": "public-tools",
+              "count": 1
+            }
+          ],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 10
+        },
+        "faq": {
+          "detailsCount": 0,
+          "tested": [],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 10,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/resources/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/resources/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [],
+          "requiredIdChecks": [
+            {
+              "id": "analysis-dashboard",
+              "count": 1
+            },
+            {
+              "id": "provider-rescue-checklist",
+              "count": 1
+            },
+            {
+              "id": "report-standard",
+              "count": 1
+            }
+          ],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 7
+        },
+        "faq": {
+          "detailsCount": 3,
+          "tested": [
+            {
+              "label": "Section menuResources",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 7,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/start/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/start/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": true,
+            "formCount": 1,
+            "submitControlCount": 1
+          },
+          "glossaryTriggerCount": 5
+        },
+        "faq": {
+          "detailsCount": 1,
+          "tested": [
+            {
+              "label": "Section menuPlan a project",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 5,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      }
+    },
+    "tablet-768": {
+      "/services/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/services/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [
+            {
+              "pathname": "/services/ongoing-seo/",
+              "labelPattern": "ongoing seo|search growth",
+              "matchCount": 3,
+              "labelMatchCount": 1,
+              "labels": [
+                "Ongoing SEO & Search Growth",
+                "Review the service",
+                ""
+              ]
+            },
+            {
+              "pathname": "/services/web-design-redesign/",
+              "labelPattern": "web design|website redesign",
+              "matchCount": 3,
+              "labelMatchCount": 1,
+              "labels": [
+                "Web Design & Website Redesign",
+                "Review the service",
+                ""
+              ]
+            },
+            {
+              "pathname": "/services/provider-rescue/",
+              "labelPattern": "provider rescue|migration",
+              "matchCount": 3,
+              "labelMatchCount": 1,
+              "labels": [
+                "Website Migration & Provider Rescue",
+                "Review the service",
+                ""
+              ]
+            },
+            {
+              "pathname": "/services/research-audits-strategy/",
+              "labelPattern": "research|audit|strategy",
+              "matchCount": 3,
+              "labelMatchCount": 1,
+              "labels": [
+                "Digital Research, SEO Audits & Strategy",
+                "Review the service",
+                ""
+              ]
+            },
+            {
+              "pathname": "/services/custom-digital-solutions/",
+              "labelPattern": "custom|digital solutions",
+              "matchCount": 3,
+              "labelMatchCount": 1,
+              "labels": [
+                "Custom Web & Digital Solutions",
+                "Review the service",
+                ""
+              ]
+            }
+          ],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 8
+        },
+        "faq": {
+          "detailsCount": 0,
+          "tested": [],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 8,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/services/ongoing-seo/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/services/ongoing-seo/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [
+            {
+              "pathname": "/start/",
+              "labelPattern": "free review",
+              "matchCount": 2,
+              "labelMatchCount": 2,
+              "labels": [
+                "Start the free review→",
+                "Start the free review→"
+              ]
+            },
+            {
+              "pathname": "/pricing/",
+              "hash": "#ongoing-seo",
+              "labelPattern": "pricing",
+              "matchCount": 3,
+              "labelMatchCount": 3,
+              "labels": [
+                "See monthly pricing→",
+                "See the detailed Pricing & Scope Guide",
+                "See detailed pricing→"
+              ]
+            }
+          ],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 36
+        },
+        "faq": {
+          "detailsCount": 12,
+          "tested": [
+            {
+              "label": "Do you guarantee rankings, traffic, leads, or revenue?+",
+              "focused": true,
+              "initialOpen": true,
+              "afterEnter": false,
+              "afterSpace": true
+            },
+            {
+              "label": "How long does SEO take?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What happens every month?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What is the difference between reporting-only and implementation?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do I need a redesign before starting SEO?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is local SEO included?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is content included?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do you work on AI search visibility?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Are hosting and email included?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do you require a long contract?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can we start smaller?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Who owns the accounts and work?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 33,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/services/web-design-redesign/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/services/web-design-redesign/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [
+            {
+              "pathname": "/start/",
+              "labelPattern": "website review|free review",
+              "matchCount": 2,
+              "labelMatchCount": 2,
+              "labels": [
+                "Start the free website review→",
+                "Start the free website review→"
+              ]
+            },
+            {
+              "pathname": "/pricing/",
+              "hash": "#web-design",
+              "labelPattern": "pricing",
+              "matchCount": 3,
+              "labelMatchCount": 3,
+              "labels": [
+                "See website pricing→",
+                "See the detailed Pricing & Scope Guide",
+                "See detailed website pricing→"
+              ]
+            }
+          ],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 31
+        },
+        "faq": {
+          "detailsCount": 12,
+          "tested": [
+            {
+              "label": "Can you really build a website starting at $1,500?+",
+              "focused": true,
+              "initialOpen": true,
+              "afterEnter": false,
+              "afterSpace": true
+            },
+            {
+              "label": "How do I know whether I need a redesign or a focused repair?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is copywriting included?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is SEO included in a website project?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do you build ecommerce websites?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Which platform will you use?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Will the website be accessible?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is hosting included?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is business email included?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Will I own the website?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "How long will the project take?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What happens after launch?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 26,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/services/provider-rescue/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/services/provider-rescue/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [
+            {
+              "pathname": "/start/",
+              "labelPattern": "rescue assessment|start",
+              "matchCount": 2,
+              "labelMatchCount": 2,
+              "labels": [
+                "Start a Rescue Assessment→",
+                "Start a Rescue Assessment→"
+              ]
+            },
+            {
+              "pathname": "/emergency/",
+              "labelPattern": "emergency",
+              "matchCount": 3,
+              "labelMatchCount": 3,
+              "labels": [
+                "Request Emergency Help→",
+                "Request Emergency Help",
+                "Request Emergency Help→"
+              ]
+            },
+            {
+              "pathname": "/pricing/",
+              "hash": "#provider-rescue",
+              "labelPattern": "pricing",
+              "matchCount": 2,
+              "labelMatchCount": 2,
+              "labels": [
+                "See the detailed Pricing & Scope Guide",
+                "See detailed rescue and migration pricing→"
+              ]
+            }
+          ],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 30
+        },
+        "faq": {
+          "detailsCount": 12,
+          "tested": [
+            {
+              "label": "Can you guarantee that we will recover every account?+",
+              "focused": true,
+              "initialOpen": true,
+              "afterEnter": false,
+              "afterSpace": true
+            },
+            {
+              "label": "Can you contact our current provider for us?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Will a migration hurt our search visibility?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do we need a Rescue Assessment before migration?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What qualifies for the $1,000 migration minimum?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you migrate our email too?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you move an ecommerce website?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What if the former provider refuses to cooperate?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do you handle emergency migrations?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Will we own the new setup?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you preserve our existing content and URLs?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What happens after the migration?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 27,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/services/research-audits-strategy/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/services/research-audits-strategy/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [
+            {
+              "pathname": "/start/",
+              "labelPattern": "free review",
+              "matchCount": 3,
+              "labelMatchCount": 3,
+              "labels": [
+                "Start the free review→",
+                "Start the free review",
+                "Start the free review→"
+              ]
+            },
+            {
+              "pathname": "/pricing/",
+              "hash": "#analytics-reporting",
+              "labelPattern": "pricing",
+              "matchCount": 3,
+              "labelMatchCount": 1,
+              "labels": [
+                "See audit and reporting prices→",
+                "See monthly reporting prices",
+                "See audit and reporting pricing→"
+              ]
+            },
+            {
+              "pathname": "/resources/",
+              "hash": "#analysis-dashboard",
+              "labelPattern": "analytics|platform|repository",
+              "matchCount": 1,
+              "labelMatchCount": 1,
+              "labels": [
+                "Explore the public repository"
+              ]
+            }
+          ],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 31
+        },
+        "faq": {
+          "detailsCount": 12,
+          "tested": [
+            {
+              "label": "Is the initial review really free?+",
+              "focused": true,
+              "initialOpen": true,
+              "afterEnter": false,
+              "afterSpace": true
+            },
+            {
+              "label": "Is the Boho Analytics Platform really free?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What am I paying for in the monthly report?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Why does reporting cost more for ecommerce or large websites?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Does a report include implementation?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do you guarantee that an audit will improve rankings or revenue?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What happens if the data is bad or missing?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you review another provider’s reports?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can a paid audit be credited toward implementation?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "How many competitors do you review?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you analyze payment or ecommerce information?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Will the report tell us what not to buy?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 29,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/services/custom-digital-solutions/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/services/custom-digital-solutions/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [
+            {
+              "pathname": "/start/",
+              "labelPattern": "discovery|free review",
+              "matchCount": 2,
+              "labelMatchCount": 2,
+              "labels": [
+                "Start with discovery→",
+                "Start with the free review→"
+              ]
+            },
+            {
+              "pathname": "/pricing/",
+              "hash": "#custom-solutions",
+              "labelPattern": "pricing",
+              "matchCount": 3,
+              "labelMatchCount": 3,
+              "labels": [
+                "See custom-project pricing→",
+                "See the detailed Pricing & Scope Guide",
+                "See custom-project pricing→"
+              ]
+            }
+          ],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 20
+        },
+        "faq": {
+          "detailsCount": 12,
+          "tested": [
+            {
+              "label": "How do I know whether we need a custom build?+",
+              "focused": true,
+              "initialOpen": true,
+              "afterEnter": false,
+              "afterSpace": true
+            },
+            {
+              "label": "What can be built for the $2,500 minimum?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is discovery required?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is the discovery fee credited toward the build?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Will we own the code?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you integrate with our existing software?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do you build AI automation?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you handle sensitive or regulated data?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Does the build include hosting?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What happens when an API or provider changes?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you automate sending, publishing, deleting, or account changes?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What happens after launch?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 19,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/pricing/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/pricing/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [],
+          "requiredIdChecks": [
+            {
+              "id": "ongoing-seo",
+              "count": 1
+            },
+            {
+              "id": "analytics-reporting",
+              "count": 1
+            },
+            {
+              "id": "web-design",
+              "count": 1
+            },
+            {
+              "id": "hosting-email",
+              "count": 1
+            },
+            {
+              "id": "provider-rescue",
+              "count": 1
+            },
+            {
+              "id": "audits-strategy",
+              "count": 1
+            },
+            {
+              "id": "custom-solutions",
+              "count": 1
+            }
+          ],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 14
+        },
+        "faq": {
+          "detailsCount": 0,
+          "tested": [],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 14,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/work/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/work/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [],
+          "requiredIdChecks": [
+            {
+              "id": "website-work",
+              "count": 1
+            },
+            {
+              "id": "provider-rescue",
+              "count": 1
+            },
+            {
+              "id": "report-method",
+              "count": 1
+            },
+            {
+              "id": "public-tools",
+              "count": 1
+            }
+          ],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 10
+        },
+        "faq": {
+          "detailsCount": 0,
+          "tested": [],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 10,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/resources/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/resources/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [],
+          "requiredIdChecks": [
+            {
+              "id": "analysis-dashboard",
+              "count": 1
+            },
+            {
+              "id": "provider-rescue-checklist",
+              "count": 1
+            },
+            {
+              "id": "report-standard",
+              "count": 1
+            }
+          ],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 7
+        },
+        "faq": {
+          "detailsCount": 3,
+          "tested": [
+            {
+              "label": "Section menuResources",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 7,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/start/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/start/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": true,
+            "formCount": 1,
+            "submitControlCount": 1
+          },
+          "glossaryTriggerCount": 5
+        },
+        "faq": {
+          "detailsCount": 1,
+          "tested": [
+            {
+              "label": "Section menuPlan a project",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 5,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      }
+    },
+    "zoom-200": {
+      "/services/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/services/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [
+            {
+              "pathname": "/services/ongoing-seo/",
+              "labelPattern": "ongoing seo|search growth",
+              "matchCount": 3,
+              "labelMatchCount": 1,
+              "labels": [
+                "Ongoing SEO & Search Growth",
+                "Review the service",
+                ""
+              ]
+            },
+            {
+              "pathname": "/services/web-design-redesign/",
+              "labelPattern": "web design|website redesign",
+              "matchCount": 3,
+              "labelMatchCount": 1,
+              "labels": [
+                "Web Design & Website Redesign",
+                "Review the service",
+                ""
+              ]
+            },
+            {
+              "pathname": "/services/provider-rescue/",
+              "labelPattern": "provider rescue|migration",
+              "matchCount": 3,
+              "labelMatchCount": 1,
+              "labels": [
+                "Website Migration & Provider Rescue",
+                "Review the service",
+                ""
+              ]
+            },
+            {
+              "pathname": "/services/research-audits-strategy/",
+              "labelPattern": "research|audit|strategy",
+              "matchCount": 3,
+              "labelMatchCount": 1,
+              "labels": [
+                "Digital Research, SEO Audits & Strategy",
+                "Review the service",
+                ""
+              ]
+            },
+            {
+              "pathname": "/services/custom-digital-solutions/",
+              "labelPattern": "custom|digital solutions",
+              "matchCount": 3,
+              "labelMatchCount": 1,
+              "labels": [
+                "Custom Web & Digital Solutions",
+                "Review the service",
+                ""
+              ]
+            }
+          ],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 8
+        },
+        "faq": {
+          "detailsCount": 0,
+          "tested": [],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 8,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/services/ongoing-seo/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/services/ongoing-seo/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [
+            {
+              "pathname": "/start/",
+              "labelPattern": "free review",
+              "matchCount": 2,
+              "labelMatchCount": 2,
+              "labels": [
+                "Start the free review→",
+                "Start the free review→"
+              ]
+            },
+            {
+              "pathname": "/pricing/",
+              "hash": "#ongoing-seo",
+              "labelPattern": "pricing",
+              "matchCount": 3,
+              "labelMatchCount": 3,
+              "labels": [
+                "See monthly pricing→",
+                "See the detailed Pricing & Scope Guide",
+                "See detailed pricing→"
+              ]
+            }
+          ],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 36
+        },
+        "faq": {
+          "detailsCount": 12,
+          "tested": [
+            {
+              "label": "Do you guarantee rankings, traffic, leads, or revenue?+",
+              "focused": true,
+              "initialOpen": true,
+              "afterEnter": false,
+              "afterSpace": true
+            },
+            {
+              "label": "How long does SEO take?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What happens every month?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What is the difference between reporting-only and implementation?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do I need a redesign before starting SEO?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is local SEO included?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is content included?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do you work on AI search visibility?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Are hosting and email included?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do you require a long contract?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can we start smaller?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Who owns the accounts and work?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 33,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/services/web-design-redesign/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/services/web-design-redesign/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [
+            {
+              "pathname": "/start/",
+              "labelPattern": "website review|free review",
+              "matchCount": 2,
+              "labelMatchCount": 2,
+              "labels": [
+                "Start the free website review→",
+                "Start the free website review→"
+              ]
+            },
+            {
+              "pathname": "/pricing/",
+              "hash": "#web-design",
+              "labelPattern": "pricing",
+              "matchCount": 3,
+              "labelMatchCount": 3,
+              "labels": [
+                "See website pricing→",
+                "See the detailed Pricing & Scope Guide",
+                "See detailed website pricing→"
+              ]
+            }
+          ],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 31
+        },
+        "faq": {
+          "detailsCount": 12,
+          "tested": [
+            {
+              "label": "Can you really build a website starting at $1,500?+",
+              "focused": true,
+              "initialOpen": true,
+              "afterEnter": false,
+              "afterSpace": true
+            },
+            {
+              "label": "How do I know whether I need a redesign or a focused repair?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is copywriting included?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is SEO included in a website project?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do you build ecommerce websites?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Which platform will you use?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Will the website be accessible?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is hosting included?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is business email included?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Will I own the website?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "How long will the project take?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What happens after launch?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 26,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/services/provider-rescue/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/services/provider-rescue/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [
+            {
+              "pathname": "/start/",
+              "labelPattern": "rescue assessment|start",
+              "matchCount": 2,
+              "labelMatchCount": 2,
+              "labels": [
+                "Start a Rescue Assessment→",
+                "Start a Rescue Assessment→"
+              ]
+            },
+            {
+              "pathname": "/emergency/",
+              "labelPattern": "emergency",
+              "matchCount": 3,
+              "labelMatchCount": 3,
+              "labels": [
+                "Request Emergency Help→",
+                "Request Emergency Help",
+                "Request Emergency Help→"
+              ]
+            },
+            {
+              "pathname": "/pricing/",
+              "hash": "#provider-rescue",
+              "labelPattern": "pricing",
+              "matchCount": 2,
+              "labelMatchCount": 2,
+              "labels": [
+                "See the detailed Pricing & Scope Guide",
+                "See detailed rescue and migration pricing→"
+              ]
+            }
+          ],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 30
+        },
+        "faq": {
+          "detailsCount": 12,
+          "tested": [
+            {
+              "label": "Can you guarantee that we will recover every account?+",
+              "focused": true,
+              "initialOpen": true,
+              "afterEnter": false,
+              "afterSpace": true
+            },
+            {
+              "label": "Can you contact our current provider for us?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Will a migration hurt our search visibility?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do we need a Rescue Assessment before migration?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What qualifies for the $1,000 migration minimum?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you migrate our email too?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you move an ecommerce website?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What if the former provider refuses to cooperate?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do you handle emergency migrations?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Will we own the new setup?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you preserve our existing content and URLs?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What happens after the migration?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 27,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/services/research-audits-strategy/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/services/research-audits-strategy/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [
+            {
+              "pathname": "/start/",
+              "labelPattern": "free review",
+              "matchCount": 3,
+              "labelMatchCount": 3,
+              "labels": [
+                "Start the free review→",
+                "Start the free review",
+                "Start the free review→"
+              ]
+            },
+            {
+              "pathname": "/pricing/",
+              "hash": "#analytics-reporting",
+              "labelPattern": "pricing",
+              "matchCount": 3,
+              "labelMatchCount": 1,
+              "labels": [
+                "See audit and reporting prices→",
+                "See monthly reporting prices",
+                "See audit and reporting pricing→"
+              ]
+            },
+            {
+              "pathname": "/resources/",
+              "hash": "#analysis-dashboard",
+              "labelPattern": "analytics|platform|repository",
+              "matchCount": 1,
+              "labelMatchCount": 1,
+              "labels": [
+                "Explore the public repository"
+              ]
+            }
+          ],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 31
+        },
+        "faq": {
+          "detailsCount": 12,
+          "tested": [
+            {
+              "label": "Is the initial review really free?+",
+              "focused": true,
+              "initialOpen": true,
+              "afterEnter": false,
+              "afterSpace": true
+            },
+            {
+              "label": "Is the Boho Analytics Platform really free?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What am I paying for in the monthly report?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Why does reporting cost more for ecommerce or large websites?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Does a report include implementation?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do you guarantee that an audit will improve rankings or revenue?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What happens if the data is bad or missing?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you review another provider’s reports?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can a paid audit be credited toward implementation?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "How many competitors do you review?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you analyze payment or ecommerce information?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Will the report tell us what not to buy?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 29,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/services/custom-digital-solutions/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/services/custom-digital-solutions/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [
+            {
+              "pathname": "/start/",
+              "labelPattern": "discovery|free review",
+              "matchCount": 2,
+              "labelMatchCount": 2,
+              "labels": [
+                "Start with discovery→",
+                "Start with the free review→"
+              ]
+            },
+            {
+              "pathname": "/pricing/",
+              "hash": "#custom-solutions",
+              "labelPattern": "pricing",
+              "matchCount": 3,
+              "labelMatchCount": 3,
+              "labels": [
+                "See custom-project pricing→",
+                "See the detailed Pricing & Scope Guide",
+                "See custom-project pricing→"
+              ]
+            }
+          ],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 20
+        },
+        "faq": {
+          "detailsCount": 12,
+          "tested": [
+            {
+              "label": "How do I know whether we need a custom build?+",
+              "focused": true,
+              "initialOpen": true,
+              "afterEnter": false,
+              "afterSpace": true
+            },
+            {
+              "label": "What can be built for the $2,500 minimum?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is discovery required?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Is the discovery fee credited toward the build?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Will we own the code?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you integrate with our existing software?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Do you build AI automation?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you handle sensitive or regulated data?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Does the build include hosting?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What happens when an API or provider changes?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "Can you automate sending, publishing, deleting, or account changes?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            },
+            {
+              "label": "What happens after launch?+",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 19,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/pricing/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/pricing/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [],
+          "requiredIdChecks": [
+            {
+              "id": "ongoing-seo",
+              "count": 1
+            },
+            {
+              "id": "analytics-reporting",
+              "count": 1
+            },
+            {
+              "id": "web-design",
+              "count": 1
+            },
+            {
+              "id": "hosting-email",
+              "count": 1
+            },
+            {
+              "id": "provider-rescue",
+              "count": 1
+            },
+            {
+              "id": "audits-strategy",
+              "count": 1
+            },
+            {
+              "id": "custom-solutions",
+              "count": 1
+            }
+          ],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 14
+        },
+        "faq": {
+          "detailsCount": 0,
+          "tested": [],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 14,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/work/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/work/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [],
+          "requiredIdChecks": [
+            {
+              "id": "website-work",
+              "count": 1
+            },
+            {
+              "id": "provider-rescue",
+              "count": 1
+            },
+            {
+              "id": "report-method",
+              "count": 1
+            },
+            {
+              "id": "public-tools",
+              "count": 1
+            }
+          ],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 10
+        },
+        "faq": {
+          "detailsCount": 0,
+          "tested": [],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 10,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/resources/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/resources/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [],
+          "requiredIdChecks": [
+            {
+              "id": "analysis-dashboard",
+              "count": 1
+            },
+            {
+              "id": "provider-rescue-checklist",
+              "count": 1
+            },
+            {
+              "id": "report-standard",
+              "count": 1
+            }
+          ],
+          "formCheck": {
+            "required": false,
+            "formCount": 0,
+            "submitControlCount": 0
+          },
+          "glossaryTriggerCount": 7
+        },
+        "faq": {
+          "detailsCount": 3,
+          "tested": [
+            {
+              "label": "Section menuResources",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 7,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      },
+      "/start/": {
+        "status": 200,
+        "finalUrl": "http://127.0.0.1:4177/start/",
+        "attemptCount": 1,
+        "transientRetries": [],
+        "metrics": {
+          "h1Count": 1,
+          "mainCount": 1,
+          "horizontalOverflow": 0,
+          "localBrokenImages": [],
+          "leakedEditorialLabels": [],
+          "linkChecks": [],
+          "requiredIdChecks": [],
+          "formCheck": {
+            "required": true,
+            "formCount": 1,
+            "submitControlCount": 1
+          },
+          "glossaryTriggerCount": 5
+        },
+        "faq": {
+          "detailsCount": 1,
+          "tested": [
+            {
+              "label": "Section menuPlan a project",
+              "focused": true,
+              "initialOpen": false,
+              "afterEnter": true,
+              "afterSpace": false
+            }
+          ],
+          "errors": []
+        },
+        "popovers": {
+          "triggerCount": 5,
+          "testedTriggerCount": 2,
+          "maximumOpenCount": 1,
+          "states": [
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            },
+            {
+              "openCount": 1,
+              "position": "fixed",
+              "zIndex": "2147483000",
+              "topmost": true,
+              "insideViewport": true
+            }
+          ],
+          "closedAfterEscape": 0,
+          "errors": []
+        },
+        "diagnostics": {
+          "consoleErrors": [],
+          "pageErrors": [],
+          "failedLocalRequests": [],
+          "badLocalResponses": []
+        },
+        "errors": []
+      }
+    }
+  },
+  "transientRetries": [],
+  "failures": [],
+  "failureCount": 0
+}

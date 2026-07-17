@@ -27,11 +27,11 @@ const sectionMenus: Record<
     title: "Services",
     items: [
       { label: "Service overview", href: "/services/" },
-      { label: "Local visibility & lead systems", href: "/services/local-seo-search-visibility/" },
-      { label: "Websites & managed hosting", href: "/services/website-design-redesign/" },
-      { label: "Provider rescue & migration", href: "/services/website-migration-provider-rescue/" },
-      { label: "Custom tools & automation", href: "/services/custom-tools-automation/" },
-      { label: "Research, analytics & improvement", href: "/services/research-audits-analytics/" },
+      { label: "Ongoing SEO & Search Growth", href: "/services/ongoing-seo/" },
+      { label: "Web Design & Website Redesign", href: "/services/web-design-redesign/" },
+      { label: "Website Migration & Provider Rescue", href: "/services/provider-rescue/" },
+      { label: "Custom Web & Digital Solutions", href: "/services/custom-digital-solutions/" },
+      { label: "Digital Research, SEO Audits & Strategy", href: "/services/research-audits-strategy/" },
     ],
   },
   industries: {

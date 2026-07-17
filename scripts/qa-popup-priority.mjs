@@ -241,7 +241,7 @@ collectErrors(coverage, "coverage");
 const expectedCoverage = {
   "/": ["dashboard", "platform"],
   "/tools/": ["codebase", "platform"],
-  "/services/technical-seo-site-health/": ["http-status-code"],
+  "/services/research-audits-strategy/": ["http-status-code"],
   "/learn/provider-rescue/": ["baseline", "cutover"],
   "/definitely-not-a-real-page/": ["not-found-404"],
 };

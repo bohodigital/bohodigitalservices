@@ -1,5 +1,6 @@
 import {
   ArrowRight,
+  BarChart3,
   MousePointerClick,
   PanelsTopLeft,
   SearchCheck,
@@ -14,6 +15,7 @@ import { KnowledgeHero } from "./KnowledgePages";
 import { SectionSidebar } from "./SectionNavigation";
 
 type ResourceCard = {
+  id?: string;
   title: string;
   description: string;
   href: `/${string}`;
@@ -32,7 +34,8 @@ const resourceCollections: ResourceCard[] = [
     meta: "Planning",
   },
   {
-    title: "Provider rescue",
+    id: "provider-rescue-checklist",
+    title: "Provider rescue checklist",
     description: "Map ownership, access, URLs, data, forms, analytics, redirects, and rollback before changing providers.",
     href: "/learn/provider-rescue/",
     label: "Read the rescue guide",
@@ -48,9 +51,9 @@ const resourceCollections: ResourceCard[] = [
     meta: "Definitions",
   },
   {
-    title: "Websites & managed hosting",
+    title: "Web Design & Website Redesign",
     description: "Review how a useful website, explicit ownership, managed hosting, maintenance, and recovery fit together as one operating system.",
-    href: "/services/website-design-redesign/",
+    href: "/services/web-design-redesign/",
     label: "Review the website service",
     icon: PanelsTopLeft,
     meta: "Ownership",
@@ -79,7 +82,7 @@ const decisionRoutes = [
   {
     title: "Review visibility and lead flow",
     description: "Connect local discovery, trust, page clarity, qualified action, and measurement as one business system.",
-    href: "/services/local-seo-search-visibility/" as const,
+    href: "/services/ongoing-seo/#local-seo" as const,
     icon: MousePointerClick,
   },
 ];
@@ -110,7 +113,10 @@ export function ResourcesPage() {
             currentPath="/resources/"
             anchors={[
               { label: "Resource collections", href: "#resource-collections" },
+              { label: "Free analytics platform", href: "#analysis-dashboard" },
+              { label: "Provider rescue checklist", href: "#provider-rescue-checklist" },
               { label: "Choose by decision", href: "#choose-by-decision" },
+              { label: "Boho report standard", href: "#report-standard" },
               { label: "Get a technical second opinion", href: "#technical-second-opinion" },
             ]}
             note="Start with the decision you need to make. The useful route is usually shorter than the jargon suggests."
@@ -126,7 +132,7 @@ export function ResourcesPage() {
                 </header>
                 <div className="resources-collection-grid">
                   {resourceCollections.map(({ icon: Icon, ...resource }) => (
-                    <article className="resource-collection-card" key={resource.href}>
+                    <article className="resource-collection-card" id={resource.id} key={resource.id ?? resource.href}>
                       <div className="resource-icon" aria-hidden="true"><Icon size={25} strokeWidth={1.9} /></div>
                       <p className="resource-collection-card__meta">{resource.meta}</p>
                       <h3>{resource.title}</h3>
@@ -137,6 +143,27 @@ export function ResourcesPage() {
                       </a>
                     </article>
                   ))}
+                </div>
+              </div>
+            </section>
+
+            <section className="resources-decisions" id="analysis-dashboard" aria-labelledby="analysis-dashboard-title">
+              <div className="section-shell resources-decisions__layout">
+                <header className="resources-heading">
+                  <p className="eyebrow">Free public software</p>
+                  <h2 id="analysis-dashboard-title">Use the Boho Analytics Platform without paying to unlock the dashboard.</h2>
+                  <p>{define("A source-labeled view is useful only when it keeps unlike measurements distinct and makes collection limits visible.")}</p>
+                </header>
+                <div className="resources-decision-list">
+                  <a href="https://github.com/bohodigital/boho-analytics-platform" rel="noopener noreferrer" target="_blank">
+                    <span className="resource-icon" aria-hidden="true"><BarChart3 size={22} strokeWidth={1.9} /></span>
+                    <span>
+                      <strong>Boho Analytics Platform · Free</strong>
+                      <small>Public, MIT-licensed software for self-hosted, source-labeled website analytics, search performance, traffic infrastructure, and form-delivery monitoring. This is not a hosted customer dashboard offer.</small>
+                    </span>
+                    <ArrowRight aria-hidden="true" size={17} />
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
                 </div>
               </div>
             </section>
@@ -159,6 +186,42 @@ export function ResourcesPage() {
                       <ArrowRight aria-hidden="true" size={17} />
                     </a>
                   ))}
+                </div>
+              </div>
+            </section>
+
+            <section className="resources-collections" id="report-standard" aria-labelledby="report-standard-title">
+              <div className="section-shell">
+                <header className="resources-heading">
+                  <p className="eyebrow">Boho report standard</p>
+                  <h2 id="report-standard-title">Make the evidence, limits, and next decision inspectable.</h2>
+                  <p>{define("A substantial report should show where its information came from, what failed or remained uncertain, and which small set of actions deserves attention next.")}</p>
+                </header>
+                <div className="resources-collection-grid">
+                  <article className="resource-collection-card">
+                    <div className="resource-icon" aria-hidden="true"><SearchCheck size={25} strokeWidth={1.9} /></div>
+                    <p className="resource-collection-card__meta">01 · Data receipt</p>
+                    <h3>Name what was reviewed.</h3>
+                    <p>Identify the review period, websites, properties, markets or systems, sources used, and the last successful collection or review date.</p>
+                  </article>
+                  <article className="resource-collection-card">
+                    <div className="resource-icon" aria-hidden="true"><ShieldCheck size={25} strokeWidth={1.9} /></div>
+                    <p className="resource-collection-card__meta">02 · Quality gates</p>
+                    <h3>Disclose weak evidence.</h3>
+                    <p>Call out required-source failures, stale information, incomplete access, conflicting platforms, and any limitation that changes what can be concluded.</p>
+                  </article>
+                  <article className="resource-collection-card">
+                    <div className="resource-icon" aria-hidden="true"><BarChart3 size={25} strokeWidth={1.9} /></div>
+                    <p className="resource-collection-card__meta">03 · Interpretation</p>
+                    <h3>Separate observation from inference.</h3>
+                    <p>Keep directly observed facts, calculated or derived values, and analyst interpretations visibly distinct instead of presenting every number as equal evidence.</p>
+                  </article>
+                  <article className="resource-collection-card">
+                    <div className="resource-icon" aria-hidden="true"><MousePointerClick size={25} strokeWidth={1.9} /></div>
+                    <p className="resource-collection-card__meta">04 · Decision set</p>
+                    <h3>Limit the main priorities.</h3>
+                    <p>Lead with three to five priority actions, identify what should not be purchased yet, and define how the next change will be validated.</p>
+                  </article>
                 </div>
               </div>
             </section>

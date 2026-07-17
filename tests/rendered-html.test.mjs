@@ -34,14 +34,13 @@ async function render(pathname = "/", origin = "http://localhost") {
 const publicRoutes = [
   "/",
   "/services/",
-  "/services/website-design-redesign/",
-  "/services/website-migration-provider-rescue/",
-  "/services/custom-tools-automation/",
-  "/services/local-seo-search-visibility/",
-  "/services/lead-generation-conversion/",
-  "/services/ongoing-seo-growth/",
-  "/services/technical-seo-site-health/",
-  "/services/research-audits-analytics/",
+  "/services/ongoing-seo/",
+  "/services/web-design-redesign/",
+  "/services/provider-rescue/",
+  "/services/research-audits-strategy/",
+  "/services/custom-digital-solutions/",
+  "/pricing/",
+  "/work/",
   "/industries/",
   "/industries/home-improvement-contractors/",
   "/industries/local-service-businesses/",
@@ -64,7 +63,14 @@ const publicRoutes = [
 ];
 
 const retiredRoutes = [
-  "/pricing/",
+  "/services/ongoing-seo-growth/",
+  "/services/local-seo-search-visibility/",
+  "/services/lead-generation-conversion/",
+  "/services/technical-seo-site-health/",
+  "/services/website-design-redesign/",
+  "/services/website-migration-provider-rescue/",
+  "/services/research-audits-analytics/",
+  "/services/custom-tools-automation/",
   "/lab/",
   "/lab/claims-we-refuse-to-make/",
   "/lab/in-house-brands/",
@@ -285,6 +291,41 @@ test("publishes the three production form contracts without stale caveats", asyn
   }
 });
 
+test("keeps candidate prices centralized and publishes the complete assessment-credit conditions", async () => {
+  const pricing = await (await render("/pricing/")).text();
+  for (const anchor of [
+    "analytics-reporting",
+    "ongoing-seo",
+    "web-design",
+    "hosting-email",
+    "provider-rescue",
+    "audits-strategy",
+    "custom-solutions",
+  ]) {
+    assert.match(pricing, new RegExp(`id="${anchor}"`, "i"));
+  }
+  for (const condition of [
+    /non-transferable/i,
+    /no cash value/i,
+    /cannot exceed the professional-service fee/i,
+    /does not apply to taxes/i,
+    /does not normally apply to recurring monthly reports/i,
+    /materially change after the assessment/i,
+  ]) {
+    assert.match(pricing, condition);
+  }
+
+  const servicesSource = await readFile(new URL("../app/components/ServicesPage.tsx", import.meta.url), "utf8");
+  const pricingSource = await readFile(new URL("../app/components/PricingPage.tsx", import.meta.url), "utf8");
+  const coreSource = await readFile(new URL("../app/content/corePages.ts", import.meta.url), "utf8");
+  const generatorSource = await readFile(new URL("../scripts/generate-service-page-data.mjs", import.meta.url), "utf8");
+  assert.doesNotMatch(servicesSource, /\$\d/);
+  assert.doesNotMatch(pricingSource, /\$\d/);
+  assert.doesNotMatch(coreSource.slice(coreSource.indexOf('slug: "/pricing/"'), coreSource.indexOf('slug: "/about/"')), /\$\d/);
+  assert.match(generatorSource, /approvedCurrencyAmounts/);
+  assert.match(generatorSource, /rendered currency amounts do not match/);
+});
+
 test("publishes factual privacy, terms, and accessibility pages", async () => {
   const privacy = await (await render("/privacy/")).text();
   assert.match(privacy, /Republic of Bohemia LLC/i);
@@ -360,7 +401,7 @@ test("realigns Tools around five system families, two decision visuals, and exac
   assert.match(resources, /Website buying/i);
   assert.match(resources, /Provider rescue/i);
   assert.match(resources, /Plain-language glossary/i);
-  assert.match(resources, /Websites &amp; managed hosting/i);
+  assert.match(resources, /Web Design &amp; Website Redesign/i);
   assert.match(resources, /Get a technical second opinion before the expensive decision/i);
   assert.doesNotMatch(resources, />\s*Lab\s*<|Tools &amp; systems|How Boho builds tools|secondary evidence|Rank Builder/i);
 
@@ -526,7 +567,7 @@ test("keeps automatic glossary matches context-safe across ambiguous business la
     assert.match(about, new RegExp(`href="/learn/glossary/#term-${slug}"`, "i"), `/about/ lacks ${slug}`);
   }
 
-  const websiteDesign = await (await render("/services/website-design-redesign/")).text();
+  const websiteDesign = await (await render("/services/web-design-redesign/")).text();
   assert.doesNotMatch(websiteDesign, /href="\/learn\/glossary\/#term-(?:client|credential)"/i);
 
   const retail = await (await render("/industries/brick-and-mortar-retail-hospitality/")).text();
@@ -568,7 +609,7 @@ test("keeps the mirrored hero uncropped and glossary links connected across the 
     assert.match(glossary, new RegExp(`id="term-${slug}"`, "i"), `missing rendered glossary entry ${slug}`);
   }
 
-  for (const route of ["/", "/services/", "/services/website-design-redesign/", "/learn/website-buying/", "/learn/provider-rescue/", "/resources/", "/tools/", "/privacy/"]) {
+  for (const route of ["/", "/services/", "/services/web-design-redesign/", "/learn/website-buying/", "/learn/provider-rescue/", "/resources/", "/tools/", "/privacy/"]) {
     const html = await (await render(route)).text();
     assert.match(html, /href="\/learn\/glossary\/#term-[a-z0-9-]+"/i, `${route} lacks a glossary definition link`);
   }

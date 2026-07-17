@@ -1,0 +1,23 @@
+{
+  "request": "CR-2026-07-17-BOHO-SERVICE-PAGES-OVERHAUL-001",
+  "candidateBranch": "feature/service-pages-overhaul-20260717",
+  "baseCommit": "6128c2b427172d11dcd0cba80c2dd76af803c284",
+  "privateReviewOnly": true,
+  "productionDeployment": false,
+  "productionFormsChanged": false,
+  "dnsChanged": false,
+  "cloudflareAccountConfigurationChanged": false,
+  "analyticsAccountsChanged": false,
+  "emailChanged": false,
+  "credentialsChanged": false,
+  "billingChanged": false,
+  "ownerApprovalRequiredForPublication": true,
+  "ownerApprovalRequiredForCandidatePricing": true,
+  "candidatePricingIsNotActivePolicy": true,
+  "candidateCommitRecordedAfterFreeze": true,
+  "headlessQa": {
+    "routeViewportChecks": 40,
+    "failures": 0,
+    "screenshots": 12
+  }
+}

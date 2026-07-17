@@ -36,28 +36,28 @@ export const resourceNavigationGroups: ReadonlyArray<ResourceNavigationGroup> = 
 
 export const serviceHeaderLinks: ReadonlyArray<NavigationLink> = [
   {
-    label: "Local Visibility & Lead Systems",
-    href: "/services/local-seo-search-visibility/",
+    label: "Ongoing SEO & Search Growth",
+    href: "/services/ongoing-seo/",
     description: "Local discovery, trust, lead paths, and measurement working as one system.",
   },
   {
-    label: "Websites & Managed Hosting",
-    href: "/services/website-design-redesign/",
+    label: "Web Design & Website Redesign",
+    href: "/services/web-design-redesign/",
     description: "Useful, owned websites with an explicit managed-hosting provision.",
   },
   {
-    label: "Provider Rescue & Migration",
-    href: "/services/website-migration-provider-rescue/",
+    label: "Website Migration & Provider Rescue",
+    href: "/services/provider-rescue/",
     description: "Recover control, preserve value, migrate carefully, and document the result.",
   },
   {
-    label: "Custom Tools & Automation",
-    href: "/services/custom-tools-automation/",
+    label: "Custom Web & Digital Solutions",
+    href: "/services/custom-digital-solutions/",
     description: "Practical internal tools and automations for repeated operational work.",
   },
   {
-    label: "Research, Analytics & Improvement",
-    href: "/services/research-audits-analytics/",
+    label: "Digital Research, SEO Audits & Strategy",
+    href: "/services/research-audits-strategy/",
     description: "Evidence, measurement, and improvement tied to a real decision.",
   },
 ];

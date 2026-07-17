@@ -4,7 +4,7 @@ export const operatingCycle = [
     number: "01",
     title: "Diagnose",
     body: "Understand the business, customer, market, website, systems, constraints, and valuable next action before prescribing work.",
-    href: "/services/research-audits-analytics/",
+    href: "/services/research-audits-strategy/",
     linkLabel: "Explore diagnosis and research",
   },
   {
@@ -12,7 +12,7 @@ export const operatingCycle = [
     number: "02",
     title: "Prioritize",
     body: "Rank the possible work by business value, evidence, confidence, effort, risk, and the ability to measure it.",
-    href: "/services/research-audits-analytics/",
+    href: "/services/research-audits-strategy/",
     linkLabel: "See how priorities are chosen",
   },
   {
@@ -28,7 +28,7 @@ export const operatingCycle = [
     number: "04",
     title: "Deploy",
     body: "Move the agreed change into its real environment with ownership, rollback, and verification recorded.",
-    href: "/services/website-migration-provider-rescue/",
+    href: "/services/provider-rescue/",
     linkLabel: "See how deployment risk is handled",
   },
   {
@@ -36,7 +36,7 @@ export const operatingCycle = [
     number: "05",
     title: "Measure",
     body: "Review the signals tied to the intended outcome, document uncertainty, and separate evidence from decoration.",
-    href: "/services/research-audits-analytics/",
+    href: "/services/research-audits-strategy/",
     linkLabel: "Explore measurement and analytics",
   },
   {
@@ -44,7 +44,7 @@ export const operatingCycle = [
     number: "06",
     title: "Improve",
     body: "Keep what has a case, change what does not, document the decision, and begin the next useful cycle.",
-    href: "/services/ongoing-seo-growth/",
+    href: "/services/ongoing-seo/",
     linkLabel: "See how ongoing improvement works",
   },
 ] as const;
