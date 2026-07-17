@@ -27,6 +27,7 @@ const relatedSystemFamilyByCluster: Record<GlossaryCluster, { label: string; hre
   "Privacy and data governance": { label: "Secure Integrations & Custom Tools", href: "/tools/#family-secure-integrations-custom-tools" },
   "Leads and conversion": { label: "Measurement & Search Signals", href: "/tools/#family-measurement-search-signals" },
   "AI and language-model infrastructure": { label: "Operations & Automation", href: "/tools/#family-operations-automation" },
+  "Research and quantitative methods": { label: "Measurement & Search Signals", href: "/tools/#family-measurement-search-signals" },
 };
 
 function clusterSlug(cluster: GlossaryCluster) {
@@ -194,7 +195,7 @@ export function GlossaryExplorer() {
         <div className="glossary-explorer__section-heading">
           <p className="eyebrow">System clusters</p>
           <h2 id="glossary-clusters-title">Move through the machinery by business context.</h2>
-          <p>Twelve clusters separate ownership, delivery, operations, access, privacy, measurement, and customer outcomes without breaking their relationships.</p>
+          <p>Thirteen clusters separate ownership, delivery, operations, access, privacy, measurement, research methods, and customer outcomes without breaking their relationships.</p>
         </div>
         <div className="glossary-cluster-grid" aria-label="Filter glossary by system cluster">
           {glossaryClusters.map((item, index) => (

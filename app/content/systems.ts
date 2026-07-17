@@ -229,7 +229,7 @@ export const ownedWebsites = [
     domain: "bettergrades.net",
     url: "https://bettergrades.net/",
     role: "A free academic answer, explanation, calculator, practice, and diagnostic platform spanning Algebra and Calculus.",
-    publicMemo: "Better Grades connects direct answers to methods, topic maps, calculators, practice, and diagnostics. It helps us study topic depth, search-to-tool journeys, structured content relationships, and the point where an explanation should lead to active practice.",
+    publicMemo: "Better Grades connects direct answers to methods, topic maps, calculators, practice, and diagnostics. It helps us study topic depth, search-to-tool journeys, structured content relationships, and the point where an explanation should turn into active practice.",
     seoLens: ["Topic clusters", "Search-to-tool journeys", "Structured learning paths"],
     repositoryUrl: "https://github.com/bohodigital/bettergrades",
     image: {

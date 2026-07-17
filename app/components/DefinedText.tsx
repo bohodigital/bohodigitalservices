@@ -1,8 +1,8 @@
 import { Fragment } from "react";
 
 import {
-  glossaryAliasIndex,
-  glossaryAliasPattern,
+  glossaryAutomaticAliasIndex,
+  glossaryAutomaticAliasPattern,
   glossaryBySlug,
 } from "../content/knowledge";
 import { DefinitionTerm } from "./DefinitionTerm";
@@ -15,10 +15,10 @@ function renderAutomaticTerms(
   keyPrefix: string,
   excludedSlugs: ReadonlySet<string>,
 ) {
-  if (!text || !glossaryAliasPattern) return [text];
+  if (!text || !glossaryAutomaticAliasPattern) return [text];
 
   const matcher = new RegExp(
-    `(?<![\\p{L}\\p{N}])(${glossaryAliasPattern})(?![\\p{L}\\p{N}])`,
+    `(?<![\\p{L}\\p{N}])(${glossaryAutomaticAliasPattern})(?![\\p{L}\\p{N}])`,
     "giu",
   );
   const output = [];
@@ -27,7 +27,7 @@ function renderAutomaticTerms(
 
   while ((match = matcher.exec(text)) !== null) {
     const label = match[1];
-    const entry = glossaryAliasIndex.get(label.toLocaleLowerCase());
+    const entry = glossaryAutomaticAliasIndex.get(label.toLocaleLowerCase());
 
     if (match.index > cursor) output.push(text.slice(cursor, match.index));
 

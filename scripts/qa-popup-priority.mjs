@@ -1,5 +1,6 @@
 import { mkdir, writeFile } from "node:fs/promises";
-import { chromium } from "file:///C:/Users/a1009/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/index.mjs";
+
+const { chromium } = await import(process.env.QA_PLAYWRIGHT_CORE_URL ?? "playwright-core");
 
 const baseUrl = process.env.QA_BASE_URL ?? "http://localhost:4177";
 const artifactDir = process.env.QA_ARTIFACT_DIR
@@ -8,7 +9,7 @@ const artifactDir = process.env.QA_ARTIFACT_DIR
 await mkdir(artifactDir, { recursive: true });
 
 const browser = await chromium.launch({
-  executablePath: "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+  ...(process.env.QA_BROWSER_EXECUTABLE ? { executablePath: process.env.QA_BROWSER_EXECUTABLE } : {}),
   headless: true,
 });
 const results = { desktop: {}, mobile: {}, coverage: {}, errors: [] };
@@ -16,19 +17,36 @@ const results = { desktop: {}, mobile: {}, coverage: {}, errors: [] };
 function collectErrors(page, label) {
   page.on("pageerror", (error) => results.errors.push(`${label}: ${error.message}`));
   page.on("requestfailed", (request) => {
-    if (request.url().startsWith(baseUrl)) {
-      results.errors.push(`${label}: ${request.url()} (${request.failure()?.errorText ?? "failed"})`);
+    const errorText = request.failure()?.errorText ?? "failed";
+    // A route-to-route navigation can cancel in-flight development modules.
+    // That is a browser lifecycle event, not a failed local asset request.
+    if (request.url().startsWith(baseUrl) && errorText !== "net::ERR_ABORTED") {
+      results.errors.push(`${label}: ${request.url()} (${errorText})`);
+    }
+  });
+}
+
+async function keepQaLocal(scope) {
+  await scope.route("**/*", async (route) => {
+    const url = new URL(route.request().url());
+    if (url.hostname === "localhost" || url.hostname === "127.0.0.1") {
+      await route.continue();
+    } else {
+      await route.abort();
     }
   });
 }
 
 const desktop = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
+await keepQaLocal(desktop);
 const desktopPage = await desktop.newPage();
 collectErrors(desktopPage, "desktop");
-await desktopPage.goto(`${baseUrl}/tools/`, { waitUntil: "networkidle" });
+await desktopPage.goto(`${baseUrl}/tools/`, { waitUntil: "domcontentloaded" });
+await desktopPage.locator("main").waitFor();
 
 const clippedTrigger = desktopPage.locator(".selected-tool-card .definition-term__trigger").first();
 await clippedTrigger.waitFor({ state: "visible" });
+await desktopPage.waitForTimeout(1_500);
 await clippedTrigger.scrollIntoViewIfNeeded();
 await clippedTrigger.hover();
 await desktopPage.locator("body > .definition-term__popover--open").waitFor({ state: "visible" });
@@ -73,11 +91,14 @@ results.desktop.escapeClosed = await clippedTrigger.getAttribute("aria-expanded"
 await desktop.close();
 
 const mobile = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+await keepQaLocal(mobile);
 const mobilePage = await mobile.newPage();
 collectErrors(mobilePage, "mobile");
-await mobilePage.goto(`${baseUrl}/tools/`, { waitUntil: "networkidle" });
+await mobilePage.goto(`${baseUrl}/tools/`, { waitUntil: "domcontentloaded" });
+await mobilePage.locator("main").waitFor();
 const mobileTrigger = mobilePage.locator(".selected-tool-card .definition-term__trigger").first();
 await mobileTrigger.scrollIntoViewIfNeeded();
+await mobilePage.waitForTimeout(1_500);
 await mobileTrigger.click();
 await mobilePage.locator("body > .definition-term__popover--open").waitFor({ state: "visible" });
 await mobilePage.waitForTimeout(250);
@@ -108,6 +129,7 @@ results.mobile.closeButtonClosed = await mobileTrigger.getAttribute("aria-expand
 await mobile.close();
 
 const coverage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+await keepQaLocal(coverage);
 collectErrors(coverage, "coverage");
 const expectedCoverage = {
   "/": ["dashboard", "platform"],
@@ -117,7 +139,8 @@ const expectedCoverage = {
   "/definitely-not-a-real-page/": ["not-found-404"],
 };
 for (const [route, slugs] of Object.entries(expectedCoverage)) {
-  await coverage.goto(`${baseUrl}${route}`, { waitUntil: "networkidle" });
+  await coverage.goto(`${baseUrl}${route}`, { waitUntil: "domcontentloaded" });
+  await coverage.locator("main").waitFor();
   results.coverage[route] = {};
   for (const slug of slugs) {
     results.coverage[route][slug] = await coverage.locator(`a[href="/learn/glossary/#term-${slug}"]`).count();

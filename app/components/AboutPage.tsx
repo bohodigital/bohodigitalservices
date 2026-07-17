@@ -126,7 +126,7 @@ const portfolioUses = [
 const testbedStages = [
   {
     title: "Observe",
-    body: "Monitor owned properties for changes in discovery, indexing, technical health, traffic patterns, visitor behavior, and content performance.",
+    body: "Monitor owned properties for changes in search discovery, indexing, technical health, traffic patterns, visitor behavior, and content performance.",
   },
   {
     title: "Experiment",
@@ -231,25 +231,25 @@ const scientificImages = [
   {
     alt: "A structural brain MRI reference plate showing axial, sagittal, and coronal views alongside segmented tissue and lobe maps.",
     className: "about-science-plate--mri",
-    credit: "Vladimir Fonov · CC BY 3.0",
+    credit: "Vladimir Fonov · Creative Commons Attribution 3.0 (CC BY 3.0)",
     image: "/proof/about/science/brain-mri.jpg",
-    label: "STRUCTURAL MRI",
+    label: "STRUCTURAL MAGNETIC RESONANCE IMAGING (MRI)",
     source: "https://commons.wikimedia.org/wiki/File:Mni_icbm152_sym_09c_small.jpg",
   },
   {
     alt: "A multicolor lateral rendering of a human brain created from functional MRI data.",
     className: "about-science-plate--fmri",
-    credit: "NIMH / NIH · Public domain",
+    credit: "National Institute of Mental Health / National Institutes of Health (NIMH / NIH) · Public domain",
     image: "/proof/about/science/brain-fmri.jpg",
-    label: "FUNCTIONAL MRI",
+    label: "FUNCTIONAL MAGNETIC RESONANCE IMAGING (fMRI)",
     source: "https://ocw.mit.edu/courses/res-9-005-fmri-bootcamp-fall-2017/resources/mitres9_005_f17_jpg/",
   },
   {
     alt: "A Lotka-Volterra ordinary differential equation phase portrait with a vector field and nested trajectories.",
     className: "about-science-plate--ode",
-    credit: "Wiso · CC BY-SA 3.0 · tonal treatment",
+    credit: "Wiso · Creative Commons Attribution-ShareAlike 3.0 (CC BY-SA 3.0) · tonal treatment",
     image: "/proof/about/science/ode-phase-field.png",
-    label: "ODE PHASE FIELD",
+    label: "ORDINARY DIFFERENTIAL EQUATION (ODE) PHASE FIELD",
     source: "https://commons.wikimedia.org/wiki/File:Lotka-Volterra.svg",
   },
   {
@@ -382,7 +382,7 @@ export function AboutPage() {
                     />
                   </div>
                   <figcaption>
-                    <strong>{image.label}</strong>
+                    <strong>{define(image.label)}</strong>
                     <a href={image.source} rel="noreferrer" target="_blank">
                       {image.credit}<span aria-hidden="true">↗</span>
                     </a>

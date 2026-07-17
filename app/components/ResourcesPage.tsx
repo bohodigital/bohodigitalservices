@@ -25,7 +25,7 @@ type ResourceCard = {
 const resourceCollections: ResourceCard[] = [
   {
     title: "Website buying",
-    description: "Evaluate scope, ownership, content responsibility, accessibility, hosting, and migration risk before signing a proposal.",
+    description: "Evaluate scope, ownership, content responsibility, web accessibility, hosting, and migration risk before signing a proposal.",
     href: "/learn/website-buying/",
     label: "Read the buyer guide",
     icon: PanelsTopLeft,
@@ -60,7 +60,7 @@ const resourceCollections: ResourceCard[] = [
 const decisionRoutes = [
   {
     title: "Plan a website",
-    description: "Review scope, content, accessibility, hosting, ownership, and migration before comparing proposals.",
+    description: "Review scope, content, web accessibility, hosting, ownership, and migration before comparing proposals.",
     href: "/learn/website-buying/" as const,
     icon: PanelsTopLeft,
   },

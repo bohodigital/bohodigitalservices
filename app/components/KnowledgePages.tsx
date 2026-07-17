@@ -222,8 +222,8 @@ export function ToolsPage() {
                         {tool.currentStatus || tool.publicAvailability || tool.openSourceStatus ? (
                           <dl>
                             {tool.currentStatus ? <div><dt>Status</dt><dd>{tool.currentStatus}</dd></div> : null}
-                            {tool.publicAvailability ? <div><dt>Availability</dt><dd>{tool.publicAvailability}</dd></div> : null}
-                            {tool.openSourceStatus ? <div><dt>License</dt><dd>{tool.openSourceStatus}</dd></div> : null}
+                            {tool.publicAvailability ? <div><dt>Availability</dt><dd>{define(tool.publicAvailability)}</dd></div> : null}
+                            {tool.openSourceStatus ? <div><dt>License</dt><dd>{define(tool.openSourceStatus)}</dd></div> : null}
                           </dl>
                         ) : null}
                         <a className="selected-tool-card__link" href={tool.repositoryUrl} rel="noopener noreferrer" target="_blank">

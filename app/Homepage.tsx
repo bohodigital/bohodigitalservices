@@ -273,7 +273,7 @@ export default function Homepage() {
               <div className="migration-ledger" aria-label="Migration ownership dossier">
                 <div className="migration-ledger__heading"><KeyRound size={28} strokeWidth={1.6} aria-hidden="true" /><div><span>Transfer file</span><strong>Ownership dossier</strong></div></div>
                 <ul>
-                  <li><Globe2 size={20} aria-hidden="true" /><span><strong>Domain</strong> registrar and DNS control</span></li>
+                  <li><Globe2 size={20} aria-hidden="true" /><span><strong>Domain</strong> registrar and {define("DNS")} control</span></li>
                   <li><Database size={20} aria-hidden="true" /><span><strong>Content</strong> pages, media, forms, and data</span></li>
                   <li><FileCheck2 size={20} aria-hidden="true" /><span><strong>Continuity</strong> redirects, tracking, and verification</span></li>
                 </ul>

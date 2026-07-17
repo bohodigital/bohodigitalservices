@@ -114,7 +114,7 @@ export const corePages: PageConfig[] = [
     slug: "/services/website-design-redesign/",
     title: "Websites & Managed Hosting | Boho Digital Services",
     metaDescription:
-      "Boho designs, builds, and maintains useful websites around ownership, search structure, accessibility, performance, customer action, and a clearly governed hosting provision.",
+      "Boho designs, builds, and maintains useful websites around ownership, search structure, web accessibility, web performance, customer action, and a clearly governed hosting provision.",
     eyebrow: "Websites & Managed Hosting",
     headline: "Websites built to explain the business, earn trust, and remain understandable to operate.",
     intro: [
@@ -185,7 +185,7 @@ export const corePages: PageConfig[] = [
         layout: "list",
         items: [
           { title: "Strategy and content", body: "Sitemap and page plan; homepage and service-page copy; local-search foundations; metadata; internal linking." },
-          { title: "Design and build", body: "Responsive visual system; core page design and build; forms and CTA paths; performance and accessibility review." },
+          { title: "Design and build", body: "[[responsive-design|Responsive visual system]]; core page design and build; forms and CTA paths; [[web-performance|performance]] and [[accessibility|accessibility]] review." },
           { title: "Launch and ownership", body: "Analytics and Search Console readiness; redirect planning when replacing a site; handoff and ownership documentation." },
         ],
         note: "Final scope depends on the business, current platform, content readiness, and whether Boho is designing, building, migrating, or repairing.",
@@ -230,7 +230,7 @@ export const corePages: PageConfig[] = [
       {
         title: "A website can look simple and still hide a complicated ownership problem.",
         body: [
-          "Many businesses do not discover how fragile their setup is until they try to leave. The domain may be registered under the wrong account. Hosting may be bundled into a provider relationship nobody understands. Analytics may belong to someone else. Forms, plugins, redirects, or search properties may depend on undocumented access.",
+          "Many businesses do not discover how fragile their setup is until they try to leave. The domain may be registered under the wrong account. Hosting may be bundled into a provider relationship nobody understands. Analytics may belong to someone else. Forms, website plugins, redirects, or search properties may depend on undocumented access.",
           "A rushed move can break working pages, erase measurement history, lose search visibility, interrupt leads, or leave the business unable to control its own site.",
           "Boho maps the system before changing it. The objective is not merely to move files. It is to recover control, preserve value, reduce risk, and leave clearer records behind.",
         ],
@@ -244,7 +244,7 @@ export const corePages: PageConfig[] = [
           { title: "Leaving a bad SEO company", body: "Review visible work, inventory accounts, identify ownership gaps, preserve useful assets, and plan a cleaner next system when work, reporting, or access cannot be verified." },
           { title: "Moving to a new website or platform", body: "Inventory content, plan URL changes, specify redirects, protect important pages, and verify the new launch instead of treating every current asset as disposable." },
           { title: "Recovering ownership", body: "Create an access map and identify the smallest practical recovery path. Recovery may still require the owner, provider, registrar, or a legal process." },
-          { title: "Cleaning up after a bad launch", body: "Inspect broken forms, changed rankings, missing pages, lost tracking, and other visible damage; prioritize corrections and document what remains uncertain." },
+          { title: "Cleaning up after a bad launch", body: "Inspect broken forms, changed rankings, missing pages, lost website tracking, and other visible damage; prioritize corrections and document what remains uncertain." },
         ],
       },
       {
@@ -252,7 +252,7 @@ export const corePages: PageConfig[] = [
         title: "Move in six documented stages.",
         layout: "steps",
         items: [
-          { title: "1. Inventory", body: "Document the [[domain-name|domain]], [[dns|DNS]], [[hosting|hosting]], CMS, analytics, search accounts, forms, email tools, [[api|integrations]], content, [[url|URLs]], and provider dependencies." },
+          { title: "1. Inventory", body: "Document the [[domain-name|domain]], [[dns|DNS]], [[hosting|hosting]], CMS, analytics, search accounts, forms, email tools, [[integration|integrations]], content, [[url|URLs]], and provider dependencies." },
           { title: "2. Secure ownership", body: "Confirm what the client owns, which access is missing, and which recovery actions require client involvement." },
           { title: "3. Preserve value", body: "Identify useful pages, links and rankings when legitimate data exists, content, forms, tracking, and public information that should survive." },
           { title: "4. Plan the move", body: "Define platform, URL behavior, redirects, content migration, launch sequence, rollback considerations, responsibilities, and dependencies." },
@@ -266,9 +266,9 @@ export const corePages: PageConfig[] = [
         title: "Follow the whole trail, not just the page files.",
         layout: "grid",
         items: [
-          { title: "Ownership layer", body: "[[domain-name|Domain registration]], [[dns|DNS]], [[hosting|hosting]], CMS or builder, administrator access, backups, provider reports, and [[api|integrations]]." },
+          { title: "Ownership layer", body: "[[domain-registration|Domain registration]], [[dns|DNS]], [[hosting|hosting]], CMS or builder, administrator access, backups, provider reports, and [[integration|integrations]]." },
           { title: "Measurement layer", body: "Analytics, Search Console, business profile when relevant, forms, notification routing, and call tracking when present." },
-          { title: "Content and search layer", body: "URLs, redirects, content inventory, metadata, sitemaps, robots rules, and important link paths." },
+          { title: "Content and search layer", body: "URLs, redirects, content inventory, metadata, sitemaps, [[robots-txt|robots rules]], and important link paths." },
           { title: "Governance layer", body: "Legal and privacy pages, account responsibility, launch records, and any platform-specific limits." },
         ],
       },
@@ -276,7 +276,7 @@ export const corePages: PageConfig[] = [
         eyebrow: "Honest limits",
         title: "Provider rescue is technical work, not account theft with nicer branding.",
         body: [
-          "Boho will only use authorized access and lawful recovery methods. We cannot bypass credentials, seize accounts, impersonate owners, or guarantee cooperation from a former provider.",
+          "Boho will only use authorized access and lawful recovery methods. We cannot bypass access credentials, seize accounts, impersonate owners, or guarantee cooperation from a former provider.",
           "Where access is missing, Boho will document what is known, identify the responsible platform or party, and outline the smallest next recovery step.",
         ],
         tone: "plum",
@@ -321,7 +321,7 @@ export const corePages: PageConfig[] = [
         items: [
           { title: "Workflow automation", body: "Reduce repeated copying, routing, reconciliation, or status work while preserving approvals and useful records." },
           { title: "Internal utilities", body: "Create focused interfaces or command-line tools for a specific team process instead of a broad speculative platform." },
-          { title: "Integrations", body: "Connect approved systems through documented interfaces, least-privilege access, clear error handling, and observable data movement." },
+          { title: "Integrations", body: "Connect approved systems through documented interfaces, least privilege access, clear error handling, and observable data movement." },
           { title: "Validation and reporting", body: "Check files, routes, data, deployments, or recurring operational conditions and report failures in language someone can act on." },
           { title: "Dashboards, analytics, and monitoring", body: "Build a decision-focused view of approved data, important operating signals, and visible collection or process failures." },
           { title: "APIs, data normalization, and publishing", body: "Move or reshape approved information through bounded interfaces and publishing systems with clear source, ownership, and retry rules." },
@@ -335,7 +335,7 @@ export const corePages: PageConfig[] = [
         layout: "list",
         tone: "blue",
         items: [
-          { title: "Data and access", body: "Name the data involved, minimize what is collected, use approved credentials and secret storage, and avoid copying sensitive material into the wrong system." },
+          { title: "Data and access", body: "Name the data involved, minimize what is collected, use approved access credentials and secret storage, and avoid copying sensitive material into the wrong system." },
           { title: "Human approvals", body: "Keep meaningful external, destructive, financial, or irreversible actions behind an explicit human decision." },
           { title: "Failure handling", body: "Make errors visible, preserve safe retry behavior where possible, and document recovery instead of silently dropping work." },
           { title: "Ownership and exit", body: "Record the repository, runtime, accounts, dependencies, operating instructions, and what happens when support ends." },
@@ -388,7 +388,7 @@ export const corePages: PageConfig[] = [
         title: "Local SEO is not a monthly ritual.",
         body: [
           "It is the work of making a business consistent, relevant, useful, and trustworthy in the places local customers search.",
-          "The website, business profile, reviews, service areas, location information, categories, photos, service pages, citations, and content should tell a coherent story. When they do not, customers hesitate and search systems receive mixed signals.",
+          "The website, business profile, reviews, service areas, location information, categories, photos, service pages, [[local-citation|citations]], and content should tell a coherent story. When they do not, customers hesitate and search systems receive mixed signals.",
           "Boho studies the local market before recommending a large list of tasks. The market helps decide whether service pages, profile cleanup, review systems, location clarity, technical repairs, or website credibility should come first.",
         ],
         tone: "parchment",
@@ -402,7 +402,7 @@ export const corePages: PageConfig[] = [
           { title: "Business clarity", body: "Clear name, services, categories, locations, service areas, hours, contact information, and public descriptions." },
           { title: "Local relevance", body: "Useful service and location pages, local context, accurate coverage, and content that matches how customers search." },
           { title: "Trust", body: "Reviews, responses, real project or product proof, credentials where relevant, photos, policies, team information, and consistent public facts." },
-          { title: "Technical support", body: "[[web-crawling|Crawlable pages]], sensible internal links, metadata, structured information, mobile usability, and measurement." },
+          { title: "Technical support", body: "[[crawlability|Crawlable pages]], sensible internal links, metadata, [[structured-data|structured information]], mobile usability, and measurement." },
         ],
       },
       {
@@ -423,7 +423,7 @@ export const corePages: PageConfig[] = [
         title: "Visibility without a usable lead path is incomplete.",
         body: [
           "The system must continue after a search result or business profile click. Service pages, phone links, estimate or booking paths, trust signals, response expectations, and measurement all affect whether useful attention becomes a qualified business event.",
-          "No connected form endpoint has been approved for this site review, so Boho does not pretend a disconnected form is a working lead system. The current public fallback is contact@bohemiandigital.org.",
+          "A public form is complete when its [[form-endpoint|form endpoint]], validation, notification routing, confirmation behavior, and ownership are verified from submission through delivery.",
         ],
         layout: "grid",
         items: [
@@ -502,7 +502,7 @@ export const corePages: PageConfig[] = [
         eyebrow: "High-value service logic",
         title: "Some pages deserve more attention because some services are worth more.",
         body: [
-          "A roof-replacement page usually has a different business role from a general maintenance article. An HVAC-installation page matters differently from a company-history page. A product category matters differently from a casual announcement.",
+          "A roof-replacement page usually has a different business role from a general maintenance article. A heating, ventilation, and air-conditioning (HVAC) installation page matters differently from a company-history page. A product category matters differently from a casual announcement.",
           "Boho identifies the pages and actions most closely connected to value, then evaluates whether visibility, clarity, trust, or conversion is the limiting factor.",
         ],
         quote: "Traffic is a means. Qualified customer action is the point.",
@@ -517,7 +517,7 @@ export const corePages: PageConfig[] = [
           { title: "Page structure", body: "Headlines, explanations, objections, proof, FAQs, internal links, and CTA placement." },
           { title: "Contact paths", body: "Phone links, forms, quote requests, bookings, consultations, purchases, directions, and confirmation messages." },
           { title: "Trust", body: "Real reviews, proof, process, team, policies, guarantees when real, credentials when real, and ownership signals." },
-          { title: "Measurement", body: "Form events, phone clicks, booking clicks, product actions, landing pages, profile actions, and lead-source context." },
+          { title: "Measurement", body: "[[event|Form events]], phone clicks, booking clicks, product actions, landing pages, profile actions, and lead-source context." },
         ],
       },
       {
@@ -637,10 +637,10 @@ export const corePages: PageConfig[] = [
         title: "Sort the warning before prescribing the fix.",
         layout: "grid",
         items: [
-          { title: "Blocking issues", body: "Problems that may prevent important pages from being crawled, indexed, loaded, submitted, or used." },
-          { title: "Value leaks", body: "Broken redirects, weak internal paths, duplicate versions, lost URLs, or tracking gaps that waste existing value." },
-          { title: "Clarity problems", body: "Metadata, headings, canonical signals, structured information, or architecture that makes the site harder to interpret." },
-          { title: "Maintenance debt", body: "Fragile plugins, unclear ownership, undocumented systems, inaccessible accounts, or configurations likely to make future work more expensive." },
+          { title: "Blocking issues", body: "Crawlability or indexability problems that may prevent important pages from being discovered, loaded, submitted, or used." },
+          { title: "Value leaks", body: "Broken redirects, weak internal paths, duplicate versions, lost URLs, or website-tracking gaps that waste existing value." },
+          { title: "Clarity problems", body: "Metadata, headings, canonical signals, [[structured-data|structured information]], or website architecture that makes the site harder to interpret." },
+          { title: "Maintenance debt", body: "Fragile website plugins, unclear ownership, undocumented systems, inaccessible accounts, or configurations likely to make future work more expensive." },
         ],
       },
       {
@@ -651,10 +651,10 @@ export const corePages: PageConfig[] = [
         items: [
           { title: "Discovery and indexing", body: "Robots directives, XML sitemaps, coverage, canonical signals, status codes, orphaned pages, duplicate paths, and crawl access." },
           { title: "Architecture", body: "Navigation, hierarchy, internal links, URL patterns, service/location structure, pagination where relevant, and content relationships." },
-          { title: "Page signals", body: "Titles, descriptions, headings, structured information, image alternatives, and content duplication." },
-          { title: "Performance and experience", body: "Page weight, image handling, scripts, mobile layout, interaction problems, and obvious performance bottlenecks." },
+          { title: "Page signals", body: "Title tags, descriptions, headings, [[structured-data|structured information]], image alternatives, and content duplication." },
+          { title: "Performance and experience", body: "[[web-performance|Page weight]], image handling, scripts, mobile layout, interaction problems, and obvious performance bottlenecks." },
           { title: "Migration and redirects", body: "Old URLs, redirect chains, launch changes, platform transitions, broken links, and important route preservation." },
-          { title: "Measurement and ownership", body: "Analytics, Search Console, tags, form events, business profiles, platform access, and documentation." },
+          { title: "Measurement and ownership", body: "Analytics, Search Console, [[website-tracking|analytics tags]], form events, business profiles, platform access, and documentation." },
         ],
       },
       {
@@ -738,7 +738,7 @@ export const corePages: PageConfig[] = [
         title: "A dashboard is not a decision.",
         body: [
           "Boho reporting focuses on signals the business can interpret and act on: calls, forms, bookings, purchases, profile actions, high-value pages, query patterns, index coverage, or lead quality where real data exists.",
-          "The review should name where data comes from, how it was collected or normalized, what was excluded, where platforms disagree, how collection failure becomes visible, and which business-specific event or rule changes the next action.",
+          "The review should name where data comes from, how it was collected or [[data-normalization|normalized]], what was excluded, where platforms disagree, how collection failure becomes visible, and which [[event|tracked analytics event]] or rule changes the next action.",
           "Do not overload owners with every available metric. Preserve access to underlying data, but lead with the decisions.",
         ],
         tone: "plum",
@@ -754,36 +754,35 @@ export const corePages: PageConfig[] = [
   },
   {
     slug: "/pricing/",
-    title: "Pricing Status | Boho Digital Services",
+    title: "Pricing | Scope-Based Digital Work | Boho Digital Services",
     metaDescription:
-      "Boho pricing is scoped after diagnosis; this retired review page does not publish unapproved rates or automatic quotes.",
+      "See how Boho Digital Services develops focused project scopes around the business problem, technical conditions, risk, and accountable work.",
     eyebrow: "Pricing",
-    headline: "No public rate is current until the business approves it.",
+    headline: "Pricing follows the problem, not a generic package.",
     intro: [
-      "This route remains available for review, but the prior planning ranges are withdrawn because the current governance record does not verify them as approved public offers.",
+      "A useful scope reflects the website, market, access, platform, urgency, evidence, dependencies, implementation depth, and cost of failure.",
     ],
     theme: "editorial",
     primaryCta: { label: "Discuss the Actual Problem", href: "/contact/" },
     secondaryCta: { label: "View the Five Service Lanes", href: "/services/" },
-    draftLabel: "Historical pricing draft — no current public rates are approved.",
     sections: [
       {
         title: "Scope follows diagnosis.",
         body: [
           "Boho is built around direct technical work, research, reusable systems, automation-assisted workflows, documentation, and a small operating structure.",
           "The responsible scope still depends on the site, market, access, platform, urgency, data, content, dependencies, implementation depth, and cost of failure.",
-          "No number on a previous draft should be treated as a current quote, minimum, package, or promise of availability.",
+          "The resulting proposal connects cost to defined work, responsibilities, validation, and the conditions that can change scope.",
         ],
         tone: "parchment",
       },
       {
         eyebrow: "Scope inputs",
         title: "Start with the problem, then price the accountable work.",
-        note: "The items below are scoping categories, not packages or published prices.",
+        note: "The inputs below shape the accountable scope for each service lane.",
         layout: "grid",
         items: [
           { title: "Local Visibility & Lead Systems", body: "Market, service area, profile state, page and content scope, lead-path condition, measurement access, and implementation depth all affect the work.", href: "/services/local-seo-search-visibility/", linkLabel: "Review the lane" },
-          { title: "Websites & Managed Hosting", body: "Page count, content readiness, platform, integrations, migration risk, accessibility, performance, hosting eligibility, and support boundaries affect the scope.", href: "/services/website-design-redesign/", linkLabel: "Review the lane" },
+          { title: "Websites & Managed Hosting", body: "Page count, content readiness, platform, integrations, migration risk, web accessibility, web performance, hosting eligibility, and support boundaries affect the scope.", href: "/services/website-design-redesign/", linkLabel: "Review the lane" },
           { title: "Provider Rescue & Migration", body: "Ownership, access, provider cooperation, data, URLs, redirects, integrations, downtime risk, and rollback requirements must be diagnosed first.", href: "/services/website-migration-provider-rescue/", linkLabel: "Review the lane" },
           { title: "Custom Tools & Automation", body: "Users, workflows, data, integrations, security, approvals, failure handling, operating environment, and maintenance responsibilities define the engineering cost.", href: "/services/custom-tools-automation/", linkLabel: "Review the lane" },
           { title: "Research, Analytics & Improvement", body: "Decision stakes, market size, data availability, technical depth, sample requirements, implementation, and the measurement period determine scope.", href: "/services/research-audits-analytics/", linkLabel: "Review the lane" },
@@ -794,11 +793,11 @@ export const corePages: PageConfig[] = [
         title: "Pricing without theater.",
         layout: "list",
         items: [
-          { title: "Why are no rates shown?", body: "The prior draft ranges are not verified as current approved offers under the active governance record. Publishing them would create a commercial claim without support." },
+          { title: "How is a price developed?", body: "Boho diagnoses the business problem, technical conditions, required access, dependencies, risk, implementation depth, and validation work before preparing a proposal." },
           { title: "Can we start small?", body: "Yes. Boho prefers the smallest project capable of improving the decision or fixing the actual problem." },
           { title: "Do you require long contracts?", body: "No. Ongoing work should continue because it is useful, not because leaving is painful." },
           { title: "How does Boho keep scope efficient?", body: "Fewer layers, direct technical work, reusable systems, research workflows, and documentation reduce avoidable overhead without predetermining a price." },
-          { title: "Are results guaranteed?", body: "No. Search visibility, leads, traffic, conversion, and revenue depend on many variables. Boho defines the hypothesis, explains the evidence, implements agreed work, and measures what can reasonably be measured." },
+          { title: "How are results handled?", body: "Boho defines the hypothesis, explains the evidence and external variables, implements the agreed work, and measures the outcomes that can reasonably be measured." },
           { title: "Does the client own the website and accounts?", body: "The default goal is client ownership and documented access. Any platform-specific limitations must be disclosed before work begins." },
         ],
       },
@@ -991,12 +990,12 @@ export const corePages: PageConfig[] = [
         title: "Urgent, specific, and worth triaging calmly.",
         layout: "grid",
         items: [
-          { title: "Leads stopped", body: "Contact forms, booking links, phone links, checkout, or notifications are broken." },
+          { title: "Inquiry path stopped", body: "[[lead-generation|Lead generation]] breaks when contact forms, booking links, phone links, checkout, or notifications stop working." },
           { title: "Launch went wrong", body: "Important pages disappeared, redirects failed, mobile layouts broke, or useful URLs were replaced without a plan." },
           { title: "Search access changed", body: "Pages are blocked, removed, deindexed, redirected incorrectly, or Search Console reports a serious change." },
           { title: "Provider access failed", body: "The business lost access to the website, domain, hosting, analytics, or another critical account." },
-          { title: "DNS or domain problem", body: "The domain stopped resolving, records changed, or a provider transition interrupted the site or email. Email repair may require the relevant IT or email provider." },
-          { title: "Measurement disappeared", body: "Analytics, tags, forms, or conversion events stopped working after a change." },
+          { title: "DNS or domain problem", body: "The domain stopped resolving, DNS records changed, or a provider transition interrupted the site or email. Email repair may require the relevant technology or email provider." },
+          { title: "Measurement disappeared", body: "Analytics, website tracking, forms, or conversion events stopped working after a change." },
         ],
       },
       {
@@ -1172,7 +1171,7 @@ export const corePages: PageConfig[] = [
     eyebrow: "Accessibility",
     headline: "Accessibility",
     intro: [
-      "Boho Digital Services aims to make this website usable by a broad range of visitors and to improve accessibility over time.",
+      "Boho Digital Services aims to make this website usable by a broad range of visitors and to improve web accessibility over time.",
       "If you encounter a barrier, email webmaster@bohemiandigital.org with the page, device, browser, and problem so it can be investigated.",
     ],
     theme: "editorial",

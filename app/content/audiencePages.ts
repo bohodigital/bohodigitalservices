@@ -103,7 +103,7 @@ export const audiencePages: PageConfig[] = [
         eyebrow: "Market reality",
         title: "High-value local work creates a different optimization problem.",
         body: [
-          "A roofing, remodeling, restoration, HVAC, plumbing, electrical, landscaping, flooring, or similar project may carry meaningful revenue. The website does not need to attract everyone. It needs to help the right homeowner or property decision-maker understand the service, trust the company, and request the next step.",
+          "A roofing, remodeling, restoration, heating, ventilation, and air-conditioning (HVAC), plumbing, electrical, landscaping, flooring, or similar project may carry meaningful revenue. The website does not need to attract everyone. It needs to help the right homeowner or property decision-maker understand the service, trust the company, and request the next step.",
           "That often makes service-page quality, service-area clarity, project proof, reviews, mobile contact paths, and local visibility more important than a large volume of low-intent content.",
           "Boho studies which services matter most, how competitors present themselves, and where the path from search to estimate is weak.",
         ],
@@ -141,7 +141,7 @@ export const audiencePages: PageConfig[] = [
           },
           {
             title: "Local visibility",
-            body: "Business-profile alignment, service-area pages, local competitors, reviews, public information, citations, and relevant local content.",
+            body: "Business-profile alignment, service-area pages, local competitors, reviews, public information, [[local-citation|citations]], and relevant local content.",
           },
           {
             title: "Trust",
@@ -166,7 +166,7 @@ export const audiencePages: PageConfig[] = [
         title: "One project-based category, not a maze of doorway pages.",
         body: [
           "Common fits include roofing, remodeling, HVAC, plumbing, electrical, restoration, landscaping, flooring, fencing, concrete, painting, windows, doors, insulation, and related project-based services.",
-          "Boho does not claim equal expertise in every trade. Industry-specific depth should be built through research reports and real projects over time.",
+          "Boho builds trade-specific depth through focused research and real project evidence.",
         ],
         tone: "blue",
       },
@@ -247,7 +247,7 @@ export const audiencePages: PageConfig[] = [
           },
           {
             title: "Website foundation",
-            body: "Design, accessibility, technical health, content structure, migration, and ownership.",
+            body: "Design, web accessibility, technical health, content structure, migration, and ownership.",
           },
         ],
       },
@@ -256,7 +256,7 @@ export const audiencePages: PageConfig[] = [
         title: "Appointment-based and trust-heavy businesses.",
         body: [
           "Common fits include clinics, med spas, salons, cleaning companies, auto services, repair businesses, tutors, fitness studios, pet services, wellness providers, and other appointment-based or local service companies.",
-          "Boho does not make medical or legal outcome claims. Regulated or health-related businesses require careful review of claims, privacy, and platform rules.",
+          "Regulated or health-related businesses require careful review of public claims, privacy, and platform rules as part of the work.",
         ],
         tone: "blue",
       },
@@ -434,7 +434,7 @@ export const audiencePages: PageConfig[] = [
         title: "Smaller and growing online catalogs.",
         body: [
           "Common fits include Shopify stores, WooCommerce stores, niche ecommerce brands, product catalogs, hybrid local/online retailers, and stores offering local pickup or delivery.",
-          "Boho does not claim support for a platform or integration until the required access and technical feasibility are confirmed.",
+          "Platform and integration support is scoped after the required access and technical feasibility are confirmed.",
         ],
         tone: "blue",
       },
@@ -503,7 +503,7 @@ export const audiencePages: PageConfig[] = [
           },
           {
             title: "Website",
-            body: "Visual authority, service architecture, proof, process, team, contact paths, accessibility, and mobile use.",
+            body: "Visual authority, website architecture, proof, process, team, contact paths, web accessibility, and mobile use.",
           },
           {
             title: "Search and content",
@@ -795,7 +795,7 @@ export const audiencePages: PageConfig[] = [
         items: [
           {
             title: "Website buying",
-            body: "Plan scope, content responsibility, accessibility, hosting, ownership, and migration risk before comparing proposals.",
+            body: "Plan scope, content responsibility, web accessibility, hosting, ownership, and migration risk before comparing proposals.",
             href: "/learn/website-buying/",
             linkLabel: "Read the buyer guide",
           },
@@ -1343,7 +1343,7 @@ export const audiencePages: PageConfig[] = [
           { title: "Pages and content", body: "List the routes, content responsibilities, revisions, images, product or service data, redirects, and what is specifically excluded." },
           { title: "Ownership and access", body: "State who owns the domain, source, production account, analytics, content, licenses, credentials, backups, and recovery path." },
           { title: "Hosting and support", body: "State the platform, eligibility, third-party costs, traffic or storage limits, update boundary, monitoring, support response, exit process, and what happens when a retainer ends." },
-          { title: "Quality and verification", body: "Include responsive behavior, accessibility, performance, forms or fallback paths, metadata, analytics readiness, link checks, launch checks, and documented exceptions." },
+          { title: "Quality and verification", body: "Include [[responsive-design|responsive behavior]], web accessibility, web performance, forms or fallback paths, metadata, analytics readiness, link checks, launch checks, and documented exceptions." },
           { title: "Change and rollback", body: "Explain how the current site is preserved, how URLs move, which approvals gate launch, and how the prior state can be restored if the cutover fails." },
         ],
       },
@@ -1387,7 +1387,7 @@ export const audiencePages: PageConfig[] = [
         title: "Inventory access, preserve value, verify the launch.",
         body: [
           "Record the domain registrar, DNS, hosting, website platform, source, content, media, forms, notification inboxes, analytics, search properties, business profiles, integrations, email dependencies, important URLs, redirects, licenses, invoices, contacts, and account owners.",
-          "Do not copy passwords into a planning document. Use authorized platform invitations, client-owned accounts, least-privilege access, and a separate recovery process for anything the business does not control.",
+          "Do not copy passwords into a planning document. Use authorized platform invitations, client-owned accounts, least privilege access, and a separate recovery process for anything the business does not control.",
         ],
         tone: "parchment",
       },
@@ -1399,7 +1399,7 @@ export const audiencePages: PageConfig[] = [
           { title: "1. Diagnose", body: "Confirm the business reason for leaving, the systems involved, ownership gaps, current failures, and any contractual or timing constraints." },
           { title: "2. Preserve", body: "Export authorized content and data, record important URLs and settings, capture baselines, and identify the working parts that should survive." },
           { title: "3. Plan", body: "Define the destination, responsibilities, redirect map, form and analytics behavior, DNS or domain dependencies, approval gates, cutover window, and rollback." },
-          { title: "4. Build and test", body: "Prepare the destination in a non-production environment and test routes, assets, content, accessibility, forms or fallback paths, metadata, and integrations." },
+          { title: "4. Build and test", body: "Prepare the destination in a [[staging-environment|non-production environment]] and test routes, assets, content, web accessibility, forms or fallback paths, metadata, and integrations." },
           { title: "5. Cut over with approval", body: "Only the authorized owner approves production changes. Record the exact configuration and preserve the prior working state." },
           { title: "6. Verify and document", body: "Check critical URLs, redirects, forms, analytics, search access, mobile behavior, logs, ownership, and what remains unresolved after launch." },
         ],
@@ -1409,7 +1409,7 @@ export const audiencePages: PageConfig[] = [
         title: "A rescue does not authorize account seizure or reckless cutover.",
         body: [
           "Stop when ownership cannot be verified, a required backup is missing, the destination is untested, email or another critical dependency could be affected, the rollback path is unclear, or the owner has not approved the production change.",
-          "Boho cannot bypass credentials, impersonate an owner, guarantee provider cooperation, or replace legal advice about a disputed contract or asset.",
+          "Boho cannot bypass access credentials, impersonate an owner, guarantee provider cooperation, or replace legal advice about a disputed contract or asset.",
         ],
         tone: "plum",
       },

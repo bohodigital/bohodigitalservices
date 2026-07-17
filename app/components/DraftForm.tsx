@@ -11,6 +11,7 @@ import Link from "next/link";
 
 import { FORM_CONTRACTS } from "../content/formContract";
 import type { DraftField, DraftFormConfig } from "../content/types";
+import { DefinedText } from "./DefinedText";
 import { FormField, FormStatusMessage } from "./SiteChrome";
 
 type DraftFormProps = {
@@ -154,6 +155,7 @@ export function DraftForm({ config, className }: DraftFormProps) {
   const [submitting, setSubmitting] = useState(false);
   const [notice, setNotice] = useState<Notice | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const glossaryTerms = new Set<string>();
 
   useEffect(() => {
     let disposed = false;
@@ -355,6 +357,15 @@ export function DraftForm({ config, className }: DraftFormProps) {
           {config.title}
         </h2>
         <p className="draft-form__body">{config.body}</p>
+        {config.fields.some((field) => field.name === "website") ? (
+          <p className="draft-form__body">
+            <DefinedText
+              autoDefine
+              seenTerms={glossaryTerms}
+              text="Use the website URL field for the page address Boho should review."
+            />
+          </p>
+        ) : null}
         <p
           className="draft-form__body"
           dangerouslySetInnerHTML={{ __html: CONTACT_EMAIL_FALLBACK_HTML }}

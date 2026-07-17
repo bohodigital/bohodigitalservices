@@ -135,7 +135,7 @@ p {
   height: 1px;
   padding: 0;
   margin: -1px;
-  overflow: visible;
+  overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
@@ -3643,6 +3643,7 @@ body,
   min-height: clamp(31rem, 66vh, 39rem);
   display: flex;
   overflow: hidden;
+  overflow: clip;
   padding-block: clamp(2rem, 4vw, 3rem) clamp(4.5rem, 7vw, 7rem);
   border-bottom: 1px solid var(--line-dark);
   isolation: isolate;
@@ -6639,9 +6640,9 @@ body,
   }
 
   .interior-hero__motif {
-    right: -6rem;
-    width: 16rem;
-    opacity: 0.28;
+    right: 0.5rem;
+    width: 10rem;
+    opacity: 0.24;
   }
 
   .resources-heading,
