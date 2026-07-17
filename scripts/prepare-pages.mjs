@@ -1,4 +1,4 @@
-import { access, copyFile, readdir, writeFile } from "node:fs/promises";
+import { access, copyFile, readdir, rm, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { join } from "node:path";
 
@@ -7,6 +7,9 @@ const indexPage = fileURLToPath(new URL("../out/index.html", import.meta.url));
 const robotsFile = fileURLToPath(new URL("../out/robots.txt", import.meta.url));
 const sitemapFile = fileURLToPath(new URL("../out/sitemap.xml", import.meta.url));
 const headersFile = fileURLToPath(new URL("../out/_headers", import.meta.url));
+const staleWorkerDeployConfig = fileURLToPath(
+  new URL("../.wrangler/deploy/", import.meta.url),
+);
 
 await Promise.all([
   access(outputDirectory),
@@ -14,6 +17,11 @@ await Promise.all([
   access(robotsFile),
   access(sitemapFile),
 ]);
+
+// A previous vinext build may leave a generated Worker configuration here.
+// Wrangler prioritizes it over the root Pages configuration, so remove it
+// before any static preview or production upload.
+await rm(staleWorkerDeployConfig, { recursive: true, force: true });
 
 async function materializeFlightAliases(directory) {
   for (const entry of await readdir(directory, { withFileTypes: true })) {

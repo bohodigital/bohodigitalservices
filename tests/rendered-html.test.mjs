@@ -647,6 +647,11 @@ test("ships public pages as static assets without a Worker runtime", async () =>
     (error) => error?.code === "ENOENT",
     "static Pages output must not include a Worker entry point",
   );
+  await assert.rejects(
+    access(new URL("../.wrangler/deploy/config.json", import.meta.url)),
+    (error) => error?.code === "ENOENT",
+    "stale generated Worker deployment config must be removed",
+  );
 
   const headers = await readFile(new URL("../out/_headers", import.meta.url), "utf8");
   assert.match(headers, /\/_next\/static\/\*[\s\S]*max-age=31536000[\s\S]*immutable/i);
