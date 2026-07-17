@@ -1,0 +1,24 @@
+﻿{
+    "httpStatus":  200,
+    "titlePresent":  true,
+    "heroPresent":  true,
+    "electronCloudPresent":  true,
+    "scienceGalleryPresent":  true,
+    "beliefsImmediatelyAfterHero":  true,
+    "builtStatementPresent":  true,
+    "ambiguousLeadGlossaryLinkAbsent":  true,
+    "oldTechnicalPortraitAbsent":  true,
+    "oldSystemFlowAbsent":  true,
+    "evidenceCardsPresent":  true,
+    "rankBuilderImagePresent":  true,
+    "howBiscuitImagePresent":  true,
+    "betterGradesImagePresent":  true,
+    "finalCtaPresent":  true,
+    "assetStatuses":  {
+                          "/proof/about/science/electron-cloud.png":  200,
+                          "/proof/about/science/brain-mri.jpg":  200,
+                          "/proof/about/science/brain-fmri.jpg":  200,
+                          "/proof/about/science/ode-phase-field.png":  200,
+                          "/proof/about/science/cajal-purkinje-neuron.jpg":  200
+                      }
+}
