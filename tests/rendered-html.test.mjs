@@ -3,37 +3,32 @@ import { createHash } from "node:crypto";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
-let handlerPromise;
-
-async function loadHandler() {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}`);
-  handlerPromise ??= import(workerUrl.href).then((module) => module.default);
-  return handlerPromise;
-}
-
 async function render(pathname = "/", origin = "http://localhost") {
-  const handler = await loadHandler();
-  const request = new Request(`${origin}${pathname}`, {
-    headers: { accept: "text/html" },
-  });
+  const url = new URL(pathname, origin);
+  const decodedPath = decodeURIComponent(url.pathname);
+  const relativePath = decodedPath === "/"
+    ? "index.html"
+    : decodedPath.endsWith("/")
+      ? `${decodedPath.slice(1)}index.html`
+      : decodedPath.slice(1);
+  const fileUrl = new URL(`../out/${relativePath}`, import.meta.url);
 
-  const response = await (typeof handler === "function"
-    ? handler(request)
-    : handler.fetch(
-        request,
-        {
-          ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) },
-        },
-        { waitUntil() {}, passThroughOnException() {} },
-      ));
-
-  if (response.status >= 300 && response.status < 400) {
-    const location = response.headers.get("location");
-    if (location) return render(new URL(location, origin).pathname, origin);
+  try {
+    const body = await readFile(fileUrl);
+    const contentType = decodedPath.endsWith(".xml")
+      ? "application/xml; charset=utf-8"
+      : decodedPath.endsWith(".txt")
+        ? "text/plain; charset=utf-8"
+        : "text/html; charset=utf-8";
+    return new Response(body, { status: 200, headers: { "content-type": contentType } });
+  } catch (error) {
+    if (error?.code !== "ENOENT") throw error;
+    const body = await readFile(new URL("../out/404.html", import.meta.url));
+    return new Response(body, {
+      status: 404,
+      headers: { "content-type": "text/html; charset=utf-8" },
+    });
   }
-
-  return response;
 }
 
 const publicRoutes = [
@@ -92,7 +87,7 @@ function idForFragment(fragment) {
   return fragment.replace(/^#/, "");
 }
 
-test("server-renders the focused Boho homepage and approved marketing message", async () => {
+test("pre-renders the focused Boho homepage and approved marketing message", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
@@ -594,7 +589,7 @@ test("keeps claim and release boundaries persistent for this private review cand
 });
 
 test("publishes clean crawl controls and a sitemap containing only public routes", async () => {
-  const robots = await readFile(new URL("../dist/client/robots.txt", import.meta.url), "utf8");
+  const robots = await readFile(new URL("../out/robots.txt", import.meta.url), "utf8");
   assert.match(robots, /User-agent: \*[\s\S]*Allow: \//i);
   assert.match(robots, /Sitemap: https:\/\/bohodigitalservices\.com\/sitemap\.xml/i);
 
@@ -631,6 +626,34 @@ test("publishes clean crawl controls and a sitemap containing only public routes
   for (const route of retiredRoutes) {
     assert.doesNotMatch(sitemap, new RegExp(`https://bohodigitalservices\\.com${route.replaceAll("/", "\\/")}`), `${route} leaked into sitemap`);
   }
+});
+
+test("ships public pages as static assets without a Worker runtime", async () => {
+  for (const path of [
+    "../out/index.html",
+    "../out/about/index.html",
+    "../out/tools/index.html",
+    "../out/learn/glossary/index.html",
+    "../out/contact/__next.$c$slug.__PAGE__.txt",
+    "../out/robots.txt",
+    "../out/sitemap.xml",
+    "../out/_headers",
+  ]) {
+    await assert.doesNotReject(access(new URL(path, import.meta.url)), `missing static artifact ${path}`);
+  }
+
+  await assert.rejects(
+    access(new URL("../out/_worker.js", import.meta.url)),
+    (error) => error?.code === "ENOENT",
+    "static Pages output must not include a Worker entry point",
+  );
+
+  const headers = await readFile(new URL("../out/_headers", import.meta.url), "utf8");
+  assert.match(headers, /\/_next\/static\/\*[\s\S]*max-age=31536000[\s\S]*immutable/i);
+  assert.doesNotMatch(headers, /noindex|nofollow|x-robots-tag/i);
+
+  const wranglerConfig = await readFile(new URL("../wrangler.jsonc", import.meta.url), "utf8");
+  assert.match(wranglerConfig, /"pages_build_output_dir"\s*:\s*"\.\/out"/);
 });
 
 test("contains no residual indexing blocks in source while keeping retired routes unavailable", async () => {
@@ -694,12 +717,12 @@ test("resolves every local asset referenced by public HTML", async () => {
     for (const src of localReferences(html, "src")) {
       const pathname = decodeURIComponent(src.split("?", 1)[0]);
       await assert.doesNotReject(
-        access(new URL(`../dist/client${pathname}`, import.meta.url)),
+        access(new URL(`../out${pathname}`, import.meta.url)),
         `${route} references missing asset ${pathname}`,
       );
     }
   }
-  await assert.doesNotReject(access(new URL("../dist/client/og-boho-digital-engineering-20260714.png", import.meta.url)));
+  await assert.doesNotReject(access(new URL("../out/og-boho-digital-engineering-20260714.png", import.meta.url)));
 });
 
 test("keeps the public shell accessible and free of starter artifacts", async () => {

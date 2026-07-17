@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "vinext dev",
     "build": "vinext build",
-    "build:pages": "vinext build && node scripts/prepare-pages.mjs",
+    "build:pages": "next build && node scripts/prepare-pages.mjs",
     "start": "vinext start",
     "test": "corepack pnpm run build:pages && node --test tests/rendered-html.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",

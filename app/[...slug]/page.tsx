@@ -22,6 +22,8 @@ type InteriorRouteProps = {
   params: Promise<{ slug: string[] }>;
 };
 
+export const dynamicParams = false;
+
 function routeFromSegments(segments: string[]) {
   return `/${segments.join("/")}/`;
 }

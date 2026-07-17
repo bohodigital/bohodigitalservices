@@ -4,6 +4,8 @@ import { audiencePages } from "./content/audiencePages";
 import { corePages } from "./content/corePages";
 import { isRetiredPublicPage } from "./content/publicPages";
 
+export const dynamic = "force-static";
+
 const siteUrl = "https://bohodigitalservices.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
