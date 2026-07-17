@@ -3,6 +3,11 @@ import { mkdir, writeFile } from "node:fs/promises";
 const { chromium } = await import(process.env.QA_PLAYWRIGHT_CORE_URL ?? "playwright-core");
 
 const baseUrl = process.env.QA_BASE_URL ?? "http://localhost:4177";
+const baseOrigin = new URL(baseUrl).origin;
+const sitesBypassToken = process.env.QA_SITES_BYPASS_TOKEN;
+const authenticatedContext = sitesBypassToken
+  ? { extraHTTPHeaders: { "OAI-Sites-Authorization": `Bearer ${sitesBypassToken}` } }
+  : {};
 const artifactDir = process.env.QA_ARTIFACT_DIR
   ?? new URL("../artifacts/CR-2026-07-16-BOHO-SITEWIDE-GLOSSARY-PRODUCTION-001/", import.meta.url).pathname.replace(/^\/(.:)/, "$1");
 
@@ -88,7 +93,7 @@ function routeLabel(route) {
 async function keepQaLocal(scope) {
   await scope.route("**/*", async (route) => {
     const url = new URL(route.request().url());
-    if (url.hostname === "localhost" || url.hostname === "127.0.0.1") {
+    if (url.origin === baseOrigin || url.hostname === "localhost" || url.hostname === "127.0.0.1") {
       await route.continue();
     } else {
       await route.abort();
@@ -139,6 +144,7 @@ for (const scenario of scenarios) {
     isMobile: scenario.isMobile ?? false,
     hasTouch: scenario.hasTouch ?? false,
     reducedMotion: "reduce",
+    ...authenticatedContext,
   });
   await keepQaLocal(context);
   report.scenarios[scenario.name] = {};
@@ -235,7 +241,10 @@ for (const scenario of scenarios) {
   await context.close();
 }
 
-const interactionContext = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
+const interactionContext = await browser.newContext({
+  viewport: { width: 1440, height: 1000 },
+  ...authenticatedContext,
+});
 await keepQaLocal(interactionContext);
 
 const toolsPage = await interactionContext.newPage();

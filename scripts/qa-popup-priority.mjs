@@ -3,6 +3,11 @@ import { mkdir, writeFile } from "node:fs/promises";
 const { chromium } = await import(process.env.QA_PLAYWRIGHT_CORE_URL ?? "playwright-core");
 
 const baseUrl = process.env.QA_BASE_URL ?? "http://localhost:4177";
+const baseOrigin = new URL(baseUrl).origin;
+const sitesBypassToken = process.env.QA_SITES_BYPASS_TOKEN;
+const authenticatedContext = sitesBypassToken
+  ? { extraHTTPHeaders: { "OAI-Sites-Authorization": `Bearer ${sitesBypassToken}` } }
+  : {};
 const artifactDir = process.env.QA_ARTIFACT_DIR
   ?? new URL("../artifacts/CR-2026-07-16-BOHO-POPUP-PRIORITY-GLOSSARY-001/", import.meta.url).pathname.replace(/^\/(.:)/, "$1");
 
@@ -29,7 +34,7 @@ function collectErrors(page, label) {
 async function keepQaLocal(scope) {
   await scope.route("**/*", async (route) => {
     const url = new URL(route.request().url());
-    if (url.hostname === "localhost" || url.hostname === "127.0.0.1") {
+    if (url.origin === baseOrigin || url.hostname === "localhost" || url.hostname === "127.0.0.1") {
       await route.continue();
     } else {
       await route.abort();
@@ -37,7 +42,10 @@ async function keepQaLocal(scope) {
   });
 }
 
-const desktop = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
+const desktop = await browser.newContext({
+  viewport: { width: 1440, height: 1000 },
+  ...authenticatedContext,
+});
 await keepQaLocal(desktop);
 const desktopPage = await desktop.newPage();
 collectErrors(desktopPage, "desktop");
@@ -168,7 +176,12 @@ await desktopPage.keyboard.press("Escape");
 results.desktop.escapeClosed = await clippedTrigger.getAttribute("aria-expanded");
 await desktop.close();
 
-const mobile = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+const mobile = await browser.newContext({
+  viewport: { width: 390, height: 844 },
+  isMobile: true,
+  hasTouch: true,
+  ...authenticatedContext,
+});
 await keepQaLocal(mobile);
 const mobilePage = await mobile.newPage();
 collectErrors(mobilePage, "mobile");
@@ -219,7 +232,10 @@ results.mobile.singleOpen = {
 await mobilePage.locator("body > .definition-term__popover--open .definition-term__close").click();
 await mobile.close();
 
-const coverage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+const coverage = await browser.newPage({
+  viewport: { width: 1280, height: 900 },
+  ...authenticatedContext,
+});
 await keepQaLocal(coverage);
 collectErrors(coverage, "coverage");
 const expectedCoverage = {
