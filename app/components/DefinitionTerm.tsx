@@ -2,6 +2,7 @@
 
 import {
   type CSSProperties,
+  useCallback,
   useEffect,
   useId,
   useLayoutEffect,
@@ -9,6 +10,7 @@ import {
   useState,
 } from "react";
 import { createPortal } from "react-dom";
+import { useDefinitionPopover } from "./DefinitionPopoverProvider";
 
 type DefinitionTermProps = {
   label: string;
@@ -43,7 +45,6 @@ export function DefinitionTerm({
   term,
   shortDefinition,
 }: DefinitionTermProps) {
-  const [open, setOpen] = useState(false);
   const [placement, setPlacement] = useState<DefinitionPlacement>(initialPlacement);
   const rootRef = useRef<HTMLSpanElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -52,44 +53,53 @@ export function DefinitionTerm({
   const suppressNextFocusOpen = useRef(false);
   const generatedId = useId().replace(/:/g, "");
   const descriptionId = `definition-${slug}-${generatedId}`;
+  const { activeId, activate, deactivate } = useDefinitionPopover();
+  const open = activeId === descriptionId;
 
-  const clearScheduledClose = () => {
+  const clearScheduledClose = useCallback(() => {
     if (closeTimerRef.current === null) return;
     window.clearTimeout(closeTimerRef.current);
     closeTimerRef.current = null;
-  };
+  }, []);
 
-  const containsInteractiveTarget = (target: EventTarget | null) => {
+  const containsInteractiveTarget = useCallback((target: EventTarget | null) => {
     if (!(target instanceof Node)) return false;
     return Boolean(
       rootRef.current?.contains(target) || popoverRef.current?.contains(target),
     );
-  };
+  }, []);
 
   const scheduleClose = () => {
     clearScheduledClose();
     closeTimerRef.current = window.setTimeout(() => {
-      if (!containsInteractiveTarget(document.activeElement)) setOpen(false);
+      if (!containsInteractiveTarget(document.activeElement)) deactivate(descriptionId);
       closeTimerRef.current = null;
     }, 140);
+  };
+
+  const requestOpen = () => {
+    clearScheduledClose();
+    setPlacement(initialPlacement);
+    activate(descriptionId);
   };
 
   useEffect(() => {
     return () => {
       if (closeTimerRef.current !== null) window.clearTimeout(closeTimerRef.current);
+      deactivate(descriptionId);
     };
-  }, []);
+  }, [deactivate, descriptionId]);
 
   useEffect(() => {
     if (!open) return;
 
     function handlePointerDown(event: PointerEvent) {
-      if (!containsInteractiveTarget(event.target)) setOpen(false);
+      if (!containsInteractiveTarget(event.target)) deactivate(descriptionId);
     }
 
     document.addEventListener("pointerdown", handlePointerDown);
     return () => document.removeEventListener("pointerdown", handlePointerDown);
-  }, [open]);
+  }, [containsInteractiveTarget, deactivate, descriptionId, open]);
 
   useLayoutEffect(() => {
     if (!open) return;
@@ -154,16 +164,33 @@ export function DefinitionTerm({
     "--definition-top": `${placement.top}px`,
   } as CSSProperties;
 
-  const closeAndReturnFocus = () => {
+  const closeAndReturnFocus = useCallback(() => {
+    if (!open) return;
     clearScheduledClose();
     if (document.activeElement !== triggerRef.current) suppressNextFocusOpen.current = true;
-    setOpen(false);
+    deactivate(descriptionId);
     triggerRef.current?.focus();
-  };
+  }, [clearScheduledClose, deactivate, descriptionId, open]);
 
   const handleEscape = (event: React.KeyboardEvent) => {
-    if (event.key === "Escape") closeAndReturnFocus();
+    if (event.key === "Escape" && open) {
+      event.preventDefault();
+      closeAndReturnFocus();
+    }
   };
+
+  useEffect(() => {
+    if (!open) return;
+
+    function handleDocumentEscape(event: KeyboardEvent) {
+      if (event.key !== "Escape") return;
+      event.preventDefault();
+      closeAndReturnFocus();
+    }
+
+    document.addEventListener("keydown", handleDocumentEscape);
+    return () => document.removeEventListener("keydown", handleDocumentEscape);
+  }, [closeAndReturnFocus, open]);
 
   const popover = (
     <span
@@ -174,7 +201,7 @@ export function DefinitionTerm({
       data-side={placement.side}
       id={descriptionId}
       onBlurCapture={(event) => {
-        if (!containsInteractiveTarget(event.relatedTarget)) setOpen(false);
+        if (!containsInteractiveTarget(event.relatedTarget)) deactivate(descriptionId);
       }}
       onKeyDown={handleEscape}
       onMouseEnter={clearScheduledClose}
@@ -215,19 +242,19 @@ export function DefinitionTerm({
       className="definition-term"
       data-open={open ? "true" : "false"}
       onBlurCapture={(event) => {
-        if (!containsInteractiveTarget(event.relatedTarget)) setOpen(false);
+        if (!containsInteractiveTarget(event.relatedTarget)) deactivate(descriptionId);
       }}
       onFocusCapture={() => {
         if (suppressNextFocusOpen.current) {
           suppressNextFocusOpen.current = false;
           return;
         }
-        setOpen(true);
+        if (!open) requestOpen();
       }}
       onKeyDown={handleEscape}
       onMouseEnter={() => {
         clearScheduledClose();
-        setOpen(true);
+        if (!open) requestOpen();
       }}
       onMouseLeave={scheduleClose}
       ref={rootRef}
@@ -236,7 +263,7 @@ export function DefinitionTerm({
         aria-controls={descriptionId}
         aria-expanded={open}
         className="definition-term__trigger"
-        onClick={() => setOpen(true)}
+        onClick={requestOpen}
         ref={triggerRef}
         type="button"
       >

@@ -501,8 +501,8 @@
   box-shadow: 0.9rem 0.9rem 0 var(--burnished-gold);
 }
 
-.about-project:nth-child(2) .about-project__visual { box-shadow-color: var(--copper-pop); }
-.about-project:nth-child(3) .about-project__visual { box-shadow-color: var(--verdigris-pop); }
+.about-project:nth-child(2) .about-project__visual { box-shadow: 0.9rem 0.9rem 0 var(--copper-pop); }
+.about-project:nth-child(3) .about-project__visual { box-shadow: 0.9rem 0.9rem 0 var(--verdigris-pop); }
 
 .about-project__visual img {
   width: 100%;

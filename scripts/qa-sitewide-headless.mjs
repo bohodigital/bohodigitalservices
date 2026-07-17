@@ -265,7 +265,36 @@ const escapeClosed = await trigger.getAttribute("aria-expanded");
 await trigger.hover();
 await toolsPage.locator("body > .definition-term__popover--open").waitFor();
 const hoverOpened = await trigger.getAttribute("aria-expanded");
-report.interactions.popup = { focusOpened, escapeClosed, hoverOpened, popupPriority };
+await toolsPage.mouse.move(2, 500);
+await toolsPage.waitForTimeout(200);
+
+const adjacentTriggers = toolsPage.locator(".knowledge-hero__intro .definition-term__trigger");
+const firstAdjacent = adjacentTriggers.nth(0);
+const secondAdjacent = adjacentTriggers.nth(1);
+await firstAdjacent.click();
+await secondAdjacent.hover();
+await toolsPage.waitForTimeout(350);
+const clickThenHover = {
+  count: await toolsPage.locator("body > .definition-term__popover--open").count(),
+  firstExpanded: await firstAdjacent.getAttribute("aria-expanded"),
+  secondExpanded: await secondAdjacent.getAttribute("aria-expanded"),
+};
+await toolsPage.keyboard.press("Escape");
+await toolsPage.waitForTimeout(50);
+const activeEscape = {
+  count: await toolsPage.locator("body > .definition-term__popover--open").count(),
+  focusReturnedToActiveTrigger: await secondAdjacent.evaluate(
+    (definitionTrigger) => document.activeElement === definitionTrigger,
+  ),
+};
+report.interactions.popup = {
+  focusOpened,
+  escapeClosed,
+  hoverOpened,
+  popupPriority,
+  clickThenHover,
+  activeEscape,
+};
 await toolsPage.close();
 
 const glossaryPage = await interactionContext.newPage();
@@ -301,6 +330,15 @@ if (focusOpened !== "true" || escapeClosed !== "false" || hoverOpened !== "true"
 }
 if (!popupPriority.bodyChild || popupPriority.position !== "fixed" || popupPriority.zIndex !== "2147483000" || !popupPriority.topmost) {
   report.failures.push({ label: "popup priority", errors: [JSON.stringify(popupPriority)] });
+}
+if (
+  clickThenHover.count !== 1
+  || clickThenHover.firstExpanded !== "false"
+  || clickThenHover.secondExpanded !== "true"
+  || activeEscape.count !== 0
+  || !activeEscape.focusReturnedToActiveTrigger
+) {
+  report.failures.push({ label: "popup single-open ownership", errors: [JSON.stringify({ clickThenHover, activeEscape })] });
 }
 if (cloudflareVisible < 1 || umamiVisible < 1 || allTerms !== 152) {
   report.failures.push({ label: "glossary interaction", errors: [JSON.stringify(report.interactions.glossary)] });

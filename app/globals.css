@@ -23,12 +23,16 @@
   --blue-wash: #add5e4;
   --sage-gray: #aab3a3;
   --white: #ffffff;
+  --muted: #4b5558;
+  --verdigris-text: #174d4a;
   --line-dark: rgba(17, 18, 20, 0.18);
   --line-light: rgba(244, 240, 231, 0.2);
   --font-display: "Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
   --font-body: "Manrope", "Avenir Next", "Segoe UI", Arial, sans-serif;
+  --font-mono: "Cascadia Mono", "SFMono-Regular", Consolas, "Liberation Mono";
   --content-max: 82rem;
   --reading-max: 46rem;
+  --page-gutter: clamp(1rem, 4vw, 3rem);
   --radius-sm: 0.3rem;
   --radius-md: 0.7rem;
   --shadow-soft: 0 1.6rem 4rem rgba(17, 18, 20, 0.12);
@@ -4444,9 +4448,9 @@ body,
   text-decoration: none;
 }
 
-.glossary-common__grid a:nth-child(4n + 2) { box-shadow-color: var(--verdigris-pop); }
-.glossary-common__grid a:nth-child(4n + 3) { box-shadow-color: var(--plum-pop); }
-.glossary-common__grid a:nth-child(4n + 4) { box-shadow-color: var(--blue-pop); }
+.glossary-common__grid a:nth-child(4n + 2) { box-shadow: 0.24rem 0.24rem 0 var(--verdigris-pop); }
+.glossary-common__grid a:nth-child(4n + 3) { box-shadow: 0.24rem 0.24rem 0 var(--plum-pop); }
+.glossary-common__grid a:nth-child(4n + 4) { box-shadow: 0.24rem 0.24rem 0 var(--blue-pop); }
 
 .glossary-common__grid a:hover,
 .glossary-common__grid a:focus-visible {
@@ -8700,4 +8704,112 @@ body,
   .hero .hero__supporting-line,
   .hero .eyebrow--on-dark,
   .hero .button-link--secondary { color: CanvasText; }
+}
+
+/* Sitewide cosmetic polish. Keep this final so late legacy layers cannot win. */
+.site-header :is(a, button):focus-visible {
+  outline: 0.18rem solid var(--burnished-gold);
+  outline-offset: 0.24rem;
+  box-shadow: none;
+}
+
+.site-header .button-link--primary:focus-visible {
+  outline-color: var(--warm-ivory);
+}
+
+.interior-section__note {
+  max-width: 36rem;
+  margin-right: auto;
+  margin-left: 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.65;
+  text-transform: none;
+}
+
+.interior-section__note .margin-note__label {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--copper-text);
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.interior-section__note p:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 72.01rem) {
+  .interior-steps:has(> .interior-steps__item:nth-child(3):last-child) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .glossary-cluster-grid > :last-child:nth-child(3n + 1) {
+    grid-column: 2;
+  }
+}
+
+@media (min-width: 46.01rem) and (max-width: 72rem) {
+  .glossary-cluster-grid > :last-child:nth-child(odd) {
+    width: calc(50% - 0.35rem);
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 72rem) {
+  .site-header {
+    background: var(--ink);
+  }
+}
+
+@media (max-width: 46rem) {
+  .interior-hero__motif {
+    display: none;
+  }
+
+  .breadcrumbs__list {
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+
+  .breadcrumbs__item {
+    min-width: 0;
+    flex: 0 0 auto;
+  }
+
+  .breadcrumbs__item:last-child {
+    flex: 1 1 auto;
+  }
+
+  .breadcrumbs__item:last-child > span {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .interior-card-grid__card,
+  .interior-card-grid__card:nth-child(n),
+  .interior-card-grid--split .interior-card-grid__card:nth-child(n),
+  .interior-steps .buyer-bucket-panel,
+  .glossary-cluster-grid button {
+    min-height: 0;
+  }
+
+  .interior-hero__title,
+  .interior-section__title,
+  .knowledge-hero h1 {
+    line-height: 1.03;
+  }
+}
+
+@media (forced-colors: active) {
+  .site-header :is(a, button):focus-visible {
+    outline-color: Highlight;
+  }
 }

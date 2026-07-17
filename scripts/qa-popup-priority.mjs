@@ -44,6 +44,84 @@ collectErrors(desktopPage, "desktop");
 await desktopPage.goto(`${baseUrl}/tools/`, { waitUntil: "domcontentloaded" });
 await desktopPage.locator("main").waitFor();
 
+const adjacentTriggers = desktopPage.locator(".knowledge-hero__intro .definition-term__trigger");
+if (await adjacentTriggers.count() < 2) {
+  throw new Error("Expected at least two adjacent definition triggers in the Tools hero.");
+}
+const firstAdjacentTrigger = adjacentTriggers.nth(0);
+const secondAdjacentTrigger = adjacentTriggers.nth(1);
+const openPopovers = desktopPage.locator("body > .definition-term__popover--open");
+
+await firstAdjacentTrigger.hover();
+await desktopPage.locator('body > .definition-term__popover--open[data-ready="true"]').waitFor({ state: "visible" });
+const rapidAfterFirst = await openPopovers.count();
+await secondAdjacentTrigger.hover();
+const rapidImmediate = await openPopovers.count();
+await desktopPage.waitForTimeout(250);
+const rapidSettled = await openPopovers.count();
+
+await firstAdjacentTrigger.click();
+await secondAdjacentTrigger.hover();
+await desktopPage.waitForTimeout(350);
+const clickThenHover = {
+  count: await openPopovers.count(),
+  firstExpanded: await firstAdjacentTrigger.getAttribute("aria-expanded"),
+  secondExpanded: await secondAdjacentTrigger.getAttribute("aria-expanded"),
+};
+await desktopPage.keyboard.press("Escape");
+await desktopPage.waitForTimeout(50);
+const staleFocusEscape = {
+  count: await openPopovers.count(),
+  focusReturnedToActiveTrigger: await secondAdjacentTrigger.evaluate(
+    (trigger) => document.activeElement === trigger,
+  ),
+};
+
+await firstAdjacentTrigger.focus();
+await secondAdjacentTrigger.focus();
+await desktopPage.waitForTimeout(50);
+const keyboardTransfer = {
+  count: await openPopovers.count(),
+  firstExpanded: await firstAdjacentTrigger.getAttribute("aria-expanded"),
+  secondExpanded: await secondAdjacentTrigger.getAttribute("aria-expanded"),
+};
+await desktopPage.mouse.click(2, 500);
+await desktopPage.waitForTimeout(50);
+const outsidePointerClosed = await openPopovers.count();
+
+await desktopPage.evaluate(() => {
+  const countOpen = () => document.querySelectorAll("body > .definition-term__popover--open").length;
+  const state = { max: countOpen(), observer: null };
+  state.observer = new MutationObserver(() => {
+    state.max = Math.max(state.max, countOpen());
+  });
+  state.observer.observe(document.body, { childList: true, subtree: true, attributes: true });
+  window.__definitionPopoverSweep = state;
+});
+for (let index = 0; index < Math.min(await adjacentTriggers.count(), 8); index += 1) {
+  await adjacentTriggers.nth(index).hover();
+  await desktopPage.waitForTimeout(20);
+}
+await desktopPage.waitForTimeout(250);
+const rapidSweepMaximum = await desktopPage.evaluate(() => {
+  const state = window.__definitionPopoverSweep;
+  state?.observer?.disconnect();
+  return state?.max ?? -1;
+});
+await desktopPage.mouse.move(2, 500);
+await desktopPage.waitForTimeout(200);
+
+results.desktop.singleOpen = {
+  rapidAfterFirst,
+  rapidImmediate,
+  rapidSettled,
+  clickThenHover,
+  staleFocusEscape,
+  keyboardTransfer,
+  outsidePointerClosed,
+  rapidSweepMaximum,
+};
+
 const clippedTrigger = desktopPage.locator(".selected-tool-card .definition-term__trigger").first();
 await clippedTrigger.waitFor({ state: "visible" });
 await desktopPage.waitForTimeout(1_500);
@@ -126,6 +204,19 @@ results.mobile.priority = await mobilePage.evaluate(() => {
 await mobilePage.screenshot({ path: `${artifactDir}/popup-priority-mobile-390.png`, fullPage: false });
 await mobilePage.locator("body > .definition-term__popover--open .definition-term__close").click();
 results.mobile.closeButtonClosed = await mobileTrigger.getAttribute("aria-expanded");
+
+const mobileAdjacentTriggers = mobilePage.locator(".knowledge-hero__intro .definition-term__trigger");
+const firstMobileAdjacent = mobileAdjacentTriggers.nth(0);
+const secondMobileAdjacent = mobileAdjacentTriggers.nth(1);
+await firstMobileAdjacent.click();
+await secondMobileAdjacent.click();
+await mobilePage.waitForTimeout(100);
+results.mobile.singleOpen = {
+  count: await mobilePage.locator("body > .definition-term__popover--open").count(),
+  firstExpanded: await firstMobileAdjacent.getAttribute("aria-expanded"),
+  secondExpanded: await secondMobileAdjacent.getAttribute("aria-expanded"),
+};
+await mobilePage.locator("body > .definition-term__popover--open .definition-term__close").click();
 await mobile.close();
 
 const coverage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
@@ -159,8 +250,28 @@ for (const mode of [results.desktop.priority, results.mobile.priority]) {
 if (results.desktop.priority.clippingAncestorOverflow !== "hidden") process.exitCode = 1;
 if (!results.desktop.priority.escapedClippedCard || results.desktop.hoverOpened !== "true" || !results.desktop.hoverBridgeOpen) process.exitCode = 1;
 if (results.desktop.escapeClosed !== "false") process.exitCode = 1;
+if (
+  results.desktop.singleOpen.rapidAfterFirst !== 1
+  || results.desktop.singleOpen.rapidImmediate > 1
+  || results.desktop.singleOpen.rapidSettled !== 1
+  || results.desktop.singleOpen.clickThenHover.count !== 1
+  || results.desktop.singleOpen.clickThenHover.firstExpanded !== "false"
+  || results.desktop.singleOpen.clickThenHover.secondExpanded !== "true"
+  || results.desktop.singleOpen.staleFocusEscape.count !== 0
+  || !results.desktop.singleOpen.staleFocusEscape.focusReturnedToActiveTrigger
+  || results.desktop.singleOpen.keyboardTransfer.count !== 1
+  || results.desktop.singleOpen.keyboardTransfer.firstExpanded !== "false"
+  || results.desktop.singleOpen.keyboardTransfer.secondExpanded !== "true"
+  || results.desktop.singleOpen.outsidePointerClosed !== 0
+  || results.desktop.singleOpen.rapidSweepMaximum > 1
+) process.exitCode = 1;
 if (results.mobile.priority.closeTabIndex !== "0" || results.mobile.priority.linkTabIndex !== "0") process.exitCode = 1;
 if (results.mobile.closeButtonClosed !== "false") process.exitCode = 1;
+if (
+  results.mobile.singleOpen.count !== 1
+  || results.mobile.singleOpen.firstExpanded !== "false"
+  || results.mobile.singleOpen.secondExpanded !== "true"
+) process.exitCode = 1;
 for (const route of Object.values(results.coverage)) {
   if (Object.values(route).some((count) => count < 1)) process.exitCode = 1;
 }

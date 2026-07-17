@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { DefinitionPopoverProvider } from "./components/DefinitionPopoverProvider";
 import "./globals.css";
 
 const siteUrl = new URL("https://bohodigitalservices.com");
@@ -120,7 +121,9 @@ gtag('config', 'G-5CV8L2SE2R');`,
           data-exclude-search="true"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <DefinitionPopoverProvider>{children}</DefinitionPopoverProvider>
+      </body>
     </html>
   );
 }
