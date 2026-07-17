@@ -263,7 +263,10 @@ export function DefinitionTerm({
         aria-controls={descriptionId}
         aria-expanded={open}
         className="definition-term__trigger"
-        onClick={requestOpen}
+        onClick={() => {
+          clearScheduledClose();
+          if (!open) requestOpen();
+        }}
         ref={triggerRef}
         type="button"
       >
