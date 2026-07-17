@@ -155,7 +155,10 @@ async function loadRouteWithRetry(context, route, label) {
       if ((response?.status() ?? 0) >= 500) {
         throw new Error(`document returned ${response?.status()}`);
       }
-      await page.locator("main").waitFor({ state: "visible", timeout: 15_000 });
+      const expectsProviderNotFound = label.endsWith("/definitely-not-a-real-page/");
+      if (!expectsProviderNotFound) {
+        await page.locator("main").waitFor({ state: "visible", timeout: 15_000 });
+      }
       await page.waitForTimeout(220);
       await settleLazyImages(page);
 
@@ -266,8 +269,13 @@ for (const scenario of scenarios) {
         semanticAudit.results.push({ route, highlights });
       }
 
-      if (metrics.h1Count !== 1) errors.push(`expected one h1; found ${metrics.h1Count}`);
-      if (metrics.mainCount !== 1) errors.push(`expected one main; found ${metrics.mainCount}`);
+      const expectsProviderNotFound = route === "/definitely-not-a-real-page/";
+      if (expectsProviderNotFound) {
+        if (response?.status() !== 404) errors.push(`expected provider 404; received ${response?.status() ?? "no response"}`);
+      } else {
+        if (metrics.h1Count !== 1) errors.push(`expected one h1; found ${metrics.h1Count}`);
+        if (metrics.mainCount !== 1) errors.push(`expected one main; found ${metrics.mainCount}`);
+      }
       if (metrics.horizontalOverflow > 1) errors.push(`horizontal overflow ${metrics.horizontalOverflow}px`);
       if (metrics.localBrokenImages.length) errors.push(`broken local images: ${metrics.localBrokenImages.join(", ")}`);
       if (route !== "/definitely-not-a-real-page/" && metrics.robots.some((value) => /noindex/i.test(value))) {
@@ -388,7 +396,14 @@ const umamiVisible = await glossaryPage.locator("#term-umami").count();
 await search.fill("");
 const clusterSelect = glossaryPage.locator(".glossary-controls select");
 await clusterSelect.selectOption({ label: "Analytics and measurement" });
-await glossaryPage.waitForTimeout(100);
+await glossaryPage.waitForFunction(() => {
+  const select = document.querySelector(".glossary-controls select");
+  const labels = [...document.querySelectorAll(".glossary-row__cluster")]
+    .map((element) => element.textContent?.trim());
+  return select?.value === "Analytics and measurement"
+    && labels.length > 0
+    && labels.every((label) => label === "Analytics and measurement");
+}, { timeout: 5_000 });
 const clusterLabels = await glossaryPage.locator(".glossary-row__cluster").allTextContents();
 await clusterSelect.selectOption({ label: "All clusters" });
 const allTerms = await glossaryPage.locator(".glossary-row").count();
