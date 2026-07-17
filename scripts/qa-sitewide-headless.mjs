@@ -76,6 +76,7 @@ const report = {
   routeCount: routes.length,
   scenarios: {},
   interactions: {},
+  transientRetries: [],
   failures: [],
 };
 
@@ -138,6 +139,70 @@ async function settleLazyImages(page) {
   await page.waitForTimeout(120);
 }
 
+async function loadRouteWithRetry(context, route, label) {
+  const transientRetries = [];
+
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    const page = await context.newPage();
+    const errors = [];
+    let response = null;
+    addPageDiagnostics(page, label, errors);
+
+    try {
+      response = await page.goto(`${baseUrl}${route}`, {
+        waitUntil: "domcontentloaded",
+        timeout: 30_000,
+      });
+      if ((response?.status() ?? 0) >= 500) {
+        throw new Error(`document returned ${response?.status()}`);
+      }
+      await page.locator("main").waitFor({ state: "visible", timeout: 15_000 });
+      await page.waitForTimeout(220);
+      await settleLazyImages(page);
+
+      if (errors.some((error) => /^response: 5\d\d\b/.test(error))) {
+        throw new Error("a same-origin asset returned a 5xx response");
+      }
+
+      return {
+        attemptCount: attempt,
+        errors,
+        exception: null,
+        page,
+        response,
+        transientRetries,
+      };
+    } catch (error) {
+      const exception = error instanceof Error ? error.message : String(error);
+      const hasFiveXx = (response?.status() ?? 0) >= 500
+        || errors.some((item) => /^response: 5\d\d\b/.test(item));
+
+      if (hasFiveXx && attempt < 3) {
+        transientRetries.push({
+          attempt,
+          documentStatus: response?.status() ?? null,
+          errors: [...errors],
+          exception,
+        });
+        await page.close();
+        await new Promise((resolve) => setTimeout(resolve, attempt * 350));
+        continue;
+      }
+
+      return {
+        attemptCount: attempt,
+        errors,
+        exception,
+        page,
+        response,
+        transientRetries,
+      };
+    }
+  }
+
+  throw new Error(`unreachable route retry state for ${label}`);
+}
+
 for (const scenario of scenarios) {
   const context = await browser.newContext({
     viewport: scenario.viewport,
@@ -150,19 +215,15 @@ for (const scenario of scenarios) {
   report.scenarios[scenario.name] = {};
 
   for (const route of routes) {
-    const page = await context.newPage();
     const label = `${scenario.name}:${route}`;
-    const errors = [];
-    addPageDiagnostics(page, label, errors);
+    const loaded = await loadRouteWithRetry(context, route, label);
+    const { page, response, errors, attemptCount, transientRetries } = loaded;
+    if (transientRetries.length) {
+      report.transientRetries.push({ label, retries: transientRetries });
+    }
 
     try {
-      const response = await page.goto(`${baseUrl}${route}`, {
-        waitUntil: "domcontentloaded",
-        timeout: 30_000,
-      });
-      await page.locator("main").waitFor({ state: "visible", timeout: 15_000 });
-      await page.waitForTimeout(220);
-      await settleLazyImages(page);
+      if (loaded.exception) throw new Error(loaded.exception);
 
       const metrics = await page.evaluate(() => {
         const localBrokenImages = [...document.images]
@@ -226,12 +287,20 @@ for (const scenario of scenarios) {
       report.scenarios[scenario.name][route] = {
         status: response?.status() ?? null,
         finalUrl: page.url(),
+        attemptCount,
+        transientRetries,
         ...metrics,
         errors,
       };
     } catch (error) {
       errors.push(`exception: ${error instanceof Error ? error.message : String(error)}`);
-      report.scenarios[scenario.name][route] = { errors };
+      report.scenarios[scenario.name][route] = {
+        status: response?.status() ?? null,
+        finalUrl: page.url(),
+        attemptCount,
+        transientRetries,
+        errors,
+      };
     }
 
     if (errors.length) report.failures.push({ label, errors });
