@@ -13,6 +13,7 @@ function renderAutomaticTerms(
   text: string,
   seenTerms: Set<string>,
   keyPrefix: string,
+  excludedSlugs: ReadonlySet<string>,
 ) {
   if (!text || !glossaryAliasPattern) return [text];
 
@@ -30,7 +31,7 @@ function renderAutomaticTerms(
 
     if (match.index > cursor) output.push(text.slice(cursor, match.index));
 
-    if (entry && !seenTerms.has(entry.slug)) {
+    if (entry && !excludedSlugs.has(entry.slug) && !seenTerms.has(entry.slug)) {
       seenTerms.add(entry.slug);
       output.push(
         <DefinitionTerm
@@ -56,13 +57,16 @@ export function DefinedText({
   text,
   seenTerms,
   autoDefine = false,
+  excludeSlugs = [],
 }: {
   text: string;
   seenTerms?: Set<string>;
   autoDefine?: boolean;
+  excludeSlugs?: readonly string[];
 }) {
   const output = [];
   const pageTerms = seenTerms ?? new Set<string>();
+  const excludedSlugs = new Set(excludeSlugs.map((slug) => slug.toLowerCase()));
   let cursor = 0;
   let match: RegExpExecArray | null;
   const markerPattern = new RegExp(markerPatternSource, "gi");
@@ -76,7 +80,7 @@ export function DefinedText({
       const preceding = text.slice(cursor, match.index);
       output.push(
         ...(autoDefine
-          ? renderAutomaticTerms(preceding, pageTerms, `auto-${cursor}`)
+          ? renderAutomaticTerms(preceding, pageTerms, `auto-${cursor}`, excludedSlugs)
           : [preceding]),
       );
     }
@@ -103,7 +107,7 @@ export function DefinedText({
     const remainder = text.slice(cursor);
     output.push(
       ...(autoDefine
-        ? renderAutomaticTerms(remainder, pageTerms, `auto-${cursor}`)
+        ? renderAutomaticTerms(remainder, pageTerms, `auto-${cursor}`, excludedSlugs)
         : [remainder]),
     );
   }

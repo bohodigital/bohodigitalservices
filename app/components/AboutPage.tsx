@@ -16,40 +16,40 @@ const professionalCompetencies = [
 ] as const;
 
 const digitalServiceCosts = [
-  "unnecessary communication layers;",
-  "standardized work presented as mysterious expertise;",
-  "automated reports without useful decisions;",
-  "technical systems nobody will explain;",
-  "repeated work that should already have become a reliable process;",
-  "and provider relationships that obscure ownership and control.",
+  "Unnecessary communication layers",
+  "Standardized work presented as mysterious expertise",
+  "Automated reports without useful decisions",
+  "Technical systems nobody will explain",
+  "Repeated work that should already have become a reliable process",
+  "Provider relationships that obscure ownership and control",
 ] as const;
 
 const structuralAnswer = [
-  "keep technical responsibility close to the client;",
-  "remove overhead that does not improve delivery;",
-  "begin with the business rather than a predetermined package;",
-  "use mature infrastructure instead of manufacturing fake complexity;",
-  "build reusable systems when problems repeat;",
-  "create custom solutions when standard ones are inadequate;",
-  "automate reliable repetitive work;",
-  "review consequential outputs;",
-  "document what changed;",
-  "preserve client control;",
-  "and pass the economic benefits of a leaner structure to the customer.",
+  "Keep technical responsibility close to the client",
+  "Remove overhead that does not improve delivery",
+  "Begin with the business rather than a predetermined package",
+  "Use mature infrastructure instead of manufacturing fake complexity",
+  "Build reusable systems when problems repeat",
+  "Create custom solutions when standard ones are inadequate",
+  "Automate reliable repetitive work",
+  "Review consequential outputs",
+  "Document what changed",
+  "Preserve client control",
+  "Pass the economic benefits of a leaner structure to the customer",
 ] as const;
 
 const reusableSystems = [
-  "diagnostic methods;",
-  "technical checklists;",
-  "research workflows;",
-  "deployment processes;",
-  "analytics components;",
-  "monitoring systems;",
-  "publishing systems;",
-  "content structures;",
-  "documentation patterns;",
-  "automation;",
-  "and software tools.",
+  "Diagnostic methods",
+  "Technical checklists",
+  "Research workflows",
+  "Deployment processes",
+  "Analytics components",
+  "Monitoring systems",
+  "Publishing systems",
+  "Content structures",
+  "Documentation patterns",
+  "Automation",
+  "Software tools",
 ] as const;
 
 const ownedProjects = [
@@ -113,14 +113,14 @@ const ownedProjects = [
 ] as const;
 
 const portfolioUses = [
-  "observe search behavior across different subjects and content types;",
-  "study changes in search visibility and indexing across multiple properties;",
-  "test information architecture, internal linking, metadata, structured content, and conversion paths;",
-  "validate analytics and monitoring systems;",
-  "test publishing workflows and reusable software;",
-  "deploy new tools under real operating conditions;",
-  "identify maintenance burdens and failure modes;",
-  "and gather evidence before introducing a method into client workflows.",
+  "Observe search behavior across different subjects and content types",
+  "Study changes in search visibility and indexing across multiple properties",
+  "Test information architecture, internal linking, metadata, structured content, and conversion paths",
+  "Validate analytics and monitoring systems",
+  "Test publishing workflows and reusable software",
+  "Deploy new tools under real operating conditions",
+  "Identify maintenance burdens and failure modes",
+  "Gather evidence before introducing a method into client workflows",
 ] as const;
 
 const testbedStages = [
@@ -143,24 +143,24 @@ const testbedStages = [
 ] as const;
 
 const scientificHabits = [
-  "define the problem;",
-  "understand the system;",
-  "inspect how the evidence was produced;",
-  "build or adapt the method;",
-  "test the result;",
-  "locate failure points;",
-  "and connect technical observations to meaningful decisions.",
+  "Define the problem",
+  "Understand the system",
+  "Inspect how the evidence was produced",
+  "Build or adapt the method",
+  "Test the result",
+  "Locate failure points",
+  "Connect technical observations to meaningful decisions",
 ] as const;
 
 const clientCosts = [
-  "sales commissions;",
-  "account-management layers;",
-  "internal handoffs;",
-  "meetings required by the provider’s structure;",
-  "repackaged software;",
-  "automated reports presented as bespoke analysis;",
-  "technical questions routed away from technical staff;",
-  "and dependence on systems the client does not understand or control.",
+  "Sales commissions",
+  "Account-management layers",
+  "Internal handoffs",
+  "Meetings required by the provider’s structure",
+  "Repackaged software",
+  "Automated reports presented as bespoke analysis",
+  "Technical questions routed away from technical staff",
+  "Dependence on systems the client does not understand or control",
 ] as const;
 
 const clientPath = [
@@ -212,19 +212,54 @@ const humanResponsibility = [
 ] as const;
 
 const caseStudyConditions = [
-  "real client work has been completed;",
-  "the evidence supports the claim;",
-  "the result can be described accurately;",
-  "and the client has approved publication where approval is required.",
+  "Real client work has been completed",
+  "The evidence supports the claim",
+  "The result can be described accurately",
+  "The client has approved publication where approval is required",
 ] as const;
 
 const honestInspection = [
-  "the quality of its owned websites and systems;",
-  "the specificity of its technical explanations;",
-  "the clarity of its proposals and agreements;",
-  "the professionalism of its work;",
-  "the care given to ownership and documentation;",
-  "and its willingness to distinguish proven capability from ambition.",
+  "The quality of its owned websites and systems",
+  "The specificity of its technical explanations",
+  "The clarity of its proposals and agreements",
+  "The professionalism of its work",
+  "The care given to ownership and documentation",
+  "Its willingness to distinguish proven capability from ambition",
+] as const;
+
+const scientificImages = [
+  {
+    alt: "A structural brain MRI reference plate showing axial, sagittal, and coronal views alongside segmented tissue and lobe maps.",
+    className: "about-science-plate--mri",
+    credit: "Vladimir Fonov · CC BY 3.0",
+    image: "/proof/about/science/brain-mri.jpg",
+    label: "STRUCTURAL MRI",
+    source: "https://commons.wikimedia.org/wiki/File:Mni_icbm152_sym_09c_small.jpg",
+  },
+  {
+    alt: "A multicolor lateral rendering of a human brain created from functional MRI data.",
+    className: "about-science-plate--fmri",
+    credit: "NIMH / NIH · Public domain",
+    image: "/proof/about/science/brain-fmri.jpg",
+    label: "FUNCTIONAL MRI",
+    source: "https://ocw.mit.edu/courses/res-9-005-fmri-bootcamp-fall-2017/resources/mitres9_005_f17_jpg/",
+  },
+  {
+    alt: "A Lotka-Volterra ordinary differential equation phase portrait with a vector field and nested trajectories.",
+    className: "about-science-plate--ode",
+    credit: "Wiso · CC BY-SA 3.0 · tonal treatment",
+    image: "/proof/about/science/ode-phase-field.png",
+    label: "ODE PHASE FIELD",
+    source: "https://commons.wikimedia.org/wiki/File:Lotka-Volterra.svg",
+  },
+  {
+    alt: "Santiago Ramón y Cajal’s drawing of a Purkinje neuron from the human cerebellum.",
+    className: "about-science-plate--cajal",
+    credit: "Santiago Ramón y Cajal · Public domain · tonal treatment",
+    image: "/proof/about/science/cajal-purkinje-neuron.jpg",
+    label: "NEURAL ARCHITECTURE",
+    source: "https://commons.wikimedia.org/wiki/File:Cajal_-_a_purkinje_neuron_from_the_human_cerebellum.jpg",
+  },
 ] as const;
 
 const operatingBeliefs = [
@@ -241,14 +276,10 @@ const operatingBeliefs = [
   "Better value should come from a better operating model, not careless work performed cheaply.",
 ] as const;
 
-function Arrow() {
-  return <span className="about-arrow" aria-hidden="true">↓</span>;
-}
-
 export function AboutPage() {
   const seenTerms = new Set<string>();
   const define = (text: string) => (
-    <DefinedText autoDefine seenTerms={seenTerms} text={text} />
+    <DefinedText autoDefine excludeSlugs={["lead"]} seenTerms={seenTerms} text={text} />
   );
 
   return (
@@ -278,22 +309,20 @@ export function AboutPage() {
               <p className="about-trust-line">Owner-operated · Research-led · Reusable systems · Direct technical access</p>
             </div>
 
-            <div className="about-technical-portrait" aria-hidden="true">
-              <div className="about-technical-portrait__grid" />
-              <div className="about-technical-portrait__contour about-technical-portrait__contour--one" />
-              <div className="about-technical-portrait__contour about-technical-portrait__contour--two" />
-              <div className="about-technical-portrait__curve" />
-              <div className="about-technical-portrait__path" />
-              <span className="about-technical-portrait__node about-technical-portrait__node--one" />
-              <span className="about-technical-portrait__node about-technical-portrait__node--two" />
-              <span className="about-technical-portrait__node about-technical-portrait__node--three" />
-              <span className="about-technical-portrait__mosaic about-technical-portrait__mosaic--one" />
-              <span className="about-technical-portrait__mosaic about-technical-portrait__mosaic--two" />
-              <span className="about-technical-portrait__label about-technical-portrait__label--systems">Systems</span>
-              <span className="about-technical-portrait__label about-technical-portrait__label--evidence">Evidence</span>
-              <span className="about-technical-portrait__label about-technical-portrait__label--behavior">Behavior</span>
-              <span className="about-technical-portrait__label about-technical-portrait__label--engineering">Engineering</span>
-            </div>
+            <figure className="about-electron-cloud">
+              <img
+                alt="Simulated hydrogen-like electron probability clouds across several atomic orbitals."
+                height={1600}
+                src="/proof/about/science/electron-cloud.png"
+                width={1600}
+              />
+              <figcaption>
+                <span>SIMULATED ELECTRON DENSITY · |ψ|²</span>
+                <a href="https://commons.wikimedia.org/wiki/File:Atomic-orbital-clouds_spdf_m0.png" rel="noreferrer" target="_blank">
+                  Geek3 · CC BY-SA 4.0<span aria-hidden="true">↗</span>
+                </a>
+              </figcaption>
+            </figure>
           </div>
 
           <nav className="about-proof-strip" aria-label="Boho-owned live project previews">
@@ -304,6 +333,17 @@ export function AboutPage() {
               <a href="#better-grades">Better Grades</a>
             </div>
           </nav>
+        </section>
+
+        <section className="about-beliefs" aria-labelledby="beliefs-title">
+          <div className="section-shell">
+            <p className="eyebrow eyebrow--on-dark">WHAT BOHO BELIEVES</p>
+            <h2 className="sr-only" id="beliefs-title">Boho operating beliefs</h2>
+            <div className="about-beliefs__list">
+              {operatingBeliefs.map((belief) => <p key={belief}>{define(belief)}</p>)}
+            </div>
+            <p className="about-beliefs__closing">That is the company I built.</p>
+          </div>
         </section>
 
         <section className="about-section about-background" aria-labelledby="professional-background-title">
@@ -328,6 +368,27 @@ export function AboutPage() {
                 <p>{define("My background is not in selling marketing packages.")}</p>
                 <p>{define("It is in studying complex systems, building methods to understand them, developing the software required to perform the work, and solving problems when the answer is not already available.")}</p>
               </div>
+            </div>
+            <div className="about-science-gallery" aria-label="Scientific research image references">
+              {scientificImages.map((image, index) => (
+                <figure className={`about-science-plate ${image.className}`} key={image.label}>
+                  <div className="about-science-plate__image">
+                    <img
+                      alt={image.alt}
+                      height={index === 0 ? 276 : 1024}
+                      loading="lazy"
+                      src={image.image}
+                      width={index === 0 ? 700 : 1024}
+                    />
+                  </div>
+                  <figcaption>
+                    <strong>{image.label}</strong>
+                    <a href={image.source} rel="noreferrer" target="_blank">
+                      {image.credit}<span aria-hidden="true">↗</span>
+                    </a>
+                  </figcaption>
+                </figure>
+              ))}
             </div>
             <blockquote className="about-pullquote">The software was never the entire solution. The work was understanding the problem well enough to build and validate the right method.</blockquote>
           </div>
@@ -373,22 +434,18 @@ export function AboutPage() {
                 <p>{define("When an existing tool or method does not solve the problem adequately, Boho can adapt it, connect systems together, or build the missing component.")}</p>
               </div>
 
-              <div className="about-two-path" aria-label="Two paths to an appropriate client solution">
+              <div className="about-two-path" aria-label="Two ways Boho reaches an appropriate client solution">
                 <div className="about-two-path__branch">
+                  <span className="about-two-path__index">01</span>
                   <strong>Repeated problem</strong>
-                  <Arrow />
-                  <span>Tested Boho method or reusable tool</span>
-                  <Arrow />
-                  <span>Faster and more reliable delivery</span>
+                  <p>Apply a tested method or reusable tool, then adapt it to the business.</p>
                 </div>
                 <div className="about-two-path__branch">
+                  <span className="about-two-path__index">02</span>
                   <strong>Unusual or unresolved problem</strong>
-                  <Arrow />
-                  <span>Focused research and custom engineering</span>
-                  <Arrow />
-                  <span>New method, integration, or component</span>
+                  <p>Use focused research and custom engineering to build the missing method, integration, or component.</p>
                 </div>
-                <div className="about-two-path__merge">Appropriate solution for the client</div>
+                <div className="about-two-path__merge"><span>ONE STANDARD</span>Appropriate for the client</div>
               </div>
             </div>
             <blockquote className="about-pullquote">The goal is not to make every solution unique. The goal is to make every solution appropriate.</blockquote>
@@ -439,7 +496,7 @@ export function AboutPage() {
             <div className="about-testbed" aria-labelledby="testbed-title">
               <p className="eyebrow">TESTBED PROCESS</p>
               <h3 id="testbed-title">Observe. Experiment. Validate. Transfer carefully.</h3>
-              <ol>
+              <ol className="about-testbed__ledger">
                 {testbedStages.map((stage, index) => (
                   <li key={stage.title}>
                     <span>{String(index + 1).padStart(2, "0")}</span>
@@ -464,11 +521,6 @@ export function AboutPage() {
           <div className="section-shell">
             <p className="eyebrow">WHY DIGITAL SYSTEMS</p>
             <h2 id="digital-systems-title">The subject changed. The underlying work did not.</h2>
-            <ol className="about-system-flow" aria-label="Digital system improvement flow">
-              {["Customer need", "Search", "Website", "Interpretation", "Action", "Measurement", "Improvement"].map((item, index, items) => (
-                <li key={item}><span>{item}</span>{index < items.length - 1 ? <b aria-hidden="true">→</b> : null}</li>
-              ))}
-            </ol>
             <div className="about-prose about-prose--wide">
               <p>{define("Websites, search, analytics, and digital infrastructure involve interacting technical and behavioral systems.")}</p>
               <p>{define("A website is a designed information environment.")}</p>
@@ -507,13 +559,34 @@ export function AboutPage() {
 
             <div className="about-artifacts" aria-label="Three common provider problems">
               <article className="about-artifact about-artifact--report">
-                <span>REPORT / 04</span><h3>Charts</h3><div aria-hidden="true"><i /><i /><i /></div><p>No recommendation attached.</p>
+                <p className="about-artifact__number">01 / REPORT WITHOUT DECISION</p>
+                <div className="about-artifact__ledger" aria-hidden="true">
+                  <span><b>Observation</b><i>Supplied</i></span>
+                  <span><b>Meaning</b><i>Unclear</i></span>
+                  <span><b>Next move</b><i>Missing</i></span>
+                </div>
+                <h3>Data without direction.</h3>
+                <p>A useful report should explain what changed, why it matters, and what deserves action.</p>
               </article>
               <article className="about-artifact about-artifact--relay">
-                <span>CLIENT QUESTION</span><p>Client → Sales → Account → Technical</p><strong>Four layers. One answer.</strong>
+                <p className="about-artifact__number">02 / RESPONSIBILITY RELAY</p>
+                <div className="about-artifact__ledger" aria-hidden="true">
+                  <span><b>Question</b><i>Technical</i></span>
+                  <span><b>Owner</b><i>Unclear</i></span>
+                  <span><b>Status</b><i>Forwarded</i></span>
+                </div>
+                <h3>Access without accountability.</h3>
+                <p>Direct technical responsibility removes the mystery around who is finding the answer.</p>
               </article>
               <article className="about-artifact about-artifact--ownership">
-                <span>OWNERSHIP MAP</span><p>Domain?</p><p>Hosting?</p><p>Analytics?</p><strong>Access unclear</strong>
+                <p className="about-artifact__number">03 / OWNERSHIP UNKNOWN</p>
+                <div className="about-artifact__ledger" aria-hidden="true">
+                  <span><b>Domain</b><i>Unconfirmed</i></span>
+                  <span><b>Hosting</b><i>Unconfirmed</i></span>
+                  <span><b>Analytics</b><i>Unconfirmed</i></span>
+                </div>
+                <h3>A business should know what it controls.</h3>
+                <p>Ownership, access, and portability should be documented before they become an emergency.</p>
               </article>
             </div>
 
@@ -590,17 +663,6 @@ export function AboutPage() {
               <p>Reserved for evidence that has actually been earned.</p>
             </div>
             <blockquote className="about-pullquote">A new company should be hungry enough to prove itself and disciplined enough not to invent the proof.</blockquote>
-          </div>
-        </section>
-
-        <section className="about-beliefs" aria-labelledby="beliefs-title">
-          <div className="section-shell">
-            <p className="eyebrow eyebrow--on-dark">WHAT BOHO BELIEVES</p>
-            <h2 className="sr-only" id="beliefs-title">Boho operating beliefs</h2>
-            <div className="about-beliefs__list">
-              {operatingBeliefs.map((belief) => <p key={belief}>{define(belief)}</p>)}
-            </div>
-            <p className="about-beliefs__closing">That is the company I am building.</p>
           </div>
         </section>
 

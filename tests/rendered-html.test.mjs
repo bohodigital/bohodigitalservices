@@ -155,7 +155,7 @@ test("renders every intentional public route and retires internal placeholder sh
   }
 });
 
-test("renders the exact twelve-scene About storyboard with live-property proof", async () => {
+test("renders the twelve-scene About story with scientific proof and unambiguous glossary links", async () => {
   const response = await render("/about/");
   assert.equal(response.status, 200);
   const html = await response.text();
@@ -179,6 +179,11 @@ test("renders the exact twelve-scene About storyboard with live-property proof",
   }
 
   for (const image of [
+    "/proof/about/science/electron-cloud.png",
+    "/proof/about/science/brain-mri.jpg",
+    "/proof/about/science/brain-fmri.jpg",
+    "/proof/about/science/ode-phase-field.png",
+    "/proof/about/science/cajal-purkinje-neuron.jpg",
     "/proof/about/rank-builder-seo-homepage.png",
     "/proof/about/how-biscuit-homepage.png",
     "/proof/about/better-grades-homepage.png",
@@ -197,6 +202,16 @@ test("renders the exact twelve-scene About storyboard with live-property proof",
   assert.match(html, /href="\/contact\/"[^>]*>[\s\S]*?Talk to Someone Technical/i);
   assert.match(html, /href="\/services\/"[^>]*>[\s\S]*?Review Boho’s Services/i);
   assert.match(html, /class="definition-term__popover"/i);
+  assert.match(html, /That is the company I built\./i);
+  assert.ok(
+    html.indexOf("WHAT BOHO BELIEVES") < html.indexOf("PROFESSIONAL BACKGROUND"),
+    "Boho beliefs should follow the hero before professional background",
+  );
+  assert.doesNotMatch(html, /href="\/learn\/glossary\/#term-lead"/i);
+  assert.doesNotMatch(html, /about-technical-portrait|about-system-flow/i);
+  assert.match(html, /Data without direction\./i);
+  assert.match(html, /Access without accountability\./i);
+  assert.match(html, /A business should know what it controls\./i);
   assert.doesNotMatch(html, /Bohemian is an operating philosophy|Seven ways the philosophy enters the work|Low overhead is part of the product/i);
 });
 
@@ -387,6 +402,7 @@ test("uses accessible glossary definition popups with direct glossary fallbacks"
   assert.doesNotMatch(homepage, /class="definition-term__link"/i);
 
   const definitionSource = await readFile(new URL("../app/components/DefinitionTerm.tsx", import.meta.url), "utf8");
+  const definedTextSource = await readFile(new URL("../app/components/DefinedText.tsx", import.meta.url), "utf8");
   const globalStyles = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
   assert.match(definitionSource, /onMouseEnter=/);
   assert.match(definitionSource, /onFocusCapture=/);
@@ -401,6 +417,7 @@ test("uses accessible glossary definition popups with direct glossary fallbacks"
   assert.match(globalStyles, /\.definition-term__popover\s*\{[\s\S]*?position:\s*fixed/);
   assert.match(globalStyles, /z-index:\s*2147483000/);
   assert.doesNotMatch(globalStyles, /--definition-shift-x/);
+  assert.match(definedTextSource, /excludeSlugs/);
 
   const glossary = await (await render("/learn/glossary/")).text();
   assert.match(glossary, /Technical language, translated before it becomes leverage/i);
