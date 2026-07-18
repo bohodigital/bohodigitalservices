@@ -12,6 +12,7 @@ import Link from "next/link";
 import { FORM_CONTRACTS } from "../content/formContract";
 import type { DraftField, DraftFormConfig } from "../content/types";
 import { DefinedText } from "./DefinedText";
+import type { IndustryBusinessModel } from "./IndustryTrackedLink";
 import { FormField, FormStatusMessage } from "./SiteChrome";
 
 type DraftFormProps = {
@@ -41,6 +42,17 @@ type TurnstileApi = {
 declare global {
   interface Window {
     turnstile?: TurnstileApi;
+    umami?: {
+      track(
+        event: "industry_review_complete",
+        data: {
+          business_model?: IndustryBusinessModel;
+          source_section: "visibility-check-request";
+          destination_type: "form_submission";
+          cta_label: "Request free review";
+        },
+      ): void;
+    };
   }
 }
 
@@ -66,6 +78,39 @@ const TURNSTILE_SCRIPT =
 const REQUEST_TIMEOUT_MS = 20_000;
 const CONTACT_EMAIL_FALLBACK_HTML =
   'Prefer email? <!--email_off--><a href="mailto:contact@bohemiandigital.org">contact@bohemiandigital.org</a><!--/email_off-->.';
+
+const INDUSTRY_BUSINESS_TYPE_LABELS: Readonly<
+  Record<IndustryBusinessModel, string>
+> = {
+  "project-business": "High-value project business",
+  "local-service": "Local service business",
+  "retail-hospitality": "Retail, hospitality, food, or venue",
+  ecommerce: "Ecommerce or product business",
+  "professional-b2b": "Professional or B2B service",
+  hybrid: "Hybrid business",
+};
+
+function readIndustryBusinessModel(): IndustryBusinessModel | null {
+  const values = new URLSearchParams(window.location.search).getAll("business_model");
+  if (values.length !== 1) return null;
+  const [value] = values;
+  return value && Object.hasOwn(INDUSTRY_BUSINESS_TYPE_LABELS, value)
+    ? (value as IndustryBusinessModel)
+    : null;
+}
+
+function trackIndustryReviewComplete(
+  businessModel: IndustryBusinessModel | null,
+) {
+  if (!window.umami?.track) return;
+
+  window.umami.track("industry_review_complete", {
+    ...(businessModel ? { business_model: businessModel } : {}),
+    source_section: "visibility-check-request",
+    destination_type: "form_submission",
+    cta_label: "Request free review",
+  });
+}
 
 function classNames(...values: Array<string | false | null | undefined>) {
   return values.filter(Boolean).join(" ");
@@ -148,6 +193,7 @@ export function DraftForm({ config, className }: DraftFormProps) {
   const turnstileRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
   const submissionIdRef = useRef<string | null>(null);
+  const industryBusinessModelRef = useRef<IndustryBusinessModel | null>(null);
   const [turnstileToken, setTurnstileToken] = useState("");
   const [turnstileState, setTurnstileState] = useState<
     "loading" | "ready" | "error"
@@ -156,6 +202,19 @@ export function DraftForm({ config, className }: DraftFormProps) {
   const [notice, setNotice] = useState<Notice | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const glossaryTerms = new Set<string>();
+
+  useEffect(() => {
+    if (config.formId !== "visibility-check") return;
+
+    const businessModel = readIndustryBusinessModel();
+    industryBusinessModelRef.current = businessModel;
+    if (!businessModel) return;
+
+    const control = formRef.current?.elements.namedItem("businessType");
+    if (control instanceof HTMLInputElement && !control.value) {
+      control.value = INDUSTRY_BUSINESS_TYPE_LABELS[businessModel];
+    }
+  }, [config.formId]);
 
   useEffect(() => {
     let disposed = false;
@@ -311,6 +370,9 @@ export function DraftForm({ config, className }: DraftFormProps) {
             "Thanks. Boho will review the information and respond when appropriate. Sending a request does not create a client relationship or guarantee availability.",
           reference,
         });
+        if (config.formId === "visibility-check") {
+          trackIndustryReviewComplete(industryBusinessModelRef.current);
+        }
         form.reset();
         submissionIdRef.current = null;
         resetTurnstile();

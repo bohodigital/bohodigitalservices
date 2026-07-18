@@ -8,12 +8,15 @@ import { GlossaryPage } from "../components/GlossaryPage";
 import { ResourcesPage } from "../components/ResourcesPage";
 import { InHouseBrandsPage } from "../components/InHouseBrandsPage";
 import { InHouseBrandPage } from "../components/InHouseBrandPage";
+import { IndustriesPage } from "../components/IndustriesPage";
+import { IndustryDetailPage } from "../components/IndustryDetailPage";
 import { PricingPage } from "../components/PricingPage";
 import { ServiceDetailPage } from "../components/ServiceDetailPage";
 import { ServicesPage } from "../components/ServicesPage";
 import { WorkEvidencePage } from "../components/WorkEvidencePage";
 import { inHouseBrandsByLabPath } from "../content/inHouseBrands";
 import { audiencePages } from "../content/audiencePages";
+import { industryModelsBySlug } from "../content/industries";
 import { corePages } from "../content/corePages";
 import { isRetiredPublicPage } from "../content/publicPages";
 import { servicePagesByRoute, serviceRoutePages } from "../content/serviceRoutePages";
@@ -68,6 +71,9 @@ export default async function InteriorRoute({ params }: InteriorRouteProps) {
 
   if (page.pageKind === "glossary") return <GlossaryPage />;
   if (page.slug === "/about/") return <AboutPage />;
+  if (page.slug === "/industries/") return <IndustriesPage />;
+  const industryModel = industryModelsBySlug.get(page.slug);
+  if (industryModel) return <IndustryDetailPage model={industryModel} />;
   if (page.slug === "/services/") return <ServicesPage />;
   if (page.slug === "/pricing/") return <PricingPage />;
   if (page.slug === "/work/") return <WorkEvidencePage />;

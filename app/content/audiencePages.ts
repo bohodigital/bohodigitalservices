@@ -3,17 +3,17 @@ import type { PageConfig } from "./types";
 export const audiencePages: PageConfig[] = [
   {
     slug: "/industries/",
-    title: "Industries | Websites, SEO & Lead Generation by Business Type",
+    title: "Website & SEO Services by Industry | Boho Digital Services",
     metaDescription:
-      "Boho adapts website design, SEO, migration, research, and lead-generation work for contractors, local services, retail, hospitality, ecommerce, and professional firms.",
-    eyebrow: "Industries",
-    headline: "Different businesses need different success signals.",
+      "See how Boho adapts websites, SEO, reporting, provider rescue, and digital systems for contractors, local services, retail, ecommerce, and professional firms.",
+    eyebrow: "WHO BOHO HELPS",
+    headline: "Build around the way your customers actually decide.",
     intro: [
       "Boho does not force every company into the same website or SEO plan. We study how the business earns attention, trust, and customer action, then build around that.",
     ],
     theme: "editorial",
-    primaryCta: { label: "Find Your Business Type", href: "#business-types" },
-    secondaryCta: { label: "Get a Visibility Check", href: "/start/" },
+    primaryCta: { label: "Find your customer path", href: "#customer-paths" },
+    secondaryCta: { label: "Start the free review", href: "/start/" },
     sections: [
       {
         eyebrow: "Business-model fit",

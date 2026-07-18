@@ -61,6 +61,11 @@ imagery only and do not depict Boho staff, clients, results, or endorsements.
 | `public/visuals/homepage-industry-ecommerce-v2.webp` (1600x1068) | [Pexels photo 7857532](https://www.pexels.com/photo/woman-sitting-at-the-table-and-packing-orders-7857532/) | Small-business ecommerce fulfillment | `f4be83fba1467cd56e91c5c80ec11de12e46365d26710c8256d3eb75459e90c0` |
 | `public/visuals/homepage-industry-b2b-v2.webp` (1600x1068) | [Pexels photo 7988692](https://www.pexels.com/photo/people-working-on-laptops-7988692/) | Collaborative professional-services team | `f7f757324b7907ea308b60687ad4373b7e1a55def697c59e6ed7b8f9e1ba7b87` |
 
+The five `homepage-industry-*-v2.webp` derivatives are also reused on the
+Industries hub and matching child routes. Those placements carry an explicit
+licensed-editorial, representative-setting, and not-client-work caption. They
+provide context only; they are not evidence, testimonials, or measured results.
+
 ## Homepage editorial imagery
 
 All photography is self-hosted. It represents the kinds of business settings,
