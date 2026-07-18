@@ -8,8 +8,10 @@
   },
   "scripts": {
     "dev": "vinext dev",
-    "build": "vinext build",
-    "build:pages": "next build && node scripts/prepare-pages.mjs",
+    "generate:service-pages": "node scripts/generate-service-page-data.mjs",
+    "service-pages:check": "node scripts/generate-service-page-data.mjs --check",
+    "build": "node scripts/generate-service-page-data.mjs && vinext build",
+    "build:pages": "node scripts/generate-service-page-data.mjs && next build && node scripts/prepare-pages.mjs",
     "start": "vinext start",
     "test": "corepack pnpm run build:pages && node --test tests/rendered-html.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",

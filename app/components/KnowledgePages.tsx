@@ -135,7 +135,7 @@ export function ToolsPage() {
             title="Tools & systems"
             items={[
               { label: "Systems and proof", href: "/tools/" },
-              { label: "Custom tools service", href: "/services/custom-tools-automation/" },
+              { label: "Custom Web & Digital Solutions", href: "/services/custom-digital-solutions/" },
               { label: "Buyer resources", href: "/resources/" },
               { label: "Technical glossary", href: "/learn/glossary/" },
             ]}
@@ -319,7 +319,7 @@ export function ToolsPage() {
                   title="Bring the repeated work, the current system, and the part that keeps breaking."
                   body={<p>{define("Boho will help decide whether the useful move is repair, integration, focused custom engineering, or no new software at all.")}</p>}
                   primary={{ label: "Build the Missing Tool", href: "/contact/" }}
-                  secondary={{ label: "Review the Service", href: "/services/custom-tools-automation/" }}
+                  secondary={{ label: "Review Custom Web & Digital Solutions", href: "/services/custom-digital-solutions/" }}
                 />
                 <span className="sr-only" id="tools-commercial-cta-title">Start a custom tools conversation.</span>
               </div>

@@ -96,7 +96,7 @@ export const audiencePages: PageConfig[] = [
     primaryCta: { label: "Review My Market", href: "/start/" },
     secondaryCta: {
       label: "Plan a Better Website",
-      href: "/services/website-design-redesign/",
+      href: "/services/web-design-redesign/",
     },
     sections: [
       {
@@ -201,7 +201,7 @@ export const audiencePages: PageConfig[] = [
     primaryCta: { label: "Review My Local Visibility", href: "/start/" },
     secondaryCta: {
       label: "Plan a Better Website",
-      href: "/services/website-design-redesign/",
+      href: "/services/web-design-redesign/",
     },
     sections: [
       {
@@ -291,7 +291,7 @@ export const audiencePages: PageConfig[] = [
     primaryCta: { label: "Review My Local Presence", href: "/start/" },
     secondaryCta: {
       label: "Plan a Better Website",
-      href: "/services/website-design-redesign/",
+      href: "/services/web-design-redesign/",
     },
     sections: [
       {
@@ -379,7 +379,7 @@ export const audiencePages: PageConfig[] = [
     primaryCta: { label: "Review My Store", href: "/start/" },
     secondaryCta: {
       label: "Plan an Ecommerce Redesign",
-      href: "/services/website-design-redesign/",
+      href: "/services/web-design-redesign/",
     },
     sections: [
       {
@@ -469,7 +469,7 @@ export const audiencePages: PageConfig[] = [
     primaryCta: { label: "Review My Positioning", href: "/start/" },
     secondaryCta: {
       label: "Plan a Better Website",
-      href: "/services/website-design-redesign/",
+      href: "/services/web-design-redesign/",
     },
     sections: [
       {
@@ -1272,7 +1272,7 @@ export const audiencePages: PageConfig[] = [
     ],
     theme: "editorial",
     primaryCta: { label: "Back to practical guides", href: "/learn/" },
-    secondaryCta: { label: "Explore SEO Services", href: "/services/local-seo-search-visibility/" },
+    secondaryCta: { label: "Explore Ongoing SEO & Search Growth", href: "/services/ongoing-seo/" },
     draftLabel: "Draft guide shelf — no thin articles",
     sections: [
       {
@@ -1298,7 +1298,7 @@ export const audiencePages: PageConfig[] = [
     ],
     theme: "editorial",
     primaryCta: { label: "Back to practical guides", href: "/learn/" },
-    secondaryCta: { label: "Explore Local SEO", href: "/services/local-seo-search-visibility/" },
+    secondaryCta: { label: "Explore Ongoing SEO & Search Growth", href: "/services/ongoing-seo/#local-seo" },
     draftLabel: "Draft guide shelf — content in development",
     sections: [
       {
@@ -1323,7 +1323,7 @@ export const audiencePages: PageConfig[] = [
     ],
     theme: "editorial",
     primaryCta: { label: "Talk to Someone Technical", href: "/contact/" },
-    secondaryCta: { label: "Explore Website Design", href: "/services/website-design-redesign/" },
+    secondaryCta: { label: "Explore Web Design & Website Redesign", href: "/services/web-design-redesign/" },
     sections: [
       {
         eyebrow: "Before comparing proposals",
@@ -1378,8 +1378,8 @@ export const audiencePages: PageConfig[] = [
     theme: "editorial",
     primaryCta: { label: "Request a Technical Second Opinion", href: "/contact/" },
     secondaryCta: {
-      label: "Explore Provider Rescue",
-      href: "/services/website-migration-provider-rescue/",
+      label: "Explore Website Migration & Provider Rescue",
+      href: "/services/provider-rescue/",
     },
     sections: [
       {

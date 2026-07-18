@@ -1,16 +1,17 @@
 import type { PageConfig } from "./types";
 import { operatingCycle } from "./operatingCycle";
+import { servicePresentationByRoute } from "./servicePresentation";
 
 export const corePages: PageConfig[] = [
   {
     slug: "/services/",
     title: "Digital Engineering Services | Boho Digital Services",
     metaDescription:
-      "Explore Boho local visibility and lead systems, websites and managed hosting, provider rescue and migration, custom tools and automation, and research-led improvement.",
+      "Explore five ways Boho helps businesses get found, improve a website, leave a difficult provider, get a clear review, or simplify repeated work.",
     eyebrow: "Services",
-    headline: "Five service lanes for businesses that need the whole system explained.",
+    headline: "Five services for the problems businesses face online.",
     intro: [
-      "Boho is a digital-engineering firm. We connect commercial goals to the websites, visibility systems, lead paths, provider infrastructure, operational tools, and measurements underneath them.",
+      "Boho starts with what is not working, then recommends the smallest service that fits the problem.",
     ],
     theme: "mosaic",
     primaryCta: { label: "Talk to Someone Technical", href: "/contact/" },
@@ -34,31 +35,31 @@ export const corePages: PageConfig[] = [
           {
             title: "Local Visibility & Lead Systems",
             body: "Connect local discovery, business-profile accuracy, service pages, trust, calls to action, inquiry paths, and measurement around the qualified actions that matter.",
-            href: "/services/local-seo-search-visibility/",
+            href: "/services/ongoing-seo/#local-seo",
             linkLabel: "Build the Lead System",
           },
           {
             title: "Websites & Managed Hosting",
             body: "Design and operate useful, distinctive websites around ownership, search structure, accessibility, performance, customer action, and clearly bounded managed hosting.",
-            href: "/services/website-design-redesign/",
+            href: "/services/web-design-redesign/",
             linkLabel: "Plan the Website System",
           },
           {
             title: "Provider Rescue & Migration",
             body: "Inventory ownership and dependencies, recover authorized control, preserve useful URLs and assets, plan the move, verify the launch, and leave readable records.",
-            href: "/services/website-migration-provider-rescue/",
+            href: "/services/provider-rescue/",
             linkLabel: "Plan the Rescue",
           },
           {
             title: "Custom Tools & Automation",
             body: "Engineer focused tools, integrations, and automations for repeated operational work that is slow, fragile, or difficult to audit by hand.",
-            href: "/services/custom-tools-automation/",
+            href: "/services/custom-digital-solutions/",
             linkLabel: "Explore Practical Automation",
           },
           {
             title: "Research, Analytics & Improvement",
             body: "Diagnose systems, map markets, inspect technical health, review measurement, prioritize the work, and run an accountable improvement cycle.",
-            href: "/services/research-audits-analytics/",
+            href: "/services/research-audits-strategy/",
             linkLabel: "Start With Evidence",
           },
         ],
@@ -72,31 +73,31 @@ export const corePages: PageConfig[] = [
           {
             title: "The website is outdated, unclear, or difficult to operate.",
             body: "Start with Websites & Managed Hosting.",
-            href: "/services/website-design-redesign/",
+            href: "/services/web-design-redesign/",
             linkLabel: "See the design service",
           },
           {
             title: "We need to leave our current provider.",
             body: "Start with Provider Rescue & Migration.",
-            href: "/services/website-migration-provider-rescue/",
+            href: "/services/provider-rescue/",
             linkLabel: "See provider rescue",
           },
           {
             title: "Competitors are easier to find and easier to contact.",
             body: "Start with Local Visibility & Lead Systems.",
-            href: "/services/local-seo-search-visibility/",
+            href: "/services/ongoing-seo/#local-seo",
             linkLabel: "See local visibility",
           },
           {
             title: "Repeated internal work is slow or unreliable.",
             body: "Start with Custom Tools & Automation.",
-            href: "/services/custom-tools-automation/",
+            href: "/services/custom-digital-solutions/",
             linkLabel: "See operational engineering",
           },
           {
             title: "We do not know what is actually wrong.",
             body: "Start with Research, Analytics & Improvement.",
-            href: "/services/research-audits-analytics/",
+            href: "/services/research-audits-strategy/",
             linkLabel: "Begin with diagnosis",
           },
         ],
@@ -382,7 +383,7 @@ export const corePages: PageConfig[] = [
     ],
     theme: "research",
     primaryCta: { label: "Talk to Someone Technical", href: "/contact/" },
-    secondaryCta: { label: "See the Lead-System View", href: "/services/lead-generation-conversion/" },
+    secondaryCta: { label: "See the Lead-System View", href: "/services/ongoing-seo/#customer-paths-and-conversion-clarity" },
     sections: [
       {
         title: "Local SEO is not a monthly ritual.",
@@ -621,7 +622,7 @@ export const corePages: PageConfig[] = [
     ],
     theme: "research",
     primaryCta: { label: "Inspect Site Health", href: "/contact/" },
-    secondaryCta: { label: "Ask About a Migration", href: "/services/website-migration-provider-rescue/" },
+    secondaryCta: { label: "Ask About a Migration", href: "/services/provider-rescue/" },
     sections: [
       {
         title: "Technical SEO is not glamorous. It is still part of the foundation.",
@@ -754,61 +755,20 @@ export const corePages: PageConfig[] = [
   },
   {
     slug: "/pricing/",
-    title: "Pricing | Scope-Based Digital Work | Boho Digital Services",
+    title: "Pricing & Scope Guide | Boho Digital Services",
     metaDescription:
-      "See how Boho Digital Services develops focused project scopes around the business problem, technical conditions, risk, and accountable work.",
-    eyebrow: "Pricing",
-    headline: "Pricing follows the problem, not a generic package.",
+      "Review public starting prices and minimum scopes for Boho SEO, reporting, web design, provider rescue, research, audits, and custom digital solutions.",
+    eyebrow: "Pricing & Scope Guide",
+    headline: "Public minimums, with the minimum scope explained.",
     intro: [
-      "A useful scope reflects the website, market, access, platform, urgency, evidence, dependencies, implementation depth, and cost of failure.",
+      "A starting price is useful only when it says what starts there. Page count, markets, data, integrations, access, technical condition, timing, and risk determine the actual scope.",
     ],
     theme: "editorial",
-    primaryCta: { label: "Discuss the Actual Problem", href: "/contact/" },
-    secondaryCta: { label: "View the Five Service Lanes", href: "/services/" },
-    sections: [
-      {
-        title: "Scope follows diagnosis.",
-        body: [
-          "Boho is built around direct technical work, research, reusable systems, automation-assisted workflows, documentation, and a small operating structure.",
-          "The responsible scope still depends on the site, market, access, platform, urgency, data, content, dependencies, implementation depth, and cost of failure.",
-          "The resulting proposal connects cost to defined work, responsibilities, validation, and the conditions that can change scope.",
-        ],
-        tone: "parchment",
-      },
-      {
-        eyebrow: "Scope inputs",
-        title: "Start with the problem, then price the accountable work.",
-        note: "The inputs below shape the accountable scope for each service lane.",
-        layout: "grid",
-        items: [
-          { title: "Local Visibility & Lead Systems", body: "Market, service area, profile state, page and content scope, lead-path condition, measurement access, and implementation depth all affect the work.", href: "/services/local-seo-search-visibility/", linkLabel: "Review the lane" },
-          { title: "Websites & Managed Hosting", body: "Page count, content readiness, platform, integrations, migration risk, web accessibility, web performance, hosting eligibility, and support boundaries affect the scope.", href: "/services/website-design-redesign/", linkLabel: "Review the lane" },
-          { title: "Provider Rescue & Migration", body: "Ownership, access, provider cooperation, data, URLs, redirects, integrations, downtime risk, and rollback requirements must be diagnosed first.", href: "/services/website-migration-provider-rescue/", linkLabel: "Review the lane" },
-          { title: "Custom Tools & Automation", body: "Users, workflows, data, integrations, security, approvals, failure handling, operating environment, and maintenance responsibilities define the engineering cost.", href: "/services/custom-tools-automation/", linkLabel: "Review the lane" },
-          { title: "Research, Analytics & Improvement", body: "Decision stakes, market size, data availability, technical depth, sample requirements, implementation, and the measurement period determine scope.", href: "/services/research-audits-analytics/", linkLabel: "Review the lane" },
-        ],
-      },
-      {
-        eyebrow: "Questions before scope",
-        title: "Pricing without theater.",
-        layout: "list",
-        items: [
-          { title: "How is a price developed?", body: "Boho diagnoses the business problem, technical conditions, required access, dependencies, risk, implementation depth, and validation work before preparing a proposal." },
-          { title: "Can we start small?", body: "Yes. Boho prefers the smallest project capable of improving the decision or fixing the actual problem." },
-          { title: "Do you require long contracts?", body: "No. Ongoing work should continue because it is useful, not because leaving is painful." },
-          { title: "How does Boho keep scope efficient?", body: "Fewer layers, direct technical work, reusable systems, research workflows, and documentation reduce avoidable overhead without predetermining a price." },
-          { title: "How are results handled?", body: "Boho defines the hypothesis, explains the evidence and external variables, implements the agreed work, and measures the outcomes that can reasonably be measured." },
-          { title: "Does the client own the website and accounts?", body: "The default goal is client ownership and documented access. Any platform-specific limitations must be disclosed before work begins." },
-        ],
-      },
-      {
-        title: "Start with a scope that has a reason to exist.",
-        body: [
-          "Send the website, business model, problem, and budget context. Boho will help identify the smallest useful first project.",
-        ],
-        tone: "dark",
-      },
-    ],
+    primaryCta: { label: "Start the Free Review", href: "/start/" },
+    secondaryCta: { label: "Compare All Five Services", href: "/services/" },
+    // PricingPage renders from app/content/pricingPolicy.mjs. Keep this route
+    // record metadata-only so prices and credit terms have one maintained source.
+    sections: [],
   },
   {
     slug: "/about/",
@@ -906,36 +866,37 @@ export const corePages: PageConfig[] = [
   },
   {
     slug: "/start/",
-    title: "Local Visibility Check | Boho Digital Services",
+    title: "Free Initial Review | Boho Digital Services",
     metaDescription:
-      "Request an initial Boho review of your website, local search presence, provider risks, visible competitors, trust signals, and lead-generation path.",
-    eyebrow: "Local Visibility Check",
-    headline: "Find the obvious leaks before buying a larger digital package.",
+      "Request a free public-information review to identify the likely digital problem, service category, and useful next discussion before buying a larger scope.",
+    eyebrow: "Free Initial Review",
+    headline: "Start with the likely problem, not a package.",
     intro: [
-      "Boho will take a focused first look at the website, local presence, visible competitors, lead path, and provider risks to identify the most useful next diagnostic.",
+      "Boho uses public information to identify the likely problem, the service category that best fits, and the next useful discussion.",
+      "The review may consider the public website, search and local presence, visible competitors, trust, customer actions, provider concerns, and obvious measurement gaps.",
     ],
     theme: "research",
-    primaryCta: { label: "Request a Visibility Check", href: "#visibility-check-request" },
+    primaryCta: { label: "Start the Free Review", href: "#visibility-check-request" },
     secondaryCta: { label: "See all services", href: "/services/" },
     sections: [
       {
-        eyebrow: "What the check covers",
-        title: "A focused first look at five visible signal groups.",
+        eyebrow: "Five ways to begin",
+        title: "One free first look across the five service lanes.",
         layout: "grid",
         items: [
-          { title: "Website clarity", body: "Can a visitor understand the main services, location or coverage, trust, and next action?" },
-          { title: "Local presence", body: "Is the public business information coherent across the website and major local profile?" },
-          { title: "Lead path", body: "Are calls, forms, bookings, estimates, visits, or purchases easy to reach and use?" },
-          { title: "Visible competition", body: "Do nearby or relevant competitors appear clearer, more credible, or easier to act on?" },
-          { title: "Obvious risks", body: "Are there visible technical, ownership, provider, migration, or measurement concerns worth investigating?" },
+          { title: "Ongoing SEO & Search Growth", body: servicePresentationByRoute["/services/ongoing-seo/"].summary, href: "/services/ongoing-seo/", linkLabel: "Review the service" },
+          { title: "Web Design & Website Redesign", body: servicePresentationByRoute["/services/web-design-redesign/"].summary, href: "/services/web-design-redesign/", linkLabel: "Review the service" },
+          { title: "Website Migration & Provider Rescue", body: servicePresentationByRoute["/services/provider-rescue/"].summary, href: "/services/provider-rescue/", linkLabel: "Review the service" },
+          { title: "Digital Research, SEO Audits & Strategy", body: servicePresentationByRoute["/services/research-audits-strategy/"].summary, href: "/services/research-audits-strategy/", linkLabel: "Review the service" },
+          { title: "Custom Web & Digital Solutions", body: servicePresentationByRoute["/services/custom-digital-solutions/"].summary, href: "/services/custom-digital-solutions/", linkLabel: "Review the service" },
         ],
       },
       {
-        eyebrow: "Focused diagnosis",
-        title: "Find the next useful investigation.",
+        eyebrow: "Useful orientation, clear boundary",
+        title: "The free review identifies the next discussion; it does not replace paid work.",
         body: [
-          "The Local Visibility Check looks for an obvious problem, a plausible opportunity, and the next investigation most likely to improve the decision.",
-          "The result is a clear recommendation: investigate further, scope a focused project, or stop spending attention on the wrong signal.",
+          "The review uses public information to identify a plausible problem, the most relevant service category, and the next investigation most likely to improve the decision.",
+          "It is not a complete audit, private-account review, provider recovery engagement, written strategy, implementation project, or guarantee of results.",
         ],
         tone: "plum",
       },
@@ -943,26 +904,26 @@ export const corePages: PageConfig[] = [
     form: {
       formId: "visibility-check",
       sectionId: "visibility-check-request",
-      title: "Visibility Check request",
-      body: "Give Boho enough context to understand the business and the visible problem.",
-      submitLabel: "Request visibility check",
+      title: "Free Initial Review request",
+      body: "Give Boho enough context to understand the business, the public system, and the decision or problem that needs attention.",
+      submitLabel: "Request free review",
       fields: [
         { name: "name", label: "Name", type: "text", required: true },
         { name: "email", label: "Email", type: "email", required: true },
         { name: "businessName", label: "Business name", type: "text", required: true },
         { name: "website", label: "Website URL", type: "url", required: true, placeholder: "https://" },
         { name: "businessType", label: "Business type", type: "text", required: true },
-        { name: "serviceArea", label: "City, region, or service area", type: "text", required: true },
-        { name: "stuck", label: "What feels stuck?", type: "textarea", required: true },
-        { name: "valuableAction", label: "Most valuable customer action", type: "text", required: true, placeholder: "Call, estimate, booking, purchase, visit…" },
-        { name: "provider", label: "Current website, SEO, or hosting provider", type: "text" },
-        { name: "topOffer", label: "Top service or product", type: "text" },
-        { name: "competitors", label: "Known competitors", type: "textarea" },
+        { name: "serviceArea", label: "City, region, market, or service area", type: "text", required: true },
+        { name: "stuck", label: "What decision or problem needs attention?", type: "textarea", required: true },
+        { name: "valuableAction", label: "Most valuable customer or operational action", type: "text", required: true, placeholder: "Call, estimate, booking, purchase, visit, approval…" },
+        { name: "provider", label: "Current website, SEO, hosting, or technology provider", type: "text" },
+        { name: "topOffer", label: "Top service, product, or workflow", type: "text" },
+        { name: "competitors", label: "Known competitors or comparable businesses", type: "textarea" },
         { name: "budget", label: "Budget context", type: "text" },
         { name: "timing", label: "Time sensitivity", type: "text" },
         {
           name: "scopeAcknowledgement",
-          label: "I understand this is an initial review, not a complete audit or guarantee of results.",
+          label: "I understand this is a free initial public-information review, not a complete audit, private-account review, provider recovery engagement, implementation project, or guarantee of results.",
           type: "checkbox",
           required: true,
         },
@@ -983,7 +944,7 @@ export const corePages: PageConfig[] = [
     ],
     theme: "cinematic",
     primaryCta: { label: "Request Emergency Review", href: "#emergency-triage" },
-    secondaryCta: { label: "Provider rescue", href: "/services/website-migration-provider-rescue/" },
+    secondaryCta: { label: "Provider rescue", href: "/services/provider-rescue/" },
     sections: [
       {
         eyebrow: "Common emergencies",

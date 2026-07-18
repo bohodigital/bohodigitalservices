@@ -7,6 +7,7 @@ const indexPage = fileURLToPath(new URL("../out/index.html", import.meta.url));
 const robotsFile = fileURLToPath(new URL("../out/robots.txt", import.meta.url));
 const sitemapFile = fileURLToPath(new URL("../out/sitemap.xml", import.meta.url));
 const headersFile = fileURLToPath(new URL("../out/_headers", import.meta.url));
+const redirectsFile = fileURLToPath(new URL("../out/_redirects", import.meta.url));
 const staleWorkerDeployConfig = fileURLToPath(
   new URL("../.wrangler/deploy/", import.meta.url),
 );
@@ -47,6 +48,24 @@ async function materializeFlightAliases(directory) {
 // client prefetcher requests the equivalent dotted filename. Static hosts do
 // not perform that mapping, so publish explicit aliases alongside each route.
 await materializeFlightAliases(outputDirectory);
+
+const legacyServiceRedirects = [
+  ["/services/ongoing-seo-growth", "/services/ongoing-seo/"],
+  ["/services/local-seo-search-visibility", "/services/ongoing-seo/#local-seo"],
+  ["/services/lead-generation-conversion", "/services/ongoing-seo/#customer-paths-and-conversion-clarity"],
+  ["/services/technical-seo-site-health", "/services/research-audits-strategy/#technical-seo-and-site-health"],
+  ["/services/website-design-redesign", "/services/web-design-redesign/"],
+  ["/services/website-migration-provider-rescue", "/services/provider-rescue/"],
+  ["/services/research-audits-analytics", "/services/research-audits-strategy/"],
+  ["/services/custom-tools-automation", "/services/custom-digital-solutions/"],
+];
+
+const redirectRules = legacyServiceRedirects.flatMap(([source, destination]) => [
+  `${source} ${destination} 301`,
+  `${source}/ ${destination} 301`,
+]);
+
+await writeFile(redirectsFile, `${redirectRules.join("\n")}\n`, "utf8");
 
 // Pages serves this artifact directly. Prevent edge HTML rewrites that would
 // diverge from React's pre-rendered markup; cache content-hashed assets forever.

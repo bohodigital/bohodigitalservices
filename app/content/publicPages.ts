@@ -1,5 +1,12 @@
 const retiredPublicSlugs = new Set([
-  "/pricing/",
+  "/services/ongoing-seo-growth/",
+  "/services/local-seo-search-visibility/",
+  "/services/lead-generation-conversion/",
+  "/services/technical-seo-site-health/",
+  "/services/website-design-redesign/",
+  "/services/website-migration-provider-rescue/",
+  "/services/research-audits-analytics/",
+  "/services/custom-tools-automation/",
   "/learn/bad-seo-field-guide/",
   "/learn/small-business-seo/",
   "/learn/local-search/",

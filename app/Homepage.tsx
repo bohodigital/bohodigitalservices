@@ -28,6 +28,7 @@ import {
 } from "./components/SiteChrome";
 import { DefinedText } from "./components/DefinedText";
 import { operatingCycle } from "./content/operatingCycle";
+import { servicePresentationByRoute } from "./content/servicePresentation";
 
 const operatingCycleIcons = {
   diagnose: SearchCheck,
@@ -40,42 +41,42 @@ const operatingCycleIcons = {
 
 const serviceCards = [
   {
-    title: "Local Visibility & Lead Systems",
-    body: "Local discovery, website clarity, trust, calls to action, inquiry paths, and measurement engineered as one commercial system.",
-    label: "Build the lead system",
-    href: "/services/local-seo-search-visibility/",
+    title: "Ongoing SEO & Search Growth",
+    body: servicePresentationByRoute["/services/ongoing-seo/"].summary,
+    label: "Improve local visibility",
+    href: "/services/ongoing-seo/",
     tone: "verdigris",
     icon: MapPin,
   },
   {
-    title: "Websites & Managed Hosting",
-    body: "Useful, distinctive websites built around ownership, performance, search structure, customer action, and a clearly governed hosting provision.",
-    label: "Plan the website system",
-    href: "/services/website-design-redesign/",
+    title: "Web Design & Website Redesign",
+    body: servicePresentationByRoute["/services/web-design-redesign/"].summary,
+    label: "Plan the website",
+    href: "/services/web-design-redesign/",
     tone: "gold",
     icon: PanelsTopLeft,
   },
   {
-    title: "Provider Rescue & Migration",
-    body: "Careful help leaving bad providers, recovering control, preserving useful assets and URLs, and verifying a safer move.",
+    title: "Website Migration & Provider Rescue",
+    body: servicePresentationByRoute["/services/provider-rescue/"].summary,
     label: "Plan the rescue",
-    href: "/services/website-migration-provider-rescue/",
+    href: "/services/provider-rescue/",
     tone: "copper",
     icon: Route,
   },
   {
-    title: "Custom Tools & Automation",
-    body: "Focused internal tools, integrations, and automations for repeated work that costs too much time or fails too easily by hand.",
-    label: "Build the missing tool",
-    href: "/services/custom-tools-automation/",
+    title: "Custom Web & Digital Solutions",
+    body: servicePresentationByRoute["/services/custom-digital-solutions/"].summary,
+    label: "Simplify the repeated task",
+    href: "/services/custom-digital-solutions/",
     tone: "blue",
     icon: Wrench,
   },
   {
-    title: "Research, Analytics & Improvement",
-    body: "Diagnosis, market research, technical inspection, measurement, and an improvement rhythm tied to the next useful decision.",
-    label: "Start with evidence",
-    href: "/services/research-audits-analytics/",
+    title: "Digital Research, SEO Audits & Strategy",
+    body: servicePresentationByRoute["/services/research-audits-strategy/"].summary,
+    label: "Get a clear review",
+    href: "/services/research-audits-strategy/",
     tone: "plum",
     icon: SearchCheck,
   },
@@ -297,7 +298,7 @@ export default function Homepage() {
               <p className="lab-proof__principle">{define("We use mature platforms for mature problems and custom engineering for the gaps that matter.")}</p>
               <div className="button-row">
                 <ButtonLink href="/tools/">Explore Boho Systems</ButtonLink>
-                <TextLink href="/services/custom-tools-automation/">Explore the Service</TextLink>
+                <TextLink href="/services/custom-digital-solutions/">Explore the Service</TextLink>
               </div>
             </div>
             <div className="evidence-board" aria-label="Custom tool capabilities">

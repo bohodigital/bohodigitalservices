@@ -2,6 +2,25 @@
 
 Reviewed 2026-07-12 for the private Boho Digital Services Resources and homepage redesign.
 
+## Service editorial illustrations v1
+
+Generated 2026-07-17 with OpenAI's built-in image generation tool, then
+converted locally from lossless PNG to quality-84 WebP. These are editorial
+illustrations that explain a service concept. They are not screenshots, proof
+of deployed systems, client work, staff photographs, performance evidence, or
+endorsements. No reference image or third-party branded interface was used.
+
+| Local output | Dimensions | Use | Output SHA-256 |
+| --- | --- | --- | --- |
+| `public/visuals/services/ongoing-seo-v1.webp` | 1536x1024 | Local discovery moving from a storefront and map toward a customer contact action | `1bb8daef9bb6a6af6318f82248c1887ff90381886ca26876d64ab74c816cdfff` |
+| `public/visuals/services/web-design-redesign-v1.webp` | 1536x1024 | One clear business website planned across desktop and mobile | `e6568ec8fbe136090a85d9d5f4936c1422f1b5bf9a7f543c4a07ca063a8e573c` |
+| `public/visuals/services/provider-rescue-v1.webp` | 1536x1024 | Website assets moving through a calm, documented provider handoff | `a893a39c9e8f5ab5dd6fa3dfa24ef45776ed90382f91d210cb2b8be0b6a6dc9c` |
+| `public/visuals/services/research-audits-strategy-v1.webp` | 1536x1024 | Many observations narrowed into a small set of practical priorities | `8acf0605477e4ea4777fabf90cc7167d3943be961e0f7b9a874cea06ccea9366` |
+| `public/visuals/services/custom-digital-solutions-v1.webp` | 1536x1024 | A form moving through human approval into a shared record and notification | `bec2edae6f7a2a9f8ef2b7a90e2404378c5610b47c0a58c698bc9a1ef894222d` |
+
+The exact prompt set and generation constraints are recorded in
+`docs/service-visual-generation-2026-07-17.md`.
+
 ## Owner-supplied process graphic
 
 - Original local path: `public/diagrams/how-boho-works-v1.png`

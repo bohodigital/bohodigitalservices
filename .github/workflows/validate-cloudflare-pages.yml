@@ -51,12 +51,27 @@ jobs:
 
       - name: Confirm deployable output
         run: |
-          test -f dist/client/_worker.js
-          test -f dist/client/_routes.json
-          test -f dist/server/index.js
-          test -n "$(find dist/client/assets -maxdepth 1 -type f -name '*.css' -print -quit)"
-          test -f dist/client/brand/boho-bee-logo-v2-256.png
-          test -f dist/client/brand/github-invertocat-white.svg
-          test -f dist/client/diagrams/boho-hosting-architecture-v2.png
-          test -f dist/client/favicon.ico
-          test -f dist/client/boho-digital-services-social-v2.png
+          test -f out/index.html
+          test -f out/services/index.html
+          test -f out/services/ongoing-seo/index.html
+          test -f out/services/web-design-redesign/index.html
+          test -f out/services/provider-rescue/index.html
+          test -f out/services/research-audits-strategy/index.html
+          test -f out/services/custom-digital-solutions/index.html
+          test -f out/pricing/index.html
+          test -f out/work/index.html
+          test -f out/resources/index.html
+          test -f out/start/index.html
+          test -f out/robots.txt
+          test -f out/sitemap.xml
+          test -f out/_headers
+          test -f out/_redirects
+          test -n "$(find out/_next/static -type f -name '*.css' -print -quit)"
+          test -f out/brand/boho-bee-logo-v2-256.png
+          test -f out/brand/github-invertocat-white.svg
+          test -f out/diagrams/boho-hosting-architecture-v2.png
+          test -f out/visuals/services/ongoing-seo-v1.webp
+          test -f out/favicon.ico
+          test -f out/boho-digital-services-social-v2.png
+          test -z "$(find out -type f -name '_worker.js' -print -quit)"
+          test ! -e .wrangler/deploy/config.json
