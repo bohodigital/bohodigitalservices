@@ -10,6 +10,7 @@ import {
 import Link from "next/link";
 
 import { servicePriceSummaries } from "../content/pricingPolicy.mjs";
+import { servicePresentationByRoute } from "../content/servicePresentation";
 import { DefinedText } from "./DefinedText";
 import {
   Breadcrumbs,
@@ -24,66 +25,46 @@ const services = [
   {
     number: "01",
     title: "Ongoing SEO & Search Growth",
-    kicker: "Local visibility, qualified inquiries, and continual improvement",
-    summary:
-      "Connect search, local relevance, service content, technical health, customer paths, and measurement around the work that deserves to continue.",
     href: "/services/ongoing-seo/" as const,
-    image: "/visuals/growth-analysis.webp",
-    alt: "Layered growth-analysis composition with charts, notes, and connected signals.",
+    ...servicePresentationByRoute["/services/ongoing-seo/"],
     icon: SearchCheck,
   },
   {
     number: "02",
     title: "Web Design & Website Redesign",
-    kicker: "Clarity, trust, search, action, and ownership",
-    summary:
-      "Repair, redesign, or build the smallest complete website that explains the business, works across devices, and remains understandable to own.",
     href: "/services/web-design-redesign/" as const,
-    image: "/visuals/homepage-design-studio-v2.webp",
-    alt: "Editorial website-design workspace with page studies, typography, and layout notes.",
+    ...servicePresentationByRoute["/services/web-design-redesign/"],
     icon: PanelsTopLeft,
   },
   {
     number: "03",
     title: "Website Migration & Provider Rescue",
-    kicker: "Authorized control, continuity, and a documented exit",
-    summary:
-      "Map domains, access, providers, URLs, forms, measurement, and email dependencies before changing a fragile system.",
     href: "/services/provider-rescue/" as const,
-    image: "/visuals/migration-infrastructure.webp",
-    alt: "Migration planning composition with infrastructure layers and a mapped transfer path.",
+    ...servicePresentationByRoute["/services/provider-rescue/"],
     icon: ShieldCheck,
   },
   {
     number: "04",
     title: "Digital Research, SEO Audits & Strategy",
-    kicker: "Evidence before the expensive implementation",
-    summary:
-      "Turn websites, markets, search, analytics, and provider information into a short list of decisions with sources, limits, and priorities.",
     href: "/services/research-audits-strategy/" as const,
-    image: "/visuals/research-notebook.webp",
-    alt: "Research notebook composition with evidence cards, annotations, and analytical marks.",
+    ...servicePresentationByRoute["/services/research-audits-strategy/"],
     icon: BarChart3,
   },
   {
     number: "05",
     title: "Custom Web & Digital Solutions",
-    kicker: "The smallest useful system for a stable problem",
-    summary:
-      "Build or connect focused tools, forms, dashboards, integrations, data workflows, publishing systems, and automation when custom work is justified.",
     href: "/services/custom-digital-solutions/" as const,
-    image: "/visuals/creative-process.webp",
-    alt: "Creative engineering process composition with components, connections, and working notes.",
+    ...servicePresentationByRoute["/services/custom-digital-solutions/"],
     icon: Blocks,
   },
 ] as const;
 
 const decisionRoutes = [
-  ["We need more useful local visibility and a clearer path to inquiry.", "/services/ongoing-seo/", "Start with ongoing SEO and search growth."],
-  ["The website is unclear, dated, inaccessible, or difficult to own.", "/services/web-design-redesign/", "Start with web design or a focused improvement."],
-  ["We need to leave a provider without breaking the business.", "/services/provider-rescue/", "Start with a provider rescue assessment."],
-  ["We need evidence before deciding what to buy.", "/services/research-audits-strategy/", "Start with research, an audit, or reporting."],
-  ["Repeated work is slow, fragile, or trapped between systems.", "/services/custom-digital-solutions/", "Start with discovery and feasibility."],
+  ["We want more of the right local customers to find and contact us.", "/services/ongoing-seo/", "Start with ongoing SEO."],
+  ["Our website is unclear, outdated, hard to use, or hard to update.", "/services/web-design-redesign/", "Start with a focused repair, redesign, or new website."],
+  ["We need to leave a provider without losing our website, domain, or search visibility.", "/services/provider-rescue/", "Start with a provider rescue review."],
+  ["We need to know what is working and what to fix first.", "/services/research-audits-strategy/", "Start with a review, report, or audit."],
+  ["A repeated task wastes time or causes mistakes.", "/services/custom-digital-solutions/", "Start with a custom-project review."],
 ] as const;
 
 export function ServicesPage() {
@@ -106,10 +87,10 @@ export function ServicesPage() {
               <div className="services-hub-hero__copy">
                 <p className="eyebrow eyebrow--on-dark">Services</p>
                 <EditorialHeadline as="h1" className="services-hub-hero__title">
-                  <span id="services-hub-title">Five service lanes for businesses that need the whole system explained.</span>
+                  <span id="services-hub-title">Five services for the problems businesses face online.</span>
                 </EditorialHeadline>
                 <p className="services-hub-hero__intro">
-                  {define("Boho connects local visibility, qualified inquiries, websites, provider infrastructure, custom tools, research, and measurement around the business problem—not a generic package.")}
+                  {define("Boho helps businesses get found, improve or replace a website, leave a difficult provider, understand what the evidence says, or simplify repeated digital work. We start with the problem and recommend only the work that fits.")}
                 </p>
                 <div className="button-row">
                   <ButtonLink href="/start/">Start the free review</ButtonLink>
@@ -137,8 +118,8 @@ export function ServicesPage() {
           <div className="section-shell">
             <header className="services-hub-heading">
               <p className="eyebrow">Five connected services</p>
-              <h2 id="services-catalog-title">Choose the lane after naming the problem.</h2>
-              <p>{define("Each page explains fit, exclusions, process, deliverables, client responsibilities, starting prices, limitations, and the next useful action.")}</p>
+              <h2 id="services-catalog-title">Choose the service that matches the problem.</h2>
+              <p>{define("Each page explains who the service is for, what is included, what is not included, what it costs to start, and what happens next.")}</p>
             </header>
             <div className="services-catalog-grid">
               {services.map(({ icon: Icon, ...service }) => (
@@ -182,11 +163,11 @@ export function ServicesPage() {
         <section className="services-pricing-bridge" aria-labelledby="services-pricing-title">
           <div className="section-shell services-pricing-bridge__layout">
             <div>
-              <p className="eyebrow">Public planning minimums</p>
-              <h2 id="services-pricing-title">Enough pricing to decide whether the next conversation makes sense.</h2>
+              <p className="eyebrow">Starting prices</p>
+              <h2 id="services-pricing-title">See what the smallest complete project costs.</h2>
             </div>
             <div>
-              <p>{define("Starting prices describe the smallest complete scope. The specific written engagement controls final scope, timing, ownership, support, third-party costs, and acceptance.")}</p>
+              <p>{define("Starting prices show what a basic project includes. Your written proposal will list the exact work, price, timing, ownership, ongoing support, and any outside costs.")}</p>
               <Link href="/pricing/">Read the Pricing &amp; Scope Guide <ArrowRight aria-hidden="true" size={17} /></Link>
             </div>
           </div>
@@ -194,10 +175,10 @@ export function ServicesPage() {
 
         <div className="section-shell services-hub-cta">
           <CtaBand
-            title="Bring the business problem. Boho will help name the service."
-            body={<p>{define("Send the website, market, provider situation, repeated workflow, or decision that feels unclear. The useful first move may be a free review, a focused project, or no paid work yet.")}</p>}
+            title="Tell us what is not working. We will help choose the next step."
+            body={<p>{define("Send the website, provider problem, repeated task, or decision that feels unclear. The right first move may be a free review, a focused project, or no paid work yet.")}</p>}
             primary={{ label: "Start the free review", href: "/start/" }}
-            secondary={{ label: "Talk to someone technical", href: "/contact/" }}
+            secondary={{ label: "Talk through your situation", href: "/contact/" }}
           />
         </div>
       </main>

@@ -326,6 +326,58 @@ test("keeps candidate prices centralized and publishes the complete assessment-c
   assert.match(generatorSource, /rendered currency amounts do not match/);
 });
 
+test("uses service-specific editorial imagery and plain-language decision copy", async () => {
+  const services = await (await render("/services/")).text();
+  const imageRecords = [
+    ["ongoing-seo-v1.webp", "1bb8daef9bb6a6af6318f82248c1887ff90381886ca26876d64ab74c816cdfff"],
+    ["web-design-redesign-v1.webp", "e6568ec8fbe136090a85d9d5f4936c1422f1b5bf9a7f543c4a07ca063a8e573c"],
+    ["provider-rescue-v1.webp", "a893a39c9e8f5ab5dd6fa3dfa24ef45776ed90382f91d210cb2b8be0b6a6dc9c"],
+    ["research-audits-strategy-v1.webp", "8acf0605477e4ea4777fabf90cc7167d3943be961e0f7b9a874cea06ccea9366"],
+    ["custom-digital-solutions-v1.webp", "bec2edae6f7a2a9f8ef2b7a90e2404378c5610b47c0a58c698bc9a1ef894222d"],
+  ];
+  for (const [filename, expectedDigest] of imageRecords) {
+    assert.match(services, new RegExp(`/visuals/services/${filename}`, "i"));
+    const bytes = await readFile(new URL(`../public/visuals/services/${filename}`, import.meta.url));
+    assert.equal(createHash("sha256").update(bytes).digest("hex"), expectedDigest);
+  }
+  assert.doesNotMatch(
+    services,
+    /growth-analysis|homepage-design-studio-v2|migration-infrastructure|research-notebook|creative-process/i,
+  );
+  for (const phrase of [
+    "Five services for the problems businesses face online.",
+    "Help the right local customers find and contact you",
+    "Leave a difficult provider without losing what matters",
+    "Know what to fix before paying for a larger project",
+    "A small tool for repeated work",
+  ]) {
+    assert.match(services, new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"));
+  }
+
+  const pricing = await (await render("/pricing/")).text();
+  assert.match(pricing, /Starting prices, with a clear explanation of what you get\./i);
+  assert.match(pricing, /Each month, an analyst checks the available data/i);
+  assert.match(pricing, /A one-time project that fixes a small number of important problems/i);
+  assert.match(pricing, /A review of who owns and controls the website/i);
+  assert.match(pricing, /One small tool or simple connection between systems/i);
+
+  const serviceIntros = [
+    ["/services/ongoing-seo/", /Every month explains what mattered, what was done/i],
+    ["/services/web-design-redesign/", /A few focused fixes may be enough/i],
+    ["/services/provider-rescue/", /We identify what could break before the move/i],
+    ["/services/research-audits-strategy/", /Find out what to fix before paying to fix it/i],
+    ["/services/custom-digital-solutions/", /We do not assume custom software is the answer/i],
+  ];
+  for (const [route, pattern] of serviceIntros) {
+    assert.match(await (await render(route)).text(), pattern);
+  }
+  const providerRescue = await (await render("/services/provider-rescue/")).text();
+  assert.match(providerRescue, /Leave a difficult provider without losing control or useful assets/i);
+  const customSolutions = await (await render("/services/custom-digital-solutions/")).text();
+  assert.match(customSolutions, /Start the free review/i);
+  assert.match(customSolutions, /Discovery and feasibility start at \$500/i);
+});
+
 test("publishes factual privacy, terms, and accessibility pages", async () => {
   const privacy = await (await render("/privacy/")).text();
   assert.match(privacy, /Republic of Bohemia LLC/i);

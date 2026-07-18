@@ -3,6 +3,10 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 import type { ServicePage, ServicePageBlock } from "../content/servicePages.generated";
+import {
+  isServicePresentationRoute,
+  servicePresentationByRoute,
+} from "../content/servicePresentation";
 import { DefinedText } from "./DefinedText";
 import {
   Breadcrumbs,
@@ -11,34 +15,6 @@ import {
   Footer,
   Header,
 } from "./SiteChrome";
-
-const visualByRoute: Record<string, { src: string; alt: string; caption: string }> = {
-  "/services/ongoing-seo/": {
-    src: "/visuals/growth-analysis.webp",
-    alt: "Layered search-growth analysis with charts, notes, and connected signals.",
-    caption: "Visibility · customer paths · measurement",
-  },
-  "/services/web-design-redesign/": {
-    src: "/visuals/homepage-design-studio-v2.webp",
-    alt: "Editorial website design workspace with page studies and layout notes.",
-    caption: "Clarity · trust · ownership",
-  },
-  "/services/provider-rescue/": {
-    src: "/visuals/migration-infrastructure.webp",
-    alt: "Migration planning composition with infrastructure layers and a mapped transfer path.",
-    caption: "Authority · continuity · exit",
-  },
-  "/services/research-audits-strategy/": {
-    src: "/visuals/research-notebook.webp",
-    alt: "Research notebook with evidence cards, annotations, and analytical marks.",
-    caption: "Sources · limits · decisions",
-  },
-  "/services/custom-digital-solutions/": {
-    src: "/visuals/creative-process.webp",
-    alt: "Creative engineering process with components, connections, and working notes.",
-    caption: "Workflow · build · handoff",
-  },
-};
 
 type BodySection = {
   heading: Extract<ServicePageBlock, { type: "heading" }>;
@@ -227,7 +203,10 @@ function FaqSection({
 export function ServiceDetailPage({ page }: { page: ServicePage }) {
   const seenTerms = new Set<string>();
   const sections = sectionize(page.body);
-  const visual = visualByRoute[page.metadata.canonicalRoute];
+  if (!isServicePresentationRoute(page.metadata.canonicalRoute)) {
+    throw new Error(`Missing service presentation for ${page.metadata.canonicalRoute}`);
+  }
+  const visual = servicePresentationByRoute[page.metadata.canonicalRoute];
 
   return (
     <>
@@ -266,7 +245,7 @@ export function ServiceDetailPage({ page }: { page: ServicePage }) {
                 <p className="service-document-hero__trust">{page.hero.trustLine}</p>
               </div>
               <figure className="service-document-hero__visual">
-                <img alt={visual.alt} src={visual.src} />
+                <img alt={visual.alt} src={visual.image} />
                 <figcaption>{visual.caption}</figcaption>
               </figure>
             </div>
@@ -326,7 +305,7 @@ export function ServiceDetailPage({ page }: { page: ServicePage }) {
         <section className="service-related" aria-labelledby="service-related-title">
           <div className="section-shell">
             <p className="eyebrow">Related services</p>
-            <h2 id="service-related-title">Choose the adjacent lane only when the problem crosses systems.</h2>
+            <h2 id="service-related-title">Some problems need more than one service. Add another only when it solves part of the same problem.</h2>
             <div className="service-related__grid">
               {page.related.map((related) => (
                 <article key={`${related.prompt}-${related.href}`}>

@@ -67,7 +67,7 @@ const CONTENT_OVERRIDES = [
     reason:
       "Replace hosted-access language with verified public open-source repository language.",
     from: "**Meta description:** Free analytics access, analyst-reviewed reports, technical SEO audits, market research, provider reviews, and written digital strategy with public starting prices.",
-    to: "**Meta description:** Free public open-source analytics software, analyst-reviewed reports, technical SEO audits, market research, provider reviews, and written digital strategy with public starting prices.",
+    to: "**Meta description:** Clear website, search, market, provider, and analytics reviews that show what is working, what is not, and what to do next. Free open-source software is also available for self-hosting.",
   },
   {
     id: "analytics-hero-repository-language",
@@ -75,7 +75,7 @@ const CONTENT_OVERRIDES = [
     reason:
       "Clarify that the free Analytics Platform is a public repository intended for self-hosting.",
     from: "Start with a free public-information review. Use the supported Boho Analytics Platform free. Add an analyst-reviewed monthly report or a defined audit when the decision requires deeper evidence.",
-    to: "Start with a free public-information review. The Boho Analytics Platform is a free, public, open-source repository intended for self-hosting. Add an analyst-reviewed monthly report or a defined audit when the decision requires deeper evidence.",
+    to: "Start with a free review of public information. The Boho Analytics Platform is free open-source software for you or your technical provider to run. Choose a monthly report or one-time audit when you want an analyst to explain the evidence and recommend next steps.",
   },
   {
     id: "analytics-trust-line",
@@ -155,7 +155,7 @@ const CONTENT_OVERRIDES = [
     reason:
       "Distinguish paid analyst work from free software without promising hosted dashboard access.",
     from: "You are paying for human data-quality review, source reconciliation, interpretation, prioritization, limitations, and a written decision record. You are not paying merely for access to the dashboard.",
-    to: "You are paying for human data-quality review, source reconciliation, interpretation, prioritization, limitations, and a written decision record. You are not paying merely for access to software.",
+    to: "An analyst checks the available data, explains what it shows, lists the most important findings, notes its limits, and provides written next steps. You are paying for the analysis, not for access to software.",
   },
   {
     id: "report-method-link",
@@ -164,6 +164,190 @@ const CONTENT_OVERRIDES = [
       "Point evidence readers to the maintained report-method section instead of the absent sample-report anchor.",
     from: "**View Work & Evidence:** `/work#sample-report`",
     to: "**View Work & Evidence:** `/work/#report-method`",
+  },
+  {
+    id: "owner-plain-language-seo-meta",
+    file: "01-ongoing-seo-search-growth.md",
+    reason:
+      "Apply the owner's plain-language cleanup to the decision-facing service description.",
+    from: "**Meta description:** Ongoing SEO, local visibility, technical improvement, content support, analytics, and website optimization with public starting prices and documented monthly priorities.",
+    to: "**Meta description:** Ongoing help to improve how local customers find, understand, and contact your business, with a clear monthly priority and a written record of completed work.",
+  },
+  {
+    id: "owner-plain-language-seo-hero-one",
+    file: "01-ongoing-seo-search-growth.md",
+    reason:
+      "Explain the service in customer language before retaining the detailed governed scope below.",
+    from: "Ongoing SEO is for businesses with a useful website foundation and a real reason to keep improving it. Boho provides prioritized search, content, technical, local, conversion, and measurement work without hiding the plan inside a mystery retainer.",
+    to: "Use ongoing SEO when you already have a useful website and want to improve how the right customers find and use it. Each month, Boho reviews the evidence, agrees on a priority, completes the work included in your plan, and records what changed.",
+  },
+  {
+    id: "owner-plain-language-seo-hero-two",
+    file: "01-ongoing-seo-search-growth.md",
+    reason:
+      "Replace specialist phrasing in the short hero description without changing the service boundary.",
+    from: "Each cycle should make four things clear: what mattered most, what changed, what the evidence can and cannot show, and what should happen next.",
+    to: "Every month explains what mattered, what was done, what the results can and cannot show, and what should happen next.",
+  },
+  {
+    id: "owner-plain-language-seo-reporting-description",
+    file: "01-ongoing-seo-search-growth.md",
+    reason:
+      "Clarify the reporting product without changing its exclusions or price.",
+    from: "Reporting-only plans are for businesses that want regular interpretation without ongoing website changes.",
+    to: "Reporting-only plans are for businesses that want a clear explanation of their website and search data but do not need Boho making changes each month.",
+  },
+  {
+    id: "owner-plain-language-seo-implementation-description",
+    file: "01-ongoing-seo-search-growth.md",
+    reason:
+      "Clarify what the recurring implementation product adds to reporting.",
+    from: "Implementation retainers combine reporting with an agreed amount of recurring SEO, content, website, technical, local, conversion, or measurement work.",
+    to: "An ongoing plan combines that report with an agreed amount of search, content, website, local visibility, or measurement work.",
+  },
+  {
+    id: "owner-plain-language-website-meta",
+    file: "02-web-design-website-redesign.md",
+    reason:
+      "Apply the owner's plain-language cleanup to the decision-facing service description.",
+    from: "**Meta description:** Focused website improvements, new websites, and redesigns built around clarity, search foundations, accessibility, performance, ownership, and customer action.",
+    to: "**Meta description:** Website repairs, redesigns, and new sites that explain the business clearly, work well on phones, support search, and remain easy to own.",
+  },
+  {
+    id: "owner-plain-language-website-hero-one",
+    file: "02-web-design-website-redesign.md",
+    reason:
+      "Lead with what customers understand and do, while leaving the detailed implementation scope intact.",
+    from: "Boho repairs, redesigns, and builds websites around what customers need to understand and do. The work combines business clarity, information architecture, responsive design, accessibility, performance, search foundations, customer paths, measurement readiness, and documented ownership.",
+    to: "Boho repairs, redesigns, and builds websites so customers can quickly understand what you offer, trust the business, and take the next step. The site is made to work on phones, support search, and remain easy for you to own and update.",
+  },
+  {
+    id: "owner-plain-language-website-hero-two",
+    file: "02-web-design-website-redesign.md",
+    reason:
+      "Simplify the short route-choice description without changing the available service paths.",
+    from: "Not every website needs to be replaced. The first useful decision may be a focused repair, a substantial redesign, a new build, or a provider rescue before design work begins.",
+    to: "Not every website needs to be replaced. A few focused fixes may be enough, or the business may need a redesign, a new site, or a provider move before design begins.",
+  },
+  {
+    id: "owner-plain-language-rescue-meta",
+    file: "03-website-migration-provider-rescue.md",
+    reason:
+      "Apply the owner's plain-language cleanup to the decision-facing service description.",
+    from: "**Meta description:** Recover authorized control, leave a bad website or SEO provider, preserve useful content and URLs, migrate safely, verify the launch, and document ownership.",
+    to: "**Meta description:** Help leaving a difficult website or SEO provider while protecting your domain, useful pages, forms, email connections, and search visibility.",
+  },
+  {
+    id: "owner-plain-language-rescue-headline",
+    file: "03-website-migration-provider-rescue.md",
+    reason:
+      "Describe the customer situation without making an unsupported public judgment about the provider.",
+    from: "# Leave the bad provider without losing control or useful assets.",
+    to: "# Leave a difficult provider without losing control or useful assets.",
+  },
+  {
+    id: "owner-plain-language-rescue-hero-one",
+    file: "03-website-migration-provider-rescue.md",
+    reason:
+      "Name the concrete accounts and assets a business owner recognizes.",
+    from: "Boho helps businesses review ownership, recover authorized control, preserve useful content and URLs, plan a clean exit, migrate systems, verify important customer and search functions, and document the new arrangement.",
+    to: "Boho helps you understand who controls the domain, website, hosting, forms, analytics, and related accounts; regain access you are authorized to have; protect useful pages and URLs; and move to a setup you can explain and own.",
+  },
+  {
+    id: "owner-plain-language-rescue-hero-two",
+    file: "03-website-migration-provider-rescue.md",
+    reason:
+      "Explain the migration sequence without abstract dependency language or continuity promises.",
+    from: "The objective is not merely to move files. It is to understand the dependencies before changing them, reduce avoidable loss, and leave the business with a system it can explain and own.",
+    to: "The goal is not simply to copy files. We identify what could break before the move, protect what matters, and check the new setup before handoff.",
+  },
+  {
+    id: "owner-plain-language-rescue-assessment-description",
+    file: "03-website-migration-provider-rescue.md",
+    reason:
+      "Replace an abstract product description with the concrete review and outcome.",
+    from: "A bounded assessment of ownership, access, dependencies, risks, and the likely path forward.",
+    to: "A focused review of ownership, access, connected services, risks, and the best next step.",
+  },
+  {
+    id: "owner-plain-language-research-headline",
+    file: "04-digital-research-seo-audits-strategy.md",
+    reason:
+      "Lead with the customer decision in plain language.",
+    from: "# Find the decision before buying the implementation.",
+    to: "# Find out what to fix before paying to fix it.",
+  },
+  {
+    id: "owner-plain-language-research-hero-one",
+    file: "04-digital-research-seo-audits-strategy.md",
+    reason:
+      "Explain the research service through its practical questions and output.",
+    from: "Boho studies websites, search visibility, markets, competitors, providers, customer paths, and measurement systems to identify which digital improvements are most likely to deserve attention.",
+    to: "Boho reviews your website, search presence, market, competitors, providers, customer journey, and available data to show what is working, what is not, and what deserves attention first.",
+  },
+  {
+    id: "owner-plain-language-research-report-description",
+    file: "04-digital-research-seo-audits-strategy.md",
+    reason:
+      "Describe the monthly report through what the analyst checks and delivers.",
+    from: "A paid monthly report adds human data-quality review, source reconciliation, interpretation, business context, limitations, prioritization, and a written decision record.",
+    to: "A paid monthly report adds an analyst who checks the available data, explains what it shows, identifies unreliable information, lists the most important findings, and provides written next steps.",
+  },
+  {
+    id: "owner-plain-language-custom-meta",
+    file: "05-custom-web-digital-solutions.md",
+    reason:
+      "Apply the owner's plain-language cleanup to the decision-facing service description.",
+    from: "**Meta description:** Focused custom tools, forms, calculators, dashboards, integrations, data workflows, APIs, publishing systems, and automation with documented ownership and support.",
+    to: "**Meta description:** Small custom tools and software connections that reduce repeated work, with testing, documentation, and clear ownership.",
+  },
+  {
+    id: "owner-plain-language-custom-primary-action",
+    file: "05-custom-web-digital-solutions.md",
+    reason:
+      "Make the free initial review the consistent first public action before paid discovery.",
+    from: "**Primary button:** Start with discovery",
+    to: "**Primary button:** Start the free review",
+  },
+  {
+    id: "owner-plain-language-custom-trust-line-grammar",
+    file: "05-custom-web-digital-solutions.md",
+    reason:
+      "Correct subject-verb agreement in the public pricing trust line.",
+    from: "**Trust line:** Discovery and feasibility starts at $500. Focused custom builds start at $2,500. Eligible discovery fees are credited toward an approved related build.",
+    to: "**Trust line:** Discovery and feasibility start at $500. Focused custom builds start at $2,500. Eligible discovery fees are credited toward an approved related build.",
+  },
+  {
+    id: "owner-plain-language-custom-headline",
+    file: "05-custom-web-digital-solutions.md",
+    reason:
+      "Replace abstract system language with the concrete customer product.",
+    from: "# Build the smallest useful system for the actual problem.",
+    to: "# Build the smallest useful tool for the real problem.",
+  },
+  {
+    id: "owner-plain-language-custom-hero-one",
+    file: "05-custom-web-digital-solutions.md",
+    reason:
+      "Explain custom work through the repeated business problem it addresses.",
+    from: "Boho builds or connects focused tools, forms, calculators, dashboards, integrations, data workflows, APIs, publishing systems, and automation when the repeated work is stable enough to justify custom development.",
+    to: "Boho builds small tools or connects software when a repeated task wastes time, causes mistakes, or keeps important information in separate places.",
+  },
+  {
+    id: "owner-plain-language-custom-hero-two",
+    file: "05-custom-web-digital-solutions.md",
+    reason:
+      "State the simpler-alternative boundary without specialist product language.",
+    from: "Custom software is not the opening assumption. The right answer may be a small tool, an integration, a process repair, a supported existing product, or no build at all.",
+    to: "We do not assume custom software is the answer. A simpler process, an existing product, or a small connection may solve the problem better.",
+  },
+  {
+    id: "owner-plain-language-custom-discovery-description",
+    file: "05-custom-web-digital-solutions.md",
+    reason:
+      "Explain the paid discovery product as the step needed for a responsible quote.",
+    from: "Discovery is the first paid step when the custom system cannot be responsibly quoted from public information and a short discussion.",
+    to: "Discovery is the first paid step when Boho needs to understand the work before it can quote a responsible build.",
   },
 ];
 

@@ -6,7 +6,7 @@ export const pricingPolicyVersion = "service-pages-package-v1";
 
 export const servicePriceSummaries = {
   "/services/ongoing-seo/":
-    "Reporting from $95/month · implementation from $450/month",
+    "Reporting from $95/month · ongoing SEO work from $450/month",
   "/services/web-design-redesign/":
     "Focused improvements from $750 · new sites and redesigns from $1,500",
   "/services/provider-rescue/":
@@ -14,7 +14,7 @@ export const servicePriceSummaries = {
   "/services/research-audits-strategy/":
     "Monthly reports from $95 · focused audits and research from $350",
   "/services/custom-digital-solutions/":
-    "Discovery from $500 · focused custom builds from $2,500",
+    "Custom-project review from $500 · focused custom builds from $2,500",
 };
 
 export const pricingGroups = [
@@ -26,12 +26,12 @@ export const pricingGroups = [
       [
         "Boho Analytics Platform",
         "Free",
-        "Public open-source software for self-hosted, source-labeled analytics and monitoring workflows. This is not a hosted customer dashboard offer.",
+        "Free software you or your technical provider can install and run. It can bring supported website, search, form, and system data into one place. Boho does not provide it as a hosted customer dashboard.",
       ],
       [
         "Analyst-Reviewed Monthly Report",
         "Starting at $95 per month",
-        "A small reporting scope with source and data-quality review, prioritized findings, limitations, and a written decision record.",
+        "Each month, an analyst checks the available data, explains what it does and does not show, lists the most important findings, and provides written next steps.",
       ],
     ],
   },
@@ -43,7 +43,7 @@ export const pricingGroups = [
       [
         "Ongoing SEO & Search Growth",
         "Starting at $450 per month",
-        "A narrow recurring implementation scope for one website, one primary market, monthly review, a defined priority, and a completed-work record.",
+        "Monthly work for one website and one main market. Each month includes a review, one agreed priority, the improvements included in your plan, and a written record of what was completed.",
       ],
     ],
   },
@@ -55,12 +55,12 @@ export const pricingGroups = [
       [
         "Focused Website Improvement",
         "Starting at $750",
-        "A bounded project addressing a small number of priority problems while the useful existing website remains in place.",
+        "A one-time project that fixes a small number of important problems while keeping the parts of your current website that still work.",
       ],
       [
         "New Website or Substantial Redesign",
         "Starting at $1,500",
-        "The smallest complete public website or redesign: limited pages and templates, one primary action, prepared information, responsive implementation, search foundations, launch checks, and handoff.",
+        "A simple, complete website or major redesign with a limited number of pages and layouts, one main customer action, mobile-friendly pages, basic search setup, launch checks, and a handoff. You provide the core business information unless the proposal includes more content help.",
       ],
     ],
   },
@@ -77,7 +77,7 @@ export const pricingGroups = [
       [
         "Standalone hosting or defined email service",
         "Separately scoped",
-        "The written proposal must identify the provider, ownership, limits, third-party costs, support, backups, mailbox or routing scope, and exit treatment. No standalone public minimum is asserted here.",
+        "Quoted separately. Your proposal will name the provider, account owner, service limits, outside costs, support, backups, email setup if included, and what happens if you leave. There is no one-size-fits-all public starting price.",
       ],
     ],
   },
@@ -89,12 +89,12 @@ export const pricingGroups = [
       [
         "Provider Rescue Assessment",
         "Starting at $350",
-        "A bounded ownership, access, dependency, and risk review with a written recommendation.",
+        "A review of who owns and controls the website, what access is available, what other services depend on it, the main risks, and the recommended next step.",
       ],
       [
         "Migration or Rescue Assistance",
         "Starting at $1,000",
-        "A straightforward minimum migration with clear authorized access, one small website and domain, ordinary hosting and DNS, limited redirects, simple customer actions, verification, and handoff.",
+        "A basic move for one small website and one domain when authorized access is available. It covers ordinary hosting and domain settings, a limited number of redirects, simple forms or contact actions, launch checks, and handoff.",
       ],
     ],
   },
@@ -106,7 +106,7 @@ export const pricingGroups = [
       [
         "Standalone Review, Audit, or Research",
         "Starting at $350",
-        "One narrow question, a small public system, limited access, and a defined written recommendation.",
+        "A one-time review of one clear question about a small public website or digital setup, using limited available access, followed by a written recommendation.",
       ],
     ],
   },
@@ -118,12 +118,12 @@ export const pricingGroups = [
       [
         "Custom Discovery and Feasibility",
         "Starting at $500",
-        "A bounded workflow and feasibility review with limited systems, available stakeholders, risks, and a written recommendation.",
+        "A review of one repeated business process to decide whether a custom tool is practical. It covers a limited number of systems, available decision-makers, key risks, and a written recommendation.",
       ],
       [
         "Focused Custom Build",
         "Starting at $2,500",
-        "One focused tool or simple integration with a primary workflow, limited users or systems, bounded inputs and outputs, standard deployment, testing, and documentation.",
+        "One small tool or simple connection between systems for one main task, with a limited number of users and systems. The starting scope includes clear inputs and outputs, a standard launch, testing, and documentation.",
       ],
     ],
   },

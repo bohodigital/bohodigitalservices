@@ -28,6 +28,7 @@ import {
 } from "./components/SiteChrome";
 import { DefinedText } from "./components/DefinedText";
 import { operatingCycle } from "./content/operatingCycle";
+import { servicePresentationByRoute } from "./content/servicePresentation";
 
 const operatingCycleIcons = {
   diagnose: SearchCheck,
@@ -41,23 +42,23 @@ const operatingCycleIcons = {
 const serviceCards = [
   {
     title: "Ongoing SEO & Search Growth",
-    body: "Local discovery, website clarity, trust, calls to action, inquiry paths, and measurement engineered as one commercial system.",
-    label: "Build the lead system",
+    body: servicePresentationByRoute["/services/ongoing-seo/"].summary,
+    label: "Improve local visibility",
     href: "/services/ongoing-seo/",
     tone: "verdigris",
     icon: MapPin,
   },
   {
     title: "Web Design & Website Redesign",
-    body: "Useful, distinctive websites built around ownership, performance, search structure, customer action, and a clearly governed hosting provision.",
-    label: "Plan the website system",
+    body: servicePresentationByRoute["/services/web-design-redesign/"].summary,
+    label: "Plan the website",
     href: "/services/web-design-redesign/",
     tone: "gold",
     icon: PanelsTopLeft,
   },
   {
     title: "Website Migration & Provider Rescue",
-    body: "Careful help leaving bad providers, recovering control, preserving useful assets and URLs, and verifying a safer move.",
+    body: servicePresentationByRoute["/services/provider-rescue/"].summary,
     label: "Plan the rescue",
     href: "/services/provider-rescue/",
     tone: "copper",
@@ -65,16 +66,16 @@ const serviceCards = [
   },
   {
     title: "Custom Web & Digital Solutions",
-    body: "Focused internal tools, integrations, and automations for repeated work that costs too much time or fails too easily by hand.",
-    label: "Build the missing tool",
+    body: servicePresentationByRoute["/services/custom-digital-solutions/"].summary,
+    label: "Simplify the repeated task",
     href: "/services/custom-digital-solutions/",
     tone: "blue",
     icon: Wrench,
   },
   {
     title: "Digital Research, SEO Audits & Strategy",
-    body: "Diagnosis, market research, technical inspection, measurement, and an improvement rhythm tied to the next useful decision.",
-    label: "Start with evidence",
+    body: servicePresentationByRoute["/services/research-audits-strategy/"].summary,
+    label: "Get a clear review",
     href: "/services/research-audits-strategy/",
     tone: "plum",
     icon: SearchCheck,

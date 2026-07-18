@@ -1,16 +1,17 @@
 import type { PageConfig } from "./types";
 import { operatingCycle } from "./operatingCycle";
+import { servicePresentationByRoute } from "./servicePresentation";
 
 export const corePages: PageConfig[] = [
   {
     slug: "/services/",
     title: "Digital Engineering Services | Boho Digital Services",
     metaDescription:
-      "Explore Boho local visibility and lead systems, websites and managed hosting, provider rescue and migration, custom tools and automation, and research-led improvement.",
+      "Explore five ways Boho helps businesses get found, improve a website, leave a difficult provider, get a clear review, or simplify repeated work.",
     eyebrow: "Services",
-    headline: "Five service lanes for businesses that need the whole system explained.",
+    headline: "Five services for the problems businesses face online.",
     intro: [
-      "Boho is a digital-engineering firm. We connect commercial goals to the websites, visibility systems, lead paths, provider infrastructure, operational tools, and measurements underneath them.",
+      "Boho starts with what is not working, then recommends the smallest service that fits the problem.",
     ],
     theme: "mosaic",
     primaryCta: { label: "Talk to Someone Technical", href: "/contact/" },
@@ -883,11 +884,11 @@ export const corePages: PageConfig[] = [
         title: "One free first look across the five service lanes.",
         layout: "grid",
         items: [
-          { title: "Ongoing SEO & Search Growth", body: "Review local visibility, service content, technical health, customer paths, and obvious measurement gaps before choosing recurring work.", href: "/services/ongoing-seo/", linkLabel: "Review the service" },
-          { title: "Web Design & Website Redesign", body: "Identify whether the existing website needs focused repair, a redesign, or a clearer plan before a larger build.", href: "/services/web-design-redesign/", linkLabel: "Review the service" },
-          { title: "Website Migration & Provider Rescue", body: "Look for visible ownership, access, provider, continuity, and migration risks before beginning a rescue or move.", href: "/services/provider-rescue/", linkLabel: "Review the service" },
-          { title: "Digital Research, SEO Audits & Strategy", body: "Clarify the decision, visible evidence, likely research scope, and whether a free platform, report, audit, or no paid work is the useful next step.", href: "/services/research-audits-strategy/", linkLabel: "Review the service" },
-          { title: "Custom Web & Digital Solutions", body: "Describe the repeated workflow or system gap so Boho can assess whether repair, integration, custom discovery, or no new software makes sense.", href: "/services/custom-digital-solutions/", linkLabel: "Review the service" },
+          { title: "Ongoing SEO & Search Growth", body: servicePresentationByRoute["/services/ongoing-seo/"].summary, href: "/services/ongoing-seo/", linkLabel: "Review the service" },
+          { title: "Web Design & Website Redesign", body: servicePresentationByRoute["/services/web-design-redesign/"].summary, href: "/services/web-design-redesign/", linkLabel: "Review the service" },
+          { title: "Website Migration & Provider Rescue", body: servicePresentationByRoute["/services/provider-rescue/"].summary, href: "/services/provider-rescue/", linkLabel: "Review the service" },
+          { title: "Digital Research, SEO Audits & Strategy", body: servicePresentationByRoute["/services/research-audits-strategy/"].summary, href: "/services/research-audits-strategy/", linkLabel: "Review the service" },
+          { title: "Custom Web & Digital Solutions", body: servicePresentationByRoute["/services/custom-digital-solutions/"].summary, href: "/services/custom-digital-solutions/", linkLabel: "Review the service" },
         ],
       },
       {

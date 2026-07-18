@@ -1,3 +1,5 @@
+import { servicePresentationByRoute } from "./servicePresentation";
+
 export type LocalHref = "/" | `/${string}` | `#${string}`;
 
 export type NavigationLink = {
@@ -38,27 +40,27 @@ export const serviceHeaderLinks: ReadonlyArray<NavigationLink> = [
   {
     label: "Ongoing SEO & Search Growth",
     href: "/services/ongoing-seo/",
-    description: "Local discovery, trust, lead paths, and measurement working as one system.",
+    description: servicePresentationByRoute["/services/ongoing-seo/"].kicker,
   },
   {
     label: "Web Design & Website Redesign",
     href: "/services/web-design-redesign/",
-    description: "Useful, owned websites with an explicit managed-hosting provision.",
+    description: servicePresentationByRoute["/services/web-design-redesign/"].kicker,
   },
   {
     label: "Website Migration & Provider Rescue",
     href: "/services/provider-rescue/",
-    description: "Recover control, preserve value, migrate carefully, and document the result.",
+    description: servicePresentationByRoute["/services/provider-rescue/"].kicker,
   },
   {
     label: "Custom Web & Digital Solutions",
     href: "/services/custom-digital-solutions/",
-    description: "Practical internal tools and automations for repeated operational work.",
+    description: servicePresentationByRoute["/services/custom-digital-solutions/"].kicker,
   },
   {
     label: "Digital Research, SEO Audits & Strategy",
     href: "/services/research-audits-strategy/",
-    description: "Evidence, measurement, and improvement tied to a real decision.",
+    description: servicePresentationByRoute["/services/research-audits-strategy/"].kicker,
   },
 ];
 

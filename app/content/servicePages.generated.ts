@@ -149,6 +149,121 @@ export const servicePageContentOverrides = [
     "id": "report-method-link",
     "source": "content/service-pages/04-digital-research-seo-audits-strategy.md",
     "reason": "Point evidence readers to the maintained report-method section instead of the absent sample-report anchor."
+  },
+  {
+    "id": "owner-plain-language-seo-meta",
+    "source": "content/service-pages/01-ongoing-seo-search-growth.md",
+    "reason": "Apply the owner's plain-language cleanup to the decision-facing service description."
+  },
+  {
+    "id": "owner-plain-language-seo-hero-one",
+    "source": "content/service-pages/01-ongoing-seo-search-growth.md",
+    "reason": "Explain the service in customer language before retaining the detailed governed scope below."
+  },
+  {
+    "id": "owner-plain-language-seo-hero-two",
+    "source": "content/service-pages/01-ongoing-seo-search-growth.md",
+    "reason": "Replace specialist phrasing in the short hero description without changing the service boundary."
+  },
+  {
+    "id": "owner-plain-language-seo-reporting-description",
+    "source": "content/service-pages/01-ongoing-seo-search-growth.md",
+    "reason": "Clarify the reporting product without changing its exclusions or price."
+  },
+  {
+    "id": "owner-plain-language-seo-implementation-description",
+    "source": "content/service-pages/01-ongoing-seo-search-growth.md",
+    "reason": "Clarify what the recurring implementation product adds to reporting."
+  },
+  {
+    "id": "owner-plain-language-website-meta",
+    "source": "content/service-pages/02-web-design-website-redesign.md",
+    "reason": "Apply the owner's plain-language cleanup to the decision-facing service description."
+  },
+  {
+    "id": "owner-plain-language-website-hero-one",
+    "source": "content/service-pages/02-web-design-website-redesign.md",
+    "reason": "Lead with what customers understand and do, while leaving the detailed implementation scope intact."
+  },
+  {
+    "id": "owner-plain-language-website-hero-two",
+    "source": "content/service-pages/02-web-design-website-redesign.md",
+    "reason": "Simplify the short route-choice description without changing the available service paths."
+  },
+  {
+    "id": "owner-plain-language-rescue-meta",
+    "source": "content/service-pages/03-website-migration-provider-rescue.md",
+    "reason": "Apply the owner's plain-language cleanup to the decision-facing service description."
+  },
+  {
+    "id": "owner-plain-language-rescue-headline",
+    "source": "content/service-pages/03-website-migration-provider-rescue.md",
+    "reason": "Describe the customer situation without making an unsupported public judgment about the provider."
+  },
+  {
+    "id": "owner-plain-language-rescue-hero-one",
+    "source": "content/service-pages/03-website-migration-provider-rescue.md",
+    "reason": "Name the concrete accounts and assets a business owner recognizes."
+  },
+  {
+    "id": "owner-plain-language-rescue-hero-two",
+    "source": "content/service-pages/03-website-migration-provider-rescue.md",
+    "reason": "Explain the migration sequence without abstract dependency language or continuity promises."
+  },
+  {
+    "id": "owner-plain-language-rescue-assessment-description",
+    "source": "content/service-pages/03-website-migration-provider-rescue.md",
+    "reason": "Replace an abstract product description with the concrete review and outcome."
+  },
+  {
+    "id": "owner-plain-language-research-headline",
+    "source": "content/service-pages/04-digital-research-seo-audits-strategy.md",
+    "reason": "Lead with the customer decision in plain language."
+  },
+  {
+    "id": "owner-plain-language-research-hero-one",
+    "source": "content/service-pages/04-digital-research-seo-audits-strategy.md",
+    "reason": "Explain the research service through its practical questions and output."
+  },
+  {
+    "id": "owner-plain-language-research-report-description",
+    "source": "content/service-pages/04-digital-research-seo-audits-strategy.md",
+    "reason": "Describe the monthly report through what the analyst checks and delivers."
+  },
+  {
+    "id": "owner-plain-language-custom-meta",
+    "source": "content/service-pages/05-custom-web-digital-solutions.md",
+    "reason": "Apply the owner's plain-language cleanup to the decision-facing service description."
+  },
+  {
+    "id": "owner-plain-language-custom-primary-action",
+    "source": "content/service-pages/05-custom-web-digital-solutions.md",
+    "reason": "Make the free initial review the consistent first public action before paid discovery."
+  },
+  {
+    "id": "owner-plain-language-custom-trust-line-grammar",
+    "source": "content/service-pages/05-custom-web-digital-solutions.md",
+    "reason": "Correct subject-verb agreement in the public pricing trust line."
+  },
+  {
+    "id": "owner-plain-language-custom-headline",
+    "source": "content/service-pages/05-custom-web-digital-solutions.md",
+    "reason": "Replace abstract system language with the concrete customer product."
+  },
+  {
+    "id": "owner-plain-language-custom-hero-one",
+    "source": "content/service-pages/05-custom-web-digital-solutions.md",
+    "reason": "Explain custom work through the repeated business problem it addresses."
+  },
+  {
+    "id": "owner-plain-language-custom-hero-two",
+    "source": "content/service-pages/05-custom-web-digital-solutions.md",
+    "reason": "State the simpler-alternative boundary without specialist product language."
+  },
+  {
+    "id": "owner-plain-language-custom-discovery-description",
+    "source": "content/service-pages/05-custom-web-digital-solutions.md",
+    "reason": "Explain the paid discovery product as the step needed for a responsible quote."
   }
 ] as const;
 
@@ -158,21 +273,26 @@ export const servicePages: readonly ServicePage[] = [
       "file": "content/service-pages/01-ongoing-seo-search-growth.md",
       "sha256": "3b591dbbbbf349d0d64f0cb4616367027eb0f12c8b8dde8e59401412e697811d",
       "appliedOverrideIds": [
-        "analytics-ongoing-seo-source-language"
+        "analytics-ongoing-seo-source-language",
+        "owner-plain-language-seo-meta",
+        "owner-plain-language-seo-hero-one",
+        "owner-plain-language-seo-hero-two",
+        "owner-plain-language-seo-reporting-description",
+        "owner-plain-language-seo-implementation-description"
       ]
     },
     "name": "Ongoing SEO & Search Growth",
     "metadata": {
       "seoTitle": "Ongoing SEO & Search Growth Services | Boho Digital Services",
-      "metaDescription": "Ongoing SEO, local visibility, technical improvement, content support, analytics, and website optimization with public starting prices and documented monthly priorities.",
+      "metaDescription": "Ongoing help to improve how local customers find, understand, and contact your business, with a clear monthly priority and a written record of completed work.",
       "canonicalRoute": "/services/ongoing-seo/"
     },
     "hero": {
       "eyebrow": "Ongoing SEO & Search Growth",
       "headline": "Ongoing SEO that earns the right to continue.",
       "intro": [
-        "Ongoing SEO is for businesses with a useful website foundation and a real reason to keep improving it. Boho provides prioritized search, content, technical, local, conversion, and measurement work without hiding the plan inside a mystery retainer.",
-        "Each cycle should make four things clear: what mattered most, what changed, what the evidence can and cannot show, and what should happen next."
+        "Use ongoing SEO when you already have a useful website and want to improve how the right customers find and use it. Each month, Boho reviews the evidence, agrees on a priority, completes the work included in your plan, and records what changed.",
+        "Every month explains what mattered, what was done, what the results can and cannot show, and what should happen next."
       ],
       "primaryCta": {
         "kind": "primary",
@@ -349,7 +469,7 @@ export const servicePages: readonly ServicePage[] = [
       },
       {
         "type": "paragraph",
-        "text": "Reporting-only plans are for businesses that want regular interpretation without ongoing website changes."
+        "text": "Reporting-only plans are for businesses that want a clear explanation of their website and search data but do not need Boho making changes each month."
       },
       {
         "type": "paragraph",
@@ -384,7 +504,7 @@ export const servicePages: readonly ServicePage[] = [
       },
       {
         "type": "paragraph",
-        "text": "Implementation retainers combine reporting with an agreed amount of recurring SEO, content, website, technical, local, conversion, or measurement work."
+        "text": "An ongoing plan combines that report with an agreed amount of search, content, website, local visibility, or measurement work."
       },
       {
         "type": "paragraph",
@@ -831,21 +951,24 @@ export const servicePages: readonly ServicePage[] = [
       "file": "content/service-pages/02-web-design-website-redesign.md",
       "sha256": "d58263b2298b8cba01da996a0261556fe67c21571abae07fc29aa1d6927b373e",
       "appliedOverrideIds": [
-        "hosting-standalone-rate"
+        "hosting-standalone-rate",
+        "owner-plain-language-website-meta",
+        "owner-plain-language-website-hero-one",
+        "owner-plain-language-website-hero-two"
       ]
     },
     "name": "Web Design & Website Redesign",
     "metadata": {
       "seoTitle": "Website Design & Redesign Services | Boho Digital Services",
-      "metaDescription": "Focused website improvements, new websites, and redesigns built around clarity, search foundations, accessibility, performance, ownership, and customer action.",
+      "metaDescription": "Website repairs, redesigns, and new sites that explain the business clearly, work well on phones, support search, and remain easy to own.",
       "canonicalRoute": "/services/web-design-redesign/"
     },
     "hero": {
       "eyebrow": "Web Design & Website Redesign",
       "headline": "Websites that explain the business, earn trust, and remain easy to own.",
       "intro": [
-        "Boho repairs, redesigns, and builds websites around what customers need to understand and do. The work combines business clarity, information architecture, responsive design, accessibility, performance, search foundations, customer paths, measurement readiness, and documented ownership.",
-        "Not every website needs to be replaced. The first useful decision may be a focused repair, a substantial redesign, a new build, or a provider rescue before design work begins."
+        "Boho repairs, redesigns, and builds websites so customers can quickly understand what you offer, trust the business, and take the next step. The site is made to work on phones, support search, and remain easy for you to own and update.",
+        "Not every website needs to be replaced. A few focused fixes may be enough, or the business may need a redesign, a new site, or a provider move before design begins."
       ],
       "primaryCta": {
         "kind": "primary",
@@ -1659,20 +1782,26 @@ export const servicePages: readonly ServicePage[] = [
     "source": {
       "file": "content/service-pages/03-website-migration-provider-rescue.md",
       "sha256": "40b419034965a038959a8388de71f058ea89371e0f0c7602211415ef74793305",
-      "appliedOverrideIds": []
+      "appliedOverrideIds": [
+        "owner-plain-language-rescue-meta",
+        "owner-plain-language-rescue-headline",
+        "owner-plain-language-rescue-hero-one",
+        "owner-plain-language-rescue-hero-two",
+        "owner-plain-language-rescue-assessment-description"
+      ]
     },
     "name": "Website Migration & Provider Rescue",
     "metadata": {
       "seoTitle": "Website Migration & Provider Rescue Services | Boho Digital Services",
-      "metaDescription": "Recover authorized control, leave a bad website or SEO provider, preserve useful content and URLs, migrate safely, verify the launch, and document ownership.",
+      "metaDescription": "Help leaving a difficult website or SEO provider while protecting your domain, useful pages, forms, email connections, and search visibility.",
       "canonicalRoute": "/services/provider-rescue/"
     },
     "hero": {
       "eyebrow": "Website Migration & Provider Rescue",
-      "headline": "Leave the bad provider without losing control or useful assets.",
+      "headline": "Leave a difficult provider without losing control or useful assets.",
       "intro": [
-        "Boho helps businesses review ownership, recover authorized control, preserve useful content and URLs, plan a clean exit, migrate systems, verify important customer and search functions, and document the new arrangement.",
-        "The objective is not merely to move files. It is to understand the dependencies before changing them, reduce avoidable loss, and leave the business with a system it can explain and own."
+        "Boho helps you understand who controls the domain, website, hosting, forms, analytics, and related accounts; regain access you are authorized to have; protect useful pages and URLs; and move to a setup you can explain and own.",
+        "The goal is not simply to copy files. We identify what could break before the move, protect what matters, and check the new setup before handoff."
       ],
       "primaryCta": {
         "kind": "primary",
@@ -1786,7 +1915,7 @@ export const servicePages: readonly ServicePage[] = [
       },
       {
         "type": "paragraph",
-        "text": "A bounded assessment of ownership, access, dependencies, risks, and the likely path forward."
+        "text": "A focused review of ownership, access, connected services, risks, and the best next step."
       },
       {
         "type": "paragraph",
@@ -2523,21 +2652,24 @@ export const servicePages: readonly ServicePage[] = [
         "analytics-pricing-label",
         "analytics-faq-answer",
         "analytics-report-value-language",
-        "report-method-link"
+        "report-method-link",
+        "owner-plain-language-research-headline",
+        "owner-plain-language-research-hero-one",
+        "owner-plain-language-research-report-description"
       ]
     },
     "name": "Digital Research, SEO Audits & Strategy",
     "metadata": {
       "seoTitle": "SEO Audits, Analytics Reports & Digital Strategy | Boho",
-      "metaDescription": "Free public open-source analytics software, analyst-reviewed reports, technical SEO audits, market research, provider reviews, and written digital strategy with public starting prices.",
+      "metaDescription": "Clear website, search, market, provider, and analytics reviews that show what is working, what is not, and what to do next. Free open-source software is also available for self-hosting.",
       "canonicalRoute": "/services/research-audits-strategy/"
     },
     "hero": {
       "eyebrow": "Digital Research, SEO Audits & Strategy",
-      "headline": "Find the decision before buying the implementation.",
+      "headline": "Find out what to fix before paying to fix it.",
       "intro": [
-        "Boho studies websites, search visibility, markets, competitors, providers, customer paths, and measurement systems to identify which digital improvements are most likely to deserve attention.",
-        "Start with a free public-information review. The Boho Analytics Platform is a free, public, open-source repository intended for self-hosting. Add an analyst-reviewed monthly report or a defined audit when the decision requires deeper evidence."
+        "Boho reviews your website, search presence, market, competitors, providers, customer journey, and available data to show what is working, what is not, and what deserves attention first.",
+        "Start with a free review of public information. The Boho Analytics Platform is free open-source software for you or your technical provider to run. Choose a monthly report or one-time audit when you want an analyst to explain the evidence and recommend next steps."
       ],
       "primaryCta": {
         "kind": "primary",
@@ -2637,7 +2769,7 @@ export const servicePages: readonly ServicePage[] = [
       },
       {
         "type": "paragraph",
-        "text": "A paid monthly report adds human data-quality review, source reconciliation, interpretation, business context, limitations, prioritization, and a written decision record."
+        "text": "A paid monthly report adds an analyst who checks the available data, explains what it shows, identifies unreliable information, lists the most important findings, and provides written next steps."
       },
       {
         "type": "paragraph",
@@ -3283,7 +3415,7 @@ export const servicePages: readonly ServicePage[] = [
       },
       {
         "type": "paragraph",
-        "text": "You are paying for human data-quality review, source reconciliation, interpretation, prioritization, limitations, and a written decision record. You are not paying merely for access to software."
+        "text": "An analyst checks the available data, explains what it shows, lists the most important findings, notes its limits, and provides written next steps. You are paying for the analysis, not for access to software."
       },
       {
         "type": "heading",
@@ -3419,24 +3551,32 @@ export const servicePages: readonly ServicePage[] = [
     "source": {
       "file": "content/service-pages/05-custom-web-digital-solutions.md",
       "sha256": "6afd14fb0ab89d99a247177716e58fcc0df868bae43755a94bd8a9c13f4c4f4a",
-      "appliedOverrideIds": []
+      "appliedOverrideIds": [
+        "owner-plain-language-custom-meta",
+        "owner-plain-language-custom-primary-action",
+        "owner-plain-language-custom-trust-line-grammar",
+        "owner-plain-language-custom-headline",
+        "owner-plain-language-custom-hero-one",
+        "owner-plain-language-custom-hero-two",
+        "owner-plain-language-custom-discovery-description"
+      ]
     },
     "name": "Custom Web & Digital Solutions",
     "metadata": {
       "seoTitle": "Custom Web Tools, Integrations & Automation | Boho Digital Services",
-      "metaDescription": "Focused custom tools, forms, calculators, dashboards, integrations, data workflows, APIs, publishing systems, and automation with documented ownership and support.",
+      "metaDescription": "Small custom tools and software connections that reduce repeated work, with testing, documentation, and clear ownership.",
       "canonicalRoute": "/services/custom-digital-solutions/"
     },
     "hero": {
       "eyebrow": "Custom Web & Digital Solutions",
-      "headline": "Build the smallest useful system for the actual problem.",
+      "headline": "Build the smallest useful tool for the real problem.",
       "intro": [
-        "Boho builds or connects focused tools, forms, calculators, dashboards, integrations, data workflows, APIs, publishing systems, and automation when the repeated work is stable enough to justify custom development.",
-        "Custom software is not the opening assumption. The right answer may be a small tool, an integration, a process repair, a supported existing product, or no build at all."
+        "Boho builds small tools or connects software when a repeated task wastes time, causes mistakes, or keeps important information in separate places.",
+        "We do not assume custom software is the answer. A simpler process, an existing product, or a small connection may solve the problem better."
       ],
       "primaryCta": {
         "kind": "primary",
-        "label": "Start with discovery",
+        "label": "Start the free review",
         "href": "/start/"
       },
       "secondaryCta": {
@@ -3444,7 +3584,7 @@ export const servicePages: readonly ServicePage[] = [
         "label": "See custom-project pricing",
         "href": "/pricing/#custom-solutions"
       },
-      "trustLine": "Discovery and feasibility starts at $500. Focused custom builds start at $2,500. Eligible discovery fees are credited toward an approved related build."
+      "trustLine": "Discovery and feasibility start at $500. Focused custom builds start at $2,500. Eligible discovery fees are credited toward an approved related build."
     },
     "body": [
       {
@@ -3623,7 +3763,7 @@ export const servicePages: readonly ServicePage[] = [
       },
       {
         "type": "paragraph",
-        "text": "Discovery is the first paid step when the custom system cannot be responsibly quoted from public information and a short discussion."
+        "text": "Discovery is the first paid step when Boho needs to understand the work before it can quote a responsible build."
       },
       {
         "type": "heading",
