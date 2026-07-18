@@ -29,74 +29,59 @@ export function FigureCaption({
 }
 
 export function CustomerDecisionFieldFigure() {
+  const sharedStages = [
+    ["01", "Discover", "Be found"],
+    ["02", "Understand", "Recognise fit"],
+    ["03", "Trust", "Reduce doubt"],
+  ];
+  const outcomes = [
+    ["Estimate", "Project work"],
+    ["Book", "Local services"],
+    ["Visit", "Physical locations"],
+    ["Buy", "Online stores"],
+    ["Discuss", "Professional firms"],
+  ];
+
   return (
-    <figure className="industry-figure industry-decision-field">
-      <div className="industry-decision-field__canvas">
-        <svg
-          viewBox="0 0 760 540"
-          role="img"
-          aria-labelledby="decision-field-title decision-field-description"
+    <figure className="industry-figure industry-decision-summary">
+      <div className="industry-decision-summary__body">
+        <p className="industry-decision-summary__eyebrow">One shared decision path</p>
+        <ol
+          className="industry-decision-summary__stages"
+          aria-label="Shared customer decision stages"
         >
-          <title id="decision-field-title">Customer Decision Field</title>
-          <desc id="decision-field-description">
-            A route moves from discover to understand to trust, then branches to
-            estimate, book, visit, buy, or discuss.
-          </desc>
-          <g className="industry-decision-field__grid" aria-hidden="true">
-            <path d="M30 80H730M30 180H730M30 280H730M30 380H730M30 480H730" />
-            <path d="M110 32V510M250 32V510M390 32V510M530 32V510M670 32V510" />
-          </g>
-          <g className="industry-decision-field__route" aria-hidden="true">
-            <path d="M82 94H284H482" />
-            <path d="M482 94C540 94 518 168 590 168H690" />
-            <path d="M482 94C540 94 518 246 590 246H690" />
-            <path d="M482 94C540 94 518 324 590 324H690" />
-            <path d="M482 94C540 94 518 402 590 402H690" />
-            <path d="M482 94C540 94 518 480 590 480H690" />
-          </g>
-          <g className="industry-decision-field__nodes">
-            <circle cx="82" cy="94" r="16" />
-            <circle cx="284" cy="94" r="16" />
-            <circle cx="482" cy="94" r="16" />
-            <circle cx="590" cy="168" r="9" />
-            <circle cx="590" cy="246" r="9" />
-            <circle cx="590" cy="324" r="9" />
-            <circle cx="590" cy="402" r="9" />
-            <circle cx="590" cy="480" r="9" />
-          </g>
-          <g className="industry-decision-field__numbers" aria-hidden="true">
-            <text x="82" y="99">01</text>
-            <text x="284" y="99">02</text>
-            <text x="482" y="99">03</text>
-          </g>
-          <g className="industry-decision-field__labels">
-            <text x="54" y="136">DISCOVER</text>
-            <text x="238" y="136">UNDERSTAND</text>
-            <text x="456" y="136">TRUST</text>
-            <text x="610" y="173">ESTIMATE</text>
-            <text x="610" y="251">BOOK</text>
-            <text x="610" y="329">VISIT</text>
-            <text x="610" y="407">BUY</text>
-            <text x="610" y="485">DISCUSS</text>
-          </g>
-          <g className="industry-decision-field__notes" aria-hidden="true">
-            <text x="54" y="66">BE FOUND</text>
-            <text x="238" y="66">RECOGNISE FIT</text>
-            <text x="456" y="66">REDUCE DOUBT</text>
-            <text x="534" y="520">THE VALUABLE ACTION DEPENDS ON THE BUSINESS</text>
-          </g>
-        </svg>
+          {sharedStages.map(([number, title, description]) => (
+            <li key={number}>
+              <span aria-hidden="true">{number}</span>
+              <strong>{title}</strong>
+              <small>{description}</small>
+            </li>
+          ))}
+        </ol>
+        <p className="industry-decision-summary__pivot" id="industry-outcomes-title">
+          The useful action changes with the business.
+        </p>
+        <ul
+          className="industry-decision-summary__outcomes"
+          aria-labelledby="industry-outcomes-title"
+        >
+          {outcomes.map(([title, description]) => (
+            <li key={title}>
+              <strong>{title}</strong>
+              <small>{description}</small>
+            </li>
+          ))}
+        </ul>
       </div>
       <p className="industry-figure__explanation">
-        Most customer paths share three early tasks: find the business, understand
-        whether it fits, and gather enough trust to continue. The useful outcome
-        then changes with the way the business earns value.
+        Customers usually need to find the business, recognise fit, and build
+        trust. What happens next depends on how the business creates value.
       </p>
       <FigureCaption
         number="01"
-        type="Original decision map"
-        purpose="Shared stages and five distinct customer actions."
-        source="Boho-owned explanatory SVG."
+        type="Decision summary"
+        purpose="Three shared decision stages and five distinct customer actions."
+        source="Boho-owned semantic decision summary."
         limitation="Concept model, not a measured customer journey or client result."
       />
     </figure>
@@ -112,8 +97,12 @@ export function IndustryContextFigure({
   number: string;
   eager?: boolean;
 }) {
+  const orientationClass = model.image.height > model.image.width
+    ? " industry-context-figure--portrait"
+    : " industry-context-figure--landscape";
+
   return (
-    <figure className="industry-figure industry-context-figure">
+    <figure className={`industry-figure industry-context-figure${orientationClass}`}>
       <div className="industry-context-figure__image">
         {/* Static Pages output intentionally uses the self-hosted asset directly. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -424,7 +413,7 @@ export function HybridMapFigure() {
 
   return (
     <figure className="industry-figure industry-hybrid-map">
-      <div className="industry-hybrid-map__field" aria-label="Five overlapping customer-action models">
+      <div className="industry-hybrid-map__field" aria-label="Five customer-action models that may coexist in a hybrid business">
         {paths.map((path, index) => (
           <span key={path} style={{ "--hybrid-index": index } as React.CSSProperties}>{path}</span>
         ))}
@@ -437,7 +426,7 @@ export function HybridMapFigure() {
       </p>
       <FigureCaption
         number="14"
-        type="Overlap map"
+        type="Coexistence map"
         purpose="Five customer-action models that may coexist in one business."
         source="Boho-owned explanatory diagram."
         limitation="A selector aid, not a diagnosis or service promise."

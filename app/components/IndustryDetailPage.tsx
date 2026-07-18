@@ -185,7 +185,13 @@ export function IndustryDetailPage({ model }: { model: IndustryModel }) {
               <h2 id="industry-detail-decisions-title">The industry name is not the diagnosis.</h2>
               <p>These questions, trust requirements, actions, and constraints make this customer path different from the other four.</p>
             </div>
-            <div className="industry-detail-panels">
+            <p className="industry-detail-panels__cue">Swipe or scroll through the four model summaries.</p>
+            <div
+              className="industry-detail-panels"
+              role="region"
+              aria-label="Four customer-path model summaries"
+              tabIndex={0}
+            >
               <ModelPanel title="Customer questions" items={model.customerQuestions} />
               <ModelPanel title="Trust requirements" items={model.trustRequirements} />
               <ModelPanel title="Valuable actions" items={model.valuableActions} />

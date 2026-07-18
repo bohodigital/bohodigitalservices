@@ -217,9 +217,11 @@ function IndustryChapter({ model, index }: { model: IndustryModel; index: number
         </div>
 
         <div className="industry-chapter__decision industry-chapter__decision--single">
-          <div className="industry-chapter__starting-routes">
+          <div className="industry-chapter__decision-heading">
             <p className="eyebrow">BEST STARTING ROUTES</p>
             <h3>Begin with the smallest useful next step.</h3>
+          </div>
+          <div className="industry-chapter__starting-routes">
             <LedgerRows keys={model.priceKeys} model={model.id} section={model.anchor} />
             {model.ownershipNote ? <p className="industry-boundary-note">{model.ownershipNote}</p> : null}
             {model.id === "local-service" ? (
@@ -370,6 +372,7 @@ export function IndustriesPage() {
               <p className="eyebrow">BUSINESS-MODEL COMPARISON</p>
               <h2 id="industry-comparison-title">The technology may overlap. The decision does not.</h2>
             </div>
+            <p className="industry-comparison__cue">Scroll horizontally to compare every column.</p>
             <div className="industry-comparison__scroll" role="region" aria-label="Customer path comparison" tabIndex={0}>
               <table>
                 <thead>
