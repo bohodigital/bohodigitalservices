@@ -201,6 +201,14 @@ async function settleLazyAssets(page) {
   await page.waitForTimeout(120);
 }
 
+async function settleInteractiveHydration(page) {
+  await page.waitForFunction(() => {
+    const trigger = document.querySelector(".definition-term__trigger");
+    if (!trigger) return true;
+    return Object.keys(trigger).some((key) => key.startsWith("__reactProps$"));
+  }, null, { timeout: 10_000 }).catch(() => {});
+}
+
 async function loadRouteWithRetry(context, spec, label) {
   const transientRetries = [];
 
@@ -220,6 +228,7 @@ async function loadRouteWithRetry(context, spec, label) {
       await page.locator("main").waitFor({ state: "visible", timeout: 15_000 });
       await page.waitForTimeout(220);
       await settleLazyAssets(page);
+      await settleInteractiveHydration(page);
 
       if (diagnostics.badLocalResponses.some((item) => /^5\d\d\b/.test(item))) {
         throw new Error("a same-origin asset returned a 5xx response");
