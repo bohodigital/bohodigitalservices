@@ -61,6 +61,12 @@ jobs:
           test -f out/pricing/index.html
           test -f out/work/index.html
           test -f out/resources/index.html
+          test -f out/industries/index.html
+          test -f out/industries/home-improvement-contractors/index.html
+          test -f out/industries/local-service-businesses/index.html
+          test -f out/industries/brick-and-mortar-retail-hospitality/index.html
+          test -f out/industries/online-retail-ecommerce/index.html
+          test -f out/industries/professional-b2b-services/index.html
           test -f out/start/index.html
           test -f out/robots.txt
           test -f out/sitemap.xml
@@ -71,6 +77,11 @@ jobs:
           test -f out/brand/github-invertocat-white.svg
           test -f out/diagrams/boho-hosting-architecture-v2.png
           test -f out/visuals/services/ongoing-seo-v1.webp
+          test -f out/visuals/homepage-industry-contractors-v2.webp
+          test -f out/visuals/homepage-industry-local-service-v2.webp
+          test -f out/visuals/homepage-industry-retail-v2.webp
+          test -f out/visuals/homepage-industry-ecommerce-v2.webp
+          test -f out/visuals/homepage-industry-b2b-v2.webp
           test -f out/favicon.ico
           test -f out/boho-digital-services-social-v2.png
           test -z "$(find out -type f -name '_worker.js' -print -quit)"

@@ -150,6 +150,74 @@ export const assessmentCreditPolicy = {
     "If the relevant system or circumstances materially change after the assessment, additional research may be required. The eligible original assessment fee remains creditable, while newly required work may be added to the later scope.",
 };
 
+function industryOffer(key, offerName, href) {
+  for (const group of pricingGroups) {
+    const offer = group.offers.find(([label]) => label === offerName);
+    if (offer) {
+      return { key, label: offer[0], display: offer[1], href };
+    }
+  }
+  throw new Error(`Missing governed public offer: ${offerName}`);
+}
+
+// Every Industries minimum except the separate free orientation resolves from
+// the exact governed offer tuple above. This is a route-specific view of the
+// maintained pricing source, not a second registry.
+export const industryPriceLedger = [
+  {
+    key: "initial-review",
+    label: "Free Initial Review",
+    display: "Free",
+    href: "/start/",
+  },
+  industryOffer("analytics-platform", "Boho Analytics Platform", "/work/"),
+  industryOffer(
+    "analyst-reporting",
+    "Analyst-Reviewed Monthly Report",
+    "/services/research-audits-strategy/",
+  ),
+  industryOffer(
+    "one-time-review",
+    "Standalone Review, Audit, or Research",
+    "/services/research-audits-strategy/",
+  ),
+  industryOffer(
+    "provider-assessment",
+    "Provider Rescue Assessment",
+    "/services/provider-rescue/",
+  ),
+  industryOffer(
+    "ongoing-seo",
+    "Ongoing SEO & Search Growth",
+    "/services/ongoing-seo/",
+  ),
+  industryOffer(
+    "focused-improvement",
+    "Focused Website Improvement",
+    "/services/web-design-redesign/",
+  ),
+  industryOffer(
+    "migration-assistance",
+    "Migration or Rescue Assistance",
+    "/services/provider-rescue/",
+  ),
+  industryOffer(
+    "new-website",
+    "New Website or Substantial Redesign",
+    "/services/web-design-redesign/",
+  ),
+  industryOffer(
+    "custom-discovery",
+    "Custom Discovery and Feasibility",
+    "/services/custom-digital-solutions/",
+  ),
+  industryOffer(
+    "focused-custom-build",
+    "Focused Custom Build",
+    "/services/custom-digital-solutions/",
+  ),
+];
+
 export const approvedCurrencyAmounts = [
   "$95",
   "$350",

@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "./about-page.css";
 @import "./service-pages.css";
+@import "./industries-page.css";
 
 :root {
   --ink: #111214;

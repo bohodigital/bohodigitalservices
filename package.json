@@ -15,6 +15,7 @@
     "start": "vinext start",
     "test": "corepack pnpm run build:pages && node --test tests/rendered-html.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
+    "qa:industries": "node scripts/qa-industries-headless.mjs",
     "glossary:usage": "node scripts/analyze-glossary-usage.mjs",
     "db:generate": "drizzle-kit generate"
   },

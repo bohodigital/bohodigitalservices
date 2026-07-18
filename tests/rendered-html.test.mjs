@@ -156,6 +156,127 @@ test("renders every intentional public route and retires internal placeholder sh
   }
 });
 
+test("renders the Industries decision system without commercial glossary interruptions", async () => {
+  const industryRoutes = publicRoutes.filter((route) => route.startsWith("/industries/"));
+  const hub = await (await render("/industries/")).text();
+  const hubMain = hub.match(/<main\b[\s\S]*?<\/main>/i)?.[0] ?? "";
+
+  assert.match(hub, /<title>Website &amp; SEO Services by Industry \| Boho Digital Services<\/title>/i);
+  assert.match(
+    hub,
+    /<meta name="description" content="See how Boho adapts websites, SEO, reporting, provider rescue, and digital systems for contractors, local services, retail, ecommerce, and professional firms\."\/>/i,
+  );
+  assert.match(hubMain, /<h1[^>]*>Build around the way your customers actually decide\.<\/h1>/i);
+  assert.equal((hubMain.match(/customer-path-selector__routes/g) ?? []).length, 1);
+  assert.equal((hubMain.match(/data-umami-event="industry_selector_click"/g) ?? []).length, 6);
+  assert.match(hubMain, /<table>[\s\S]*Customer needs to know[\s\S]*Trust usually comes from[\s\S]*Valuable action[\s\S]*<\/table>/i);
+
+  for (const anchor of [
+    "customer-paths",
+    "project-businesses",
+    "local-services",
+    "retail-hospitality",
+    "ecommerce",
+    "professional-b2b",
+  ]) {
+    assert.match(hubMain, new RegExp(`id="${anchor}"`, "i"), `missing Industries anchor ${anchor}`);
+  }
+
+  for (const value of [
+    "project-business",
+    "local-service",
+    "retail-hospitality",
+    "ecommerce",
+    "professional-b2b",
+    "hybrid",
+  ]) {
+    assert.match(hubMain, new RegExp(`business_model=${value}`, "i"), `missing review preselection ${value}`);
+  }
+
+  for (const [label, value] of [
+    ["Free Initial Review", "Free"],
+    ["Boho Analytics Platform", "Free"],
+    ["Analyst-Reviewed Monthly Report", "Starting at $95 per month"],
+    ["Ongoing SEO &amp; Search Growth", "Starting at $450 per month"],
+    ["Focused Website Improvement", "Starting at $750"],
+    ["New Website or Substantial Redesign", "Starting at $1,500"],
+    ["Provider Rescue Assessment", "Starting at $350"],
+    ["Migration or Rescue Assistance", "Starting at $1,000"],
+    ["Standalone Review, Audit, or Research", "Starting at $350"],
+    ["Custom Discovery and Feasibility", "Starting at $500"],
+    ["Focused Custom Build", "Starting at $2,500"],
+  ]) {
+    assert.ok(hubMain.includes(label), `missing governed price label ${label}`);
+    assert.ok(hubMain.includes(value), `missing governed price value ${value}`);
+  }
+
+  assert.match(hubMain, /100% of the eligible fee/i);
+  assert.match(hubMain, /accepted within 90 days/i);
+  assert.match(hubMain, /Evidence cards stay hidden until their destinations are complete and verified\./i);
+  assert.match(hubMain, /does not publish fictional clients, fabricated testimonials/i);
+  assert.equal(
+    (hubMain.match(/The initial review is free and uses public information to identify the next useful discussion\./g) ?? []).length,
+    5,
+    "every business-model chapter must state the free-review boundary",
+  );
+
+  const allowedEvents = new Set([
+    "industry_selector_click",
+    "industry_page_click",
+    "industry_pricing_click",
+    "industry_evidence_click",
+    "industry_review_start",
+    "industry_review_complete",
+  ]);
+  for (const match of hubMain.matchAll(/data-umami-event="([^"]+)"/g)) {
+    assert.ok(allowedEvents.has(match[1]), `unapproved Industries event ${match[1]}`);
+  }
+  const allowedEventAttributes = new Set([
+    "business_model",
+    "source_section",
+    "destination_type",
+    "cta_label",
+  ]);
+  for (const match of hubMain.matchAll(/data-umami-event-([a-z_]+)=/g)) {
+    assert.ok(allowedEventAttributes.has(match[1]), `unapproved Industries analytics attribute ${match[1]}`);
+  }
+
+  const uniqueCopy = new Map([
+    ["/industries/home-improvement-contractors/", "Does this company do the exact kind of project I need?"],
+    ["/industries/local-service-businesses/", "Do not send health, patient, or other sensitive personal data"],
+    ["/industries/brick-and-mortar-retail-hospitality/", "Are the hours, menu, products, events, and availability current?"],
+    ["/industries/online-retail-ecommerce/", "Can I find the right category or product without knowing the store’s internal terms?"],
+    ["/industries/professional-b2b-services/", "Who will do the work and how do they work?"],
+  ]);
+
+  for (const route of industryRoutes) {
+    const html = await (await render(route)).text();
+    const main = html.match(/<main\b[\s\S]*?<\/main>/i)?.[0] ?? "";
+    assert.doesNotMatch(main, /definition-term__trigger|section-sidebar|>On this page</i, `${route} retains an automatic glossary or duplicate menu`);
+    assert.doesNotMatch(main, /noindex|nofollow/i, `${route} is not indexable`);
+    if (route !== "/industries/") {
+      const figureCount = (main.match(/class="industry-figure /g) ?? []).length;
+      assert.ok(figureCount >= 6 && figureCount <= 8, `${route} must render six to eight meaningful visuals`);
+      const readableText = main
+        .replace(/<[^>]+>/g, " ")
+        .replace(/&(?:[a-z]+|#\d+|#x[0-9a-f]+);/gi, " ")
+        .trim();
+      const wordCount = readableText.split(/\s+/).filter(Boolean).length;
+      assert.ok(wordCount >= 2_200 && wordCount <= 3_500, `${route} must retain substantial differentiated child-page content`);
+      assert.match(main, /Representative setting · Not client work · No measured result\./i);
+      assert.match(main, /loading="eager"[^>]*fetchPriority="high"/i);
+      assert.match(main, /Candidate artifact type/i);
+      assert.match(main, new RegExp(uniqueCopy.get(route).replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"));
+    }
+  }
+
+  const formSource = await readFile(new URL("../app/components/DraftForm.tsx", import.meta.url), "utf8");
+  assert.match(formSource, /getAll\("business_model"\)/);
+  assert.match(formSource, /values\.length !== 1/);
+  assert.match(formSource, /config\.formId !== "visibility-check"/);
+  assert.match(formSource, /payload\.ok === true[\s\S]*trackIndustryReviewComplete/);
+});
+
 test("renders the twelve-scene About story with scientific proof and unambiguous glossary links", async () => {
   const response = await render("/about/");
   assert.equal(response.status, 200);
