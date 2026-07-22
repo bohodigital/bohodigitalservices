@@ -156,6 +156,29 @@ test("renders every intentional public route and retires internal placeholder sh
   }
 });
 
+test("loads Google Analytics and first-party analytics on every public route", async () => {
+  for (const route of publicRoutes) {
+    const html = await (await render(route)).text();
+    const scriptTags = html.match(/<script\b[^>]*>[\s\S]*?<\/script>/gi) ?? [];
+    const googleLoaderTags = scriptTags.filter((tag) =>
+      /src="https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=G-5CV8L2SE2R"/i.test(tag),
+    );
+    const googleConfigTags = scriptTags.filter((tag) =>
+      /window\.dataLayer = window\.dataLayer \|\| \[\]/.test(tag)
+      && /gtag\('config', 'G-5CV8L2SE2R'\)/.test(tag)
+      && !/self\.__next_f\.push/.test(tag),
+    );
+    const firstPartyTags = scriptTags.filter((tag) =>
+      /src="https:\/\/analytics\.bohodigitalservices\.com\/script\.js"/i.test(tag),
+    );
+
+    assert.equal(googleLoaderTags.length, 1, `${route} Google Analytics loader count`);
+    assert.equal(googleConfigTags.length, 1, `${route} Google Analytics config count`);
+    assert.equal(firstPartyTags.length, 1, `${route} first-party analytics loader count`);
+    assert.match(firstPartyTags[0], /data-website-id="aecddac8-8ad4-49c4-b791-60b161c95155"/i, `${route} first-party website ID`);
+  }
+});
+
 test("renders the Industries decision system without commercial glossary interruptions", async () => {
   const industryRoutes = publicRoutes.filter((route) => route.startsWith("/industries/"));
   const hub = await (await render("/industries/")).text();

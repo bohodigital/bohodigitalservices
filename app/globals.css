@@ -8815,3 +8815,58 @@ body,
     outline-color: Highlight;
   }
 }
+
+/* Live layout touchups: balance odd card counts and protect soft shadows. */
+.method-summary-list {
+  gap: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+.service-grid {
+  --service-card-gap: clamp(1rem, 2vw, 1.5rem);
+  gap: var(--service-card-gap);
+}
+
+.section-action {
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+}
+
+.system-family-grid {
+  gap: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+@media (min-width: 72.01rem) {
+  .method-summary-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .service-card--1 { grid-column: span 7; }
+  .service-card--2 { grid-column: span 5; }
+  .service-card--3,
+  .service-card--4,
+  .service-card--5 { grid-column: span 4; }
+}
+
+@media (min-width: 46.01rem) and (max-width: 72rem) {
+  .service-grid > .service-card:last-child:nth-child(odd) {
+    width: calc((100% - var(--service-card-gap)) / 2);
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+}
+
+@media (min-width: 46.01rem) {
+  .migration-map__route > li:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    border-right: 0;
+  }
+}
+
+@media (max-width: 46rem) {
+  .section-action {
+    justify-content: flex-start;
+  }
+}
