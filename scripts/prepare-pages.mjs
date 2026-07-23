@@ -1,6 +1,12 @@
 import { access, copyFile, readdir, rm, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { join } from "node:path";
+import {
+  loadLegacyUrlMap,
+  pagesRedirectRules,
+  validateRedirectRegistry,
+  verifiedRedirectRecords,
+} from "./routing/redirect-registry.mjs";
 
 const outputDirectory = fileURLToPath(new URL("../out/", import.meta.url));
 const indexPage = fileURLToPath(new URL("../out/index.html", import.meta.url));
@@ -49,21 +55,9 @@ async function materializeFlightAliases(directory) {
 // not perform that mapping, so publish explicit aliases alongside each route.
 await materializeFlightAliases(outputDirectory);
 
-const legacyServiceRedirects = [
-  ["/services/ongoing-seo-growth", "/services/ongoing-seo/"],
-  ["/services/local-seo-search-visibility", "/services/ongoing-seo/#local-seo"],
-  ["/services/lead-generation-conversion", "/services/ongoing-seo/#customer-paths-and-conversion-clarity"],
-  ["/services/technical-seo-site-health", "/services/research-audits-strategy/#technical-seo-and-site-health"],
-  ["/services/website-design-redesign", "/services/web-design-redesign/"],
-  ["/services/website-migration-provider-rescue", "/services/provider-rescue/"],
-  ["/services/research-audits-analytics", "/services/research-audits-strategy/"],
-  ["/services/custom-tools-automation", "/services/custom-digital-solutions/"],
-];
-
-const redirectRules = legacyServiceRedirects.flatMap(([source, destination]) => [
-  `${source} ${destination} 301`,
-  `${source}/ ${destination} 301`,
-]);
+const legacyUrlMap = await loadLegacyUrlMap();
+validateRedirectRegistry(legacyUrlMap);
+const redirectRules = pagesRedirectRules(verifiedRedirectRecords(legacyUrlMap));
 
 await writeFile(redirectsFile, `${redirectRules.join("\n")}\n`, "utf8");
 

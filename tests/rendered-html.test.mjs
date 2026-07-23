@@ -3,6 +3,8 @@ import { createHash } from "node:crypto";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
+import { readGlossaryExamples } from "../scripts/glossary-source.mjs";
+
 async function render(pathname = "/", origin = "http://localhost") {
   const url = new URL(pathname, origin);
   const decodedPath = decodeURIComponent(url.pathname);
@@ -121,7 +123,7 @@ test("pre-renders the focused Boho homepage and approved marketing message", asy
   assert.match(html, /href="\/contact\/"[^>]*>[\s\S]*?Talk to Someone Technical/i);
   assert.match(html, /href="\/tools\/"[^>]*>[\s\S]*?Explore Boho Systems/i);
   assert.match(html, /We use mature/i);
-  assert.match(html, /href="\/learn\/glossary\/#term-platform"/i);
+  assert.match(html, /href="\/learn\/glossary\/platform\/"/i);
   assert.match(html, /for mature problems and custom engineering for the gaps that matter\./i);
   assert.match(html, /googletagmanager\.com\/gtag\/js\?id=G-5CV8L2SE2R/i);
   assert.match(html, /analytics\.bohodigitalservices\.com\/script\.js/i);
@@ -352,7 +354,7 @@ test("renders the twelve-scene About story with scientific proof and unambiguous
     html.indexOf("WHAT BOHO BELIEVES") < html.indexOf("PROFESSIONAL BACKGROUND"),
     "Boho beliefs should follow the hero before professional background",
   );
-  assert.doesNotMatch(html, /href="\/learn\/glossary\/#term-lead"/i);
+  assert.doesNotMatch(html, /href="\/learn\/glossary\/lead\/"/i);
   assert.doesNotMatch(html, /about-technical-portrait|about-system-flow/i);
   assert.match(html, /Data without direction\./i);
   assert.match(html, /Access without accountability\./i);
@@ -539,7 +541,7 @@ test("publishes factual privacy, terms, and accessibility pages", async () => {
   assert.match(terms, /Effective July 14, 2026/i);
 
   const accessibility = await (await render("/accessibility/")).text();
-  assert.match(accessibility, /href="\/learn\/glossary\/#term-wcag"/i);
+  assert.match(accessibility, /href="\/learn\/glossary\/wcag\/"/i);
   assert.match(accessibility, /principles as its design and testing target/i);
   assert.match(accessibility, /mailto:webmaster@bohemiandigital\.org/i);
   assert.match(accessibility, /Statement updated July 14, 2026/i);
@@ -549,7 +551,7 @@ test("realigns Tools around five system families, two decision visuals, and exac
   const tools = await (await render("/tools/")).text();
   assert.match(tools, /Systems built to make digital work cheaper, clearer, and easier to operate\./i);
   assert.match(tools, /Mature/i);
-  assert.match(tools, /href="\/learn\/glossary\/#term-platform"/i);
+  assert.match(tools, /href="\/learn\/glossary\/platform\/"/i);
   assert.match(tools, /handle the commodity infrastructure\. Boho engineers the operating system around the business\./i);
   assert.match(tools, /Custom software is one option, not the opening assumption\./i);
   assert.match(tools, /We repair before replacing, integrate before rebuilding, and write custom software only when the missing capability is worth owning\./i);
@@ -622,7 +624,7 @@ test("realigns Tools around five system families, two decision visuals, and exac
 test("uses accessible glossary definition popups with direct glossary fallbacks", async () => {
   const homepage = await (await render("/")).text();
   for (const slug of ["website-clarity", "trust-signal", "customer-discovery", "customer-action"]) {
-    assert.match(homepage, new RegExp(`href="/learn/glossary/#term-${slug}"`, "i"));
+    assert.match(homepage, new RegExp(`href="/learn/glossary/${slug}/"`, "i"));
   }
   assert.match(homepage, /class="definition-term__trigger"/i);
   assert.match(homepage, /aria-expanded="false"/i);
@@ -658,7 +660,7 @@ test("uses accessible glossary definition popups with direct glossary fallbacks"
   assert.match(glossary, /System clusters/i);
   assert.equal((glossary.match(/id="cluster-[^"]+"/g) ?? []).length, 13);
   assert.match(glossary, /Filter by cluster/i);
-  assert.match(glossary, /Last reviewed July 16, 2026/i);
+  assert.match(glossary, /Last reviewed July 22, 2026/i);
   assert.doesNotMatch(glossary, /small question mark|Every popup/i);
   assert.doesNotMatch(glossary, /old mascot-led|no entries are fabricated|definition standard|published definitions are reviewed|repeatable scan|traffic data can replace|reviewed against linked sources|MCP…/i);
 });
@@ -672,7 +674,7 @@ test("keeps the expanded glossary architecture complete and connected", async ()
   assert.match(knowledgeSource, /relatedVisualIds\?: SystemVisualId\[\]/);
   assert.match(knowledgeSource, /automaticLabels\?: string\[\]/);
   assert.match(knowledgeSource, /lastReviewed:/);
-  assert.equal((knowledgeSource.match(/^    slug: /gm) ?? []).length, 152);
+  assert.equal((knowledgeSource.match(/^    slug: /gm) ?? []).length, 153);
   assert.match(knowledgeSource, /"Privacy and data governance"/);
   assert.equal((systemsSource.match(/id: "(?:websites-publishing|hosting-release|measurement-search-signals|operations-automation|secure-integrations-custom-tools)"/g) ?? []).length, 5);
 
@@ -757,36 +759,36 @@ test("keeps the expanded glossary architecture complete and connected", async ()
 
 test("keeps automatic glossary matches context-safe across ambiguous business language", async () => {
   const about = await (await render("/about/")).text();
-  assert.doesNotMatch(about, /href="\/learn\/glossary\/#term-(?:client|build|production-environment|lead)"/i);
-  assert.match(about, /href="\/learn\/glossary\/#term-artificial-intelligence"/i);
+  assert.doesNotMatch(about, /href="\/learn\/glossary\/(?:client|build|production-environment|lead)\//i);
+  assert.match(about, /href="\/learn\/glossary\/artificial-intelligence\/"/i);
   for (const slug of ["magnetic-resonance-imaging", "functional-magnetic-resonance-imaging", "ordinary-differential-equation"]) {
-    assert.match(about, new RegExp(`href="/learn/glossary/#term-${slug}"`, "i"), `/about/ lacks ${slug}`);
+    assert.match(about, new RegExp(`href="/learn/glossary/${slug}/"`, "i"), `/about/ lacks ${slug}`);
   }
 
   const websiteDesign = await (await render("/services/web-design-redesign/")).text();
-  assert.doesNotMatch(websiteDesign, /href="\/learn\/glossary\/#term-(?:client|credential)"/i);
+  assert.doesNotMatch(websiteDesign, /href="\/learn\/glossary\/(?:client|credential)\//i);
 
   const retail = await (await render("/industries/brick-and-mortar-retail-hospitality/")).text();
-  assert.doesNotMatch(retail, /href="\/learn\/glossary\/#term-(?:accessibility|event)"/i);
+  assert.doesNotMatch(retail, /href="\/learn\/glossary\/(?:accessibility|event)\//i);
 
   const tools = await (await render("/tools/")).text();
-  assert.doesNotMatch(tools, /href="\/learn\/glossary\/#term-(?:lead|production-environment)"/i);
+  assert.doesNotMatch(tools, /href="\/learn\/glossary\/(?:lead|production-environment)\//i);
   for (const slug of ["cloudflare", "umami", "ssh", "self-hosted", "mit-license", "topic-cluster"]) {
-    assert.match(tools, new RegExp(`href="/learn/glossary/#term-${slug}"`, "i"), `/tools/ lacks ${slug}`);
+    assert.match(tools, new RegExp(`href="/learn/glossary/${slug}/"`, "i"), `/tools/ lacks ${slug}`);
   }
 
   const privacy = await (await render("/privacy/")).text();
   for (const slug of ["cloudflare", "cloudflare-turnstile", "cloudflare-d1", "ip-address", "user-agent", "do-not-track", "browser-storage", "page-view", "request-log"]) {
-    assert.match(privacy, new RegExp(`href="/learn/glossary/#term-${slug}"`, "i"), `/privacy/ lacks ${slug}`);
+    assert.match(privacy, new RegExp(`href="/learn/glossary/${slug}/"`, "i"), `/privacy/ lacks ${slug}`);
   }
 
   for (const route of ["/contact/", "/start/", "/emergency/"]) {
     const html = await (await render(route)).text();
-    assert.match(html, /href="\/learn\/glossary\/#term-url"/i, `${route} lacks URL definition`);
+    assert.match(html, /href="\/learn\/glossary\/url\/"/i, `${route} lacks URL definition`);
   }
 
   const websiteBuying = await (await render("/learn/website-buying/")).text();
-  assert.doesNotMatch(websiteBuying, /href="\/learn\/glossary\/#term-production-environment"/i);
+  assert.doesNotMatch(websiteBuying, /href="\/learn\/glossary\/production-environment\/"/i);
 });
 
 test("keeps the mirrored hero uncropped and glossary links connected across the site", async () => {
@@ -807,8 +809,64 @@ test("keeps the mirrored hero uncropped and glossary links connected across the 
 
   for (const route of ["/", "/services/", "/services/web-design-redesign/", "/learn/website-buying/", "/learn/provider-rescue/", "/resources/", "/tools/", "/privacy/"]) {
     const html = await (await render(route)).text();
-    assert.match(html, /href="\/learn\/glossary\/#term-[a-z0-9-]+"/i, `${route} lacks a glossary definition link`);
+    assert.match(html, /href="\/learn\/glossary\/[a-z0-9-]+\/"/i, `${route} lacks a glossary definition link`);
   }
+});
+
+test("publishes permanent indexable glossary detail routes with canonical schema", async () => {
+  const { examples } = await readGlossaryExamples();
+  const knowledgeSource = await readFile(new URL("../app/content/knowledge.ts", import.meta.url), "utf8");
+  const entryCatalog = knowledgeSource.slice(
+    knowledgeSource.indexOf("const glossaryEntrySeeds"),
+    knowledgeSource.indexOf("export const glossaryEntries"),
+  );
+  const entries = [...entryCatalog.matchAll(/^\s+term: "([^"]+)",\n\s+slug: "([^"]+)",[\s\S]*?^\s+shortDefinition: "([^"]+)",/gm)]
+    .map((match) => ({ term: match[1], slug: match[2], preview: match[3] }));
+  assert.equal(entries.length, 153);
+
+  const sitemap = await (await render("/sitemap.xml")).text();
+  const hub = await (await render("/learn/glossary/")).text();
+  const canonicals = new Set();
+
+  for (const { term, slug } of entries) {
+    const route = `/learn/glossary/${slug}/`;
+    const html = await (await render(route)).text();
+    assert.equal((html.match(/<h1\b/gi) ?? []).length, 1, `${route} H1 count`);
+    assert.match(html, new RegExp(`<h1>${term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}</h1>`, "i"));
+    assert.match(html, new RegExp(`<link rel="canonical" href="https://bohodigitalservices\\.com${route.replaceAll("/", "\\/")}"`, "i"));
+    const robotsTags = html.match(/<meta\b[^>]*name="robots"[^>]*>/gi) ?? [];
+    assert.deepEqual(robotsTags, ['<meta name="robots" content="index, follow"/>']);
+    assert.match(html, /"@type":"DefinedTerm"/);
+    assert.match(html, /"@type":"WebPage"/);
+    assert.match(html, /"@type":"BreadcrumbList"/);
+    assert.match(
+      html,
+      new RegExp(`${term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?:<!--.*?-->\\s*)? in practice`, "i"),
+    );
+    assert.ok(html.includes(examples.get(slug)), `${route} lacks its reviewed practical example`);
+    const articleText = html.match(/<article\b[\s\S]*?<\/article>/i)?.[0]
+      .replace(/<script\b[\s\S]*?<\/script>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/&(?:amp|quot|#x27|#39|lt|gt);/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    assert.ok((articleText?.split(" ").length ?? 0) >= 150, `${route} remains too thin`);
+    assert.match(html, /<meta property="og:image" content="https:\/\/bohodigitalservices\.com\/og-boho-digital-engineering-20260714\.png"\/>/i);
+    assert.match(html, new RegExp(`<meta name="twitter:title" content="${term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")} Definition \\| Boho Digital Services"`, "i"));
+    assert.match(html, /aria-label="Breadcrumb"/i);
+    assert.match(html, /Return to the complete glossary/i);
+    assert.match(hub, new RegExp(`href="${route.replaceAll("/", "\\/")}"`, "i"), `${route} lacks hub inlink`);
+    assert.match(sitemap, new RegExp(`https://bohodigitalservices\\.com${route.replaceAll("/", "\\/")}`), `${route} missing from sitemap`);
+    const canonical = html.match(/<link rel="canonical" href="([^"]+)"/i)?.[1];
+    assert.ok(canonical && !canonicals.has(canonical), `${route} canonical is missing or duplicated`);
+    canonicals.add(canonical);
+  }
+
+  const vanity = await (await render("/learn/glossary/vanity-metrics/")).text();
+  assert.match(vanity, /Vanity metrics are numbers that look impressive without helping a team make better decisions\./);
+  assert.match(vanity, /A dashboard celebrating raw traffic spikes without explaining lead quality, page context, or next actions is often leaning on vanity metrics\./);
+  assert.match(vanity, /Good reporting stays close to decisions\./);
+  assert.match(vanity, /Last reviewed\s*(?:<!--.*?-->\s*)?July 22, 2026/);
 });
 
 test("keeps claim and release boundaries persistent for this private review candidate", async () => {

@@ -49,6 +49,15 @@ jobs:
       - name: Test rendered routes and guardrails
         run: node --test tests/rendered-html.test.mjs
 
+      - name: Validate glossary routes and redirects
+        run: pnpm run routes:check
+
+      - name: Verify checked-in route artifacts
+        run: pnpm run routes:artifacts:check
+
+      - name: Crawl canonical routes and redirects
+        run: pnpm run crawl:static
+
       - name: Confirm deployable output
         run: |
           test -f out/index.html

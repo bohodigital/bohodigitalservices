@@ -61,7 +61,7 @@ export type GlossaryEntry = {
   shortDefinition: string;
   definition: string;
   whyItMatters: string;
-  commonMisunderstanding: string;
+  commonMisunderstanding?: string;
   ownershipImplications?: string;
   businessImplications?: string;
   relatedTermSlugs?: string[];
@@ -71,7 +71,9 @@ export type GlossaryEntry = {
   lastReviewed: `${number}-${number}-${number}`;
 };
 
-type GlossaryEntrySeed = Omit<GlossaryEntry, "cluster" | "lastReviewed">;
+type GlossaryEntrySeed = Omit<GlossaryEntry, "cluster" | "lastReviewed"> & {
+  lastReviewed?: GlossaryEntry["lastReviewed"];
+};
 
 const glossaryClusterBySlug: Record<string, GlossaryCluster> = {
   server: "Hosting and delivery",
@@ -204,6 +206,7 @@ const glossaryClusterBySlug: Record<string, GlossaryCluster> = {
   "do-not-track": "Privacy and data governance",
   "browser-storage": "Privacy and data governance",
   "page-view": "Analytics and measurement",
+  "vanity-metrics": "Analytics and measurement",
   "request-log": "Privacy and data governance",
   "form-endpoint": "APIs and integrations",
   crawlability: "Search and local visibility",
@@ -1680,6 +1683,18 @@ const glossaryEntrySeeds: GlossaryEntrySeed[] = [
     sourceIds: ["google-analytics"],
   },
   {
+    term: "Vanity metrics",
+    slug: "vanity-metrics",
+    category: "Search and measurement",
+    shortDefinition: "Vanity metrics are numbers that look impressive without helping a team make better decisions.",
+    definition: "Vanity metrics are attractive because they are easy to screenshot and easy to celebrate.",
+    whyItMatters: "Reporting can feel active while still leaving the team no wiser about what should happen next.",
+    commonMisunderstanding: "A large number is not a vanity metric simply because it is large. It becomes vanity-oriented when its definition, context, or connection to a decision is missing.",
+    businessImplications: "Good reporting stays close to decisions. It helps a team choose what to fix, what to expand, what to stop doing, and what result actually mattered.",
+    relatedTermSlugs: ["metric", "analytics", "conversion-rate", "google-search-console"],
+    sourceIds: [],
+  },
+  {
     term: "First-party data",
     slug: "first-party-data",
     category: "Security and privacy",
@@ -2437,7 +2452,7 @@ const glossaryEntrySeeds: GlossaryEntrySeed[] = [
 export const glossaryEntries: GlossaryEntry[] = glossaryEntrySeeds.map((entry) => ({
   ...entry,
   cluster: glossaryClusterBySlug[entry.slug],
-  lastReviewed: "2026-07-16",
+  lastReviewed: entry.lastReviewed ?? "2026-07-22",
 }));
 
 export const glossaryBySlug = new Map(

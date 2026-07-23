@@ -11,33 +11,16 @@ import {
   type GlossaryCluster,
   type GlossaryEntry,
 } from "../content/knowledge";
+import {
+  relatedSystemFamilyByCluster,
+  reviewedLabel,
+} from "../content/glossaryPresentation";
+import { glossaryPath } from "../content/glossaryRoutes";
 
 const clusterFilters: Array<"All clusters" | GlossaryCluster> = ["All clusters", ...glossaryClusters];
 
-const relatedSystemFamilyByCluster: Record<GlossaryCluster, { label: string; href: `/tools/#family-${string}` }> = {
-  "Domains and ownership": { label: "Hosting & Release", href: "/tools/#family-hosting-release" },
-  "Hosting and delivery": { label: "Hosting & Release", href: "/tools/#family-hosting-release" },
-  "Source control and deployment": { label: "Hosting & Release", href: "/tools/#family-hosting-release" },
-  "Websites and content systems": { label: "Websites & Publishing", href: "/tools/#family-websites-publishing" },
-  "Search and local visibility": { label: "Measurement & Search Signals", href: "/tools/#family-measurement-search-signals" },
-  "Analytics and measurement": { label: "Measurement & Search Signals", href: "/tools/#family-measurement-search-signals" },
-  "APIs and integrations": { label: "Secure Integrations & Custom Tools", href: "/tools/#family-secure-integrations-custom-tools" },
-  "Automation and agent systems": { label: "Operations & Automation", href: "/tools/#family-operations-automation" },
-  "Security and access": { label: "Secure Integrations & Custom Tools", href: "/tools/#family-secure-integrations-custom-tools" },
-  "Privacy and data governance": { label: "Secure Integrations & Custom Tools", href: "/tools/#family-secure-integrations-custom-tools" },
-  "Leads and conversion": { label: "Measurement & Search Signals", href: "/tools/#family-measurement-search-signals" },
-  "AI and language-model infrastructure": { label: "Operations & Automation", href: "/tools/#family-operations-automation" },
-  "Research and quantitative methods": { label: "Measurement & Search Signals", href: "/tools/#family-measurement-search-signals" },
-};
-
 function clusterSlug(cluster: GlossaryCluster) {
   return cluster.toLocaleLowerCase().replaceAll("&", "and").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-}
-
-function reviewedLabel(value: GlossaryEntry["lastReviewed"]) {
-  const [year, month, day] = value.split("-").map(Number);
-  return new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" })
-    .format(new Date(Date.UTC(year, month - 1, day)));
 }
 
 function ExternalSourceLinks({ entry }: { entry: GlossaryEntry }) {
@@ -90,10 +73,12 @@ function GlossaryRow({ entry, expand }: { entry: GlossaryEntry; expand: boolean 
             <dt>Why it matters</dt>
             <dd>{entry.whyItMatters}</dd>
           </div>
-          <div>
-            <dt>Common misunderstanding</dt>
-            <dd>{entry.commonMisunderstanding}</dd>
-          </div>
+          {entry.commonMisunderstanding ? (
+            <div>
+              <dt>Common misunderstanding</dt>
+              <dd>{entry.commonMisunderstanding}</dd>
+            </div>
+          ) : null}
           {entry.ownershipImplications ? <div><dt>Ownership implications</dt><dd>{entry.ownershipImplications}</dd></div> : null}
           {entry.businessImplications ? <div><dt>Business implications</dt><dd>{entry.businessImplications}</dd></div> : null}
         </dl>
@@ -102,7 +87,7 @@ function GlossaryRow({ entry, expand }: { entry: GlossaryEntry; expand: boolean 
             <strong>Related terms</strong>
             {entry.relatedTermSlugs.map((slug) => {
               const related = glossaryEntries.find((candidate) => candidate.slug === slug);
-              return related ? <a href={`#term-${slug}`} key={slug}>{related.term}</a> : null;
+              return related ? <a href={glossaryPath(related)} key={slug}>{related.term}</a> : null;
             })}
           </div>
         ) : null}
@@ -112,6 +97,9 @@ function GlossaryRow({ entry, expand }: { entry: GlossaryEntry; expand: boolean 
         </div>
         <ExternalSourceLinks entry={entry} />
         <p className="knowledge-reviewed">{`Last reviewed ${reviewedLabel(entry.lastReviewed)}`}</p>
+        <p className="glossary-row__full-definition">
+          <a href={glossaryPath(entry)}>Read the full {entry.term} definition</a>
+        </p>
       </div>
     </details>
   );
@@ -182,7 +170,7 @@ export function GlossaryExplorer() {
         </div>
         <div className="glossary-common__grid">
           {commonEntries.map((entry, index) => (
-            <a href={`#term-${entry.slug}`} key={entry.slug}>
+            <a href={glossaryPath(entry)} key={entry.slug}>
               <span>{String(index + 1).padStart(2, "0")}</span>
               <strong>{entry.term}</strong>
               <small>{entry.shortDefinition}</small>
