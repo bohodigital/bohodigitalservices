@@ -1,0 +1,1385 @@
+{
+  "version": 1,
+  "generatedAt": "2026-07-22",
+  "canonicalHub": "https://bohodigitalservices.com/learn/glossary/",
+  "recordCount": 153,
+  "records": [
+    {
+      "term": "Server",
+      "slug": "server",
+      "path": "/learn/glossary/server/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/server/",
+      "shortDefinition": "A computer or program that receives requests and provides files, data, or actions to another computer called a client.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Web server",
+      "slug": "web-server",
+      "path": "/learn/glossary/web-server/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/web-server/",
+      "shortDefinition": "Hardware and software that accept web requests and return pages, files, or application responses through HTTP.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Client",
+      "slug": "client",
+      "path": "/learn/glossary/client/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/client/",
+      "shortDefinition": "A device or program—such as a browser—that requests information or actions from a server.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Browser",
+      "slug": "browser",
+      "path": "/learn/glossary/browser/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/browser/",
+      "shortDefinition": "Software that requests web resources, interprets them, and presents an interactive page to a visitor.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Domain name",
+      "slug": "domain-name",
+      "path": "/learn/glossary/domain-name/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/domain-name/",
+      "shortDefinition": "A human-readable name used to reach internet services, controlled through registration and DNS rather than by the website files themselves.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "DNS",
+      "slug": "dns",
+      "path": "/learn/glossary/dns/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/dns/",
+      "shortDefinition": "The distributed naming system that directs a domain to website, email, verification, and other internet services.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Nameserver",
+      "slug": "nameserver",
+      "path": "/learn/glossary/nameserver/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/nameserver/",
+      "shortDefinition": "A DNS server that answers questions about names; authoritative nameservers provide the final records for a domain's zone.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "DNS record",
+      "slug": "dns-record",
+      "path": "/learn/glossary/dns-record/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/dns-record/",
+      "shortDefinition": "A typed instruction in DNS that directs traffic or publishes information for a domain or hostname.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Hosting",
+      "slug": "hosting",
+      "path": "/learn/glossary/hosting/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/hosting/",
+      "shortDefinition": "The service and infrastructure that make website files or application responses available to internet visitors.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Static site",
+      "slug": "static-site",
+      "path": "/learn/glossary/static-site/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/static-site/",
+      "shortDefinition": "A website whose deployable pages and assets are prepared ahead of requests instead of requiring server code for every visit.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "CDN",
+      "slug": "cdn",
+      "path": "/learn/glossary/cdn/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/cdn/",
+      "shortDefinition": "A distributed network that serves cached website resources from locations closer to visitors.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "HTTP",
+      "slug": "http",
+      "path": "/learn/glossary/http/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/http/",
+      "shortDefinition": "The request-and-response protocol browsers, servers, and many APIs use to exchange web resources and actions.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "TLS",
+      "slug": "tls",
+      "path": "/learn/glossary/tls/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/tls/",
+      "shortDefinition": "The security protocol used by HTTPS to protect data while it travels between a client and server.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "URL",
+      "slug": "url",
+      "path": "/learn/glossary/url/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/url/",
+      "shortDefinition": "An address that identifies a resource by scheme, host, path, and optional query or fragment information.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Redirect",
+      "slug": "redirect",
+      "path": "/learn/glossary/redirect/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/redirect/",
+      "shortDefinition": "A response that tells a browser or crawler to request a resource at a different URL.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Responsive design",
+      "slug": "responsive-design",
+      "path": "/learn/glossary/responsive-design/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/responsive-design/",
+      "shortDefinition": "A layout approach that adapts content and interaction to different screen sizes, zoom levels, input methods, and available space.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Git",
+      "slug": "git",
+      "path": "/learn/glossary/git/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/git/",
+      "shortDefinition": "A version-control system that records changes to files so work can be compared, reviewed, branched, and restored.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "GitHub",
+      "slug": "github",
+      "path": "/learn/glossary/github/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/github/",
+      "shortDefinition": "A hosted platform for Git repositories, code review, permissions, documentation, automation, releases, and related project operations.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Repository",
+      "slug": "repository",
+      "path": "/learn/glossary/repository/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/repository/",
+      "shortDefinition": "A project container holding files, revision history, branches, and collaboration records.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Branch",
+      "slug": "branch",
+      "path": "/learn/glossary/branch/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/branch/",
+      "shortDefinition": "A parallel line of repository work used to develop or review changes without immediately altering the main version.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Commit",
+      "slug": "commit",
+      "path": "/learn/glossary/commit/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/commit/",
+      "shortDefinition": "A recorded repository revision that identifies a specific set of changes and its place in project history.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Deployment",
+      "slug": "deployment",
+      "path": "/learn/glossary/deployment/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/deployment/",
+      "shortDefinition": "The controlled process that makes a selected version of source available in a hosting environment.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "CI/CD",
+      "slug": "ci-cd",
+      "path": "/learn/glossary/ci-cd/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/ci-cd/",
+      "shortDefinition": "Automated checks and release workflows that turn reviewed source changes into tested, deployable versions.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "API",
+      "slug": "api",
+      "path": "/learn/glossary/api/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/api/",
+      "shortDefinition": "A defined way for one program to request data or actions from another program.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "API key",
+      "slug": "api-key",
+      "path": "/learn/glossary/api-key/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/api-key/",
+      "shortDefinition": "A credential-like string used by an API to associate a request with a project, quota, or permitted capability.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "OAuth",
+      "slug": "oauth",
+      "path": "/learn/glossary/oauth/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/oauth/",
+      "shortDefinition": "A delegated authorization framework that lets a user grant limited application access without giving the application the user's password.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Environment variable",
+      "slug": "environment-variable",
+      "path": "/learn/glossary/environment-variable/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/environment-variable/",
+      "shortDefinition": "Runtime configuration supplied outside application source, commonly used for environment-specific values and secret references.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Webhook",
+      "slug": "webhook",
+      "path": "/learn/glossary/webhook/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/webhook/",
+      "shortDefinition": "An event-driven HTTP message one system sends to another when something changes.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "JSON",
+      "slug": "json",
+      "path": "/learn/glossary/json/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/json/",
+      "shortDefinition": "A structured text format commonly used to exchange named values, lists, and objects between software systems.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Automation",
+      "slug": "automation",
+      "path": "/learn/glossary/automation/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/automation/",
+      "shortDefinition": "A repeatable process performed by software according to defined triggers, inputs, rules, permissions, and review points.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Model Context Protocol",
+      "slug": "mcp",
+      "path": "/learn/glossary/mcp/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/mcp/",
+      "shortDefinition": "A client-server protocol that lets AI applications discover approved tools, resources, and prompt templates through defined connections.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "MCP server",
+      "slug": "mcp-server",
+      "path": "/learn/glossary/mcp-server/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/mcp-server/",
+      "shortDefinition": "A program that exposes a defined set of MCP tools, resources, or prompts to an approved MCP client.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "MCP client",
+      "slug": "mcp-client",
+      "path": "/learn/glossary/mcp-client/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/mcp-client/",
+      "shortDefinition": "The protocol component inside an AI host that maintains a connection to one MCP server.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "MCP tool",
+      "slug": "mcp-tool",
+      "path": "/learn/glossary/mcp-tool/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/mcp-tool/",
+      "shortDefinition": "An executable function an MCP server advertises for the client to request with defined inputs and outputs.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "MCP resource",
+      "slug": "mcp-resource",
+      "path": "/learn/glossary/mcp-resource/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/mcp-resource/",
+      "shortDefinition": "Contextual data an MCP server makes readable through an addressable resource interface.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Web crawling",
+      "slug": "web-crawling",
+      "path": "/learn/glossary/web-crawling/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/web-crawling/",
+      "shortDefinition": "Automated retrieval and traversal of web resources to inspect, index, monitor, or analyze publicly reachable content.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Crawler",
+      "slug": "crawler",
+      "path": "/learn/glossary/crawler/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/crawler/",
+      "shortDefinition": "An automated client that requests web resources and may follow links according to a defined purpose and policy.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "robots.txt",
+      "slug": "robots-txt",
+      "path": "/learn/glossary/robots-txt/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/robots-txt/",
+      "shortDefinition": "A top-level text file that publishes crawl rules for automated clients following the Robots Exclusion Protocol.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "XML sitemap",
+      "slug": "xml-sitemap",
+      "path": "/learn/glossary/xml-sitemap/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/xml-sitemap/",
+      "shortDefinition": "A machine-readable list of canonical URLs a site wants eligible crawlers to discover.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Indexing",
+      "slug": "indexing",
+      "path": "/learn/glossary/indexing/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/indexing/",
+      "shortDefinition": "A search system's process of evaluating and storing information about a page for possible retrieval in results.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Google Analytics",
+      "slug": "google-analytics",
+      "path": "/learn/glossary/google-analytics/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/google-analytics/",
+      "shortDefinition": "Google's event-based analytics product for measuring configured website or application activity and reporting it through an interface and APIs.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Event",
+      "slug": "event",
+      "path": "/learn/glossary/event/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/event/",
+      "shortDefinition": "A defined action or occurrence recorded by an analytics system with approved contextual properties.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Conversion",
+      "slug": "conversion",
+      "path": "/learn/glossary/conversion/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/conversion/",
+      "shortDefinition": "A visitor action the business has deliberately defined as meaningful progress toward an outcome.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Google Search Console",
+      "slug": "google-search-console",
+      "path": "/learn/glossary/google-search-console/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/google-search-console/",
+      "shortDefinition": "Google's owner-facing service for monitoring and debugging how a verified website appears and performs in Google Search.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Google Business Profile",
+      "slug": "google-business-profile",
+      "path": "/learn/glossary/google-business-profile/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/google-business-profile/",
+      "shortDefinition": "A Google-managed business listing that can appear across Google Search and Maps with approved business information and interactions.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "SEO",
+      "slug": "seo",
+      "path": "/learn/glossary/seo/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/seo/",
+      "shortDefinition": "Work that improves how search systems can access, understand, and present useful website information without guaranteeing placement.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Local SEO",
+      "slug": "local-seo",
+      "path": "/learn/glossary/local-seo/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/local-seo/",
+      "shortDefinition": "SEO focused on helping an eligible business become easier to find, understand, and evaluate in a real local market.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Technical SEO",
+      "slug": "technical-seo",
+      "path": "/learn/glossary/technical-seo/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/technical-seo/",
+      "shortDefinition": "The technical work that helps the right website pages remain accessible, crawlable, indexable, canonical, fast, and correctly connected.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Analytics",
+      "slug": "analytics",
+      "path": "/learn/glossary/analytics/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/analytics/",
+      "shortDefinition": "The collection and interpretation of defined data to answer questions about behavior, performance, and business decisions.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Metadata",
+      "slug": "metadata",
+      "path": "/learn/glossary/metadata/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/metadata/",
+      "shortDefinition": "Structured information describing a page or resource, including titles, descriptions, canonical references, and social-sharing fields.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Canonical URL",
+      "slug": "canonical-url",
+      "path": "/learn/glossary/canonical-url/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/canonical-url/",
+      "shortDefinition": "The preferred URL identified for a page when the same or closely related content can be reached through multiple URLs.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Structured data",
+      "slug": "structured-data",
+      "path": "/learn/glossary/structured-data/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/structured-data/",
+      "shortDefinition": "Machine-readable fields that describe visible entities and content using an agreed vocabulary and supported format.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "CMS",
+      "slug": "cms",
+      "path": "/learn/glossary/cms/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/cms/",
+      "shortDefinition": "Software used to create, organize, edit, and publish website content without manually changing every delivered file.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Cache",
+      "slug": "cache",
+      "path": "/learn/glossary/cache/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/cache/",
+      "shortDefinition": "A stored reusable copy that can answer a request faster than recreating or retrieving the original resource again.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Website clarity",
+      "slug": "website-clarity",
+      "path": "/learn/glossary/website-clarity/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/website-clarity/",
+      "shortDefinition": "How quickly a visitor can understand what a business offers, who it serves, why it matters, and what to do next.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Trust signal",
+      "slug": "trust-signal",
+      "path": "/learn/glossary/trust-signal/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/trust-signal/",
+      "shortDefinition": "A specific, checkable detail that reduces uncertainty about a business, its offer, its process, or the next step.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Customer discovery",
+      "slug": "customer-discovery",
+      "path": "/learn/glossary/customer-discovery/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/customer-discovery/",
+      "shortDefinition": "The paths customers use to find and begin evaluating a business, service, product, or answer.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Customer action",
+      "slug": "customer-action",
+      "path": "/learn/glossary/customer-action/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/customer-action/",
+      "shortDefinition": "A useful next step a customer takes, such as calling, requesting a quote, booking, visiting, buying, or making a qualified inquiry.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Call to action",
+      "slug": "call-to-action",
+      "path": "/learn/glossary/call-to-action/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/call-to-action/",
+      "shortDefinition": "A clear invitation that tells a visitor which useful action they can take next.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Search intent",
+      "slug": "search-intent",
+      "path": "/learn/glossary/search-intent/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/search-intent/",
+      "shortDefinition": "The underlying task or decision a person is trying to complete when they enter a search query.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Keyword",
+      "slug": "keyword",
+      "path": "/learn/glossary/keyword/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/keyword/",
+      "shortDefinition": "A word or phrase used to describe a search topic; actual search queries provide the more precise observed wording.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Domain registrar",
+      "slug": "domain-registrar",
+      "path": "/learn/glossary/domain-registrar/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/domain-registrar/",
+      "shortDefinition": "A company authorized to register domain names and maintain the registrant's account and renewal relationship.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Website backup",
+      "slug": "website-backup",
+      "path": "/learn/glossary/website-backup/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/website-backup/",
+      "shortDefinition": "A recoverable copy of website source, content, data, configuration, and other state needed to restore service.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "SSL certificate",
+      "slug": "ssl-certificate",
+      "path": "/learn/glossary/ssl-certificate/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/ssl-certificate/",
+      "shortDefinition": "A digital certificate used during TLS to authenticate a website name and establish an encrypted connection.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Dynamic website",
+      "slug": "dynamic-website",
+      "path": "/learn/glossary/dynamic-website/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/dynamic-website/",
+      "shortDefinition": "A website that generates or changes responses using application logic, stored data, user state, or external services.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "HTML",
+      "slug": "html",
+      "path": "/learn/glossary/html/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/html/",
+      "shortDefinition": "The markup language that gives a web page its content structure and meaning.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Web form",
+      "slug": "web-form",
+      "path": "/learn/glossary/web-form/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/web-form/",
+      "shortDefinition": "An interface that lets a visitor submit structured information or request an action.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Accessibility",
+      "slug": "accessibility",
+      "path": "/learn/glossary/accessibility/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/accessibility/",
+      "shortDefinition": "The practice of making websites perceivable, operable, understandable, and robust for people with varied abilities and technologies.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Web performance",
+      "slug": "web-performance",
+      "path": "/learn/glossary/web-performance/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/web-performance/",
+      "shortDefinition": "How quickly and reliably a website loads, renders, responds, and remains stable for real visitors.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Internal link",
+      "slug": "internal-link",
+      "path": "/learn/glossary/internal-link/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/internal-link/",
+      "shortDefinition": "A link from one page on a website to another page on the same website.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Landing page",
+      "slug": "landing-page",
+      "path": "/learn/glossary/landing-page/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/landing-page/",
+      "shortDefinition": "A page designed as the arrival point for a specific audience, campaign, query, offer, or next action.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Service page",
+      "slug": "service-page",
+      "path": "/learn/glossary/service-page/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/service-page/",
+      "shortDefinition": "A page that explains a distinct service, who it is for, the problem it addresses, and the appropriate next action.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Location page",
+      "slug": "location-page",
+      "path": "/learn/glossary/location-page/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/location-page/",
+      "shortDefinition": "A page that provides useful, location-specific information for a real service area, office, shop, or market.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Version control",
+      "slug": "version-control",
+      "path": "/learn/glossary/version-control/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/version-control/",
+      "shortDefinition": "A system for recording changes to files so work can be compared, attributed, combined, and restored.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Build",
+      "slug": "build",
+      "path": "/learn/glossary/build/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/build/",
+      "shortDefinition": "The process that transforms source files and dependencies into output that can be tested or deployed.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Production environment",
+      "slug": "production-environment",
+      "path": "/learn/glossary/production-environment/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/production-environment/",
+      "shortDefinition": "The live environment that serves real visitors or supports real business operations.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Staging environment",
+      "slug": "staging-environment",
+      "path": "/learn/glossary/staging-environment/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/staging-environment/",
+      "shortDefinition": "A non-production environment used to review and test a release candidate before it reaches real visitors.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Rollback",
+      "slug": "rollback",
+      "path": "/learn/glossary/rollback/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/rollback/",
+      "shortDefinition": "A controlled way to restore a known prior state after a release causes unacceptable problems.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Database",
+      "slug": "database",
+      "path": "/learn/glossary/database/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/database/",
+      "shortDefinition": "An organized system for storing and retrieving structured information used by an application or workflow.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Integration",
+      "slug": "integration",
+      "path": "/learn/glossary/integration/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/integration/",
+      "shortDefinition": "A maintained connection that lets separate systems exchange data, events, or actions.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "API endpoint",
+      "slug": "api-endpoint",
+      "path": "/learn/glossary/api-endpoint/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/api-endpoint/",
+      "shortDefinition": "A specific address and operation exposed by an API for requesting data or performing an action.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Authentication",
+      "slug": "authentication",
+      "path": "/learn/glossary/authentication/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/authentication/",
+      "shortDefinition": "The process of verifying that a person, service, or device is the identity it claims to be.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Authorization",
+      "slug": "authorization",
+      "path": "/learn/glossary/authorization/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/authorization/",
+      "shortDefinition": "The rules and decisions that determine which resources or actions an authenticated identity may use.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Credential",
+      "slug": "credential",
+      "path": "/learn/glossary/credential/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/credential/",
+      "shortDefinition": "Information or a cryptographic object presented to establish identity or access a protected system.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Two-factor authentication",
+      "slug": "two-factor-authentication",
+      "path": "/learn/glossary/two-factor-authentication/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/two-factor-authentication/",
+      "shortDefinition": "Authentication that requires evidence from more than one independent factor category.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Workflow",
+      "slug": "workflow",
+      "path": "/learn/glossary/workflow/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/workflow/",
+      "shortDefinition": "A defined sequence of actions, decisions, handoffs, and states used to complete a repeatable piece of work.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Monitoring",
+      "slug": "monitoring",
+      "path": "/learn/glossary/monitoring/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/monitoring/",
+      "shortDefinition": "Repeated observation of a system's availability, behavior, errors, or business signals so failures can be detected.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Lead",
+      "slug": "lead",
+      "path": "/learn/glossary/lead/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/lead/",
+      "shortDefinition": "A person or organization that has shown identifiable interest and may have a relevant business need.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Lead generation",
+      "slug": "lead-generation",
+      "path": "/learn/glossary/lead-generation/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/lead-generation/",
+      "shortDefinition": "The coordinated process of attracting, informing, capturing, routing, and following up with potential customers.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Qualified lead",
+      "slug": "qualified-lead",
+      "path": "/learn/glossary/qualified-lead/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/qualified-lead/",
+      "shortDefinition": "A lead that meets agreed criteria for relevance, need, authority, timing, location, or commercial fit.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Conversion rate",
+      "slug": "conversion-rate",
+      "path": "/learn/glossary/conversion-rate/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/conversion-rate/",
+      "shortDefinition": "The share of an explicitly defined population that completed an explicitly defined conversion.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Metric",
+      "slug": "metric",
+      "path": "/learn/glossary/metric/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/metric/",
+      "shortDefinition": "A defined quantitative measure used to observe behavior, condition, progress, or outcome.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Vanity metrics",
+      "slug": "vanity-metrics",
+      "path": "/learn/glossary/vanity-metrics/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/vanity-metrics/",
+      "shortDefinition": "Vanity metrics are numbers that look impressive without helping a team make better decisions.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "First-party data",
+      "slug": "first-party-data",
+      "path": "/learn/glossary/first-party-data/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/first-party-data/",
+      "shortDefinition": "Data a business collects through its own direct relationships, properties, and interactions.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Cookie",
+      "slug": "cookie",
+      "path": "/learn/glossary/cookie/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/cookie/",
+      "shortDefinition": "A small piece of data a website asks a browser to store and send with later matching requests.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Consent management",
+      "slug": "consent-management",
+      "path": "/learn/glossary/consent-management/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/consent-management/",
+      "shortDefinition": "The process and controls used to request, record, honor, and update a person's choices about data use.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Personal data",
+      "slug": "personal-data",
+      "path": "/learn/glossary/personal-data/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/personal-data/",
+      "shortDefinition": "Information that identifies, relates to, or can reasonably be connected with a person, depending on context and jurisdiction.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Data retention",
+      "slug": "data-retention",
+      "path": "/learn/glossary/data-retention/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/data-retention/",
+      "shortDefinition": "The rules and practices that determine how long data is kept and what happens when it is no longer needed.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Backlink",
+      "slug": "backlink",
+      "path": "/learn/glossary/backlink/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/backlink/",
+      "shortDefinition": "A link from a page on another website to a page on the business's website.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Local citation",
+      "slug": "local-citation",
+      "path": "/learn/glossary/local-citation/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/local-citation/",
+      "shortDefinition": "An online mention or listing of a business's identifying details on a directory, platform, association, or other site.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "NAP consistency",
+      "slug": "nap-consistency",
+      "path": "/learn/glossary/nap-consistency/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/nap-consistency/",
+      "shortDefinition": "The practice of keeping a business's name, address, and phone information accurate and logically consistent across important listings.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "AI agent",
+      "slug": "ai-agent",
+      "path": "/learn/glossary/ai-agent/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/ai-agent/",
+      "shortDefinition": "A software system that uses an AI model to interpret context, choose steps, and act through bounded tools or workflows.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Large language model",
+      "slug": "large-language-model",
+      "path": "/learn/glossary/large-language-model/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/large-language-model/",
+      "shortDefinition": "A machine-learning model trained to process and generate language by predicting likely sequences from context.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Prompt",
+      "slug": "prompt",
+      "path": "/learn/glossary/prompt/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/prompt/",
+      "shortDefinition": "Instructions and context supplied to a language model to shape the task and response.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Platform",
+      "slug": "platform",
+      "path": "/learn/glossary/platform/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/platform/",
+      "shortDefinition": "A product or managed environment that provides reusable capabilities other websites, tools, or workflows can run on or connect to.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Website architecture",
+      "slug": "website-architecture",
+      "path": "/learn/glossary/website-architecture/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/website-architecture/",
+      "shortDefinition": "The organized relationship among a website's pages, URLs, navigation, internal links, templates, and content types.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Dashboard",
+      "slug": "dashboard",
+      "path": "/learn/glossary/dashboard/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/dashboard/",
+      "shortDefinition": "A consolidated view that presents selected metrics, events, statuses, or alerts for a defined decision or operating task.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Baseline",
+      "slug": "baseline",
+      "path": "/learn/glossary/baseline/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/baseline/",
+      "shortDefinition": "A recorded starting state used to compare what changed after an intervention, release, or measurement period.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Source code",
+      "slug": "source-code",
+      "path": "/learn/glossary/source-code/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/source-code/",
+      "shortDefinition": "Human-readable instructions and related files used to build, configure, or operate software.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Codebase",
+      "slug": "codebase",
+      "path": "/learn/glossary/codebase/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/codebase/",
+      "shortDefinition": "The complete body of source files and related project material that make up a particular software system.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Cutover",
+      "slug": "cutover",
+      "path": "/learn/glossary/cutover/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/cutover/",
+      "shortDefinition": "The controlled point when users, traffic, or operations move from the previous system to the replacement.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "HTTP status code",
+      "slug": "http-status-code",
+      "path": "/learn/glossary/http-status-code/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/http-status-code/",
+      "shortDefinition": "A three-digit number in an HTTP response that describes the outcome of a request.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "404 Not Found",
+      "slug": "not-found-404",
+      "path": "/learn/glossary/not-found-404/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/not-found-404/",
+      "shortDefinition": "The HTTP response used when the server cannot find the requested resource.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "301 redirect",
+      "slug": "redirect-301",
+      "path": "/learn/glossary/redirect-301/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/redirect-301/",
+      "shortDefinition": "An HTTP redirect status indicating that a resource has moved permanently to another URL.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Domain registration",
+      "slug": "domain-registration",
+      "path": "/learn/glossary/domain-registration/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/domain-registration/",
+      "shortDefinition": "The time-limited registration of a domain name through an accredited registrar for an identified registrant.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Cloudflare",
+      "slug": "cloudflare",
+      "path": "/learn/glossary/cloudflare/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/cloudflare/",
+      "shortDefinition": "A third-party internet-infrastructure provider whose services include DNS, traffic proxying, content delivery, hosting, security, and data products.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Cloudflare Turnstile",
+      "slug": "cloudflare-turnstile",
+      "path": "/learn/glossary/cloudflare-turnstile/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/cloudflare-turnstile/",
+      "shortDefinition": "Cloudflare's third-party challenge service for assessing whether a website request appears automated or abusive.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Cloudflare D1",
+      "slug": "cloudflare-d1",
+      "path": "/learn/glossary/cloudflare-d1/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/cloudflare-d1/",
+      "shortDefinition": "Cloudflare's managed serverless SQL database product, built around SQLite-compatible semantics and application bindings or APIs.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Umami",
+      "slug": "umami",
+      "path": "/learn/glossary/umami/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/umami/",
+      "shortDefinition": "An open-source web-analytics application that reports configured page views and events through dashboards and an API.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "SSH",
+      "slug": "ssh",
+      "path": "/learn/glossary/ssh/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/ssh/",
+      "shortDefinition": "An encrypted protocol used for authenticated remote login and other secure network services.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Artificial intelligence",
+      "slug": "artificial-intelligence",
+      "path": "/learn/glossary/artificial-intelligence/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/artificial-intelligence/",
+      "shortDefinition": "A broad category of computer systems that perform tasks associated with prediction, classification, generation, planning, or decision support.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "WCAG 2.2 AA",
+      "slug": "wcag",
+      "path": "/learn/glossary/wcag/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/wcag/",
+      "shortDefinition": "A Level AA conformance target within the W3C Web Content Accessibility Guidelines 2.2.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Assistive technology",
+      "slug": "assistive-technology",
+      "path": "/learn/glossary/assistive-technology/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/assistive-technology/",
+      "shortDefinition": "Hardware or software that helps a person perceive, navigate, operate, or communicate through a digital interface.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "B2B",
+      "slug": "b2b",
+      "path": "/learn/glossary/b2b/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/b2b/",
+      "shortDefinition": "Commercial activity in which the primary buyer is another business or organization rather than an individual consumer.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "FAQ",
+      "slug": "faq",
+      "path": "/learn/glossary/faq/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/faq/",
+      "shortDefinition": "A page or section that answers recurring user questions in a structured, scannable form.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "IP address",
+      "slug": "ip-address",
+      "path": "/learn/glossary/ip-address/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/ip-address/",
+      "shortDefinition": "A network address used to route traffic to or from a device or service.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "User agent",
+      "slug": "user-agent",
+      "path": "/learn/glossary/user-agent/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/user-agent/",
+      "shortDefinition": "Information a client sends with a web request describing its software and sometimes device or platform characteristics.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Do Not Track",
+      "slug": "do-not-track",
+      "path": "/learn/glossary/do-not-track/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/do-not-track/",
+      "shortDefinition": "A browser preference signal asking sites not to track the user's activity.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Browser storage",
+      "slug": "browser-storage",
+      "path": "/learn/glossary/browser-storage/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/browser-storage/",
+      "shortDefinition": "Data a website stores in a browser for state, preferences, sessions, or application behavior.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Page view",
+      "slug": "page-view",
+      "path": "/learn/glossary/page-view/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/page-view/",
+      "shortDefinition": "An analytics record that a page was loaded or displayed under a configured tracking definition.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Request log",
+      "slug": "request-log",
+      "path": "/learn/glossary/request-log/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/request-log/",
+      "shortDefinition": "A server or delivery-platform record describing requests it received and the responses it produced.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Form endpoint",
+      "slug": "form-endpoint",
+      "path": "/learn/glossary/form-endpoint/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/form-endpoint/",
+      "shortDefinition": "The server-side destination that receives and handles a web-form submission.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Crawlability",
+      "slug": "crawlability",
+      "path": "/learn/glossary/crawlability/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/crawlability/",
+      "shortDefinition": "The practical ability of permitted crawlers to request and traverse a page or website.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Indexability",
+      "slug": "indexability",
+      "path": "/learn/glossary/indexability/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/indexability/",
+      "shortDefinition": "A page's technical eligibility to be considered for a search index.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Robots directive",
+      "slug": "robots-directive",
+      "path": "/learn/glossary/robots-directive/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/robots-directive/",
+      "shortDefinition": "An instruction telling compliant crawlers whether content may be indexed or links followed.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Redirect chain",
+      "slug": "redirect-chain",
+      "path": "/learn/glossary/redirect-chain/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/redirect-chain/",
+      "shortDefinition": "A sequence in which one URL redirects to another URL that redirects again before the final response.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Orphaned page",
+      "slug": "orphaned-page",
+      "path": "/learn/glossary/orphaned-page/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/orphaned-page/",
+      "shortDefinition": "A page with no ordinary internal links pointing to it from the website.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Website plugin",
+      "slug": "website-plugin",
+      "path": "/learn/glossary/website-plugin/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/website-plugin/",
+      "shortDefinition": "An add-on that extends a website platform or content-management system with additional behavior.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Title tag",
+      "slug": "title-tag",
+      "path": "/learn/glossary/title-tag/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/title-tag/",
+      "shortDefinition": "The HTML document title browsers and search systems use to label a page in tabs, bookmarks, and often search results.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Attribution model",
+      "slug": "attribution-model",
+      "path": "/learn/glossary/attribution-model/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/attribution-model/",
+      "shortDefinition": "A rule set for assigning credit for a conversion or outcome across marketing or customer touchpoints.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Website tracking",
+      "slug": "website-tracking",
+      "path": "/learn/glossary/website-tracking/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/website-tracking/",
+      "shortDefinition": "Configured collection of website interactions or technical signals for measurement, diagnostics, or attribution.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Data normalization",
+      "slug": "data-normalization",
+      "path": "/learn/glossary/data-normalization/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/data-normalization/",
+      "shortDefinition": "Transforming data from different sources into consistent names, types, units, and structures.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Topic cluster",
+      "slug": "topic-cluster",
+      "path": "/learn/glossary/topic-cluster/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/topic-cluster/",
+      "shortDefinition": "A group of related pages organized around a central subject and connected through deliberate internal links.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Open-source software",
+      "slug": "open-source-software",
+      "path": "/learn/glossary/open-source-software/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/open-source-software/",
+      "shortDefinition": "Software whose source is available under a license permitting specified forms of use, inspection, modification, and redistribution.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "MIT License",
+      "slug": "mit-license",
+      "path": "/learn/glossary/mit-license/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/mit-license/",
+      "shortDefinition": "A permissive open-source license allowing broad reuse while requiring preservation of its copyright and license notice.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Self-hosted",
+      "slug": "self-hosted",
+      "path": "/learn/glossary/self-hosted/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/self-hosted/",
+      "shortDefinition": "Software operated on infrastructure controlled by the user or organization instead of only through a vendor-managed service.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Least privilege",
+      "slug": "least-privilege",
+      "path": "/learn/glossary/least-privilege/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/least-privilege/",
+      "shortDefinition": "The practice of granting only the access needed for a defined task, system, and period.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Search property",
+      "slug": "search-property",
+      "path": "/learn/glossary/search-property/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/search-property/",
+      "shortDefinition": "A verified website or URL scope represented as a managed property in a search-platform account.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Call tracking",
+      "slug": "call-tracking",
+      "path": "/learn/glossary/call-tracking/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/call-tracking/",
+      "shortDefinition": "Measurement that connects phone calls to a source, page, campaign, or customer path under a defined configuration.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Cascading Style Sheets (CSS)",
+      "slug": "css",
+      "path": "/learn/glossary/css/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/css/",
+      "shortDefinition": "A stylesheet language that controls how structured web documents are presented across screens, print, speech, and other media.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Magnetic resonance imaging (MRI)",
+      "slug": "magnetic-resonance-imaging",
+      "path": "/learn/glossary/magnetic-resonance-imaging/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/magnetic-resonance-imaging/",
+      "shortDefinition": "A non-ionizing medical-imaging method that uses strong magnetic fields, radiofrequency energy, and measured signals to construct detailed images.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Functional magnetic resonance imaging (fMRI)",
+      "slug": "functional-magnetic-resonance-imaging",
+      "path": "/learn/glossary/functional-magnetic-resonance-imaging/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/functional-magnetic-resonance-imaging/",
+      "shortDefinition": "A specialized MRI method that estimates changes associated with brain activity through time-varying blood-flow or blood-oxygenation signals.",
+      "indexable": true,
+      "sitemap": true
+    },
+    {
+      "term": "Ordinary differential equation (ODE)",
+      "slug": "ordinary-differential-equation",
+      "path": "/learn/glossary/ordinary-differential-equation/",
+      "canonicalUrl": "https://bohodigitalservices.com/learn/glossary/ordinary-differential-equation/",
+      "shortDefinition": "An equation relating a function of one independent variable to one or more of that function's derivatives.",
+      "indexable": true,
+      "sitemap": true
+    }
+  ]
+}

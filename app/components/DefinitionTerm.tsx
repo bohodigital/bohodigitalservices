@@ -230,7 +230,7 @@ export function DefinitionTerm({
         <strong>{term}</strong>
       </span>
       <span className="definition-term__definition">{shortDefinition}</span>
-      <a href={`/learn/glossary/#term-${slug}`} tabIndex={open ? 0 : -1}>
+      <a href={`/learn/glossary/${slug}/`} tabIndex={open ? 0 : -1}>
         <span>Read the full definition</span>
         <span aria-hidden="true">↗</span>
       </a>

@@ -13,10 +13,16 @@
     "build": "node scripts/generate-service-page-data.mjs && vinext build",
     "build:pages": "node scripts/generate-service-page-data.mjs && next build && node scripts/prepare-pages.mjs",
     "start": "vinext start",
-    "test": "corepack pnpm run build:pages && node --test tests/rendered-html.test.mjs",
+    "test": "corepack pnpm run build:pages && node --test tests/rendered-html.test.mjs && corepack pnpm run routes:check && corepack pnpm run routes:artifacts:check && corepack pnpm run crawl:static",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "qa:industries": "node scripts/qa-industries-headless.mjs",
     "glossary:usage": "node scripts/analyze-glossary-usage.mjs",
+    "crawl:static": "node scripts/crawl-static-output.mjs",
+    "glossary:routes:check": "node scripts/validate-glossary-routes.mjs",
+    "redirects:check": "node scripts/validate-redirects.mjs",
+    "routes:check": "node scripts/validate-glossary-routes.mjs && node scripts/validate-redirects.mjs",
+    "routes:artifacts": "node scripts/generate-route-artifacts.mjs",
+    "routes:artifacts:check": "node scripts/generate-route-artifacts.mjs --check",
     "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
