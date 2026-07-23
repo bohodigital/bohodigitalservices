@@ -6,6 +6,7 @@
 - Generated detail pages: 153
 - Sitemap detail URLs: 153
 - Indexable detail pages: 153
+- Reviewed practical examples: 153
 - Noindex detail pages: 0
 - Slug collisions: 0
 - Unresolved related-term references: 0

@@ -2,9 +2,11 @@ import Link from "next/link";
 
 import {
   glossaryBySlug,
+  glossaryClusterDescriptions,
   sourcesById,
   type GlossaryEntry,
 } from "../content/knowledge";
+import { glossaryPracticalExamples } from "../content/glossaryEditorial";
 import {
   relatedSystemFamilyByCluster,
   reviewedLabel,
@@ -22,11 +24,13 @@ export function GlossaryTermPage({ entry }: { entry: GlossaryEntry }) {
     .map((slug) => glossaryBySlug.get(slug))
     .filter((related): related is GlossaryEntry => Boolean(related));
   const canonicalUrl = new URL(glossaryPath(entry), siteUrl).toString();
+  const practicalExample = glossaryPracticalExamples[entry.slug];
+  const definedTermId = `${canonicalUrl}#defined-term`;
   const schema = [
     {
       "@context": "https://schema.org",
       "@type": "DefinedTerm",
-      "@id": `${canonicalUrl}#defined-term`,
+      "@id": definedTermId,
       name: entry.term,
       description: entry.shortDefinition,
       url: canonicalUrl,
@@ -40,7 +44,30 @@ export function GlossaryTermPage({ entry }: { entry: GlossaryEntry }) {
     },
     {
       "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": `${canonicalUrl}#webpage`,
+      url: canonicalUrl,
+      name: `${entry.term} Definition`,
+      description: entry.shortDefinition,
+      dateModified: entry.lastReviewed,
+      isPartOf: {
+        "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
+        name: "Boho Digital Services",
+        url: `${siteUrl}/`,
+      },
+      publisher: {
+        "@type": "Organization",
+        "@id": `${siteUrl}/#organization`,
+        name: "Boho Digital Services",
+      },
+      mainEntity: { "@id": definedTermId },
+      breadcrumb: { "@id": `${canonicalUrl}#breadcrumb` },
+    },
+    {
+      "@context": "https://schema.org",
       "@type": "BreadcrumbList",
+      "@id": `${canonicalUrl}#breadcrumb`,
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
         { "@type": "ListItem", position: 2, name: "Glossary", item: `${siteUrl}${glossaryHubPath}` },
@@ -74,6 +101,10 @@ export function GlossaryTermPage({ entry }: { entry: GlossaryEntry }) {
               <h2 id="why-title">Why it matters</h2>
               <p>{entry.whyItMatters}</p>
             </section>
+            <section aria-labelledby="example-title">
+              <h2 id="example-title">{entry.term} in practice</h2>
+              <p>{practicalExample}</p>
+            </section>
             {entry.commonMisunderstanding ? (
               <section aria-labelledby="misunderstanding-title">
                 <h2 id="misunderstanding-title">Common misunderstanding</h2>
@@ -93,18 +124,25 @@ export function GlossaryTermPage({ entry }: { entry: GlossaryEntry }) {
               </section>
             ) : null}
             <section aria-labelledby="related-title">
-              <h2 id="related-title">Related terms</h2>
+              <h2 id="related-title">Related glossary terms</h2>
               {relatedEntries.length ? (
-                <ul>
+                <ul className="glossary-term-page__related">
                   {relatedEntries.map((related) => (
                     <li key={related.slug}>
-                      <Link href={glossaryPath(related)}>{related.term}</Link>
+                      <Link href={glossaryPath(related)}>
+                        <strong>{related.term}</strong>
+                        <span>{related.shortDefinition}</span>
+                      </Link>
                     </li>
                   ))}
                 </ul>
               ) : <p>Browse the complete glossary to explore adjacent terms.</p>}
+            </section>
+            <section aria-labelledby="context-title">
+              <h2 id="context-title">Where {entry.term} fits</h2>
+              <p>{glossaryClusterDescriptions[entry.cluster]}</p>
               <p>
-                Related system family:{" "}
+                Explore the related system family:{" "}
                 <Link href={relatedSystemFamilyByCluster[entry.cluster].href}>
                   {relatedSystemFamilyByCluster[entry.cluster].label}
                 </Link>

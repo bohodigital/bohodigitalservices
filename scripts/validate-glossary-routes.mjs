@@ -1,12 +1,14 @@
 import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 
-import { readGlossarySource } from "./glossary-source.mjs";
+import { readGlossaryExamples, readGlossarySource } from "./glossary-source.mjs";
 
 const siteUrl = "https://bohodigitalservices.com";
 const out = new URL("../out/", import.meta.url);
 const { clusterSlugs, entries, sourceIds } = await readGlossarySource();
+const { examples } = await readGlossaryExamples();
 const slugs = new Set();
+const exampleTexts = new Set();
 
 function decodeHtml(value) {
   return value
@@ -30,7 +32,13 @@ for (const entry of entries) {
   assert.ok(!slugs.has(entry.slug), `duplicate glossary slug: ${entry.slug}`);
   slugs.add(entry.slug);
   assert.ok(clusterSlugs.has(entry.slug), `${entry.slug} lacks a cluster assignment`);
+  const example = examples.get(entry.slug);
+  assert.ok(example, `${entry.slug} lacks a reviewed practical example`);
+  assert.ok(example.split(/\s+/).length >= 18, `${entry.slug} practical example is too thin`);
+  assert.ok(!exampleTexts.has(example), `${entry.slug} duplicates another practical example`);
+  exampleTexts.add(example);
 }
+assert.equal(examples.size, entries.length, "glossary practical-example parity mismatch");
 
 for (const entry of entries) {
   for (const related of entry.relatedTermSlugs) {
@@ -61,6 +69,7 @@ for (const entry of entries) {
   const h1s = [...html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi)].map((match) => decodeHtml(match[1]));
   assert.deepEqual(h1s, [entry.term], `${route} must have exactly one term H1`);
   assert.ok(decodeHtml(html).includes(entry.shortDefinition), `${route} lacks its canonical preview`);
+  assert.ok(decodeHtml(html).includes(examples.get(entry.slug)), `${route} lacks its practical example`);
   assert.match(html, new RegExp(`<link rel="canonical" href="${canonical.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`));
   assert.match(html, /<meta name="robots" content="index, follow"\/>/i, `${route} is not indexable`);
   if (/<meta name="robots" content="[^"]*noindex/i.test(html)) noindexCount += 1;
@@ -75,6 +84,7 @@ for (const entry of entries) {
   const schemas = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/gi)]
     .map((match) => JSON.parse(match[1]));
   assert.ok(schemas.some((schema) => schema["@type"] === "DefinedTerm"), `${route} lacks DefinedTerm JSON-LD`);
+  assert.ok(schemas.some((schema) => schema["@type"] === "WebPage"), `${route} lacks WebPage JSON-LD`);
   assert.ok(schemas.some((schema) => schema["@type"] === "BreadcrumbList"), `${route} lacks BreadcrumbList JSON-LD`);
 
   for (const related of entry.relatedTermSlugs) {
@@ -115,5 +125,6 @@ console.log(JSON.stringify({
   noindexGlossaryPages: noindexCount,
   slugCollisions: 0,
   unresolvedRelatedTerms: 0,
+  reviewedPracticalExamples: examples.size,
   fullGlossaryInTermClientBundle: shippedFullGlossary,
 }));
