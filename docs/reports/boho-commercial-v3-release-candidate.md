@@ -10,6 +10,7 @@
 - [Performance](#performance)
 - [Copy authority](#copy-authority)
 - [Known limitation and required decision](#known-limitation-and-required-decision)
+- [Fresh-context review findings](#fresh-context-review-findings)
 - [Preview and deployment](#preview-and-deployment)
 - [Rollback](#rollback)
 
@@ -114,6 +115,37 @@ The manager must either:
    source changes without modifying those generated artifacts.
 
 No manual edit of generated copy artifacts was attempted.
+
+## Fresh-context review findings
+
+The pinned code-review workflow found additional blockers in the local
+checkpoint. They were not repaired after the mandatory commercial-copy stop
+condition triggered:
+
+1. Start omits required active-incident routing copy, and required
+   `#project-inquiry` / `#visibility-check-request` aliases are missing.
+2. Work and Pricing compatibility aliases exist but do not map to their
+   contracted target groups; required Work grouping/status content is absent.
+3. Work “Open the evidence” links are self-links because the accepted records
+   provide anchors but no evidence destinations. This is also a missing-copy
+   stop condition.
+4. A maximum-size emergency incident type plus description can exceed the
+   backend's 8,000-character `problem` limit.
+5. Changed navigation values are hard-coded instead of resolved through the
+   accepted commercial adapter.
+6. Service decision layers omit explicit client inputs, price drivers, and an
+   evidence/example deliverable.
+7. Mobile navigation exposes service children but not the Services overview.
+8. Closing progressive disclosure destroys entered optional form values.
+9. Homepage metadata remains on the prior literal metadata path.
+10. An analytics exception after confirmed form success can incorrectly show a
+    failure and invite a duplicate retry.
+11. Turnstile polling continues after successful widget render.
+12. Existing tests do not prove the placement, payload-limit, and backend
+    contracts above.
+
+The reviewer found no forbidden-path change, no new blocked Boho Analytics
+availability claim, and no heavy dependency.
 
 ## Preview and deployment
 
