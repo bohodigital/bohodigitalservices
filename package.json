@@ -13,6 +13,7 @@
     "build": "node scripts/generate-service-page-data.mjs && vinext build",
     "build:pages": "node scripts/generate-service-page-data.mjs && next build && node scripts/prepare-pages.mjs",
     "start": "vinext start",
+    "commercial-copy:check": "node scripts/commercial-copy-build.mjs --check && node --test tests/commercial-copy-contract.test.mjs",
     "test": "corepack pnpm run build:pages && node --test tests/rendered-html.test.mjs && corepack pnpm run routes:check && corepack pnpm run routes:artifacts:check && corepack pnpm run crawl:static",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "qa:industries": "node scripts/qa-industries-headless.mjs",
