@@ -3,10 +3,9 @@ import { DefinitionPopoverProvider } from "./components/DefinitionPopoverProvide
 import "./globals.css";
 
 const siteUrl = new URL("https://bohodigitalservices.com");
-const siteTitle =
-  "Boho Digital Services | Digital Engineering for Visibility, Leads & Websites";
+const siteTitle = "Boho Digital Services | Web Design, Technical SEO & Digital Engineering";
 const siteDescription =
-  "Digital engineering for local visibility and lead systems, websites and managed hosting, provider rescue, custom tools, automation, analytics, and improvement.";
+  "Chicago-based Boho Digital Services builds and repairs websites, search visibility, provider migrations, analytics, and focused digital systems with public starting prices and documented work.";
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -57,9 +56,9 @@ export function generateMetadata(): Metadata {
       canonical: "/",
     },
     openGraph: {
-      title: siteTitle,
+      title: "Elegant websites and technical SEO, without the agency fog.",
       description:
-        "Local visibility, lead systems, websites, provider rescue, and operational tools built by people who understand the machinery.",
+        "Boho builds and repairs the systems that help people find a business, understand it, trust it, and take the next step.",
       type: "website",
       url: siteUrl,
       images: [
@@ -73,9 +72,9 @@ export function generateMetadata(): Metadata {
     },
     twitter: {
       card: "summary_large_image",
-      title: siteTitle,
+      title: "Elegant websites and technical SEO, without the agency fog.",
       description:
-        "Digital engineering for local visibility, lead systems, websites, and operational tools.",
+        "Boho builds and repairs the systems that help people find a business, understand it, trust it, and take the next step.",
       images: [socialImage],
     },
   };
