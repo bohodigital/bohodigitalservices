@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 1,
-  "policy": "No placeholder, guessed value, synonym, summary, caption, alt text, metadata, field state, or mobile variant may replace a blocked item.",
+  "schemaVersion": 2,
+  "policy": "No placeholder, guessed value, synonym, summary, caption, alt text, metadata, field state, mobile variant, coming-soon status, request-access status, free-dashboard wording, or other replacement may stand in for a blocked semantic slot.",
   "items": [
     {
       "key": "product.bohoAnalytics.publicFreeAvailability",
@@ -16,76 +16,427 @@
       ],
       "currentClaims": [
         {
+          "key": "analytics-claim.app-components-resourcespage-tsx.150-166",
           "sourceFile": "app/components/ResourcesPage.tsx",
-          "sourceField": "literal@L154",
-          "exactValue": "Use the Boho Analytics Platform without paying to unlock the dashboard.",
-          "inventoryKey": "current.app.components.ResourcesPage.tsx.l0154.147"
+          "sourceStartLine": 150,
+          "sourceEndLine": 166,
+          "signals": [
+            "free-or-unpaid",
+            "public-access",
+            "self-hosted-or-open-source"
+          ],
+          "contextHash": "9c4c6cb456f611a2753ceee323e6db93d7f326655a3bbdbfa0722ea3d412f5d1",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
         },
         {
+          "key": "analytics-claim.app-components-resourcespage-tsx.157-173",
           "sourceFile": "app/components/ResourcesPage.tsx",
-          "sourceField": "literal@L161",
-          "exactValue": "Boho Analytics Platform · Free",
-          "inventoryKey": "current.app.components.ResourcesPage.tsx.l0161.148"
+          "sourceStartLine": 157,
+          "sourceEndLine": 173,
+          "signals": [
+            "free-or-unpaid",
+            "public-access",
+            "self-hosted-or-open-source"
+          ],
+          "contextHash": "0980580db5184fe8557c875e3d30fb81370cfd55126fb27b504e5c906fb8427d",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
         },
         {
+          "key": "analytics-claim.app-content-servicepages-generated-ts.437-453",
           "sourceFile": "app/content/servicePages.generated.ts",
-          "sourceField": "literal@L441",
-          "exactValue": "Ongoing work may use supported data from a self-hosted deployment of the free, public, open-source Boho Analytics Platform repository and approved external sources. Reporting should identify sources, missing or stale information, relevant filters, observed signals, reasonable inferences, recommendations, limitations, and the next decision.",
-          "inventoryKey": "current.app.content.servicePages.generated.ts.l0441.419"
+          "sourceStartLine": 437,
+          "sourceEndLine": 453,
+          "signals": [
+            "free-or-unpaid",
+            "public-access",
+            "self-hosted-or-open-source"
+          ],
+          "contextHash": "638a16381aed9133d97083104c0bdb4d74687fc1410db609c0527abf9e8123e0",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
         },
         {
+          "key": "analytics-claim.app-content-servicepages-generated-ts.757-773",
           "sourceFile": "app/content/servicePages.generated.ts",
-          "sourceField": "literal@L2672",
-          "exactValue": "Start with a free review of public information. The Boho Analytics Platform is free open-source software for you or your technical provider to run. Choose a monthly report or one-time audit when you want an analyst to explain the evidence and recommend next steps.",
-          "inventoryKey": "current.app.content.servicePages.generated.ts.l2672.2590"
+          "sourceStartLine": 757,
+          "sourceEndLine": 773,
+          "signals": [
+            "public-access"
+          ],
+          "contextHash": "66dae79c2b937fd0570541cffac2b72fa83c54c242500a20c6cd693246ede130",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
         },
         {
+          "key": "analytics-claim.app-content-servicepages-generated-ts.2668-2684",
           "sourceFile": "app/content/servicePages.generated.ts",
-          "sourceField": "literal@L2684",
-          "exactValue": "Initial review: Free. Boho Analytics Platform public repository: Free to use and self-host. Analyst-reviewed reports start at $95 per month. One-time reviews and audits start at $350.",
-          "inventoryKey": "current.app.content.servicePages.generated.ts.l2684.2606"
+          "sourceStartLine": 2668,
+          "sourceEndLine": 2684,
+          "signals": [
+            "free-or-unpaid",
+            "public-access",
+            "self-hosted-or-open-source"
+          ],
+          "contextHash": "882d159b7a96fc61cbd7d16dd56b30c2a35db2e8edb18a513f3fceb4b677c0e3",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
         },
         {
+          "key": "analytics-claim.app-content-servicepages-generated-ts.2680-2696",
           "sourceFile": "app/content/servicePages.generated.ts",
-          "sourceField": "literal@L2744",
-          "exactValue": "The free, public, open-source Boho Analytics Platform repository can be self-hosted to provide source-labeled website, search, infrastructure, form-monitoring, and other approved data views.",
-          "inventoryKey": "current.app.content.servicePages.generated.ts.l2744.2665"
+          "sourceStartLine": 2680,
+          "sourceEndLine": 2696,
+          "signals": [
+            "free-or-unpaid",
+            "public-access"
+          ],
+          "contextHash": "afe4a3216953d13fcab4966ebb233e4b51835b8ca6be459ed7d9873017548a49",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
         },
         {
+          "key": "analytics-claim.app-content-servicepages-generated-ts.2736-2752",
           "sourceFile": "app/content/servicePages.generated.ts",
-          "sourceField": "literal@L3263",
-          "exactValue": "**Boho Analytics Platform public repository:** Free to use and self-host",
-          "inventoryKey": "current.app.content.servicePages.generated.ts.l3263.3151"
+          "sourceStartLine": 2736,
+          "sourceEndLine": 2752,
+          "signals": [
+            "free-or-unpaid",
+            "public-access",
+            "self-hosted-or-open-source"
+          ],
+          "contextHash": "12be82521033f723531e3812c3d19932ba2154a0edea38e40b7133cc47278d0e",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
         },
         {
+          "key": "analytics-claim.app-content-servicepages-generated-ts.2740-2756",
           "sourceFile": "app/content/servicePages.generated.ts",
-          "sourceField": "literal@L3405",
-          "exactValue": "Is the Boho Analytics Platform really free?",
-          "inventoryKey": "current.app.content.servicePages.generated.ts.l3405.3285"
+          "sourceStartLine": 2740,
+          "sourceEndLine": 2756,
+          "signals": [
+            "free-or-unpaid",
+            "public-access",
+            "self-hosted-or-open-source"
+          ],
+          "contextHash": "5f45a1be0185066bdac3d262d21d8660133b36f535ff06fc3c768190f2bab42b",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
         },
         {
+          "key": "analytics-claim.app-content-servicepages-generated-ts.3259-3275",
+          "sourceFile": "app/content/servicePages.generated.ts",
+          "sourceStartLine": 3259,
+          "sourceEndLine": 3275,
+          "signals": [
+            "free-or-unpaid",
+            "public-access"
+          ],
+          "contextHash": "bb7a341a450ae949e7edc2b3fb2fcbc46fd6c68ae10b869fb56bf2a11c3f0365",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.app-content-servicepages-generated-ts.3355-3371",
+          "sourceFile": "app/content/servicePages.generated.ts",
+          "sourceStartLine": 3355,
+          "sourceEndLine": 3371,
+          "signals": [
+            "public-access"
+          ],
+          "contextHash": "c160b4e416c11d8dd79807f97ce2646ced47257486265fdde41f23d3d4e6bade",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.app-content-servicepages-generated-ts.3401-3417",
+          "sourceFile": "app/content/servicePages.generated.ts",
+          "sourceStartLine": 3401,
+          "sourceEndLine": 3417,
+          "signals": [
+            "free-or-unpaid",
+            "public-access",
+            "self-hosted-or-open-source"
+          ],
+          "contextHash": "eef680c0c7d767ece88df23e4b92d5e825ebd1da0ab96e709a975ab65fa616bb",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.app-content-servicepages-generated-ts.4156-4172",
+          "sourceFile": "app/content/servicePages.generated.ts",
+          "sourceStartLine": 4156,
+          "sourceEndLine": 4172,
+          "signals": [
+            "public-access"
+          ],
+          "contextHash": "4c8a369f077db6e6c8dad41946f18bedc87a593a3aa59a4d2415dce4fccc48c1",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.app-content-systems-ts.140-156",
+          "sourceFile": "app/content/systems.ts",
+          "sourceStartLine": 140,
+          "sourceEndLine": 156,
+          "signals": [
+            "public-access"
+          ],
+          "contextHash": "bcf8829ddb95a40427020a7924c4d8644fd7dac6bc09532f363f0c1655e73305",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.app-content-systems-ts.152-168",
+          "sourceFile": "app/content/systems.ts",
+          "sourceStartLine": 152,
+          "sourceEndLine": 168,
+          "signals": [
+            "public-access"
+          ],
+          "contextHash": "484d177474623151220a885d268b5015aadf1ff2890c7f0f22361922c0c24303",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.content-service-pages-01-ongoing-seo-search-growth-md.94-110",
+          "sourceFile": "content/service-pages/01-ongoing-seo-search-growth.md",
+          "sourceStartLine": 94,
+          "sourceEndLine": 110,
+          "signals": [
+            "public-access"
+          ],
+          "contextHash": "c32677ab0e4e0a95f420bc016d90597b5148fec7dd36ac48958c8ace27a13855",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.content-service-pages-01-ongoing-seo-search-growth-md.272-288",
+          "sourceFile": "content/service-pages/01-ongoing-seo-search-growth.md",
+          "sourceStartLine": 272,
+          "sourceEndLine": 288,
+          "signals": [
+            "public-access"
+          ],
+          "contextHash": "dac36c4b389571f543deacb6f784d84f780da2a913949c0c32e50a4c82df2da3",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.content-service-pages-04-digital-research-seo-audits-strategy-md.15-31",
           "sourceFile": "content/service-pages/04-digital-research-seo-audits-strategy.md",
-          "sourceField": "literal@L19",
-          "exactValue": "Start with a free public-information review. Use the supported Boho Analytics Platform free. Add an analyst-reviewed monthly report or a defined audit when the decision requires deeper evidence.",
-          "inventoryKey": "current.content.service.pages.04.digital.research.seo.audits.strategy.md.l0019.9"
+          "sourceStartLine": 15,
+          "sourceEndLine": 31,
+          "signals": [
+            "free-or-unpaid",
+            "public-access"
+          ],
+          "contextHash": "76b2258092b8ede490bbbbfe6a85735996f4b0191f2864ce40bd23363635a3e1",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
         },
         {
+          "key": "analytics-claim.content-service-pages-04-digital-research-seo-audits-strategy-md.23-39",
           "sourceFile": "content/service-pages/04-digital-research-seo-audits-strategy.md",
-          "sourceField": "literal@L27",
-          "exactValue": "**Trust line:** Initial review: Free. Boho Analytics Platform: Free. Analyst-reviewed reports start at $95 per month. One-time reviews and audits start at $350.",
-          "inventoryKey": "current.content.service.pages.04.digital.research.seo.audits.strategy.md.l0027.14"
+          "sourceStartLine": 23,
+          "sourceEndLine": 39,
+          "signals": [
+            "free-or-unpaid",
+            "public-access"
+          ],
+          "contextHash": "10cc1302560cc1cb62f21fb829cfdb94d3882f6dde0845fb4f8d737014a29585",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
         },
         {
+          "key": "analytics-claim.content-service-pages-04-digital-research-seo-audits-strategy-md.51-67",
           "sourceFile": "content/service-pages/04-digital-research-seo-audits-strategy.md",
-          "sourceField": "literal@L353",
-          "exactValue": "**Boho Analytics Platform:** Free",
-          "inventoryKey": "current.content.service.pages.04.digital.research.seo.audits.strategy.md.l0353.229"
+          "sourceStartLine": 51,
+          "sourceEndLine": 67,
+          "signals": [
+            "free-or-unpaid",
+            "public-access"
+          ],
+          "contextHash": "2fe1ce5cd998f093ce78a2cae40acde848e166ca40cf6360f503bf9708b5e67a",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
         },
         {
+          "key": "analytics-claim.content-service-pages-04-digital-research-seo-audits-strategy-md.349-365",
           "sourceFile": "content/service-pages/04-digital-research-seo-audits-strategy.md",
-          "sourceField": "literal@L428",
-          "exactValue": "Is the Boho Analytics Platform really free?",
-          "inventoryKey": "current.content.service.pages.04.digital.research.seo.audits.strategy.md.l0428.274"
+          "sourceStartLine": 349,
+          "sourceEndLine": 365,
+          "signals": [
+            "free-or-unpaid",
+            "public-access"
+          ],
+          "contextHash": "6fd9b5bc2e058953f159c235204770c3a049269387d44cc329c80481187d74ba",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.content-service-pages-04-digital-research-seo-audits-strategy-md.400-416",
+          "sourceFile": "content/service-pages/04-digital-research-seo-audits-strategy.md",
+          "sourceStartLine": 400,
+          "sourceEndLine": 416,
+          "signals": [
+            "public-access"
+          ],
+          "contextHash": "7e5e52fc70b0c42c3aba6ba29ae73cd351dac8816a46100d55b679c570cc01fb",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.content-service-pages-04-digital-research-seo-audits-strategy-md.424-440",
+          "sourceFile": "content/service-pages/04-digital-research-seo-audits-strategy.md",
+          "sourceStartLine": 424,
+          "sourceEndLine": 440,
+          "signals": [
+            "free-or-unpaid",
+            "public-access"
+          ],
+          "contextHash": "453a70775d55640329da94a08798e808d9449de6e3777892f2ac03724fc98ae8",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.content-service-pages-05-custom-web-digital-solutions-md.368-384",
+          "sourceFile": "content/service-pages/05-custom-web-digital-solutions.md",
+          "sourceStartLine": 368,
+          "sourceEndLine": 384,
+          "signals": [
+            "public-access"
+          ],
+          "contextHash": "3947758801ac18232c706817c24a6f37440e52cdf1304e8d6c1e42f9fca7bbe9",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.scripts-generate-service-page-data-mjs.49-65",
+          "sourceFile": "scripts/generate-service-page-data.mjs",
+          "sourceStartLine": 49,
+          "sourceEndLine": 65,
+          "signals": [
+            "free-or-unpaid",
+            "public-access",
+            "self-hosted-or-open-source"
+          ],
+          "contextHash": "cfcdfaeed21715a19571235a63303488529e70cef15541ee5f037399f560efb8",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.scripts-generate-service-page-data-mjs.50-66",
+          "sourceFile": "scripts/generate-service-page-data.mjs",
+          "sourceStartLine": 50,
+          "sourceEndLine": 66,
+          "signals": [
+            "free-or-unpaid",
+            "public-access",
+            "self-hosted-or-open-source"
+          ],
+          "contextHash": "88f6e16af5b284acced59455dda407a98ad00237fac5015963ab4bdb36feaf90",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.scripts-generate-service-page-data-mjs.73-89",
+          "sourceFile": "scripts/generate-service-page-data.mjs",
+          "sourceStartLine": 73,
+          "sourceEndLine": 89,
+          "signals": [
+            "free-or-unpaid",
+            "public-access",
+            "self-hosted-or-open-source"
+          ],
+          "contextHash": "7317d7e29fc5f397c41e4b310498bc1e9d15e2cf195980c14ef3bebf7bd13f47",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.scripts-generate-service-page-data-mjs.74-90",
+          "sourceFile": "scripts/generate-service-page-data.mjs",
+          "sourceStartLine": 74,
+          "sourceEndLine": 90,
+          "signals": [
+            "free-or-unpaid",
+            "public-access",
+            "self-hosted-or-open-source"
+          ],
+          "contextHash": "c861c249f1e795c05787cfc63a288b26a754a2c2f892a158a9153c41b009dbc0",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.scripts-generate-service-page-data-mjs.81-97",
+          "sourceFile": "scripts/generate-service-page-data.mjs",
+          "sourceStartLine": 81,
+          "sourceEndLine": 97,
+          "signals": [
+            "free-or-unpaid",
+            "public-access",
+            "self-hosted-or-open-source"
+          ],
+          "contextHash": "1b9d45d8a805a74454f6d2d495ebc35b2cee0d516d526ead2958630ceb6dd269",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.scripts-generate-service-page-data-mjs.82-98",
+          "sourceFile": "scripts/generate-service-page-data.mjs",
+          "sourceStartLine": 82,
+          "sourceEndLine": 98,
+          "signals": [
+            "free-or-unpaid",
+            "public-access",
+            "self-hosted-or-open-source"
+          ],
+          "contextHash": "d5c5943b3d5330ecc69f09b372b564e75d5a2a7110ef4187fc73421961e2e551",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.scripts-generate-service-page-data-mjs.90-106",
+          "sourceFile": "scripts/generate-service-page-data.mjs",
+          "sourceStartLine": 90,
+          "sourceEndLine": 106,
+          "signals": [
+            "free-or-unpaid",
+            "public-access",
+            "self-hosted-or-open-source"
+          ],
+          "contextHash": "7e47f5ee04335b71f2d3351ffcc5f2a26ae5cbb82ddbd4b878dc91a54ac6f7d3",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.scripts-generate-service-page-data-mjs.137-153",
+          "sourceFile": "scripts/generate-service-page-data.mjs",
+          "sourceStartLine": 137,
+          "sourceEndLine": 153,
+          "signals": [
+            "free-or-unpaid",
+            "public-access",
+            "self-hosted-or-open-source"
+          ],
+          "contextHash": "83905e82b4b4c89d60a8c765fde6fa07a6e3dddda1af43c54c18ce1e7adc8503",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.scripts-generate-service-page-data-mjs.138-154",
+          "sourceFile": "scripts/generate-service-page-data.mjs",
+          "sourceStartLine": 138,
+          "sourceEndLine": 154,
+          "signals": [
+            "free-or-unpaid",
+            "public-access",
+            "self-hosted-or-open-source"
+          ],
+          "contextHash": "3239f631a5b0f2b35ce578827bc03b467ad7dc6e9514ef264b055bec0785df03",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
         }
       ]
     }

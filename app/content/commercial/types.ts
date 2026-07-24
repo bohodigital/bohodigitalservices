@@ -1,16 +1,10 @@
 export type CommercialCopyClassification =
-  | "visible-text"
-  | "action"
-  | "navigation"
-  | "price"
-  | "timeline"
-  | "evidence"
-  | "form-state"
-  | "metadata"
-  | "schema"
-  | "figure"
-  | "accessible-text"
-  | "route";
+  | "visible-text" | "action" | "navigation" | "price" | "timeline" | "evidence"
+  | "form-state" | "metadata" | "schema" | "figure" | "accessible-text" | "route";
+
+export type CommercialParserFormat =
+  | "straight-quoted" | "curly-quoted" | "backtick" | "bullet" | "numbered-list"
+  | "markdown-table" | "blockquote" | "multiline-quoted" | "multiline-paragraph" | "structured-field" | "relationship";
 
 export type SourcedCommercialValue = {
   value: string;
@@ -41,17 +35,10 @@ export type CommercialCopyCorrections = {
   };
   evidence: {
     sourceClasses: ReadonlyArray<SourcedCommercialValue>;
-    technicalRecordDefinition: {
-      name: SourcedCommercialValue;
-      definition: SourcedCommercialValue;
-      limitation: SourcedCommercialValue;
-    };
+    technicalRecordDefinition: { name: SourcedCommercialValue; definition: SourcedCommercialValue; limitation: SourcedCommercialValue };
     workHeroIntroduction: SourcedCommercialValue;
     homepageIntroduction: SourcedCommercialValue;
-    artifacts: ReadonlyArray<{
-      title: SourcedCommercialValue;
-      sourceClass: SourcedCommercialValue;
-    }>;
+    artifacts: ReadonlyArray<{ title: SourcedCommercialValue; sourceClass: SourcedCommercialValue }>;
   };
   glossaryEvidence: {
     currentStatus: SourcedCommercialValue;
@@ -68,12 +55,8 @@ export type CommercialCopyCorrections = {
     canonicalAnchor: SourcedCommercialValue;
     compatibilityAlias: SourcedCommercialValue;
     crossReference: {
-      eyebrow: SourcedCommercialValue;
-      heading: SourcedCommercialValue;
-      body: SourcedCommercialValue;
-      price: SourcedCommercialValue;
-      linkLabel: SourcedCommercialValue;
-      destination: SourcedCommercialValue;
+      eyebrow: SourcedCommercialValue; heading: SourcedCommercialValue; body: SourcedCommercialValue;
+      price: SourcedCommercialValue; linkLabel: SourcedCommercialValue; destination: SourcedCommercialValue;
     };
   };
   analyticsAvailability: {
@@ -87,62 +70,61 @@ export type CommercialCopyCorrections = {
 
 export type CommercialCopyRecord = {
   key: string;
+  semanticSlotKey: string;
   exactValue: string;
-  route: string;
-  surface: string;
-  section: string;
-  field: string;
-  status: "target";
-  currentlyRendered: false;
-  disposition: "replace-later-with-exact-approved-text";
-  classification: CommercialCopyClassification;
-  routeDestination: string | null;
   sourcePacket: string;
-  sourceLine: number;
   sourceLocation: string;
-  sourceKind: "chatgpt-packet";
-  editorialAuthority: "ChatGPT";
+  sourceStartLine: number;
+  sourceEndLine: number;
+  classification: CommercialCopyClassification;
+  pageKey: string;
+  field: string;
+  format: CommercialParserFormat;
+  relationship: { id: string; kind: "mapping"; position: number; memberCount: number } | null;
   canonicalProductKey?: string;
 };
 
+export type CommercialSemanticSlot = {
+  key: string;
+  selectionAction: "select" | "replace" | "remove";
+  selectedRecord: CommercialCopyRecord;
+  displacedRecords: ReadonlyArray<CommercialCopyRecord>;
+  supersession: null | {
+    key: string;
+    action: "replace" | "remove";
+    selected: string;
+    displaced: ReadonlyArray<string>;
+  };
+};
+
 export type CommercialCopyContract = {
-  schemaVersion: 1;
-  baseCommit: string;
+  schemaVersion: 2;
+  publicRenderBase: string;
+  contractInputBase: string;
   editorialOwner: "ChatGPT";
   workerCopyAuthority: "none";
-  packetOrder: ReadonlyArray<{
-    key: string;
-    precedence: number;
-    surface: string;
-    sha256: string;
-    lineCount: number;
-  }>;
+  bindingPrecedence: ReadonlyArray<{ packet: string; authority: string; bindingRank: number }>;
+  structuralAuthorities: ReadonlyArray<string>;
+  parserCapabilities: ReadonlyArray<CommercialParserFormat>;
+  packetSnapshots: ReadonlyArray<{ key: string; surface: string; sha256: string; lineCount: number }>;
   approvedServiceNames: ReadonlyArray<string>;
   approvedPriceStrings: ReadonlyArray<string>;
   approvedEvidenceSourceClasses: ReadonlyArray<string>;
   products: ReadonlyArray<{
-    key: string;
-    price: string;
-    priceFamily: string;
-    canonicalAnchor: string;
-    sourceLocations: ReadonlyArray<string>;
-  }>;
-  reportingProductReferences: ReadonlyArray<{
-    recordKey: string;
-    sourceLocation: string;
-    surface: string;
-    productKey: string;
+    key: string; price: string; priceFamily: string; canonicalAnchor: string; sourceLocations: ReadonlyArray<string>;
   }>;
   pricingAnchors: {
-    canonical: {
-      value: string;
-      productKey: string;
-    };
-    compatibilityAlias: {
-      value: string;
-      productKey: string;
-    };
+    canonical: { value: string; productKey: string };
+    compatibilityAlias: { value: string; productKey: string };
   };
   corrections: CommercialCopyCorrections;
+  semanticSlots: ReadonlyArray<CommercialSemanticSlot>;
   records: ReadonlyArray<CommercialCopyRecord>;
+  adapterManifest: {
+    schemaVersion: 1;
+    pages: ReadonlyArray<{ key: string; selectedSlotKeys: ReadonlyArray<string> }>;
+    blockedSlotKeys: ReadonlyArray<string>;
+  };
+  collisionReportDigest: string;
+  coverageDigest: string;
 };

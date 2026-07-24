@@ -2,154 +2,159 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import test from "node:test";
-import { buildArtifacts, validateArtifacts } from "../scripts/commercial-copy-build.mjs";
+import {
+  BINDING_PRECEDENCE, REQUIRED_COVERAGE_CATEGORIES, REQUIRED_PARSER_FORMATS,
+  buildArtifacts, detectAnalyticsClaimContexts, parsePacketContent,
+  resolveSemanticSlots, validateAdapterRequest, validateArtifacts, validateParserCoverage,
+} from "../scripts/commercial-copy-build.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const bundle = JSON.parse(await readFile(resolve(root, "content/commercial/source-packets.json"), "utf8"));
 const built = await buildArtifacts(bundle);
 const clone = (value) => structuredClone(value);
+const findingsFor = (mutator) => {
+  const artifacts = clone(built);
+  mutator(artifacts);
+  return validateArtifacts(bundle, artifacts).join("\n");
+};
 
-function findingsFor(mutator) {
-  const contract = clone(built.contract);
-  const inventory = clone(built.inventory);
-  const blocked = clone(built.blocked);
-  mutator({ contract, inventory, blocked });
-  return validateArtifacts(bundle, contract, inventory, blocked).join("\n");
-}
-
-test("the packet-derived contract passes every invariant", () => {
-  assert.deepEqual(validateArtifacts(bundle, built.contract, built.inventory, built.blocked), []);
+test("the hardened contract passes every invariant", () => {
+  assert.deepEqual(validateArtifacts(bundle, built), []);
+  assert.equal(built.contract.schemaVersion, 2);
+  assert.deepEqual(built.contract.bindingPrecedence, BINDING_PRECEDENCE);
   assert.equal(built.contract.editorialOwner, "ChatGPT");
   assert.equal(built.contract.workerCopyAuthority, "none");
   assert.equal(built.contract.approvedServiceNames.length, 5);
   assert.equal(built.contract.approvedPriceStrings.length, 11);
-  assert.equal(built.contract.packetOrder.at(-1).key, "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049");
-  assert.equal(built.contract.packetOrder.at(-1).precedence, 15);
   assert.equal(built.contract.approvedEvidenceSourceClasses.length, 7);
   assert.equal(built.contract.products.length, 1);
   assert.equal(built.blocked.items.length, 1);
+  assert.equal(built.collisionReport.unresolvedCount, 0);
+  assert.ok(built.contract.semanticSlots.length > 1_000);
+  assert.ok(built.contract.semanticSlots.every((slot) => slot.selectedRecord?.sourceLocation));
+  assert.ok(built.contract.semanticSlots.every(({ key }) => /^slot\.[a-z0-9]/.test(key)));
 });
 
-test("packet content and stored hashes cannot drift", () => {
-  const tampered = clone(bundle);
-  tampered.packets[0].content += "\n";
-  assert.match(validateArtifacts(tampered, built.contract, built.inventory, built.blocked).join("\n"), /packet hash mismatch/);
-
-  const correctionTampered = clone(bundle);
-  correctionTampered.packets.at(-1).content += "\n";
-  assert.match(validateArtifacts(correctionTampered, built.contract, built.inventory, built.blocked).join("\n"), /packet hash mismatch: WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049/);
+test("binding precedence is exact and independent of chronology and packet numbers", async () => {
+  assert.deepEqual(BINDING_PRECEDENCE.map(({ packet }) => packet), [
+    "049", "045", "040", "039", "038", "037", "036", "035", "034", "041", "047", "043", "prior",
+  ]);
+  const reordered = clone(bundle);
+  reordered.packets.reverse();
+  for (const packet of reordered.packets) packet.precedence = 10_000 - packet.precedence;
+  const rebuilt = await buildArtifacts(reordered);
+  const proof = ({ key, selectedRecord }) => [key, selectedRecord.sourcePacket, selectedRecord.sourceLocation];
+  assert.deepEqual(rebuilt.collisionReport.collisions.map(proof), built.collisionReport.collisions.map(proof));
+  assert.match(findingsFor(({ contract }) => { contract.bindingPrecedence[0].packet = "045"; }), /binding precedence mismatch/);
 });
 
-test("duplicate and missing keys fail", () => {
-  assert.match(findingsFor(({ contract }) => { contract.records[1].key = contract.records[0].key; }), /duplicate keys/);
-  assert.match(findingsFor(({ contract }) => { contract.records[0].key = ""; }), /missing stable key/);
+test("semantic collisions select once and differing values require explicit supersession", () => {
+  assert.ok(built.collisionReport.collisions.length > 100);
+  assert.ok(built.collisionReport.collisions.every(({ selectedRecord, displacedRecords }) => selectedRecord && displacedRecords.length));
+  assert.ok(built.collisionReport.collisions.filter(({ valueKind }) => valueKind === "different").every(({ supersession }) => supersession));
+  assert.match(findingsFor(({ collisionReport }) => { collisionReport.collisions[0].selectedRecord = null; }), /collision missing selected record/);
+  assert.match(findingsFor(({ collisionReport }) => {
+    collisionReport.collisions.find(({ valueKind }) => valueKind === "different").supersession = null;
+  }), /differing collision missing explicit supersession/);
 });
 
-test("case variants, unsourced values, placeholders, and worker claims fail", () => {
-  const result = findingsFor(({ contract }) => {
-    const source = contract.records.find((record) => /label|heading|title/i.test(record.field));
-    contract.records.push({ ...source, key: "target.test.case", exactValue: source.exactValue.toUpperCase(), sourceLine: 1, sourceKind: "generated", editorialAuthority: false });
-    contract.records.push({ ...source, key: "target.test.placeholder", exactValue: "TODO placeholder copy", sourceLine: 1 });
-    contract.records.push({ ...source, key: "target.test.claim", exactValue: "Guaranteed #1 rankings", sourceLine: 1 });
-  });
-  assert.match(result, /case-only label variants/);
-  assert.match(result, /unsourced target value/);
-  assert.match(result, /generated editorial authority/);
-  assert.match(result, /placeholder copy/);
-  assert.match(result, /prohibited or unsupported claim/);
+test("packet hashes and generated artifacts cannot drift", () => {
+  const tamperedBundle = clone(bundle);
+  tamperedBundle.packets[0].content += "\n";
+  assert.match(validateArtifacts(tamperedBundle, built).join("\n"), /packet hash mismatch/);
+  assert.match(findingsFor(({ contract }) => { contract.semanticSlots[0].selectedRecord.exactValue += " "; }), /selected record source mismatch|artifact digest mismatch/);
 });
 
-test("unapproved names and prices fail", () => {
-  const result = findingsFor(({ contract }) => {
-    const serviceSource = contract.records.find((record) => record.exactValue === contract.approvedServiceNames[0]);
-    const priceSource = contract.records.find((record) => record.exactValue === contract.approvedPriceStrings[1]);
-    contract.records = contract.records.filter((record) => record.exactValue !== contract.approvedServiceNames[0] && record.exactValue !== contract.approvedPriceStrings[1]);
-    contract.records.push({ ...serviceSource, key: "target.test.service-name", exactValue: "Local SEO" });
-    contract.records.push({ ...priceSource, key: "target.test.price", exactValue: "SEO reporting — $95" });
-  });
-  assert.match(result, /missing approved service name/);
-  assert.match(result, /missing approved price/);
-  assert.match(result, /unapproved service name/);
-  assert.match(result, /unapproved price/);
+test("parser covers structured, inline, multiline, relational, route, metadata, and accessibility formats", () => {
+  const fixture = [
+    "# Fixture", "Straight: \"Straight quoted value\"", "Curly: “Curly quoted value”", "Backtick: `Backtick value`",
+    "- `Bullet value`", "1. `Numbered value`", "| Field | Value |", "| --- | --- |", "| Caption | `Table value` |",
+    "> `Blockquote value`", "Multiline:", "\"First line", "second line\"", "Metadata title: `Metadata value`",
+    "Schema name: `Schema value`", "Form error: `Form error value`", "Caption: `Caption value`",
+    "Accessible description: `Accessible value`", "Destination: `/start/`", "Fragment: `#pricing`",
+    "Pair: `Label value` → `/paired/`", "Paragraph:", "First paragraph line", "second paragraph line", "",
+  ].join("\n");
+  const records = parsePacketContent(fixture, { key: "WO-TEST-049", surface: "metadata-schema", editorialAuthority: "chatgpt" });
+  assert.deepEqual(validateParserCoverage(records), []);
+  assert.deepEqual(new Set(records.map(({ format }) => format)), new Set(REQUIRED_PARSER_FORMATS));
+  assert.ok(records.some(({ relationship }) => relationship?.kind === "mapping"));
+  assert.ok(records.some(({ sourceStartLine, sourceEndLine }) => sourceEndLine > sourceStartLine));
+  assert.throws(() => resolveSemanticSlots([
+    { ...records[0], semanticSlotKey: "slot.fixture.conflict", exactValue: "First" },
+    { ...records[1], semanticSlotKey: "slot.fixture.conflict", exactValue: "Second" },
+  ], []), /Unresolved semantic collision/);
+  for (const format of REQUIRED_PARSER_FORMATS) {
+    assert.match(validateParserCoverage(records.filter((record) => record.format !== format)).join("\n"), new RegExp(`parser format missing: ${format}`));
+  }
 });
 
-test("timeline, CTA, evidence, forms, metadata, schema, and accessibility fail closed", () => {
-  const result = findingsFor(({ contract }) => {
-    contract.records = contract.records.filter((record) => !record.sourcePacket.endsWith("-034") && record.classification !== "form-state" && record.classification !== "metadata" && record.classification !== "schema" && record.classification !== "accessible-text" && record.classification !== "figure" && !record.sourcePacket.endsWith("-038"));
-    const action = contract.records.find((record) => record.classification === "action");
-    if (action) action.routeDestination = null;
-  });
-  assert.match(result, /missing packet 034 timelines/);
-  assert.match(result, /CTA\/route mismatch/);
-  assert.match(result, /evidence-label failure/);
-  assert.match(result, /missing form state/);
-  assert.match(result, /missing target classification: metadata/);
-  assert.match(result, /missing target classification: schema/);
-  assert.match(result, /missing target classification: accessible-text/);
+test("expected-slot coverage is exhaustive and fails on omission", () => {
+  assert.deepEqual(built.coverage.categories.map(({ key }) => key), REQUIRED_COVERAGE_CATEGORIES);
+  assert.ok(built.coverage.categories.every(({ selectedSlotKeys }) => selectedSlotKeys.length));
+  assert.equal(built.coverage.missingSlotCount, 0);
+  assert.match(findingsFor(({ coverage }) => { coverage.categories.find(({ key }) => key === "forms-states").selectedSlotKeys = []; }), /coverage category empty: forms-states/);
+  assert.match(findingsFor(({ coverage }) => { coverage.categories = coverage.categories.filter(({ key }) => key !== "packet-049-corrections"); }), /coverage category missing: packet-049-corrections/);
 });
 
-test("contact count and ordinary versus emergency routing fail closed", () => {
-  const countResult = findingsFor(({ contract }) => { contract.corrections.contact.pathCount = 3; });
-  assert.match(countResult, /contact path count mismatch/);
-
-  const optionResult = findingsFor(({ contract }) => {
-    contract.corrections.contact.standardInquiry.options.push(contract.corrections.contact.standardInquiry.removedOption);
-  });
-  assert.match(optionResult, /standard inquiry includes Emergency Website Help/);
-
-  const routingResult = findingsFor(({ contract }) => { contract.corrections.contact.standardInquiry.automaticEmergencyRedirect = true; });
-  assert.match(routingResult, /ordinary and emergency routing mismatch/);
+test("compact inventory models governed inputs, provenance, generation, and reachability", () => {
+  const byPath = new Map(built.inventory.sources.map((source) => [source.path, source]));
+  for (const path of [
+    "app/page.tsx", "app/not-found.tsx", "app/[...slug]/page.tsx", "app/learn/glossary/[term]/page.tsx", "app/robots.ts",
+    "scripts/generate-service-page-data.mjs", "app/content/servicePages.generated.ts", "content/service-pages/04-digital-research-seo-audits-strategy.md",
+  ]) assert.ok(byPath.has(path), `missing inventory source: ${path}`);
+  assert.deepEqual(
+    [byPath.get("app/content/servicePages.generated.ts").classification, byPath.get("app/content/servicePages.generated.ts").reachable, byPath.get("app/content/servicePages.generated.ts").editorialAuthority],
+    ["generated-mirror", true, false],
+  );
+  assert.deepEqual(
+    [byPath.get("content/service-pages/04-digital-research-seo-audits-strategy.md").classification, byPath.get("content/service-pages/04-digital-research-seo-audits-strategy.md").reachable, byPath.get("content/service-pages/04-digital-research-seo-audits-strategy.md").editorialAuthority],
+    ["authored-source", true, true],
+  );
+  assert.ok(Buffer.byteLength(JSON.stringify(built.inventory)) < 1_000_000);
+  assert.equal("records" in built.inventory, false);
 });
 
-test("evidence artifacts accept only the exact packet-049 source taxonomy", () => {
-  const compoundResult = findingsFor(({ contract }) => {
-    contract.corrections.evidence.artifacts[0].sourceClass.value = "Boho-owned property and public system";
-  });
-  assert.match(compoundResult, /undefined or compound evidence source class/);
-
-  const undefinedResult = findingsFor(({ contract }) => {
-    contract.corrections.evidence.artifacts[0].sourceClass.value = "Boho-owned tool";
-  });
-  assert.match(undefinedResult, /undefined or compound evidence source class/);
+test("contextual Analytics availability claims are blocked across semantic variants", () => {
+  const claims = detectAnalyticsClaimContexts("# Boho Analytics Platform\nUse the dashboard publicly without paying.\nSelf-hosted and open-source access is free.", "fixture.md");
+  assert.ok(claims.some(({ signals }) => signals.includes("public-access")));
+  assert.ok(claims.some(({ signals }) => signals.includes("free-or-unpaid")));
+  assert.ok(claims.some(({ signals }) => signals.includes("self-hosted-or-open-source")));
+  const blocked = built.blocked.items[0];
+  assert.deepEqual([blocked.key, blocked.targetApproved, blocked.replacementText], ["product.bohoAnalytics.publicFreeAvailability", false, null]);
+  assert.ok(blocked.currentClaims.some(({ sourceFile }) => sourceFile === "content/service-pages/04-digital-research-seo-audits-strategy.md"));
+  assert.ok(blocked.currentClaims.some(({ sourceFile }) => sourceFile === "app/content/servicePages.generated.ts"));
+  assert.match(findingsFor(({ blocked: mutated }) => { mutated.items[0].currentClaims.pop(); }), /blocked current-claim registry mismatch/);
+  assert.throws(() => validateAdapterRequest("product.bohoAnalytics.publicFreeAvailability", built.blocked), /blocked commercial-copy slot/);
 });
 
-test("glossary evidence cannot freeze the accepted base as permanently current", () => {
-  const result = findingsFor(({ contract }) => {
-    contract.corrections.glossaryEvidence.currentStatus.value = "Repository foundation accepted at commit 89cb0982b8f2274a289e8126c9472640a5305011; not deployed by the glossary correction work order";
-  });
-  assert.match(result, /glossary evidence status is not future-safe/);
+test("page-specific adapters are schema-valid and exclude blocked slots", () => {
+  const required = [
+    "homepage", "services-overview", "pricing", "work-evidence", "contact", "start", "emergency",
+    "service-local-visibility", "service-websites-hosting", "service-provider-rescue", "service-custom-tools", "service-research-analytics",
+  ];
+  assert.deepEqual(built.adapters.pages.map(({ key }) => key), required);
+  assert.ok(built.adapters.pages.every(({ selectedSlotKeys }) => selectedSlotKeys.length));
+  assert.ok(built.adapters.pages.every(({ selectedSlotKeys }) => !selectedSlotKeys.includes("product.bohoAnalytics.publicFreeAvailability")));
+  assert.equal(built.adapters.blockedSlotKeys.includes("product.bohoAnalytics.publicFreeAvailability"), true);
 });
 
-test("the $95 product and compatibility alias remain canonical and singular", () => {
-  const duplicateResult = findingsFor(({ contract }) => { contract.products.push(clone(contract.products[0])); });
-  assert.match(duplicateResult, /public \$95 monthly reporting product count mismatch/);
-
-  const aliasResult = findingsFor(({ contract }) => { contract.pricingAnchors.compatibilityAlias.productKey = "product.analyticsReporting.monthly"; });
-  assert.match(aliasResult, /analytics-reporting alias diverges from ongoing-seo product/);
+test("mutation gates cover authority, source omission, blocking, and stale artifacts", () => {
+  assert.match(findingsFor(({ inventory }) => { inventory.sources.find(({ classification }) => classification === "generated-mirror").editorialAuthority = true; }), /generated source has editorial authority/);
+  assert.match(findingsFor(({ inventory }) => { inventory.sources = inventory.sources.filter(({ path }) => path !== "app/page.tsx"); }), /required current source missing: app\/page.tsx/);
+  assert.match(findingsFor(({ blocked }) => { blocked.items[0].targetApproved = true; }), /blocked record mismatch/);
+  assert.match(findingsFor(({ artifactDigests }) => { artifactDigests.inventory = "0".repeat(64); }), /artifact digest mismatch: inventory/);
 });
 
-test("Boho Analytics public-free claims stay blocked without invented substitutes", () => {
-  const missingResult = findingsFor(({ blocked }) => { blocked.items = []; });
-  assert.match(missingResult, /required Boho Analytics blocked-copy record missing/);
+test("standard test and Cloudflare validation both enforce the commercial gate", async () => {
+  const pkg = JSON.parse(await readFile(resolve(root, "package.json"), "utf8"));
+  const workflow = await readFile(resolve(root, ".github/workflows/validate-cloudflare-pages.yml"), "utf8");
+  assert.match(pkg.scripts.test, /commercial-copy:check/);
+  assert.match(workflow, /pnpm run commercial-copy:check/);
+});
 
-  const approvedResult = findingsFor(({ blocked }) => { blocked.items[0].targetApproved = true; });
-  assert.match(approvedResult, /Boho Analytics blocked-copy record mismatch/);
-
-  const inventedResult = findingsFor(({ contract }) => {
-    contract.records.push({
-      ...contract.records[0],
-      key: "target.test.invented-analytics-availability",
-      exactValue: "Boho Analytics Platform — coming soon",
-    });
-  });
-  assert.match(inventedResult, /invented Boho Analytics availability language/);
-
-  const publicFreeResult = findingsFor(({ contract }) => {
-    contract.records.push({
-      ...contract.records[0],
-      key: "target.test.public-free-analytics",
-      exactValue: "Use the Boho Analytics Platform free.",
-    });
-  });
-  assert.match(publicFreeResult, /Boho Analytics public-free claim is target-approved/);
+test("security reporting contains counts without matched values", () => {
+  assert.equal(typeof built.inventory.securityScan.privateKeyMarkers, "number");
+  assert.equal(typeof built.inventory.securityScan.commonTokenPrefixes, "number");
+  assert.ok(built.inventory.securityScan.indicators.every(({ count }) => Number.isInteger(count)));
+  assert.ok(built.inventory.securityScan.indicators.every((indicator) => !("matches" in indicator) && !("values" in indicator)));
 });

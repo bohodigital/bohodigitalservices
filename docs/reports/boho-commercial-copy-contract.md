@@ -1,138 +1,139 @@
-# Boho Commercial Copy Contract Report
+# Boho Commercial Copy Contract
 
 ## Contents
 
-- [Summary](#summary)
+- [Status](#status)
 - [Authority and precedence](#authority-and-precedence)
-- [Artifacts and counts](#artifacts-and-counts)
-- [Inventory coverage](#inventory-coverage)
-- [Validation](#validation)
-- [Unchanged-render evidence](#unchanged-render-evidence)
-- [Blocked copy](#blocked-copy)
-- [Review boundary](#review-boundary)
+- [Semantic slots and collisions](#semantic-slots-and-collisions)
+- [Parser and coverage](#parser-and-coverage)
+- [Current-source inventory](#current-source-inventory)
+- [Blocked semantics](#blocked-semantics)
+- [Typed adapters](#typed-adapters)
+- [Enforcement and rendering boundary](#enforcement-and-rendering-boundary)
 
-## Summary
+## Status
 
-This correction installs a non-rendering, typed commercial-copy contract derived mechanically from exact ChatGPT-authored packet snapshots. Packet 049 is the highest-precedence source for every value it affects. The contract is not imported by any renderer. No current public-copy source, route, form, metadata implementation, stylesheet, public asset, Worker, or deployment configuration changed.
+The schema-v2 commercial-copy contract is a non-rendering, exact-source contract for ChatGPT review. It is generated from 15 hash-pinned packet snapshots. Codex has no authority to invent, paraphrase, approve, or replace public wording.
 
-Exact base: `89cb0982b8f2274a289e8126c9472640a5305011`
-
-Original contract candidate: `f14982e609b21e3b069d19da02ad9cad59d2a652`
-
-Integration branch: `main`
-
-Correction: the single child commit for `WO-2026-07-24-BOHO-COPY-CONTRACT-CORRECT-INSTALL-063`; its exact hash is recorded in the canonical Local1 exit report because a commit cannot contain its own hash.
-
-Editorial owner: ChatGPT
-
-Codex public-copy authority: none
-
-Zero-worker-copy attestation: Codex authored zero public-facing strings. Target values are mechanically extracted only from whole-line backtick or curly-quoted values in the binding packet snapshots. Technical keys, classifications, validation messages, and this internal report are not public copy and are not imported by the application.
+- Accepted public-render base: `89cb0982b8f2274a289e8126c9472640a5305011`
+- Contract hardening input base: `a201d64a1c74cfb31406a1aa571cd8b3768f569f`
+- Editorial owner: ChatGPT
+- Worker public-copy authority: none
+- Renderer adoption: not authorized
+- Preview or deployment: not authorized
 
 ## Authority and precedence
 
-The original ten packets were applied in work-order order. Five later ChatGPT queue amendments were then applied for visual/accessibility, route compatibility, Emergency, direct review, and cross-packet correction. Packet 049 has highest precedence for every affected value; otherwise later numbered packets resolve their specific surfaces more completely, while packets 021 and 022 govern all surfaces. Packet 048 is a review protocol and supplies no target public values.
+Binding copy precedence is executable data and is independent of packet numbering, chronology, source-array order, and snapshot ordinal:
 
-| Precedence | Packet | Surface | SHA-256 |
-|---:|---|---|---|
-| 1 | `WO-2026-07-23-BOHO-CHATGPT-VERBATIM-COPY-LOCK-021` | global governance | `d740f45347413eb187b54ab871b6aa7bd1d147c79d56d682acfa065bc2b7f8c2` |
-| 2 | `WO-2026-07-23-BOHO-CHATGPT-EDITORIAL-SELF-AUDIT-V2-022` | global governance | `4647401a4ef8bc252495f3e61505c25f8e9729aca86bad27266cb9b372e6f6c9` |
-| 3 | `WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034` | timelines | `50b5841db45ecd0d20bfd01cdfa91317fbcd25d7d18c2a5d8f0164957a5ebd5e` |
-| 4 | `WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035` | five service pages | `91a8f6ad3556475af0b8b58571e3f82cb10be0908e3f895843906d7176f57870` |
-| 5 | `WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036` | homepage | `6ff8281592d820c3634451f2fcf5e6f2937bd6a9b4e43527f29bfe866190a81b` |
-| 6 | `WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037` | Pricing | `0655e36e578c20de60e8312927c72c01e0b7c1669af6171575a3236b86370cef` |
-| 7 | `WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038` | Work/evidence | `86f5fbaef1ad07615524cb0e7b371f370cdb21599bf877aa967c2d45ae70f965` |
-| 8 | `WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039` | Contact, Start, navigation, footer, forms | `1d0096a30d203c286bea5ff2061e629ad650d364fe19d139d7790acb25459169` |
-| 9 | `WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040` | metadata/schema | `748fd1b6e19ec82d35ad7bba8bafda83a37bf52e9e9cdd68d2d51dec2352290e` |
-| 10 | `WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041` | Services | `c835a97d9e4d295cf95c46765c8be9f692c6b846c4c8353c4271da0bdaea784b` |
-| 11 | `WO-2026-07-24-BOHO-CHATGPT-VISUAL-ACCESSIBLE-COPY-043` | diagrams, figures, captions, alt/accessibility text | `0858e855678571c414d0a31c66f934afca6391ef591bfabc338b8cbcea6a4064` |
-| 12 | `WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045` | routes/fragments | `47d94f4a6f5e00bba2cf9ade9cc4e3c13d400421117639ec5051752812839d1f` |
-| 13 | `WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047` | Emergency and Emergency form | `5a01517f2dc9302cda0dd4642b5bcff848037fe47b145e712311d6e3c5e51c67` |
-| 14 | `WO-2026-07-24-BOHO-CHATGPT-DIRECT-REVIEW-PROTOCOL-048` | direct-review protocol | `12b7575baa750ea11630496aa21b6c78207794d4ad1480e9d28331e8d79dc482` |
-| 15 | `WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049` | cross-packet corrections | `abbcbeb66fc5b44847069eeaf00a97d875b5389d1790373cb5f7a7c78ab12862` |
+`049 > 045 > 040 > 039 > 038 > 037 > 036 > 035 > 034 > 041 > 047 > 043 > prior governed sources`
 
-## Artifacts and counts
+Packets `044`, `046`, `048`, and `014` remain structural authorities and are not inserted into copy precedence. Packet `048` contributes review protocol, not target public records.
 
-- Packet snapshots: 15, with content, order, source file, line count, and SHA-256.
-- Target contract records: 1,233.
-- Current inventory records: 22,994 across 54 source files.
-- Target inventory records: 1,233 across 12 value-bearing packets.
-- Blocked-copy records: 1, covering 12 current public-free Boho Analytics claim locations.
-- Approved service-name values: exactly 5.
-- Approved price strings: exactly 11.
-- Approved evidence source classes: exactly 7.
-- Canonical `$95 per month` reporting products: exactly 1, with 7 governed references sharing `product.seoReporting.monthly`.
+Every packet snapshot is checked against its expected SHA-256 before generation or validation. Reordering snapshots or changing their legacy numeric `precedence` property does not change semantic selection.
 
-Target records by surface:
+## Semantic slots and collisions
 
-| Surface | Records |
+The contract contains 1,493 semantic slots. Every slot has exactly one selected record carrying packet, exact source location, field, parser format, classification, page key, and any mapping relationship. One removal slot suppresses the ordinary-form Emergency option, leaving 1,492 active selected records.
+
+The machine-readable collision report contains:
+
+| Metric | Count |
 |---|---:|
-| Timelines | 27 |
-| Five service pages | 178 |
-| Homepage | 143 |
-| Pricing | 99 |
-| Work/evidence | 99 |
-| Contact/Start/navigation/footer/forms | 136 |
-| Metadata/schema | 72 |
-| Services | 104 |
-| Visual/accessibility | 164 |
-| Route/fragment compatibility | 45 |
-| Emergency | 129 |
-| Cross-packet corrections | 37 |
+| Total collision groups | 190 |
+| Cross-packet exact-duplicate groups | 183 |
+| Explicit differing-value semantic collisions | 7 |
+| Selected records | 190 |
+| Displaced records | 481 |
+| Unresolved collisions | 0 |
 
-Target records by classification: visible text 349; actions 22; navigation 76; prices 145; timelines 76; evidence 68; form states 99; metadata 12; schema 61; figures/diagrams/captions 138; accessible text 30; routes/fragments 157.
+Differing values cannot resolve from chronology. Each of the seven differing-value collisions has an explicit supersession entry naming the selected source, displaced source locations, stable semantic slot, and selection action.
 
-## Inventory coverage
+## Parser and coverage
 
-The current inventory scans `app/Homepage.tsx`; all shared components, including Homepage, Services, ServiceDetail, Pricing, WorkEvidence, DraftForm, SiteChrome, desktop/mobile navigation, and component defaults; all top-level `app/content` sources, including navigation, service presentation, core pages, audience pages, form contract, generated service data, and route data; `app/layout.tsx`; `app/sitemap.ts`; all five service markdown sources; and all three route registries.
+The parser supports and mutation-tests these formats:
 
-Every record carries a stable key, exact value, inferred route and surface, source file and field/line, current or target state, rendering state, disposition, classification, provenance, generated-source status, and action destination where applicable. Generated current sources are explicitly marked `generatedSource: true` and `editorialAuthority: false`.
+- straight-quoted and curly-quoted values;
+- backtick values;
+- bullets and numbered lists;
+- Markdown tables and blockquotes;
+- multiline quoted and unquoted paragraphs;
+- structured fields;
+- multi-value mapping relationships.
 
-The target inventory covers homepage, Services, all five service pages, Pricing, Work, Contact, Start, Emergency, navigation, footer, forms and form states, metadata, schema, evidence, diagrams, captions, alt/accessibility text, mobile/accessibility labels, canonical routes, legacy fragments, and action destinations.
+Field-driven classification covers form labels, help and all result states, metadata, schema, captions, accessible descriptions, routes, fragments, CTA destination pairs, and packet-049 correction structures. Negative tests remove each required format and prove the omission fails.
 
-Packet-049 corrections are structured separately as line-sourced values. They record the four-path Contact heading, six ordinary inquiry options and separate Emergency block, exact seven-value evidence taxonomy and four corrected artifact assignments, historical glossary status fields, the single reporting product and compatibility alias, and the blocked Boho Analytics claim. Superseded packet records are removed only by exact packet-and-line location.
+The committed expected-slot manifest enumerates selected slot keys for all required categories. Counts are:
 
-## Validation
+| Category | Selected slots |
+|---|---:|
+| Homepage | 148 |
+| Services overview | 106 |
+| Local Visibility service | 56 |
+| Websites and Hosting service | 63 |
+| Provider Rescue service | 78 |
+| Custom Tools service | 50 |
+| Research and Analytics service | 49 |
+| Pricing | 107 |
+| Work and evidence | 104 |
+| Contact | 27 |
+| Start | 98 |
+| Emergency | 132 |
+| Navigation and footer | 98 |
+| Forms and states | 199 |
+| Metadata and schema | 81 |
+| Visuals and accessibility | 183 |
+| Routes and fragments | 205 |
+| Packet-049 corrections | 64 |
 
-The deterministic validator rebuilds the target contract and current/target inventory from the packet snapshots and exact base sources, rejects stale artifacts, and fails on:
+No required category is empty or missing.
 
-- duplicate or missing keys;
-- case-only unsourced label variants;
-- unsourced values or generated editorial authority;
-- unapproved service names and prices;
-- missing `Starting at` price records;
-- missing packet-034 timelines or material qualifications;
-- CTA/destination mismatches and case-colliding fragments;
-- prohibited outcome claims and placeholder copy;
-- missing evidence source classes, limitations, or not-client-work labels;
-- missing form states, metadata, schema, figures, accessible text, navigation, or required surfaces;
-- packet 049 not being highest precedence or any sourced correction/provenance drift;
-- three-path Contact copy, Emergency in the ordinary inquiry, or automatic Emergency redirection;
-- undefined or compound evidence source classes;
-- permanently current glossary-commit wording;
-- duplicate or divergent `$95` reporting products and fragment aliases;
-- a missing, altered, or target-approved Boho Analytics blocked-copy record;
-- unblocked current Analytics free-access claims or invented replacement availability text.
+## Current-source inventory
 
-Eleven focused mutation tests prove the original and packet-049 negative gates. Required TypeScript, lint, contract validation/tests, existing tests, static route checks, crawl, and build results are recorded in the canonical Local1 exit report. No package or dependency changed.
-Local1 manifest check: `python3 tools/repo_manifest.py check` ran and reported pre-existing unrelated dirty trees in `local1-hub`, `local1-mcp-server`, and `rankbuilderseo-site`. No task-owned file belongs to those dirty sets.
+The committed inventory is a compact deterministic manifest rather than a copy of every current value. It includes hashes, sizes, classifications, import/reachability evidence, public-string counts, contextual blocked-claim hashes, and source provenance for 63 governed inputs.
 
-## Unchanged-render evidence
+- Reachable sources: 59
+- Authored sources: 59
+- Generated mirrors: 1
+- On-demand full-detail records: 12,004
+- Contextual Analytics claim groups: 32
 
-The corrected candidate and an independent detached worktree at the exact accepted base each built 184 static HTML files. Raw hashes differed only because Next generated a different CSS chunk filename and build ID. After normalizing only `/_next/static/chunks/*.(js|css)` filenames and the explicit Next `b` build-ID field, both complete HTML sets produced the same aggregate SHA-256:
+`app/content/servicePages.generated.ts` is correctly classified as a reachable generated mirror with `editorialAuthority: false`. Its five Markdown inputs and `scripts/generate-service-page-data.mjs` are represented as authored/generator inputs in the real build path.
 
-`9270ab65e394f070ae19dc3889f8282b5f513624a91fb9e19169ac2c2496f724`
+The full value ledger remains reproducible without being committed:
 
-The complete relative-path sets match, and the normalized difference count is zero. The corrected candidate full suite also passed 23 rendered/static tests, crawled 181 canonical routes and 80 redirect variants with zero failures, and produced the same 184-route static HTML set as the base. No existing renderer or current-copy source differs from the base. The contract adapter has no application imports.
+```sh
+node scripts/commercial-copy-build.mjs --check --inventory-detail /tmp/boho-commercial-inventory-detail.json
+```
 
-## Blocked copy
+The detailed output has a committed record count and deterministic digest. It is generated only at an explicit local path.
 
-The registry contains `product.bohoAnalytics.publicFreeAvailability` with the exact packet-049 status and reason. It maps 12 current claim locations across `ResourcesPage.tsx`, generated service-page data, and the Research, Analytics & Improvement service source. Those existing sources remain unchanged, but their inventory disposition is `blocked-pending-current-product-verification`. The claim is not target-approved, and `replacementText` is `null`.
+## Blocked semantics
 
-The registry policy forbids substituting a placeholder, guess, synonym, summary, caption, alt text, metadata value, field state, mobile variant, `coming soon`, `request access`, `free dashboard`, or other invented availability wording.
+`product.bohoAnalytics.publicFreeAvailability` remains:
 
-## Review boundary
+- `targetApproved: false`;
+- `replacementText: null`;
+- blocked pending current product verification.
 
-This phase does not import or render the contract. The work order authorizes a normal fast-forward and push of the non-rendering commits to `main`; it does not authorize a preview, deployment, Cloudflare, DNS, billing, credential, form-backend, Worker, or production mutation. Worker completion is `needs_review`, not acceptance. ChatGPT must conduct Review Pass 1 and fresh adversarial Review Pass 2 against the exact commit before permitting downstream migration work.
+Contextual detection groups nearby product identity and availability language, including public access, free or unpaid use, dashboard access, self-hosted, and open-source variants. It covers both authored Markdown and the reachable generated mirror. The registry is validated for exact membership; deleting only one claim fails.
 
-Historical rollback point: exact accepted public-render base `89cb0982b8f2274a289e8126c9472640a5305011`. Reverting the two non-rendering contract commits does not require a public-output rollback because application output is unchanged.
+No adapter may request the blocked semantic key. The generator and runtime adapter guard both fail closed. No placeholder, synonym, fallback, `coming soon`, `request access`, `free dashboard`, or other substitute status is approved.
+
+## Typed adapters
+
+Small typed adapters are generated for Homepage, Services overview, Pricing, Work/evidence, Contact, Start, Emergency, and each of the five service pages. They select schema-validated records by page key and contain an explicit blocked-slot guard.
+
+No existing renderer imports the contract or generated adapter. The adapters are future integration boundaries only.
+
+## Enforcement and rendering boundary
+
+`commercial-copy:check` performs deterministic regeneration, shape validation, freshness checks, and mutation tests. It is mandatory in both the ordinary `pnpm test` command and the Cloudflare Pages validation workflow before deployable-output acceptance.
+
+The candidate and accepted public-render base each produce 184 HTML files with an identical path set. After the previously accepted normalization of emitted chunk filenames and the explicit Next build-ID field, both sets have aggregate SHA-256:
+
+`83173841edbeddfb99bc968b4cd13bd801efb2918fea80bbdc7edeb935215c0b`
+
+Normalized differences: `0`.
+
+No renderer, current public-copy source, route, form, metadata implementation, public asset, Worker, Cloudflare setting, or deployment changed.
