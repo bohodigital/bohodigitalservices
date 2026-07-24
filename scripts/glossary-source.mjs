@@ -1,7 +1,6 @@
 import { readFile } from "node:fs/promises";
 
 export const knowledgeSourceUrl = new URL("../app/content/knowledge.ts", import.meta.url);
-export const glossaryEditorialSourceUrl = new URL("../app/content/glossaryEditorial.ts", import.meta.url);
 
 function parseString(objectSource, field) {
   const match = objectSource.match(new RegExp(`^    ${field}: ("(?:[^"\\\\]|\\\\.)*"),$`, "m"));
@@ -47,13 +46,4 @@ export async function readGlossarySource() {
   );
 
   return { clusterSlugs, entries, source, sourceIds };
-}
-
-export async function readGlossaryExamples() {
-  const source = await readFile(glossaryEditorialSourceUrl, "utf8");
-  const examples = new Map(
-    [...source.matchAll(/^  (?:"([^"]+)"|([a-z0-9-]+)): ("(?:[^"\\]|\\.)*"),$/gm)]
-      .map((match) => [match[1] ?? match[2], JSON.parse(match[3])]),
-  );
-  return { examples, source };
 }

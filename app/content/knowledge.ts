@@ -1689,10 +1689,8 @@ const glossaryEntrySeeds: GlossaryEntrySeed[] = [
     shortDefinition: "Vanity metrics are numbers that look impressive without helping a team make better decisions.",
     definition: "Vanity metrics are attractive because they are easy to screenshot and easy to celebrate.",
     whyItMatters: "Reporting can feel active while still leaving the team no wiser about what should happen next.",
-    commonMisunderstanding: "A large number is not a vanity metric simply because it is large. It becomes vanity-oriented when its definition, context, or connection to a decision is missing.",
-    businessImplications: "Good reporting stays close to decisions. It helps a team choose what to fix, what to expand, what to stop doing, and what result actually mattered.",
-    relatedTermSlugs: ["metric", "analytics", "conversion-rate", "google-search-console"],
     sourceIds: [],
+    lastReviewed: "2026-07-22",
   },
   {
     term: "First-party data",
@@ -2452,7 +2450,7 @@ const glossaryEntrySeeds: GlossaryEntrySeed[] = [
 export const glossaryEntries: GlossaryEntry[] = glossaryEntrySeeds.map((entry) => ({
   ...entry,
   cluster: glossaryClusterBySlug[entry.slug],
-  lastReviewed: entry.lastReviewed ?? "2026-07-22",
+  lastReviewed: entry.lastReviewed ?? "2026-07-16",
 }));
 
 export const glossaryBySlug = new Map(

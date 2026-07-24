@@ -4832,35 +4832,6 @@ body,
   margin-top: 0.45rem;
 }
 
-.glossary-term-page__related {
-  display: grid;
-  gap: 0.7rem;
-  margin: 1rem 0 0;
-  padding: 0 !important;
-  list-style: none;
-}
-
-.glossary-term-page__related a {
-  display: grid;
-  gap: 0.25rem;
-  padding: 0.9rem 1rem;
-  border: 1px solid rgba(17, 18, 20, 0.18);
-  background: var(--warm-ivory);
-  color: inherit;
-  text-decoration: none;
-}
-
-.glossary-term-page__related a:hover,
-.glossary-term-page__related a:focus-visible {
-  border-color: var(--copper-text);
-  box-shadow: 0 0 0 2px rgba(151, 78, 48, 0.16);
-}
-
-.glossary-term-page__related span {
-  color: var(--muted-ink);
-  line-height: 1.5;
-}
-
 @media (max-width: 46rem) {
   .glossary-term-page__content {
     grid-template-columns: 1fr;

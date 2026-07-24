@@ -2,7 +2,7 @@ import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { readGlossaryExamples, readGlossarySource } from "./glossary-source.mjs";
+import { readGlossarySource } from "./glossary-source.mjs";
 import {
   loadLegacyUrlMap,
   normalizedPath,
@@ -165,7 +165,6 @@ await emitArtifact(
 );
 
 const { entries } = await readGlossarySource();
-const { examples } = await readGlossaryExamples();
 const glossaryManifest = {
   version: 1,
   generatedAt: "2026-07-22",
@@ -177,7 +176,6 @@ const glossaryManifest = {
     path: `/learn/glossary/${entry.slug}/`,
     canonicalUrl: `${siteUrl}/learn/glossary/${entry.slug}/`,
     shortDefinition: entry.shortDefinition,
-    practicalExample: examples.get(entry.slug),
     indexable: true,
     sitemap: true,
   })),
@@ -283,7 +281,6 @@ const manifestReport = `# Boho glossary route manifest
 - Generated detail pages: ${entries.length}
 - Sitemap detail URLs: ${entries.length}
 - Indexable detail pages: ${entries.length}
-- Reviewed practical examples: ${examples.size}
 - Noindex detail pages: 0
 - Slug collisions: 0
 - Unresolved related-term references: 0

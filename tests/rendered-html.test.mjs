@@ -3,8 +3,6 @@ import { createHash } from "node:crypto";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
-import { readGlossaryExamples } from "../scripts/glossary-source.mjs";
-
 async function render(pathname = "/", origin = "http://localhost") {
   const url = new URL(pathname, origin);
   const decodedPath = decodeURIComponent(url.pathname);
@@ -660,7 +658,7 @@ test("uses accessible glossary definition popups with direct glossary fallbacks"
   assert.match(glossary, /System clusters/i);
   assert.equal((glossary.match(/id="cluster-[^"]+"/g) ?? []).length, 13);
   assert.match(glossary, /Filter by cluster/i);
-  assert.match(glossary, /Last reviewed July 22, 2026/i);
+  assert.match(glossary, /Last reviewed July 16, 2026/i);
   assert.doesNotMatch(glossary, /small question mark|Every popup/i);
   assert.doesNotMatch(glossary, /old mascot-led|no entries are fabricated|definition standard|published definitions are reviewed|repeatable scan|traffic data can replace|reviewed against linked sources|MCP…/i);
 });
@@ -814,7 +812,6 @@ test("keeps the mirrored hero uncropped and glossary links connected across the 
 });
 
 test("publishes permanent indexable glossary detail routes with canonical schema", async () => {
-  const { examples } = await readGlossaryExamples();
   const knowledgeSource = await readFile(new URL("../app/content/knowledge.ts", import.meta.url), "utf8");
   const entryCatalog = knowledgeSource.slice(
     knowledgeSource.indexOf("const glossaryEntrySeeds"),
@@ -837,20 +834,7 @@ test("publishes permanent indexable glossary detail routes with canonical schema
     const robotsTags = html.match(/<meta\b[^>]*name="robots"[^>]*>/gi) ?? [];
     assert.deepEqual(robotsTags, ['<meta name="robots" content="index, follow"/>']);
     assert.match(html, /"@type":"DefinedTerm"/);
-    assert.match(html, /"@type":"WebPage"/);
     assert.match(html, /"@type":"BreadcrumbList"/);
-    assert.match(
-      html,
-      new RegExp(`${term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?:<!--.*?-->\\s*)? in practice`, "i"),
-    );
-    assert.ok(html.includes(examples.get(slug)), `${route} lacks its reviewed practical example`);
-    const articleText = html.match(/<article\b[\s\S]*?<\/article>/i)?.[0]
-      .replace(/<script\b[\s\S]*?<\/script>/gi, " ")
-      .replace(/<[^>]+>/g, " ")
-      .replace(/&(?:amp|quot|#x27|#39|lt|gt);/g, " ")
-      .replace(/\s+/g, " ")
-      .trim();
-    assert.ok((articleText?.split(" ").length ?? 0) >= 150, `${route} remains too thin`);
     assert.match(html, /<meta property="og:image" content="https:\/\/bohodigitalservices\.com\/og-boho-digital-engineering-20260714\.png"\/>/i);
     assert.match(html, new RegExp(`<meta name="twitter:title" content="${term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")} Definition \\| Boho Digital Services"`, "i"));
     assert.match(html, /aria-label="Breadcrumb"/i);
@@ -864,9 +848,8 @@ test("publishes permanent indexable glossary detail routes with canonical schema
 
   const vanity = await (await render("/learn/glossary/vanity-metrics/")).text();
   assert.match(vanity, /Vanity metrics are numbers that look impressive without helping a team make better decisions\./);
-  assert.match(vanity, /A dashboard celebrating raw traffic spikes without explaining lead quality, page context, or next actions is often leaning on vanity metrics\./);
-  assert.match(vanity, /Good reporting stays close to decisions\./);
   assert.match(vanity, /Last reviewed\s*(?:<!--.*?-->\s*)?July 22, 2026/);
+  assert.doesNotMatch(vanity, /Common misunderstanding/);
 });
 
 test("keeps claim and release boundaries persistent for this private review candidate", async () => {

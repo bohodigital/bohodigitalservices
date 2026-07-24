@@ -50,8 +50,6 @@ export async function generateMetadata({
       description,
       url: canonical,
       type: "website",
-      siteName: "Boho Digital Services",
-      locale: "en_US",
       images: [socialImage],
     },
     twitter: {
