@@ -1,0 +1,4195 @@
+{
+  "schemaVersion": 1,
+  "audit": {
+    "workOrderKey": "WO-2026-07-24-BOHO-COPY-CONTRACT-AUDIT-R2-065",
+    "targetCommit": "265f596c099c8ec7bbb454ed9d1c4eedec50f09f",
+    "baseRenderCommit": "89cb0982b8f2274a289e8126c9472640a5305011",
+    "verdict": "REWORK",
+    "model": "gpt-5.6-sol",
+    "reasoningLevel": "high"
+  },
+  "packetPrecedence": {
+    "packetCount": 15,
+    "highestPrecedence": {
+      "key": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "precedence": 15,
+      "surface": "cross-packet-corrections",
+      "sha256": "abbcbeb66fc5b44847069eeaf00a97d875b5389d1790373cb5f7a7c78ab12862",
+      "lineCount": 199,
+      "contentHashRecomputed": true
+    },
+    "reviewProtocol": {
+      "key": "WO-2026-07-24-BOHO-CHATGPT-DIRECT-REVIEW-PROTOCOL-048",
+      "precedence": 14,
+      "sha256": "12b7575baa750ea11630496aa21b6c78207794d4ad1480e9d28331e8d79dc482",
+      "lineCount": 319
+    },
+    "packetOrder": [
+      {
+        "precedence": 1,
+        "key": "WO-2026-07-23-BOHO-CHATGPT-VERBATIM-COPY-LOCK-021",
+        "sha256": "d740f45347413eb187b54ab871b6aa7bd1d147c79d56d682acfa065bc2b7f8c2"
+      },
+      {
+        "precedence": 2,
+        "key": "WO-2026-07-23-BOHO-CHATGPT-EDITORIAL-SELF-AUDIT-V2-022",
+        "sha256": "4647401a4ef8bc252495f3e61505c25f8e9729aca86bad27266cb9b372e6f6c9"
+      },
+      {
+        "precedence": 3,
+        "key": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034",
+        "sha256": "50b5841db45ecd0d20bfd01cdfa91317fbcd25d7d18c2a5d8f0164957a5ebd5e"
+      },
+      {
+        "precedence": 4,
+        "key": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+        "sha256": "91a8f6ad3556475af0b8b58571e3f82cb10be0908e3f895843906d7176f57870"
+      },
+      {
+        "precedence": 5,
+        "key": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+        "sha256": "6ff8281592d820c3634451f2fcf5e6f2937bd6a9b4e43527f29bfe866190a81b"
+      },
+      {
+        "precedence": 6,
+        "key": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "sha256": "0655e36e578c20de60e8312927c72c01e0b7c1669af6171575a3236b86370cef"
+      },
+      {
+        "precedence": 7,
+        "key": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+        "sha256": "86f5fbaef1ad07615524cb0e7b371f370cdb21599bf877aa967c2d45ae70f965"
+      },
+      {
+        "precedence": 8,
+        "key": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+        "sha256": "1d0096a30d203c286bea5ff2061e629ad650d364fe19d139d7790acb25459169"
+      },
+      {
+        "precedence": 9,
+        "key": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "sha256": "748fd1b6e19ec82d35ad7bba8bafda83a37bf52e9e9cdd68d2d51dec2352290e"
+      },
+      {
+        "precedence": 10,
+        "key": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+        "sha256": "c835a97d9e4d295cf95c46765c8be9f692c6b846c4c8353c4271da0bdaea784b"
+      },
+      {
+        "precedence": 11,
+        "key": "WO-2026-07-24-BOHO-CHATGPT-VISUAL-ACCESSIBLE-COPY-043",
+        "sha256": "0858e855678571c414d0a31c66f934afca6391ef591bfabc338b8cbcea6a4064"
+      },
+      {
+        "precedence": 12,
+        "key": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+        "sha256": "47d94f4a6f5e00bba2cf9ade9cc4e3c13d400421117639ec5051752812839d1f"
+      },
+      {
+        "precedence": 13,
+        "key": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+        "sha256": "5a01517f2dc9302cda0dd4642b5bcff848037fe47b145e712311d6e3c5e51c67"
+      },
+      {
+        "precedence": 14,
+        "key": "WO-2026-07-24-BOHO-CHATGPT-DIRECT-REVIEW-PROTOCOL-048",
+        "sha256": "12b7575baa750ea11630496aa21b6c78207794d4ad1480e9d28331e8d79dc482"
+      },
+      {
+        "precedence": 15,
+        "key": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "sha256": "abbcbeb66fc5b44847069eeaf00a97d875b5389d1790373cb5f7a7c78ab12862"
+      }
+    ],
+    "bindingFinalCopyOrder": [
+      "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+      "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+      "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+      "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+      "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+      "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+      "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+      "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034",
+      "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+      "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+      "WO-2026-07-24-BOHO-CHATGPT-VISUAL-ACCESSIBLE-COPY-043",
+      "WO-2026-07-23-BOHO-CHATGPT-VERBATIM-COPY-LOCK-021",
+      "WO-2026-07-23-BOHO-CHATGPT-EDITORIAL-SELF-AUDIT-V2-022"
+    ],
+    "structuralAuthorities": [
+      "packet-044",
+      "packet-046",
+      "packet-048",
+      "packet-014"
+    ],
+    "installedOrderMatchesBindingOrder": false,
+    "genericSemanticSlotResolverImplemented": false,
+    "exactValueCollisionGroupCount": 151,
+    "exactValueCollisionRecordCount": 468,
+    "exactValueCollisionGroups": [
+      {
+        "exactValue": "/",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0449",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:449"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0023",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:23"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "/contact/",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0087",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:87"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0203",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:203"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "/emergency/",
+        "recordCount": 6,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0435",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:435"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0177",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:177"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0243",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:243"
+          },
+          {
+            "key": "target.emergency.p13.l0019",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:19"
+          },
+          {
+            "key": "target.emergency.p13.l0319",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:319"
+          },
+          {
+            "key": "target.cross-packet-corrections.p15.l0057",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:57"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "/pricing/",
+        "recordCount": 4,
+        "records": [
+          {
+            "key": "target.pricing.p06.l0019",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:19"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0163",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:163"
+          },
+          {
+            "key": "target.services.p10.l0034",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:34"
+          },
+          {
+            "key": "target.services.p10.l0349",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:349"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "/pricing/#custom-solutions",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0388",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:388"
+          },
+          {
+            "key": "target.homepage.p05.l0131",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:131"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "/pricing/#ongoing-seo",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0102",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:102"
+          },
+          {
+            "key": "target.homepage.p05.l0098",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:98"
+          },
+          {
+            "key": "target.cross-packet-corrections.p15.l0153",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:153"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "/pricing/#provider-rescue",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0252",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:252"
+          },
+          {
+            "key": "target.homepage.p05.l0080",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:80"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "/pricing/#research-audits",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0318",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:318"
+          },
+          {
+            "key": "target.homepage.p05.l0113",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:113"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "/pricing/#websites",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0182",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:182"
+          },
+          {
+            "key": "target.homepage.p05.l0065",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:65"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "/services/",
+        "recordCount": 9,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0034",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:34"
+          },
+          {
+            "key": "target.pricing.p06.l0045",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:45"
+          },
+          {
+            "key": "target.pricing.p06.l0328",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:328"
+          },
+          {
+            "key": "target.work.p07.l0045",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:45"
+          },
+          {
+            "key": "target.work.p07.l0341",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:341"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0113",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:113"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0218",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:218"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0455",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:455"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0043",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:43"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "/services/custom-digital-solutions/",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0220",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:220"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0143",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:143"
+          },
+          {
+            "key": "target.services.p10.l0133",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:133"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "/services/ongoing-seo/",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0160",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:160"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0063",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:63"
+          },
+          {
+            "key": "target.services.p10.l0065",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:65"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "/services/provider-rescue/",
+        "recordCount": 4,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0190",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:190"
+          },
+          {
+            "key": "target.homepage.p05.l0288",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:288"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0103",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:103"
+          },
+          {
+            "key": "target.services.p10.l0099",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:99"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "/services/research-audits-strategy/",
+        "recordCount": 4,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0205",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:205"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0123",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:123"
+          },
+          {
+            "key": "target.services.p10.l0116",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:116"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0122",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:122"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "/services/web-design-redesign/",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0175",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:175"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0083",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:83"
+          },
+          {
+            "key": "target.services.p10.l0082",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:82"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "/start/",
+        "recordCount": 17,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0028",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:28"
+          },
+          {
+            "key": "target.homepage.p05.l0426",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:426"
+          },
+          {
+            "key": "target.pricing.p06.l0039",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:39"
+          },
+          {
+            "key": "target.pricing.p06.l0322",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:322"
+          },
+          {
+            "key": "target.work.p07.l0039",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:39"
+          },
+          {
+            "key": "target.work.p07.l0335",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:335"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0107",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:107"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0135",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:135"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0198",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:198"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0223",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:223"
+          },
+          {
+            "key": "target.services.p10.l0028",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:28"
+          },
+          {
+            "key": "target.services.p10.l0329",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:329"
+          },
+          {
+            "key": "target.services.p10.l0343",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:343"
+          },
+          {
+            "key": "target.emergency.p13.l0054",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:54"
+          },
+          {
+            "key": "target.emergency.p13.l0099",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:99"
+          },
+          {
+            "key": "target.emergency.p13.l0325",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:325"
+          },
+          {
+            "key": "target.emergency.p13.l0392",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:392"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "/work/",
+        "recordCount": 4,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0258",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:258"
+          },
+          {
+            "key": "target.work.p07.l0019",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:19"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0183",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:183"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0128",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:128"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "#better-grades",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.work.p07.l0246",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:246"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0067",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:67"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0100",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:100"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "#concept-interfaces",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.work.p07.l0272",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:272"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0068",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:68"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0075",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:75"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "#custom-solutions",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.pricing.p06.l0237",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:237"
+          },
+          {
+            "key": "target.pricing.p06.l0254",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:254"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0028",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:28"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "#initial-review",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.pricing.p06.l0084",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:84"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0023",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:23"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "#ongoing-seo",
+        "recordCount": 4,
+        "records": [
+          {
+            "key": "target.pricing.p06.l0101",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:101"
+          },
+          {
+            "key": "target.pricing.p06.l0118",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:118"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0024",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:24"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0043",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:43"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "#ownership-map",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.work.p07.l0116",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:116"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0062",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:62"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0084",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:84"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "#provider-rescue",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.pricing.p06.l0186",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:186"
+          },
+          {
+            "key": "target.pricing.p06.l0203",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:203"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0026",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:26"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "#rank-builder",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.work.p07.l0220",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:220"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0066",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:66"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0099",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:99"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "#research-audits",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.pricing.p06.l0220",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:220"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0027",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:27"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0051",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:51"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "#route-validation",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.work.p07.l0168",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:168"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0064",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:64"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0086",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:86"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "#site-graph",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.work.p07.l0194",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:194"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0065",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:65"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0098",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:98"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "#vanity-metrics-migration",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.work.p07.l0142",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:142"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0063",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:63"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0085",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:85"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "#websites",
+        "recordCount": 5,
+        "records": [
+          {
+            "key": "target.pricing.p06.l0135",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:135"
+          },
+          {
+            "key": "target.pricing.p06.l0152",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:152"
+          },
+          {
+            "key": "target.pricing.p06.l0169",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:169"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0025",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:25"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0035",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:35"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "A straightforward free public-information review is normally completed within two business days after the required website and business context are received.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.pricing.p06.l0081",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:81"
+          },
+          {
+            "key": "target.services.p10.l0323",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:323"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Boho builds and repairs the systems that help people find a business, understand it, trust it, and take the next step.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0019",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:19"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0035",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:35"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Boho Digital Services Pricing | Websites, SEO, Migration, Audits & Automation",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.pricing.p06.l0013",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:13"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0166",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:166"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Boho helps businesses leave unsuitable, uncooperative, or poorly documented providers while protecting the accounts, content, URLs, measurement history, and working systems worth keeping.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0197",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:197"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0115",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:115"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Boho normally replies to a standard inquiry within two business days. A reply may ask for clarification, recommend a smaller first step, or explain that the project is not a fit.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.timelines.p03.l0024",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034.md:24"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0101",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:101"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Boho-owned property",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.work.p07.l0252",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:252"
+          },
+          {
+            "key": "target.cross-packet-corrections.p15.l0065",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:65"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Boho-owned technical record",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.work.p07.l0148",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:148"
+          },
+          {
+            "key": "target.work.p07.l0174",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:174"
+          },
+          {
+            "key": "target.cross-packet-corrections.p15.l0066",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:66"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Business or organization",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0258",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:258"
+          },
+          {
+            "key": "target.emergency.p13.l0200",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:200"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Check the connection and try again. Your entries remain on this page.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0494",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:494"
+          },
+          {
+            "key": "target.emergency.p13.l0358",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:358"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Chicago-based. Remote work available.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0040",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:40"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0510",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:510"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Client controls",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0278",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:278"
+          },
+          {
+            "key": "target.visual-accessibility.p11.l0095",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-VISUAL-ACCESSIBLE-COPY-043",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-VISUAL-ACCESSIBLE-COPY-043.md:95"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Complex provider rescue or migration: often 2–6 weeks or longer. Former-provider cooperation, registrar or platform review, account recovery, DNS dependencies, content condition, and legal ownership disputes can control the schedule.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.timelines.p03.l0064",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034.md:64"
+          },
+          {
+            "key": "target.service-detail.p04.l0213",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:213"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Contact Boho Digital Services",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0081",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:81"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0206",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:206"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Contact Boho Digital Services about a website, search visibility, provider migration, audit, analytics, or custom-system question, or begin a full project inquiry.",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0084",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:84"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0209",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:209"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0218",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:218"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Contact Boho without diagnosing the machinery first.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0095",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:95"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0212",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:212"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Current provider or platform",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0418",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:418"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0336",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:336"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Current status",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0251",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:251"
+          },
+          {
+            "key": "target.work.p07.l0057",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:57"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Custom discovery — Starting at $500",
+        "recordCount": 4,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0337",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:337"
+          },
+          {
+            "key": "target.homepage.p05.l0122",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:122"
+          },
+          {
+            "key": "target.pricing.p06.l0225",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:225"
+          },
+          {
+            "key": "target.services.p10.l0232",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:232"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Custom Tools & Automation",
+        "recordCount": 4,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0327",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:327"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0293",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:293"
+          },
+          {
+            "key": "target.services.p10.l0127",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:127"
+          },
+          {
+            "key": "target.cross-packet-corrections.p15.l0038",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:38"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Elegant websites and technical SEO, without the agency fog.",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0016",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:16"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0507",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:507"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0032",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:32"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Email",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0247",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:247"
+          },
+          {
+            "key": "target.emergency.p13.l0189",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:189"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Email Boho",
+        "recordCount": 4,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0429",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:429"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0146",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:146"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0483",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:483"
+          },
+          {
+            "key": "target.emergency.p13.l0339",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:339"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Emergency requests are triaged as capacity, authority, access, and risk controls allow. Submission does not guarantee immediate response or resolution.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.metadata-schema.p09.l0255",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:255"
+          },
+          {
+            "key": "target.emergency.p13.l0025",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:25"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Emergency Website Help",
+        "recordCount": 4,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0432",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:432"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0174",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:174"
+          },
+          {
+            "key": "target.emergency.p13.l0033",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:33"
+          },
+          {
+            "key": "target.cross-packet-corrections.p15.l0054",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:54"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Emergency Website Help | Launch, Forms, Access, Redirects & Migration",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.metadata-schema.p09.l0246",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:246"
+          },
+          {
+            "key": "target.emergency.p13.l0013",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:13"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Fictional concept interface",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.work.p07.l0278",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:278"
+          },
+          {
+            "key": "target.cross-packet-corrections.p15.l0070",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:70"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Fictional concept interface — not client work",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0355",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:355"
+          },
+          {
+            "key": "target.work.p07.l0293",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:293"
+          },
+          {
+            "key": "target.visual-accessibility.p11.l0133",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-VISUAL-ACCESSIBLE-COPY-043",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-VISUAL-ACCESSIBLE-COPY-043.md:133"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Fields marked Required must be completed before the form can be sent.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0229",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:229"
+          },
+          {
+            "key": "target.emergency.p13.l0173",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:173"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Find out what is wrong before paying to fix the wrong thing.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0264",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:264"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0132",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:132"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Findings discussion: normally offered within two business days after delivery.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.timelines.p03.l0076",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034.md:76"
+          },
+          {
+            "key": "target.service-detail.p04.l0279",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:279"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "First implementation cycle: usually begins within 2–4 weeks after scope approval, depending on access, technical condition, content readiness, and the amount of work included.",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.timelines.p03.l0036",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034.md:36"
+          },
+          {
+            "key": "target.service-detail.p04.l0062",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:62"
+          },
+          {
+            "key": "target.pricing.p06.l0115",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:115"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Five ways Boho can help",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0225",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:225"
+          },
+          {
+            "key": "target.services.p10.l0138",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:138"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Focused audit or strategy — Starting at $350",
+        "recordCount": 4,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0271",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:271"
+          },
+          {
+            "key": "target.homepage.p05.l0104",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:104"
+          },
+          {
+            "key": "target.pricing.p06.l0208",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:208"
+          },
+          {
+            "key": "target.services.p10.l0215",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:215"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Focused custom build — Starting at $2,500",
+        "recordCount": 4,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0339",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:339"
+          },
+          {
+            "key": "target.homepage.p05.l0119",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:119"
+          },
+          {
+            "key": "target.pricing.p06.l0242",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:242"
+          },
+          {
+            "key": "target.services.p10.l0235",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:235"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Focused review: usually 5–10 business days after the agreed evidence and access are available.",
+        "recordCount": 5,
+        "records": [
+          {
+            "key": "target.timelines.p03.l0072",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034.md:72"
+          },
+          {
+            "key": "target.service-detail.p04.l0275",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:275"
+          },
+          {
+            "key": "target.homepage.p05.l0107",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:107"
+          },
+          {
+            "key": "target.pricing.p06.l0217",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:217"
+          },
+          {
+            "key": "target.services.p10.l0221",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:221"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Focused website improvement — Starting at $750",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0121",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:121"
+          },
+          {
+            "key": "target.pricing.p06.l0123",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:123"
+          },
+          {
+            "key": "target.services.p10.l0172",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:172"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Glossary route and static-crawl validation",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.work.p07.l0171",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:171"
+          },
+          {
+            "key": "target.cross-packet-corrections.p15.l0099",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:99"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "https://",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0275",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:275"
+          },
+          {
+            "key": "target.emergency.p13.l0214",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:214"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Initial baseline and priority plan: usually 5–10 business days after required access and business information are available.",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.timelines.p03.l0034",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034.md:34"
+          },
+          {
+            "key": "target.service-detail.p04.l0060",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:60"
+          },
+          {
+            "key": "target.services.p10.l0161",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:161"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Initial feasibility review: usually 2–5 business days after the workflow, users, inputs, outputs, and constraints are described.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.timelines.p03.l0084",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034.md:84"
+          },
+          {
+            "key": "target.service-detail.p04.l0343",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:343"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Initial public review — Free",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.pricing.p06.l0072",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:72"
+          },
+          {
+            "key": "target.services.p10.l0320",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:320"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Initial recommendation and scope: usually 2–5 business days after the current site, business requirements, and available assets are reviewed.",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.timelines.p03.l0046",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034.md:46"
+          },
+          {
+            "key": "target.service-detail.p04.l0129",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:129"
+          },
+          {
+            "key": "target.pricing.p06.l0132",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:132"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Initial risk review: usually 1–3 business days after the known accounts, provider, platform, and failure are identified.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.timelines.p03.l0058",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034.md:58"
+          },
+          {
+            "key": "target.service-detail.p04.l0207",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:207"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Inspect Boho-owned tools, public systems, sample documents, migration records, validation reports, and concept interfaces with clear source labels and limitations.",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.work.p07.l0016",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:16"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0189",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:189"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0198",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:198"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "It is not a complete audit, private-account review, provider recovery engagement, implementation project, quote, or guarantee of availability.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.pricing.p06.l0078",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:78"
+          },
+          {
+            "key": "target.services.p10.l0317",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:317"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Large technical, analytics, market, or multi-property audit: usually 2–4 weeks.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.timelines.p03.l0074",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034.md:74"
+          },
+          {
+            "key": "target.service-detail.p04.l0277",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:277"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Larger custom systems are scheduled only after discovery. Integration access, external APIs, security requirements, testing, data migration, and human-review boundaries can materially change the timeline.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.timelines.p03.l0090",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034.md:90"
+          },
+          {
+            "key": "target.service-detail.p04.l0349",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:349"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Leave the bad provider without setting the useful parts on fire.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0194",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:194"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0112",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:112"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Local Visibility & Lead Systems",
+        "recordCount": 4,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0044",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:44"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0290",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:290"
+          },
+          {
+            "key": "target.services.p10.l0059",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:59"
+          },
+          {
+            "key": "target.cross-packet-corrections.p15.l0035",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:35"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "mailto:contact@bohemiandigital.org",
+        "recordCount": 4,
+        "records": [
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0149",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:149"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0472",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:472"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0486",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:486"
+          },
+          {
+            "key": "target.emergency.p13.l0342",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:342"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Make the business easier to find, easier to understand, and easier to contact.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0047",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:47"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0072",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:72"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Migration assistance — Starting at $1,000",
+        "recordCount": 4,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0203",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:203"
+          },
+          {
+            "key": "target.homepage.p05.l0071",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:71"
+          },
+          {
+            "key": "target.pricing.p06.l0191",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:191"
+          },
+          {
+            "key": "target.services.p10.l0198",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:198"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Name",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0236",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:236"
+          },
+          {
+            "key": "target.emergency.p13.l0178",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:178"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "New website — Starting at $1,500",
+        "recordCount": 4,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0123",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:123"
+          },
+          {
+            "key": "target.homepage.p05.l0056",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:56"
+          },
+          {
+            "key": "target.pricing.p06.l0140",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:140"
+          },
+          {
+            "key": "target.services.p10.l0175",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:175"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Not sure yet",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0296",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:296"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0379",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:379"
+          },
+          {
+            "key": "target.cross-packet-corrections.p15.l0040",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:40"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Ongoing work: organized in monthly cycles with a named priority, completed-work record, verification, limitations, and next decision.",
+        "recordCount": 4,
+        "records": [
+          {
+            "key": "target.timelines.p03.l0038",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034.md:38"
+          },
+          {
+            "key": "target.service-detail.p04.l0064",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:64"
+          },
+          {
+            "key": "target.homepage.p05.l0092",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:92"
+          },
+          {
+            "key": "target.pricing.p06.l0098",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:98"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Open the evidence",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0252",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:252"
+          },
+          {
+            "key": "target.work.p07.l0058",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:58"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Optional",
+        "recordCount": 8,
+        "records": [
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0272",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:272"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0331",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:331"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0339",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:339"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0350",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:350"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0361",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:361"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0369",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:369"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0387",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:387"
+          },
+          {
+            "key": "target.emergency.p13.l0253",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:253"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Ownership and dependency inventory: usually 2–5 business days when the required information and authorized access are available.",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.timelines.p03.l0060",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034.md:60"
+          },
+          {
+            "key": "target.service-detail.p04.l0209",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:209"
+          },
+          {
+            "key": "target.pricing.p06.l0183",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:183"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Paid discovery, when required: usually 1–2 weeks.",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.timelines.p03.l0086",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034.md:86"
+          },
+          {
+            "key": "target.service-detail.p04.l0345",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:345"
+          },
+          {
+            "key": "target.pricing.p06.l0234",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:234"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Post-launch verification: normally 7–14 days for the checks stated in the project scope. This observation period is not a promise that every third-party system will process the launch within that time.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.timelines.p03.l0052",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034.md:52"
+          },
+          {
+            "key": "target.service-detail.p04.l0135",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:135"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Provider controls",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0279",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:279"
+          },
+          {
+            "key": "target.visual-accessibility.p11.l0096",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-VISUAL-ACCESSIBLE-COPY-043",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-VISUAL-ACCESSIBLE-COPY-043.md:96"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Provider Rescue & Migration",
+        "recordCount": 4,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0191",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:191"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0292",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:292"
+          },
+          {
+            "key": "target.services.p10.l0093",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:93"
+          },
+          {
+            "key": "target.cross-packet-corrections.p15.l0037",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:37"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Provider Rescue Assessment — Starting at $350",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0201",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:201"
+          },
+          {
+            "key": "target.pricing.p06.l0174",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:174"
+          },
+          {
+            "key": "target.services.p10.l0195",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:195"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Public pricing. Documented work. Clear scope. No mystery retainers.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0037",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:37"
+          },
+          {
+            "key": "target.services.p10.l0037",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:37"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Ready to transfer",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0282",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:282"
+          },
+          {
+            "key": "target.visual-accessibility.p11.l0099",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-VISUAL-ACCESSIBLE-COPY-043",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-VISUAL-ACCESSIBLE-COPY-043.md:99"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Recovery required",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0281",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:281"
+          },
+          {
+            "key": "target.visual-accessibility.p11.l0098",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-VISUAL-ACCESSIBLE-COPY-043",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-VISUAL-ACCESSIBLE-COPY-043.md:98"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Replace repeated manual work with a focused system people can understand.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0330",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:330"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0152",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:152"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Request bounded urgent triage for a broken website, bad launch, failed form, provider-access problem, redirect error, DNS issue, tracking loss, or migration failure.",
+        "recordCount": 4,
+        "records": [
+          {
+            "key": "target.metadata-schema.p09.l0249",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:249"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0258",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:258"
+          },
+          {
+            "key": "target.emergency.p13.l0016",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:16"
+          },
+          {
+            "key": "target.emergency.p13.l0028",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:28"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Required",
+        "recordCount": 16,
+        "records": [
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0239",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:239"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0250",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:250"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0261",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:261"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0286",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:286"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0304",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:304"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0402",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:402"
+          },
+          {
+            "key": "target.emergency.p13.l0181",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:181"
+          },
+          {
+            "key": "target.emergency.p13.l0192",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:192"
+          },
+          {
+            "key": "target.emergency.p13.l0203",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:203"
+          },
+          {
+            "key": "target.emergency.p13.l0211",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:211"
+          },
+          {
+            "key": "target.emergency.p13.l0222",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:222"
+          },
+          {
+            "key": "target.emergency.p13.l0242",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:242"
+          },
+          {
+            "key": "target.emergency.p13.l0264",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:264"
+          },
+          {
+            "key": "target.emergency.p13.l0275",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:275"
+          },
+          {
+            "key": "target.emergency.p13.l0286",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:286"
+          },
+          {
+            "key": "target.emergency.p13.l0294",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:294"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Research, Analytics & Improvement",
+        "recordCount": 4,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0261",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:261"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0294",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:294"
+          },
+          {
+            "key": "target.services.p10.l0110",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:110"
+          },
+          {
+            "key": "target.cross-packet-corrections.p15.l0039",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:39"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Review public starting prices, minimum scope, planning ranges, qualifications, and credit terms for Boho websites, SEO, provider rescue, audits, analytics, and custom systems.",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.pricing.p06.l0016",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:16"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0169",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:169"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0178",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:178"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Sample document",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.work.p07.l0122",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:122"
+          },
+          {
+            "key": "target.cross-packet-corrections.p15.l0068",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:68"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "See Audit Pricing",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0315",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:315"
+          },
+          {
+            "key": "target.homepage.p05.l0110",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:110"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "See Custom Pricing",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0385",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:385"
+          },
+          {
+            "key": "target.homepage.p05.l0128",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:128"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "See Custom Tools & Automation",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0217",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:217"
+          },
+          {
+            "key": "target.services.p10.l0130",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:130"
+          },
+          {
+            "key": "target.services.p10.l0244",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:244"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "See Local Visibility & Lead Systems",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0157",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:157"
+          },
+          {
+            "key": "target.services.p10.l0062",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:62"
+          },
+          {
+            "key": "target.services.p10.l0164",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:164"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "See Provider Rescue & Migration",
+        "recordCount": 4,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0187",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:187"
+          },
+          {
+            "key": "target.homepage.p05.l0285",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:285"
+          },
+          {
+            "key": "target.services.p10.l0096",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:96"
+          },
+          {
+            "key": "target.services.p10.l0207",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:207"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "See Rescue Pricing",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0249",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:249"
+          },
+          {
+            "key": "target.homepage.p05.l0077",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:77"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "See Research, Analytics & Improvement",
+        "recordCount": 4,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0202",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:202"
+          },
+          {
+            "key": "target.services.p10.l0113",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:113"
+          },
+          {
+            "key": "target.services.p10.l0224",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:224"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0119",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:119"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "See SEO Pricing",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0099",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:99"
+          },
+          {
+            "key": "target.homepage.p05.l0095",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:95"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "See Services and Starting Prices",
+        "recordCount": 5,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0031",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:31"
+          },
+          {
+            "key": "target.work.p07.l0042",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:42"
+          },
+          {
+            "key": "target.work.p07.l0338",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:338"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0110",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:110"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0215",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:215"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "See the work, the method, and the limits of the evidence.",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0241",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:241"
+          },
+          {
+            "key": "target.work.p07.l0027",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:27"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0192",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:192"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "See Website Pricing",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0179",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:179"
+          },
+          {
+            "key": "target.homepage.p05.l0062",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:62"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "See Websites & Managed Hosting",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0172",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:172"
+          },
+          {
+            "key": "target.services.p10.l0079",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:79"
+          },
+          {
+            "key": "target.services.p10.l0187",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:187"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Send Boho the website or system, business context, current problem, and desired outcome to identify the smallest useful next step.",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0195",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:195"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0229",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:229"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0238",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:238"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Send the Situation",
+        "recordCount": 15,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0027",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:27"
+          },
+          {
+            "key": "target.homepage.p05.l0025",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:25"
+          },
+          {
+            "key": "target.homepage.p05.l0423",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:423"
+          },
+          {
+            "key": "target.pricing.p06.l0036",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:36"
+          },
+          {
+            "key": "target.pricing.p06.l0319",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:319"
+          },
+          {
+            "key": "target.work.p07.l0036",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:36"
+          },
+          {
+            "key": "target.work.p07.l0332",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:332"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0104",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:104"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0132",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:132"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0407",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:407"
+          },
+          {
+            "key": "target.services.p10.l0025",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:25"
+          },
+          {
+            "key": "target.services.p10.l0326",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:326"
+          },
+          {
+            "key": "target.services.p10.l0340",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:340"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0146",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:146"
+          },
+          {
+            "key": "target.emergency.p13.l0096",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:96"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Send the situation as it exists.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0206",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:206"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0232",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:232"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "SEO implementation — Starting at $450 per month",
+        "recordCount": 4,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0056",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:56"
+          },
+          {
+            "key": "target.homepage.p05.l0086",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:86"
+          },
+          {
+            "key": "target.pricing.p06.l0106",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:106"
+          },
+          {
+            "key": "target.services.p10.l0155",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:155"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "SEO reporting — Starting at $95 per month",
+        "recordCount": 6,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0054",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:54"
+          },
+          {
+            "key": "target.homepage.p05.l0089",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:89"
+          },
+          {
+            "key": "target.pricing.p06.l0089",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:89"
+          },
+          {
+            "key": "target.services.p10.l0152",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:152"
+          },
+          {
+            "key": "target.cross-packet-corrections.p15.l0129",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:129"
+          },
+          {
+            "key": "target.cross-packet-corrections.p15.l0147",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:147"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Services",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0029",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:29"
+          },
+          {
+            "key": "target.services.p10.l0013",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:13"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Small focused automation or internal tool: often 2–6 weeks after discovery and approval.",
+        "recordCount": 5,
+        "records": [
+          {
+            "key": "target.timelines.p03.l0088",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034.md:88"
+          },
+          {
+            "key": "target.service-detail.p04.l0347",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:347"
+          },
+          {
+            "key": "target.homepage.p05.l0125",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:125"
+          },
+          {
+            "key": "target.pricing.p06.l0251",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:251"
+          },
+          {
+            "key": "target.services.p10.l0241",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:241"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Small or straightforward website: usually 4–8 weeks after required access, content decisions, assets, approvals, and initial payment are available.",
+        "recordCount": 5,
+        "records": [
+          {
+            "key": "target.timelines.p03.l0048",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034.md:48"
+          },
+          {
+            "key": "target.service-detail.p04.l0131",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:131"
+          },
+          {
+            "key": "target.homepage.p05.l0059",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:59"
+          },
+          {
+            "key": "target.pricing.p06.l0149",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:149"
+          },
+          {
+            "key": "target.services.p10.l0184",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:184"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Something broke. Stop it from getting worse.",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.metadata-schema.p09.l0252",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:252"
+          },
+          {
+            "key": "target.emergency.p13.l0022",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:22"
+          },
+          {
+            "key": "target.emergency.p13.l0036",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:36"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Source class",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0248",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:248"
+          },
+          {
+            "key": "target.work.p07.l0054",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:54"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Standard managed hosting may be included at no separate hosting charge for an eligible website while the qualifying service relationship remains active and in good standing. Eligibility, platform limits, third-party costs, support boundaries, ownership, and exit handling are defined in the project agreement. This is not a promise of unlimited infrastructure or unlimited support.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0186",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:186"
+          },
+          {
+            "key": "target.pricing.p06.l0294",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:294"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Start a Project | Boho Digital Services",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0192",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:192"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0226",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:226"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Start a project or request a review",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0126",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:126"
+          },
+          {
+            "key": "target.route-fragment-compatibility.p12.l0143",
+            "sourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+            "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:143"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Start with the problem. Buy only the work it actually needs.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.metadata-schema.p09.l0052",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:52"
+          },
+          {
+            "key": "target.services.p10.l0016",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:16"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Starting prices and planning ranges",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0047",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:47"
+          },
+          {
+            "key": "target.visual-accessibility.p11.l0045",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-VISUAL-ACCESSIBLE-COPY-043",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-VISUAL-ACCESSIBLE-COPY-043.md:45"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Starting prices without the agency guessing game.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.pricing.p06.l0027",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:27"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0172",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:172"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Straightforward migration: often 1–3 weeks after access and scope are confirmed.",
+        "recordCount": 5,
+        "records": [
+          {
+            "key": "target.timelines.p03.l0062",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034.md:62"
+          },
+          {
+            "key": "target.service-detail.p04.l0211",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:211"
+          },
+          {
+            "key": "target.homepage.p05.l0074",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:74"
+          },
+          {
+            "key": "target.pricing.p06.l0200",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:200"
+          },
+          {
+            "key": "target.services.p10.l0204",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:204"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Substantial redesign — Starting at $1,500",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0125",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:125"
+          },
+          {
+            "key": "target.pricing.p06.l0157",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:157"
+          },
+          {
+            "key": "target.services.p10.l0178",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:178"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Substantial redesign or migration: usually 6–12 weeks. Large content inventories, custom integrations, provider dependencies, or delayed approvals may require more time.",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.timelines.p03.l0050",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034.md:50"
+          },
+          {
+            "key": "target.service-detail.p04.l0133",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:133"
+          },
+          {
+            "key": "target.pricing.p06.l0166",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:166"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "The form could not reach the server.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0491",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:491"
+          },
+          {
+            "key": "target.emergency.p13.l0355",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:355"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "The form has received too many requests.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0477",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:477"
+          },
+          {
+            "key": "target.emergency.p13.l0347",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:347"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Time sensitivity",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0420",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:420"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0384",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:384"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Timelines are planning ranges, not guarantees. Work begins after the required access, content, approvals, and initial payment are available. Provider delays, platform reviews, missing assets, scope changes, and client response time can extend the calendar.",
+        "recordCount": 4,
+        "records": [
+          {
+            "key": "target.timelines.p03.l0014",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034.md:14"
+          },
+          {
+            "key": "target.homepage.p05.l0134",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:134"
+          },
+          {
+            "key": "target.pricing.p06.l0062",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:62"
+          },
+          {
+            "key": "target.services.p10.l0247",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:247"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Try again",
+        "recordCount": 3,
+        "records": [
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0466",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:466"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0497",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:497"
+          },
+          {
+            "key": "target.emergency.p13.l0336",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:336"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Unknown",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0280",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:280"
+          },
+          {
+            "key": "target.visual-accessibility.p11.l0097",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-VISUAL-ACCESSIBLE-COPY-043",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-VISUAL-ACCESSIBLE-COPY-043.md:97"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Vanity Metrics URL recovery and redirect record",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.work.p07.l0145",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:145"
+          },
+          {
+            "key": "target.cross-packet-corrections.p15.l0098",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:98"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Website ownership and dependency map",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.work.p07.l0119",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:119"
+          },
+          {
+            "key": "target.visual-accessibility.p11.l0078",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-VISUAL-ACCESSIBLE-COPY-043",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-VISUAL-ACCESSIBLE-COPY-043.md:78"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Websites & Managed Hosting",
+        "recordCount": 4,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0111",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:111"
+          },
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0291",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:291"
+          },
+          {
+            "key": "target.services.p10.l0076",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:76"
+          },
+          {
+            "key": "target.cross-packet-corrections.p15.l0036",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:36"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Websites built to explain the business, earn trust, and remain understandable to operate.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.service-detail.p04.l0114",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:114"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0092",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:92"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Websites, search, analytics, migration, research, and automation are tools. Boho chooses the smallest useful combination after understanding the business, the customer, the market, and the failure in front of us.",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0231",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:231"
+          },
+          {
+            "key": "target.services.p10.l0019",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:19"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "What happens after contact",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0293",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:293"
+          },
+          {
+            "key": "target.visual-accessibility.p11.l0110",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-VISUAL-ACCESSIBLE-COPY-043",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-VISUAL-ACCESSIBLE-COPY-043.md:110"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "What this demonstrates",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0249",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:249"
+          },
+          {
+            "key": "target.work.p07.l0055",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:55"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "What this does not demonstrate",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.homepage.p05.l0250",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:250"
+          },
+          {
+            "key": "target.work.p07.l0056",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:56"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Work & Evidence | Boho Digital Services",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.work.p07.l0013",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:13"
+          },
+          {
+            "key": "target.metadata-schema.p09.l0186",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:186"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "you@example.com",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0253",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:253"
+          },
+          {
+            "key": "target.emergency.p13.l0195",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:195"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+        "resolverSelectedRecordKey": null
+      },
+      {
+        "exactValue": "Your name",
+        "recordCount": 2,
+        "records": [
+          {
+            "key": "target.contact-start-navigation-footer.p08.l0242",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:242"
+          },
+          {
+            "key": "target.emergency.p13.l0184",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:184"
+          }
+        ],
+        "bindingHighestSourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
+        "resolverSelectedRecordKey": null
+      }
+    ],
+    "collisionSelectionConclusion": "FAIL: all records are retained; no generic semantic slot or selected record exists. Different-value semantic collisions cannot be exhaustively enumerated without slot identity."
+  },
+  "criticalValues": {
+    "approvedServiceNames": [
+      {
+        "value": "Local Visibility & Lead Systems",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:44"
+      },
+      {
+        "value": "Websites & Managed Hosting",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:111"
+      },
+      {
+        "value": "Provider Rescue & Migration",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:191"
+      },
+      {
+        "value": "Custom Tools & Automation",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:327"
+      },
+      {
+        "value": "Research, Analytics & Improvement",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:261"
+      }
+    ],
+    "approvedPriceStrings": [
+      {
+        "value": "Initial public review — Free",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:72"
+      },
+      {
+        "value": "SEO reporting — Starting at $95 per month",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:129"
+      },
+      {
+        "value": "SEO implementation — Starting at $450 per month",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:106"
+      },
+      {
+        "value": "Focused website improvement — Starting at $750",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:123"
+      },
+      {
+        "value": "New website — Starting at $1,500",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:140"
+      },
+      {
+        "value": "Substantial redesign — Starting at $1,500",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:157"
+      },
+      {
+        "value": "Provider Rescue Assessment — Starting at $350",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:174"
+      },
+      {
+        "value": "Migration assistance — Starting at $1,000",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:191"
+      },
+      {
+        "value": "Focused audit or strategy — Starting at $350",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:208"
+      },
+      {
+        "value": "Custom discovery — Starting at $500",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:225"
+      },
+      {
+        "value": "Focused custom build — Starting at $2,500",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:242"
+      }
+    ],
+    "contactCorrection": {
+      "pathCount": 4,
+      "heading": {
+        "value": "One contact page. Four different reasons to use it.",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:18"
+      },
+      "pathDefinitionLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:20-25",
+      "ordinaryInquiryOptions": [
+        {
+          "value": "Local Visibility & Lead Systems",
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:35"
+        },
+        {
+          "value": "Websites & Managed Hosting",
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:36"
+        },
+        {
+          "value": "Provider Rescue & Migration",
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:37"
+        },
+        {
+          "value": "Custom Tools & Automation",
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:38"
+        },
+        {
+          "value": "Research, Analytics & Improvement",
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:39"
+        },
+        {
+          "value": "Not sure yet",
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:40"
+        }
+      ],
+      "removedOption": {
+        "value": "Emergency Website Help",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:31"
+      },
+      "automaticEmergencyRedirect": false,
+      "emergencyBlock": {
+        "eyebrow": {
+          "value": "Active website incident",
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:45"
+        },
+        "heading": {
+          "value": "Is the website actively failing?",
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:48"
+        },
+        "body": {
+          "value": "Use the Emergency page for a verified urgent website, launch, form, redirect, provider-access, DNS, tracking, or migration problem that is actively affecting customers or business operations. The standard inquiry does not receive emergency priority.",
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:51"
+        },
+        "linkLabel": {
+          "value": "Emergency Website Help",
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:54"
+        },
+        "destination": {
+          "value": "/emergency/",
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:57"
+        }
+      }
+    },
+    "approvedEvidenceSourceClasses": [
+      {
+        "value": "Boho-owned property",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:65"
+      },
+      {
+        "value": "Boho-owned technical record",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:66"
+      },
+      {
+        "value": "Public repository or tool",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:67"
+      },
+      {
+        "value": "Sample document",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:68"
+      },
+      {
+        "value": "Synthetic demonstration",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:69"
+      },
+      {
+        "value": "Fictional concept interface",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:70"
+      },
+      {
+        "value": "Client work published with permission",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:71"
+      }
+    ],
+    "correctedArtifactAssignments": [
+      {
+        "title": "Boho Analytics website graph",
+        "sourceClass": "Boho-owned property",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:93"
+      },
+      {
+        "title": "Rank Builder publishing and citation system",
+        "sourceClass": "Boho-owned property",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:94"
+      },
+      {
+        "title": "Vanity Metrics URL recovery and redirect record",
+        "sourceClass": "Boho-owned technical record",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:96,98"
+      },
+      {
+        "title": "Glossary route and static-crawl validation",
+        "sourceClass": "Boho-owned technical record",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:96,99"
+      }
+    ],
+    "glossaryEvidence": {
+      "currentStatus": {
+        "value": "Accepted repository foundation; production deployment remains a separate release decision",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:107"
+      },
+      "acceptedFoundationCommitLabel": {
+        "value": "Accepted foundation commit",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:112"
+      },
+      "acceptedFoundationCommit": {
+        "value": "89cb0982b8f2274a289e8126c9472640a5305011",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:115"
+      },
+      "acceptedRouteCountLabel": {
+        "value": "Glossary route count at acceptance",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:118"
+      },
+      "acceptedRouteCount": {
+        "value": "153",
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:121"
+      },
+      "historicalBoundaryLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:123"
+    },
+    "reportingProduct": {
+      "key": "product.seoReporting.monthly",
+      "price": "SEO reporting — Starting at $95 per month",
+      "priceFamily": "Local Visibility & Lead Systems",
+      "canonicalAnchor": "/pricing/#ongoing-seo",
+      "compatibilityAlias": "/pricing/#analytics-reporting",
+      "productCount": 1,
+      "referenceCount": 7,
+      "sourceLocations": [
+        "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:54",
+        "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:89",
+        "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:89",
+        "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:152",
+        "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:46",
+        "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:129",
+        "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:147"
+      ]
+    },
+    "analyticsAvailability": {
+      "key": "product.bohoAnalytics.publicFreeAvailability",
+      "status": "Blocked pending current product verification",
+      "reason": "The current repository contains the claim, but the commercial V3 program has not yet verified a stable public access contract or current product boundary.",
+      "targetApproved": false,
+      "replacementText": null,
+      "sourceLocations": [
+        "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:175",
+        "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:178",
+        "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:181"
+      ],
+      "currentClaimCount": 12,
+      "currentClaimLocations": [
+        "app/components/ResourcesPage.tsx:154",
+        "app/components/ResourcesPage.tsx:161",
+        "app/content/servicePages.generated.ts:441",
+        "app/content/servicePages.generated.ts:2672",
+        "app/content/servicePages.generated.ts:2684",
+        "app/content/servicePages.generated.ts:2744",
+        "app/content/servicePages.generated.ts:3263",
+        "app/content/servicePages.generated.ts:3405",
+        "content/service-pages/04-digital-research-seo-audits-strategy.md:19",
+        "content/service-pages/04-digital-research-seo-audits-strategy.md:27",
+        "content/service-pages/04-digital-research-seo-audits-strategy.md:353",
+        "content/service-pages/04-digital-research-seo-audits-strategy.md:428"
+      ],
+      "contextualFalseNegatives": [
+        {
+          "sourceLocations": [
+            "content/service-pages/04-digital-research-seo-audits-strategy.md:55",
+            "content/service-pages/04-digital-research-seo-audits-strategy.md:59",
+            "content/service-pages/04-digital-research-seo-audits-strategy.md:63"
+          ],
+          "disposition": "preserve-exactly-in-this-phase",
+          "reason": "Product name, no-payment claim, and Free price are split across physical-line records."
+        },
+        {
+          "sourceLocations": [
+            "app/content/servicePages.generated.ts:2740",
+            "app/content/servicePages.generated.ts:2748",
+            "app/content/servicePages.generated.ts:2756"
+          ],
+          "disposition": "preserve-exactly-in-this-phase",
+          "reason": "Rendered generated product name, no-payment claim, and Free price are split across code-literal records."
+        }
+      ]
+    }
+  },
+  "coverage": {
+    "targetRecords": 1233,
+    "currentRecords": 22994,
+    "currentSourceFiles": 54,
+    "targetPackets": 12,
+    "targetParser": {
+      "backtickBearingLines": 1289,
+      "capturedBacktickLineLocations": 1206,
+      "unmatchedBacktickBearingLines": 83,
+      "unmatchedBacktickTokens": 141,
+      "uniqueUnmatchedBacktickTokens": 92,
+      "unmatchedTokensAbsentFromAllTargetRecords": 0,
+      "curlyQuoteRecordsFromPacket034": 27,
+      "markdownTableLinesInCurrentPackets": 0,
+      "fencedCodeLinesInCurrentPackets": 0,
+      "supportsMultiLineQuotedValues": false,
+      "supportsMultiTokenLabelRouteMappings": false,
+      "supportsMarkdownTables": false,
+      "notableUnmatchedLocationGroups": [
+        "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:14-24,33-37,48-51,525-550,560-561",
+        "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:32,40,48,56,72,80,94,108,164,180-181",
+        "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:93-96,101,105,131,133,155,159,161,175,178,181,183,190,192,194"
+      ],
+      "exactValuesMissingEntirely": [
+        "WO-2026-07-23-BOHO-CHATGPT-EDITORIAL-SELF-AUDIT-V2-022.md:70",
+        "WO-2026-07-23-BOHO-CHATGPT-EDITORIAL-SELF-AUDIT-V2-022.md:110",
+        "WO-2026-07-23-BOHO-CHATGPT-EDITORIAL-SELF-AUDIT-V2-022.md:116",
+        "WO-2026-07-23-BOHO-CHATGPT-EDITORIAL-SELF-AUDIT-V2-022.md:130",
+        "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:31",
+        "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040.md:14"
+      ],
+      "backtickProbeScopeLimitation": "The zero absent-token count applies only to backtick tokens from packets 034-049 excluding 048; it is not a completeness claim."
+    },
+    "currentParser": {
+      "supportsSingleAndDoubleQuotedCodeLiterals": true,
+      "supportsSameLinePlainJsxText": true,
+      "supportsTemplateLiterals": false,
+      "supportsMultiLineJsxText": false,
+      "supportsNestedJsxText": false,
+      "markdownGranularity": "physical-line",
+      "excludedPublicSourceLocations": [
+        "app/page.tsx:7,10",
+        "app/not-found.tsx:24,27,31-36,40-41",
+        "app/[...slug]/page.tsx:53",
+        "app/learn/glossary/[term]/page.tsx:35",
+        "app/robots.ts:public route output and canonical host values",
+        "scripts/generate-service-page-data.mjs:47-177 CONTENT_OVERRIDES"
+      ],
+      "excludedSourceRecordCounts": {
+        "app/page.tsx": 0,
+        "app/not-found.tsx": 0,
+        "app/[...slug]/page.tsx": 0,
+        "app/learn/glossary/[term]/page.tsx": 0,
+        "app/robots.ts": 0
+      },
+      "templateLiteralPublicCopyExamples": [
+        "app/components/BrandPreviewCarousel.tsx:25",
+        "app/components/DefinitionTerm.tsx:198,220",
+        "app/components/DesktopNavigation.tsx:74",
+        "app/components/IndustryVisuals.tsx:122,142,161,178,200,208,224,243,278,295,308,350",
+        "app/components/SectionNavigation.tsx:117,180"
+      ],
+      "generatedRenderReachability": {
+        "generator": "scripts/generate-service-page-data.mjs",
+        "generatedOutput": "app/content/servicePages.generated.ts",
+        "importEdge": "app/content/serviceRoutePages.ts:1",
+        "renderEdge": "app/[...slug]/page.tsx:80-81",
+        "inventoryMarksGeneratedOutputCurrentlyRendered": false,
+        "inventoryMarksRawMarkdownCurrentlyRendered": true
+      }
+    },
+    "classificationDefects": {
+      "packet040RouteRecords": 12,
+      "packet040SchemaRecords": 60,
+      "packet040MetadataRecords": 0,
+      "reason": "The surface name metadata-schema triggers schema classification before field-specific metadata checks.",
+      "listContextDefects": [
+        "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:35 is form-state while lines 36-40 are visible-text.",
+        "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:65 is route while lines 66-71 are evidence."
+      ]
+    }
+  },
+  "validatorAndTests": {
+    "commercialCopyCheck": "PASS",
+    "mutationTestCount": 10,
+    "mutationTestsPassed": 10,
+    "intentionalBlockDirectChecks": {
+      "targetApprovedMutationCaught": true,
+      "removedBlockedCurrentClaimRegistryEntryCaughtByValidateArtifacts": false,
+      "clearedBlockedSourceLocationsCaughtByValidateArtifacts": false,
+      "clearedBlockedPolicyCaughtByValidateArtifacts": false,
+      "committedArtifactDriftCaughtByCheckMode": true,
+      "removedOneOfTwelveInventoryClaimsCaughtByValidateArtifacts": false,
+      "remainingClaimsAfterPartialDeletion": 11
+    },
+    "standardTestIncludesCommercialCopyCheck": false,
+    "githubActionsIncludesCommercialCopyCheck": false,
+    "typescript": "PASS",
+    "testBlockCount": 11,
+    "positiveInvariantTestPassed": true,
+    "uncoveredSemantics": [
+      "binding precedence and collision selection",
+      "packets 021/022 extraction",
+      "generated render reachability",
+      "context-composed Analytics claims",
+      "partial inventory claim deletion"
+    ]
+  },
+  "renderBoundary": {
+    "contractAdapter": "app/content/commercial/contract.ts",
+    "applicationConsumers": 0,
+    "rendererOrCurrentCopySourceDiffFromBase": 0,
+    "packageDiffFromBase": "adds only commercial-copy:check script",
+    "priorNormalizedHtmlProof": {
+      "candidateHtmlFiles": 184,
+      "baseHtmlFiles": 184,
+      "normalizedDifferenceCount": 0,
+      "aggregateSha256": "9270ab65e394f070ae19dc3889f8282b5f513624a91fb9e19169ac2c2496f724",
+      "normalizationScope": "HTML references to emitted JS/CSS chunk filenames and the Next build-id field",
+      "staticChunkOrAssetBytesCompared": false
+    },
+    "independentEvaluation": "PASS WITH SCOPE LIMITATION",
+    "preExistingGeneratedPublicPath": {
+      "generator": "scripts/generate-service-page-data.mjs",
+      "generatedOutput": "app/content/servicePages.generated.ts",
+      "importAndRender": [
+        "app/content/serviceRoutePages.ts:1",
+        "app/[...slug]/page.tsx:80-81"
+      ],
+      "changedFromBase": false,
+      "inventoryReachabilityAccurate": false
+    }
+  },
+  "artifactCosts": {
+    "currentBytes": {
+      "blocked-copy.json": 5632,
+      "commercial-copy-contract.json": 954975,
+      "current-target-inventory.json": 16465785,
+      "source-packets.json": 182822,
+      "fourJsonTotal": 17609214
+    },
+    "inventoryDuplication": {
+      "currentRecords": 22994,
+      "currentUniqueExactValues": 7574,
+      "currentDuplicateRecords": 15420,
+      "targetRecords": 1233,
+      "targetUniqueExactValues": 899,
+      "targetDuplicateRecords": 334
+    },
+    "history": {
+      "uniqueHistoricalBlobCountForContractPaths": 17,
+      "logicalBytes": 35232665,
+      "objectDiskBytes": 2034613
+    }
+  },
+  "sensitiveValueScan": {
+    "scope": [
+      "content/commercial/source-packets.json",
+      "content/commercial/commercial-copy-contract.json",
+      "content/commercial/current-target-inventory.json",
+      "content/commercial/blocked-copy.json"
+    ],
+    "privateKeyMarkers": 0,
+    "commonCredentialTokenPrefixes": 0,
+    "inventoryIndicatorsWithoutValues": {
+      "currentEmailLikeRecords": 15,
+      "currentUrlLikeRecords": 682,
+      "currentQueryUrlLikeRecords": 5,
+      "currentAnalyticsIdLikeRecords": 2,
+      "currentEnvironmentNameLikeRecords": 0,
+      "currentSecretKeywordLikeRecords": 79,
+      "targetEmailLikeRecords": 13,
+      "targetUrlLikeRecords": 3,
+      "targetSecretKeywordLikeRecords": 1,
+      "targetEnvironmentNameLikeRecords": 0
+    },
+    "limitations": "Heuristic counts are not a proof that no secret exists. Values are intentionally not reproduced.",
+    "regexes": {
+      "privateKey": "-----BEGIN (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----",
+      "commonTokenPrefixes": "\\b(?:AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9_]{20,}|sk-(?:proj-)?[A-Za-z0-9_-]{20,})\\b",
+      "email": "[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}",
+      "url": "https?://",
+      "queryUrl": "https?://\\S+\\?",
+      "analyticsId": "\\b(?:G-[A-Z0-9]{6,}|UA-\\d+-\\d+)\\b",
+      "environmentName": "\\b(?:NODE_ENV|PUBLIC_ORIGIN|NEXT_PUBLIC_[A-Z0-9_]+|CLOUDFLARE_[A-Z0-9_]+)\\b",
+      "secretKeyword": "\\b(?:secret|password|token|api[_-]?key|credential)\\b"
+    }
+  },
+  "findings": [
+    {
+      "id": "B1",
+      "severity": "Blocker",
+      "managerImpact": "Critical",
+      "title": "Installed chronological packet order conflicts with binding WO042 precedence, and no generic semantic-slot resolver or selected-record proof exists."
+    },
+    {
+      "id": "H1",
+      "severity": "High",
+      "title": "Current inventory omits public sources, inverts generated service-page reachability, and misses context-composed blocked Analytics claims."
+    },
+    {
+      "id": "H2",
+      "severity": "High",
+      "title": "Target extraction omits exact values and source provenance, loses governed relationships, and materially misclassifies records."
+    },
+    {
+      "id": "H3",
+      "severity": "High",
+      "title": "The deterministic commercial-copy gate is absent from the standard test script and GitHub Actions."
+    },
+    {
+      "id": "M1",
+      "severity": "Medium",
+      "title": "The semantic validator does not enforce exact blocked-claim membership, contextual claims, source locations, or policy text."
+    },
+    {
+      "id": "M2",
+      "severity": "Medium",
+      "title": "Generated artifacts duplicate large amounts of source and non-public operational text, creating repository and exposure cost."
+    },
+    {
+      "id": "L1",
+      "severity": "Low",
+      "title": "The prior equality proof compares normalized HTML, not emitted chunk or asset bytes; independent source/import evidence keeps the no-render-change conclusion credible."
+    }
+  ]
+}
