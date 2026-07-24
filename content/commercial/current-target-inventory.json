@@ -5,23 +5,23 @@
   "sources": [
     {
       "path": "app/Homepage.tsx",
-      "sha256": "6993b1dbb297011be2fab0765741a2ff2df0f0216f4c0243d65ac3d15d3ae43b",
-      "bytes": 17262,
+      "sha256": "a07969736b14bbeb893f9a98de0bfd092b41b910a41714bb1a22d3e88978c719",
+      "bytes": 11352,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 222,
-      "importCount": 4,
+      "publicStringCount": 171,
+      "importCount": 0,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
     {
       "path": "app/[...slug]/page.tsx",
-      "sha256": "8669f727b87e0d0153d3d6591e4b5f46ff76eec840b7118682c5ad62782ec90d",
-      "bytes": 3496,
+      "sha256": "7150bbf275110edadf46d554839667d05b386814b376d8fb2722a5071668d7af",
+      "bytes": 7532,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 14,
+      "publicStringCount": 66,
       "importCount": 19,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
@@ -93,12 +93,12 @@
     },
     {
       "path": "app/components/DesktopNavigation.tsx",
-      "sha256": "a96c54274e66af2d865a8eb2fd2eb0d422e30a4e2f0389fc461997f4729b396a",
-      "bytes": 3511,
+      "sha256": "9a07bd6ed9c4c5411db024dbbfac8d1fbfcb8f0a19e5f591e75acda7eddaec91",
+      "bytes": 3750,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 23,
+      "publicStringCount": 21,
       "importCount": 1,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
@@ -236,24 +236,24 @@
     },
     {
       "path": "app/components/MobileMenu.tsx",
-      "sha256": "50b5d0eb19d5d036eb56c626844219e463598c341bf01ccbb2966e1e274b44df",
-      "bytes": 5678,
+      "sha256": "5cbd32b4d59d141c924eea3c36c58e08ec639127ae8efed66b82dc168a48e0ad",
+      "bytes": 5495,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 53,
+      "publicStringCount": 43,
       "importCount": 1,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
     {
       "path": "app/components/PricingPage.tsx",
-      "sha256": "ec23b474f57b8751c70be807707b3e922a32161cb29e1bdb0af00dd503fafa44",
-      "bytes": 6201,
+      "sha256": "0d7a49f8b1db0f2535cb0f6814d45221eca8ff5bb3c47308aa631f6f1854f79b",
+      "bytes": 5930,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 55,
-      "importCount": 2,
+      "publicStringCount": 114,
+      "importCount": 0,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
     {
@@ -280,34 +280,34 @@
     },
     {
       "path": "app/components/ServiceDetailPage.tsx",
-      "sha256": "e8a480456e814ee3a8682d25b563c557cb8206f6c5b65932fe7f8bdb0eb309eb",
-      "bytes": 11720,
+      "sha256": "26a843d2d4baee3ce917b30f777b425116f0a58508e77749b23d23c3f5c5e03b",
+      "bytes": 8887,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 79,
-      "importCount": 4,
+      "publicStringCount": 45,
+      "importCount": 2,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
     {
       "path": "app/components/ServicesPage.tsx",
-      "sha256": "844de1863e0bd9b3a56e3b6824e71bc9d6318598b2f9633a73b69c2ba6c1cf62",
-      "bytes": 8662,
+      "sha256": "ba9beed9e641e9f04e85d7d73ab846ad6bc4c4e42850c130c650b1d1bbf44cd9",
+      "bytes": 8563,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 101,
-      "importCount": 3,
+      "publicStringCount": 154,
+      "importCount": 0,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
     {
       "path": "app/components/SiteChrome.tsx",
-      "sha256": "44bd978a39198e84e0dd73459870d3bc014cf708b7af242ede0e1e7c67980f02",
-      "bytes": 21761,
+      "sha256": "8ce1a472b365ca4b2f5dd2eac7718da4a3e02d7a72a43c1bd683076bb9c52144",
+      "bytes": 22087,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 214,
+      "publicStringCount": 221,
       "importCount": 3,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
@@ -324,13 +324,13 @@
     },
     {
       "path": "app/components/WorkEvidencePage.tsx",
-      "sha256": "180ac5005af26b109c99103bf2611a17eee437f10ae49c19060bd37e749d9374",
-      "bytes": 6925,
+      "sha256": "a2313ed2fc072a1cadebf6b5bb0d77afcc569b06e59f3caf9bc8123a19b62771",
+      "bytes": 9333,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 75,
-      "importCount": 3,
+      "publicStringCount": 77,
+      "importCount": 0,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
     {
@@ -423,13 +423,13 @@
     },
     {
       "path": "app/content/navigation.ts",
-      "sha256": "06148e4bf3edb557d7aaff412e5f12622baa171e359d24d5ce9dd8c16b5a5e4d",
-      "bytes": 2925,
+      "sha256": "6b41f36237aef471a5fd4e9d4dddfc0facb3dbf549c487f30e097b26897e0bfb",
+      "bytes": 1465,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 48,
-      "importCount": 1,
+      "publicStringCount": 6,
+      "importCount": 0,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
     {
@@ -723,6 +723,45 @@
         "self-hosted-or-open-source"
       ],
       "contextHash": "0980580db5184fe8557c875e3d30fb81370cfd55126fb27b504e5c906fb8427d",
+      "disposition": "blocked-pending-current-product-verification",
+      "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+    },
+    {
+      "key": "analytics-claim.app-components-servicedetailpage-tsx.39-55",
+      "sourceFile": "app/components/ServiceDetailPage.tsx",
+      "sourceStartLine": 39,
+      "sourceEndLine": 55,
+      "signals": [
+        "free-or-unpaid",
+        "public-access"
+      ],
+      "contextHash": "913edee1cbe4f10261cf65b4ae7da38fa6d05f2befd34013345e8e145ac01e83",
+      "disposition": "blocked-pending-current-product-verification",
+      "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+    },
+    {
+      "key": "analytics-claim.app-components-servicedetailpage-tsx.40-56",
+      "sourceFile": "app/components/ServiceDetailPage.tsx",
+      "sourceStartLine": 40,
+      "sourceEndLine": 56,
+      "signals": [
+        "free-or-unpaid",
+        "public-access"
+      ],
+      "contextHash": "a285c2f11568ea0b740969bb3171db7b99aa07bc2fb48409b1611309abc6fe58",
+      "disposition": "blocked-pending-current-product-verification",
+      "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+    },
+    {
+      "key": "analytics-claim.app-components-servicedetailpage-tsx.45-61",
+      "sourceFile": "app/components/ServiceDetailPage.tsx",
+      "sourceStartLine": 45,
+      "sourceEndLine": 61,
+      "signals": [
+        "free-or-unpaid",
+        "public-access"
+      ],
+      "contextHash": "f93f4200bfb58fd3ba46f6aa971cc514d75b8d005680898c63f9b21561da0611",
       "disposition": "blocked-pending-current-product-verification",
       "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
     },
@@ -1127,14 +1166,14 @@
     "reachable": 59,
     "authored": 59,
     "generatedMirrors": 1,
-    "publicStringsOnDemand": 12004,
-    "analyticsClaimContexts": 32
+    "publicStringsOnDemand": 12038,
+    "analyticsClaimContexts": 35
   },
   "fullDetail": {
     "committed": false,
     "generationCommand": "node scripts/commercial-copy-build.mjs --check --inventory-detail <path>",
-    "recordCount": 12004,
-    "deterministicDigest": "da87c2f84d8fd2373430147f2ec84dc9cf43f8ec98b767f6f2d5e66dc2554699"
+    "recordCount": 12038,
+    "deterministicDigest": "22d438398d2b921a4b3fd6c250588d4973be703faf2267e9bd2ff3e960179ac9"
   },
   "securityScan": {
     "privateKeyMarkers": 0,

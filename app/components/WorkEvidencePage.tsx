@@ -1,5 +1,6 @@
 import {
   commercialCorrections,
+  commercialCorrections068,
   commercialSection,
   correctionValue,
 } from "../content/commercial/presentation";
@@ -15,6 +16,50 @@ const artifactKeys = [
   "artifact-7-fictional-business-interfaces",
 ] as const;
 
+type ArtifactKey = typeof artifactKeys[number];
+
+const evidenceGroups: ReadonlyArray<{
+  id: string;
+  heading: string;
+  aliases: ReadonlyArray<string>;
+  artifactKeys: ReadonlyArray<ArtifactKey>;
+}> = [
+  {
+    id: "evidence-group-current-owned-property-work",
+    heading: commercialCorrections068.work.groupHeadings.current,
+    aliases: ["public-tools"],
+    artifactKeys: [
+      "artifact-4-boho-analytics-site-graph",
+      "artifact-5-rank-builder-publishing-system",
+      "artifact-6-better-grades-learning-interfaces",
+    ],
+  },
+  {
+    id: "evidence-group-public-technical-records",
+    heading: commercialCorrections068.work.groupHeadings.technical,
+    aliases: ["sample-report", "provider-rescue"],
+    artifactKeys: [
+      "artifact-2-vanity-metrics-migration-record",
+      "artifact-3-glossary-and-route-validation",
+    ],
+  },
+  {
+    id: "evidence-group-samples-and-concept-work",
+    heading: commercialCorrections068.work.groupHeadings.samples,
+    aliases: ["website-work"],
+    artifactKeys: [
+      "artifact-1-website-ownership-map",
+      "artifact-7-fictional-business-interfaces",
+    ],
+  },
+];
+
+function statusFor(key: ArtifactKey) {
+  if (key === "artifact-1-website-ownership-map") return commercialCorrections068.work.statuses.sample;
+  if (key === "artifact-7-fictional-business-interfaces") return commercialCorrections068.work.statuses.concept;
+  return commercialCorrections068.work.statuses.current;
+}
+
 export function WorkEvidencePage() {
   const hero = commercialSection("work-evidence", "hero");
   const standard = commercialSection("work-evidence", "evidence-standard");
@@ -28,7 +73,20 @@ export function WorkEvidencePage() {
     ]),
   );
   const labels = [standard.one("Field labels"), ...standard.many("value")];
-  const artifacts = artifactKeys.map((key) => commercialSection("work-evidence", key));
+  const artifacts = new Map(artifactKeys.map((key) => {
+    const section = commercialSection("work-evidence", key);
+    const title = section.one("Title");
+    const sourceClass = section.optional("Source class") ?? correctionSourceClasses.get(title);
+    if (!sourceClass) throw new Error(`Evidence provenance is incomplete: ${title}`);
+    return [key, {
+      key,
+      section,
+      title,
+      sourceClass,
+      status: statusFor(key),
+      destination: commercialCorrections068.work.destinations[key],
+    }];
+  }));
 
   return (
     <>
@@ -54,39 +112,64 @@ export function WorkEvidencePage() {
           </div>
         </section>
 
-        <section className="commercial-section commercial-artifacts" aria-labelledby="artifact-list-title">
+        <section className="commercial-section commercial-evidence-introduction" aria-labelledby="evidence-introduction-title">
+          <div className="section-shell commercial-section__heading">
+            <p className="eyebrow">{commercialCorrections068.work.eyebrow}</p>
+            <h2 id="evidence-introduction-title">{commercialCorrections068.work.heading}</h2>
+            <p>{commercialCorrections068.work.body}</p>
+          </div>
+        </section>
+
+        <section className="commercial-section commercial-evidence-summary" aria-labelledby="evidence-summary-title">
           <div className="section-shell">
-            <span id="website-work" />
-            <span id="provider-rescue" />
-            <span id="public-tools" />
-            <h2 className="sr-only" id="artifact-list-title">{standard.one("Heading")}</h2>
+            <h2 className="sr-only" id="evidence-summary-title">{standard.one("Heading")}</h2>
             <div className="commercial-artifacts__grid">
-              {artifacts.map((artifact, index) => {
-                const title = artifact.one("Title");
-                const sourceClass = artifact.optional("Source class") ?? correctionSourceClasses.get(title);
-                const currentStatus = artifact.optional("Current status")
-                  ?? (index === 2 ? correctionValue(commercialCorrections.glossaryEvidence.currentStatus) : undefined);
-                if (!sourceClass || !currentStatus) {
-                  throw new Error(`Evidence provenance is incomplete: ${title}`);
-                }
+              {artifactKeys.map((key) => {
+                const artifact = artifacts.get(key);
+                if (!artifact) throw new Error(`Evidence artifact is missing: ${key}`);
                 return (
-                  <article id={artifact.one("Anchor").slice(1)} key={title}>
-                    {artifact.optional("Required visible label") ? <strong>{artifact.one("Required visible label")}</strong> : null}
-                    <h3>{title}</h3>
-                    <p>{artifact.one("Summary")}</p>
-                    <dl>
-                      <div><dt>{labels[0]}</dt><dd>{sourceClass}</dd></div>
-                      <div><dt>{labels[1]}</dt><dd>{artifact.one("What this demonstrates")}</dd></div>
-                      <div><dt>{labels[2]}</dt><dd>{artifact.one("What this does not demonstrate")}</dd></div>
-                      <div><dt>{labels[3]}</dt><dd>{currentStatus}</dd></div>
-                    </dl>
-                    <a data-umami-event="commercial_evidence_open" href={artifact.one("Anchor")}>{artifact.one("Open label")}</a>
+                  <article className="commercial-evidence-card" key={key}>
+                    <strong>{artifact.status}</strong>
+                    <h3>{artifact.title}</h3>
+                    <p>{artifact.section.one("Summary")}</p>
+                    <a data-umami-event="commercial_evidence_open" href={artifact.destination}>{commercialCorrections068.work.openLabel}</a>
                   </article>
                 );
               })}
             </div>
           </div>
         </section>
+
+        <div className="commercial-evidence-details">
+          {evidenceGroups.map((group) => (
+            <section className="commercial-section commercial-evidence-group" id={group.id} aria-labelledby={`${group.id}-title`} key={group.id}>
+              {group.aliases.map((alias) => <span className="commercial-anchor-alias" id={alias} key={alias} />)}
+              <div className="section-shell">
+                <h2 id={`${group.id}-title`}>{group.heading}</h2>
+                <div className="commercial-evidence-group__grid">
+                  {group.artifactKeys.map((key) => {
+                    const artifact = artifacts.get(key);
+                    if (!artifact) throw new Error(`Evidence artifact is missing: ${key}`);
+                    const detailId = artifact.destination.split("#")[1];
+                    return (
+                      <article id={detailId} key={key}>
+                        {artifact.section.optional("Required visible label") ? <strong>{artifact.section.one("Required visible label")}</strong> : null}
+                        <h3>{artifact.title}</h3>
+                        <p>{artifact.section.one("Summary")}</p>
+                        <dl>
+                          <div><dt>{labels[0]}</dt><dd>{artifact.sourceClass}</dd></div>
+                          <div><dt>{labels[1]}</dt><dd>{artifact.section.one("What this demonstrates")}</dd></div>
+                          <div><dt>{labels[2]}</dt><dd>{artifact.section.one("What this does not demonstrate")}</dd></div>
+                          <div><dt>{labels[3]}</dt><dd>{artifact.status}</dd></div>
+                        </dl>
+                      </article>
+                    );
+                  })}
+                </div>
+              </div>
+            </section>
+          ))}
+        </div>
 
         <section className="commercial-section commercial-method" aria-labelledby="commercial-method-title">
           <div className="section-shell commercial-method__grid">

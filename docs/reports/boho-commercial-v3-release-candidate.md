@@ -5,44 +5,52 @@
 - [Status](#status)
 - [Candidate summary](#candidate-summary)
 - [Changed files](#changed-files)
+- [Correction evidence](#correction-evidence)
+- [Generated artifacts](#generated-artifacts)
 - [Validation](#validation)
-- [Screenshots and accessibility](#screenshots-and-accessibility)
-- [Performance](#performance)
-- [Copy authority](#copy-authority)
-- [Known limitation and required decision](#known-limitation-and-required-decision)
-- [Fresh-context review findings](#fresh-context-review-findings)
+- [Browser and accessibility audit](#browser-and-accessibility-audit)
+- [Review findings](#review-findings)
+- [Hard stops](#hard-stops)
 - [Preview and deployment](#preview-and-deployment)
 - [Rollback](#rollback)
 
 ## Status
 
-Blocked before push and preview. The required commercial-copy gate reports its
-generated `inventory` and `blocked` artifacts as stale. Regenerating them would
-change `content/commercial/current-target-inventory.json` and
-`content/commercial/blocked-copy.json`, but `content/commercial/**` is not an
-allowed path in this work order.
+**Blocked before push and private-preview deployment.** The authorized repairs
+resolve every blocker from the first candidate report, including two additional
+high-severity form-lifecycle findings from the fresh-context review. Two
+repository ownership conflicts remain and cannot be repaired within this work
+order:
+
+1. Homepage metadata is owned by `app/page.tsx` and `app/layout.tsx`, neither of
+   which is allowed. The active static title remains the older literal value.
+2. `routes:artifacts:check` requires regeneration of
+   `content/routing/public-route-registry.json`, which is outside the allowlist
+   and conflicts with the instruction that commercial-copy generation update
+   only the two authorized commercial artifacts.
+
+The applicable stop conditions therefore prohibit push and deployment.
 
 ## Candidate summary
 
-The local review branch implements the contract-backed commercial decision layer
-for Homepage, Services, five service pages, Pricing, Work and Evidence, Contact,
-Start, Emergency, navigation, footer, form states, and privacy-safe events.
-Accepted long-form service content remains below each new decision layer.
+The local candidate repairs active-incident routing, compatibility fragments,
+Work evidence organization and destinations, emergency payload bounds, all five
+service decision layers, mobile navigation, progressive-disclosure state,
+privacy-safe form analytics, Turnstile lifecycle handling, adapter-backed
+navigation labels, desktop-menu focus restoration, and the stale commercial
+inventory and blocked-copy artifacts.
+
+The branch began clean at exact commit
+`9e99af0a9c99f9bcdd1f81bd872ff6d6104550af` on
+`agent/boho-commercial-v3-client-acquisition`.
 
 ## Changed files
 
-Implementation is limited to the work-order allowlist:
-
 - `app/Homepage.tsx`
-- `app/[...slug]/page.tsx`
 - `app/components/DesktopNavigation.tsx`
-- `app/components/MobileMenu.tsx`
 - `app/components/PricingPage.tsx`
-- `app/components/ServiceDetailPage.tsx`
-- `app/components/ServicesPage.tsx`
 - `app/components/SiteChrome.tsx`
 - `app/components/WorkEvidencePage.tsx`
-- `app/components/commercial/CommercialChrome.tsx`
 - `app/components/commercial/CommercialInquiryForm.tsx`
 - `app/components/commercial/CommercialInquiryFormClient.tsx`
 - `app/components/commercial/CommercialInquiryPages.tsx`
@@ -50,113 +58,139 @@ Implementation is limited to the work-order allowlist:
 - `app/components/commercial/commercial.css`
 - `app/content/commercial/presentation.ts`
 - `app/content/navigation.ts`
-- `app/service-pages.css`
+- `content/commercial/blocked-copy.json`
+- `content/commercial/current-target-inventory.json`
 - `tests/rendered-html.test.mjs`
+- `tests/commercial-release-candidate.test.mjs`
 - `docs/reports/boho-commercial-v3-release-candidate.md`
 
-No glossary, Industries, audience, routing-registry, public asset, Worker,
-production, secret, DNS, billing, or credential file was changed.
+All are within the work-order allowlist. No glossary, Industries, audience,
+dependency, Worker, routing-registry, public asset, production, DNS, billing,
+credential, or secret file changed.
+
+## Correction evidence
+
+- Start visibly renders the exact correction-packet incident block and unique
+  `project-inquiry` and `visibility-check-request` targets.
+- Pricing and Work compatibility aliases occur once and sit inside their
+  meaningful current groups.
+- Every Work summary reaches a distinct expanded section; details visibly expose
+  source, demonstration, limitation, and status fields, and no evidence action
+  self-links.
+- Emergency input is limited to 7,500 characters and the complete constructed
+  backend `problem` is rejected above 8,000 characters without truncation.
+- Each of the five service decision layers renders the three required labels
+  with accepted contract-backed values.
+- Mobile navigation includes the adapter-backed Services overview route.
+- Optional form values remain mounted while disclosure is closed.
+- Confirmed success is handled outside the request-failure catch. Analytics and
+  third-party cleanup are best-effort and contain no submitted values.
+- Turnstile maintains one timer and one widget, stops polling after render and
+  on script/render/widget errors, and clears timer/listeners/widget on unmount.
+- Navigation labels resolve through accepted adapter records.
+
+## Generated artifacts
+
+The approved commercial generator was run twice in an isolated temporary copy.
+Only these authorized outputs were transferred:
+
+- `content/commercial/current-target-inventory.json`
+- `content/commercial/blocked-copy.json`
+
+The other four generator outputs were byte-identical to the repository. A
+subsequent in-repository `commercial-copy:check` passed. Boho Analytics public
+or free availability remains the sole blocked record with
+`targetApproved: false` and `replacementText: null`.
 
 ## Validation
 
+- Commercial-copy check: pass.
 - TypeScript: pass.
-- Lint: pass with 34 pre-existing/non-blocking warnings and zero errors.
-- Static build: pass; 185 pages generated.
-- Rendered HTML: pass, 23/23 tests.
-- Browser audit: pass after repairing one heading-order defect and two contrast
-  defects.
-- Commercial-copy check: **blocked** because generated `inventory` and `blocked`
-  artifacts are stale and their required output paths are outside this work
-  order's allowlist.
-- Full normal suite and downstream route/artifact/crawl gates were not claimed
-  after the explicit stop condition triggered.
+- Lint: pass with zero errors and 34 existing warnings.
+- Production-style build: pass; 185 static pages.
+- Commercial contract suite: pass, 12/12.
+- Rendered HTML suite: pass, 37/37 before the final metadata assertion was
+  strengthened.
+- Candidate correction suite: **blocked, 13/14**. The single failure correctly
+  proves the active Homepage title does not use the accepted commercial slot.
+- Route checks: pass; 153 glossary routes, 58 redirect records, 80 redirect
+  rules, and no loops or chains.
+- Redirect checks: pass as part of route checks.
+- Route-artifact check: **blocked** by the unauthorized stale public route
+  registry described below.
+- Static crawl: pass; 181 canonical pages, 80 redirect variants, two
+  robots/sitemap files, and zero failures.
+- `git diff --check`: pass.
 
-## Screenshots and accessibility
+Because required validation fails, the candidate is not eligible for preview.
 
-Twenty-one screenshots were generated in
-`/tmp/WO-2026-07-24-BOHO-COMMERCIAL-CLIENT-ACQUISITION-RC-067/screenshots/`:
-Homepage, Services, Provider Rescue, Pricing, Work, Contact, and Start at
-1440×1000, 900×1100, and 390×844.
+## Browser and accessibility audit
 
-The final Chromium audit reports zero failures for one H1 per route, heading
-order, duplicate IDs, form labels, horizontal overflow, reduced-motion
-preference, initial keyboard focus, mobile-menu open/Escape/focus restoration,
-and Start-form error announcements/focus. A solid-background WCAG contrast scan
-checked 1,256 text elements with zero failures. Gradient-backed regions were
-reserved for screenshot review. No content is hover-only.
+An isolated real Chromium audit covered Homepage, Services, Provider Rescue,
+Pricing, Work, Contact, Start, and Emergency at:
 
-## Performance
+- 1440×1000
+- 900×1100
+- 390×844
 
-- Static output: 53,098,160 bytes.
-- Build wall time: 24.77 seconds.
-- Representative JavaScript: Homepage 656,160 bytes; Services, Provider Rescue,
-  Pricing, Work, Contact, and Start 847,755 bytes each.
-- The accepted commercial-copy contract is absent from browser chunks.
-- No dependency or heavy client library was added.
+All 24 route/viewport combinations passed checks for one H1, heading order,
+accessible names and labels, focus visibility, horizontal overflow, reduced
+motion, menu keyboard behavior and focus restoration, console/page errors, and
+automated contrast. Twenty-four screenshots and a machine-readable result matrix
+were captured under `/tmp/wo068-browser-audit/`.
 
-## Copy authority
+The Chrome DevTools connector was unavailable in this session, so the same
+installed Chromium runtime was driven through Playwright Core. The image-view
+helper failed because of the host sandbox fault, so screenshot inspection was
+limited to real-browser automated assertions and hashes.
 
-All new or changed visible copy is resolved from accepted commercial contract
-slots or exact accepted correction values. Navigation literals are exact
-accepted values. The resolver rejects blocked slots, `remove` actions, ambiguous
-matches, and values outside adapter allowlists.
+## Review findings
 
-Blocked Boho Analytics availability phrases are filtered from target service
-rendering. No replacement availability claim was created.
+The required fresh-context review returned two additional high findings:
 
-## Known limitation and required decision
+1. a Turnstile reset exception after backend success could overwrite success
+   with a network error; and
+2. script-load or synchronous render errors could leave polling active.
 
-The manager must either:
+Both were repaired within the allowlist, candidate checks were strengthened, and
+TypeScript passed afterward. The reviewer found no other blocker/high issue in
+payload bounds, navigation/focus, aliases/evidence, accessibility, copy
+authority, generated-artifact boundaries, or security/privacy.
 
-1. add `projects/bohodigitalservices-site/content/commercial/**` (or the two
-   exact generated files) to the allowed paths for this work order, then resume
-   the runner so it can run the approved generator; or
-2. provide a different approved way for the commercial-copy gate to validate
-   source changes without modifying those generated artifacts.
+## Hard stops
 
-No manual edit of generated copy artifacts was attempted.
+### Homepage metadata ownership
 
-## Fresh-context review findings
+The accepted metadata records are available in the commercial presentation
+adapter, but Next.js metadata is emitted by literal metadata exports in
+`app/page.tsx` and `app/layout.tsx`. An attempted component-level head repair
+produced duplicate tags without replacing the active title and was removed.
+Resolving this requires manager authorization for the true metadata owner files.
 
-The pinned code-review workflow found additional blockers in the local
-checkpoint. They were not repaired after the mandatory commercial-copy stop
-condition triggered:
+### Public route registry ownership
 
-1. Start omits required active-incident routing copy, and required
-   `#project-inquiry` / `#visibility-check-request` aliases are missing.
-2. Work and Pricing compatibility aliases exist but do not map to their
-   contracted target groups; required Work grouping/status content is absent.
-3. Work “Open the evidence” links are self-links because the accepted records
-   provide anchors but no evidence destinations. This is also a missing-copy
-   stop condition.
-4. A maximum-size emergency incident type plus description can exceed the
-   backend's 8,000-character `problem` limit.
-5. Changed navigation values are hard-coded instead of resolved through the
-   accepted commercial adapter.
-6. Service decision layers omit explicit client inputs, price drivers, and an
-   evidence/example deliverable.
-7. Mobile navigation exposes service children but not the Services overview.
-8. Closing progressive disclosure destroys entered optional form values.
-9. Homepage metadata remains on the prior literal metadata path.
-10. An analytics exception after confirmed form success can incorrectly show a
-    failure and invite a duplicate retry.
-11. Turnstile polling continues after successful widget render.
-12. Existing tests do not prove the placement, payload-limit, and backend
-    contracts above.
-
-The reviewer found no forbidden-path change, no new blocked Boho Analytics
-availability claim, and no heavy dependency.
+`corepack pnpm run routes:artifacts:check` reports
+`content/routing/public-route-registry.json` stale. A diagnostic generation
+showed that it would update commercial-route metadata and incoming-link records.
+The diagnostic change was immediately reversed byte-for-byte because the file is
+outside the allowlist and only the two named commercial artifacts may change.
+Resolving this requires exact authorization for that generated registry or a
+manager-approved validation alternative.
 
 ## Preview and deployment
 
-No branch push and no private preview were created after the required gate
-failed. No production action occurred.
+No branch push occurred. No private-preview version was saved or deployed. No
+preview URL or deployment identifier exists.
+
+Production `main` and the public production deployment remain unchanged.
 
 **NOT DEPLOYED TO PRODUCTION**
 
 ## Rollback
 
-The branch started at exact base
-`8816c53ad9e6d6f0ae6901237c4992291ba054c8`. Until the allowlist decision is
-resolved, rollback is to delete the unpushed local review branch after preserving
-any desired local checkpoint commit. No production rollback is required.
+The final action for this blocked run is a local ordinary checkpoint commit only.
+To discard that unpushed checkpoint after review, create a safety branch at the
+checkpoint and move the local preview branch back to
+`9e99af0a9c99f9bcdd1f81bd872ff6d6104550af` using the repository's approved Git
+workflow. No production or preview rollback is required because nothing was
+pushed or deployed.

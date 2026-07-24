@@ -1,18 +1,13 @@
 import { commercialSection } from "../content/commercial/presentation";
 import { Footer, Header } from "./commercial/CommercialChrome";
 
-const offerKeys = [
-  "initial-public-review",
-  "seo-reporting",
-  "seo-implementation",
-  "focused-website-improvement",
-  "new-website",
-  "substantial-redesign",
-  "provider-rescue-assessment",
-  "migration-assistance",
-  "focused-audit-or-strategy",
-  "custom-discovery",
-  "focused-custom-build",
+const offerGroups = [
+  { id: "initial-review", keys: ["initial-public-review"], aliases: [] },
+  { id: "ongoing-seo", keys: ["seo-reporting", "seo-implementation"], aliases: [] },
+  { id: "websites", keys: ["focused-website-improvement", "new-website", "substantial-redesign"], aliases: ["web-design", "website-work", "hosting-email"] },
+  { id: "provider-rescue", keys: ["provider-rescue-assessment", "migration-assistance"], aliases: [] },
+  { id: "research-audits", keys: ["focused-audit-or-strategy"], aliases: ["audits-strategy"] },
+  { id: "custom-solutions", keys: ["custom-discovery", "focused-custom-build"], aliases: [] },
 ] as const;
 
 export function PricingPage() {
@@ -24,8 +19,6 @@ export function PricingPage() {
   const hosting = commercialSection("pricing", "hosting-and-email");
   const payment = commercialSection("pricing", "payment-and-scope");
   const finalCta = commercialSection("pricing", "final-cta");
-  const offers = offerKeys.map((key) => commercialSection("pricing", key));
-  const renderedAnchors = new Set<string>();
 
   return (
     <>
@@ -53,23 +46,25 @@ export function PricingPage() {
         </section>
 
         <section className="commercial-section commercial-price-list" aria-label={overview.one("Accessible label")}>
-          <span id="web-design" />
-          <span id="analytics-reporting" />
-          <span id="audits-strategy" />
-          <span id="hosting-email" />
-          <div className="section-shell commercial-price-list__grid">
-            {offers.map((offer) => {
-              const anchor = offer.one("Anchor").slice(1);
-              const id = renderedAnchors.has(anchor) ? undefined : anchor;
-              renderedAnchors.add(anchor);
+          <div className="section-shell commercial-price-list__groups">
+            {offerGroups.map((group) => {
+              const offers = group.keys.map((key) => ({ key, section: commercialSection("pricing", key) }));
               return (
-              <article id={id} key={offer.one("Price")}>
-                <h2>{offer.one("Price")}</h2>
-                <p>{offer.one("Minimum-scope description")}</p>
-                <p>{offer.one("Planning range")}</p>
-                <p>{offer.one("Exclusion")}</p>
-                <a data-umami-event="commercial_pricing_cta" href={hero.one("Primary destination")}>{hero.one("Primary CTA")}</a>
-              </article>
+                <section className="commercial-price-group" id={group.id} aria-label={offers[0].section.one("Price")} key={group.id}>
+                  {group.aliases.map((alias) => <span className="commercial-anchor-alias" id={alias} key={alias} />)}
+                  <div className="commercial-price-list__grid">
+                    {offers.map(({ key, section: offer }) => (
+                      <article key={key}>
+                        {key === "seo-reporting" ? <span className="commercial-anchor-alias" id="analytics-reporting" /> : null}
+                        <h2>{offer.one("Price")}</h2>
+                        <p>{offer.one("Minimum-scope description")}</p>
+                        <p>{offer.one("Planning range")}</p>
+                        <p>{offer.one("Exclusion")}</p>
+                        <a data-umami-event="commercial_pricing_cta" href={hero.one("Primary destination")}>{hero.one("Primary CTA")}</a>
+                      </article>
+                    ))}
+                  </div>
+                </section>
               );
             })}
           </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  useCallback,
   useEffect,
   useId,
   useRef,
@@ -92,12 +93,19 @@ const TURNSTILE_SITEKEY = "0x4AAAAAAD2AbgQjicGIajbI";
 const TURNSTILE_SCRIPT =
   "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
 const REQUEST_TIMEOUT_MS = 20_000;
+const EMERGENCY_PROBLEM_MAX_LENGTH = 8_000;
+const EMERGENCY_PROBLEM_ERROR =
+  "Keep the incident description under 7,500 characters so the complete emergency message can be delivered.";
 
 function trackCommercialEvent(event: string) {
-  const analyticsWindow = window as unknown as {
-    umami?: { track(eventName: string): void };
-  };
-  analyticsWindow.umami?.track(event);
+  try {
+    const analyticsWindow = window as unknown as {
+      umami?: { track(eventName: string): void };
+    };
+    analyticsWindow.umami?.track(event);
+  } catch {
+    // Analytics is privacy-safe, value-free, and best-effort.
+  }
 }
 
 function fieldId(formId: string, name: string) {
@@ -114,6 +122,7 @@ export function CommercialInquiryFormClient({
   const formRef = useRef<HTMLFormElement>(null);
   const turnstileRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
+  const pollTimerRef = useRef<number | null>(null);
   const submissionIdRef = useRef<string | null>(null);
   const [turnstileToken, setTurnstileToken] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -121,6 +130,13 @@ export function CommercialInquiryFormClient({
   const [notice, setNotice] = useState<Notice | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const isStart = presentation.kind === "start";
+
+  const stopTurnstilePolling = useCallback(() => {
+    if (pollTimerRef.current !== null) {
+      window.clearInterval(pollTimerRef.current);
+      pollTimerRef.current = null;
+    }
+  }, []);
 
   useEffect(() => {
     if (presentation.kind === "start") {
@@ -130,27 +146,41 @@ export function CommercialInquiryFormClient({
 
   useEffect(() => {
     let disposed = false;
+    stopTurnstilePolling();
     const render = () => {
       if (disposed || !window.turnstile || !turnstileRef.current || widgetIdRef.current) return;
-      widgetIdRef.current = window.turnstile.render(turnstileRef.current, {
-        sitekey: TURNSTILE_SITEKEY,
-        action: isStart ? "boho_contact" : "boho_emergency",
-        theme: "light",
-        appearance: "always",
-        "response-field": false,
-        callback(token) {
-          if (!disposed) setTurnstileToken(token);
-        },
-        "expired-callback"() {
-          if (!disposed) setTurnstileToken("");
-        },
-        "timeout-callback"() {
-          if (!disposed) setTurnstileToken("");
-        },
-        "error-callback"() {
-          if (!disposed) setTurnstileToken("");
-        },
-      });
+      try {
+        widgetIdRef.current = window.turnstile.render(turnstileRef.current, {
+          sitekey: TURNSTILE_SITEKEY,
+          action: isStart ? "boho_contact" : "boho_emergency",
+          theme: "light",
+          appearance: "always",
+          "response-field": false,
+          callback(token) {
+            if (!disposed) setTurnstileToken(token);
+          },
+          "expired-callback"() {
+            stopTurnstilePolling();
+            if (!disposed) setTurnstileToken("");
+          },
+          "timeout-callback"() {
+            stopTurnstilePolling();
+            if (!disposed) setTurnstileToken("");
+          },
+          "error-callback"() {
+            stopTurnstilePolling();
+            if (!disposed) setTurnstileToken("");
+          },
+        });
+        stopTurnstilePolling();
+      } catch {
+        stopTurnstilePolling();
+        if (!disposed) setTurnstileToken("");
+      }
+    };
+    const handleScriptError = () => {
+      stopTurnstilePolling();
+      if (!disposed) setTurnstileToken("");
     };
     const existing = document.querySelector<HTMLScriptElement>(`script[src="${TURNSTILE_SCRIPT}"]`);
     let script = existing;
@@ -162,20 +192,30 @@ export function CommercialInquiryFormClient({
       document.head.appendChild(script);
     }
     script.addEventListener("load", render);
+    script.addEventListener("error", handleScriptError);
     render();
-    const poll = window.setInterval(render, 250);
+    if (!widgetIdRef.current) pollTimerRef.current = window.setInterval(render, 250);
     return () => {
       disposed = true;
-      window.clearInterval(poll);
+      stopTurnstilePolling();
       script?.removeEventListener("load", render);
-      if (widgetIdRef.current && window.turnstile) window.turnstile.remove(widgetIdRef.current);
-      widgetIdRef.current = null;
+      script?.removeEventListener("error", handleScriptError);
+      try {
+        if (widgetIdRef.current && window.turnstile) window.turnstile.remove(widgetIdRef.current);
+      } finally {
+        widgetIdRef.current = null;
+      }
     };
-  }, [isStart]);
+  }, [isStart, stopTurnstilePolling]);
 
   function resetTurnstile() {
+    stopTurnstilePolling();
     setTurnstileToken("");
-    if (widgetIdRef.current && window.turnstile) window.turnstile.reset(widgetIdRef.current);
+    try {
+      if (widgetIdRef.current && window.turnstile) window.turnstile.reset(widgetIdRef.current);
+    } catch {
+      // A third-party cleanup failure cannot change the confirmed form outcome.
+    }
   }
 
   function validate(form: HTMLFormElement) {
@@ -197,6 +237,12 @@ export function CommercialInquiryFormClient({
         }
       }
     }
+    if (!isStart) {
+      const incidentType = String(data.get("incidentType") ?? "").trim();
+      const description = String(data.get("description") ?? "").trim();
+      const problem = `${incidentType}\n\n${description}`;
+      if (problem.length > EMERGENCY_PROBLEM_MAX_LENGTH) next.description = EMERGENCY_PROBLEM_ERROR;
+    }
     if (!isStart && data.get("authority") !== "yes") {
       next.authority = presentation.validation.required;
     }
@@ -214,7 +260,9 @@ export function CommercialInquiryFormClient({
       const mapped = field.backendOptions?.[value] ?? value;
       if (!isStart && field.publicName === "description") {
         const incidentType = String(data.get("incidentType") ?? "").trim();
-        output.problem = `${incidentType}\n\n${mapped}`;
+        const problem = `${incidentType}\n\n${mapped}`;
+        if (problem.length > EMERGENCY_PROBLEM_MAX_LENGTH) throw new Error(EMERGENCY_PROBLEM_ERROR);
+        output.problem = problem;
       } else if (!(!isStart && field.publicName === "incidentType")) {
         output[field.backendName] = mapped;
       }
@@ -264,6 +312,7 @@ export function CommercialInquiryFormClient({
     submissionIdRef.current = submissionId;
     const controller = new AbortController();
     const timeout = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+    let confirmedSuccess = false;
     try {
       const response = await fetch(FORM_ENDPOINT, {
         method: "POST",
@@ -284,11 +333,7 @@ export function CommercialInquiryFormClient({
       });
       const payload = await response.json().catch(() => ({})) as { ok?: boolean };
       if ([200, 201, 202].includes(response.status) && payload.ok === true) {
-        setNotice({ kind: "success", ...presentation.notices.success });
-        trackCommercialEvent(isStart ? "commercial_standard_inquiry_success" : "commercial_emergency_inquiry_success");
-        form.reset();
-        submissionIdRef.current = null;
-        resetTurnstile();
+        confirmedSuccess = true;
       } else {
         setNotice(failureNotice(response.status));
         resetTurnstile();
@@ -299,6 +344,13 @@ export function CommercialInquiryFormClient({
     } finally {
       window.clearTimeout(timeout);
       setSubmitting(false);
+    }
+    if (confirmedSuccess) {
+      setNotice({ kind: "success", ...presentation.notices.success });
+      form.reset();
+      submissionIdRef.current = null;
+      resetTurnstile();
+      trackCommercialEvent(isStart ? "commercial_standard_inquiry_success" : "commercial_emergency_inquiry_success");
     }
   }
 
@@ -327,7 +379,11 @@ export function CommercialInquiryFormClient({
       "aria-describedby": describedBy,
     };
     return (
-      <div className="commercial-form__field" key={field.publicName}>
+      <div
+        className="commercial-form__field"
+        id={isStart && field.publicName === "service" ? "visibility-check-request" : undefined}
+        key={field.publicName}
+      >
         <label htmlFor={id}>{field.label}<span className="commercial-form__requirement">{field.requirement}</span></label>
         {field.type === "textarea" ? <textarea {...common} rows={6} /> :
           field.type === "select" ? (
@@ -358,7 +414,9 @@ export function CommercialInquiryFormClient({
             <button type="button" aria-expanded={detailsOpen} onClick={() => setDetailsOpen((open) => !open)}>
               {detailsOpen ? presentation.disclosure.open : presentation.disclosure.closed}
             </button>
-            {detailsOpen ? <div className="commercial-form__grid">{optionalFields.map(renderField)}</div> : null}
+            <div className="commercial-form__grid" hidden={!detailsOpen}>
+              {optionalFields.map(renderField)}
+            </div>
           </div>
         ) : null}
         {presentation.authority ? (

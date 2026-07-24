@@ -14,7 +14,7 @@ export function DesktopNavigation({
 }) {
   const [openLabel, setOpenLabel] = useState<string | null>(null);
   const navRef = useRef<HTMLElement>(null);
-  const dropdownToggleRef = useRef<HTMLButtonElement>(null);
+  const dropdownToggleRefs = useRef(new Map<string, HTMLButtonElement>());
   const rawId = useId().replace(/[^a-zA-Z0-9_-]/g, "");
 
   useEffect(() => {
@@ -24,8 +24,9 @@ export function DesktopNavigation({
 
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape" && openLabel) {
+        const trigger = dropdownToggleRefs.current.get(openLabel);
         setOpenLabel(null);
-        requestAnimationFrame(() => dropdownToggleRef.current?.focus());
+        requestAnimationFrame(() => trigger?.focus());
       }
     }
 
@@ -67,7 +68,13 @@ export function DesktopNavigation({
                   {item.label}
                 </a>
                 <button
-                  ref={dropdownToggleRef}
+                  ref={(node) => {
+                    if (node) {
+                      dropdownToggleRefs.current.set(item.label, node);
+                    } else {
+                      dropdownToggleRefs.current.delete(item.label);
+                    }
+                  }}
                   type="button"
                   className="site-header__dropdown-toggle"
                   aria-expanded={open}

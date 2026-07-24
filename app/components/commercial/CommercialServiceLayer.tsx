@@ -1,6 +1,8 @@
 import {
   commercialSection,
   commercialSharedSection,
+  commercialCorrections068,
+  serviceDecisionValues,
 } from "../../content/commercial/presentation";
 
 const routeLayers = {
@@ -85,6 +87,7 @@ export function CommercialServiceLayer({
     "Audit limitation",
   ].map((field) => layer.optional(field)).find(Boolean);
   const start = commercialSection("homepage", "1-hero");
+  const decisionValues = serviceDecisionValues[pageKey];
 
   return (
     <section className="commercial-service-layer" aria-labelledby="commercial-service-title">
@@ -124,6 +127,11 @@ export function CommercialServiceLayer({
           <article><h2>{labels[4]}</h2><ul>{included.map((item) => <li key={item}>{item}</li>)}</ul></article>
           {mayBeAdded.length ? <article><h2>{labels[5]}</h2><ul>{mayBeAdded.map((item) => <li key={item}>{item}</li>)}</ul></article> : null}
           <article><h2>{labels[6]}</h2><ul>{notIncluded.map((item) => <li key={item}>{item}</li>)}</ul></article>
+        </div>
+        <div className="commercial-service-layer__decision-evidence">
+          <article><h2>{commercialCorrections068.serviceDecisionLabels.clientInputs}</h2><p>{decisionValues.clientInputs}</p></article>
+          <article><h2>{commercialCorrections068.serviceDecisionLabels.priceDrivers}</h2><p>{decisionValues.priceDrivers}</p></article>
+          <article><h2>{commercialCorrections068.serviceDecisionLabels.exampleDeliverable}</h2><p>{decisionValues.exampleDeliverable}</p></article>
         </div>
         {limitation ? <p className="commercial-service-layer__limitation">{limitation}</p> : null}
       </div>

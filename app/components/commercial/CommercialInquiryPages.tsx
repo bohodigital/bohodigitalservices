@@ -1,5 +1,6 @@
 import {
   commercialCorrections,
+  commercialCorrections068,
   commercialSection,
   correctionValue,
 } from "../../content/commercial/presentation";
@@ -82,6 +83,7 @@ export function CommercialStartPage() {
   const bodyOne = hero.many("Body paragraph 1").at(-1);
   const bodyTwo = hero.many("Body paragraph 2").at(-1);
   if (!bodyOne || !bodyTwo) throw new Error("Start hero body is incomplete.");
+  const incident = commercialCorrections068.start.incident;
   return (
     <>
       <Header />
@@ -95,6 +97,16 @@ export function CommercialStartPage() {
               <p>{bodyTwo}</p>
               <a className="button-link button-link--secondary" href={hero.one("Secondary destination")}>{hero.one("Secondary link")}</a>
             </div>
+          </div>
+        </section>
+        <section className="commercial-section commercial-incident-route" aria-labelledby="start-active-incident-title">
+          <div className="section-shell">
+            <p className="eyebrow">{incident.eyebrow}</p>
+            <h2 id="start-active-incident-title">{incident.heading}</h2>
+            <p>{incident.body}</p>
+            <a className="button-link button-link--secondary" href={incident.destination}>
+              {incident.linkLabel}
+            </a>
           </div>
         </section>
         <section className="commercial-section commercial-form-section">

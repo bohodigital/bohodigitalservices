@@ -3,6 +3,8 @@ import { createHash } from "node:crypto";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
+import "./commercial-release-candidate.test.mjs";
+
 async function render(pathname = "/", origin = "http://localhost") {
   const url = new URL(pathname, origin);
   const decodedPath = decodeURIComponent(url.pathname);
@@ -370,7 +372,22 @@ test("publishes the exact Contact, Start, and Emergency route split", async () =
   const formRoutes = [
     {
       route: "/start/",
-      fields: ["businessName", "companyWebsite", "consent", "email", "message", "name", "service", "website"],
+      fields: [
+        "budget",
+        "businessName",
+        "companyWebsite",
+        "consent",
+        "email",
+        "message",
+        "name",
+        "provider",
+        "service",
+        "serviceArea",
+        "timing",
+        "valuableAction",
+        "valuableOffer",
+        "website",
+      ],
     },
     {
       route: "/emergency/",

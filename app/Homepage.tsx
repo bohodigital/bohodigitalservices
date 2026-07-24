@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 
 import {
   commercialCorrections,
+  commercialCorrections068,
   commercialSection,
   correctionValue,
 } from "./content/commercial/presentation";
@@ -64,11 +65,14 @@ export default function Homepage() {
     heading: timeline.one(`Stage ${number} heading`),
     body: timeline.one(`Stage ${number} body`),
   }));
-  const evidenceArtifacts = [
+  const evidenceArtifacts = ([
     "artifact-1-website-ownership-map",
     "artifact-2-vanity-metrics-migration-record",
     "artifact-3-glossary-and-route-validation",
-  ].map((key) => commercialSection("work-evidence", key));
+  ] as const).map((key) => ({
+    key,
+    artifact: commercialSection("work-evidence", key),
+  }));
 
   return (
     <>
@@ -164,7 +168,7 @@ export default function Homepage() {
               <p>{workIntro}</p>
             </header>
             <div className="commercial-evidence__grid">
-              {evidenceArtifacts.map((artifact) => (
+              {evidenceArtifacts.map(({ artifact, key }) => (
                 <article id={artifact.one("Anchor").slice(1)} key={artifact.one("Title")}>
                   <h3>{artifact.one("Title")}</h3>
                   <p>{artifact.one("Summary")}</p>
@@ -174,7 +178,9 @@ export default function Homepage() {
                     <div><dt>{evidenceLabels[2]}</dt><dd>{artifact.one("What this does not demonstrate")}</dd></div>
                     {artifact.optional("Current status") ? <div><dt>{evidenceLabels[3]}</dt><dd>{artifact.one("Current status")}</dd></div> : null}
                   </dl>
-                  <TrackedLink event="commercial_evidence_open" href="/work/">{artifact.one("Open label")}</TrackedLink>
+                  <TrackedLink event="commercial_evidence_open" href={commercialCorrections068.work.destinations[key]}>
+                    {commercialCorrections068.work.openLabel}
+                  </TrackedLink>
                 </article>
               ))}
             </div>

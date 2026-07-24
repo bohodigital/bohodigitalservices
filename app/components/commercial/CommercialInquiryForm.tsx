@@ -65,7 +65,7 @@ function emergencyFields(): ReadonlyArray<CommercialFormField> {
     { publicName: "began", backendName: "began", type: "text", label: began.one("Label"), placeholder: began.one("Placeholder"), requirement: began.one("Required text"), required: true, maxLength: 500 },
     { publicName: "priorChange", backendName: "priorChange", type: "text", label: change.one("Label"), placeholder: change.one("Placeholder"), requirement: change.one("Optional text"), required: false, maxLength: 8000 },
     { publicName: "impact", backendName: "impact", type: "textarea", label: impact.one("Label"), placeholder: impact.one("Placeholder"), requirement: impact.one("Required text"), required: true, maxLength: 8000 },
-    { publicName: "description", backendName: "problem", type: "textarea", label: description.one("Label"), hint: description.one("Hint"), requirement: description.one("Required text"), required: true, maxLength: 8000 },
+    { publicName: "description", backendName: "problem", type: "textarea", label: description.one("Label"), hint: description.one("Hint"), requirement: description.one("Required text"), required: true, maxLength: 7500 },
   ];
 }
 

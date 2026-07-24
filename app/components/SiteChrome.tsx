@@ -577,6 +577,8 @@ export function Footer() {
               src="/brand/github-invertocat-white.svg"
               width="24"
               height="24"
+              loading="lazy"
+              decoding="async"
               alt=""
             />
           </a>
