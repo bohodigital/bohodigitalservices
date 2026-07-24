@@ -26,6 +26,7 @@ export const PACKETS = [
   ["WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045", 12, "route-fragment-compatibility"],
   ["WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047", 13, "emergency"],
   ["WO-2026-07-24-BOHO-CHATGPT-DIRECT-REVIEW-PROTOCOL-048", 14, "review-protocol"],
+  ["WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049", 15, "cross-packet-corrections"],
 ].map(([key, precedence, surface]) => ({
   key, precedence, surface, file: `${key}.md`,
   editorialAuthority: key.endsWith("-048") ? "review-protocol" : "chatgpt",
@@ -45,7 +46,22 @@ const EXPECTED_PACKET_HASHES = {
   "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045": "47d94f4a6f5e00bba2cf9ade9cc4e3c13d400421117639ec5051752812839d1f",
   "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047": "5a01517f2dc9302cda0dd4642b5bcff848037fe47b145e712311d6e3c5e51c67",
   "WO-2026-07-24-BOHO-CHATGPT-DIRECT-REVIEW-PROTOCOL-048": "12b7575baa750ea11630496aa21b6c78207794d4ad1480e9d28331e8d79dc482",
+  "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049": "abbcbeb66fc5b44847069eeaf00a97d875b5389d1790373cb5f7a7c78ab12862",
 };
+const CORRECTION_PACKET_KEY = "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049";
+const REPORTING_PRODUCT_KEY = "product.seoReporting.monthly";
+const ANALYTICS_BLOCK_KEY = "product.bohoAnalytics.publicFreeAvailability";
+const SUPERSEDED_TARGET_LOCATIONS = new Set([
+  "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036:244",
+  "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038:30",
+  "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038:186",
+  "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038:200",
+  "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038:226",
+  "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039:121",
+  "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039:295",
+  `${CORRECTION_PACKET_KEY}:14`, `${CORRECTION_PACKET_KEY}:31`,
+  `${CORRECTION_PACKET_KEY}:175`, `${CORRECTION_PACKET_KEY}:178`, `${CORRECTION_PACKET_KEY}:181`,
+]);
 
 const REQUIRED_SERVICE_NAMES = [
   "Local Visibility & Lead Systems",
@@ -76,7 +92,7 @@ const CURRENT_SOURCE_ROOTS = [
 const REQUIRED_TARGET_SURFACES = [
   "timelines", "service-detail", "homepage", "pricing", "work",
   "contact-start-navigation-footer", "metadata-schema", "services", "visual-accessibility",
-  "route-fragment-compatibility", "emergency",
+  "route-fragment-compatibility", "emergency", "cross-packet-corrections",
 ];
 
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
@@ -118,6 +134,91 @@ function inferRoute(surface, heading, value) {
 
 function isWholeBacktickValue(line) {
   return /^(?:[-*]\s+|\d+\.\s+)?`[^`]+`[.,;:]?$/.test(line.trim());
+}
+
+function sourcedValue(bundle, line, tokenIndex = 0) {
+  const packet = bundle.packets.find(({ key }) => key === CORRECTION_PACKET_KEY);
+  if (!packet) throw new Error(`Missing correction packet: ${CORRECTION_PACKET_KEY}`);
+  const sourceLine = packet.content.split("\n")[line - 1] ?? "";
+  const tokens = [...sourceLine.matchAll(/`([^`]+)`/g)].map((match) => match[1]);
+  const value = tokens[tokenIndex];
+  if (value === undefined) throw new Error(`Missing correction token ${tokenIndex} at ${CORRECTION_PACKET_KEY}:${line}`);
+  return {
+    value,
+    sourcePacket: CORRECTION_PACKET_KEY,
+    sourceLine: line,
+    sourceLocation: `${CORRECTION_PACKET_KEY}.md:${line}`,
+  };
+}
+
+function buildCorrections(bundle) {
+  return {
+    sourcePacket: CORRECTION_PACKET_KEY,
+    contact: {
+      pathCount: 4,
+      pathCountSourceLocation: `${CORRECTION_PACKET_KEY}.md:20-25`,
+      heading: sourcedValue(bundle, 18),
+      standardInquiry: {
+        options: [35, 36, 37, 38, 39, 40].map((line) => sourcedValue(bundle, line)),
+        removedOption: sourcedValue(bundle, 31),
+        automaticEmergencyRedirect: false,
+        routingSourceLocation: `${CORRECTION_PACKET_KEY}.md:27-59`,
+        emergencyBlock: {
+          eyebrow: sourcedValue(bundle, 45),
+          heading: sourcedValue(bundle, 48),
+          body: sourcedValue(bundle, 51),
+          linkLabel: sourcedValue(bundle, 54),
+          destination: sourcedValue(bundle, 57),
+        },
+      },
+    },
+    evidence: {
+      sourceClasses: [65, 66, 67, 68, 69, 70, 71].map((line) => sourcedValue(bundle, line)),
+      technicalRecordDefinition: {
+        name: sourcedValue(bundle, 66),
+        definition: sourcedValue(bundle, 78),
+        limitation: sourcedValue(bundle, 81),
+      },
+      workHeroIntroduction: sourcedValue(bundle, 85),
+      homepageIntroduction: sourcedValue(bundle, 89),
+      artifacts: [
+        { title: sourcedValue(bundle, 93, 0), sourceClass: sourcedValue(bundle, 93, 1) },
+        { title: sourcedValue(bundle, 94, 0), sourceClass: sourcedValue(bundle, 94, 1) },
+        { title: sourcedValue(bundle, 98), sourceClass: sourcedValue(bundle, 96) },
+        { title: sourcedValue(bundle, 99), sourceClass: sourcedValue(bundle, 96) },
+      ],
+    },
+    glossaryEvidence: {
+      currentStatus: sourcedValue(bundle, 107),
+      acceptedFoundationCommitLabel: sourcedValue(bundle, 112),
+      acceptedFoundationCommit: sourcedValue(bundle, 115),
+      acceptedRouteCountLabel: sourcedValue(bundle, 118),
+      acceptedRouteCount: sourcedValue(bundle, 121),
+      statusBoundarySourceLocation: `${CORRECTION_PACKET_KEY}.md:103-123`,
+    },
+    reportingProduct: {
+      key: REPORTING_PRODUCT_KEY,
+      price: sourcedValue(bundle, 129),
+      priceFamily: sourcedValue(bundle, 131, 0),
+      canonicalAnchor: sourcedValue(bundle, 131, 1),
+      compatibilityAlias: sourcedValue(bundle, 155),
+      crossReference: {
+        eyebrow: sourcedValue(bundle, 138),
+        heading: sourcedValue(bundle, 141),
+        body: sourcedValue(bundle, 144),
+        price: sourcedValue(bundle, 147),
+        linkLabel: sourcedValue(bundle, 150),
+        destination: sourcedValue(bundle, 153),
+      },
+    },
+    analyticsAvailability: {
+      key: sourcedValue(bundle, 175),
+      status: sourcedValue(bundle, 178),
+      reason: sourcedValue(bundle, 181),
+      targetApproved: false,
+      replacementText: null,
+    },
+  };
 }
 
 function extractTargetRecords(bundle) {
@@ -174,8 +275,9 @@ function extractTargetRecords(bundle) {
   ]);
   for (const record of records) {
     if (!record.routeDestination && knownActionRoutes.has(record.exactValue)) record.routeDestination = knownActionRoutes.get(record.exactValue);
+    if (record.exactValue.includes("$95")) record.canonicalProductKey = REPORTING_PRODUCT_KEY;
   }
-  return records;
+  return records.filter((record) => !SUPERSEDED_TARGET_LOCATIONS.has(`${record.sourcePacket}:${record.sourceLine}`));
 }
 
 function routeForCurrentPath(path) {
@@ -280,6 +382,7 @@ function sourceLineMatches(bundle, record) {
 function getValidationFindings(bundle, contract, inventory, blocked) {
   const findings = [];
   const target = contract.records;
+  const expectedCorrections = buildCorrections(bundle);
   if (bundle.packets.length !== PACKETS.length) findings.push(`packet count mismatch: ${bundle.packets.length}`);
   for (const [index, spec] of PACKETS.entries()) {
     const packet = bundle.packets[index];
@@ -290,6 +393,49 @@ function getValidationFindings(bundle, contract, inventory, blocked) {
     const computedHash = sha256(packet.content);
     if (computedHash !== EXPECTED_PACKET_HASHES[spec.key] || packet.sha256 !== computedHash) findings.push(`packet hash mismatch: ${spec.key}`);
   }
+  const highestPacket = contract.packetOrder.at(-1);
+  if (highestPacket?.key !== CORRECTION_PACKET_KEY || highestPacket.precedence !== 15) findings.push("packet 049 is not highest precedence");
+  if (json(contract.corrections) !== json(expectedCorrections)) findings.push("packet 049 correction value or provenance mismatch");
+  const contact = contract.corrections.contact;
+  const expectedOptions = expectedCorrections.contact.standardInquiry.options.map(({ value }) => value);
+  if (contact.pathCount !== 4 || contact.heading.value !== expectedCorrections.contact.heading.value) findings.push("contact path count mismatch");
+  if (json(contact.standardInquiry.options.map(({ value }) => value)) !== json(expectedOptions)) findings.push("standard inquiry option order mismatch");
+  if (contact.standardInquiry.options.some(({ value }) => value === contact.standardInquiry.removedOption.value)) findings.push("standard inquiry includes Emergency Website Help");
+  if (contact.standardInquiry.automaticEmergencyRedirect !== false || contact.standardInquiry.emergencyBlock.destination.value !== "/emergency/") findings.push("ordinary and emergency routing mismatch");
+  for (const location of SUPERSEDED_TARGET_LOCATIONS) {
+    if (target.some((record) => `${record.sourcePacket}:${record.sourceLine}` === location)) findings.push(`superseded packet value remains: ${location}`);
+  }
+  if (target.some((record) => record.exactValue === "One contact page. Three different reasons to use it.")) findings.push("contact claims three paths while four are defined");
+  const approvedSourceClasses = expectedCorrections.evidence.sourceClasses.map(({ value }) => value);
+  if (json(contract.approvedEvidenceSourceClasses) !== json(approvedSourceClasses)) findings.push("evidence source-class taxonomy mismatch");
+  for (const artifact of contract.corrections.evidence.artifacts) {
+    if (!approvedSourceClasses.includes(artifact.sourceClass.value)) findings.push(`undefined or compound evidence source class: ${artifact.sourceClass.value}`);
+  }
+  for (const record of target.filter(({ field }) => field === "Source class")) {
+    if (!approvedSourceClasses.includes(record.exactValue)) findings.push(`undefined or compound evidence source class: ${record.exactValue}`);
+  }
+  if (contract.corrections.glossaryEvidence.currentStatus.value !== expectedCorrections.glossaryEvidence.currentStatus.value) findings.push("glossary evidence status is not future-safe");
+  if (target.some((record) => /Repository foundation accepted at commit 89cb098.*not deployed/i.test(record.exactValue))) findings.push("glossary commit is presented as permanently current");
+  const reportingProducts = contract.products.filter(({ price }) => price === expectedCorrections.reportingProduct.price.value);
+  if (reportingProducts.length !== 1) findings.push(`public $95 monthly reporting product count mismatch: ${reportingProducts.length}`);
+  const expectedReportingReferences = target.filter(({ exactValue }) => exactValue.includes("$95")).map(({ key, sourceLocation, surface }) => ({
+    recordKey: key, sourceLocation, surface, productKey: REPORTING_PRODUCT_KEY,
+  }));
+  if (json(contract.reportingProductReferences) !== json(expectedReportingReferences)) findings.push("$95 reporting-product reference mapping mismatch");
+  if (target.some((record) => record.exactValue.includes("$95") && record.canonicalProductKey !== REPORTING_PRODUCT_KEY)) findings.push("$95 copy points to a noncanonical reporting product");
+  if (contract.pricingAnchors.canonical.productKey !== contract.pricingAnchors.compatibilityAlias.productKey
+      || contract.pricingAnchors.canonical.value !== expectedCorrections.reportingProduct.canonicalAnchor.value
+      || contract.pricingAnchors.compatibilityAlias.value !== expectedCorrections.reportingProduct.compatibilityAlias.value) findings.push("analytics-reporting alias diverges from ongoing-seo product");
+  const analyticsBlock = blocked.items.find(({ key }) => key === ANALYTICS_BLOCK_KEY);
+  if (blocked.items.length !== 1 || !analyticsBlock) findings.push("required Boho Analytics blocked-copy record missing");
+  if (analyticsBlock && (analyticsBlock.status !== expectedCorrections.analyticsAvailability.status.value
+      || analyticsBlock.reason !== expectedCorrections.analyticsAvailability.reason.value
+      || analyticsBlock.targetApproved !== false || analyticsBlock.replacementText !== null)) findings.push("Boho Analytics blocked-copy record mismatch");
+  const currentAnalyticsClaims = inventory.current.filter(isBlockedAnalyticsClaim);
+  if (!currentAnalyticsClaims.length) findings.push("current Boho Analytics public-free claim inventory missing");
+  if (currentAnalyticsClaims.some((record) => record.disposition !== "blocked-pending-current-product-verification" || record.blockedCopyKey !== ANALYTICS_BLOCK_KEY)) findings.push("current Boho Analytics public-free claim is not blocked");
+  if (target.some(isBlockedAnalyticsClaim)) findings.push("Boho Analytics public-free claim is target-approved");
+  if (target.some((record) => /Boho Analytics Platform.*(?:coming soon|request access|free dashboard)/i.test(record.exactValue))) findings.push("invented Boho Analytics availability language");
   const groups = [target, inventory.current, inventory.target];
   const all = groups.flat();
   for (const group of groups) {
@@ -344,20 +490,33 @@ function getValidationFindings(bundle, contract, inventory, blocked) {
   for (const state of ["success", "failure", "rate limit", "network"]) if (!form.some((record) => `${record.section} ${record.field}`.toLowerCase().includes(state))) findings.push(`missing form state: ${state}`);
   for (const classification of ["metadata", "schema", "accessible-text", "figure", "form-state", "navigation"]) if (!target.some((record) => record.classification === classification)) findings.push(`missing target classification: ${classification}`);
   for (const surface of REQUIRED_TARGET_SURFACES) if (!target.some((record) => record.surface === surface)) findings.push(`missing target surface: ${surface}`);
-  for (const item of blocked.items) findings.push(`blocked copy: ${item.key}`);
   return [...new Set(findings)].sort();
 }
 
-function buildBlocked(target) {
-  const items = REQUIRED_TARGET_SURFACES.filter((surface) => !target.some((record) => record.surface === surface)).map((surface) => ({
-    key: `blocked.${surface}`, surface,
-    reason: "No exact ChatGPT-authored value was extractable from the binding packet.",
-    disposition: "blocked-missing-copy",
+function isBlockedAnalyticsClaim(record) {
+  return /Boho Analytics Platform/i.test(record.exactValue) && /\b(?:free|without paying)\b/i.test(record.exactValue);
+}
+
+function buildBlocked(current, corrections) {
+  const currentClaims = current.filter(isBlockedAnalyticsClaim).map((record) => ({
+    sourceFile: record.sourceFile,
+    sourceField: record.sourceField,
+    exactValue: record.exactValue,
+    inventoryKey: record.key,
   }));
   return {
     schemaVersion: 1,
     policy: "No placeholder, guessed value, synonym, summary, caption, alt text, metadata, field state, or mobile variant may replace a blocked item.",
-    items,
+    items: [{
+      key: corrections.analyticsAvailability.key.value,
+      status: corrections.analyticsAvailability.status.value,
+      reason: corrections.analyticsAvailability.reason.value,
+      targetApproved: false,
+      replacementText: null,
+      sourcePacket: CORRECTION_PACKET_KEY,
+      sourceLocations: [corrections.analyticsAvailability.key.sourceLocation, corrections.analyticsAvailability.status.sourceLocation, corrections.analyticsAvailability.reason.sourceLocation],
+      currentClaims,
+    }],
   };
 }
 
@@ -372,7 +531,7 @@ async function createBundle(snapshotRoot) {
   return {
     schemaVersion: 1, authority: "ChatGPT-authored packets; exact snapshots copied mechanically with no editorial changes.",
     baseCommit: BASE_COMMIT,
-    precedenceRule: "Later numbered packets resolve their specific surface more completely; 021 and 022 govern all surfaces.",
+    precedenceRule: "Packet 049 has highest precedence for every affected value; otherwise later numbered packets resolve their specific surface more completely, while 021 and 022 govern all surfaces.",
     packets,
   };
 }
@@ -380,10 +539,37 @@ async function createBundle(snapshotRoot) {
 export async function buildArtifacts(bundle) {
   const target = extractTargetRecords(bundle);
   const current = await buildCurrentInventory();
+  const corrections = buildCorrections(bundle);
+  for (const record of current.filter(isBlockedAnalyticsClaim)) {
+    record.disposition = "blocked-pending-current-product-verification";
+    record.blockedCopyKey = ANALYTICS_BLOCK_KEY;
+  }
+  const reportingProductReferences = target.filter((record) => record.canonicalProductKey === REPORTING_PRODUCT_KEY).map((record) => ({
+    recordKey: record.key,
+    sourceLocation: record.sourceLocation,
+    surface: record.surface,
+    productKey: REPORTING_PRODUCT_KEY,
+  }));
   const contract = {
     schemaVersion: 1, baseCommit: BASE_COMMIT, editorialOwner: "ChatGPT", workerCopyAuthority: "none",
     packetOrder: bundle.packets.map(({ key, precedence, surface, sha256, lineCount }) => ({ key, precedence, surface, sha256, lineCount })),
-    approvedServiceNames: REQUIRED_SERVICE_NAMES, approvedPriceStrings: REQUIRED_PRICE_STRINGS, records: target,
+    approvedServiceNames: REQUIRED_SERVICE_NAMES,
+    approvedPriceStrings: REQUIRED_PRICE_STRINGS,
+    approvedEvidenceSourceClasses: corrections.evidence.sourceClasses.map(({ value }) => value),
+    products: [{
+      key: REPORTING_PRODUCT_KEY,
+      price: corrections.reportingProduct.price.value,
+      priceFamily: corrections.reportingProduct.priceFamily.value,
+      canonicalAnchor: corrections.reportingProduct.canonicalAnchor.value,
+      sourceLocations: [corrections.reportingProduct.price.sourceLocation, corrections.reportingProduct.priceFamily.sourceLocation, corrections.reportingProduct.canonicalAnchor.sourceLocation],
+    }],
+    reportingProductReferences,
+    pricingAnchors: {
+      canonical: { value: corrections.reportingProduct.canonicalAnchor.value, productKey: REPORTING_PRODUCT_KEY },
+      compatibilityAlias: { value: corrections.reportingProduct.compatibilityAlias.value, productKey: REPORTING_PRODUCT_KEY },
+    },
+    corrections,
+    records: target,
   };
   const inventory = {
     schemaVersion: 1, baseCommit: BASE_COMMIT, sourceFamilies: CURRENT_SOURCE_ROOTS,
@@ -391,7 +577,7 @@ export async function buildArtifacts(bundle) {
     target: target.map((record) => ({ ...record, sourceFile: null, sourceField: record.field, provenance: record.sourceLocation })),
     counts: { current: current.length, target: target.length, currentSourceFiles: new Set(current.map((record) => record.sourceFile)).size, targetPackets: new Set(target.map((record) => record.sourcePacket)).size },
   };
-  return { contract, inventory, blocked: buildBlocked(target) };
+  return { contract, inventory, blocked: buildBlocked(current, corrections) };
 }
 
 export function validateArtifacts(bundle, contract, inventory, blocked) {

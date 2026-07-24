@@ -23,12 +23,21 @@ test("the packet-derived contract passes every invariant", () => {
   assert.equal(built.contract.workerCopyAuthority, "none");
   assert.equal(built.contract.approvedServiceNames.length, 5);
   assert.equal(built.contract.approvedPriceStrings.length, 11);
+  assert.equal(built.contract.packetOrder.at(-1).key, "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049");
+  assert.equal(built.contract.packetOrder.at(-1).precedence, 15);
+  assert.equal(built.contract.approvedEvidenceSourceClasses.length, 7);
+  assert.equal(built.contract.products.length, 1);
+  assert.equal(built.blocked.items.length, 1);
 });
 
 test("packet content and stored hashes cannot drift", () => {
   const tampered = clone(bundle);
   tampered.packets[0].content += "\n";
   assert.match(validateArtifacts(tampered, built.contract, built.inventory, built.blocked).join("\n"), /packet hash mismatch/);
+
+  const correctionTampered = clone(bundle);
+  correctionTampered.packets.at(-1).content += "\n";
+  assert.match(validateArtifacts(correctionTampered, built.contract, built.inventory, built.blocked).join("\n"), /packet hash mismatch: WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049/);
 });
 
 test("duplicate and missing keys fail", () => {
@@ -77,4 +86,70 @@ test("timeline, CTA, evidence, forms, metadata, schema, and accessibility fail c
   assert.match(result, /missing target classification: metadata/);
   assert.match(result, /missing target classification: schema/);
   assert.match(result, /missing target classification: accessible-text/);
+});
+
+test("contact count and ordinary versus emergency routing fail closed", () => {
+  const countResult = findingsFor(({ contract }) => { contract.corrections.contact.pathCount = 3; });
+  assert.match(countResult, /contact path count mismatch/);
+
+  const optionResult = findingsFor(({ contract }) => {
+    contract.corrections.contact.standardInquiry.options.push(contract.corrections.contact.standardInquiry.removedOption);
+  });
+  assert.match(optionResult, /standard inquiry includes Emergency Website Help/);
+
+  const routingResult = findingsFor(({ contract }) => { contract.corrections.contact.standardInquiry.automaticEmergencyRedirect = true; });
+  assert.match(routingResult, /ordinary and emergency routing mismatch/);
+});
+
+test("evidence artifacts accept only the exact packet-049 source taxonomy", () => {
+  const compoundResult = findingsFor(({ contract }) => {
+    contract.corrections.evidence.artifacts[0].sourceClass.value = "Boho-owned property and public system";
+  });
+  assert.match(compoundResult, /undefined or compound evidence source class/);
+
+  const undefinedResult = findingsFor(({ contract }) => {
+    contract.corrections.evidence.artifacts[0].sourceClass.value = "Boho-owned tool";
+  });
+  assert.match(undefinedResult, /undefined or compound evidence source class/);
+});
+
+test("glossary evidence cannot freeze the accepted base as permanently current", () => {
+  const result = findingsFor(({ contract }) => {
+    contract.corrections.glossaryEvidence.currentStatus.value = "Repository foundation accepted at commit 89cb0982b8f2274a289e8126c9472640a5305011; not deployed by the glossary correction work order";
+  });
+  assert.match(result, /glossary evidence status is not future-safe/);
+});
+
+test("the $95 product and compatibility alias remain canonical and singular", () => {
+  const duplicateResult = findingsFor(({ contract }) => { contract.products.push(clone(contract.products[0])); });
+  assert.match(duplicateResult, /public \$95 monthly reporting product count mismatch/);
+
+  const aliasResult = findingsFor(({ contract }) => { contract.pricingAnchors.compatibilityAlias.productKey = "product.analyticsReporting.monthly"; });
+  assert.match(aliasResult, /analytics-reporting alias diverges from ongoing-seo product/);
+});
+
+test("Boho Analytics public-free claims stay blocked without invented substitutes", () => {
+  const missingResult = findingsFor(({ blocked }) => { blocked.items = []; });
+  assert.match(missingResult, /required Boho Analytics blocked-copy record missing/);
+
+  const approvedResult = findingsFor(({ blocked }) => { blocked.items[0].targetApproved = true; });
+  assert.match(approvedResult, /Boho Analytics blocked-copy record mismatch/);
+
+  const inventedResult = findingsFor(({ contract }) => {
+    contract.records.push({
+      ...contract.records[0],
+      key: "target.test.invented-analytics-availability",
+      exactValue: "Boho Analytics Platform — coming soon",
+    });
+  });
+  assert.match(inventedResult, /invented Boho Analytics availability language/);
+
+  const publicFreeResult = findingsFor(({ contract }) => {
+    contract.records.push({
+      ...contract.records[0],
+      key: "target.test.public-free-analytics",
+      exactValue: "Use the Boho Analytics Platform free.",
+    });
+  });
+  assert.match(publicFreeResult, /Boho Analytics public-free claim is target-approved/);
 });

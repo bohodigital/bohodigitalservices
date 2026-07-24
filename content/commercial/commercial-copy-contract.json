@@ -101,6 +101,13 @@
       "surface": "review-protocol",
       "sha256": "12b7575baa750ea11630496aa21b6c78207794d4ad1480e9d28331e8d79dc482",
       "lineCount": 319
+    },
+    {
+      "key": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "precedence": 15,
+      "surface": "cross-packet-corrections",
+      "sha256": "abbcbeb66fc5b44847069eeaf00a97d875b5389d1790373cb5f7a7c78ab12862",
+      "lineCount": 199
     }
   ],
   "approvedServiceNames": [
@@ -123,6 +130,431 @@
     "Custom discovery — Starting at $500",
     "Focused custom build — Starting at $2,500"
   ],
+  "approvedEvidenceSourceClasses": [
+    "Boho-owned property",
+    "Boho-owned technical record",
+    "Public repository or tool",
+    "Sample document",
+    "Synthetic demonstration",
+    "Fictional concept interface",
+    "Client work published with permission"
+  ],
+  "products": [
+    {
+      "key": "product.seoReporting.monthly",
+      "price": "SEO reporting — Starting at $95 per month",
+      "priceFamily": "Local Visibility & Lead Systems",
+      "canonicalAnchor": "/pricing/#ongoing-seo",
+      "sourceLocations": [
+        "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:129",
+        "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:131",
+        "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:131"
+      ]
+    }
+  ],
+  "reportingProductReferences": [
+    {
+      "recordKey": "target.service-detail.p04.l0054",
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:54",
+      "surface": "service-detail",
+      "productKey": "product.seoReporting.monthly"
+    },
+    {
+      "recordKey": "target.homepage.p05.l0089",
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:89",
+      "surface": "homepage",
+      "productKey": "product.seoReporting.monthly"
+    },
+    {
+      "recordKey": "target.pricing.p06.l0089",
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:89",
+      "surface": "pricing",
+      "productKey": "product.seoReporting.monthly"
+    },
+    {
+      "recordKey": "target.services.p10.l0152",
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:152",
+      "surface": "services",
+      "productKey": "product.seoReporting.monthly"
+    },
+    {
+      "recordKey": "target.route-fragment-compatibility.p12.l0046",
+      "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:46",
+      "surface": "route-fragment-compatibility",
+      "productKey": "product.seoReporting.monthly"
+    },
+    {
+      "recordKey": "target.cross-packet-corrections.p15.l0129",
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:129",
+      "surface": "cross-packet-corrections",
+      "productKey": "product.seoReporting.monthly"
+    },
+    {
+      "recordKey": "target.cross-packet-corrections.p15.l0147",
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:147",
+      "surface": "cross-packet-corrections",
+      "productKey": "product.seoReporting.monthly"
+    }
+  ],
+  "pricingAnchors": {
+    "canonical": {
+      "value": "/pricing/#ongoing-seo",
+      "productKey": "product.seoReporting.monthly"
+    },
+    "compatibilityAlias": {
+      "value": "/pricing/#analytics-reporting",
+      "productKey": "product.seoReporting.monthly"
+    }
+  },
+  "corrections": {
+    "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+    "contact": {
+      "pathCount": 4,
+      "pathCountSourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:20-25",
+      "heading": {
+        "value": "One contact page. Four different reasons to use it.",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "sourceLine": 18,
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:18"
+      },
+      "standardInquiry": {
+        "options": [
+          {
+            "value": "Local Visibility & Lead Systems",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLine": 35,
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:35"
+          },
+          {
+            "value": "Websites & Managed Hosting",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLine": 36,
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:36"
+          },
+          {
+            "value": "Provider Rescue & Migration",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLine": 37,
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:37"
+          },
+          {
+            "value": "Custom Tools & Automation",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLine": 38,
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:38"
+          },
+          {
+            "value": "Research, Analytics & Improvement",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLine": 39,
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:39"
+          },
+          {
+            "value": "Not sure yet",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLine": 40,
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:40"
+          }
+        ],
+        "removedOption": {
+          "value": "Emergency Website Help",
+          "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+          "sourceLine": 31,
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:31"
+        },
+        "automaticEmergencyRedirect": false,
+        "routingSourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:27-59",
+        "emergencyBlock": {
+          "eyebrow": {
+            "value": "Active website incident",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLine": 45,
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:45"
+          },
+          "heading": {
+            "value": "Is the website actively failing?",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLine": 48,
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:48"
+          },
+          "body": {
+            "value": "Use the Emergency page for a verified urgent website, launch, form, redirect, provider-access, DNS, tracking, or migration problem that is actively affecting customers or business operations. The standard inquiry does not receive emergency priority.",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLine": 51,
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:51"
+          },
+          "linkLabel": {
+            "value": "Emergency Website Help",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLine": 54,
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:54"
+          },
+          "destination": {
+            "value": "/emergency/",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLine": 57,
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:57"
+          }
+        }
+      }
+    },
+    "evidence": {
+      "sourceClasses": [
+        {
+          "value": "Boho-owned property",
+          "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+          "sourceLine": 65,
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:65"
+        },
+        {
+          "value": "Boho-owned technical record",
+          "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+          "sourceLine": 66,
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:66"
+        },
+        {
+          "value": "Public repository or tool",
+          "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+          "sourceLine": 67,
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:67"
+        },
+        {
+          "value": "Sample document",
+          "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+          "sourceLine": 68,
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:68"
+        },
+        {
+          "value": "Synthetic demonstration",
+          "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+          "sourceLine": 69,
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:69"
+        },
+        {
+          "value": "Fictional concept interface",
+          "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+          "sourceLine": 70,
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:70"
+        },
+        {
+          "value": "Client work published with permission",
+          "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+          "sourceLine": 71,
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:71"
+        }
+      ],
+      "technicalRecordDefinition": {
+        "name": {
+          "value": "Boho-owned technical record",
+          "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+          "sourceLine": 66,
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:66"
+        },
+        "definition": {
+          "value": "A migration record, validation report, route manifest, changelog, release record, decision log, or other technical artifact produced through Boho’s own systems and repositories.",
+          "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+          "sourceLine": 78,
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:78"
+        },
+        "limitation": {
+          "value": "A Boho-owned technical record demonstrates the documented method and result of that technical operation. It is not client work and does not guarantee search, traffic, revenue, recovery, or another external business outcome.",
+          "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+          "sourceLine": 81,
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:81"
+        }
+      },
+      "workHeroIntroduction": {
+        "value": "Boho does not publish invented client results. Evidence is labeled by source: owned property, Boho-owned technical record, public repository or tool, sample document, synthetic demonstration, fictional concept interface, or client work published with permission.",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "sourceLine": 85,
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:85"
+      },
+      "homepageIntroduction": {
+        "value": "Boho does not publish invented client results. Evidence is labeled by source: owned property, Boho-owned technical record, public repository or tool, sample document, synthetic demonstration, fictional concept interface, or client work published with permission.",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "sourceLine": 89,
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:89"
+      },
+      "artifacts": [
+        {
+          "title": {
+            "value": "Boho Analytics website graph",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLine": 93,
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:93"
+          },
+          "sourceClass": {
+            "value": "Boho-owned property",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLine": 93,
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:93"
+          }
+        },
+        {
+          "title": {
+            "value": "Rank Builder publishing and citation system",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLine": 94,
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:94"
+          },
+          "sourceClass": {
+            "value": "Boho-owned property",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLine": 94,
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:94"
+          }
+        },
+        {
+          "title": {
+            "value": "Vanity Metrics URL recovery and redirect record",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLine": 98,
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:98"
+          },
+          "sourceClass": {
+            "value": "Boho-owned technical record",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLine": 96,
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:96"
+          }
+        },
+        {
+          "title": {
+            "value": "Glossary route and static-crawl validation",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLine": 99,
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:99"
+          },
+          "sourceClass": {
+            "value": "Boho-owned technical record",
+            "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+            "sourceLine": 96,
+            "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:96"
+          }
+        }
+      ]
+    },
+    "glossaryEvidence": {
+      "currentStatus": {
+        "value": "Accepted repository foundation; production deployment remains a separate release decision",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "sourceLine": 107,
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:107"
+      },
+      "acceptedFoundationCommitLabel": {
+        "value": "Accepted foundation commit",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "sourceLine": 112,
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:112"
+      },
+      "acceptedFoundationCommit": {
+        "value": "89cb0982b8f2274a289e8126c9472640a5305011",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "sourceLine": 115,
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:115"
+      },
+      "acceptedRouteCountLabel": {
+        "value": "Glossary route count at acceptance",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "sourceLine": 118,
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:118"
+      },
+      "acceptedRouteCount": {
+        "value": "153",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "sourceLine": 121,
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:121"
+      },
+      "statusBoundarySourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:103-123"
+    },
+    "reportingProduct": {
+      "key": "product.seoReporting.monthly",
+      "price": {
+        "value": "SEO reporting — Starting at $95 per month",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "sourceLine": 129,
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:129"
+      },
+      "priceFamily": {
+        "value": "Local Visibility & Lead Systems",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "sourceLine": 131,
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:131"
+      },
+      "canonicalAnchor": {
+        "value": "/pricing/#ongoing-seo",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "sourceLine": 131,
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:131"
+      },
+      "compatibilityAlias": {
+        "value": "/pricing/#analytics-reporting",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "sourceLine": 155,
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:155"
+      },
+      "crossReference": {
+        "eyebrow": {
+          "value": "Recurring reporting",
+          "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+          "sourceLine": 138,
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:138"
+        },
+        "heading": {
+          "value": "Need a recurring report instead of a one-time audit?",
+          "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+          "sourceLine": 141,
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:141"
+        },
+        "body": {
+          "value": "Ongoing analyst-reviewed reporting is sold through Local Visibility & Lead Systems. The report can still include approved analytics, technical, search, local, customer-path, and data-quality evidence when those sources are part of the written scope.",
+          "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+          "sourceLine": 144,
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:144"
+        },
+        "price": {
+          "value": "SEO reporting — Starting at $95 per month",
+          "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+          "sourceLine": 147,
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:147"
+        },
+        "linkLabel": {
+          "value": "See SEO Reporting",
+          "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+          "sourceLine": 150,
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:150"
+        },
+        "destination": {
+          "value": "/pricing/#ongoing-seo",
+          "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+          "sourceLine": 153,
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:153"
+        }
+      }
+    },
+    "analyticsAvailability": {
+      "key": {
+        "value": "product.bohoAnalytics.publicFreeAvailability",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "sourceLine": 175,
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:175"
+      },
+      "status": {
+        "value": "Blocked pending current product verification",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "sourceLine": 178,
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:178"
+      },
+      "reason": {
+        "value": "The current repository contains the claim, but the commercial V3 program has not yet verified a stable public access contract or current product boundary.",
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "sourceLine": 181,
+        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:181"
+      },
+      "targetApproved": false,
+      "replacementText": null
+    }
+  },
   "records": [
     {
       "key": "target.timelines.p03.l0014",
@@ -878,7 +1310,8 @@
       "sourceLine": 54,
       "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035.md:54",
       "sourceKind": "chatgpt-packet",
-      "editorialAuthority": "ChatGPT"
+      "editorialAuthority": "ChatGPT",
+      "canonicalProductKey": "product.seoReporting.monthly"
     },
     {
       "key": "target.service-detail.p04.l0056",
@@ -4262,7 +4695,8 @@
       "sourceLine": 89,
       "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:89",
       "sourceKind": "chatgpt-packet",
-      "editorialAuthority": "ChatGPT"
+      "editorialAuthority": "ChatGPT",
+      "canonicalProductKey": "product.seoReporting.monthly"
     },
     {
       "key": "target.homepage.p05.l0092",
@@ -5125,24 +5559,6 @@
       "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
       "sourceLine": 241,
       "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:241",
-      "sourceKind": "chatgpt-packet",
-      "editorialAuthority": "ChatGPT"
-    },
-    {
-      "key": "target.homepage.p05.l0244",
-      "exactValue": "Boho does not publish invented client results. Evidence is labeled by source: owned property, public repository or tool, sample document, synthetic demonstration, fictional concept interface, or client work published with permission.",
-      "route": "/",
-      "surface": "homepage",
-      "section": "5. Evidence section",
-      "field": "Introduction",
-      "status": "target",
-      "currentlyRendered": false,
-      "disposition": "replace-later-with-exact-approved-text",
-      "classification": "evidence",
-      "routeDestination": null,
-      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
-      "sourceLine": 244,
-      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036.md:244",
       "sourceKind": "chatgpt-packet",
       "editorialAuthority": "ChatGPT"
     },
@@ -6818,7 +7234,8 @@
       "sourceLine": 89,
       "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037.md:89",
       "sourceKind": "chatgpt-packet",
-      "editorialAuthority": "ChatGPT"
+      "editorialAuthority": "ChatGPT",
+      "canonicalProductKey": "product.seoReporting.monthly"
     },
     {
       "key": "target.pricing.p06.l0092",
@@ -8279,24 +8696,6 @@
       "editorialAuthority": "ChatGPT"
     },
     {
-      "key": "target.work.p07.l0030",
-      "exactValue": "Boho does not publish invented client results. Evidence is labeled by source: owned property, public repository or tool, sample document, synthetic demonstration, fictional concept interface, or client work published with permission.",
-      "route": "/work/",
-      "surface": "work",
-      "section": "Hero",
-      "field": "Body paragraph 1",
-      "status": "target",
-      "currentlyRendered": false,
-      "disposition": "replace-later-with-exact-approved-text",
-      "classification": "evidence",
-      "routeDestination": null,
-      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
-      "sourceLine": 30,
-      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:30",
-      "sourceKind": "chatgpt-packet",
-      "editorialAuthority": "ChatGPT"
-    },
-    {
       "key": "target.work.p07.l0033",
       "exactValue": "The purpose of this page is to show how Boho maps systems, records decisions, validates releases, and builds useful digital infrastructure. An artifact can demonstrate method and engineering discipline without pretending to prove that another business will receive the same commercial result.",
       "route": "/work/",
@@ -9125,24 +9524,6 @@
       "editorialAuthority": "ChatGPT"
     },
     {
-      "key": "target.work.p07.l0186",
-      "exactValue": "Repository foundation accepted at commit 89cb0982b8f2274a289e8126c9472640a5305011; not deployed by the glossary correction work order",
-      "route": "/work/",
-      "surface": "work",
-      "section": "Artifact 3: Glossary and route validation",
-      "field": "Current status",
-      "status": "target",
-      "currentlyRendered": false,
-      "disposition": "replace-later-with-exact-approved-text",
-      "classification": "route",
-      "routeDestination": "Repository foundation accepted at commit 89cb0982b8f2274a289e8126c9472640a5305011; not deployed by the glossary correction work order",
-      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
-      "sourceLine": 186,
-      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:186",
-      "sourceKind": "chatgpt-packet",
-      "editorialAuthority": "ChatGPT"
-    },
-    {
       "key": "target.work.p07.l0189",
       "exactValue": "Open the validation report",
       "route": "/work/",
@@ -9193,24 +9574,6 @@
       "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
       "sourceLine": 197,
       "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:197",
-      "sourceKind": "chatgpt-packet",
-      "editorialAuthority": "ChatGPT"
-    },
-    {
-      "key": "target.work.p07.l0200",
-      "exactValue": "Boho-owned tool",
-      "route": "/work/",
-      "surface": "work",
-      "section": "Artifact 4: Boho Analytics site graph",
-      "field": "Source class",
-      "status": "target",
-      "currentlyRendered": false,
-      "disposition": "replace-later-with-exact-approved-text",
-      "classification": "evidence",
-      "routeDestination": null,
-      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
-      "sourceLine": 200,
-      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:200",
       "sourceKind": "chatgpt-packet",
       "editorialAuthority": "ChatGPT"
     },
@@ -9337,24 +9700,6 @@
       "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
       "sourceLine": 223,
       "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:223",
-      "sourceKind": "chatgpt-packet",
-      "editorialAuthority": "ChatGPT"
-    },
-    {
-      "key": "target.work.p07.l0226",
-      "exactValue": "Boho-owned property and public system",
-      "route": "/work/",
-      "surface": "work",
-      "section": "Artifact 5: Rank Builder publishing system",
-      "field": "Source class",
-      "status": "target",
-      "currentlyRendered": false,
-      "disposition": "replace-later-with-exact-approved-text",
-      "classification": "evidence",
-      "routeDestination": null,
-      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
-      "sourceLine": 226,
-      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038.md:226",
       "sourceKind": "chatgpt-packet",
       "editorialAuthority": "ChatGPT"
     },
@@ -10421,24 +10766,6 @@
       "editorialAuthority": "ChatGPT"
     },
     {
-      "key": "target.contact-start-navigation-footer.p08.l0121",
-      "exactValue": "One contact page. Three different reasons to use it.",
-      "route": "/contact/",
-      "surface": "contact-start-navigation-footer",
-      "section": "Contact paths",
-      "field": "Section heading",
-      "status": "target",
-      "currentlyRendered": false,
-      "disposition": "replace-later-with-exact-approved-text",
-      "classification": "navigation",
-      "routeDestination": null,
-      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
-      "sourceLine": 121,
-      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:121",
-      "sourceKind": "chatgpt-packet",
-      "editorialAuthority": "ChatGPT"
-    },
-    {
       "key": "target.contact-start-navigation-footer.p08.l0126",
       "exactValue": "Start a project or request a review",
       "route": "/contact/",
@@ -11335,24 +11662,6 @@
       "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
       "sourceLine": 294,
       "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:294",
-      "sourceKind": "chatgpt-packet",
-      "editorialAuthority": "ChatGPT"
-    },
-    {
-      "key": "target.contact-start-navigation-footer.p08.l0295",
-      "exactValue": "Emergency Website Help",
-      "route": "/contact/",
-      "surface": "contact-start-navigation-footer",
-      "section": "Service category",
-      "field": "list-item",
-      "status": "target",
-      "currentlyRendered": false,
-      "disposition": "replace-later-with-exact-approved-text",
-      "classification": "navigation",
-      "routeDestination": "/emergency/",
-      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
-      "sourceLine": 295,
-      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039.md:295",
       "sourceKind": "chatgpt-packet",
       "editorialAuthority": "ChatGPT"
     },
@@ -14576,7 +14885,8 @@
       "sourceLine": 152,
       "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041.md:152",
       "sourceKind": "chatgpt-packet",
-      "editorialAuthority": "ChatGPT"
+      "editorialAuthority": "ChatGPT",
+      "canonicalProductKey": "product.seoReporting.monthly"
     },
     {
       "key": "target.services.p10.l0155",
@@ -18824,7 +19134,8 @@
       "sourceLine": 46,
       "sourceLocation": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045.md:46",
       "sourceKind": "chatgpt-packet",
-      "editorialAuthority": "ChatGPT"
+      "editorialAuthority": "ChatGPT",
+      "canonicalProductKey": "product.seoReporting.monthly"
     },
     {
       "key": "target.route-fragment-compatibility.p12.l0051",
@@ -21775,6 +22086,674 @@
       "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
       "sourceLine": 392,
       "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047.md:392",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0018",
+      "exactValue": "One contact page. Four different reasons to use it.",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "1. Contact hub path count",
+      "field": "with",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "visible-text",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 18,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:18",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0035",
+      "exactValue": "Local Visibility & Lead Systems",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "2. Standard inquiry must not accept an emergency category",
+      "field": "The corrected option order is",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "form-state",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 35,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:35",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0036",
+      "exactValue": "Websites & Managed Hosting",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "2. Standard inquiry must not accept an emergency category",
+      "field": "list-item",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "visible-text",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 36,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:36",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0037",
+      "exactValue": "Provider Rescue & Migration",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "2. Standard inquiry must not accept an emergency category",
+      "field": "list-item",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "visible-text",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 37,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:37",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0038",
+      "exactValue": "Custom Tools & Automation",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "2. Standard inquiry must not accept an emergency category",
+      "field": "list-item",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "visible-text",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 38,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:38",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0039",
+      "exactValue": "Research, Analytics & Improvement",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "2. Standard inquiry must not accept an emergency category",
+      "field": "list-item",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "visible-text",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 39,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:39",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0040",
+      "exactValue": "Not sure yet",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "2. Standard inquiry must not accept an emergency category",
+      "field": "list-item",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "visible-text",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 40,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:40",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0045",
+      "exactValue": "Active website incident",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "2. Standard inquiry must not accept an emergency category",
+      "field": "Eyebrow",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "visible-text",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 45,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:45",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0048",
+      "exactValue": "Is the website actively failing?",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "2. Standard inquiry must not accept an emergency category",
+      "field": "Heading",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "visible-text",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 48,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:48",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0051",
+      "exactValue": "Use the Emergency page for a verified urgent website, launch, form, redirect, provider-access, DNS, tracking, or migration problem that is actively affecting customers or business operations. The standard inquiry does not receive emergency priority.",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "2. Standard inquiry must not accept an emergency category",
+      "field": "Body",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "visible-text",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 51,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:51",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0054",
+      "exactValue": "Emergency Website Help",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "2. Standard inquiry must not accept an emergency category",
+      "field": "Link label",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "navigation",
+      "routeDestination": "/emergency/",
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 54,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:54",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0057",
+      "exactValue": "/emergency/",
+      "route": "/emergency/",
+      "surface": "cross-packet-corrections",
+      "section": "2. Standard inquiry must not accept an emergency category",
+      "field": "Destination",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "route",
+      "routeDestination": "/emergency/",
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 57,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:57",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0065",
+      "exactValue": "Boho-owned property",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "3. Evidence source-class vocabulary",
+      "field": "The canonical source-class list is now",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "route",
+      "routeDestination": "Boho-owned property",
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 65,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:65",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0066",
+      "exactValue": "Boho-owned technical record",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "3. Evidence source-class vocabulary",
+      "field": "list-item",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "evidence",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 66,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:66",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0067",
+      "exactValue": "Public repository or tool",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "3. Evidence source-class vocabulary",
+      "field": "list-item",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "evidence",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 67,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:67",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0068",
+      "exactValue": "Sample document",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "3. Evidence source-class vocabulary",
+      "field": "list-item",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "evidence",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 68,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:68",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0069",
+      "exactValue": "Synthetic demonstration",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "3. Evidence source-class vocabulary",
+      "field": "list-item",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "evidence",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 69,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:69",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0070",
+      "exactValue": "Fictional concept interface",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "3. Evidence source-class vocabulary",
+      "field": "list-item",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "evidence",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 70,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:70",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0071",
+      "exactValue": "Client work published with permission",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "3. Evidence source-class vocabulary",
+      "field": "list-item",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "evidence",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 71,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:71",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0078",
+      "exactValue": "A migration record, validation report, route manifest, changelog, release record, decision log, or other technical artifact produced through Boho’s own systems and repositories.",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "Boho-owned technical record",
+      "field": "Definition",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "visible-text",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 78,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:78",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0081",
+      "exactValue": "A Boho-owned technical record demonstrates the documented method and result of that technical operation. It is not client work and does not guarantee search, traffic, revenue, recovery, or another external business outcome.",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "Boho-owned technical record",
+      "field": "Limitation",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "evidence",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 81,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:81",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0085",
+      "exactValue": "Boho does not publish invented client results. Evidence is labeled by source: owned property, Boho-owned technical record, public repository or tool, sample document, synthetic demonstration, fictional concept interface, or client work published with permission.",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "Boho-owned technical record",
+      "field": "Replace the Work-page hero body paragraph 1 with",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "evidence",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 85,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:85",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0089",
+      "exactValue": "Boho does not publish invented client results. Evidence is labeled by source: owned property, Boho-owned technical record, public repository or tool, sample document, synthetic demonstration, fictional concept interface, or client work published with permission.",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "Boho-owned technical record",
+      "field": "Replace the Homepage evidence introduction with",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "evidence",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 89,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:89",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0098",
+      "exactValue": "Vanity Metrics URL recovery and redirect record",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "Boho-owned technical record",
+      "field": "Correct artifact source classes",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "evidence",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 98,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:98",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0099",
+      "exactValue": "Glossary route and static-crawl validation",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "Boho-owned technical record",
+      "field": "list-item",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "visible-text",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 99,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:99",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0107",
+      "exactValue": "Accepted repository foundation; production deployment remains a separate release decision",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "4. Glossary validation evidence status",
+      "field": "list-item",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "evidence",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 107,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:107",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0112",
+      "exactValue": "Accepted foundation commit",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "4. Glossary validation evidence status",
+      "field": "Field label",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "form-state",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 112,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:112",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0115",
+      "exactValue": "89cb0982b8f2274a289e8126c9472640a5305011",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "4. Glossary validation evidence status",
+      "field": "Field value",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "form-state",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 115,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:115",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0118",
+      "exactValue": "Glossary route count at acceptance",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "4. Glossary validation evidence status",
+      "field": "Field label",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "form-state",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 118,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:118",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0121",
+      "exactValue": "153",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "4. Glossary validation evidence status",
+      "field": "Field value",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "form-state",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 121,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:121",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0129",
+      "exactValue": "SEO reporting — Starting at $95 per month",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "5. Reporting product boundary",
+      "field": "The approved recurring reporting product is represented once in the commercial contract",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "price",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 129,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:129",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT",
+      "canonicalProductKey": "product.seoReporting.monthly"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0138",
+      "exactValue": "Recurring reporting",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "5. Reporting product boundary",
+      "field": "Eyebrow",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "visible-text",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 138,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:138",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0141",
+      "exactValue": "Need a recurring report instead of a one-time audit?",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "5. Reporting product boundary",
+      "field": "Heading",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "visible-text",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 141,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:141",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0144",
+      "exactValue": "Ongoing analyst-reviewed reporting is sold through Local Visibility & Lead Systems. The report can still include approved analytics, technical, search, local, customer-path, and data-quality evidence when those sources are part of the written scope.",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "5. Reporting product boundary",
+      "field": "Body",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "evidence",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 144,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:144",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0147",
+      "exactValue": "SEO reporting — Starting at $95 per month",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "5. Reporting product boundary",
+      "field": "Price",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "price",
+      "routeDestination": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 147,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:147",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT",
+      "canonicalProductKey": "product.seoReporting.monthly"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0150",
+      "exactValue": "See SEO Reporting",
+      "route": "site-wide",
+      "surface": "cross-packet-corrections",
+      "section": "5. Reporting product boundary",
+      "field": "Link label",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "navigation",
+      "routeDestination": "/pricing/#ongoing-seo",
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 150,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:150",
+      "sourceKind": "chatgpt-packet",
+      "editorialAuthority": "ChatGPT"
+    },
+    {
+      "key": "target.cross-packet-corrections.p15.l0153",
+      "exactValue": "/pricing/#ongoing-seo",
+      "route": "/pricing/#ongoing-seo",
+      "surface": "cross-packet-corrections",
+      "section": "5. Reporting product boundary",
+      "field": "Destination",
+      "status": "target",
+      "currentlyRendered": false,
+      "disposition": "replace-later-with-exact-approved-text",
+      "classification": "route",
+      "routeDestination": "/pricing/#ongoing-seo",
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLine": 153,
+      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:153",
       "sourceKind": "chatgpt-packet",
       "editorialAuthority": "ChatGPT"
     }

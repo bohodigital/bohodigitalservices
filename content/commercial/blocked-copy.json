@@ -1,5 +1,93 @@
 {
   "schemaVersion": 1,
   "policy": "No placeholder, guessed value, synonym, summary, caption, alt text, metadata, field state, or mobile variant may replace a blocked item.",
-  "items": []
+  "items": [
+    {
+      "key": "product.bohoAnalytics.publicFreeAvailability",
+      "status": "Blocked pending current product verification",
+      "reason": "The current repository contains the claim, but the commercial V3 program has not yet verified a stable public access contract or current product boundary.",
+      "targetApproved": false,
+      "replacementText": null,
+      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourceLocations": [
+        "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:175",
+        "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:178",
+        "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:181"
+      ],
+      "currentClaims": [
+        {
+          "sourceFile": "app/components/ResourcesPage.tsx",
+          "sourceField": "literal@L154",
+          "exactValue": "Use the Boho Analytics Platform without paying to unlock the dashboard.",
+          "inventoryKey": "current.app.components.ResourcesPage.tsx.l0154.147"
+        },
+        {
+          "sourceFile": "app/components/ResourcesPage.tsx",
+          "sourceField": "literal@L161",
+          "exactValue": "Boho Analytics Platform · Free",
+          "inventoryKey": "current.app.components.ResourcesPage.tsx.l0161.148"
+        },
+        {
+          "sourceFile": "app/content/servicePages.generated.ts",
+          "sourceField": "literal@L441",
+          "exactValue": "Ongoing work may use supported data from a self-hosted deployment of the free, public, open-source Boho Analytics Platform repository and approved external sources. Reporting should identify sources, missing or stale information, relevant filters, observed signals, reasonable inferences, recommendations, limitations, and the next decision.",
+          "inventoryKey": "current.app.content.servicePages.generated.ts.l0441.419"
+        },
+        {
+          "sourceFile": "app/content/servicePages.generated.ts",
+          "sourceField": "literal@L2672",
+          "exactValue": "Start with a free review of public information. The Boho Analytics Platform is free open-source software for you or your technical provider to run. Choose a monthly report or one-time audit when you want an analyst to explain the evidence and recommend next steps.",
+          "inventoryKey": "current.app.content.servicePages.generated.ts.l2672.2590"
+        },
+        {
+          "sourceFile": "app/content/servicePages.generated.ts",
+          "sourceField": "literal@L2684",
+          "exactValue": "Initial review: Free. Boho Analytics Platform public repository: Free to use and self-host. Analyst-reviewed reports start at $95 per month. One-time reviews and audits start at $350.",
+          "inventoryKey": "current.app.content.servicePages.generated.ts.l2684.2606"
+        },
+        {
+          "sourceFile": "app/content/servicePages.generated.ts",
+          "sourceField": "literal@L2744",
+          "exactValue": "The free, public, open-source Boho Analytics Platform repository can be self-hosted to provide source-labeled website, search, infrastructure, form-monitoring, and other approved data views.",
+          "inventoryKey": "current.app.content.servicePages.generated.ts.l2744.2665"
+        },
+        {
+          "sourceFile": "app/content/servicePages.generated.ts",
+          "sourceField": "literal@L3263",
+          "exactValue": "**Boho Analytics Platform public repository:** Free to use and self-host",
+          "inventoryKey": "current.app.content.servicePages.generated.ts.l3263.3151"
+        },
+        {
+          "sourceFile": "app/content/servicePages.generated.ts",
+          "sourceField": "literal@L3405",
+          "exactValue": "Is the Boho Analytics Platform really free?",
+          "inventoryKey": "current.app.content.servicePages.generated.ts.l3405.3285"
+        },
+        {
+          "sourceFile": "content/service-pages/04-digital-research-seo-audits-strategy.md",
+          "sourceField": "literal@L19",
+          "exactValue": "Start with a free public-information review. Use the supported Boho Analytics Platform free. Add an analyst-reviewed monthly report or a defined audit when the decision requires deeper evidence.",
+          "inventoryKey": "current.content.service.pages.04.digital.research.seo.audits.strategy.md.l0019.9"
+        },
+        {
+          "sourceFile": "content/service-pages/04-digital-research-seo-audits-strategy.md",
+          "sourceField": "literal@L27",
+          "exactValue": "**Trust line:** Initial review: Free. Boho Analytics Platform: Free. Analyst-reviewed reports start at $95 per month. One-time reviews and audits start at $350.",
+          "inventoryKey": "current.content.service.pages.04.digital.research.seo.audits.strategy.md.l0027.14"
+        },
+        {
+          "sourceFile": "content/service-pages/04-digital-research-seo-audits-strategy.md",
+          "sourceField": "literal@L353",
+          "exactValue": "**Boho Analytics Platform:** Free",
+          "inventoryKey": "current.content.service.pages.04.digital.research.seo.audits.strategy.md.l0353.229"
+        },
+        {
+          "sourceFile": "content/service-pages/04-digital-research-seo-audits-strategy.md",
+          "sourceField": "literal@L428",
+          "exactValue": "Is the Boho Analytics Platform really free?",
+          "inventoryKey": "current.content.service.pages.04.digital.research.seo.audits.strategy.md.l0428.274"
+        }
+      ]
+    }
+  ]
 }
