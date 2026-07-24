@@ -1,186 +1,163 @@
 import {
-  ArrowRight,
-  BarChart3,
-  Blocks,
-  Compass,
-  PanelsTopLeft,
-  SearchCheck,
-  ShieldCheck,
-} from "lucide-react";
-import Link from "next/link";
+  commercialSection,
+} from "../content/commercial/presentation";
+import { Footer, Header } from "./commercial/CommercialChrome";
 
-import { servicePriceSummaries } from "../content/pricingPolicy.mjs";
-import { servicePresentationByRoute } from "../content/servicePresentation";
-import { DefinedText } from "./DefinedText";
-import {
-  Breadcrumbs,
-  ButtonLink,
-  CtaBand,
-  EditorialHeadline,
-  Footer,
-  Header,
-} from "./SiteChrome";
-
-const services = [
-  {
-    number: "01",
-    title: "Ongoing SEO & Search Growth",
-    href: "/services/ongoing-seo/" as const,
-    ...servicePresentationByRoute["/services/ongoing-seo/"],
-    icon: SearchCheck,
-  },
-  {
-    number: "02",
-    title: "Web Design & Website Redesign",
-    href: "/services/web-design-redesign/" as const,
-    ...servicePresentationByRoute["/services/web-design-redesign/"],
-    icon: PanelsTopLeft,
-  },
-  {
-    number: "03",
-    title: "Website Migration & Provider Rescue",
-    href: "/services/provider-rescue/" as const,
-    ...servicePresentationByRoute["/services/provider-rescue/"],
-    icon: ShieldCheck,
-  },
-  {
-    number: "04",
-    title: "Digital Research, SEO Audits & Strategy",
-    href: "/services/research-audits-strategy/" as const,
-    ...servicePresentationByRoute["/services/research-audits-strategy/"],
-    icon: BarChart3,
-  },
-  {
-    number: "05",
-    title: "Custom Web & Digital Solutions",
-    href: "/services/custom-digital-solutions/" as const,
-    ...servicePresentationByRoute["/services/custom-digital-solutions/"],
-    icon: Blocks,
-  },
-] as const;
-
-const decisionRoutes = [
-  ["We want more of the right local customers to find and contact us.", "/services/ongoing-seo/", "Start with ongoing SEO."],
-  ["Our website is unclear, outdated, hard to use, or hard to update.", "/services/web-design-redesign/", "Start with a focused repair, redesign, or new website."],
-  ["We need to leave a provider without losing our website, domain, or search visibility.", "/services/provider-rescue/", "Start with a provider rescue review."],
-  ["We need to know what is working and what to fix first.", "/services/research-audits-strategy/", "Start with a review, report, or audit."],
-  ["A repeated task wastes time or causes mistakes.", "/services/custom-digital-solutions/", "Start with a custom-project review."],
+const serviceRows = [
+  ["local-visibility-lead-systems", "service-local-visibility", "local-visibility-lead-systems"],
+  ["websites-managed-hosting", "service-websites-hosting", "websites-managed-hosting"],
+  ["provider-rescue-migration", "service-provider-rescue", "provider-rescue-migration"],
+  ["research-analytics-improvement", "service-research-analytics", "research-analytics-improvement"],
+  ["custom-tools-automation", "service-custom-tools", "custom-tools-automation"],
 ] as const;
 
 export function ServicesPage() {
-  const seenTerms = new Set<string>();
-  const define = (text: string) => <DefinedText autoDefine seenTerms={seenTerms} text={text} />;
+  const hero = commercialSection("services-overview", "hero");
+  const chooser = commercialSection("services-overview", "problem-chooser");
+  const comparison = commercialSection("services-overview", "service-comparison");
+  const workType = commercialSection("services-overview", "one-time-or-recurring");
+  const oneTime = commercialSection("services-overview", "one-time-work");
+  const recurring = commercialSection("services-overview", "recurring-work");
+  const stop = commercialSection("services-overview", "stop-condition");
+  const recommendation = commercialSection("services-overview", "how-the-recommendation-is-made");
+  const free = commercialSection("services-overview", "free-first-look");
+  const finalCta = commercialSection("services-overview", "final-cta");
+
+  const problems = [1, 2, 3, 4, 5].map((number) => {
+    const section = commercialSection("services-overview", `problem-${number}`);
+    return {
+      heading: section.one("Heading"),
+      body: section.one("Body"),
+      service: section.one("Recommended service"),
+      label: section.one("Link label"),
+      href: section.one("Destination"),
+    };
+  });
 
   return (
     <>
       <Header />
-      <main className="services-overhaul" id="main-content" tabIndex={-1}>
-        <section className="services-hub-hero" aria-labelledby="services-hub-title">
-          <div className="services-hub-hero__backdrop" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-          </div>
-          <div className="section-shell services-hub-hero__inner">
-            <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Services" }]} />
-            <div className="services-hub-hero__layout">
-              <div className="services-hub-hero__copy">
-                <p className="eyebrow eyebrow--on-dark">Services</p>
-                <EditorialHeadline as="h1" className="services-hub-hero__title">
-                  <span id="services-hub-title">Five services for the problems businesses face online.</span>
-                </EditorialHeadline>
-                <p className="services-hub-hero__intro">
-                  {define("Boho helps businesses get found, improve or replace a website, leave a difficult provider, understand what the evidence says, or simplify repeated digital work. We start with the problem and recommend only the work that fits.")}
-                </p>
-                <div className="button-row">
-                  <ButtonLink href="/start/">Start the free review</ButtonLink>
-                  <ButtonLink href="/pricing/" variant="secondary">See pricing and scope</ButtonLink>
-                </div>
-                <p className="services-hub-hero__trust">The first public-information review is free. Paid work begins only after a written scope is accepted.</p>
-              </div>
-
-              <div className="services-route-map" aria-label="Five service routes">
-                <p><Compass aria-hidden="true" size={20} /> Bring the visible problem.</p>
-                <ol>
-                  {services.map((service) => (
-                    <li key={service.href}>
-                      <span>{service.number}</span>
-                      <Link href={service.href}>{service.title}<ArrowRight aria-hidden="true" size={15} /></Link>
-                    </li>
-                  ))}
-                </ol>
+      <main className="commercial-page commercial-services-page" id="main-content" tabIndex={-1}>
+        <section className="commercial-hero" aria-labelledby="services-commercial-title">
+          <div className="section-shell commercial-hero__grid">
+            <div>
+              <p className="eyebrow eyebrow--on-dark">{hero.one("Eyebrow")}</p>
+              <h1 id="services-commercial-title">{hero.one("Headline")}</h1>
+              <p>{hero.one("Body paragraph 1")}</p>
+              <p>{hero.one("Body paragraph 2")}</p>
+              <div className="button-row">
+                <a className="button-link button-link--primary" data-umami-event="commercial_primary_cta" href={hero.one("Primary destination")}>{hero.one("Primary CTA")}</a>
+                <a className="button-link button-link--secondary" data-umami-event="commercial_pricing_cta" href={hero.one("Secondary destination")}>{hero.one("Secondary CTA")}</a>
               </div>
             </div>
+            <aside className="commercial-hero__aside"><strong>{hero.one("Trust line")}</strong></aside>
           </div>
         </section>
 
-        <section className="services-hub-catalog" aria-labelledby="services-catalog-title">
+        <section className="commercial-section commercial-problems" aria-labelledby="services-problem-title">
           <div className="section-shell">
-            <header className="services-hub-heading">
-              <p className="eyebrow">Five connected services</p>
-              <h2 id="services-catalog-title">Choose the service that matches the problem.</h2>
-              <p>{define("Each page explains who the service is for, what is included, what is not included, what it costs to start, and what happens next.")}</p>
+            <header className="commercial-section__heading">
+              <p className="eyebrow">{chooser.one("Eyebrow")}</p>
+              <h2 id="services-problem-title">{chooser.one("Heading")}</h2>
+              <p>{chooser.one("Introduction")}</p>
             </header>
-            <div className="services-catalog-grid">
-              {services.map(({ icon: Icon, ...service }) => (
-                <article className="services-catalog-card" key={service.href}>
-                  <figure>
-                    <img alt={service.alt} loading="lazy" src={service.image} />
-                    <figcaption><Icon aria-hidden="true" size={20} /> {service.kicker}</figcaption>
-                  </figure>
-                  <div className="services-catalog-card__body">
-                    <span className="services-catalog-card__number">{service.number}</span>
-                    <h3>{service.title}</h3>
-                    <p>{define(service.summary)}</p>
-                    <p className="services-catalog-card__price">{servicePriceSummaries[service.href]}</p>
-                    <Link href={service.href}>Review the service <ArrowRight aria-hidden="true" size={16} /></Link>
-                  </div>
+            <div className="commercial-problems__grid">
+              {problems.map((problem) => (
+                <article key={problem.heading}>
+                  <h3>{problem.heading}</h3>
+                  <p>{problem.body}</p>
+                  <strong>{problem.service}</strong>
+                  <a href={problem.href}>{problem.label}</a>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="services-problem-chooser" aria-labelledby="services-chooser-title">
-          <div className="section-shell services-problem-chooser__layout">
-            <header>
-              <p className="eyebrow eyebrow--on-dark">A practical chooser</p>
-              <h2 id="services-chooser-title">Start with the problem you can already see.</h2>
-              <p>Boho will help decide what not to buy yet.</p>
+        <section className="commercial-section commercial-comparison" aria-labelledby="services-comparison-title">
+          <div className="section-shell">
+            <header className="commercial-section__heading">
+              <p className="eyebrow">{comparison.one("Eyebrow")}</p>
+              <h2 id="services-comparison-title">{comparison.one("Heading")}</h2>
+              <p>{comparison.one("Intro")}</p>
             </header>
-            <ol>
-              {decisionRoutes.map(([problem, href, answer], index) => (
-                <li key={href}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <div><strong>{problem}</strong><small>{answer}</small></div>
-                  <Link href={href} aria-label={`${answer} Review service`}><ArrowRight aria-hidden="true" size={18} /></Link>
-                </li>
-              ))}
-            </ol>
+            <div className="commercial-comparison__grid">
+              {serviceRows.map(([rowKey, pageKey, layerKey]) => {
+                const row = commercialSection("services-overview", rowKey);
+                const layer = commercialSection(pageKey, layerKey);
+                return (
+                  <article key={rowKey}>
+                    <h3>{commercialSection(pageKey, layerKey, "035").one("Eyebrow")}</h3>
+                    <p>{row.one("Primary problem")}</p>
+                    <div className="commercial-comparison__prices">
+                      <strong>{row.one("First paid scope")}</strong>
+                      {row.optional("Second paid scope") ? <strong>{row.one("Second paid scope")}</strong> : null}
+                      {row.optional("Third paid scope") ? <strong>{row.one("Third paid scope")}</strong> : null}
+                    </div>
+                    <p>{row.one("Engagement type")}</p>
+                    <p>{row.one("Planning range")}</p>
+                    {row.optional("Shared comparison qualification") ? <p>{row.one("Shared comparison qualification")}</p> : null}
+                    <a href={layer.one("Canonical route")}>{row.one("Link label")}</a>
+                  </article>
+                );
+              })}
+            </div>
           </div>
         </section>
 
-        <section className="services-pricing-bridge" aria-labelledby="services-pricing-title">
-          <div className="section-shell services-pricing-bridge__layout">
-            <div>
-              <p className="eyebrow">Starting prices</p>
-              <h2 id="services-pricing-title">See what the smallest complete project costs.</h2>
-            </div>
-            <div>
-              <p>{define("Starting prices show what a basic project includes. Your written proposal will list the exact work, price, timing, ownership, ongoing support, and any outside costs.")}</p>
-              <Link href="/pricing/">Read the Pricing &amp; Scope Guide <ArrowRight aria-hidden="true" size={17} /></Link>
+        <section className="commercial-section commercial-work-types" aria-labelledby="work-types-title">
+          <div className="section-shell">
+            <header className="commercial-section__heading">
+              <p className="eyebrow">{workType.one("Eyebrow")}</p>
+              <h2 id="work-types-title">{workType.one("Heading")}</h2>
+            </header>
+            <div className="commercial-work-types__grid">
+              <article><h3>{oneTime.one("Heading")}</h3><p>{oneTime.one("Body")}</p></article>
+              <article><h3>{recurring.one("Heading")}</h3><p>{recurring.one("Body")}</p></article>
+              <article><h3>{stop.one("Heading")}</h3><p>{stop.one("Body")}</p><blockquote>{stop.one("Quote")}</blockquote></article>
             </div>
           </div>
         </section>
 
-        <div className="section-shell services-hub-cta">
-          <CtaBand
-            title="Tell us what is not working. We will help choose the next step."
-            body={<p>{define("Send the website, provider problem, repeated task, or decision that feels unclear. The right first move may be a free review, a focused project, or no paid work yet.")}</p>}
-            primary={{ label: "Start the free review", href: "/start/" }}
-            secondary={{ label: "Talk through your situation", href: "/contact/" }}
-          />
-        </div>
+        <section className="commercial-section commercial-recommendation" aria-labelledby="recommendation-title">
+          <div className="section-shell commercial-recommendation__grid">
+            <div>
+              <p className="eyebrow">{recommendation.one("Eyebrow")}</p>
+              <h2 id="recommendation-title">{recommendation.one("Heading")}</h2>
+              <p>{recommendation.one("Closing paragraph")}</p>
+            </div>
+            <ul>
+              {[recommendation.one("Questions"), ...recommendation.many("value")].map((question) => <li key={question}>{question}</li>)}
+            </ul>
+          </div>
+        </section>
+
+        <section className="commercial-section commercial-free-review" aria-labelledby="free-review-title">
+          <div className="section-shell commercial-free-review__grid">
+            <div>
+              <p className="eyebrow">{free.one("Eyebrow")}</p>
+              <h2 id="free-review-title">{free.one("Heading")}</h2>
+              <strong>{free.one("Price")}</strong>
+            </div>
+            <div>
+              <p>{free.one("Body paragraph 1")}</p>
+              <p>{free.one("Body paragraph 2")}</p>
+              <p>{free.one("Planning range")}</p>
+              <a data-umami-event="commercial_primary_cta" href={free.one("Destination")}>{free.one("CTA")}</a>
+            </div>
+          </div>
+        </section>
+
+        <section className="commercial-section commercial-final" aria-labelledby="services-final-title">
+          <div className="section-shell">
+            <h2 id="services-final-title">{finalCta.one("Heading")}</h2>
+            <p>{finalCta.one("Body")}</p>
+            <div className="button-row">
+              <a className="button-link button-link--primary" data-umami-event="commercial_primary_cta" href={finalCta.one("Primary destination")}>{finalCta.one("Primary CTA")}</a>
+              <a className="button-link button-link--secondary" data-umami-event="commercial_pricing_cta" href={finalCta.one("Secondary destination")}>{finalCta.one("Secondary CTA")}</a>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </>

@@ -93,47 +93,40 @@ function idForFragment(fragment) {
   return fragment.replace(/^#/, "");
 }
 
-test("pre-renders the focused Boho homepage and approved marketing message", async () => {
+test("pre-renders the contract-backed commercial homepage decision path", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
   for (const heading of [
-    "Local visibility, lead systems, and websites built by people who understand the machinery.",
-    "Marketing systems are still systems.",
-    "A six-stage engineering method.",
-    "Five service lanes, one accountable system.",
-    "Website design built around clarity, trust, discovery, and action.",
-    "Provider rescue without losing what still works.",
-    "When the right tool does not exist, we build it.",
-    "Tired of talking to people who cannot explain the system?",
-    "Scope follows diagnosis, not a package menu.",
-    "Talk to someone who can explain the machinery.",
+    "Elegant websites and technical SEO, without the agency fog.",
+    "You do not need to diagnose the system before contacting Boho.",
+    "Name the problem before choosing the service.",
+    "See the work, the method, and the limits of the evidence.",
+    "A website is more than its page files.",
+    "A clear next step, not an immediate sales ambush.",
+    "You do not need to diagnose it first.",
   ]) {
     assert.ok(html.includes(heading), `missing homepage heading: ${heading}`);
   }
 
-  assert.match(html, /Built by digital engineers\. Explained in plain English\./i);
-  assert.match(html, /Most agencies start with a package\. Boho starts with the business\./i);
-  assert.equal((html.match(/class="service-card /g) ?? []).length, 5);
-  assert.equal((html.match(/class="method-summary-list__link"/g) ?? []).length, 6);
-  assert.match(html, /href="\/contact\/"[^>]*>[\s\S]*?Talk to Someone Technical/i);
-  assert.match(html, /href="\/tools\/"[^>]*>[\s\S]*?Explore Boho Systems/i);
-  assert.match(html, /We use mature/i);
-  assert.match(html, /href="\/learn\/glossary\/platform\/"/i);
-  assert.match(html, /for mature problems and custom engineering for the gaps that matter\./i);
+  assert.match(html, /Public pricing\. Documented work\. Clear scope\. No mystery retainers\./i);
+  assert.match(html, /Chicago-based\. Remote work available\./i);
+  assert.match(html, /New website — Starting at \$1,500/i);
+  assert.match(html, /Small or straightforward website: usually 4–8 weeks/i);
+  assert.match(html, /href="\/start\/"[^>]*>[\s\S]*?Send the Situation/i);
+  assert.match(html, /href="\/pricing\/"/i);
+  assert.match(html, /href="\/work\/"/i);
+  assert.match(html, /class="commercial-services__mosaic"/);
+  assert.match(html, /data-umami-event="commercial_primary_cta"/i);
+  assert.match(html, /data-umami-event="commercial_pricing_cta"/i);
+  assert.match(html, /data-umami-event="commercial_evidence_open"/i);
   assert.match(html, /googletagmanager\.com\/gtag\/js\?id=G-5CV8L2SE2R/i);
   assert.match(html, /analytics\.bohodigitalservices\.com\/script\.js/i);
   assert.match(html, /data-do-not-track="true"/i);
   assert.match(html, /og-boho-digital-engineering-20260714\.png/i);
-  assert.match(html, /class="hero__background" aria-hidden="true"/i);
-  assert.match(html, /og-boho-digital-engineering-20260714\.png[^>]+alt=""/i);
-  assert.match(html, /class="definition-term__trigger"/i);
-  assert.match(html, /class="definition-term__mark"/i);
-  assert.match(html, /class="definition-term__popover"/i);
-  assert.match(html, /Read the full definition/i);
-  assert.doesNotMatch(html, /Representative editorial photography|Homepage journey|proof-eligible/i);
+  assert.doesNotMatch(html, /Free Boho Analytics|publicly available Boho Analytics|open-source Boho Analytics/i);
 });
 
 test("renders every intentional public route and retires internal placeholder shelves", async () => {
@@ -360,79 +353,48 @@ test("renders the twelve-scene About story with scientific proof and unambiguous
   assert.doesNotMatch(html, /Bohemian is an operating philosophy|Seven ways the philosophy enters the work|Low overhead is part of the product/i);
 });
 
-test("publishes the three production form contracts without stale caveats", async () => {
-  const forbidden = /preview form|not connected|working draft|private draft|review build|no public (?:street|office) address|without presenting a public office address|proof-eligible|awaiting real|secondary archive|Rank Builder migration|does not transmit|cannot send a message|nothing was sent|form is disconnected/i;
+test("publishes the exact Contact, Start, and Emergency route split", async () => {
+  const forbidden = /preview form|not connected|working draft|private draft|review build|does not transmit|cannot send a message|nothing was sent|form is disconnected/i;
+  for (const route of publicRoutes) {
+    assert.doesNotMatch(await (await render(route)).text(), forbidden, `${route} contains stale caveat copy`);
+  }
+
+  const contact = await (await render("/contact/")).text();
+  const contactMain = contact.match(/<main\b[\s\S]*?<\/main>/i)?.[0] ?? "";
+  assert.doesNotMatch(contactMain, /<form\b/i);
+  assert.match(contactMain, /href="\/start\/"[^>]*>Send the Situation/i);
+  assert.match(contactMain, /href="mailto:contact@bohemiandigital\.org"[^>]*>Email Boho/i);
+  assert.match(contactMain, /href="mailto:webmaster@bohemiandigital\.org"[^>]*>Email the webmaster/i);
+  assert.match(contactMain, /href="\/emergency\/"[^>]*>Emergency Website Help/i);
+
   const formRoutes = [
     {
-      route: "/contact/",
-      formId: "contact",
-      action: "boho_contact",
-      fields: [
-        "budget", "businessName", "businessType", "companyWebsite", "consent",
-        "email", "message", "name", "provider", "service", "serviceArea",
-        "timing", "valuableAction", "valuableOffer", "website",
-      ],
-    },
-    {
       route: "/start/",
-      formId: "visibility-check",
-      action: "boho_visibility_check",
-      fields: [
-        "budget", "businessName", "businessType", "companyWebsite", "competitors",
-        "consent", "email", "name", "provider", "scopeAcknowledgement",
-        "serviceArea", "stuck", "timing", "topOffer", "valuableAction", "website",
-      ],
+      fields: ["businessName", "companyWebsite", "consent", "email", "message", "name", "service", "website"],
     },
     {
       route: "/emergency/",
-      formId: "emergency",
-      action: "boho_emergency",
-      fields: [
-        "authorizedAccess", "began", "businessName", "companyWebsite", "consent",
-        "deadline", "email", "error", "impact", "name", "platform", "priorChange",
-        "problem", "providerContact", "website",
-      ],
+      fields: ["authority", "began", "businessName", "companyWebsite", "consent", "description", "email", "impact", "incidentType", "name", "priorChange", "website"],
     },
   ];
-
-  for (const route of publicRoutes) {
-    const response = await render(route);
-    const html = await response.text();
-    assert.doesNotMatch(html, forbidden, `${route} contains internal caveat copy`);
-  }
-
   for (const expected of formRoutes) {
     const html = await (await render(expected.route)).text();
     const form = html.match(/<form\b[\s\S]*?<\/form>/i)?.[0];
     assert.ok(form, `${expected.route} lacks its production form`);
-    assert.match(form, new RegExp(`data-form-id="${expected.formId}"`, "i"));
-    assert.match(form, new RegExp(`data-turnstile-action="${expected.action}"`, "i"));
-    assert.match(form, /data-turnstile-sitekey="0x4AAAAAAD2AbgQjicGIajbI"/i);
-    assert.match(form, /href="\/privacy\/"/i);
-    assert.match(html, /href="mailto:contact@bohemiandigital\.org/i);
-    assert.match(
-      html,
-      /<!--email_off--><a href="mailto:contact@bohemiandigital\.org">contact@bohemiandigital\.org<\/a><!--\/email_off-->/i,
-      `${expected.route} must prevent Cloudflare from rewriting the client-rendered fallback email`,
-    );
-    const names = [...form.matchAll(/\bname="([^"]+)"/gi)]
-      .map((match) => match[1])
-      .sort();
+    assert.match(html, /href="\/privacy\/"/i);
+    const names = [...form.matchAll(/\bname="([^"]+)"/gi)].map((match) => match[1]).sort();
     assert.deepEqual(names, [...expected.fields].sort(), `${expected.route} field contract`);
   }
 
-  const contactHtml = await (await render("/contact/")).text();
-  assert.doesNotMatch(
-    contactHtml,
-    /Use the project inquiry below, or email contact@bohemiandigital\.org/i,
-    "contact hero must not expose a Cloudflare-rewritable email text node",
-  );
+  const start = await (await render("/start/")).text();
+  const startForm = start.match(/<form\b[\s\S]*?<\/form>/i)?.[0] ?? "";
+  assert.doesNotMatch(startForm, /Emergency Website Help/i);
 
-  const formRouteSet = new Set(formRoutes.map((item) => item.route));
-  for (const route of publicRoutes.filter((item) => !formRouteSet.has(item))) {
-    const html = await (await render(route)).text();
-    assert.doesNotMatch(html, /<form\b/i, `${route} unexpectedly contains a form`);
-  }
+  const clientSource = await readFile(new URL("../app/components/commercial/CommercialInquiryFormClient.tsx", import.meta.url), "utf8");
+  assert.match(clientSource, /\[200, 201, 202\]\.includes\(response\.status\) && payload\.ok === true/);
+  assert.ok(clientSource.indexOf("payload.ok === true") < clientSource.indexOf("commercial_standard_inquiry_success"));
+  assert.match(clientSource, /commercial_emergency_inquiry_success/);
+  assert.doesNotMatch(clientSource, /data-umami-event-[a-z-]+=/i);
 });
 
 test("keeps candidate prices centralized and publishes the complete assessment-credit conditions", async () => {
@@ -449,12 +411,10 @@ test("keeps candidate prices centralized and publishes the complete assessment-c
     assert.match(pricing, new RegExp(`id="${anchor}"`, "i"));
   }
   for (const condition of [
-    /non-transferable/i,
-    /no cash value/i,
-    /cannot exceed the professional-service fee/i,
-    /does not apply to taxes/i,
-    /does not normally apply to recurring monthly reports/i,
-    /materially change after the assessment/i,
+    /credited in full toward a larger engagement in the same service category/i,
+    /proposal controls eligibility, timing, and exclusions/i,
+    /included at no separate hosting charge for an eligible website/i,
+    /not a promise of unlimited infrastructure or unlimited support/i,
   ]) {
     assert.match(pricing, condition);
   }
@@ -470,56 +430,52 @@ test("keeps candidate prices centralized and publishes the complete assessment-c
   assert.match(generatorSource, /rendered currency amounts do not match/);
 });
 
-test("uses service-specific editorial imagery and plain-language decision copy", async () => {
+test("publishes the commercial Services decision layer and exact pricing inventory", async () => {
   const services = await (await render("/services/")).text();
-  const imageRecords = [
-    ["ongoing-seo-v1.webp", "1bb8daef9bb6a6af6318f82248c1887ff90381886ca26876d64ab74c816cdfff"],
-    ["web-design-redesign-v1.webp", "e6568ec8fbe136090a85d9d5f4936c1422f1b5bf9a7f543c4a07ca063a8e573c"],
-    ["provider-rescue-v1.webp", "a893a39c9e8f5ab5dd6fa3dfa24ef45776ed90382f91d210cb2b8be0b6a6dc9c"],
-    ["research-audits-strategy-v1.webp", "8acf0605477e4ea4777fabf90cc7167d3943be961e0f7b9a874cea06ccea9366"],
-    ["custom-digital-solutions-v1.webp", "bec2edae6f7a2a9f8ef2b7a90e2404378c5610b47c0a58c698bc9a1ef894222d"],
-  ];
-  for (const [filename, expectedDigest] of imageRecords) {
-    assert.match(services, new RegExp(`/visuals/services/${filename}`, "i"));
-    const bytes = await readFile(new URL(`../public/visuals/services/${filename}`, import.meta.url));
-    assert.equal(createHash("sha256").update(bytes).digest("hex"), expectedDigest);
-  }
-  assert.doesNotMatch(
-    services,
-    /growth-analysis|homepage-design-studio-v2|migration-infrastructure|research-notebook|creative-process/i,
-  );
   for (const phrase of [
-    "Five services for the problems businesses face online.",
-    "Help the right local customers find and contact you",
-    "Leave a difficult provider without losing what matters",
-    "Know what to fix before paying for a larger project",
-    "A small tool for repeated work",
+    "Start with the problem. Buy only the work it actually needs.",
+    "Name what is going wrong before choosing the service.",
+    "Compare the smallest complete starting point.",
+    "Not every problem deserves a retainer.",
   ]) {
     assert.match(services, new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"));
   }
 
-  const pricing = await (await render("/pricing/")).text();
-  assert.match(pricing, /Starting prices, with a clear explanation of what you get\./i);
-  assert.match(pricing, /Each month, an analyst checks the available data/i);
-  assert.match(pricing, /A one-time project that fixes a small number of important problems/i);
-  assert.match(pricing, /A review of who owns and controls the website/i);
-  assert.match(pricing, /One small tool or simple connection between systems/i);
-
-  const serviceIntros = [
-    ["/services/ongoing-seo/", /Every month explains what mattered, what was done/i],
-    ["/services/web-design-redesign/", /A few focused fixes may be enough/i],
-    ["/services/provider-rescue/", /We identify what could break before the move/i],
-    ["/services/research-audits-strategy/", /Find out what to fix before paying to fix it/i],
-    ["/services/custom-digital-solutions/", /We do not assume custom software is the answer/i],
+  const serviceRoutes = [
+    "/services/ongoing-seo/",
+    "/services/web-design-redesign/",
+    "/services/provider-rescue/",
+    "/services/custom-digital-solutions/",
+    "/services/research-audits-strategy/",
   ];
-  for (const [route, pattern] of serviceIntros) {
-    assert.match(await (await render(route)).text(), pattern);
+  for (const route of serviceRoutes) {
+    const html = await (await render(route)).text();
+    assert.match(html, /commercial-service-layer/i, `${route} lacks its decision layer`);
+    assert.match(html, /Starting at \$|— Starting at \$/i, `${route} lacks starting pricing`);
+    assert.match(html, /This is a fit when/i, `${route} lacks fit guidance`);
+    assert.match(html, /Start somewhere else when/i, `${route} lacks not-fit guidance`);
+    assert.match(html, /Usually included/i, `${route} lacks included scope`);
+    assert.match(html, /Not included unless the proposal says so/i, `${route} lacks scope exclusions`);
+    assert.match(html, /href="\/start\/"/i, `${route} lacks the primary CTA`);
+    assert.doesNotMatch(html, /Free Boho Analytics|publicly available Boho Analytics|open-source Boho Analytics/i);
   }
-  const providerRescue = await (await render("/services/provider-rescue/")).text();
-  assert.match(providerRescue, /Leave a difficult provider without losing control or useful assets/i);
-  const customSolutions = await (await render("/services/custom-digital-solutions/")).text();
-  assert.match(customSolutions, /Start the free review/i);
-  assert.match(customSolutions, /Discovery and feasibility start at \$500/i);
+
+  const pricing = await (await render("/pricing/")).text();
+  for (const price of [
+    "Initial public review — Free",
+    "SEO reporting — Starting at $95 per month",
+    "SEO implementation — Starting at $450 per month",
+    "Focused website improvement — Starting at $750",
+    "New website — Starting at $1,500",
+    "Substantial redesign — Starting at $1,500",
+    "Provider Rescue Assessment — Starting at $350",
+    "Migration assistance — Starting at $1,000",
+    "Focused audit or strategy — Starting at $350",
+    "Custom discovery — Starting at $500",
+    "Focused custom build — Starting at $2,500",
+  ]) {
+    assert.ok(pricing.includes(price), `missing exact price: ${price}`);
+  }
 });
 
 test("publishes factual privacy, terms, and accessibility pages", async () => {
@@ -620,8 +576,8 @@ test("realigns Tools around five system families, two decision visuals, and exac
 });
 
 test("uses accessible glossary definition popups with direct glossary fallbacks", async () => {
-  const homepage = await (await render("/")).text();
-  for (const slug of ["website-clarity", "trust-signal", "customer-discovery", "customer-action"]) {
+  const homepage = await (await render("/about/")).text();
+  for (const slug of ["analytics", "automation", "workflow", "deployment"]) {
     assert.match(homepage, new RegExp(`href="/learn/glossary/${slug}/"`, "i"));
   }
   assert.match(homepage, /class="definition-term__trigger"/i);
@@ -780,23 +736,18 @@ test("keeps automatic glossary matches context-safe across ambiguous business la
     assert.match(privacy, new RegExp(`href="/learn/glossary/${slug}/"`, "i"), `/privacy/ lacks ${slug}`);
   }
 
-  for (const route of ["/contact/", "/start/", "/emergency/"]) {
-    const html = await (await render(route)).text();
-    assert.match(html, /href="\/learn\/glossary\/url\/"/i, `${route} lacks URL definition`);
-  }
 
   const websiteBuying = await (await render("/learn/website-buying/")).text();
   assert.doesNotMatch(websiteBuying, /href="\/learn\/glossary\/production-environment\/"/i);
 });
 
-test("keeps the mirrored hero uncropped and glossary links connected across the site", async () => {
-  const homepageSource = await readFile(new URL("../app/Homepage.tsx", import.meta.url), "utf8");
-  const cssSource = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+test("keeps the commercial visual system responsive and glossary routes connected", async () => {
+  const commercialStyles = await readFile(new URL("../app/components/commercial/commercial.css", import.meta.url), "utf8");
   const knowledgeSource = await readFile(new URL("../app/content/knowledge.ts", import.meta.url), "utf8");
 
-  assert.match(homepageSource, /className="hero__background" aria-hidden="true"/);
-  assert.match(cssSource, /\.hero__background img[\s\S]*?object-fit:\s*contain[\s\S]*?scaleX\(-1\)/);
-  assert.match(cssSource, /@media \(max-width: 48rem\)[\s\S]*?\.hero__background img[\s\S]*?width:\s*100%[\s\S]*?height:\s*auto[\s\S]*?scaleX\(-1\)/);
+  assert.match(commercialStyles, /@media \(max-width: 760px\)/);
+  assert.match(commercialStyles, /prefers-reduced-motion: reduce/);
+  assert.match(commercialStyles, /:focus-visible/);
 
   const glossary = await (await render("/learn/glossary/")).text();
   const entrySlugs = [...knowledgeSource.matchAll(/^    slug: "([^"]+)",/gm)].map((match) => match[1]);
@@ -805,7 +756,7 @@ test("keeps the mirrored hero uncropped and glossary links connected across the 
     assert.match(glossary, new RegExp(`id="term-${slug}"`, "i"), `missing rendered glossary entry ${slug}`);
   }
 
-  for (const route of ["/", "/services/", "/services/web-design-redesign/", "/learn/website-buying/", "/learn/provider-rescue/", "/resources/", "/tools/", "/privacy/"]) {
+  for (const route of ["/learn/website-buying/", "/learn/provider-rescue/", "/resources/", "/tools/", "/privacy/"]) {
     const html = await (await render(route)).text();
     assert.match(html, /href="\/learn\/glossary\/[a-z0-9-]+\/"/i, `${route} lacks a glossary definition link`);
   }
@@ -1011,7 +962,7 @@ test("resolves every local asset referenced by public HTML", async () => {
 
 test("keeps the public shell accessible and free of starter artifacts", async () => {
   const html = await (await render("/")).text();
-  assert.match(html, /href="#main-content"[^>]*>\s*Skip to content/i);
+  assert.match(html, /href="#main-content"[^>]*>\s*Skip to main content/i);
   assert.match(html, /aria-controls="mobile-menu-/i);
   assert.match(html, /aria-expanded="false"/i);
   assert.match(html, /<script[^>]+type="application\/ld\+json"/i);

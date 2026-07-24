@@ -1,80 +1,118 @@
-import { ArrowRight, ExternalLink, FileCheck2, FlaskConical, GitBranch, Globe2, ShieldCheck } from "lucide-react";
-import Link from "next/link";
+import {
+  commercialCorrections,
+  commercialSection,
+  correctionValue,
+} from "../content/commercial/presentation";
+import { Footer, Header } from "./commercial/CommercialChrome";
 
-import { ownedWebsites, selectedTools } from "../content/systems";
-import { DefinedText } from "./DefinedText";
-import { Breadcrumbs, ButtonLink, EditorialHeadline, Footer, Header } from "./SiteChrome";
+const artifactKeys = [
+  "artifact-1-website-ownership-map",
+  "artifact-2-vanity-metrics-migration-record",
+  "artifact-3-glossary-and-route-validation",
+  "artifact-4-boho-analytics-site-graph",
+  "artifact-5-rank-builder-publishing-system",
+  "artifact-6-better-grades-learning-interfaces",
+  "artifact-7-fictional-business-interfaces",
+] as const;
 
 export function WorkEvidencePage() {
-  const seenTerms = new Set<string>();
-  const define = (text: string) => <DefinedText autoDefine seenTerms={seenTerms} text={text} />;
+  const hero = commercialSection("work-evidence", "hero");
+  const standard = commercialSection("work-evidence", "evidence-standard");
+  const method = commercialSection("work-evidence", "method-section");
+  const boundary = commercialSection("work-evidence", "evidence-request-boundary");
+  const finalCta = commercialSection("work-evidence", "final-cta");
+  const correctionSourceClasses = new Map(
+    commercialCorrections.evidence.artifacts.map((artifact) => [
+      correctionValue(artifact.title),
+      correctionValue(artifact.sourceClass),
+    ]),
+  );
+  const labels = [standard.one("Field labels"), ...standard.many("value")];
+  const artifacts = artifactKeys.map((key) => commercialSection("work-evidence", key));
 
   return (
     <>
       <Header />
-      <main className="work-evidence-page" id="main-content" tabIndex={-1}>
-        <section className="work-evidence-hero" aria-labelledby="work-evidence-title">
-          <div className="section-shell">
-            <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Work & Evidence" }]} />
-            <div className="work-evidence-hero__layout">
-              <div>
-                <p className="eyebrow eyebrow--on-dark">Work &amp; Evidence</p>
-                <EditorialHeadline as="h1"><span id="work-evidence-title">Inspect the method, the public systems, and the ownership boundary.</span></EditorialHeadline>
+      <main className="commercial-page commercial-work-page" id="main-content" tabIndex={-1}>
+        <section className="commercial-hero" aria-labelledby="commercial-work-title">
+          <div className="section-shell commercial-hero__grid">
+            <div>
+              <p className="eyebrow eyebrow--on-dark">{hero.one("Eyebrow")}</p>
+              <h1 id="commercial-work-title">{hero.one("Headline")}</h1>
+              <p>{correctionValue(commercialCorrections.evidence.workHeroIntroduction)}</p>
+              <p>{hero.one("Body paragraph 2")}</p>
+              <div className="button-row">
+                <a className="button-link button-link--primary" data-umami-event="commercial_primary_cta" href={hero.one("Primary destination")}>{hero.one("Primary CTA")}</a>
+                <a className="button-link button-link--secondary" href={hero.one("Secondary destination")}>{hero.one("Secondary CTA")}</a>
               </div>
-              <div>
-                <p>{define("Boho uses public repositories, working owned properties, reproducible methods, documentation, and limitations as evidence. Owned work is labeled as owned. Public tools are not presented as client results.")}</p>
-                <div className="button-row"><ButtonLink href="#public-tools">See public tools</ButtonLink><ButtonLink href="/services/" variant="secondary">Review services</ButtonLink></div>
-              </div>
             </div>
+            <aside className="commercial-hero__aside">
+              <h2>{standard.one("Heading")}</h2>
+              <p>{standard.one("Supporting paragraph")}</p>
+              <ul>{labels.map((label) => <li key={label}>{label}</li>)}</ul>
+            </aside>
           </div>
         </section>
 
-        <section className="work-evidence-section" id="public-tools" aria-labelledby="public-tools-title">
+        <section className="commercial-section commercial-artifacts" aria-labelledby="artifact-list-title">
           <div className="section-shell">
-            <header className="work-evidence-heading"><p className="eyebrow">Demonstrated public</p><h2 id="public-tools-title">Three public tool identities with inspectable repositories.</h2><p>{define("These entries describe published work only. Their current labels and links were verified through the Boho operating record before this candidate was built.")}</p></header>
-            <div className="work-tool-grid">
-              {selectedTools.map((tool) => (
-                <article key={tool.id}>
-                  <img alt={tool.image.alt} loading="lazy" src={tool.image.src} />
-                  <div><code>{tool.id}</code><h3>{tool.displayName}</h3><p>{define(tool.shortPublicSummary)}</p><a href={tool.repositoryUrl} rel="noopener noreferrer" target="_blank">View GitHub <ExternalLink aria-hidden="true" size={15} /></a></div>
-                </article>
-              ))}
+            <span id="website-work" />
+            <span id="provider-rescue" />
+            <span id="public-tools" />
+            <h2 className="sr-only" id="artifact-list-title">{standard.one("Heading")}</h2>
+            <div className="commercial-artifacts__grid">
+              {artifacts.map((artifact, index) => {
+                const title = artifact.one("Title");
+                const sourceClass = artifact.optional("Source class") ?? correctionSourceClasses.get(title);
+                const currentStatus = artifact.optional("Current status")
+                  ?? (index === 2 ? correctionValue(commercialCorrections.glossaryEvidence.currentStatus) : undefined);
+                if (!sourceClass || !currentStatus) {
+                  throw new Error(`Evidence provenance is incomplete: ${title}`);
+                }
+                return (
+                  <article id={artifact.one("Anchor").slice(1)} key={title}>
+                    {artifact.optional("Required visible label") ? <strong>{artifact.one("Required visible label")}</strong> : null}
+                    <h3>{title}</h3>
+                    <p>{artifact.one("Summary")}</p>
+                    <dl>
+                      <div><dt>{labels[0]}</dt><dd>{sourceClass}</dd></div>
+                      <div><dt>{labels[1]}</dt><dd>{artifact.one("What this demonstrates")}</dd></div>
+                      <div><dt>{labels[2]}</dt><dd>{artifact.one("What this does not demonstrate")}</dd></div>
+                      <div><dt>{labels[3]}</dt><dd>{currentStatus}</dd></div>
+                    </dl>
+                    <a data-umami-event="commercial_evidence_open" href={artifact.one("Anchor")}>{artifact.one("Open label")}</a>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </section>
 
-        <section className="work-evidence-section work-evidence-section--sites" id="website-work" aria-labelledby="website-work-title">
+        <section className="commercial-section commercial-method" aria-labelledby="commercial-method-title">
+          <div className="section-shell commercial-method__grid">
+            <div>
+              <p className="eyebrow">{method.one("Eyebrow")}</p>
+              <h2 id="commercial-method-title">{method.one("Heading")}</h2>
+            </div>
+            <ol>{[method.one("Items"), ...method.many("value")].map((item) => <li key={item}>{item}</li>)}</ol>
+          </div>
+        </section>
+
+        <section className="commercial-section commercial-boundary" aria-labelledby="evidence-boundary-title">
           <div className="section-shell">
-            <header className="work-evidence-heading"><p className="eyebrow">Boho-owned properties</p><h2 id="website-work-title">Three public brands used to study three different search and publishing problems.</h2><p>{define("These are owned properties, not client case studies. They demonstrate public delivery, editorial systems, interactive content, and different approaches to search intent.")}</p></header>
-            <div className="work-site-grid">
-              {ownedWebsites.map((site) => (
-                <article key={site.id}>
-                  <img alt={site.image.alt} loading="lazy" src={site.image.src} />
-                  <div><span><Globe2 aria-hidden="true" size={17} />{site.domain}</span><h3>{site.name}</h3><p>{define(site.role)}</p><nav><a href={site.url} rel="noopener noreferrer" target="_blank">Visit site <ExternalLink aria-hidden="true" size={14} /></a><a href={site.repositoryUrl} rel="noopener noreferrer" target="_blank">GitHub <GitBranch aria-hidden="true" size={14} /></a></nav></div>
-                </article>
-              ))}
-            </div>
+            <h2 id="evidence-boundary-title">{boundary.one("Heading")}</h2>
+            <p>{boundary.one("Body")}</p>
           </div>
         </section>
 
-        <section className="work-evidence-section work-evidence-section--method" id="provider-rescue" aria-labelledby="provider-rescue-method-title">
-          <div className="section-shell work-method-layout">
-            <header><p className="eyebrow eyebrow--on-dark">Provider-rescue method</p><h2 id="provider-rescue-method-title">Map authority and dependencies before moving the system.</h2><p>{define("The public proof here is the operating method—not a fictional rescue story or an unsupported client outcome.")}</p><Link href="/resources/#provider-rescue-checklist">Use the provider-rescue checklist <ArrowRight aria-hidden="true" size={16} /></Link></header>
-            <ol>
-              {["Stabilize the immediate risk", "Inventory ownership, access, and providers", "Preserve useful content, URLs, forms, and measurement", "Approve the target system and migration sequence", "Verify launch behavior and document the new arrangement"].map((step, index) => <li key={step}><span>{String(index + 1).padStart(2, "0")}</span><strong>{step}</strong></li>)}
-            </ol>
-          </div>
-        </section>
-
-        <section className="work-evidence-section work-evidence-section--report" id="report-method" aria-labelledby="report-method-title">
+        <section className="commercial-section commercial-final" aria-labelledby="work-final-title">
           <div className="section-shell">
-            <header className="work-evidence-heading"><p className="eyebrow">Report method</p><h2 id="report-method-title">A report should expose its evidence and uncertainty.</h2><p>{define("No client report or commercial result is represented here. This is the review structure used to keep sources, interpretation, and recommendations separate.")}</p></header>
-            <div className="report-method-grid">
-              <article><FileCheck2 aria-hidden="true" size={26} /><h3>Data receipt</h3><p>State the period, properties, sources, last successful collection, missing or stale inputs, filters, assumptions, and analyst review date.</p></article>
-              <article><FlaskConical aria-hidden="true" size={26} /><h3>Statement labels</h3><p><strong>Observed</strong> is directly supported. <strong>Inferred</strong> is a reasoned interpretation with uncertainty. <strong>Recommended</strong> is the proposed action.</p></article>
-              <article><ShieldCheck aria-hidden="true" size={26} /><h3>Quality gates</h3><p>Disclose source failure, stale data, mismatched periods, changed definitions, material disagreement, insufficient evidence, or a recommendation without a supporting reason.</p></article>
+            <h2 id="work-final-title">{finalCta.one("Heading")}</h2>
+            <p>{finalCta.one("Body")}</p>
+            <div className="button-row">
+              <a className="button-link button-link--primary" data-umami-event="commercial_primary_cta" href={finalCta.one("Primary destination")}>{finalCta.one("Primary CTA")}</a>
+              <a className="button-link button-link--secondary" href={finalCta.one("Secondary destination")}>{finalCta.one("Secondary CTA")}</a>
             </div>
-            <Link className="work-evidence-inline-link" href="/resources/#report-standard">Read the public report standard <ArrowRight aria-hidden="true" size={16} /></Link>
           </div>
         </section>
       </main>

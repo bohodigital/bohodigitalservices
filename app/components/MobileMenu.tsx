@@ -16,8 +16,16 @@ const focusableSelector = [
 
 export function MobileMenu({
   navigation,
+  action,
+  labels,
 }: {
   navigation: ReadonlyArray<PrimaryNavigationItem>;
+  action: { label: string; href: string };
+  labels: {
+    open: string;
+    close: string;
+    emergency: string;
+  };
 }) {
   const [open, setOpen] = useState(false);
   const reactId = useId().replace(/[^a-zA-Z0-9_-]/g, "");
@@ -91,7 +99,7 @@ export function MobileMenu({
         aria-controls={panelId}
         onClick={() => setOpen((current) => !current)}
       >
-        {open ? "Close" : "Menu"}
+        {open ? labels.close : labels.open}
       </button>
 
       {open ? (
@@ -100,22 +108,22 @@ export function MobileMenu({
           className="mobile-menu__panel"
           id={panelId}
           role="dialog"
-          aria-label="Site navigation"
+          aria-label={labels.open}
           aria-modal="true"
         >
           <div className="mobile-menu__panel-inner">
             <Link
               className="button-link button-link--primary mobile-menu__primary-cta"
-              href="/contact/"
+              href={action.href}
               onClick={closeMenu}
             >
-              <span className="button-link__label">Talk to Someone Technical</span>
+              <span className="button-link__label">{action.label}</span>
               <span className="button-link__arrow" aria-hidden="true">
                 {"\u2192"}
               </span>
             </Link>
 
-            <nav aria-label="Mobile navigation">
+            <nav>
               <ul className="mobile-menu__nav-list">
                 {navigation.map((item) => (
                   <li key={item.href}>
@@ -150,15 +158,9 @@ export function MobileMenu({
               </ul>
             </nav>
 
-            <div className="mobile-menu__utility" aria-label="Help and contact">
-              <Link className="text-link" href="/contact/" onClick={closeMenu}>
-                <span>Contact</span>
-                <span className="text-link__arrow" aria-hidden="true">
-                  {"\u2192"}
-                </span>
-              </Link>
+            <div className="mobile-menu__utility">
               <Link className="text-link" href="/emergency/" onClick={closeMenu}>
-                <span>Emergency Help</span>
+                <span>{labels.emergency}</span>
                 <span className="text-link__arrow" aria-hidden="true">
                   {"\u2192"}
                 </span>

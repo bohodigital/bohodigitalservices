@@ -1,353 +1,230 @@
-import {
-  AlignLeft,
-  BarChart3,
-  BriefcaseBusiness,
-  Compass,
-  Crosshair,
-  Database,
-  FileCheck2,
-  Globe2,
-  KeyRound,
-  MapPin,
-  MousePointerClick,
-  PanelsTopLeft,
-  RefreshCw,
-  Route,
-  SearchCheck,
-  ShieldCheck,
-  Target,
-  Wrench,
-} from "lucide-react";
+import type { ReactNode } from "react";
 
 import {
-  ButtonLink,
-  CtaBand,
-  Footer,
-  Header,
-  TextLink,
-} from "./components/SiteChrome";
-import { DefinedText } from "./components/DefinedText";
-import { operatingCycle } from "./content/operatingCycle";
-import { servicePresentationByRoute } from "./content/servicePresentation";
+  commercialCorrections,
+  commercialSection,
+  correctionValue,
+} from "./content/commercial/presentation";
+import { Footer, Header } from "./components/commercial/CommercialChrome";
 
-const operatingCycleIcons = {
-  diagnose: SearchCheck,
-  prioritize: Crosshair,
-  engineer: Wrench,
-  deploy: Route,
-  measure: BarChart3,
-  improve: RefreshCw,
-} as const;
-
-const serviceCards = [
-  {
-    title: "Ongoing SEO & Search Growth",
-    body: servicePresentationByRoute["/services/ongoing-seo/"].summary,
-    label: "Improve local visibility",
-    href: "/services/ongoing-seo/",
-    tone: "verdigris",
-    icon: MapPin,
-  },
-  {
-    title: "Web Design & Website Redesign",
-    body: servicePresentationByRoute["/services/web-design-redesign/"].summary,
-    label: "Plan the website",
-    href: "/services/web-design-redesign/",
-    tone: "gold",
-    icon: PanelsTopLeft,
-  },
-  {
-    title: "Website Migration & Provider Rescue",
-    body: servicePresentationByRoute["/services/provider-rescue/"].summary,
-    label: "Plan the rescue",
-    href: "/services/provider-rescue/",
-    tone: "copper",
-    icon: Route,
-  },
-  {
-    title: "Custom Web & Digital Solutions",
-    body: servicePresentationByRoute["/services/custom-digital-solutions/"].summary,
-    label: "Simplify the repeated task",
-    href: "/services/custom-digital-solutions/",
-    tone: "blue",
-    icon: Wrench,
-  },
-  {
-    title: "Digital Research, SEO Audits & Strategy",
-    body: servicePresentationByRoute["/services/research-audits-strategy/"].summary,
-    label: "Get a clear review",
-    href: "/services/research-audits-strategy/",
-    tone: "plum",
-    icon: SearchCheck,
-  },
+const serviceLayers = [
+  ["service-local-visibility", "local-visibility-lead-systems"],
+  ["service-websites-hosting", "websites-managed-hosting"],
+  ["service-provider-rescue", "provider-rescue-migration"],
+  ["service-custom-tools", "custom-tools-automation"],
+  ["service-research-analytics", "research-analytics-improvement"],
 ] as const;
 
-const designPrinciples = [
-  {
-    number: "01",
-    title: "Clarity",
-    body: "Make the offer, audience, and next step understandable without making a buyer decode the page.",
-    termSlug: "website-clarity",
-    icon: AlignLeft,
-  },
-  {
-    number: "02",
-    title: "Trust",
-    body: "Use proof, ownership, and useful detail instead of decoration pretending to be credibility.",
-    termSlug: "trust-signal",
-    icon: ShieldCheck,
-  },
-  {
-    number: "03",
-    title: "Discovery",
-    body: "Build structure and content around the language and decisions people use to find a business.",
-    termSlug: "customer-discovery",
-    icon: Compass,
-  },
-  {
-    number: "04",
-    title: "Action",
-    body: "Give a qualified buyer a clear route to call, book, request, buy, or keep learning.",
-    termSlug: "customer-action",
-    icon: MousePointerClick,
-  },
-] as const;
-
-const migrationSteps = ["inventory", "preserve", "move", "verify", "document"] as const;
-const migrationSystems = ["Domain", "Hosting", "Analytics", "Search", "Content", "Forms", "Redirects"] as const;
-
-const toolCapabilities = [
-  {
-    title: "Workflow automation",
-    body: "Move repeated intake, routing, approval, publishing, and follow-up work through a visible process.",
-  },
-  {
-    title: "Analytics and reporting",
-    body: "Turn scattered data into a decision-ready view with clear sources and useful business signals.",
-  },
-  {
-    title: "Validation and monitoring",
-    body: "Check important pages, records, feeds, or integrations and make failures easier to find.",
-  },
-] as const;
+function TrackedLink({
+  href,
+  children,
+  event,
+  className,
+}: {
+  href: string;
+  children: ReactNode;
+  event: string;
+  className?: string;
+}) {
+  return <a className={className} data-umami-event={event} href={href}>{children}</a>;
+}
 
 export default function Homepage() {
-  const seenTerms = new Set<string>();
-  const define = (text: string) => <DefinedText autoDefine text={text} seenTerms={seenTerms} />;
+  const hero = commercialSection("homepage", "1-hero");
+  const ribbon = commercialSection("homepage", "2-commercial-ribbon");
+  const problems = commercialSection("homepage", "3-problem-chooser");
+  const services = commercialSection("homepage", "4-service-composition");
+  const evidence = commercialSection("homepage", "5-evidence-section");
+  const ownership = commercialSection("homepage", "6-ownership-and-provider-rescue-map");
+  const timeline = commercialSection("homepage", "7-engagement-timeline");
+  const intake = commercialSection("homepage", "10-final-intake-section");
+  const workIntro = correctionValue(commercialCorrections.evidence.homepageIntroduction);
+  const contactEmail = commercialSection("contact", "path-2").one("Destination");
+  const evidenceLabels = [
+    evidence.one("Evidence field labels"),
+    ...evidence.many("value").slice(0, 3),
+  ];
+
+  const ribbonItems = [1, 2, 3, 4, 5].map((number) => ({
+    label: ribbon.one(`Item ${number} label`),
+    price: ribbon.one(`Item ${number} price`),
+    supportingPrice: ribbon.optional(`Item ${number} supporting price`),
+    timeline: ribbon.one(`Item ${number} timeline`),
+    link: ribbon.one(`Item ${number} link`),
+    href: ribbon.one(`Item ${number} destination`),
+  }));
+  const problemItems = [1, 2, 3, 4, 5].map((number) => ({
+    heading: problems.one(`Problem ${number} heading`),
+    body: problems.one(`Problem ${number} body`),
+    label: problems.one(`Problem ${number} label`),
+    link: problems.one(`Problem ${number} link`),
+    href: problems.one(`Problem ${number} destination`),
+  }));
+  const stages = [1, 2, 3, 4, 5, 6, 7].map((number) => ({
+    heading: timeline.one(`Stage ${number} heading`),
+    body: timeline.one(`Stage ${number} body`),
+  }));
+  const evidenceArtifacts = [
+    "artifact-1-website-ownership-map",
+    "artifact-2-vanity-metrics-migration-record",
+    "artifact-3-glossary-and-route-validation",
+  ].map((key) => commercialSection("work-evidence", key));
 
   return (
     <>
       <Header />
-      <main id="main-content">
-        <section className="home-section hero" aria-labelledby="hero-title">
-          <div className="hero__background" aria-hidden="true">
-            <img
-              src="/og-boho-digital-engineering-20260714.png"
-              width="1536"
-              height="1024"
-              alt=""
-              fetchPriority="high"
-            />
-          </div>
-          <div className="section-shell hero__layout">
-            <div className="hero__copy">
-              <p className="eyebrow eyebrow--on-dark">Boho Digital Services</p>
-              <h1 id="hero-title">Local visibility, lead systems, and websites built by people who understand the machinery.</h1>
-              <p className="hero__body">{define("Boho is a digital-engineering firm for businesses that need visibility, lead paths, websites, provider rescue, operational tools, and measurable improvement to work together.")}</p>
-              <p className="hero__supporting-line">Built by digital engineers. Explained in plain English.</p>
-              <div className="button-row hero__actions">
-                <ButtonLink href="/contact/">Talk to Someone Technical</ButtonLink>
-                <ButtonLink href="/tools/" variant="secondary">Explore Boho Systems</ButtonLink>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="home-section editorial-problem" aria-labelledby="problem-title">
-          <div className="section-shell editorial-problem__grid">
-            <div className="editorial-problem__statement"><h2 id="problem-title">Marketing systems are still systems.</h2></div>
-            <div className="editorial-problem__body reading-width">
-              <p className="editorial-problem__lead">{define("The website, local presence, lead path, hosting, analytics, accounts, and operational tools affect one another.")}</p>
-              <p>{define("Most agencies start with a package. Boho starts with the business. We inspect the machinery underneath it and identify the smallest useful next move.")}</p>
-              <div className="business-first-signals" aria-label="Business-first decision inputs">
-                <span><BriefcaseBusiness size={19} aria-hidden="true" /> Offer</span>
-                <span><Target size={19} aria-hidden="true" /> Market</span>
-                <span><MousePointerClick size={19} aria-hidden="true" /> Action</span>
-                <span><BarChart3 size={19} aria-hidden="true" /> Signal</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="home-section method" id="method" aria-labelledby="method-title">
-          <div className="section-shell">
-            <div className="section-heading section-heading--split">
-              <h2 id="method-title">A six-stage engineering method.</h2>
-              <p className="reading-width">{define("Diagnose the system, prioritize the business case, engineer the change, deploy carefully, measure the right signal, and improve what the evidence supports.")}</p>
-            </div>
-            <ol className="method-summary-list" aria-label="Diagnose, prioritize, engineer, deploy, measure, improve">
-              {operatingCycle.map((stage) => {
-                const Icon = operatingCycleIcons[stage.id];
-                return (
-                  <li key={stage.number}>
-                    <a className="method-summary-list__link" href={stage.href}>
-                      <div className="method-summary-list__marker" aria-hidden="true">
-                        <span className="method-summary-list__icon"><Icon size={24} strokeWidth={1.8} /></span>
-                        <span className="method-summary-list__number">{stage.number}</span>
-                      </div>
-                      <div><h3>{stage.title}</h3><p>{stage.body}</p></div>
-                    </a>
-                  </li>
-                );
-              })}
-            </ol>
-          </div>
-        </section>
-
-        <section className="home-section services-mosaic" id="services" aria-labelledby="services-title">
-          <div className="section-shell">
-            <div className="section-heading section-heading--split">
-              <h2 id="services-title">Five service lanes, one accountable system.</h2>
-              <p className="reading-width">{define("The lane names make the work understandable without pretending the systems are isolated.")}</p>
-            </div>
-            <div className="service-grid">
-              {serviceCards.map((service, index) => {
-                const Icon = service.icon;
-                return (
-                  <article className={`service-card service-card--${service.tone} service-card--${index + 1}`} key={service.title}>
-                    <h3>{service.title}</h3>
-                    <p>{define(service.body)}</p>
-                    <TextLink href={service.href}>{service.label}</TextLink>
-                    <span className="service-card__pattern" aria-hidden="true"><Icon size={38} strokeWidth={1.65} /></span>
-                  </article>
-                );
-              })}
-            </div>
-            <div className="section-action">
-              <ButtonLink href="/services/">View All Services</ButtonLink>
-              <TextLink href="/industries/">Find your business type</TextLink>
-            </div>
-          </div>
-        </section>
-
-        <section className="home-section design-spotlight" id="design" aria-labelledby="design-title">
-          <div className="section-shell">
-            <div className="design-spotlight__intro">
-              <div className="section-heading"><h2 id="design-title">Website design built around clarity, trust, discovery, and action.</h2></div>
-              <div className="reading-width">
-                <p>{define("A strong website explains the offer, earns trust, supports discovery, and gives the right customer a clear next step.")}</p>
-                <div className="button-row">
-                  <ButtonLink href="/contact/">Plan a Better Website</ButtonLink>
-                  <TextLink href="/learn/website-buying/">Read the Buyer Guide</TextLink>
-                </div>
-              </div>
-            </div>
-            <ol className="design-principles design-principles--full" aria-label="Four website design principles">
-              {designPrinciples.map((principle) => {
-                const Icon = principle.icon;
-                return (
-                  <li key={principle.number}>
-                    <div className="design-principle__marker" aria-hidden="true">
-                      <span className="design-principle__icon"><Icon size={26} strokeWidth={1.7} /></span>
-                      <span>{principle.number}</span>
-                    </div>
-                    <div><h3>{define(`[[${principle.termSlug}|${principle.title}]]`)}</h3><p>{define(principle.body)}</p></div>
-                  </li>
-                );
-              })}
-            </ol>
-          </div>
-        </section>
-
-        <section className="home-section migration-rescue" aria-labelledby="migration-title">
-          <div className="section-shell migration-rescue__layout">
-            <div className="migration-rescue__copy">
-              <h2 id="migration-title">Provider rescue without losing what still works.</h2>
-              <p>{define("Boho maps the domain, hosting, content, analytics, forms, redirects, and account ownership before changing the system.")}</p>
-              <p>{define("The goal is a controlled move, preserved value, verified behavior, and cleaner records.")}</p>
+      <main className="commercial-page commercial-home" id="main-content" tabIndex={-1}>
+        <section className="commercial-hero" aria-labelledby="commercial-home-title">
+          <div className="section-shell commercial-hero__grid">
+            <div>
+              <p className="eyebrow eyebrow--on-dark">{hero.one("Eyebrow")}</p>
+              <h1 id="commercial-home-title">{hero.one("Headline")}</h1>
+              <p>{hero.one("Body paragraph 1")}</p>
+              <p>{hero.one("Body paragraph 2")}</p>
               <div className="button-row">
-                <ButtonLink href="/contact/">Plan the Rescue</ButtonLink>
-                <TextLink href="/learn/provider-rescue/" className="text-link--on-dark">Read the Rescue Guide</TextLink>
+                <TrackedLink className="button-link button-link--primary" event="commercial_primary_cta" href={hero.one("Primary destination")}>{hero.one("Primary CTA")}</TrackedLink>
+                <TrackedLink className="button-link button-link--secondary" event="commercial_services_cta" href={hero.one("Secondary destination")}>{hero.one("Secondary CTA")}</TrackedLink>
               </div>
             </div>
-            <div className="migration-rescue__visual">
-              <div className="migration-ledger" aria-label="Migration ownership dossier">
-                <div className="migration-ledger__heading"><KeyRound size={28} strokeWidth={1.6} aria-hidden="true" /><div><span>Transfer file</span><strong>Ownership dossier</strong></div></div>
-                <ul>
-                  <li><Globe2 size={20} aria-hidden="true" /><span><strong>Domain</strong> registrar and {define("DNS")} control</span></li>
-                  <li><Database size={20} aria-hidden="true" /><span><strong>Content</strong> pages, media, forms, and data</span></li>
-                  <li><FileCheck2 size={20} aria-hidden="true" /><span><strong>Continuity</strong> redirects, tracking, and verification</span></li>
-                </ul>
-              </div>
-              <div className="migration-map" aria-label="Provider migration route">
-                <ol className="migration-map__route">
-                  {migrationSteps.map((step, index) => <li key={step}><span className="migration-map__index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span><span className="migration-map__step">{step}</span></li>)}
-                </ol>
-                <div className="migration-map__systems" aria-label="Systems inventoried">{migrationSystems.map((system) => <span key={system}>{system}</span>)}</div>
-              </div>
-            </div>
+            <aside className="commercial-hero__aside">
+              <strong>{hero.one("Trust line")}</strong>
+              <span>{hero.one("Location line")}</span>
+            </aside>
           </div>
         </section>
 
-        <section className="home-section lab-proof" aria-labelledby="tools-title">
-          <div className="section-shell lab-proof__layout">
-            <div className="lab-proof__copy">
-              <p className="eyebrow eyebrow--on-dark">Custom tools and automation</p>
-              <h2 id="tools-title">When the right tool does not exist, we build it.</h2>
-              <p>{define("Boho builds focused systems for repeated operational work that is too important, too specific, or too fragmented for the tools already in place.")}</p>
-              <p className="lab-proof__principle">{define("We use mature platforms for mature problems and custom engineering for the gaps that matter.")}</p>
-              <div className="button-row">
-                <ButtonLink href="/tools/">Explore Boho Systems</ButtonLink>
-                <TextLink href="/services/custom-digital-solutions/">Explore the Service</TextLink>
-              </div>
+        <section className="commercial-ribbon" aria-label={ribbon.one("Section accessible label")}>
+          <div className="section-shell">
+            <p className="commercial-ribbon__intro">{ribbon.one("Introductory sentence")}</p>
+            <div className="commercial-ribbon__grid">
+              {ribbonItems.map((item) => (
+                <article key={item.label}>
+                  <h2>{item.label}</h2>
+                  <strong>{item.price}</strong>
+                  {item.supportingPrice ? <strong>{item.supportingPrice}</strong> : null}
+                  <p>{item.timeline}</p>
+                  <TrackedLink event="commercial_pricing_cta" href={item.href}>{item.link}</TrackedLink>
+                </article>
+              ))}
             </div>
-            <div className="evidence-board" aria-label="Custom tool capabilities">
-              {toolCapabilities.map((capability, index) => (
-                <article className={`evidence-card evidence-card--${index + 1}`} key={capability.title}>
-                  <div className="evidence-card__meta"><span>Capability {String(index + 1).padStart(2, "0")}</span></div>
-                  <h3>{capability.title}</h3>
-                  <p>{define(capability.body)}</p>
+            <p>{ribbon.one("Qualification beneath the ribbon")}</p>
+          </div>
+        </section>
+
+        <section className="commercial-section commercial-problems" aria-labelledby="commercial-problems-title">
+          <div className="section-shell">
+            <header className="commercial-section__heading">
+              <p className="eyebrow">{problems.one("Eyebrow")}</p>
+              <h2 id="commercial-problems-title">{problems.one("Heading")}</h2>
+              <p>{problems.one("Introduction")}</p>
+            </header>
+            <div className="commercial-problems__grid">
+              {problemItems.map((item) => (
+                <article key={item.heading}>
+                  <h3>{item.heading}</h3>
+                  <p>{item.body}</p>
+                  <strong>{item.label}</strong>
+                  <a href={item.href}>{item.link}</a>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="home-section territory-cta" aria-labelledby="technical-opinion-title">
-          <div className="section-shell territory-cta__inner">
-            <span className="territory-cta__mark" aria-hidden="true"><Target size={70} strokeWidth={1.2} /></span>
-            <div className="territory-cta__copy">
-              <p className="eyebrow eyebrow--on-dark">Provider frustration</p>
-              <h2 id="technical-opinion-title">Tired of talking to people who cannot explain the system?</h2>
-              <p>{define("Bring the proposal, migration plan, dashboard, hosting setup, automation idea, or provider explanation that does not add up.")}</p>
-            </div>
-            <ButtonLink href="/contact/">Get a Technical Second Opinion</ButtonLink>
-          </div>
-        </section>
-
-        <section className="home-section pricing-philosophy" aria-labelledby="pricing-title">
-          <div className="section-shell pricing-philosophy__inner">
-            <div className="pricing-philosophy__signals" aria-label="How Boho keeps work practical">
-              <span><Wrench size={20} aria-hidden="true" /> Direct technical work</span>
-              <span><BriefcaseBusiness size={20} aria-hidden="true" /> More useful work</span>
-              <span><BarChart3 size={20} aria-hidden="true" /> Visible priorities</span>
-            </div>
-            <h2 id="pricing-title">Scope follows diagnosis, not a package menu.</h2>
-            <p className="pricing-philosophy__body reading-width">{define("Start with the smallest useful intervention. Expand when the next investment has a defensible business case.")}</p>
-            <ButtonLink href="/contact/">Discuss the Actual Problem</ButtonLink>
-          </div>
-        </section>
-
-        <section className="home-section final-cta" aria-labelledby="final-cta-title">
+        <section className="commercial-section commercial-services" aria-labelledby="commercial-services-title">
           <div className="section-shell">
-            <CtaBand
-              className="final-cta__band"
-              title="Talk to someone who can explain the machinery."
-              body={<p>{define("Send the business, website, service area, system, and what feels stuck. You do not need to diagnose the solution before the conversation.")}</p>}
-              primary={{ label: "Talk to Someone Technical", href: "/contact/" }}
-              secondary={{ label: "Explore Boho Systems", href: "/tools/" }}
-            />
-            <span id="final-cta-title" className="sr-only">Talk to someone technical.</span>
+            <header className="commercial-section__heading">
+              <p className="eyebrow">{services.one("Eyebrow")}</p>
+              <h2 id="commercial-services-title">{services.one("Heading")}</h2>
+              <p>{services.one("Introduction")}</p>
+            </header>
+            <div className="commercial-services__mosaic">
+              {serviceLayers.map(([pageKey, sectionKey]) => {
+                const layer = commercialSection(pageKey, sectionKey, "035");
+                const all = commercialSection(pageKey, sectionKey);
+                return (
+                  <article key={pageKey}>
+                    <p className="eyebrow">{layer.one("Eyebrow")}</p>
+                    <h3>{layer.one("Headline")}</h3>
+                    <p>{layer.one("Introduction")}</p>
+                    <strong>{layer.one("Starting-price copy")}</strong>
+                    <a href={all.one("Canonical route")}>{layer.one("Eyebrow")}</a>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section className="commercial-section commercial-evidence" aria-labelledby="commercial-evidence-title">
+          <div className="section-shell">
+            <header className="commercial-section__heading">
+              <p className="eyebrow">{evidence.one("Eyebrow")}</p>
+              <h2 id="commercial-evidence-title">{evidence.one("Heading")}</h2>
+              <p>{workIntro}</p>
+            </header>
+            <div className="commercial-evidence__grid">
+              {evidenceArtifacts.map((artifact) => (
+                <article id={artifact.one("Anchor").slice(1)} key={artifact.one("Title")}>
+                  <h3>{artifact.one("Title")}</h3>
+                  <p>{artifact.one("Summary")}</p>
+                  <dl>
+                    <div><dt>{evidenceLabels[0]}</dt><dd>{artifact.one("Source class")}</dd></div>
+                    <div><dt>{evidenceLabels[1]}</dt><dd>{artifact.one("What this demonstrates")}</dd></div>
+                    <div><dt>{evidenceLabels[2]}</dt><dd>{artifact.one("What this does not demonstrate")}</dd></div>
+                    {artifact.optional("Current status") ? <div><dt>{evidenceLabels[3]}</dt><dd>{artifact.one("Current status")}</dd></div> : null}
+                  </dl>
+                  <TrackedLink event="commercial_evidence_open" href="/work/">{artifact.one("Open label")}</TrackedLink>
+                </article>
+              ))}
+            </div>
+            <a href={evidence.one("Closing destination")}>{evidence.one("Closing link")}</a>
+          </div>
+        </section>
+
+        <section className="commercial-section commercial-ownership" aria-labelledby="commercial-ownership-title">
+          <div className="section-shell commercial-ownership__grid">
+            <div>
+              <p className="eyebrow">{ownership.one("Eyebrow")}</p>
+              <h2 id="commercial-ownership-title">{ownership.one("Heading")}</h2>
+              <p>{ownership.one("Body paragraph 1")}</p>
+              <p>{ownership.one("Body paragraph 2")}</p>
+              <a href={ownership.one("Destination")}>{ownership.one("Link")}</a>
+            </div>
+            <ul>
+              {[ownership.one("Status labels"), ...ownership.many("value")].map((status) => <li key={status}>{status}</li>)}
+            </ul>
+          </div>
+        </section>
+
+        <section className="commercial-section commercial-timeline" aria-labelledby="commercial-timeline-title">
+          <div className="section-shell">
+            <header className="commercial-section__heading">
+              <p className="eyebrow">{timeline.one("Eyebrow")}</p>
+              <h2 id="commercial-timeline-title">{timeline.one("Heading")}</h2>
+              <p>{timeline.one("Introduction")}</p>
+            </header>
+            <ol>{stages.map((stage) => <li key={stage.heading}><h3>{stage.heading}</h3><p>{stage.body}</p></li>)}</ol>
+          </div>
+        </section>
+
+        <section className="commercial-section commercial-intake" aria-labelledby="commercial-intake-title">
+          <div className="section-shell commercial-intake__grid">
+            <div>
+              <p className="eyebrow eyebrow--on-dark">{intake.one("Eyebrow")}</p>
+              <h2 id="commercial-intake-title">{intake.one("Heading")}</h2>
+              <p>{intake.one("Body paragraph 1")}</p>
+              <p>{intake.one("Body paragraph 2")}</p>
+              <p>{intake.one("Privacy line")}</p>
+              <div className="button-row">
+                <TrackedLink className="button-link button-link--primary" event="commercial_primary_cta" href={intake.one("Primary destination")}>{intake.one("Primary CTA")}</TrackedLink>
+                <a className="button-link button-link--secondary" href={contactEmail}>{intake.one("Secondary CTA")}</a>
+                <a href={intake.one("Emergency destination")}>{intake.one("Emergency CTA")}</a>
+              </div>
+            </div>
+            <ul>
+              {[intake.one("Field-preview labels"), ...intake.many("value")].map((label) => <li key={label}>{label}</li>)}
+            </ul>
           </div>
         </section>
       </main>

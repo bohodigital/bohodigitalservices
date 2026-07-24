@@ -1,20 +1,14 @@
-import { ArrowRight, Check, ExternalLink } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
 import type { ServicePage, ServicePageBlock } from "../content/servicePages.generated";
 import {
-  isServicePresentationRoute,
-  servicePresentationByRoute,
-} from "../content/servicePresentation";
+  CommercialServiceLayer,
+  isCommercialServiceRoute,
+} from "./commercial/CommercialServiceLayer";
 import { DefinedText } from "./DefinedText";
-import {
-  Breadcrumbs,
-  ButtonLink,
-  EditorialHeadline,
-  Footer,
-  Header,
-} from "./SiteChrome";
+import { Footer, Header } from "./commercial/CommercialChrome";
 
 type BodySection = {
   heading: Extract<ServicePageBlock, { type: "heading" }>;
@@ -42,6 +36,21 @@ function headingId(route: string, text: string) {
   return slugifyHeading(text);
 }
 
+function containsBlockedAnalyticsAvailability(value: unknown) {
+  const text = JSON.stringify(value);
+  return [
+    /Supported dashboard access/i,
+    /Boho Analytics Platform.{0,200}(?:free|public|open.source|self.host|dashboard|access)/i,
+    /(?:free|public|open.source|self.host|dashboard|access).{0,200}Boho Analytics Platform/i,
+    /free (?:public repository|platform) or paid report/i,
+    /use the free (?:public repository|platform)/i,
+    /recommend the free platform/i,
+    /merely for access to the dashboard/i,
+    /Boho Analytics Platform components/i,
+    /Explore the (?:platform|public repository)/i,
+  ].some((pattern) => pattern.test(text));
+}
+
 function sectionize(blocks: readonly ServicePageBlock[]): BodySection[] {
   const sections: BodySection[] = [];
   for (const block of blocks) {
@@ -54,7 +63,17 @@ function sectionize(blocks: readonly ServicePageBlock[]): BodySection[] {
       (current.blocks as ServicePageBlock[]).push(block);
     }
   }
-  return sections;
+  return sections.flatMap((section) => {
+    if (containsBlockedAnalyticsAvailability(section.heading)) return [];
+    const safeBlocks = section.blocks.filter(
+      (block) => !containsBlockedAnalyticsAvailability(block),
+    );
+    if (containsBlockedAnalyticsAvailability({
+      heading: section.heading,
+      blocks: safeBlocks,
+    })) return [];
+    return [{ ...section, blocks: safeBlocks }];
+  });
 }
 
 function RichText({
@@ -203,56 +222,16 @@ function FaqSection({
 export function ServiceDetailPage({ page }: { page: ServicePage }) {
   const seenTerms = new Set<string>();
   const sections = sectionize(page.body);
-  if (!isServicePresentationRoute(page.metadata.canonicalRoute)) {
-    throw new Error(`Missing service presentation for ${page.metadata.canonicalRoute}`);
+  if (!isCommercialServiceRoute(page.metadata.canonicalRoute)) {
+    throw new Error(`Missing commercial service layer for ${page.metadata.canonicalRoute}`);
   }
-  const visual = servicePresentationByRoute[page.metadata.canonicalRoute];
-
   return (
     <>
       <Header />
       <main className="service-document" id="main-content" tabIndex={-1}>
-        <section className="service-document-hero" aria-labelledby="service-document-title">
-          <div className="section-shell">
-            <Breadcrumbs
-              items={[
-                { label: "Home", href: "/" },
-                { label: "Services", href: "/services/" },
-                { label: page.name },
-              ]}
-            />
-            <div className="service-document-hero__layout">
-              <div className="service-document-hero__copy">
-                <p className="eyebrow eyebrow--on-dark">{page.hero.eyebrow}</p>
-                <EditorialHeadline as="h1" className="service-document-hero__title">
-                  <span id="service-document-title">
-                    <RichText seenTerms={seenTerms} text={page.hero.headline} />
-                  </span>
-                </EditorialHeadline>
-                <div className="service-document-hero__intro">
-                  {page.hero.intro.map((paragraph) => (
-                    <p key={paragraph}>
-                      <RichText seenTerms={seenTerms} text={paragraph} />
-                    </p>
-                  ))}
-                </div>
-                <div className="button-row">
-                  <ButtonLink href={page.hero.primaryCta.href}>{page.hero.primaryCta.label}</ButtonLink>
-                  <ButtonLink href={page.hero.secondaryCta.href} variant="secondary">
-                    {page.hero.secondaryCta.label}
-                  </ButtonLink>
-                </div>
-                <p className="service-document-hero__trust">{page.hero.trustLine}</p>
-              </div>
-              <figure className="service-document-hero__visual">
-                <img alt={visual.alt} src={visual.image} />
-                <figcaption>{visual.caption}</figcaption>
-              </figure>
-            </div>
-          </div>
-        </section>
+        <CommercialServiceLayer route={page.metadata.canonicalRoute} />
 
-        <nav className="service-document-index" aria-label={`${page.name} page sections`}>
+        <nav className="service-document-index">
           <div className="section-shell">
             {sections.map((section) => (
               <a href={`#${headingId(page.metadata.canonicalRoute, section.heading.text)}`} key={section.heading.text}>
@@ -302,49 +281,6 @@ export function ServiceDetailPage({ page }: { page: ServicePage }) {
           })}
         </div>
 
-        <section className="service-related" aria-labelledby="service-related-title">
-          <div className="section-shell">
-            <p className="eyebrow">Related services</p>
-            <h2 id="service-related-title">Some problems need more than one service. Add another only when it solves part of the same problem.</h2>
-            <div className="service-related__grid">
-              {page.related.map((related) => (
-                <article key={`${related.prompt}-${related.href}`}>
-                  <p>{related.prompt}</p>
-                  <Link href={related.href}>
-                    {related.label}
-                    <ArrowRight aria-hidden="true" size={16} />
-                  </Link>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="service-document-final" aria-labelledby="service-final-title">
-          <div className="section-shell service-document-final__layout">
-            <div>
-              <p className="eyebrow eyebrow--on-dark">A useful next decision</p>
-              <h2 id="service-final-title">{page.finalCta.headline}</h2>
-              {page.finalCta.body.map((paragraph) => (
-                <p key={paragraph}>
-                  <RichText seenTerms={seenTerms} text={paragraph} />
-                </p>
-              ))}
-            </div>
-            <div className="service-document-final__actions">
-              {page.finalCta.actions.map((action, index) => (
-                <ButtonLink
-                  href={action.href}
-                  key={`${action.kind}-${action.href}`}
-                  variant={index === 0 ? "primary" : "secondary"}
-                >
-                  {action.label}
-                  {action.href.startsWith("http") ? <ExternalLink aria-hidden="true" size={15} /> : null}
-                </ButtonLink>
-              ))}
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </>

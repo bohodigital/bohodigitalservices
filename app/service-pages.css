@@ -1,3 +1,5 @@
+@import "./components/commercial/commercial.css";
+
 /* Governed five-service system. Every selector is scoped to the new routes. */
 .services-overhaul,
 .pricing-overhaul,

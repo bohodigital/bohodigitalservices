@@ -7,8 +7,10 @@ import type { PrimaryNavigationItem } from "../content/navigation";
 
 export function DesktopNavigation({
   navigation,
+  controlLabels,
 }: {
   navigation: ReadonlyArray<PrimaryNavigationItem>;
+  controlLabels?: Readonly<Record<string, string>>;
 }) {
   const [openLabel, setOpenLabel] = useState<string | null>(null);
   const navRef = useRef<HTMLElement>(null);
@@ -39,7 +41,6 @@ export function DesktopNavigation({
     <nav
       ref={navRef}
       className="site-header__desktop-nav"
-      aria-label="Primary navigation"
       onBlur={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) setOpenLabel(null);
       }}
@@ -71,7 +72,7 @@ export function DesktopNavigation({
                   className="site-header__dropdown-toggle"
                   aria-expanded={open}
                   aria-controls={menuId}
-                  aria-label={`${open ? "Close" : "Open"} ${item.label} menu`}
+                  aria-label={controlLabels?.[item.label] ?? item.label}
                   onClick={() => setOpenLabel(open ? null : item.label)}
                 >
                   <ChevronDown aria-hidden="true" size={16} strokeWidth={2.2} />
@@ -80,7 +81,6 @@ export function DesktopNavigation({
 
               {open ? (
                 <div className="site-header__dropdown" id={menuId}>
-                  <p className="site-header__dropdown-eyebrow">Browse {item.label}</p>
                   <ul>
                     {item.children.map((child) => (
                       <li key={child.href}>

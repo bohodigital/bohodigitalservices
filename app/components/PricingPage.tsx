@@ -1,108 +1,108 @@
-import { ArrowRight, Check, Minus } from "lucide-react";
-import Link from "next/link";
+import { commercialSection } from "../content/commercial/presentation";
+import { Footer, Header } from "./commercial/CommercialChrome";
 
-import { assessmentCreditPolicy, pricingGroups } from "../content/pricingPolicy.mjs";
-import { DefinedText } from "./DefinedText";
-import { Breadcrumbs, ButtonLink, CtaBand, EditorialHeadline, Footer, Header } from "./SiteChrome";
+const offerKeys = [
+  "initial-public-review",
+  "seo-reporting",
+  "seo-implementation",
+  "focused-website-improvement",
+  "new-website",
+  "substantial-redesign",
+  "provider-rescue-assessment",
+  "migration-assistance",
+  "focused-audit-or-strategy",
+  "custom-discovery",
+  "focused-custom-build",
+] as const;
 
 export function PricingPage() {
-  const seenTerms = new Set<string>();
-  const define = (text: string) => <DefinedText autoDefine seenTerms={seenTerms} text={text} />;
+  const hero = commercialSection("pricing", "hero");
+  const notice = commercialSection("pricing", "general-notice");
+  const overview = commercialSection("pricing", "price-overview");
+  const drivers = commercialSection("pricing", "price-drivers");
+  const credit = commercialSection("pricing", "paid-assessment-credit");
+  const hosting = commercialSection("pricing", "hosting-and-email");
+  const payment = commercialSection("pricing", "payment-and-scope");
+  const finalCta = commercialSection("pricing", "final-cta");
+  const offers = offerKeys.map((key) => commercialSection("pricing", key));
+  const renderedAnchors = new Set<string>();
 
   return (
     <>
       <Header />
-      <main className="pricing-overhaul" id="main-content" tabIndex={-1}>
-        <section className="pricing-hero" aria-labelledby="pricing-title">
-          <div className="section-shell">
-            <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Pricing" }]} />
-            <div className="pricing-hero__layout">
-              <div>
-                <p className="eyebrow eyebrow--on-dark">Pricing &amp; Scope Guide</p>
-                <EditorialHeadline as="h1" className="pricing-hero__title"><span id="pricing-title">Starting prices, with a clear explanation of what you get.</span></EditorialHeadline>
-              </div>
-              <div>
-                <p>{define("These are starting points, not one-size-fits-all packages. The final price depends on the size and condition of your website, the number of locations or systems involved, the access available, the deadline, and the work required.")}</p>
-                <div className="button-row">
-                  <ButtonLink href="/start/">Start the free review</ButtonLink>
-                  <ButtonLink href="/services/" variant="secondary">Compare services</ButtonLink>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="pricing-free-review" aria-labelledby="free-review-title">
-          <div className="section-shell pricing-free-review__layout">
-            <div><span>Free</span><h2 id="free-review-title">Initial public-information review</h2></div>
-            <p>{define("The free review uses public information to identify the likely problem and best next conversation. It does not include a full audit, access to private accounts, provider recovery, or changes to your website.")}</p>
-            <Link href="/start/">Start the review <ArrowRight aria-hidden="true" size={16} /></Link>
-          </div>
-        </section>
-
-        <nav className="pricing-index" aria-label="Pricing categories">
-          <div className="section-shell">
-            {pricingGroups.map((group) => <a href={`#${group.id}`} key={group.id}>{group.title}</a>)}
-          </div>
-        </nav>
-
-        <div className="pricing-groups">
-          {pricingGroups.map((group, groupIndex) => (
-            <section className="pricing-group" id={group.id} key={group.id} aria-labelledby={`${group.id}-title`}>
-              <div className="section-shell pricing-group__layout">
-                <header>
-                  <p className="eyebrow">{group.eyebrow}</p>
-                  <h2 id={`${group.id}-title`}>{group.title}</h2>
-                  <span aria-hidden="true">{String(groupIndex + 1).padStart(2, "0")}</span>
-                </header>
-                <div className="pricing-offer-list">
-                  {group.offers.map(([name, price, description]) => (
-                    <article key={name}>
-                      <div><h3>{name}</h3><strong>{price}</strong></div>
-                      <p>{define(description)}</p>
-                    </article>
-                  ))}
-                </div>
-              </div>
-            </section>
-          ))}
-        </div>
-
-        <section className="pricing-policy" aria-labelledby="pricing-policy-title">
-          <div className="section-shell pricing-policy__layout">
+      <main className="commercial-page commercial-pricing-page" id="main-content" tabIndex={-1}>
+        <section className="commercial-hero" aria-labelledby="commercial-pricing-title">
+          <div className="section-shell commercial-hero__grid">
             <div>
-              <p className="eyebrow eyebrow--on-dark">Assessment credit</p>
-              <h2 id="pricing-policy-title">A paid assessment may count toward the larger project.</h2>
-              <p>{define(assessmentCreditPolicy.summary)}</p>
+              <p className="eyebrow eyebrow--on-dark">{hero.one("Eyebrow")}</p>
+              <h1 id="commercial-pricing-title">{commercialSection("pricing", "pricing").one("Open Graph title")}</h1>
+              <p>{hero.one("Body paragraph 1")}</p>
+              <p>{hero.one("Body paragraph 2")}</p>
+              <div className="button-row">
+                <a className="button-link button-link--primary" data-umami-event="commercial_primary_cta" href={hero.one("Primary destination")}>{hero.one("Primary CTA")}</a>
+                <a className="button-link button-link--secondary" href={hero.one("Secondary destination")}>{hero.one("Secondary CTA")}</a>
+              </div>
             </div>
-            <div className="pricing-policy__conditions">
-              <h3>Normally required</h3>
-              <ul>
-                {assessmentCreditPolicy.required.map((item) => <li key={item}><Check aria-hidden="true" size={16} />{item}</li>)}
-              </ul>
-              <h3>Not included in the credit</h3>
-              <ul>
-                {assessmentCreditPolicy.restrictions.map((item) => <li key={item}><Minus aria-hidden="true" size={16} />{item}</li>)}
-              </ul>
-              <p>{define(assessmentCreditPolicy.changedCircumstances)}</p>
-            </div>
+            <aside className="commercial-hero__aside">
+              <h2>{notice.one("Heading")}</h2>
+              <p>{notice.one("Body paragraph 1")}</p>
+              <p>{notice.one("Body paragraph 2")}</p>
+              <p>{notice.one("Timeline qualification")}</p>
+            </aside>
           </div>
         </section>
 
-        <section className="pricing-notes" aria-labelledby="pricing-notes-title">
-          <div className="section-shell">
-            <h2 id="pricing-notes-title">Your written proposal defines the project.</h2>
+        <section className="commercial-section commercial-price-list" aria-label={overview.one("Accessible label")}>
+          <span id="web-design" />
+          <span id="analytics-reporting" />
+          <span id="audits-strategy" />
+          <span id="hosting-email" />
+          <div className="section-shell commercial-price-list__grid">
+            {offers.map((offer) => {
+              const anchor = offer.one("Anchor").slice(1);
+              const id = renderedAnchors.has(anchor) ? undefined : anchor;
+              renderedAnchors.add(anchor);
+              return (
+              <article id={id} key={offer.one("Price")}>
+                <h2>{offer.one("Price")}</h2>
+                <p>{offer.one("Minimum-scope description")}</p>
+                <p>{offer.one("Planning range")}</p>
+                <p>{offer.one("Exclusion")}</p>
+                <a data-umami-event="commercial_pricing_cta" href={hero.one("Primary destination")}>{hero.one("Primary CTA")}</a>
+              </article>
+              );
+            })}
+          </div>
+        </section>
+
+        <section className="commercial-section commercial-price-drivers" aria-labelledby="price-drivers-title">
+          <div className="section-shell commercial-price-drivers__grid">
             <div>
-              <article><h3>What a starting price means</h3><p>Each starting price covers the smallest complete version described on this page. Before paid work starts, your proposal will list the exact work, price, timing, what you receive, what is not included, ownership, support, and outside costs.</p></article>
-              <article><h3>Smaller budgets</h3><p>If a smaller complete solution is possible, Boho may suggest a reduced or phased project. Work needed for the site to function safely, use authorized access, measure honestly, or launch responsibly will not be removed simply to reach a lower price.</p></article>
-              <article><h3>Rush and emergency work</h3><p>Rush, emergency, and after-hours work is quoted separately and depends on availability. Timing is not promised until a written scope is accepted.</p></article>
+              <h2 id="price-drivers-title">{drivers.one("Heading")}</h2>
+              <p>{drivers.one("Intro")}</p>
             </div>
+            <ul>{[drivers.one("Items"), ...drivers.many("value")].map((item) => <li key={item}>{item}</li>)}</ul>
           </div>
         </section>
 
-        <div className="section-shell pricing-cta">
-          <CtaBand title="Start with the free review. Approve a larger project only when the need and scope are clear." primary={{ label: "Start the free review", href: "/start/" }} secondary={{ label: "Review all five services", href: "/services/" }} />
-        </div>
+        <section className="commercial-section commercial-pricing-policies" aria-labelledby="credit-title">
+          <div className="section-shell commercial-pricing-policies__grid">
+            <article><h2 id="credit-title">{credit.one("Heading")}</h2><p>{credit.one("Body")}</p></article>
+            <article><h2>{hosting.one("Heading")}</h2><p>{hosting.one("Body")}</p></article>
+            <article><h2>{payment.one("Heading")}</h2><p>{payment.one("Body paragraph 1")}</p><p>{payment.one("Body paragraph 2")}</p></article>
+          </div>
+        </section>
+
+        <section className="commercial-section commercial-final" aria-labelledby="pricing-final-title">
+          <div className="section-shell">
+            <h2 id="pricing-final-title">{finalCta.one("Heading")}</h2>
+            <p>{finalCta.one("Body")}</p>
+            <div className="button-row">
+              <a className="button-link button-link--primary" data-umami-event="commercial_primary_cta" href={finalCta.one("Primary destination")}>{finalCta.one("Primary CTA")}</a>
+              <a className="button-link button-link--secondary" href={finalCta.one("Secondary destination")}>{finalCta.one("Secondary CTA")}</a>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </>

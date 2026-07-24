@@ -490,7 +490,15 @@ export function Header() {
             Talk Technical
           </ButtonLink>
 
-          <MobileMenu navigation={primaryNavigation} />
+          <MobileMenu
+            action={{ label: "Send the Situation", href: "/start/" }}
+            labels={{
+              open: "Open the site menu",
+              close: "Close the site menu",
+              emergency: "Emergency Website Help",
+            }}
+            navigation={primaryNavigation}
+          />
         </div>
       </div>
     </header>
