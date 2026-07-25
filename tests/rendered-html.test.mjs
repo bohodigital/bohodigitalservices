@@ -95,41 +95,49 @@ function idForFragment(fragment) {
   return fragment.replace(/^#/, "");
 }
 
-test("pre-renders the contract-backed commercial homepage decision path", async () => {
+test("pre-renders the live visual baseline with exact manager copy", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  for (const heading of [
-    "Elegant websites and technical SEO, without the agency fog.",
-    "You do not need to diagnose the system before contacting Boho.",
-    "Name the problem before choosing the service.",
-    "See the work, the method, and the limits of the evidence.",
-    "A website is more than its page files.",
-    "A clear next step, not an immediate sales ambush.",
-    "You do not need to diagnose it first.",
+  for (const text of [
+    "Websites, search, and digital systems built by engineers.",
+    "A website is part of a larger system.",
+    "A straightforward way to work.",
+    "What Boho does.",
+    "Better websites without the agency machinery.",
+    "Leave a bad provider without breaking the business.",
+    "We build the systems behind the work.",
+    "Tired of talking to people who cannot explain the system?",
+    "Start with the smallest useful project.",
+    "Talk to someone who will understand the work.",
   ]) {
-    assert.ok(html.includes(heading), `missing homepage heading: ${heading}`);
+    assert.ok(html.includes(text), `missing homepage copy: ${text}`);
   }
 
-  assert.match(html, /Public pricing\. Documented work\. Clear scope\. No mystery retainers\./i);
-  assert.match(html, /Chicago-based\. Remote work available\./i);
-  assert.match(html, /New website — Starting at \$1,500/i);
-  assert.match(html, /Small or straightforward website: usually 4–8 weeks/i);
-  assert.match(html, /href="\/start\/"[^>]*>[\s\S]*?Send the Situation/i);
-  assert.match(html, /href="\/pricing\/"/i);
-  assert.match(html, /href="\/work\/"/i);
-  assert.match(html, /class="commercial-services__mosaic"/);
-  assert.match(html, /data-umami-event="commercial_primary_cta"/i);
-  assert.match(html, /data-umami-event="commercial_pricing_cta"/i);
-  assert.match(html, /data-umami-event="commercial_evidence_open"/i);
+  for (const text of [
+    "Boho helps businesses build better websites, get found, fix broken provider setups, and automate work that should not stay manual.",
+    "No sales layer. You work directly with the person doing the technical work.",
+    "Explore Boho tools",
+    "See what we build",
+  ]) assert.ok(html.includes(text), `missing homepage copy: ${text}`);
+
+  assert.equal((html.match(/class="service-card /g) ?? []).length, 5);
+  assert.equal((html.match(/class="method-summary-list__link"/g) ?? []).length, 6);
+  assert.match(html, /href="\/contact\/"[^>]*>[\s\S]*?Talk to someone technical/i);
+  assert.match(html, /href="\/tools\/"[^>]*>[\s\S]*?See what we build/i);
+  assert.match(html, /href="\/about\/"[^>]*>About/i);
   assert.match(html, /googletagmanager\.com\/gtag\/js\?id=G-5CV8L2SE2R/i);
   assert.match(html, /analytics\.bohodigitalservices\.com\/script\.js/i);
   assert.match(html, /data-do-not-track="true"/i);
   assert.match(html, /og-boho-digital-engineering-20260714\.png/i);
-  assert.doesNotMatch(html, /Free Boho Analytics|publicly available Boho Analytics|open-source Boho Analytics/i);
+  assert.match(html, /class="hero__background" aria-hidden="true"/i);
+  assert.match(html, /og-boho-digital-engineering-20260714\.png[^>]+alt=""/i);
+  assert.doesNotMatch(html, /definition-term__trigger/i);
+  assert.doesNotMatch(html, /Most agencies start with a package/i);
 });
+
 
 test("renders every intentional public route and retires internal placeholder shelves", async () => {
   for (const route of publicRoutes) {
@@ -979,7 +987,7 @@ test("resolves every local asset referenced by public HTML", async () => {
 
 test("keeps the public shell accessible and free of starter artifacts", async () => {
   const html = await (await render("/")).text();
-  assert.match(html, /href="#main-content"[^>]*>\s*Skip to main content/i);
+  assert.match(html, /href="#main-content"[^>]*>\s*Skip to content/i);
   assert.match(html, /aria-controls="mobile-menu-/i);
   assert.match(html, /aria-expanded="false"/i);
   assert.match(html, /<script[^>]+type="application\/ld\+json"/i);
