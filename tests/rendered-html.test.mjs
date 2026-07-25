@@ -95,41 +95,79 @@ function idForFragment(fragment) {
   return fragment.replace(/^#/, "");
 }
 
-test("pre-renders the contract-backed commercial homepage decision path", async () => {
+test("pre-renders the compressed homepage with exact approved copy", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  for (const heading of [
-    "Elegant websites and technical SEO, without the agency fog.",
-    "You do not need to diagnose the system before contacting Boho.",
-    "Name the problem before choosing the service.",
-    "See the work, the method, and the limits of the evidence.",
-    "A website is more than its page files.",
-    "A clear next step, not an immediate sales ambush.",
-    "You do not need to diagnose it first.",
+  for (const text of [
+    "Websites, search, and digital systems built by engineers.",
+    "Boho builds and repairs websites, improves search visibility, fixes provider messes, and creates practical tools for work that should not stay manual.",
+    "No sales layer. The person explaining the work is responsible for doing it.",
+    "A website only works when the rest works with it.",
+    "Search, hosting, analytics, forms, content, and ownership all affect whether a website brings in business. We find the weak parts, fix them, and connect the pieces into something you can understand and control.",
+    "What Boho does.",
+    "Start with the problem. We will match it to the smallest useful project.",
+    "Better websites without the agency machinery.",
+    "Boho designs and rebuilds websites around what customers need to understand and what the business needs to control. You get direct technical communication, clear ownership, and a site that can keep growing.",
+    "Leave a bad provider without breaking the business.",
+    "We map what you own, recover access, move the site safely, preserve important URLs and tracking, and document the setup so the next provider cannot hold it hostage.",
+    "We build the systems behind the work.",
+    "Boho builds analytics, publishing, monitoring, security, and automation tools when ordinary software leaves a real gap. The working tools and owned websites are public proof of the technical depth.",
+    "Talk to someone who will understand the work.",
+    "Tell us what is broken, unclear, slow, expensive, or stuck. We will identify the smallest useful next step and explain it plainly.",
+    "No sales handoff. No mystery package. No obligation to keep buying.",
   ]) {
-    assert.ok(html.includes(heading), `missing homepage heading: ${heading}`);
+    assert.ok(html.includes(text), `missing homepage copy: ${text}`);
   }
 
-  assert.match(html, /Public pricing\. Documented work\. Clear scope\. No mystery retainers\./i);
-  assert.match(html, /Chicago-based\. Remote work available\./i);
-  assert.match(html, /New website — Starting at \$1,500/i);
-  assert.match(html, /Small or straightforward website: usually 4–8 weeks/i);
-  assert.match(html, /href="\/start\/"[^>]*>[\s\S]*?Send the Situation/i);
-  assert.match(html, /href="\/pricing\/"/i);
-  assert.match(html, /href="\/work\/"/i);
-  assert.match(html, /class="commercial-services__mosaic"/);
-  assert.match(html, /data-umami-event="commercial_primary_cta"/i);
-  assert.match(html, /data-umami-event="commercial_pricing_cta"/i);
-  assert.match(html, /data-umami-event="commercial_evidence_open"/i);
+  for (const text of [
+    "Understand the business",
+    "Find the failure",
+    "Fix the foundation",
+    "Improve the experience",
+    "Measure what happens",
+    "Keep improving",
+    "Improve technical health, search visibility, content, and measurement over time.",
+    "Build a clear, fast website that looks credible and makes the next step obvious.",
+    "Recover control of domains, hosting, email, forms, analytics, and broken migrations.",
+    "Get a technical diagnosis before spending money on the wrong fix.",
+    "Build internal tools, automations, data workflows, and systems ordinary software does not cover.",
+    "Explore Boho tools",
+    "About Boho",
+    "Start a project",
+    "Contact Boho",
+  ]) assert.ok(html.includes(text), `missing homepage copy: ${text}`);
+
+  assert.equal((html.match(/<h1\b/gi) ?? []).length, 1);
+  assert.equal((html.match(/<h2\b/gi) ?? []).length, 9);
+  const main = html.match(/<main\b[\s\S]*?<\/main>/i)?.[0] ?? "";
+  assert.equal((main.match(/<h1\b/gi) ?? []).length, 1);
+  assert.equal((main.match(/<h2\b/gi) ?? []).length, 6);
+  assert.equal((html.match(/class="service-card /g) ?? []).length, 5);
+  assert.equal((html.match(/class="method-summary-list__link"/g) ?? []).length, 6);
+  assert.match(main, /<section class="cta-band final-cta__band">/i);
+  assert.doesNotMatch(main, /<div class="cta-band final-cta__band">/i);
+  assert.match(html, /href="\/start\/"[^>]*>[\s\S]*?Start a project/i);
+  assert.match(html, /href="\/tools\/"[^>]*>[\s\S]*?See what we build/i);
+  assert.match(html, /href="\/tools\/"[^>]*>[\s\S]*?Explore Boho tools/i);
+  assert.match(html, /href="\/about\/"[^>]*>[\s\S]*?About Boho/i);
+  assert.match(html, /href="\/contact\/"[^>]*>[\s\S]*?Contact Boho/i);
   assert.match(html, /googletagmanager\.com\/gtag\/js\?id=G-5CV8L2SE2R/i);
   assert.match(html, /analytics\.bohodigitalservices\.com\/script\.js/i);
   assert.match(html, /data-do-not-track="true"/i);
   assert.match(html, /og-boho-digital-engineering-20260714\.png/i);
-  assert.doesNotMatch(html, /Free Boho Analytics|publicly available Boho Analytics|open-source Boho Analytics/i);
+  assert.match(html, /class="hero__background" aria-hidden="true"/i);
+  assert.match(html, /og-boho-digital-engineering-20260714\.png[^>]+alt=""/i);
+  assert.doesNotMatch(html, /definition-term__trigger/i);
+  assert.doesNotMatch(html, /Most agencies start with a package/i);
+  assert.doesNotMatch(main, /A website is part of a larger system\./i);
+  assert.doesNotMatch(main, /A straightforward way to work\./i);
+  assert.doesNotMatch(main, /Tired of talking to people who cannot explain the system\?/i);
+  assert.doesNotMatch(main, /Start with the smallest useful project\./i);
 });
+
 
 test("renders every intentional public route and retires internal placeholder shelves", async () => {
   for (const route of publicRoutes) {
@@ -979,7 +1017,7 @@ test("resolves every local asset referenced by public HTML", async () => {
 
 test("keeps the public shell accessible and free of starter artifacts", async () => {
   const html = await (await render("/")).text();
-  assert.match(html, /href="#main-content"[^>]*>\s*Skip to main content/i);
+  assert.match(html, /href="#main-content"[^>]*>\s*Skip to content/i);
   assert.match(html, /aria-controls="mobile-menu-/i);
   assert.match(html, /aria-expanded="false"/i);
   assert.match(html, /<script[^>]+type="application\/ld\+json"/i);
