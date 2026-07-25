@@ -147,6 +147,8 @@ test("pre-renders the compressed homepage with exact approved copy", async () =>
   assert.equal((main.match(/<h2\b/gi) ?? []).length, 6);
   assert.equal((html.match(/class="service-card /g) ?? []).length, 5);
   assert.equal((html.match(/class="method-summary-list__link"/g) ?? []).length, 6);
+  assert.match(main, /<section class="cta-band final-cta__band">/i);
+  assert.doesNotMatch(main, /<div class="cta-band final-cta__band">/i);
   assert.match(html, /href="\/start\/"[^>]*>[\s\S]*?Start a project/i);
   assert.match(html, /href="\/tools\/"[^>]*>[\s\S]*?See what we build/i);
   assert.match(html, /href="\/tools\/"[^>]*>[\s\S]*?Explore Boho tools/i);

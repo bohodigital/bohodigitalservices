@@ -19,6 +19,7 @@ import {
 
 import {
   ButtonLink,
+  CtaBand,
   Footer,
   Header,
   TextLink,
@@ -236,17 +237,6 @@ export default function Homepage() {
           </div>
         </section>
 
-        <section className="home-section territory-cta" aria-labelledby="technical-opinion-title">
-          <div className="section-shell territory-cta__inner">
-            <span className="territory-cta__mark" aria-hidden="true"><Target size={70} strokeWidth={1.2} /></span>
-            <div className="territory-cta__copy">
-              <p className="eyebrow eyebrow--on-dark">START A CONVERSATION</p>
-              <h2 id="technical-opinion-title">Talk to someone who will understand the work.</h2>
-              <p>Tell us what is broken, unclear, slow, expensive, or stuck. We will identify the smallest useful next step and explain it plainly.</p>
-            </div>
-          </div>
-        </section>
-
         <section className="home-section pricing-philosophy" aria-label="How Boho keeps work practical">
           <div className="section-shell pricing-philosophy__inner">
             <div className="pricing-philosophy__signals" aria-label="How Boho keeps work practical">
@@ -259,17 +249,19 @@ export default function Homepage() {
 
         <section className="home-section final-cta" aria-labelledby="final-cta-title">
           <div className="section-shell">
-            <div className="cta-band final-cta__band">
-              <div className="cta-band__copy">
-                <div className="cta-band__body">
+            <CtaBand
+              className="final-cta__band"
+              eyebrow="START A CONVERSATION"
+              title="Talk to someone who will understand the work."
+              body={(
+                <>
+                  <p>Tell us what is broken, unclear, slow, expensive, or stuck. We will identify the smallest useful next step and explain it plainly.</p>
                   <p>No sales handoff. No mystery package. No obligation to keep buying.</p>
-                </div>
-              </div>
-              <div className="cta-band__actions">
-                <ButtonLink href="/start/">Start a project</ButtonLink>
-                <ButtonLink href="/contact/" variant="secondary">Contact Boho</ButtonLink>
-              </div>
-            </div>
+                </>
+              )}
+              primary={{ label: "Start a project", href: "/start/" }}
+              secondary={{ label: "Contact Boho", href: "/contact/" }}
+            />
             <span id="final-cta-title" className="sr-only">Talk to someone who will understand the work.</span>
           </div>
         </section>
