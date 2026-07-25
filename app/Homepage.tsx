@@ -19,7 +19,6 @@ import {
 
 import {
   ButtonLink,
-  CtaBand,
   Footer,
   Header,
   TextLink,
@@ -27,12 +26,12 @@ import {
 import { operatingCycle } from "./content/operatingCycle";
 
 const methodStages = [
-  ["Understand", "Learn how the business works, what customers need, and what is getting in the way."],
-  ["Prioritize", "Choose the work with the clearest practical value."],
-  ["Build", "Design, repair, migrate, write, configure, or automate the agreed solution."],
-  ["Launch", "Move the work into the real environment with ownership and rollback in place."],
-  ["Measure", "Check the signals connected to the intended result."],
-  ["Improve", "Keep what works and change what does not."],
+  ["Understand the business", "What do you sell, who needs it, and what action matters?"],
+  ["Find the failure", "Inspect the website, search visibility, providers, tracking, and handoffs."],
+  ["Fix the foundation", "Resolve ownership, hosting, forms, analytics, speed, and technical problems."],
+  ["Improve the experience", "Make the pages clearer, more useful, and easier to act on."],
+  ["Measure what happens", "Track real inquiries and decisions instead of decorative traffic numbers."],
+  ["Keep improving", "Build on evidence instead of selling a new package every month."],
 ] as const;
 
 const operatingCycleIcons = [
@@ -45,11 +44,11 @@ const operatingCycleIcons = [
 ] as const;
 
 const serviceCards = [
-  ["SEO & local visibility", "Help the right customers find the business and take a useful next step.", "Improve visibility", "/services/ongoing-seo/", "verdigris", MapPin],
-  ["Web design & redesign", "Build or repair a clear, distinctive website that the business owns.", "Plan the website", "/services/web-design-redesign/", "gold", PanelsTopLeft],
-  ["Provider rescue & migration", "Recover control, move carefully, and keep domains, forms, tracking, and important URLs working.", "Plan the rescue", "/services/provider-rescue/", "copper", Route],
-  ["Custom tools & automation", "Build focused software or connect existing tools when repeated work is slow or fragile.", "Simplify the work", "/services/custom-digital-solutions/", "blue", Wrench],
-  ["Research & technical audits", "Find out what is wrong, what matters, and what should happen first.", "Get a clear review", "/services/research-audits-strategy/", "plum", SearchCheck],
+  ["SEO & local visibility", "Improve technical health, search visibility, content, and measurement over time.", "Improve visibility", "/services/ongoing-seo/", "verdigris", MapPin],
+  ["Web design & redesign", "Build a clear, fast website that looks credible and makes the next step obvious.", "Plan the website", "/services/web-design-redesign/", "gold", PanelsTopLeft],
+  ["Provider rescue & migration", "Recover control of domains, hosting, email, forms, analytics, and broken migrations.", "Plan the rescue", "/services/provider-rescue/", "copper", Route],
+  ["Custom tools & automation", "Build internal tools, automations, data workflows, and systems ordinary software does not cover.", "Simplify the work", "/services/custom-digital-solutions/", "blue", Wrench],
+  ["Research & technical audits", "Get a technical diagnosis before spending money on the wrong fix.", "Get a clear review", "/services/research-audits-strategy/", "plum", SearchCheck],
 ] as const;
 
 const designLabels = [
@@ -85,12 +84,12 @@ export default function Homepage() {
           </div>
           <div className="section-shell hero__layout">
             <div className="hero__copy">
-              <p className="eyebrow eyebrow--on-dark">Boho Digital Services</p>
+              <p className="eyebrow eyebrow--on-dark">BOHO DIGITAL SERVICES</p>
               <h1 id="hero-title">Websites, search, and digital systems built by engineers.</h1>
-              <p className="hero__body">Boho helps businesses build better websites, get found, fix broken provider setups, and automate work that should not stay manual.</p>
-              <p className="hero__supporting-line">No sales layer. You work directly with the person doing the technical work.</p>
+              <p className="hero__body">Boho builds and repairs websites, improves search visibility, fixes provider messes, and creates practical tools for work that should not stay manual.</p>
+              <p className="hero__supporting-line">No sales layer. The person explaining the work is responsible for doing it.</p>
               <div className="button-row hero__actions">
-                <ButtonLink href="/contact/">Talk to someone technical</ButtonLink>
+                <ButtonLink href="/contact/">Start a project</ButtonLink>
                 <ButtonLink href="/tools/" variant="secondary">See what we build</ButtonLink>
               </div>
             </div>
@@ -99,9 +98,12 @@ export default function Homepage() {
 
         <section className="home-section editorial-problem" aria-labelledby="problem-title">
           <div className="section-shell editorial-problem__grid">
-            <div className="editorial-problem__statement"><h2 id="problem-title">A website is part of a larger system.</h2></div>
+            <div className="editorial-problem__statement">
+              <p className="eyebrow">THE WHOLE SYSTEM</p>
+              <h2 id="problem-title">A website only works when the rest works with it.</h2>
+            </div>
             <div className="editorial-problem__body reading-width">
-              <p className="editorial-problem__lead">Search, hosting, analytics, forms, content, and account ownership all affect whether customers can find you and take the next step. We look at the whole system, then fix the part that matters most.</p>
+              <p className="editorial-problem__lead">Search, hosting, analytics, forms, content, and ownership all affect whether a website brings in business. We find the weak parts, fix them, and connect the pieces into something you can understand and control.</p>
               <div className="business-first-signals" aria-label="The larger system includes">
                 <span><BriefcaseBusiness size={19} aria-hidden="true" /> Search</span>
                 <span><Target size={19} aria-hidden="true" /> Hosting</span>
@@ -112,13 +114,9 @@ export default function Homepage() {
           </div>
         </section>
 
-        <section className="home-section method" id="method" aria-labelledby="method-title">
+        <section className="home-section method" id="method" aria-label="Working method">
           <div className="section-shell">
-            <div className="section-heading section-heading--split">
-              <h2 id="method-title">A straightforward way to work.</h2>
-              <p className="reading-width">Understand the problem. Choose the smallest useful fix. Build it carefully. Check that it works. Improve it when the evidence supports more work.</p>
-            </div>
-            <ol className="method-summary-list" aria-label="Understand, prioritize, build, launch, measure, improve">
+            <ol className="method-summary-list" aria-label="Understand the business, find the failure, fix the foundation, improve the experience, measure what happens, keep improving">
               {methodStages.map(([title, body], index) => {
                 const Icon = operatingCycleIcons[index];
                 return (
@@ -140,8 +138,11 @@ export default function Homepage() {
         <section className="home-section services-mosaic" id="services" aria-labelledby="services-title">
           <div className="section-shell">
             <div className="section-heading section-heading--split">
-              <h2 id="services-title">What Boho does.</h2>
-              <p className="reading-width">Five practical ways we help.</p>
+              <div>
+                <p className="eyebrow">SERVICES</p>
+                <h2 id="services-title">What Boho does.</h2>
+              </div>
+              <p className="reading-width">Start with the problem. We will match it to the smallest useful project.</p>
             </div>
             <div className="service-grid">
               {serviceCards.map(([title, body, label, href, tone, Icon], index) => (
@@ -162,11 +163,14 @@ export default function Homepage() {
         <section className="home-section design-spotlight" id="design" aria-labelledby="design-title">
           <div className="section-shell">
             <div className="design-spotlight__intro">
-              <div className="section-heading"><h2 id="design-title">Better websites without the agency machinery.</h2></div>
+              <div className="section-heading">
+                <p className="eyebrow">WEB DESIGN</p>
+                <h2 id="design-title">Better websites without the agency machinery.</h2>
+              </div>
               <div className="reading-width">
-                <p>We design for people first: clear offers, visible proof, fast pages, useful content, and an obvious next step. Behind the page, we handle the technical structure, accessibility, analytics, hosting, and search fundamentals.</p>
+                <p>Boho designs and rebuilds websites around what customers need to understand and what the business needs to control. You get direct technical communication, clear ownership, and a site that can keep growing.</p>
                 <div className="button-row">
-                  <ButtonLink href="/contact/">Plan a better website</ButtonLink>
+                  <ButtonLink href="/contact/">Explore website design</ButtonLink>
                 </div>
               </div>
             </div>
@@ -187,10 +191,11 @@ export default function Homepage() {
         <section className="home-section migration-rescue" aria-labelledby="migration-title">
           <div className="section-shell migration-rescue__layout">
             <div className="migration-rescue__copy">
+              <p className="eyebrow eyebrow--on-dark">PROVIDER RESCUE</p>
               <h2 id="migration-title">Leave a bad provider without breaking the business.</h2>
-              <p>We map who controls the domain, website, hosting, analytics, forms, and email connections before anything moves. Then we preserve what works, transfer what is authorized, verify the launch, and leave readable records.</p>
+              <p>We map what you own, recover access, move the site safely, preserve important URLs and tracking, and document the setup so the next provider cannot hold it hostage.</p>
               <div className="button-row">
-                <ButtonLink href="/contact/">Plan a provider rescue</ButtonLink>
+                <ButtonLink href="/contact/">See provider rescue</ButtonLink>
               </div>
             </div>
             <div className="migration-rescue__visual">
@@ -213,13 +218,12 @@ export default function Homepage() {
         <section className="home-section lab-proof" aria-labelledby="tools-title">
           <div className="section-shell lab-proof__layout">
             <div className="lab-proof__copy">
-              <p className="eyebrow eyebrow--on-dark">Tools and automation</p>
+              <p className="eyebrow eyebrow--on-dark">TOOLS &amp; AUTOMATION</p>
               <h2 id="tools-title">We build the systems behind the work.</h2>
-              <p>Boho builds and operates tools for analytics, monitoring, publishing, automation, secure configuration, and website management. Some are public. Others support client work behind the scenes.</p>
-              <p className="lab-proof__principle">The point is not custom software for its own sake. It is having the technical depth to repair, connect, or build what the business actually needs.</p>
+              <p>Boho builds analytics, publishing, monitoring, security, and automation tools when ordinary software leaves a real gap. The working tools and owned websites are public proof of the technical depth.</p>
               <div className="button-row">
                 <ButtonLink href="/tools/">Explore Boho tools</ButtonLink>
-                <TextLink href="/services/custom-digital-solutions/">Explore custom solutions</TextLink>
+                <TextLink href="/about/">About Boho</TextLink>
               </div>
             </div>
             <div className="evidence-board" aria-label="Tools and automation capabilities">
@@ -236,36 +240,36 @@ export default function Homepage() {
           <div className="section-shell territory-cta__inner">
             <span className="territory-cta__mark" aria-hidden="true"><Target size={70} strokeWidth={1.2} /></span>
             <div className="territory-cta__copy">
-              <p className="eyebrow eyebrow--on-dark">Technical second opinion</p>
-              <h2 id="technical-opinion-title">Tired of talking to people who cannot explain the system?</h2>
-              <p>Bring the proposal, hosting setup, dashboard, migration plan, or automation idea. We will tell you what it does, what it does not do, and whether it is worth paying for.</p>
+              <p className="eyebrow eyebrow--on-dark">START A CONVERSATION</p>
+              <h2 id="technical-opinion-title">Talk to someone who will understand the work.</h2>
+              <p>Tell us what is broken, unclear, slow, expensive, or stuck. We will identify the smallest useful next step and explain it plainly.</p>
             </div>
-            <ButtonLink href="/contact/">Get a technical second opinion</ButtonLink>
           </div>
         </section>
 
-        <section className="home-section pricing-philosophy" aria-labelledby="pricing-title">
+        <section className="home-section pricing-philosophy" aria-label="How Boho keeps work practical">
           <div className="section-shell pricing-philosophy__inner">
             <div className="pricing-philosophy__signals" aria-label="How Boho keeps work practical">
               <span><Wrench size={20} aria-hidden="true" /> Diagnose</span>
               <span><BriefcaseBusiness size={20} aria-hidden="true" /> Define</span>
               <span><BarChart3 size={20} aria-hidden="true" /> Expand</span>
             </div>
-            <h2 id="pricing-title">Start with the smallest useful project.</h2>
-            <p className="pricing-philosophy__body reading-width">We do not force every business into a package. We diagnose the problem, define a clear first scope, and expand only when the next step has a business case.</p>
-            <ButtonLink href="/contact/">Discuss the actual problem</ButtonLink>
           </div>
         </section>
 
         <section className="home-section final-cta" aria-labelledby="final-cta-title">
           <div className="section-shell">
-            <CtaBand
-              className="final-cta__band"
-              title="Talk to someone who will understand the work."
-              body={<p>Send the website, business, and what feels stuck. You do not need to diagnose the solution first.</p>}
-              primary={{ label: "Talk to someone technical", href: "/contact/" }}
-              secondary={{ label: "See what we build", href: "/tools/" }}
-            />
+            <div className="cta-band final-cta__band">
+              <div className="cta-band__copy">
+                <div className="cta-band__body">
+                  <p>No sales handoff. No mystery package. No obligation to keep buying.</p>
+                </div>
+              </div>
+              <div className="cta-band__actions">
+                <ButtonLink href="/start/">Start a project</ButtonLink>
+                <ButtonLink href="/contact/" variant="secondary">Contact Boho</ButtonLink>
+              </div>
+            </div>
             <span id="final-cta-title" className="sr-only">Talk to someone who will understand the work.</span>
           </div>
         </section>
