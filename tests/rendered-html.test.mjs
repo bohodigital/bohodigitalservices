@@ -493,6 +493,8 @@ test("renders the pricing guide with scoped presentation and existing service im
 
   assert.match(pricingSource, /import styles from "\.\/PricingPage\.module\.css"/);
   assert.match(pricingStyles, /\.priceGuide/);
+  assert.match(pricingStyles, /grid-template-columns:\s*minmax\(13rem,\s*0\.6fr\)\s*minmax\(0,\s*1\.4fr\)/);
+  assert.match(pricingStyles, /grid-template-columns:\s*minmax\(0,\s*1\.4fr\)\s*minmax\(13rem,\s*0\.6fr\)/);
   assert.equal((pricing.match(/<h1\b/gi) ?? []).length, 1);
   assert.equal((pricing.match(/<h2\b/gi) ?? []).length, 18);
   assert.equal((pricingMain.match(/<h2\b/gi) ?? []).length, 17);

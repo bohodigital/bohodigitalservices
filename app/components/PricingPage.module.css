@@ -173,7 +173,7 @@
   position: relative;
   scroll-margin-top: 7rem;
   display: grid;
-  grid-template-columns: minmax(14rem, 0.75fr) minmax(0, 1.25fr);
+  grid-template-columns: minmax(13rem, 0.6fr) minmax(0, 1.4fr);
   gap: clamp(1.25rem, 3vw, 3rem);
   align-items: stretch;
   padding-block: clamp(1.5rem, 3vw, 3rem);
@@ -252,6 +252,10 @@
 
 .offerGroup:nth-child(even) .groupVisual {
   order: 2;
+}
+
+.offerGroup:nth-child(even):not(.initialReviewGroup):not(.wideOfferGroup) {
+  grid-template-columns: minmax(0, 1.4fr) minmax(13rem, 0.6fr);
 }
 
 .groupVisual {
@@ -446,6 +450,10 @@
 
   .offerGroup:nth-child(even) .groupVisual {
     order: initial;
+  }
+
+  .offerGroup:nth-child(even):not(.initialReviewGroup):not(.wideOfferGroup) {
+    grid-template-columns: 1fr;
   }
 
   .wideOfferGroup .offers {
