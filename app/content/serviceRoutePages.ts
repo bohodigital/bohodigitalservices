@@ -20,21 +20,6 @@ export const serviceRoutePages: PageConfig[] = [
     },
     sections: [],
   })),
-  {
-    slug: "/work/",
-    title: "Work & Evidence | Boho Digital Services",
-    metaDescription:
-      "Inspect Boho public tools, owned websites, provider-rescue method, and evidence-aware reporting standard without unsupported client-result claims.",
-    eyebrow: "Work & Evidence",
-    headline: "Inspect the method, the public systems, and the ownership boundary.",
-    intro: [
-      "Public repositories, owned properties, reproducible methods, documentation, and limitations provide inspectable evidence without inventing client outcomes.",
-    ],
-    theme: "research",
-    primaryCta: { label: "See public tools", href: "#public-tools" },
-    secondaryCta: { label: "Review services", href: "/services/" },
-    sections: [],
-  },
 ];
 
 export const servicePagesByRoute = new Map(

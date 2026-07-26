@@ -310,8 +310,7 @@ export function IndustryDetailPage({ model }: { model: IndustryModel }) {
               </dl>
             </div>
             <div className="industries-actions">
-              <DetailButton model={model} href="/work/" label="Inspect verified work and systems" event="industry_evidence_click" destination="work_page" section="detail-evidence" />
-              <DetailButton model={model} href="/resources/" label="Browse practical resources" event="industry_evidence_click" destination="resources_page" section="detail-evidence" secondary />
+              <DetailButton model={model} href="/resources/" label="Browse practical resources" event="industry_evidence_click" destination="resources_page" section="detail-evidence" />
             </div>
           </div>
         </section>

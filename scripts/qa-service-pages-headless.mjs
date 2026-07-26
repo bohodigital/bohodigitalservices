@@ -83,10 +83,6 @@ const routeSpecs = [
     ],
   },
   {
-    path: "/work/",
-    requiredIds: ["website-work", "provider-rescue", "report-method", "public-tools"],
-  },
-  {
     path: "/resources/",
     requiredIds: ["analysis-dashboard", "provider-rescue-checklist", "report-standard"],
   },

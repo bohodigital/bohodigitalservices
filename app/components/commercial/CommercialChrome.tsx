@@ -84,7 +84,7 @@ export function CommercialHeader() {
 export function CommercialFooter() {
   const identity = commercialContractSection("navigation-footer", "identity-block");
   const servicesTitle = commercialContractSection("navigation-footer", "services-navigation").one("Group label");
-  const explore = pairedLinks("explore");
+  const explore = pairedLinks("explore").filter(({ href }) => href !== "/work/");
   const company = pairedLinks("company");
   const policies = pairedLinks("policies");
   const action = company.find(({ href }) => href === "/start/");

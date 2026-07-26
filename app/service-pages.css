@@ -3,7 +3,6 @@
 /* Governed five-service system. Every selector is scoped to the new routes. */
 .services-overhaul,
 .pricing-overhaul,
-.work-evidence-page,
 .service-document {
   overflow: clip;
   background: var(--warm-ivory);
@@ -11,7 +10,6 @@
 
 .services-hub-hero,
 .pricing-hero,
-.work-evidence-hero,
 .service-document-hero {
   position: relative;
   isolation: isolate;
@@ -26,7 +24,6 @@
 
 .services-hub-hero .breadcrumbs,
 .pricing-hero .breadcrumbs,
-.work-evidence-hero .breadcrumbs,
 .service-document-hero .breadcrumbs {
   margin-bottom: clamp(3rem, 7vw, 6rem);
 }
@@ -35,8 +32,6 @@
 .services-hub-hero .breadcrumbs span,
 .pricing-hero .breadcrumbs a,
 .pricing-hero .breadcrumbs span,
-.work-evidence-hero .breadcrumbs a,
-.work-evidence-hero .breadcrumbs span,
 .service-document-hero .breadcrumbs a,
 .service-document-hero .breadcrumbs span {
   color: inherit;
@@ -65,7 +60,6 @@
 
 .services-hub-hero__layout,
 .pricing-hero__layout,
-.work-evidence-hero__layout,
 .service-document-hero__layout {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
@@ -75,8 +69,7 @@
 
 .services-hub-hero__title,
 .pricing-hero__title,
-.service-document-hero__title,
-.work-evidence-hero h1 {
+.service-document-hero__title {
   max-width: 13ch;
   margin-bottom: 1.8rem;
   color: var(--warm-ivory);
@@ -86,8 +79,7 @@
 
 .services-hub-hero__intro,
 .service-document-hero__intro,
-.pricing-hero__layout > div:last-child,
-.work-evidence-hero__layout > div:last-child {
+.pricing-hero__layout > div:last-child {
   max-width: 38rem;
   color: rgba(255, 248, 235, 0.82);
   font-size: clamp(1.05rem, 1.2vw, 1.25rem);
@@ -129,8 +121,7 @@
 }
 
 .services-route-map ol,
-.services-problem-chooser ol,
-.work-method-layout ol {
+.services-problem-chooser ol {
   padding: 0;
   margin: 0;
   list-style: none;
@@ -152,13 +143,11 @@
 
 .services-hub-catalog,
 .pricing-groups,
-.work-evidence-section,
 .service-related {
   padding: clamp(5rem, 9vw, 9rem) 0;
 }
 
-.services-hub-heading,
-.work-evidence-heading {
+.services-hub-heading {
   display: grid;
   grid-template-columns: minmax(10rem, 0.35fr) minmax(18rem, 0.8fr) minmax(18rem, 0.65fr);
   gap: clamp(1.5rem, 4vw, 4rem);
@@ -166,10 +155,8 @@
   margin-bottom: clamp(3rem, 6vw, 6rem);
 }
 
-.services-hub-heading h2,
-.work-evidence-heading h2 { max-width: 16ch; margin-bottom: 0; }
-.services-hub-heading > p:last-child,
-.work-evidence-heading > p:last-child { max-width: 35rem; color: var(--muted); }
+.services-hub-heading h2 { max-width: 16ch; margin-bottom: 0; }
+.services-hub-heading > p:last-child { max-width: 35rem; color: var(--muted); }
 
 .services-catalog-grid {
   display: grid;
@@ -197,9 +184,7 @@
 .services-catalog-card__body > p { max-width: 40rem; color: var(--muted); }
 .services-catalog-card__price { padding-top: 1rem; border-top: 1px solid var(--line-dark); color: var(--ink) !important; font-size: 0.77rem; font-weight: 800; letter-spacing: 0.025em; }
 .services-catalog-card__body > a,
-.services-pricing-bridge a,
-.work-evidence-inline-link,
-.work-method-layout a { display: inline-flex; gap: 0.55rem; align-items: center; color: var(--verdigris-text); font-weight: 850; text-underline-offset: 0.24em; }
+.services-pricing-bridge a { display: inline-flex; gap: 0.55rem; align-items: center; color: var(--verdigris-text); font-weight: 850; text-underline-offset: 0.24em; }
 
 .services-problem-chooser {
   padding: clamp(5rem, 9vw, 8rem) 0;
@@ -276,41 +261,6 @@
 .pricing-notes h3 { font-size: 1.45rem; }
 .pricing-notes p { margin: 0; color: var(--muted); font-size: 0.86rem; }
 
-/* Work and evidence */
-.work-evidence-section:nth-of-type(odd) { background: var(--parchment); }
-.work-tool-grid,
-.work-site-grid,
-.report-method-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-.work-tool-grid article,
-.work-site-grid article { overflow: hidden; border: 1px solid var(--line-dark); background: var(--warm-ivory); }
-.work-tool-grid img,
-.work-site-grid img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: var(--graphite); }
-.work-tool-grid article > div,
-.work-site-grid article > div { padding: 1.35rem; }
-.work-tool-grid code { display: inline-block; margin-bottom: 1.2rem; color: var(--copper-text); font-size: 0.72rem; font-weight: 800; }
-.work-tool-grid h3,
-.work-site-grid h3 { font-size: 1.7rem; }
-.work-tool-grid p,
-.work-site-grid p { color: var(--muted); font-size: 0.86rem; }
-.work-tool-grid a,
-.work-site-grid a { display: inline-flex; gap: 0.4rem; align-items: center; font-size: 0.78rem; font-weight: 850; }
-.work-site-grid article > div > span { display: flex; gap: 0.4rem; align-items: center; margin-bottom: 1rem; color: var(--verdigris-text); font-size: 0.73rem; font-weight: 850; }
-.work-site-grid nav { display: flex; gap: 1rem; flex-wrap: wrap; }
-.work-evidence-section--method { background: var(--blue-glass) !important; color: var(--warm-ivory); }
-.work-method-layout { display: grid; grid-template-columns: 0.7fr 1fr; gap: clamp(3rem, 7vw, 7rem); align-items: start; }
-.work-method-layout h2 { color: var(--warm-ivory); }
-.work-method-layout header p { color: rgba(255, 248, 235, 0.75); }
-.work-method-layout a { color: var(--warm-ivory); }
-.work-method-layout li { display: grid; grid-template-columns: 3rem 1fr; gap: 1rem; align-items: center; padding: 1.15rem 0; border-bottom: 1px solid rgba(255, 248, 235, 0.22); }
-.work-method-layout li:first-child { border-top: 1px solid rgba(255, 248, 235, 0.22); }
-.work-method-layout li span { color: var(--blue-wash); font-family: var(--font-mono); font-size: 0.72rem; }
-.report-method-grid article { position: relative; padding: 1.7rem; border: 1px solid var(--line-dark); background: #fffdf8; }
-.report-method-grid article::after { position: absolute; right: 1rem; bottom: 1rem; width: 2rem; height: 0.3rem; background: var(--burnished-gold); content: ""; }
-.report-method-grid svg { margin-bottom: 2rem; color: var(--verdigris); }
-.report-method-grid h3 { font-size: 1.55rem; }
-.report-method-grid p { margin: 0; color: var(--muted); font-size: 0.85rem; }
-.work-evidence-inline-link { margin-top: 2.2rem; }
-
 /* Long-form service pages */
 .service-document-hero { padding-bottom: clamp(4rem, 8vw, 7rem); }
 .service-document-hero__layout { grid-template-columns: minmax(0, 1.1fr) minmax(20rem, 0.9fr); align-items: center; }
@@ -365,19 +315,15 @@
 @media (max-width: 72rem) {
   .services-hub-hero__layout,
   .pricing-hero__layout,
-  .work-evidence-hero__layout,
   .service-document-hero__layout,
   .services-problem-chooser__layout,
   .pricing-group__layout,
   .pricing-policy__layout,
-  .work-method-layout,
   .service-document-section__layout,
   .service-document-final__layout { grid-template-columns: 1fr; }
 
-  .services-hub-heading,
-  .work-evidence-heading { grid-template-columns: 0.35fr 1fr; }
-  .services-hub-heading > p:last-child,
-  .work-evidence-heading > p:last-child { grid-column: 2; }
+  .services-hub-heading { grid-template-columns: 0.35fr 1fr; }
+  .services-hub-heading > p:last-child { grid-column: 2; }
   .services-catalog-card:first-child { grid-template-columns: 1fr; }
   .services-pricing-bridge__layout { grid-template-columns: 1fr 1fr; }
   .pricing-free-review__layout { grid-template-columns: 1fr auto; }
@@ -391,9 +337,6 @@
 
 @media (max-width: 54rem) {
   .services-catalog-grid,
-  .work-tool-grid,
-  .work-site-grid,
-  .report-method-grid,
   .pricing-notes .section-shell > div,
   .service-related__grid { grid-template-columns: 1fr; }
   .pricing-policy__conditions { grid-template-columns: 1fr; }
@@ -403,18 +346,14 @@
 @media (max-width: 46rem) {
   .services-hub-hero,
   .pricing-hero,
-  .work-evidence-hero,
   .service-document-hero { padding-top: 2rem; }
 
   .services-hub-hero__title,
   .pricing-hero__title,
-  .service-document-hero__title,
-  .work-evidence-hero h1 { font-size: clamp(2.65rem, 14vw, 4.4rem); }
+  .service-document-hero__title { font-size: clamp(2.65rem, 14vw, 4.4rem); }
 
-  .services-hub-heading,
-  .work-evidence-heading { grid-template-columns: 1fr; }
-  .services-hub-heading > p:last-child,
-  .work-evidence-heading > p:last-child { grid-column: 1; }
+  .services-hub-heading { grid-template-columns: 1fr; }
+  .services-hub-heading > p:last-child { grid-column: 1; }
   .services-catalog-card figure,
   .services-catalog-card img { min-height: 0; }
   .services-route-map li { padding-inline: 1rem; }
@@ -440,11 +379,9 @@
 @media (forced-colors: active) {
   .services-hub-hero,
   .pricing-hero,
-  .work-evidence-hero,
   .service-document-hero,
   .services-problem-chooser,
   .pricing-policy,
-  .work-evidence-section--method,
   .service-document-faq,
   .service-document-final { background: Canvas; color: CanvasText; }
 }

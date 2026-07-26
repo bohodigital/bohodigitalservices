@@ -148,7 +148,27 @@ export const servicePageContentOverrides = [
   {
     "id": "report-method-link",
     "source": "content/service-pages/04-digital-research-seo-audits-strategy.md",
-    "reason": "Point evidence readers to the maintained report-method section instead of the absent sample-report anchor."
+    "reason": "Retire the removed Work page and direct readers to the maintained resource library."
+  },
+  {
+    "id": "retire-work-link-ongoing-seo",
+    "source": "content/service-pages/01-ongoing-seo-search-growth.md",
+    "reason": "Retire the removed Work page and direct readers to the current service overview."
+  },
+  {
+    "id": "retire-work-link-website",
+    "source": "content/service-pages/02-web-design-website-redesign.md",
+    "reason": "Retire the removed Work page and keep the route-specific service destination."
+  },
+  {
+    "id": "retire-work-link-provider-rescue",
+    "source": "content/service-pages/03-website-migration-provider-rescue.md",
+    "reason": "Retire the removed Work page and keep the route-specific service destination."
+  },
+  {
+    "id": "retire-work-link-custom-tools",
+    "source": "content/service-pages/05-custom-web-digital-solutions.md",
+    "reason": "Retire the removed Work page and direct readers to the maintained public tools route."
   },
   {
     "id": "owner-plain-language-seo-meta",
@@ -274,6 +294,7 @@ export const servicePages: readonly ServicePage[] = [
       "sha256": "3b591dbbbbf349d0d64f0cb4616367027eb0f12c8b8dde8e59401412e697811d",
       "appliedOverrideIds": [
         "analytics-ongoing-seo-source-language",
+        "retire-work-link-ongoing-seo",
         "owner-plain-language-seo-meta",
         "owner-plain-language-seo-hero-one",
         "owner-plain-language-seo-hero-two",
@@ -774,9 +795,9 @@ export const servicePages: readonly ServicePage[] = [
       },
       {
         "type": "paragraph",
-        "text": "**View Work & Evidence:** `/work/`",
+        "text": "**See service options:** `/services/`",
         "localRoutes": [
-          "/work/"
+          "/services/"
         ]
       },
       {
@@ -939,7 +960,7 @@ export const servicePages: readonly ServicePage[] = [
       "/services/ongoing-seo/",
       "/start/",
       "/pricing/#ongoing-seo",
-      "/work/",
+      "/services/",
       "/resources/",
       "/services/web-design-redesign/",
       "/services/research-audits-strategy/",
@@ -952,6 +973,7 @@ export const servicePages: readonly ServicePage[] = [
       "sha256": "d58263b2298b8cba01da996a0261556fe67c21571abae07fc29aa1d6927b373e",
       "appliedOverrideIds": [
         "hosting-standalone-rate",
+        "retire-work-link-website",
         "owner-plain-language-website-meta",
         "owner-plain-language-website-hero-one",
         "owner-plain-language-website-hero-two"
@@ -1614,9 +1636,9 @@ export const servicePages: readonly ServicePage[] = [
       },
       {
         "type": "paragraph",
-        "text": "**View Work & Evidence:** `/work/#website-work`",
+        "text": "**See Websites & Managed Hosting:** `/services/web-design-redesign/`",
         "localRoutes": [
-          "/work/#website-work"
+          "/services/web-design-redesign/"
         ]
       },
       {
@@ -1772,7 +1794,6 @@ export const servicePages: readonly ServicePage[] = [
       "/services/web-design-redesign/",
       "/start/",
       "/pricing/#web-design",
-      "/work/#website-work",
       "/services/provider-rescue/",
       "/services/ongoing-seo/",
       "/services/research-audits-strategy/"
@@ -1783,6 +1804,7 @@ export const servicePages: readonly ServicePage[] = [
       "file": "content/service-pages/03-website-migration-provider-rescue.md",
       "sha256": "40b419034965a038959a8388de71f058ea89371e0f0c7602211415ef74793305",
       "appliedOverrideIds": [
+        "retire-work-link-provider-rescue",
         "owner-plain-language-rescue-meta",
         "owner-plain-language-rescue-headline",
         "owner-plain-language-rescue-hero-one",
@@ -2457,9 +2479,9 @@ export const servicePages: readonly ServicePage[] = [
       },
       {
         "type": "paragraph",
-        "text": "**View Provider Rescue evidence:** `/work/#provider-rescue`",
+        "text": "**See Provider Rescue & Migration:** `/services/provider-rescue/`",
         "localRoutes": [
-          "/work/#provider-rescue"
+          "/services/provider-rescue/"
         ]
       },
       {
@@ -2628,7 +2650,6 @@ export const servicePages: readonly ServicePage[] = [
       "/start/",
       "/emergency/",
       "/pricing/#provider-rescue",
-      "/work/#provider-rescue",
       "/resources/#provider-rescue-checklist",
       "/services/web-design-redesign/",
       "/services/research-audits-strategy/",
@@ -3373,9 +3394,9 @@ export const servicePages: readonly ServicePage[] = [
       },
       {
         "type": "paragraph",
-        "text": "**View Work & Evidence:** `/work/#report-method`",
+        "text": "**Browse practical resources:** `/resources/`",
         "localRoutes": [
-          "/work/#report-method"
+          "/resources/"
         ]
       },
       {
@@ -3540,7 +3561,7 @@ export const servicePages: readonly ServicePage[] = [
       "/pricing/#analytics-reporting",
       "/resources/#analysis-dashboard",
       "/pricing/#audits-strategy",
-      "/work/#report-method",
+      "/resources/",
       "/resources/#report-standard",
       "/services/ongoing-seo/",
       "/services/web-design-redesign/",
@@ -3552,6 +3573,7 @@ export const servicePages: readonly ServicePage[] = [
       "file": "content/service-pages/05-custom-web-digital-solutions.md",
       "sha256": "6afd14fb0ab89d99a247177716e58fcc0df868bae43755a94bd8a9c13f4c4f4a",
       "appliedOverrideIds": [
+        "retire-work-link-custom-tools",
         "owner-plain-language-custom-meta",
         "owner-plain-language-custom-primary-action",
         "owner-plain-language-custom-trust-line-grammar",
@@ -4173,9 +4195,9 @@ export const servicePages: readonly ServicePage[] = [
       },
       {
         "type": "paragraph",
-        "text": "**Inspect public tools:** `/work/#public-tools`",
+        "text": "**Inspect public tools:** `/tools/`",
         "localRoutes": [
-          "/work/#public-tools"
+          "/tools/"
         ]
       },
       {
@@ -4331,7 +4353,7 @@ export const servicePages: readonly ServicePage[] = [
       "/services/custom-digital-solutions/",
       "/start/",
       "/pricing/#custom-solutions",
-      "/work/#public-tools",
+      "/tools/",
       "/services/research-audits-strategy/",
       "/services/web-design-redesign/",
       "/services/ongoing-seo/"

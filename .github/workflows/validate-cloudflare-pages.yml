@@ -71,7 +71,7 @@ jobs:
           test -f out/services/research-audits-strategy/index.html
           test -f out/services/custom-digital-solutions/index.html
           test -f out/pricing/index.html
-          test -f out/work/index.html
+          test ! -e out/work/index.html
           test -f out/resources/index.html
           test -f out/industries/index.html
           test -f out/industries/home-improvement-contractors/index.html

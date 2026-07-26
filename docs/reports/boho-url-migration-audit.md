@@ -17,7 +17,7 @@ Search Console URL exports, raw analytics URL exports, Cloudflare request logs, 
 
 ## Current inventory
 
-- Canonical indexable routes: 181
+- Canonical indexable routes: 180
 - Glossary hub routes: 1
 - Glossary detail routes: 153
 - Current routes missing a canonical: 0
@@ -28,9 +28,9 @@ The complete machine-readable inventory is `content/routing/public-route-registr
 ## Historical inventory
 
 - Tracked legacy HTML routes reviewed: 53
-- Historical routes that remain canonical: 8
-- Governed historical/retired records: 58
-- Verified redirect records: 40
+- Historical routes that remain canonical: 7
+- Governed historical/retired records: 59
+- Verified redirect records: 41
 - Unverified or unresolved records: 18
 - Legacy HTML routes without a registry decision: 0
 
@@ -66,7 +66,7 @@ The complete machine-readable inventory is `content/routing/public-route-registr
 - `/ask-the-owl/dictionary/technical-seo/` — **REDIRECT** → `/learn/glossary/technical-seo/` — evidence: `_legacy-boho/current/_legacy-static/ask-the-owl/dictionary/technical-seo/index.html`
 - `/ask-the-owl/dictionary/vanity-metrics/` — **REDIRECT** → `/learn/glossary/vanity-metrics/` — evidence: `_legacy-boho/current/_legacy-static/ask-the-owl/dictionary/vanity-metrics/index.html`
 - `/bad-seo-field-guide/` — **UNRESOLVED** — evidence: `_legacy-boho/current/_legacy-static/bad-seo-field-guide/index.html`
-- `/case-notes/` — **REDIRECT** → `/work/` — evidence: `_legacy-boho/current/_legacy-static/case-notes/index.html`
+- `/case-notes/` — **REDIRECT** → `/services/` — evidence: `_legacy-boho/current/_legacy-static/case-notes/index.html`
 - `/contact/` — **PRESERVE** — evidence: `_legacy-boho/current/_legacy-static/contact/index.html`
 - `/impact/` — **UNRESOLVED** — evidence: `_legacy-boho/current/_legacy-static/impact/index.html`
 - `/knowledge-base/` — **REDIRECT** → `/learn/glossary/` — evidence: `_legacy-boho/current/_legacy-static/knowledge-base/index.html`
@@ -86,7 +86,7 @@ The complete machine-readable inventory is `content/routing/public-route-registr
 - `/services/technical-seo-sprint/` — **REDIRECT** → `/services/research-audits-strategy/#technical-seo-and-site-health` — evidence: `_legacy-boho/current/_legacy-static/services/technical-seo-sprint/index.html`
 - `/services/website-optimization/` — **REDIRECT** → `/services/web-design-redesign/` — evidence: `_legacy-boho/current/_legacy-static/services/website-optimization/index.html`
 - `/terms/` — **PRESERVE** — evidence: `_legacy-boho/current/_legacy-static/terms/index.html`
-- `/work/` — **PRESERVE** — evidence: `_legacy-boho/current/_legacy-static/work/index.html`
+- `/work/` — **REDIRECT** → `/services/` — evidence: `_legacy-boho/current/_legacy-static/work/index.html`
 
 ## Vanity Metrics recovery
 

@@ -36,7 +36,7 @@ test("renders exact incident routing and unique Start compatibility anchors", as
   assert.equal(countId(html, "visibility-check-request"), 1);
 });
 
-test("maps Pricing and Work compatibility aliases to meaningful groups", async () => {
+test("maps Pricing compatibility aliases to meaningful groups", async () => {
   const pricing = await render("/pricing/");
   for (const [alias, group] of [
     ["web-design", "websites"],
@@ -52,49 +52,28 @@ test("maps Pricing and Work compatibility aliases to meaningful groups", async (
       assert.match(pricing, new RegExp(`<section[^>]+id="${group}"[\\s\\S]*?id="${alias}"[\\s\\S]*?<\\/section>`));
     }
   }
-  const work = await render("/work/");
-  for (const [alias, group] of [
-    ["sample-report", "evidence-group-public-technical-records"],
-    ["public-tools", "evidence-group-current-owned-property-work"],
-  ]) {
-    assert.equal(countId(work, alias), 1, `${alias} alias count`);
-    assert.match(work, new RegExp(`<section[^>]+id="${group}"[\\s\\S]*?id="${alias}"[\\s\\S]*?<\\/section>`));
-  }
 });
 
-test("links every Work summary to a distinct expanded evidence destination", async () => {
-  const html = await render("/work/");
-  const expected = [
-    "/work/#evidence-website-ownership-map",
-    "/work/#evidence-vanity-metrics-redirect-plan",
-    "/work/#evidence-route-validation-report",
-    "/work/#evidence-boho-analytics-site-graph",
-    "/work/#evidence-rank-builder-publishing-system",
-    "/work/#evidence-better-grades-interface",
+test("retires the Work route and removes every public Work link", async () => {
+  await assert.rejects(
+    render("/work/"),
+    (error) => error?.code === "ENOENT",
+    "Work must not render a static page",
+  );
+  const publicRoutes = [
+    "/",
+    "/services/",
+    "/pricing/",
+    "/industries/",
+    "/resources/",
+    "/tools/",
+    "/about/",
   ];
-  const summary = html.match(/<section class="commercial-section commercial-evidence-summary"[\s\S]*?<\/section>/)?.[0] ?? "";
-  const links = [...summary.matchAll(/href="([^"]+)"[^>]*>Open the evidence<\/a>/g)].map((match) => match[1]);
-  assert.deepEqual(links.slice(0, expected.length), expected);
-  assert.equal(new Set(links).size, links.length);
-  assert.ok(links.every((link) => link !== "/work/" && link !== "#"));
-  for (const destination of expected) assert.equal(countId(html, destination.split("#")[1]), 1, `${destination} detail count`);
-});
-
-test("renders exact Work organization, statuses, and evidence fields", async () => {
-  const html = await render("/work/");
-  for (const text of [
-    "Evidence, labeled honestly",
-    "Inspect the work by source and status.",
-    "Every item states where it came from, what it demonstrates, what it does not demonstrate, and whether it is current, historical, sample, synthetic, or conceptual.",
-    "Current owned-property work",
-    "Public technical records",
-    "Samples and concept work",
-    "Source class",
-    "What this demonstrates",
-    "What this does not demonstrate",
-    "Current status",
-  ]) assert.ok(html.includes(text), `Work is missing: ${text}`);
-  assert.doesNotMatch(html, />Case study</);
+  for (const route of publicRoutes) {
+    assert.doesNotMatch(await render(route), /href="\/work(?:\/|#|")/i, `${route} retains a Work link`);
+  }
+  assert.match(await source("out/_redirects"), /(?:^|\n)\/work\s+\/services\/\s+301(?:\n|$)/);
+  assert.match(await source("out/_redirects"), /(?:^|\n)\/work\/\s+\/services\/\s+301(?:\n|$)/);
 });
 
 test("bounds the complete emergency problem payload without truncation", async () => {

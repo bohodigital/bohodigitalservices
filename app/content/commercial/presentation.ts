@@ -127,7 +127,7 @@ function pairedNavigationLinks(
 export function commercialNavigationLinks() {
   const primary = pairedNavigationLinks(
     commercialContractSection("navigation-footer", "part-a-primary-navigation").records,
-  ).filter(({ href }) => href !== "/start/");
+  ).filter(({ href }) => href !== "/start/" && href !== "/work/");
   const serviceRecords = [
     ...commercialContractSection("navigation-footer", "services-navigation").records,
     ...([
@@ -170,33 +170,6 @@ export const commercialCorrections068 = {
       body: "The ordinary project form is not monitored as an emergency channel. Use Emergency Help when a website is down, a launch is failing, access has been lost, or a provider action is actively threatening a working system. Emergency review depends on authority, access, capacity, and risk.",
       linkLabel: "Open Emergency Help",
       destination: "/emergency/",
-    },
-  },
-  work: {
-    eyebrow: "Evidence, labeled honestly",
-    heading: "Inspect the work by source and status.",
-    body: "Every item states where it came from, what it demonstrates, what it does not demonstrate, and whether it is current, historical, sample, synthetic, or conceptual.",
-    groupHeadings: {
-      current: "Current owned-property work",
-      technical: "Public technical records",
-      samples: "Samples and concept work",
-    },
-    statuses: {
-      current: "Current",
-      historical: "Historical",
-      sample: "Sample",
-      synthetic: "Synthetic demonstration",
-      concept: "Fictional concept interface",
-    },
-    openLabel: "Open the evidence",
-    destinations: {
-      "artifact-1-website-ownership-map": "/work/#evidence-website-ownership-map",
-      "artifact-2-vanity-metrics-migration-record": "/work/#evidence-vanity-metrics-redirect-plan",
-      "artifact-3-glossary-and-route-validation": "/work/#evidence-route-validation-report",
-      "artifact-4-boho-analytics-site-graph": "/work/#evidence-boho-analytics-site-graph",
-      "artifact-5-rank-builder-publishing-system": "/work/#evidence-rank-builder-publishing-system",
-      "artifact-6-better-grades-learning-interfaces": "/work/#evidence-better-grades-interface",
-      "artifact-7-fictional-business-interfaces": "/work/#evidence-fictional-business-interfaces",
     },
   },
   emergency: {

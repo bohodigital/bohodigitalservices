@@ -161,9 +161,41 @@ const CONTENT_OVERRIDES = [
     id: "report-method-link",
     file: "04-digital-research-seo-audits-strategy.md",
     reason:
-      "Point evidence readers to the maintained report-method section instead of the absent sample-report anchor.",
+      "Retire the removed Work page and direct readers to the maintained resource library.",
     from: "**View Work & Evidence:** `/work#sample-report`",
-    to: "**View Work & Evidence:** `/work/#report-method`",
+    to: "**Browse practical resources:** `/resources/`",
+  },
+  {
+    id: "retire-work-link-ongoing-seo",
+    file: "01-ongoing-seo-search-growth.md",
+    reason:
+      "Retire the removed Work page and direct readers to the current service overview.",
+    from: "**View Work & Evidence:** `/work`",
+    to: "**See service options:** `/services/`",
+  },
+  {
+    id: "retire-work-link-website",
+    file: "02-web-design-website-redesign.md",
+    reason:
+      "Retire the removed Work page and keep the route-specific service destination.",
+    from: "**View Work & Evidence:** `/work#website-work`",
+    to: "**See Websites & Managed Hosting:** `/services/web-design-redesign/`",
+  },
+  {
+    id: "retire-work-link-provider-rescue",
+    file: "03-website-migration-provider-rescue.md",
+    reason:
+      "Retire the removed Work page and keep the route-specific service destination.",
+    from: "**View Provider Rescue evidence:** `/work#provider-rescue`",
+    to: "**See Provider Rescue & Migration:** `/services/provider-rescue/`",
+  },
+  {
+    id: "retire-work-link-custom-tools",
+    file: "05-custom-web-digital-solutions.md",
+    reason:
+      "Retire the removed Work page and direct readers to the maintained public tools route.",
+    from: "**Inspect public tools:** `/work#public-tools`",
+    to: "**Inspect public tools:** `/tools/`",
   },
   {
     id: "owner-plain-language-seo-meta",

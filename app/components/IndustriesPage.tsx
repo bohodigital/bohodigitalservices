@@ -479,8 +479,7 @@ export function IndustriesPage() {
               <p>Boho does not publish fictional clients, fabricated testimonials, unsupported outcomes, or concept work presented as delivered client work.</p>
               <p>Public evidence should show how a problem is studied, how the recommendation is developed, what the work produces, and where the limits remain.</p>
               <div className="industries-actions">
-                <TrackedButton href="/work/" event="industry_evidence_click" section="evidence" destination="work_page" label="Inspect Work & Evidence" />
-                <TrackedButton href="/resources/" event="industry_evidence_click" section="evidence" destination="resources_page" label="Browse Resources" variant="secondary" />
+                <TrackedButton href="/resources/" event="industry_evidence_click" section="evidence" destination="resources_page" label="Browse Resources" />
               </div>
             </div>
             <div className="industries-evidence__record" aria-label="Evidence publication checklist">

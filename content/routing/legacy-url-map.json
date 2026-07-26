@@ -255,16 +255,28 @@
       "ownerReviewed": false
     },
     {
-      "source": "/case-notes/",
-      "destination": "/work/",
+      "source": "/work/",
+      "destination": "/services/",
       "status": 301,
       "disposition": "REDIRECT",
-      "reason": "Historical case-notes alias already identified /work/ as its canonical destination.",
-      "evidence": "Tracked legacy case-notes page canonical.",
+      "reason": "The owner retired the standalone Work page and selected the current service architecture as its replacement.",
+      "evidence": "Explicit owner production instruction on 2026-07-26.",
+      "verified": true,
+      "sourceType": "retired-public-page",
+      "discoveredAt": "2026-07-26",
+      "ownerReviewed": true
+    },
+    {
+      "source": "/case-notes/",
+      "destination": "/services/",
+      "status": 301,
+      "disposition": "REDIRECT",
+      "reason": "The historical case-notes alias followed the retired Work page and now resolves directly to the current service architecture.",
+      "evidence": "Tracked legacy case-notes page canonical plus explicit owner retirement of /work/ on 2026-07-26.",
       "verified": true,
       "sourceType": "historical-alias",
       "discoveredAt": "2026-07-22",
-      "ownerReviewed": false
+      "ownerReviewed": true
     },
     {
       "source": "/ask-the-owl/dictionary/bad-backlink/",

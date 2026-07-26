@@ -20,7 +20,6 @@ const routes = [
   "/services/research-audits-strategy/",
   "/services/custom-digital-solutions/",
   "/pricing/",
-  "/work/",
   "/about/",
   "/contact/",
   "/start/",

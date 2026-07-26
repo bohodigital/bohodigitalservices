@@ -42,7 +42,6 @@ const publicRoutes = [
   "/services/research-audits-strategy/",
   "/services/custom-digital-solutions/",
   "/pricing/",
-  "/work/",
   "/industries/",
   "/industries/home-improvement-contractors/",
   "/industries/local-service-businesses/",
@@ -65,6 +64,7 @@ const publicRoutes = [
 ];
 
 const retiredRoutes = [
+  "/work/",
   "/services/ongoing-seo-growth/",
   "/services/local-seo-search-visibility/",
   "/services/lead-generation-conversion/",
@@ -177,6 +177,7 @@ test("renders every intentional public route and retires internal placeholder sh
     assert.equal((html.match(/<main\b/gi) ?? []).length, 1, `${route} main count`);
     assert.equal((html.match(/<h1\b/gi) ?? []).length, 1, `${route} h1 count`);
     assert.equal((html.match(/<footer\b/gi) ?? []).length, 1, `${route} footer count`);
+    assert.doesNotMatch(html, /href="\/work(?:\/|#|")/i, `${route} retains a Work link`);
     const renderedLinks = html.match(/<a\b[^>]*>[\s\S]*?<\/a>/gi) ?? [];
     for (const link of renderedLinks) {
       assert.doesNotMatch(link, /definition-term__trigger/i, `${route} nests a glossary trigger inside a link`);

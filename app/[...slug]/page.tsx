@@ -18,7 +18,6 @@ import { IndustryDetailPage } from "../components/IndustryDetailPage";
 import { PricingPage } from "../components/PricingPage";
 import { ServiceDetailPage } from "../components/ServiceDetailPage";
 import { ServicesPage } from "../components/ServicesPage";
-import { WorkEvidencePage } from "../components/WorkEvidencePage";
 import { inHouseBrandsByLabPath } from "../content/inHouseBrands";
 import { audiencePages } from "../content/audiencePages";
 import { industryModelsBySlug } from "../content/industries";
@@ -72,13 +71,6 @@ function commercialRouteMetadata(route: string): CommercialRouteMetadata | null 
         canonical: commercialSection("pricing", "pricing").one("Canonical route"),
         openGraphTitle: commercialSection("pricing", "pricing").one("Open Graph title"),
         openGraphDescription: commercialSection("pricing", "pricing").one("Open Graph description"),
-      };
-    case "/work/":
-      return {
-        section: commercialSection("work-evidence", "page-metadata"),
-        canonical: commercialSection("work-evidence", "work-evidence").one("Canonical route"),
-        openGraphTitle: commercialSection("work-evidence", "work-evidence").one("Open Graph title"),
-        openGraphDescription: commercialSection("work-evidence", "work-evidence").one("Open Graph description"),
       };
     case "/contact/":
       return {
@@ -159,7 +151,6 @@ export default async function InteriorRoute({ params }: InteriorRouteProps) {
   if (industryModel) return <IndustryDetailPage model={industryModel} />;
   if (page.slug === "/services/") return <ServicesPage />;
   if (page.slug === "/pricing/") return <PricingPage />;
-  if (page.slug === "/work/") return <WorkEvidencePage />;
   if (page.slug === "/contact/") return <CommercialContactPage />;
   if (page.slug === "/start/") return <CommercialStartPage />;
   if (page.slug === "/emergency/") return <CommercialEmergencyPage />;

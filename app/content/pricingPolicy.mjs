@@ -170,7 +170,7 @@ export const industryPriceLedger = [
     display: "Free",
     href: "/start/",
   },
-  industryOffer("analytics-platform", "Boho Analytics Platform", "/work/"),
+  industryOffer("analytics-platform", "Boho Analytics Platform", "/tools/"),
   industryOffer(
     "analyst-reporting",
     "Analyst-Reviewed Monthly Report",
