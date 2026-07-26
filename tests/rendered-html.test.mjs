@@ -485,6 +485,28 @@ test("keeps candidate prices centralized and publishes the complete assessment-c
   assert.match(generatorSource, /rendered currency amounts do not match/);
 });
 
+test("renders the pricing guide with scoped presentation and existing service imagery", async () => {
+  const pricing = await (await render("/pricing/")).text();
+  const pricingSource = await readFile(new URL("../app/components/PricingPage.tsx", import.meta.url), "utf8");
+  const pricingStyles = await readFile(new URL("../app/components/PricingPage.module.css", import.meta.url), "utf8");
+
+  assert.match(pricingSource, /import styles from "\.\/PricingPage\.module\.css"/);
+  assert.match(pricingStyles, /\.priceGuide/);
+  assert.equal((pricing.match(/<h1\b/gi) ?? []).length, 1);
+  assert.equal((pricing.match(/<h2\b/gi) ?? []).length, 18);
+
+  for (const image of [
+    "/visuals/growth-analysis.webp",
+    "/visuals/services/ongoing-seo-v1.webp",
+    "/visuals/services/web-design-redesign-v1.webp",
+    "/visuals/services/provider-rescue-v1.webp",
+    "/visuals/services/research-audits-strategy-v1.webp",
+    "/visuals/services/custom-digital-solutions-v1.webp",
+  ]) {
+    assert.match(pricing, new RegExp(`src="${image}"`, "i"), `missing pricing visual ${image}`);
+  }
+});
+
 test("publishes the commercial Services decision layer and exact pricing inventory", async () => {
   const services = await (await render("/services/")).text();
   for (const phrase of [

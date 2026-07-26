@@ -247,12 +247,12 @@
     },
     {
       "path": "app/components/PricingPage.tsx",
-      "sha256": "0d7a49f8b1db0f2535cb0f6814d45221eca8ff5bb3c47308aa631f6f1854f79b",
-      "bytes": 5930,
+      "sha256": "ec46fbadfe453fa2005d3873e7b7eb321d302028fe14aa6ec6eb4210e78ae39e",
+      "bytes": 6932,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 114,
+      "publicStringCount": 70,
       "importCount": 0,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
@@ -1166,14 +1166,14 @@
     "reachable": 59,
     "authored": 59,
     "generatedMirrors": 1,
-    "publicStringsOnDemand": 12055,
+    "publicStringsOnDemand": 12011,
     "analyticsClaimContexts": 35
   },
   "fullDetail": {
     "committed": false,
     "generationCommand": "node scripts/commercial-copy-build.mjs --check --inventory-detail <path>",
-    "recordCount": 12055,
-    "deterministicDigest": "0c2a03cff4f35da78574085b76f1dbaba5457412c6ad93b80787393c3b52d106"
+    "recordCount": 12011,
+    "deterministicDigest": "5fdbb1686b930f76ab3c2abad2bf904369fe88644155e0f4cdc100c5e06ae086"
   },
   "securityScan": {
     "privateKeyMarkers": 0,
