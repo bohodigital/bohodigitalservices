@@ -184,6 +184,72 @@
   border-bottom: 1px solid var(--line);
 }
 
+.initialReviewGroup {
+  grid-template-columns: 1fr;
+}
+
+.initialReviewGroup .offers {
+  grid-template-columns: 1fr;
+  border: 0.2rem solid var(--gold);
+  background: var(--gold);
+}
+
+.initialReviewGroup .offer {
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 24rem;
+  padding: clamp(2rem, 5vw, 4.5rem);
+  background:
+    linear-gradient(135deg, transparent 0 72%, rgb(201 150 50 / 16%) 72% 100%),
+    var(--cream);
+}
+
+.initialReviewGroup .offer::after {
+  position: absolute;
+  z-index: -1;
+  right: clamp(1.5rem, 5vw, 4rem);
+  bottom: clamp(1.5rem, 5vw, 4rem);
+  width: clamp(5rem, 12vw, 9rem);
+  aspect-ratio: 1;
+  border: 1px solid rgb(201 150 50 / 55%);
+  content: "";
+  transform: rotate(45deg);
+}
+
+.initialReviewGroup .offer h2 {
+  max-width: 13ch;
+  font-size: clamp(2.5rem, 5vw, 4.8rem);
+}
+
+.initialReviewGroup .offer p {
+  max-width: 72ch;
+}
+
+.multiOfferGroup {
+  --offer-group-count: multiple;
+}
+
+.singleOfferGroup {
+  --offer-group-count: single;
+}
+
+.wideOfferGroup {
+  grid-template-areas:
+    "visual"
+    "offers";
+  grid-template-columns: 1fr;
+}
+
+.wideOfferGroup .groupVisual {
+  grid-area: visual;
+  min-height: clamp(18rem, 28vw, 24rem);
+}
+
+.wideOfferGroup .offers {
+  grid-area: offers;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .offerGroup:nth-child(even) .groupVisual {
   order: 2;
 }
@@ -380,6 +446,10 @@
 
   .offerGroup:nth-child(even) .groupVisual {
     order: initial;
+  }
+
+  .wideOfferGroup .offers {
+    grid-template-columns: 1fr;
   }
 
   .groupVisual {

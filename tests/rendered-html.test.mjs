@@ -487,6 +487,7 @@ test("keeps candidate prices centralized and publishes the complete assessment-c
 
 test("renders the pricing guide with scoped presentation and existing service imagery", async () => {
   const pricing = await (await render("/pricing/")).text();
+  const pricingMain = pricing.match(/<main\b[\s\S]*?<\/main>/i)?.[0] ?? "";
   const pricingSource = await readFile(new URL("../app/components/PricingPage.tsx", import.meta.url), "utf8");
   const pricingStyles = await readFile(new URL("../app/components/PricingPage.module.css", import.meta.url), "utf8");
 
@@ -494,6 +495,47 @@ test("renders the pricing guide with scoped presentation and existing service im
   assert.match(pricingStyles, /\.priceGuide/);
   assert.equal((pricing.match(/<h1\b/gi) ?? []).length, 1);
   assert.equal((pricing.match(/<h2\b/gi) ?? []).length, 18);
+  assert.equal((pricingMain.match(/<h2\b/gi) ?? []).length, 17);
+  const headingSequence = [...pricingMain.matchAll(/<h2\b[^>]*>([\s\S]*?)<\/h2>/gi)]
+    .map((match) => match[1].replace(/<[^>]+>/g, "").replaceAll("&amp;", "&"));
+  assert.deepEqual(headingSequence, [
+    "What a starting price means",
+    "Initial public review — Free",
+    "SEO reporting — Starting at $95 per month",
+    "SEO implementation — Starting at $450 per month",
+    "Focused website improvement — Starting at $750",
+    "New website — Starting at $1,500",
+    "Substantial redesign — Starting at $1,500",
+    "Provider Rescue Assessment — Starting at $350",
+    "Migration assistance — Starting at $1,000",
+    "Focused audit or strategy — Starting at $350",
+    "Custom discovery — Starting at $500",
+    "Focused custom build — Starting at $2,500",
+    "What usually changes the price",
+    "Assessment credit",
+    "Managed hosting and defined email services",
+    "What happens before paid work begins",
+    "Send the situation. Get the smallest useful next step.",
+  ]);
+  assert.match(pricingMain, /<section[^>]+data-offer-group="multiple"[^>]+id="ongoing-seo"/i);
+  assert.match(pricingMain, /<section[^>]+data-offer-group="initial"[^>]+id="initial-review"/i);
+
+  const initialReview = pricingMain.match(/<section\b[^>]*id="initial-review"[\s\S]*?<\/section>/i)?.[0] ?? "";
+  const ongoingSeo = pricingMain.match(/<section\b[^>]*id="ongoing-seo"[\s\S]*?<\/section>/i)?.[0] ?? "";
+  assert.ok(initialReview, "missing initial-review pricing group");
+  assert.ok(ongoingSeo, "missing ongoing-SEO pricing group");
+  assert.doesNotMatch(initialReview, /<img\b/i);
+  assert.match(ongoingSeo, /src="\/visuals\/services\/ongoing-seo-v1\.webp"/i);
+  assert.equal((pricingMain.match(/src="\/visuals\/growth-analysis\.webp"/gi) ?? []).length, 1);
+
+  const pricingImages = [...pricingMain.matchAll(/<img\b[^>]*\bsrc="([^"]+)"/gi)].map((match) => match[1]);
+  assert.equal(new Set(pricingImages.filter((source) => source.startsWith("/visuals/"))).size, 6);
+  assert.match(pricingMain, /href="\/start\/"/i);
+  assert.match(pricingMain, /href="\/services\/"/i);
+  assert.doesNotMatch(pricingMain, /<details\b|role="tab"|data-carousel|client-only/i);
+  assert.doesNotMatch(pricingMain, /definition-term__trigger|definition-term__popover/i);
+  assert.match(pricing, /G-5CV8L2SE2R/);
+  assert.match(pricing, /analytics\.bohodigitalservices\.com/);
 
   for (const image of [
     "/visuals/growth-analysis.webp",

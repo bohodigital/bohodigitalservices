@@ -7,8 +7,6 @@ const offerGroups = [
     id: "initial-review",
     keys: ["initial-public-review"],
     aliases: [],
-    image: "/visuals/growth-analysis.webp",
-    imageAlt: "Growth analysis workspace",
   },
   {
     id: "ongoing-seo",
@@ -90,12 +88,28 @@ export function PricingPage() {
           <div className={styles.shell}>
             {offerGroups.map((group) => {
               const offers = group.keys.map((key) => ({ key, section: commercialSection("pricing", key) }));
+              const isInitialReview = group.id === "initial-review";
+              const isMultiOffer = offers.length > 1;
+              const groupClassName = [
+                styles.offerGroup,
+                isInitialReview ? styles.initialReviewGroup : "",
+                isMultiOffer ? styles.multiOfferGroup : styles.singleOfferGroup,
+                group.id === "ongoing-seo" ? styles.wideOfferGroup : "",
+              ].filter(Boolean).join(" ");
               return (
-                <section className={styles.offerGroup} id={group.id} aria-labelledby={`${group.id}-title`} key={group.id}>
+                <section
+                  className={groupClassName}
+                  data-offer-group={isInitialReview ? "initial" : isMultiOffer ? "multiple" : "single"}
+                  id={group.id}
+                  aria-labelledby={`${group.id}-title`}
+                  key={group.id}
+                >
                   {group.aliases.map((alias) => <span className={styles.anchorAlias} id={alias} key={alias} />)}
-                  <figure className={styles.groupVisual}>
-                    <img alt={group.imageAlt} loading="lazy" src={group.image} />
-                  </figure>
+                  {"image" in group ? (
+                    <figure className={styles.groupVisual}>
+                      <img alt={group.imageAlt} loading="lazy" src={group.image} />
+                    </figure>
+                  ) : null}
                   <div className={styles.offers}>
                     {offers.map(({ key, section: offer }, index) => (
                       <article className={styles.offer} key={key}>
