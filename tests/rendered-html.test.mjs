@@ -1119,4 +1119,13 @@ test("keeps the public shell accessible and free of starter artifacts", async ()
   assert.match(html, /<script[^>]+type="application\/ld\+json"/i);
   assert.match(html, /<link[^>]+rel="icon"[^>]+boho-search-icon-v2\.png/i);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Your site is taking shape|Lorem ipsum/i);
+
+  for (const route of publicRoutes) {
+    const routeHtml = await (await render(route)).text();
+    assert.match(
+      routeHtml,
+      /class="site-header__brand-word">\s*Boho\s*<\/span>\s*<span class="site-header__brand-service">\s*Digital Services\s*<\/span>/i,
+      `${route} does not use the current two-level brand lockup`,
+    );
+  }
 });
