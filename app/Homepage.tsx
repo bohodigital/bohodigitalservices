@@ -244,6 +244,7 @@ export default function Homepage() {
               <span><BriefcaseBusiness size={20} aria-hidden="true" /> Define</span>
               <span><BarChart3 size={20} aria-hidden="true" /> Expand</span>
             </div>
+            <TextLink href="/pricing/">See starting prices</TextLink>
           </div>
         </section>
 

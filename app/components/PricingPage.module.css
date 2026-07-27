@@ -1,17 +1,19 @@
 .page {
   --ink: #17130f;
-  --paper: #f6f0e5;
+  --paper: #f5efe4;
   --cream: #fffaf0;
-  --gold: #c99632;
-  --gold-light: #f0d493;
-  --muted: #685f55;
+  --gold: #c89531;
+  --gold-light: #f1d89b;
+  --sage: #dfe9e4;
+  --blue-gray: #6f8588;
+  --muted: #695f54;
   --line: rgb(23 19 15 / 18%);
   color: var(--ink);
   background: var(--paper);
 }
 
 .shell {
-  width: min(100% - 2rem, 76rem);
+  width: min(100% - 2rem, 78rem);
   margin-inline: auto;
 }
 
@@ -23,103 +25,120 @@
 
 .heroGrid {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(20rem, 0.9fr);
-  gap: clamp(2rem, 6vw, 6rem);
+  grid-template-columns: minmax(0, 1.2fr) minmax(20rem, 0.8fr);
+  gap: clamp(2rem, 5vw, 5rem);
   align-items: center;
-  padding-block: clamp(3.5rem, 8vw, 7rem);
+  min-height: min(51rem, calc(100svh - 5rem));
+  padding-block: clamp(3rem, 7vw, 6rem);
 }
 
-.heroCopy {
+.heroCopy,
+.heroAside {
   min-width: 0;
 }
 
-.eyebrow {
+.eyebrow,
+.chapterNumber,
+.pathNumber,
+.policyNumber {
   margin: 0 0 1rem;
-  color: var(--gold-light);
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.17em;
   text-transform: uppercase;
 }
 
 .hero h1,
-.priceGuide h2,
-.drivers h2,
-.policies h2,
-.final h2 {
+.sectionHeading h2,
+.chapterIntro h2,
+.final h2,
+.pathLane h3,
+.offerIdentity h3,
+.policyGrid h3,
+.notice strong {
   font-family: var(--font-display, Georgia, serif);
 }
 
 .hero h1 {
-  max-width: 12ch;
+  max-width: 14ch;
   margin: 0 0 1.5rem;
-  font-size: clamp(3rem, 6vw, 5.9rem);
-  line-height: 0.92;
-  letter-spacing: -0.06em;
+  font-size: clamp(3rem, 5.6vw, 5.8rem);
+  line-height: 0.94;
+  letter-spacing: -0.055em;
 }
 
-.heroCopy > p:not(.eyebrow) {
-  max-width: 61ch;
-  margin-block: 0 1rem;
+.heroCopy > p:not(.eyebrow, .reassurance) {
+  max-width: 60ch;
+  margin: 0;
   color: rgb(255 250 240 / 84%);
-  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  font-size: clamp(1rem, 1.25vw, 1.15rem);
   line-height: 1.65;
+}
+
+.reassurance {
+  max-width: 52ch;
+  margin: 1.25rem 0 0;
+  padding-left: 1rem;
+  border-left: 0.2rem solid var(--gold);
+  color: var(--gold-light);
+  font-weight: 750;
+  line-height: 1.5;
 }
 
 .heroAside {
   display: grid;
-  gap: 1rem;
-  min-width: 0;
+  gap: 0.85rem;
 }
 
 .heroVisual,
-.groupVisual {
+.chapterVisual {
   position: relative;
   overflow: hidden;
   margin: 0;
-  border: 1px solid rgb(201 150 50 / 60%);
-  background: #322719;
+  border: 1px solid rgb(200 149 49 / 58%);
+  background: #312719;
 }
 
 .heroVisual {
   aspect-ratio: 4 / 3;
-  box-shadow: 1rem 1rem 0 rgb(201 150 50 / 18%);
+  box-shadow: 1rem 1rem 0 rgb(200 149 49 / 16%);
 }
 
 .heroVisual::after,
-.groupVisual::after {
+.chapterVisual::after {
   position: absolute;
   inset: 0;
   pointer-events: none;
   content: "";
-  background: linear-gradient(135deg, rgb(0 0 0 / 25%), transparent 45%, rgb(201 150 50 / 16%));
+  background: linear-gradient(135deg, rgb(0 0 0 / 20%), transparent 48%, rgb(200 149 49 / 14%));
 }
 
 .heroVisual img,
-.groupVisual img {
+.chapterVisual img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
 .notice {
-  padding: clamp(1.25rem, 3vw, 2rem);
+  padding: 1.15rem 1.25rem;
   border-left: 0.25rem solid var(--gold);
   background: rgb(255 250 240 / 8%);
 }
 
-.notice h2 {
-  margin: 0 0 0.85rem;
+.notice strong {
+  display: block;
   color: var(--gold-light);
-  font-family: var(--font-display, Georgia, serif);
-  font-size: clamp(1.45rem, 2.5vw, 2.15rem);
-  line-height: 1;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  line-height: 1.05;
 }
 
 .notice p {
-  margin: 0.75rem 0 0;
-  color: rgb(255 250 240 / 84%);
-  line-height: 1.55;
+  margin: 0.65rem 0 0;
+  color: rgb(255 250 240 / 80%);
+  font-size: 0.93rem;
+  line-height: 1.5;
 }
 
 .buttonRow {
@@ -133,10 +152,12 @@
 .secondaryButton {
   display: inline-flex;
   align-items: center;
-  min-height: 2.75rem;
-  padding: 0.7rem 1rem;
-  font-weight: 800;
+  justify-content: center;
+  min-height: 2.85rem;
+  padding: 0.72rem 1rem;
+  font-weight: 850;
   line-height: 1.2;
+  text-align: center;
   text-decoration: none;
 }
 
@@ -147,12 +168,12 @@
 
 .secondaryButton {
   color: var(--cream);
-  border: 1px solid rgb(255 250 240 / 55%);
+  border: 1px solid rgb(255 250 240 / 58%);
 }
 
 .primaryButton:hover,
 .primaryButton:focus-visible {
-  background: #fff4d8;
+  background: #fff4d7;
 }
 
 .secondaryButton:hover,
@@ -165,176 +186,478 @@
   outline-offset: 0.2rem;
 }
 
-.priceGuide {
-  padding-block: clamp(3rem, 7vw, 7rem);
+.sectionNav {
+  position: sticky;
+  z-index: 20;
+  top: 4.85rem;
+  border-bottom: 1px solid rgb(255 250 240 / 15%);
+  background: rgb(23 19 15 / 96%);
+  backdrop-filter: blur(0.75rem);
 }
 
-.offerGroup {
+.sectionNav nav > div {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.sectionNav a {
   position: relative;
-  scroll-margin-top: 7rem;
-  display: grid;
-  grid-template-columns: minmax(13rem, 0.6fr) minmax(0, 1.4fr);
-  gap: clamp(1.25rem, 3vw, 3rem);
-  align-items: stretch;
-  padding-block: clamp(1.5rem, 3vw, 3rem);
-  border-top: 1px solid var(--line);
+  flex: 0 0 auto;
+  padding: 1rem 0 0.88rem;
+  color: rgb(255 250 240 / 70%);
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
-.offerGroup:last-child {
-  border-bottom: 1px solid var(--line);
+.sectionNav a::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 0.18rem;
+  content: "";
+  background: transparent;
 }
 
-.initialReviewGroup {
-  grid-template-columns: 1fr;
+.sectionNav a[data-active="true"] {
+  color: var(--gold-light);
 }
 
-.initialReviewGroup .offers {
-  grid-template-columns: 1fr;
-  border: 0.2rem solid var(--gold);
+.sectionNav a[data-active="true"]::after {
   background: var(--gold);
 }
 
-.initialReviewGroup .offer {
-  isolation: isolate;
-  overflow: hidden;
-  min-height: 24rem;
-  padding: clamp(2rem, 5vw, 4.5rem);
-  background:
-    linear-gradient(135deg, transparent 0 72%, rgb(201 150 50 / 16%) 72% 100%),
-    var(--cream);
+.pathSection,
+.chapter,
+.mechanics {
+  scroll-margin-top: 9rem;
 }
 
-.initialReviewGroup .offer::after {
-  position: absolute;
-  z-index: -1;
-  right: clamp(1.5rem, 5vw, 4rem);
-  bottom: clamp(1.5rem, 5vw, 4rem);
-  width: clamp(5rem, 12vw, 9rem);
-  aspect-ratio: 1;
-  border: 1px solid rgb(201 150 50 / 55%);
-  content: "";
-  transform: rotate(45deg);
+.pathSection {
+  padding-block: clamp(4rem, 8vw, 7rem);
 }
 
-.initialReviewGroup .offer h2 {
-  max-width: 13ch;
-  font-size: clamp(2.5rem, 5vw, 4.8rem);
-}
-
-.initialReviewGroup .offer p {
-  max-width: 72ch;
-}
-
-.multiOfferGroup {
-  --offer-group-count: multiple;
-}
-
-.singleOfferGroup {
-  --offer-group-count: single;
-}
-
-.wideOfferGroup {
-  grid-template-areas:
-    "visual"
-    "offers";
-  grid-template-columns: 1fr;
-}
-
-.wideOfferGroup .groupVisual {
-  grid-area: visual;
-  min-height: clamp(18rem, 28vw, 24rem);
-}
-
-.wideOfferGroup .offers {
-  grid-area: offers;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.offerGroup:nth-child(even) .groupVisual {
-  order: 2;
-}
-
-.offerGroup:nth-child(even):not(.initialReviewGroup):not(.wideOfferGroup) {
-  grid-template-columns: minmax(0, 1.4fr) minmax(13rem, 0.6fr);
-}
-
-.groupVisual {
-  min-height: 20rem;
-}
-
-.offers {
+.sectionHeading {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-content: stretch;
-  gap: 1px;
-  border: 1px solid var(--line);
-  background: var(--line);
+  grid-template-columns: minmax(0, 0.85fr) minmax(18rem, 1.15fr);
+  gap: 0 clamp(2rem, 6vw, 6rem);
+  align-items: end;
+  margin-bottom: clamp(2rem, 5vw, 4rem);
 }
 
-.offer {
-  position: relative;
+.sectionHeading .eyebrow {
+  grid-column: 1 / -1;
+}
+
+.sectionHeading h2,
+.chapterIntro h2,
+.final h2 {
+  max-width: 13ch;
+  margin: 0;
+  font-size: clamp(2.75rem, 5vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: -0.052em;
+}
+
+.sectionHeading > p:last-child,
+.chapterIntro > div > p:last-child {
+  max-width: 62ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.3vw, 1.13rem);
+  line-height: 1.65;
+}
+
+.pathGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 0.25rem solid var(--gold);
+  border-bottom: 1px solid var(--line);
+}
+
+.pathLane {
   display: flex;
   flex-direction: column;
   min-width: 0;
-  padding: clamp(1.25rem, 2.5vw, 2.25rem);
-  background: var(--cream);
+  padding: clamp(1.4rem, 3vw, 2.25rem);
+  border-right: 1px solid var(--line);
 }
 
-.offer h2 {
+.pathLane:last-child {
+  border-right: 0;
+}
+
+.pathLane:nth-child(2) {
+  background: rgb(111 133 136 / 10%);
+}
+
+.pathLane:nth-child(3) {
+  color: var(--cream);
+  background: #27211b;
+}
+
+.pathLane:nth-child(3) .pathNumber,
+.pathLane:nth-child(3) a {
+  color: var(--gold-light);
+}
+
+.pathLane h3 {
+  min-height: 2.1em;
   margin: 0 0 1rem;
-  font-size: clamp(1.65rem, 2.5vw, 2.55rem);
-  line-height: 0.98;
-  letter-spacing: -0.045em;
+  font-size: clamp(1.7rem, 2.5vw, 2.45rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
 }
 
-.offer p {
-  margin: 0 0 0.8rem;
-  color: var(--muted);
+.pathLane > p:not(.pathNumber) {
+  min-height: 7.5rem;
+  margin: 0;
+  color: inherit;
   line-height: 1.55;
+  opacity: 0.78;
 }
 
-.offer p:nth-of-type(2) {
-  padding-top: 0.8rem;
-  border-top: 1px solid var(--line);
+.pathLane ul {
+  display: grid;
+  gap: 0;
+  margin: 1.5rem 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid currentColor;
 }
 
-.offer a {
+.pathLane li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid currentColor;
+  font-size: 0.92rem;
+}
+
+.pathLane li span {
+  opacity: 0.82;
+}
+
+.pathLane li strong {
+  text-align: right;
+}
+
+.pathLane > a {
   margin-top: auto;
-  padding-top: 1rem;
   color: var(--ink);
+  font-weight: 850;
+  text-underline-offset: 0.22em;
+}
+
+.chapter {
+  padding-block: clamp(5rem, 10vw, 9rem);
+}
+
+.diagnose {
+  background: #f4dfad;
+}
+
+.build {
+  background: #f7f4ed;
+}
+
+.ongoing {
+  color: var(--cream);
+  background: #1e1b18;
+}
+
+.chapterIntro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: end;
+  margin-bottom: clamp(3rem, 7vw, 6rem);
+}
+
+.chapterIntro h2 {
+  margin-bottom: 1.25rem;
+}
+
+.chapterVisual {
+  aspect-ratio: 16 / 10;
+}
+
+.ongoing .chapterIntro > div > p:last-child {
+  color: rgb(255 250 240 / 76%);
+}
+
+.offerLedger {
+  border-top: 1px solid currentColor;
+}
+
+.ledgerLabels {
+  display: grid;
+  grid-template-columns: minmax(13rem, 1fr) minmax(22rem, 1.8fr) minmax(10rem, 0.65fr);
+  gap: clamp(1rem, 3vw, 2.25rem);
+  padding: 0 0 0.8rem;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.offerRow {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(13rem, 1fr) minmax(22rem, 1.8fr) minmax(10rem, 0.65fr);
+  gap: clamp(1rem, 3vw, 2.25rem);
+  padding-block: clamp(2rem, 4vw, 2.75rem);
+  border-bottom: 1px solid currentColor;
+}
+
+.offerIdentity,
+.offerDetails,
+.offerActions {
+  min-width: 0;
+}
+
+.offerIdentity h3 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.7rem, 2.5vw, 2.5rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.priceRecord {
+  margin: 0;
+  color: #7a541b;
+  font-weight: 850;
+  line-height: 1.4;
+}
+
+.offerDetails {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 1.5rem;
+}
+
+.offerDetails div:first-child,
+.offerDetails div:nth-child(2),
+.offerDetails div:last-child {
+  grid-column: 1 / -1;
+}
+
+.offerDetails h4,
+.policyGrid h4 {
+  margin: 0 0 0.35rem;
+  color: inherit;
+  font-size: 0.7rem;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.offerDetails p,
+.offerActions a,
+.policyGrid p,
+.policyGrid li {
+  line-height: 1.58;
+}
+
+.offerDetails p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.offerActions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.offerActions a {
+  color: inherit;
   font-weight: 800;
-  text-decoration-thickness: 0.12em;
   text-underline-offset: 0.2em;
 }
 
-.offerGroup:nth-child(2) .offer,
-.offerGroup:nth-child(6) .offer {
+.offerStart {
+  display: inline-flex;
+  padding: 0.7rem 0.8rem;
+  color: #17130f !important;
+  background: var(--gold-light);
+  text-decoration: none;
+}
+
+.comparisonIntro {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border: 1px solid rgb(255 250 240 / 26%);
+}
+
+.comparisonIntro > div {
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+.comparisonIntro > div + div {
+  border-left: 1px solid rgb(255 250 240 / 26%);
+}
+
+.comparisonIntro span {
+  display: block;
+  margin-bottom: 0.65rem;
+  color: var(--gold-light);
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.comparisonIntro strong {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: baseline;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  font-weight: 500;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+
+.comparisonIntro small {
+  font-family: inherit;
+  font-size: 1rem;
+  letter-spacing: 0;
+}
+
+.comparisonIntro p {
+  margin: 1rem 0 0;
+  color: rgb(255 250 240 / 70%);
+}
+
+.comparisonGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.comparisonOffer {
+  position: relative;
+  min-width: 0;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border-right: 1px solid rgb(255 250 240 / 26%);
+  border-bottom: 1px solid rgb(255 250 240 / 26%);
+  border-left: 1px solid rgb(255 250 240 / 26%);
+}
+
+.comparisonOffer + .comparisonOffer {
+  border-left: 0;
+}
+
+.comparisonOffer .priceRecord,
+.comparisonOffer .offerDetails h4 {
+  color: var(--gold-light);
+}
+
+.comparisonOffer .offerDetails {
+  grid-template-columns: 1fr;
+  margin-top: 2rem;
+}
+
+.comparisonOffer .offerDetails div {
+  grid-column: 1;
+  padding-top: 1rem;
+  border-top: 1px solid rgb(255 250 240 / 20%);
+}
+
+.comparisonOffer .offerDetails p {
+  color: rgb(255 250 240 / 72%);
+}
+
+.comparisonOffer .offerActions {
+  margin-top: 2rem;
+}
+
+.mechanics {
+  padding-block: clamp(5rem, 10vw, 9rem);
+  background: #eadbbd;
+}
+
+.policyGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.policyGrid article {
+  min-width: 0;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border: 1px solid var(--line);
+  background: var(--cream);
+}
+
+.policyGrid h3 {
+  margin: 0 0 1.25rem;
+  font-size: clamp(1.7rem, 2.6vw, 2.6rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.policyGrid p {
+  margin: 0 0 1rem;
+}
+
+.policyGrid h4 {
+  margin-top: 1.6rem;
+  color: #7a541b;
+}
+
+.policyGrid ul {
+  margin: 1.25rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.policyGrid li + li {
+  margin-top: 0.6rem;
+}
+
+.creditPolicy {
+  border: 0.2rem solid #9f6b1c !important;
+  background: var(--gold-light) !important;
+}
+
+.final {
+  padding-block: clamp(4.5rem, 9vw, 8rem);
   color: var(--cream);
-  background: #251f18;
+  background: #17130f;
 }
 
-.offerGroup:nth-child(2) .offer p,
-.offerGroup:nth-child(2) .offer a,
-.offerGroup:nth-child(6) .offer p,
-.offerGroup:nth-child(6) .offer a {
-  color: rgb(255 250 240 / 82%);
+.finalGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: end;
 }
 
-.offerGroup:nth-child(2) .offer p:nth-of-type(2),
-.offerGroup:nth-child(6) .offer p:nth-of-type(2) {
-  border-color: rgb(255 250 240 / 22%);
+.final h2 {
+  margin-bottom: 1.25rem;
 }
 
-.offerGroup:nth-child(3) .offer {
-  background: #f4e0af;
+.final p:not(.eyebrow) {
+  max-width: 60ch;
+  margin: 0;
+  color: rgb(255 250 240 / 78%);
+  font-size: 1.08rem;
+  line-height: 1.65;
 }
 
-.offerGroup:nth-child(4) .offer {
-  background: #e3ede9;
-}
-
-.offerGroup:nth-child(5) .offer {
-  background: #eee3d7;
+.final .buttonRow {
+  flex-direction: column;
+  align-items: stretch;
+  margin: 0;
 }
 
 .anchorAlias {
@@ -342,126 +665,69 @@
   width: 1px;
   height: 1px;
   overflow: hidden;
+  scroll-margin-top: 9rem;
 }
 
-.drivers {
-  padding-block: clamp(3.5rem, 7vw, 6rem);
-  color: var(--cream);
-  background: #211d18;
-}
-
-.driversGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(17rem, 1.15fr);
-  gap: clamp(2rem, 6vw, 6rem);
-  align-items: start;
-}
-
-.drivers h2,
-.final h2 {
-  max-width: 14ch;
-  margin: 0 0 1rem;
-  font-size: clamp(2.4rem, 5vw, 4.5rem);
-  line-height: 0.95;
-  letter-spacing: -0.05em;
-}
-
-.drivers p,
-.final p {
-  max-width: 60ch;
-  margin: 0;
-  color: rgb(255 250 240 / 80%);
-  font-size: 1.08rem;
-  line-height: 1.65;
-}
-
-.drivers ul {
-  display: grid;
-  gap: 0;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  border-top: 1px solid rgb(255 250 240 / 30%);
-}
-
-.drivers li {
-  padding: 1rem 0 1rem 2.2rem;
-  border-bottom: 1px solid rgb(255 250 240 / 30%);
-  background: linear-gradient(90deg, var(--gold) 0 0) left 0.35rem top 1.55rem / 0.9rem 0.1rem no-repeat;
-  line-height: 1.5;
-}
-
-.policies {
-  padding-block: clamp(3rem, 7vw, 6rem);
-  background: #e9d8b8;
-}
-
-.policyGrid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.policyGrid article {
-  min-width: 0;
-  padding: clamp(1.35rem, 3vw, 2.2rem);
-  border: 1px solid var(--line);
-  background: var(--cream);
-}
-
-.policyGrid article:first-child {
-  color: #1c160f;
-  border-color: #b2781f;
-  background: var(--gold-light);
-}
-
-.policyGrid h2 {
-  margin: 0 0 1rem;
-  font-size: clamp(1.6rem, 2.4vw, 2.35rem);
-  line-height: 1;
-  letter-spacing: -0.04em;
-}
-
-.policyGrid p {
-  margin: 0 0 1rem;
-  line-height: 1.6;
-}
-
-.policyGrid p:last-child {
-  margin-bottom: 0;
-}
-
-.final {
-  padding-block: clamp(4rem, 8vw, 7rem);
-  color: var(--cream);
-  background: #17130f;
-}
-
-@media (max-width: 56rem) {
-  .heroGrid,
-  .offerGroup,
-  .driversGrid {
+@media (max-width: 64rem) {
+  .pathGrid {
     grid-template-columns: 1fr;
+  }
+
+  .pathLane {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .pathLane > p:not(.pathNumber) {
+    min-height: 0;
+  }
+
+  .offerRow,
+  .ledgerLabels {
+    grid-template-columns: minmax(12rem, 0.8fr) minmax(0, 1.2fr);
+  }
+
+  .offerActions,
+  .ledgerLabels span:last-child {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 52rem) {
+  .heroGrid,
+  .sectionHeading,
+  .chapterIntro,
+  .finalGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroGrid {
+    min-height: 0;
   }
 
   .heroVisual {
     aspect-ratio: 16 / 9;
   }
 
-  .offerGroup:nth-child(even) .groupVisual {
-    order: initial;
+  .chapterIntro {
+    align-items: start;
   }
 
-  .offerGroup:nth-child(even):not(.initialReviewGroup):not(.wideOfferGroup) {
+  .chapterVisual {
+    max-height: 24rem;
+  }
+
+  .offerRow,
+  .ledgerLabels {
     grid-template-columns: 1fr;
   }
 
-  .wideOfferGroup .offers {
-    grid-template-columns: 1fr;
+  .ledgerLabels {
+    display: none;
   }
 
-  .groupVisual {
-    min-height: 15rem;
+  .offerActions {
+    grid-column: 1;
   }
 
   .policyGrid {
@@ -469,38 +735,100 @@
   }
 }
 
-@media (max-width: 42rem) {
+@media (max-width: 40rem) {
   .shell {
-    width: min(100% - 1.25rem, 76rem);
+    width: min(100% - 1.25rem, 78rem);
   }
 
   .heroGrid {
-    gap: 1.5rem;
-    padding-block: 3rem;
+    gap: 1.6rem;
+    padding-block: 2.75rem 2rem;
   }
 
   .hero h1 {
-    font-size: clamp(2.75rem, 14vw, 4rem);
+    font-size: clamp(2.65rem, 13vw, 3.8rem);
   }
 
-  .offers {
+  .heroAside {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .notice {
+    order: -1;
+  }
+
+  .sectionNav {
+    top: 4.4rem;
+  }
+
+  .sectionNav .shell {
+    width: 100%;
+  }
+
+  .sectionNav nav > div {
+    padding-inline: 0.65rem;
+  }
+
+  .pathSection,
+  .chapter,
+  .mechanics {
+    scroll-margin-top: 8rem;
+  }
+
+  .pathLane {
+    padding: 1.35rem 0.75rem;
+  }
+
+  .pathLane h3 {
+    min-height: 0;
+  }
+
+  .pathLane li {
+    grid-template-columns: minmax(0, 1fr) minmax(5.5rem, auto);
+  }
+
+  .sectionHeading h2,
+  .chapterIntro h2,
+  .final h2 {
+    font-size: clamp(2.5rem, 12vw, 3.5rem);
+  }
+
+  .offerDetails {
     grid-template-columns: 1fr;
   }
 
-  .offer {
-    padding: 1.3rem;
+  .offerDetails div,
+  .offerDetails div:first-child,
+  .offerDetails div:nth-child(2),
+  .offerDetails div:last-child {
+    grid-column: 1;
   }
 
-  .offer h2 {
-    font-size: clamp(1.65rem, 8vw, 2.25rem);
+  .comparisonIntro,
+  .comparisonGrid {
+    grid-template-columns: 1fr;
   }
 
-  .groupVisual {
-    min-height: 12rem;
+  .comparisonIntro > div + div {
+    border-top: 1px solid rgb(255 250 240 / 26%);
+    border-left: 0;
   }
 
-  .drivers h2,
-  .final h2 {
-    font-size: clamp(2.25rem, 12vw, 3.4rem);
+  .comparisonOffer,
+  .comparisonOffer + .comparisonOffer {
+    border-right: 1px solid rgb(255 250 240 / 26%);
+    border-left: 1px solid rgb(255 250 240 / 26%);
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sectionNav {
+    scroll-behavior: auto;
   }
 }

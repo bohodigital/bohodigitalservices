@@ -51,7 +51,10 @@ export function CommercialHeader() {
       <div className="site-header__inner">
         <Link className="site-header__brand" href="/" aria-label={identity.one("Heading")}>
           <BrandBee />
-          <span className="site-header__brand-copy"><span>{identity.one("Heading")}</span></span>
+          <span className="site-header__brand-copy">
+            <span className="site-header__brand-word">Boho</span>
+            <span className="site-header__brand-service">Digital Services</span>
+          </span>
         </Link>
         <DesktopNavigation
           controlLabels={{

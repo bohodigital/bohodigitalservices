@@ -493,6 +493,12 @@
   margin-bottom: 2rem;
 }
 
+.commercial-form__pricing-context {
+  padding: .9rem 1rem;
+  border-left: .25rem solid var(--commercial-copper);
+  background: rgb(201 150 50 / 12%);
+}
+
 .commercial-form__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

@@ -5,19 +5,19 @@
   "sources": [
     {
       "path": "app/Homepage.tsx",
-      "sha256": "2cdd39cf1ce47ef3327b0618ab8ef75ada44b5e170be7116e0547f5f5c86cd01",
-      "bytes": 13696,
+      "sha256": "219150311b81c718da42eb7c783836516fce16438b4489bbeed454677392208b",
+      "bytes": 13766,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 186,
+      "publicStringCount": 187,
       "importCount": 2,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
     {
       "path": "app/[...slug]/page.tsx",
-      "sha256": "32a0c9943dd92e0b7445fffea2ea534ae4f0cde322475fa111f0324a93123f85",
-      "bytes": 6984,
+      "sha256": "8c7832196ea72867db2f88bed8b331ce39ec1d3af56d1c8b7abd20022b879de4",
+      "bytes": 7261,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
@@ -246,14 +246,25 @@
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
     {
-      "path": "app/components/PricingPage.tsx",
-      "sha256": "10ddec32e73bcaa00c13e5541321efe06e1dc1a2ac5409ede5ad9abae5da9cf1",
-      "bytes": 7569,
+      "path": "app/components/PricingInteractions.tsx",
+      "sha256": "d34c7cb133666909eaabaf4a3d2a0b9318d53fc47e6412206afbdc20d56a2837",
+      "bytes": 3635,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 68,
+      "publicStringCount": 12,
       "importCount": 0,
+      "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
+    },
+    {
+      "path": "app/components/PricingPage.tsx",
+      "sha256": "57087d8b5a3e56d5b17a360ccf148be8e51d954db5c0e93976a2e61bdb8f8069",
+      "bytes": 25954,
+      "classification": "authored-source",
+      "reachable": true,
+      "editorialAuthority": true,
+      "publicStringCount": 190,
+      "importCount": 1,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
     {
@@ -588,8 +599,8 @@
     },
     {
       "path": "content/routing/public-route-registry.json",
-      "sha256": "d2960a0ab56e2c3e9a2eda480e4f186eadd2afda6e4696c1693987040ce4d869",
-      "bytes": 179740,
+      "sha256": "63bc7699ab574584e335ce26543c09695630672a45e555e691aaa25e6e165f2b",
+      "bytes": 179671,
       "classification": "authored-source",
       "reachable": false,
       "editorialAuthority": true,
@@ -1151,18 +1162,18 @@
     }
   ],
   "counts": {
-    "sources": 62,
-    "reachable": 58,
-    "authored": 58,
+    "sources": 63,
+    "reachable": 59,
+    "authored": 59,
     "generatedMirrors": 1,
-    "publicStringsOnDemand": 11946,
+    "publicStringsOnDemand": 12081,
     "analyticsClaimContexts": 35
   },
   "fullDetail": {
     "committed": false,
     "generationCommand": "node scripts/commercial-copy-build.mjs --check --inventory-detail <path>",
-    "recordCount": 11946,
-    "deterministicDigest": "4e24efd41557f75de403fba22dd03f8e0d7a9232cf175aeeb48eb54576b75be1"
+    "recordCount": 12081,
+    "deterministicDigest": "be5f19f69bcd4b331f5b2b8e8b4f61373822ed6ff6fb52fc8233f40f24b63665"
   },
   "securityScan": {
     "privateKeyMarkers": 0,
@@ -1174,7 +1185,7 @@
       },
       {
         "indicator": "absolute-url",
-        "count": 693
+        "count": 697
       },
       {
         "indicator": "analytics-id",
