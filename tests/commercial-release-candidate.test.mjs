@@ -36,21 +36,30 @@ test("renders exact incident routing and unique Start compatibility anchors", as
   assert.equal(countId(html, "visibility-check-request"), 1);
 });
 
+test("carries governed pricing choices into the editable Start form", async () => {
+  const client = await source("app/components/commercial/CommercialInquiryFormClient.tsx");
+  const pricing = await source("app/components/PricingPage.tsx");
+  assert.match(pricing, /\/start\/\?path=\$\{path\}&offer=\$\{offerId\}/);
+  assert.match(client, /new URLSearchParams\(search\)/);
+  assert.match(client, /useSyncExternalStore/);
+  assert.match(client, /PRICING_OFFER_DEFAULTS/);
+  assert.match(client, /service instanceof HTMLSelectElement/);
+  assert.match(client, /offer instanceof HTMLInputElement/);
+  assert.match(client, /pricing_lead_complete/);
+  assert.doesNotMatch(client, /message\s*=\s*(?:params|attribution)/);
+});
+
 test("maps Pricing compatibility aliases to meaningful groups", async () => {
   const pricing = await render("/pricing/");
   for (const [alias, group] of [
-    ["web-design", "websites"],
-    ["website-work", "websites"],
-    ["provider-rescue", "provider-rescue"],
-    ["analytics-reporting", "ongoing-seo"],
-    ["audits-strategy", "research-audits"],
+    ["web-design", "build-repair"],
+    ["website-work", "build-repair"],
+    ["provider-rescue", "build-repair"],
+    ["analytics-reporting", "ongoing"],
+    ["audits-strategy", "diagnose"],
   ]) {
     assert.equal(countId(pricing, alias), 1, `${alias} alias count`);
-    if (alias === group) {
-      assert.match(pricing, new RegExp(`<section[^>]+id="${group}"`));
-    } else {
-      assert.match(pricing, new RegExp(`<section[^>]+id="${group}"[\\s\\S]*?id="${alias}"[\\s\\S]*?<\\/section>`));
-    }
+    assert.match(pricing, new RegExp(`<section[^>]+id="${group}"[\\s\\S]*?id="${alias}"[\\s\\S]*?<\\/section>`));
   }
 });
 
@@ -147,10 +156,10 @@ test("renders Homepage metadata from selected commercial slots", async () => {
 
 test("keeps confirmed success final when analytics fails", async () => {
   const client = await source("app/components/commercial/CommercialInquiryFormClient.tsx");
-  assert.match(client, /function trackCommercialEvent[\s\S]*?try\s*\{[\s\S]*?umami\?\.track\(event\)[\s\S]*?\}\s*catch\s*\{/);
+  assert.match(client, /function trackCommercialEvent[\s\S]*?try\s*\{[\s\S]*?umami\?\.track\(event,\s*properties\)[\s\S]*?\}\s*catch\s*\{/);
   assert.match(client, /let confirmedSuccess = false;[\s\S]*?confirmedSuccess = true;[\s\S]*?\}\s*if \(confirmedSuccess\) \{[\s\S]*?setNotice\(\{ kind: "success"[\s\S]*?trackCommercialEvent/);
   assert.doesNotMatch(client, /try \{[\s\S]*?setNotice\(\{ kind: "success"[\s\S]*?\}\s*catch \{/);
-  assert.doesNotMatch(client, /trackCommercialEvent\([^)]*,[^)]*\)/);
+  assert.match(client, /pricing_lead_complete[\s\S]*?path:\s*attribution\.analyticsPath[\s\S]*?offer_id:/);
 });
 
 test("terminates Turnstile polling and keeps one widget lifecycle", async () => {

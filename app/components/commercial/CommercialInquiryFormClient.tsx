@@ -4,8 +4,10 @@ import {
   useCallback,
   useEffect,
   useId,
+  useMemo,
   useRef,
   useState,
+  useSyncExternalStore,
   type FormEvent,
 } from "react";
 
@@ -86,6 +88,13 @@ declare global {
 
 type Notice = NoticeContent & { kind: "success" | "error" };
 type FormValue = string | boolean;
+type PricingAttribution = {
+  path: "clarity" | "build-repair" | "ongoing";
+  analyticsPath: "clarity" | "build_repair" | "ongoing";
+  offerId?: string;
+  offerLabel?: string;
+  service: string;
+};
 
 const FORM_ENDPOINT =
   "https://boho-forms-intake.local1agent0.workers.dev/v1/submissions";
@@ -97,12 +106,57 @@ const EMERGENCY_PROBLEM_MAX_LENGTH = 8_000;
 const EMERGENCY_PROBLEM_ERROR =
   "Keep the incident description under 7,500 characters so the complete emergency message can be delivered.";
 
-function trackCommercialEvent(event: string) {
+const PRICING_OFFER_DEFAULTS: Readonly<Record<string, Pick<PricingAttribution, "offerLabel" | "service">>> = {
+  "initial-review": { offerLabel: "Initial review", service: "Not sure yet" },
+  "audit-research": { offerLabel: "Review, audit, or research", service: "Research, Analytics & Improvement" },
+  "provider-rescue-assessment": { offerLabel: "Provider rescue assessment", service: "Provider Rescue & Migration" },
+  "custom-discovery": { offerLabel: "Custom discovery and feasibility", service: "Custom Tools & Automation" },
+  "focused-website-improvement": { offerLabel: "Focused website improvement", service: "Websites & Managed Hosting" },
+  "provider-rescue": { offerLabel: "Provider rescue or migration", service: "Provider Rescue & Migration" },
+  "new-website": { offerLabel: "New website", service: "Websites & Managed Hosting" },
+  "substantial-redesign": { offerLabel: "Substantial redesign", service: "Websites & Managed Hosting" },
+  "focused-custom-build": { offerLabel: "Focused custom build", service: "Custom Tools & Automation" },
+  "monthly-reporting": { offerLabel: "Analyst-reviewed monthly report", service: "Research, Analytics & Improvement" },
+  "ongoing-seo": { offerLabel: "Ongoing SEO and search growth", service: "Local Visibility & Lead Systems" },
+};
+
+function pricingAttributionFromSearch(search: string): PricingAttribution | null {
+  const params = new URLSearchParams(search);
+  const path = params.get("path");
+  if (!["clarity", "build-repair", "ongoing"].includes(path ?? "")) return null;
+  const typedPath = path as PricingAttribution["path"];
+  const offerId = params.get("offer") ?? undefined;
+  const offer = offerId ? PRICING_OFFER_DEFAULTS[offerId] : undefined;
+  const service = offer?.service
+    ?? (typedPath === "ongoing" ? "Local Visibility & Lead Systems" : "Not sure yet");
+  return {
+    path: typedPath,
+    analyticsPath: typedPath === "build-repair" ? "build_repair" : typedPath,
+    offerId: offer ? offerId : undefined,
+    offerLabel: offer?.offerLabel,
+    service,
+  };
+}
+
+function subscribeToLocationChange(onStoreChange: () => void) {
+  window.addEventListener("popstate", onStoreChange);
+  return () => window.removeEventListener("popstate", onStoreChange);
+}
+
+function trackCommercialEvent(
+  event: string,
+  properties?: Readonly<Record<string, string>>,
+) {
   try {
     const analyticsWindow = window as unknown as {
-      umami?: { track(eventName: string): void };
+      umami?: {
+        track(
+          eventName: string,
+          properties?: Readonly<Record<string, string>>,
+        ): void;
+      };
     };
-    analyticsWindow.umami?.track(event);
+    analyticsWindow.umami?.track(event, properties);
   } catch {
     // Analytics is privacy-safe, value-free, and best-effort.
   }
@@ -124,11 +178,21 @@ export function CommercialInquiryFormClient({
   const widgetIdRef = useRef<string | null>(null);
   const pollTimerRef = useRef<number | null>(null);
   const submissionIdRef = useRef<string | null>(null);
+  const pricingAttributionRef = useRef<PricingAttribution | null>(null);
   const [turnstileToken, setTurnstileToken] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [notice, setNotice] = useState<Notice | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const locationSearch = useSyncExternalStore(
+    subscribeToLocationChange,
+    () => window.location.search,
+    () => "",
+  );
+  const pricingContext = useMemo(
+    () => pricingAttributionFromSearch(locationSearch),
+    [locationSearch],
+  );
   const isStart = presentation.kind === "start";
 
   const stopTurnstilePolling = useCallback(() => {
@@ -143,6 +207,18 @@ export function CommercialInquiryFormClient({
       trackCommercialEvent("commercial_start_form_open");
     }
   }, [presentation.kind]);
+
+  useEffect(() => {
+    pricingAttributionRef.current = pricingContext;
+    if (presentation.kind === "start" && pricingContext && formRef.current) {
+      const service = formRef.current.elements.namedItem("service");
+      if (service instanceof HTMLSelectElement) service.value = pricingContext.service;
+      const offer = formRef.current.elements.namedItem("valuableOffer");
+      if (offer instanceof HTMLInputElement && pricingContext.offerLabel) {
+        offer.value = pricingContext.offerLabel;
+      }
+    }
+  }, [presentation.kind, pricingContext]);
 
   useEffect(() => {
     let disposed = false;
@@ -351,6 +427,13 @@ export function CommercialInquiryFormClient({
       submissionIdRef.current = null;
       resetTurnstile();
       trackCommercialEvent(isStart ? "commercial_standard_inquiry_success" : "commercial_emergency_inquiry_success");
+      const attribution = pricingAttributionRef.current;
+      if (isStart && attribution) {
+        trackCommercialEvent("pricing_lead_complete", {
+          path: attribution.analyticsPath,
+          offer_id: attribution.offerId ?? "path_only",
+        });
+      }
     }
   }
 
@@ -406,6 +489,11 @@ export function CommercialInquiryFormClient({
         <h2>{presentation.heading.title}</h2>
         <p>{presentation.heading.body}</p>
         <p>{presentation.heading.requiredNote}</p>
+        {pricingContext ? (
+          <p className="commercial-form__pricing-context">
+            Pricing path selected: <strong>{pricingContext.offerLabel ?? pricingContext.path}</strong>. The matching service is preselected below, and you can change it.
+          </p>
+        ) : null}
       </header>
       <form ref={formRef} noValidate onSubmit={handleSubmit} aria-busy={submitting}>
         <div className="commercial-form__grid">{primaryFields.map(renderField)}</div>

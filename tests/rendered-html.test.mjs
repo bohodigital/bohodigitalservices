@@ -486,67 +486,96 @@ test("keeps candidate prices centralized and publishes the complete assessment-c
   assert.match(generatorSource, /rendered currency amounts do not match/);
 });
 
-test("renders the pricing guide with scoped presentation and existing service imagery", async () => {
+test("renders the buyer-led pricing decision system with governed offers and four chapter images", async () => {
   const pricing = await (await render("/pricing/")).text();
   const pricingMain = pricing.match(/<main\b[\s\S]*?<\/main>/i)?.[0] ?? "";
   const pricingSource = await readFile(new URL("../app/components/PricingPage.tsx", import.meta.url), "utf8");
+  const pricingInteractions = await readFile(new URL("../app/components/PricingInteractions.tsx", import.meta.url), "utf8");
   const pricingStyles = await readFile(new URL("../app/components/PricingPage.module.css", import.meta.url), "utf8");
 
   assert.match(pricingSource, /import styles from "\.\/PricingPage\.module\.css"/);
-  assert.match(pricingStyles, /\.priceGuide/);
-  assert.match(pricingStyles, /grid-template-columns:\s*minmax\(13rem,\s*0\.6fr\)\s*minmax\(0,\s*1\.4fr\)/);
-  assert.match(pricingStyles, /grid-template-columns:\s*minmax\(0,\s*1\.4fr\)\s*minmax\(13rem,\s*0\.6fr\)/);
+  assert.match(pricingStyles, /\.sectionNav\s*\{[\s\S]*position:\s*sticky/i);
+  assert.match(pricingStyles, /\.pathGrid\s*\{[\s\S]*grid-template-columns:\s*repeat\(3/i);
+  assert.match(pricingStyles, /grid-template-columns:\s*minmax\(13rem,\s*1fr\)\s*minmax\(22rem,\s*1\.8fr\)\s*minmax\(10rem,\s*0\.65fr\)/);
+  assert.match(pricingStyles, /overflow-x:\s*auto/i);
   assert.equal((pricing.match(/<h1\b/gi) ?? []).length, 1);
-  assert.equal((pricing.match(/<h2\b/gi) ?? []).length, 18);
-  assert.equal((pricingMain.match(/<h2\b/gi) ?? []).length, 17);
+  assert.equal((pricingMain.match(/<h2\b/gi) ?? []).length, 6);
   const headingSequence = [...pricingMain.matchAll(/<h2\b[^>]*>([\s\S]*?)<\/h2>/gi)]
     .map((match) => match[1].replace(/<[^>]+>/g, "").replaceAll("&amp;", "&"));
   assert.deepEqual(headingSequence, [
-    "What a starting price means",
-    "Initial public review — Free",
-    "SEO reporting — Starting at $95 per month",
-    "SEO implementation — Starting at $450 per month",
-    "Focused website improvement — Starting at $750",
-    "New website — Starting at $1,500",
-    "Substantial redesign — Starting at $1,500",
-    "Provider Rescue Assessment — Starting at $350",
-    "Migration assistance — Starting at $1,000",
-    "Focused audit or strategy — Starting at $350",
-    "Custom discovery — Starting at $500",
-    "Focused custom build — Starting at $2,500",
-    "What usually changes the price",
-    "Assessment credit",
-    "Managed hosting and defined email services",
-    "What happens before paid work begins",
-    "Send the situation. Get the smallest useful next step.",
+    "Start with the situation.",
+    "Diagnose before you commit.",
+    "Build or repair.",
+    "Operate and improve.",
+    "How Boho pricing works.",
+    "Not sure where to begin?",
   ]);
-  assert.match(pricingMain, /<section[^>]+data-offer-group="multiple"[^>]+id="ongoing-seo"/i);
-  assert.match(pricingMain, /<section[^>]+data-offer-group="initial"[^>]+id="initial-review"/i);
 
-  const initialReview = pricingMain.match(/<section\b[^>]*id="initial-review"[\s\S]*?<\/section>/i)?.[0] ?? "";
-  const ongoingSeo = pricingMain.match(/<section\b[^>]*id="ongoing-seo"[\s\S]*?<\/section>/i)?.[0] ?? "";
-  assert.ok(initialReview, "missing initial-review pricing group");
-  assert.ok(ongoingSeo, "missing ongoing-SEO pricing group");
-  assert.doesNotMatch(initialReview, /<img\b/i);
-  assert.match(ongoingSeo, /src="\/visuals\/services\/ongoing-seo-v1\.webp"/i);
-  assert.equal((pricingMain.match(/src="\/visuals\/growth-analysis\.webp"/gi) ?? []).length, 1);
+  for (const phrase of [
+    "Clear starting prices for websites, SEO, rescue, and custom digital work.",
+    "You do not need to diagnose the solution before starting.",
+    "I need clarity first.",
+    "I need something built or fixed.",
+    "I need ongoing support.",
+    "Monthly reporting",
+    "Measurement and interpretation",
+    "Continued search improvement",
+    "Describe what is broken, unclear, slow, expensive, or stuck.",
+  ]) {
+    assert.ok(pricingMain.includes(phrase), `pricing guide is missing: ${phrase}`);
+  }
+
+  for (const id of [
+    "pricing-paths",
+    "diagnose",
+    "build-repair",
+    "ongoing",
+    "how-pricing-works",
+    "provider-rescue",
+    "websites",
+    "web-design",
+    "custom-solutions",
+    "analytics-reporting",
+  ]) {
+    assert.match(pricingMain, new RegExp(`id="${id}"`, "i"), `missing pricing anchor ${id}`);
+  }
+
+  assert.equal((pricingMain.match(/data-pricing-offer="[^"]+"/gi) ?? []).length, 11);
+  assert.equal((pricingMain.match(/data-umami-event="pricing_offer_view"/gi) ?? []).length, 0);
+  assert.match(pricingInteractions, /pricing_offer_view/);
+  assert.match(pricingInteractions, /threshold:\s*\[0,\s*0\.55,\s*1\]/);
+  for (const event of [
+    "pricing_path_select",
+    "pricing_service_click",
+    "pricing_start_click",
+  ]) {
+    assert.match(pricingMain, new RegExp(`data-umami-event="${event}"`, "i"), `missing pricing event ${event}`);
+  }
 
   const pricingImages = [...pricingMain.matchAll(/<img\b[^>]*\bsrc="([^"]+)"/gi)].map((match) => match[1]);
-  assert.equal(new Set(pricingImages.filter((source) => source.startsWith("/visuals/"))).size, 6);
-  assert.match(pricingMain, /href="\/start\/"/i);
-  assert.match(pricingMain, /href="\/services\/"/i);
+  assert.equal(new Set(pricingImages.filter((source) => source.startsWith("/visuals/"))).size, 4);
+  assert.match(pricingMain, /href="\/start\/\?path=clarity&amp;offer=initial-review"/i);
+  assert.match(pricingMain, /href="\/start\/\?path=build-repair&amp;offer=new-website"/i);
+  assert.match(pricingMain, /href="\/start\/\?path=ongoing&amp;offer=ongoing-seo"/i);
+  assert.match(pricingMain, />Explore website design and redesign</i);
+  assert.match(pricingMain, />Explore ongoing SEO and search growth</i);
+  assert.match(pricingMain, />Explore provider rescue and migration</i);
+  assert.match(pricingMain, />Explore research and technical audits</i);
+  assert.match(pricingMain, />Explore custom tools and automation</i);
   assert.doesNotMatch(pricingMain, /<details\b|role="tab"|data-carousel|client-only/i);
   assert.doesNotMatch(pricingMain, /definition-term__trigger|definition-term__popover/i);
+  assert.match(pricingMain, /"@type":"BreadcrumbList"/);
+  assert.match(pricingMain, /"@type":"ItemList"/);
+  assert.match(pricing, /<title>Website, SEO &amp; Digital Services Pricing \| Boho<\/title>/i);
+  assert.match(pricing, /content="See clear starting prices for website design, SEO, provider rescue, audits, hosting, and custom automation\. Start with an initial review\."/i);
   assert.match(pricing, /G-5CV8L2SE2R/);
   assert.match(pricing, /analytics\.bohodigitalservices\.com/);
 
   for (const image of [
     "/visuals/growth-analysis.webp",
-    "/visuals/services/ongoing-seo-v1.webp",
-    "/visuals/services/web-design-redesign-v1.webp",
-    "/visuals/services/provider-rescue-v1.webp",
     "/visuals/services/research-audits-strategy-v1.webp",
-    "/visuals/services/custom-digital-solutions-v1.webp",
+    "/visuals/services/web-design-redesign-v1.webp",
+    "/visuals/services/ongoing-seo-v1.webp",
   ]) {
     assert.match(pricing, new RegExp(`src="${image}"`, "i"), `missing pricing visual ${image}`);
   }

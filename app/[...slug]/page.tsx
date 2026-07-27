@@ -68,9 +68,11 @@ function commercialRouteMetadata(route: string): CommercialRouteMetadata | null 
     case "/pricing/":
       return {
         section: commercialSection("pricing", "page-metadata"),
+        title: "Website, SEO & Digital Services Pricing | Boho",
+        description: "See clear starting prices for website design, SEO, provider rescue, audits, hosting, and custom automation. Start with an initial review.",
         canonical: commercialSection("pricing", "pricing").one("Canonical route"),
-        openGraphTitle: commercialSection("pricing", "pricing").one("Open Graph title"),
-        openGraphDescription: commercialSection("pricing", "pricing").one("Open Graph description"),
+        openGraphTitle: "Clear starting prices for websites, SEO, rescue, and custom digital work.",
+        openGraphDescription: "Compare credible starting prices, scope boundaries, and next steps for one-time and ongoing digital work.",
       };
     case "/contact/":
       return {
