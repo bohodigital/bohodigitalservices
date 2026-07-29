@@ -95,6 +95,22 @@ function idForFragment(fragment) {
   return fragment.replace(/^#/, "");
 }
 
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function mainContent(html) {
+  return html.match(/<main\b[\s\S]*?<\/main>/i)?.[0] ?? "";
+}
+
+function imageTags(html) {
+  return html.match(/<img\b[^>]*>/gi) ?? [];
+}
+
+function attributeValue(tag, attribute) {
+  return tag.match(new RegExp(`\\b${attribute}="([^"]*)"`, "i"))?.[1];
+}
+
 test("pre-renders the compressed homepage with exact approved copy", async () => {
   const response = await render();
   assert.equal(response.status, 200);
@@ -627,6 +643,239 @@ test("publishes the commercial Services decision layer and exact pricing invento
   ]) {
     assert.ok(pricing.includes(price), `missing exact price: ${price}`);
   }
+});
+
+test("restores the canonical Services asset system, proof, and accessible visual models", async () => {
+  const routeRequirements = {
+    "/services/ongoing-seo/": {
+      primary: "/visuals/services/ongoing-seo-v1.webp",
+      secondary: ["/visuals/growth-analysis.webp"],
+      diagrams: ["local-customer-path"],
+      proofIds: [],
+      captions: [
+        "Original editorial illustration explaining the service concept. Not client work or performance evidence.",
+        "Licensed editorial metaphor for steady, compounding improvement. Not a performance chart or client result.",
+      ],
+      moduleCount: 3,
+    },
+    "/services/web-design-redesign/": {
+      primary: "/visuals/services/web-design-redesign-v1.webp",
+      secondary: [
+        "/visuals/creative-process.webp",
+        "/diagrams/boho-hosting-architecture-v2.png",
+      ],
+      diagrams: ["website-release-flow"],
+      proofIds: ["how-biscuit", "rank-builder-seo", "better-grades"],
+      captions: [
+        "Original editorial illustration explaining the service concept. Not client work or performance evidence.",
+        "Licensed editorial image representing design planning and visual decision work. Not client work.",
+        "Factual architecture figure showing which website systems connect and where ownership and exit documentation matter.",
+        "Owned Boho property. Not a client project.",
+      ],
+      moduleCount: 4,
+    },
+    "/services/provider-rescue/": {
+      primary: "/visuals/services/provider-rescue-v1.webp",
+      secondary: ["/visuals/migration-infrastructure.webp"],
+      diagrams: ["ownership-map"],
+      proofIds: [],
+      captions: [
+        "Original editorial illustration explaining the service concept. Not client work or performance evidence.",
+        "Licensed editorial image representing infrastructure maintenance and migration work. Not client work.",
+      ],
+      moduleCount: 3,
+    },
+    "/services/research-audits-strategy/": {
+      primary: "/visuals/services/research-audits-strategy-v1.webp",
+      secondary: [
+        "/visuals/research-notebook.webp",
+        "/proof/tools/boho-analytics-platform.png",
+      ],
+      diagrams: ["measurement-search-signal-flow"],
+      proofIds: ["analysis-dashboard"],
+      captions: [
+        "Original editorial illustration explaining the service concept. Not client work or performance evidence.",
+        "Licensed editorial image representing research and evidence review. Not client work.",
+        "Public repository evidence from an owned Boho system.",
+        "Example data only",
+        "Not a client project",
+      ],
+      moduleCount: 4,
+    },
+    "/services/custom-digital-solutions/": {
+      primary: "/visuals/services/custom-digital-solutions-v1.webp",
+      secondary: [
+        "/proof/tools/bsuite-mcp-monitor.png",
+        "/proof/tools/boho-secret-broker.png",
+      ],
+      diagrams: ["controlled-automation-mcp-interface"],
+      proofIds: ["bsuite-mcp-monitor", "secret-broker"],
+      captions: [
+        "Original editorial illustration explaining the service concept. Not client work or performance evidence.",
+        "Public repository evidence from an owned Boho system.",
+        "Owned Boho system",
+        "Not a client project",
+      ],
+      moduleCount: 4,
+    },
+  };
+  const renderedByRoute = new Map();
+
+  for (const [route, requirements] of Object.entries(routeRequirements)) {
+    const html = await (await render(route)).text();
+    const main = mainContent(html);
+    const images = imageTags(main);
+    renderedByRoute.set(route, main);
+
+    assert.equal((main.match(/<h1\b/gi) ?? []).length, 1, `${route} h1 count`);
+    assert.equal(
+      images.filter((tag) => attributeValue(tag, "src") === requirements.primary).length,
+      1,
+      `${route} primary illustration occurrence`,
+    );
+    for (const src of requirements.secondary) {
+      assert.equal(
+        images.filter((tag) => attributeValue(tag, "src") === src).length,
+        1,
+        `${route} required supporting asset ${src}`,
+      );
+    }
+    for (const id of requirements.diagrams) {
+      assert.match(main, new RegExp(`(?:data-service-diagram-id|data-system-visual-id)="${escapeRegExp(id)}"`, "i"), `${route} missing ${id}`);
+    }
+    for (const id of requirements.proofIds) {
+      assert.match(main, new RegExp(`data-(?:service-proof|owned-property)-id="${escapeRegExp(id)}"`, "i"), `${route} missing proof ${id}`);
+    }
+    for (const caption of requirements.captions) {
+      assert.ok(main.includes(caption), `${route} missing disclosure: ${caption}`);
+    }
+
+    assert.equal(
+      (main.match(/\bdata-service-visual-module="[^"]+"/gi) ?? []).length,
+      requirements.moduleCount,
+      `${route} major visual module count`,
+    );
+    assert.ok(requirements.moduleCount <= 4, `${route} exceeds the module budget`);
+    assert.ok(images.length <= 6, `${route} has an unreasonable main-content image count`);
+    assert.match(main, /href="\/start\/"/i, `${route} lost its start CTA`);
+    assert.match(html, /G-5CV8L2SE2R/i, `${route} lost Google Analytics`);
+    assert.match(html, /analytics\.bohodigitalservices\.com/i, `${route} lost first-party analytics`);
+    assert.doesNotMatch(main, /<img\b[^>]*\bsrc="https?:\/\//i, `${route} uses a remote runtime image`);
+    assert.doesNotMatch(main, /<details\b[\s\S]*?<img\b/i, `${route} hides a critical visual in an inactive disclosure`);
+
+    for (const image of images) {
+      const src = attributeValue(image, "src");
+      assert.ok(src?.startsWith("/"), `${route} has a non-local image source: ${src}`);
+      assert.match(image, /\bwidth="\d+"/i, `${route} image lacks intrinsic width: ${src}`);
+      assert.match(image, /\bheight="\d+"/i, `${route} image lacks intrinsic height: ${src}`);
+      assert.match(image, /\bsizes="[^"]+"/i, `${route} image lacks responsive sizes: ${src}`);
+      await access(new URL(`../public${src}`, import.meta.url));
+    }
+  }
+
+  const serviceDetails = [...renderedByRoute.values()].join("\n");
+  for (const [src, requiredRoute] of [
+    ["/visuals/growth-analysis.webp", "/services/ongoing-seo/"],
+    ["/visuals/creative-process.webp", "/services/web-design-redesign/"],
+    ["/visuals/migration-infrastructure.webp", "/services/provider-rescue/"],
+    ["/visuals/research-notebook.webp", "/services/research-audits-strategy/"],
+    ["/diagrams/boho-hosting-architecture-v2.png", "/services/web-design-redesign/"],
+  ]) {
+    assert.equal(
+      imageTags(serviceDetails).filter((tag) => attributeValue(tag, "src") === src).length,
+      1,
+      `${src} detail-route inventory count`,
+    );
+    assert.match(renderedByRoute.get(requiredRoute), new RegExp(`src="${escapeRegExp(src)}"`), `${src} required route`);
+  }
+
+  for (const forbidden of [
+    "/visuals/industry-contractors.webp",
+    "/visuals/industry-local-service.webp",
+    "/visuals/industry-retail.webp",
+    "/visuals/industry-ecommerce.webp",
+    "/visuals/industry-b2b.webp",
+    "/proof/about/better-grades-homepage.png",
+    "/proof/about/how-biscuit-homepage.png",
+    "/proof/about/rank-builder-seo-homepage.png",
+    "/proof/about/science/",
+  ]) {
+    assert.doesNotMatch(serviceDetails, new RegExp(escapeRegExp(forbidden), "i"), `forbidden Services asset ${forbidden}`);
+  }
+
+  for (const id of [
+    "local-customer-path",
+    "website-release-flow",
+    "measurement-search-signal-flow",
+    "controlled-automation-mcp-interface",
+    "ownership-map",
+  ]) {
+    const figure = serviceDetails.match(new RegExp(`<figure\\b[^>]*(?:data-service-diagram-id|data-system-visual-id)="${escapeRegExp(id)}"[\\s\\S]*?<\\/figure>`, "i"))?.[0] ?? "";
+    assert.ok(figure, `missing complex visual ${id}`);
+    assert.match(figure, /\baria-describedby="[^"]+"/i, `${id} lacks an associated full text alternative`);
+    assert.match(figure, /systems-visual__text-alternative/i, `${id} lacks visible full text equivalent`);
+    assert.match(figure, /<figcaption\b/i, `${id} lacks a visible caption`);
+  }
+
+  const webMain = renderedByRoute.get("/services/web-design-redesign/");
+  assert.match(webMain, /id="visual-layered-infrastructure"/i);
+  assert.equal((webMain.match(/id="visual-layered-infrastructure"/gi) ?? []).length, 1);
+  const customMain = renderedByRoute.get("/services/custom-digital-solutions/");
+  assert.match(customMain, /id="visual-repair-integrate-build"/i);
+  assert.match(customMain, /href="\/tools\/#repair-integrate-build"/i);
+
+  const hubHtml = await (await render("/services/")).text();
+  const hubMain = mainContent(hubHtml);
+  assert.match(hubMain, /data-services-system-map="true"/i);
+  assert.match(hubMain, /data-system-visual-id="lean-direct-operation"/i);
+  assert.match(hubMain, /systems-visual__text-alternative/i);
+  assert.equal(
+    imageTags(hubMain).filter((tag) => attributeValue(tag, "src") === "/diagrams/how-boho-works-v2-transparent.png").length,
+    1,
+    "owner-supplied process derivative occurrence",
+  );
+  assert.doesNotMatch(hubMain, /how-boho-works-v1\.png/i);
+  assert.doesNotMatch(serviceDetails, /how-boho-works-v2-transparent\.png/i);
+  for (const route of Object.keys(routeRequirements)) {
+    assert.match(hubMain, new RegExp(`href="${escapeRegExp(route)}"`, "i"), `hub capability link ${route}`);
+  }
+  for (const src of Object.values(routeRequirements).map(({ primary }) => primary)) {
+    assert.equal(
+      imageTags(hubMain).filter((tag) => attributeValue(tag, "src") === src).length,
+      1,
+      `hub thumbnail ${src}`,
+    );
+  }
+  assert.match(hubMain, /href="\/pricing\/"/i);
+  assert.match(hubMain, /href="\/start\/"/i);
+
+  const allServiceContent = `${hubMain}\n${serviceDetails}`;
+  assert.equal(
+    imageTags(allServiceContent).filter((tag) => attributeValue(tag, "src") === "/diagrams/how-boho-works-v2-transparent.png").length,
+    1,
+  );
+  assert.doesNotMatch(allServiceContent, /met-water-textile\.webp/i);
+  const ledger = await readFile(new URL("../docs/services-asset-restoration-ledger.md", import.meta.url), "utf8");
+  assert.match(ledger, /met-water-textile\.webp[\s\S]*archive-approved/i);
+
+  const tools = await (await render("/tools/")).text();
+  assert.equal((tools.match(/class="systems-visual /g) ?? []).length, 2);
+  for (const id of [
+    "layered-infrastructure",
+    "repair-integrate-build",
+    "website-release-flow",
+    "measurement-search-signal-flow",
+    "controlled-automation-mcp-interface",
+    "ownership-map",
+    "lean-direct-operation",
+  ]) {
+    assert.equal((tools.match(new RegExp(`id="visual-${escapeRegExp(id)}"`, "gi")) ?? []).length, 1, `Tools visual index ID ${id}`);
+  }
+
+  const registrySource = await readFile(new URL("../app/content/serviceAssets.ts", import.meta.url), "utf8");
+  assert.match(registrySource, /selectedTools/);
+  assert.match(registrySource, /ownedWebsites/);
+  assert.doesNotMatch(registrySource, /\/proof\/(?:tools|properties)\//i, "canonical proof paths were duplicated into the service registry");
 });
 
 test("publishes factual privacy, terms, and accessibility pages", async () => {

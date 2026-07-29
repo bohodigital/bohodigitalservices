@@ -107,6 +107,45 @@ dimensions, and writes quality-82 WebP files. Homepage-image retrieval date:
 - Use: retained approved asset; no longer rendered on the homepage after the
   design section moved to human, process-oriented editorial photography.
 
+## Services restoration placement — 2026-07-28
+
+The Services asset recovery work did not add, download, regenerate, crop, or
+modify any raster asset. It established `app/content/serviceAssets.ts` as the
+placement registry for service illustrations, editorial chapter images, and
+the two owner-supplied diagrams. Tool and property proof metadata remains
+canonical in `app/content/systems.ts` and is reused by object reference.
+
+Public Services placements are:
+
+| Route | Editorial and diagram placement | Authentic proof |
+| --- | --- | --- |
+| `/services/` | Five commissioned illustrations as compact navigation markers; `how-boho-works-v2-transparent.png` as the owner-supplied process figure; semantic Services system map and lean direct-operation comparison | none |
+| `/services/ongoing-seo/` | `ongoing-seo-v1.webp`, semantic local customer path, and `growth-analysis.webp` | none |
+| `/services/web-design-redesign/` | `web-design-redesign-v1.webp`, `creative-process.webp`, semantic website release flow, `boho-hosting-architecture-v2.png`, and canonical layered-infrastructure visual | canonical How Biscuit, Rank Builder SEO, and Better Grades property proof |
+| `/services/provider-rescue/` | `provider-rescue-v1.webp`, semantic ownership map, and `migration-infrastructure.webp` | none |
+| `/services/research-audits-strategy/` | `research-audits-strategy-v1.webp`, `research-notebook.webp`, and semantic measurement/search-signal flow | canonical Boho Analytics Platform repository screenshot, labeled as example data and not a client result |
+| `/services/custom-digital-solutions/` | `custom-digital-solutions-v1.webp`, canonical repair/integrate/build visual, and semantic controlled-automation visual | canonical bSuite MCP Monitor and Boho Secret Broker repository proof, labeled as owned systems and not client projects |
+
+The original process file, `public/diagrams/how-boho-works-v1.png`, remains an
+unrendered immutable source. The transparent derivative remains the only
+public process rendering and receives a full text equivalent plus a
+keyboard-focusable narrow-screen viewport.
+
+`public/visuals/met-water-textile.webp` is retained as `archive-approved`. The
+website page does not contain an explicit chapter translating a historic
+visual reference into a modern design system, so the conditional use criteria
+are not met. The asset must remain unrendered until such a chapter and its
+public-domain source disclosure exist.
+
+Every commissioned illustration is visibly disclosed as original editorial
+illustration rather than client work or performance evidence. Every licensed
+editorial image carries its more specific approved not-client-work caption.
+Owned property proof is labeled `Owned Boho property. Not a client project.`
+Repository screenshots are labeled as public repository evidence from an
+owned Boho system. The complete placement, archival decisions, baseline
+rendering, and Git-history recovery record is in
+`docs/services-asset-restoration-ledger.md`.
+
 ## Supplied bee on dark chrome
 
 - The owner-supplied `public/brand/boho-bee-logo-v2-256.png` remains unchanged.

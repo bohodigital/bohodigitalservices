@@ -92,6 +92,8 @@ export type SelectedToolProfile = {
     alt: string;
     sourceUrl: `https://${string}`;
     evidenceType: "repository-screenshot" | "github-repository-preview";
+    width: number;
+    height: number;
   };
   lastVerified: `${number}-${number}-${number}`;
   evidenceSource: string;
@@ -114,6 +116,8 @@ export const selectedTools: ReadonlyArray<SelectedToolProfile> = [
       alt: "GitHub repository preview for bohodigital/bsuite-mcp-monitor.",
       sourceUrl: "https://github.com/bohodigital/bsuite-mcp-monitor",
       evidenceType: "github-repository-preview",
+      width: 1200,
+      height: 600,
     },
     lastVerified: "2026-07-16",
     evidenceSource: "Public repository bohodigital/bsuite-mcp-monitor main branch reviewed 2026-07-16",
@@ -135,6 +139,8 @@ export const selectedTools: ReadonlyArray<SelectedToolProfile> = [
       alt: "Boho Secret Broker desktop overview showing transfer operations and connection details with demo data.",
       sourceUrl: "https://github.com/bohodigital/boho-secret-broker/blob/main/docs/images/boho-secret-broker-overview.png",
       evidenceType: "repository-screenshot",
+      width: 1180,
+      height: 720,
     },
     lastVerified: "2026-07-16",
     evidenceSource: "Public repository bohodigital/boho-secret-broker main branch reviewed 2026-07-16",
@@ -156,6 +162,8 @@ export const selectedTools: ReadonlyArray<SelectedToolProfile> = [
       alt: "Boho Analytics time-series plot builder using public example Search Console data.",
       sourceUrl: "https://github.com/bohodigital/boho-analytics-platform/blob/main/docs/images/boho-analytics-plot-builder.png",
       evidenceType: "repository-screenshot",
+      width: 1440,
+      height: 1050,
     },
     lastVerified: "2026-07-16",
     evidenceSource: "Public repository bohodigital/boho-analytics-platform main branch reviewed 2026-07-16",
@@ -180,6 +188,8 @@ export type OwnedWebsiteProfile = {
     src: `/proof/properties/${string}.png`;
     alt: string;
     sourceUrl: `https://${string}`;
+    width: number;
+    height: number;
   };
   proofCategory: "owned-website";
   lastVerified: `${number}-${number}-${number}`;
@@ -200,6 +210,8 @@ export const ownedWebsites = [
       src: "/proof/properties/howbiscuit.png",
       alt: "How Biscuit brand card reading ‘How Biscuit? Plain answers, no sludge’ with colorful subject tiles.",
       sourceUrl: "https://github.com/bohodigital/howbiscuit/blob/main/public/og.png",
+      width: 1734,
+      height: 907,
     },
     proofCategory: "owned-website",
     lastVerified: "2026-07-16",
@@ -218,6 +230,8 @@ export const ownedWebsites = [
       src: "/proof/properties/rankbuilderseo.png",
       alt: "Rank Builder SEO evidence-file brand card focused on primary records and replicable tests.",
       sourceUrl: "https://github.com/bohodigital/rankbuilderseo/blob/main/public/og.png",
+      width: 1536,
+      height: 1024,
     },
     proofCategory: "owned-website",
     lastVerified: "2026-07-16",
@@ -236,6 +250,8 @@ export const ownedWebsites = [
       src: "/proof/properties/bettergrades.png",
       alt: "Better Grades brand card reading ‘Find the answer. Understand the method. The answer is free.’",
       sourceUrl: "https://github.com/bohodigital/bettergrades/blob/main/public/og.png",
+      width: 1731,
+      height: 909,
     },
     proofCategory: "owned-website",
     lastVerified: "2026-07-16",
@@ -256,16 +272,60 @@ export type SystemVisualDefinition = {
   id: SystemVisualId;
   title: string;
   publicInThisRelease: boolean;
+  route: `/${string}`;
+  section: string;
 };
 
 export const systemVisuals = [
-  { id: "layered-infrastructure", title: "Mature foundation and Boho operating layer", publicInThisRelease: true },
-  { id: "repair-integrate-build", title: "Repair, integrate, or build", publicInThisRelease: true },
-  { id: "website-release-flow", title: "Website release flow", publicInThisRelease: false },
-  { id: "measurement-search-signal-flow", title: "Measurement and search-signal flow", publicInThisRelease: false },
-  { id: "controlled-automation-mcp-interface", title: "Controlled automation and MCP interface", publicInThisRelease: false },
-  { id: "ownership-map", title: "Ownership map", publicInThisRelease: false },
-  { id: "lean-direct-operation", title: "Lean direct operation versus layered provider overhead", publicInThisRelease: false },
+  {
+    id: "layered-infrastructure",
+    title: "Mature foundation and Boho operating layer",
+    publicInThisRelease: true,
+    route: "/tools/",
+    section: "Layered infrastructure",
+  },
+  {
+    id: "repair-integrate-build",
+    title: "Repair, integrate, or build",
+    publicInThisRelease: true,
+    route: "/tools/",
+    section: "Repair, integrate, or build",
+  },
+  {
+    id: "website-release-flow",
+    title: "Website release flow",
+    publicInThisRelease: true,
+    route: "/services/web-design-redesign/",
+    section: "What Boho delivers",
+  },
+  {
+    id: "measurement-search-signal-flow",
+    title: "Measurement and search-signal flow",
+    publicInThisRelease: true,
+    route: "/services/research-audits-strategy/",
+    section: "Measurement that changes a decision",
+  },
+  {
+    id: "controlled-automation-mcp-interface",
+    title: "Controlled automation and MCP interface",
+    publicInThisRelease: true,
+    route: "/services/custom-digital-solutions/",
+    section: "Operating requirements",
+  },
+  {
+    id: "ownership-map",
+    title: "Ownership map",
+    publicInThisRelease: true,
+    route: "/services/provider-rescue/",
+    section: "Map the dependency chain",
+  },
+  {
+    id: "lean-direct-operation",
+    title: "Lean direct operation versus layered provider overhead",
+    publicInThisRelease: true,
+    route: "/services/",
+    section: "The work should leave the business with more control",
+  },
 ] as const satisfies ReadonlyArray<SystemVisualDefinition>;
 
 export const infrastructureLayers = [
@@ -301,4 +361,132 @@ export const repairIntegrateBuildSteps = [
   { number: "03", title: "Integrate", body: "If repair is not enough, use a mature product when it solves the problem cleanly and can be operated responsibly." },
   { number: "04", title: "Build the gap", body: "When a narrow capability is still missing, build only that component when its value exceeds build and maintenance cost." },
   { number: "05", title: "Confirm the exit", body: "Verify ownership, security, maintainability, failure behavior, portability, and the recovery path before release." },
+] as const;
+
+export const websiteReleaseSteps = [
+  {
+    label: "Plan",
+    detail: "Agree the site job, users, scope, ownership, approvals, and release boundary.",
+  },
+  {
+    label: "Content and structure",
+    detail: "Map routes, page responsibilities, content inputs, forms, and customer paths.",
+  },
+  {
+    label: "Design system",
+    detail: "Set reusable type, color, spacing, component, responsive, and accessibility rules.",
+  },
+  {
+    label: "Build",
+    detail: "Implement the approved pages, forms, analytics hooks, and delivery configuration.",
+  },
+  {
+    label: "Verify",
+    detail: "Check routes, forms, analytics, responsive behavior, accessibility, and the agreed acceptance record.",
+  },
+  {
+    label: "Launch and handoff",
+    detail: "Release the verified version, then provide ownership, operating, rollback, and maintenance documentation.",
+  },
+] as const;
+
+export const measurementSearchSignalSteps = [
+  {
+    label: "Discovery signal",
+    source: "Search platform or referral source",
+    detail: "A source-labeled record shows where discovery may have begun.",
+  },
+  {
+    label: "Relevant visit",
+    source: "Website analytics",
+    detail: "A separate source records a visit without pretending it is the same measurement as a search impression.",
+  },
+  {
+    label: "Understanding",
+    source: "Page and content review",
+    detail: "Structure and content are reviewed for whether the offer and next step can be understood.",
+  },
+  {
+    label: "Trust",
+    source: "Evidence and experience review",
+    detail: "Inspectable proof, ownership, usability, and clarity are evaluated without inventing a score.",
+  },
+  {
+    label: "Action",
+    source: "Form, call, booking, or other owned record",
+    detail: "A business-specific action is measured only when a valid record exists.",
+  },
+  {
+    label: "Business outcome",
+    source: "Authorized business record",
+    detail: "The business outcome remains distinct from marketing-platform data and may not be attributable to one cause.",
+  },
+] as const;
+
+export const controlledAutomationSteps = [
+  {
+    label: "Approved input",
+    owner: "Business or authorized system",
+    detail: "The workflow starts only with an approved source and a named owner.",
+  },
+  {
+    label: "Validation",
+    owner: "Deterministic checks",
+    detail: "Format, authority, completeness, and safe operating bounds are checked before action.",
+  },
+  {
+    label: "Human or policy gate",
+    owner: "Named approver or explicit policy",
+    detail: "A person or documented policy decides whether the action may continue.",
+  },
+  {
+    label: "Controlled action",
+    owner: "Bounded tool",
+    detail: "The tool performs only the approved action and fails closed when required conditions are missing.",
+  },
+  {
+    label: "Record",
+    owner: "Accountable system of record",
+    detail: "The request, approval, result, and failure state are retained without exposing credentials.",
+  },
+  {
+    label: "Monitoring",
+    owner: "Responsible operator",
+    detail: "A responsible person can see failures, stop the workflow, and decide what happens next.",
+  },
+] as const;
+
+export const ownershipMapLayers = [
+  "Domain and registrar",
+  "DNS",
+  "Hosting",
+  "CMS",
+  "Content and URLs",
+  "Forms and customer contact",
+  "Analytics and search properties",
+  "Email connections",
+  "Documentation and authorized owners",
+] as const;
+
+export const ownershipMapStates = [
+  "Known",
+  "Unknown",
+  "Controlled",
+  "At risk",
+  "Owner action required",
+] as const;
+
+export const leanOperationModels = [
+  {
+    label: "Layered provider model",
+    qualifier: "One possible operating structure",
+    steps: ["Sales", "Account layer", "Subcontractor", "Hidden platform", "Business"],
+    visibility: "Decision, ownership, and handoff information can be divided among several layers.",
+  },
+  {
+    label: "Direct Boho model",
+    qualifier: "Boho's operating structure",
+    steps: ["Business", "Responsible technical operator", "Documented systems"],
+    visibility: "The business and responsible operator share a direct decision path with visible ownership and handoff records.",
+  },
 ] as const;
