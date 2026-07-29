@@ -302,12 +302,12 @@
     },
     {
       "path": "app/components/ServicesPage.tsx",
-      "sha256": "7511fa88de23cd8673ee337acbf31936627afd8e18e3da216216368920111caa",
-      "bytes": 10100,
+      "sha256": "27e3030dbd607291c564078b956c7fd2f7813e0fd9fefbeebc350f36baebeb00",
+      "bytes": 10002,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 159,
+      "publicStringCount": 158,
       "importCount": 3,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
@@ -346,8 +346,8 @@
     },
     {
       "path": "app/components/services/ServiceAssetModules.tsx",
-      "sha256": "1b810dc0369d9c312bd655db2d4fd4c0e7a917f3fee1d39bd79e74a59cfcae6d",
-      "bytes": 14062,
+      "sha256": "2e59668f3d2ea7a1badbe04b635a808e58376667e1d789fe1a4c5873eabe5543",
+      "bytes": 13911,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
@@ -368,8 +368,8 @@
     },
     {
       "path": "app/components/services/ServiceVisualFigure.tsx",
-      "sha256": "e16537ce667bf5064360064a06e20474c3e29288b90993c2011626786bbe37da",
-      "bytes": 1228,
+      "sha256": "28a58566d81a4aaf40438f0e972fbdc78195b4c1db214641cc39a0ba64855686",
+      "bytes": 1290,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
@@ -1221,14 +1221,14 @@
     "reachable": 64,
     "authored": 64,
     "generatedMirrors": 1,
-    "publicStringsOnDemand": 12289,
+    "publicStringsOnDemand": 12288,
     "analyticsClaimContexts": 35
   },
   "fullDetail": {
     "committed": false,
     "generationCommand": "node scripts/commercial-copy-build.mjs --check --inventory-detail <path>",
-    "recordCount": 12289,
-    "deterministicDigest": "c27131f89e5042a3b3eccb72c71e8fefbc82e4b28c0945af6583fa01ed7bbbe6"
+    "recordCount": 12288,
+    "deterministicDigest": "65fb65de3db87e87cf2cd07777d3a17ab663b7e306ad21cd7cffc341609f6882"
   },
   "securityScan": {
     "privateKeyMarkers": 0,

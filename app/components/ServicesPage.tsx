@@ -93,7 +93,6 @@ export function ServicesPage() {
                           src={asset.src}
                           width={asset.width}
                         />
-                        <figcaption>Original service illustration · not client work</figcaption>
                       </figure>
                     );
                   })() : null}

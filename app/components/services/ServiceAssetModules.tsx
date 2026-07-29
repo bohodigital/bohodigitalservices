@@ -41,14 +41,12 @@ export function PrimaryServiceIllustration({
         <div>
           <p className="eyebrow">Service field guide</p>
           <h2>A visual orientation to the work</h2>
-          <p>
-            This commissioned illustration explains the service concept. The detailed sections below define scope, decisions, evidence, and boundaries.
-          </p>
         </div>
         <ServiceVisualFigure
           asset={primaryServiceAssetByRoute[route]}
           className="service-asset-figure--primary"
           priority
+          showCaption={false}
         />
       </div>
     </section>

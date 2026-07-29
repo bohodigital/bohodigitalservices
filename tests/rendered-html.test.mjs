@@ -653,7 +653,6 @@ test("restores the canonical Services asset system, proof, and accessible visual
       diagrams: ["local-customer-path"],
       proofIds: [],
       captions: [
-        "Original editorial illustration explaining the service concept. Not client work or performance evidence.",
         "Licensed editorial metaphor for steady, compounding improvement. Not a performance chart or client result.",
       ],
       moduleCount: 3,
@@ -667,7 +666,6 @@ test("restores the canonical Services asset system, proof, and accessible visual
       diagrams: ["website-release-flow"],
       proofIds: ["how-biscuit", "rank-builder-seo", "better-grades"],
       captions: [
-        "Original editorial illustration explaining the service concept. Not client work or performance evidence.",
         "Licensed editorial image representing design planning and visual decision work. Not client work.",
         "Factual architecture figure showing which website systems connect and where ownership and exit documentation matter.",
         "Owned Boho property. Not a client project.",
@@ -680,7 +678,6 @@ test("restores the canonical Services asset system, proof, and accessible visual
       diagrams: ["ownership-map"],
       proofIds: [],
       captions: [
-        "Original editorial illustration explaining the service concept. Not client work or performance evidence.",
         "Licensed editorial image representing infrastructure maintenance and migration work. Not client work.",
       ],
       moduleCount: 3,
@@ -694,7 +691,6 @@ test("restores the canonical Services asset system, proof, and accessible visual
       diagrams: ["measurement-search-signal-flow"],
       proofIds: ["analysis-dashboard"],
       captions: [
-        "Original editorial illustration explaining the service concept. Not client work or performance evidence.",
         "Licensed editorial image representing research and evidence review. Not client work.",
         "Public repository evidence from an owned Boho system.",
         "Example data only",
@@ -711,7 +707,6 @@ test("restores the canonical Services asset system, proof, and accessible visual
       diagrams: ["controlled-automation-mcp-interface"],
       proofIds: ["bsuite-mcp-monitor", "secret-broker"],
       captions: [
-        "Original editorial illustration explaining the service concept. Not client work or performance evidence.",
         "Public repository evidence from an owned Boho system.",
         "Owned Boho system",
         "Not a client project",
@@ -774,6 +769,11 @@ test("restores the canonical Services asset system, proof, and accessible visual
   }
 
   const serviceDetails = [...renderedByRoute.values()].join("\n");
+  assert.doesNotMatch(
+    serviceDetails,
+    /Original editorial illustration explaining the service concept|This commissioned illustration explains the service concept/i,
+    "commissioned illustration disclaimer remains on a service detail route",
+  );
   for (const [src, requiredRoute] of [
     ["/visuals/growth-analysis.webp", "/services/ongoing-seo/"],
     ["/visuals/creative-process.webp", "/services/web-design-redesign/"],
@@ -826,6 +826,11 @@ test("restores the canonical Services asset system, proof, and accessible visual
 
   const hubHtml = await (await render("/services/")).text();
   const hubMain = mainContent(hubHtml);
+  assert.doesNotMatch(
+    hubMain,
+    /Original service illustration|Original editorial illustration explaining the service concept/i,
+    "commissioned illustration disclaimer remains on the Services hub",
+  );
   assert.match(hubMain, /data-services-system-map="true"/i);
   assert.match(hubMain, /data-system-visual-id="lean-direct-operation"/i);
   assert.match(hubMain, /systems-visual__text-alternative/i);

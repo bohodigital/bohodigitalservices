@@ -5,11 +5,13 @@ export function ServiceVisualFigure({
   className = "",
   priority = false,
   captionPrefix,
+  showCaption = true,
 }: {
   asset: ServiceAsset;
   className?: string;
   priority?: boolean;
   captionPrefix?: string;
+  showCaption?: boolean;
 }) {
   return (
     <figure
@@ -30,7 +32,7 @@ export function ServiceVisualFigure({
           width={asset.width}
         />
       </div>
-      {asset.caption ? (
+      {showCaption && asset.caption ? (
         <figcaption>
           {captionPrefix ? <strong>{captionPrefix}</strong> : null}
           <span>{asset.caption}</span>
