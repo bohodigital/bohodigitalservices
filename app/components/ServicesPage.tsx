@@ -1,7 +1,17 @@
 import {
   commercialSection,
 } from "../content/commercial/presentation";
+import {
+  primaryServiceAssetByRoute,
+  type ServiceAssetRoute,
+} from "../content/serviceAssets";
+import { servicePresentationByRoute } from "../content/servicePresentation";
 import { Footer, Header } from "./commercial/CommercialChrome";
+import {
+  HowBohoWorksFigure,
+  ServicesLeanComparison,
+  ServicesSystemMap,
+} from "./services/ServiceAssetModules";
 
 const serviceRows = [
   ["local-visibility-lead-systems", "service-local-visibility", "local-visibility-lead-systems"],
@@ -50,7 +60,10 @@ export function ServicesPage() {
                 <a className="button-link button-link--secondary" data-umami-event="commercial_pricing_cta" href={hero.one("Secondary destination")}>{hero.one("Secondary CTA")}</a>
               </div>
             </div>
-            <aside className="commercial-hero__aside"><strong>{hero.one("Trust line")}</strong></aside>
+            <aside className="commercial-hero__aside commercial-hero__aside--system">
+              <strong>{hero.one("Trust line")}</strong>
+              <ServicesSystemMap />
+            </aside>
           </div>
         </section>
 
@@ -64,6 +77,25 @@ export function ServicesPage() {
             <div className="commercial-problems__grid">
               {problems.map((problem) => (
                 <article key={problem.heading}>
+                  {problem.href in servicePresentationByRoute ? (() => {
+                    const route = problem.href as ServiceAssetRoute;
+                    const presentation = servicePresentationByRoute[route];
+                    const asset = primaryServiceAssetByRoute[route];
+                    return (
+                      <figure className="services-capability-marker" data-service-thumbnail-route={route}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          alt={presentation.alt}
+                          decoding="async"
+                          height={asset.height}
+                          loading="lazy"
+                          sizes="(max-width: 54rem) 6rem, 8rem"
+                          src={asset.src}
+                          width={asset.width}
+                        />
+                      </figure>
+                    );
+                  })() : null}
                   <h3>{problem.heading}</h3>
                   <p>{problem.body}</p>
                   <strong>{problem.service}</strong>
@@ -118,6 +150,9 @@ export function ServicesPage() {
             </div>
           </div>
         </section>
+
+        <HowBohoWorksFigure />
+        <ServicesLeanComparison />
 
         <section className="commercial-section commercial-recommendation" aria-labelledby="recommendation-title">
           <div className="section-shell commercial-recommendation__grid">

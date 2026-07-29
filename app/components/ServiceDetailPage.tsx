@@ -3,10 +3,15 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 import type { ServicePage, ServicePageBlock } from "../content/servicePages.generated";
+import type { ServiceAssetRoute } from "../content/serviceAssets";
 import {
   CommercialServiceLayer,
   isCommercialServiceRoute,
 } from "./commercial/CommercialServiceLayer";
+import {
+  PrimaryServiceIllustration,
+  visualPlacementForSection,
+} from "./services/ServiceAssetModules";
 import { DefinedText } from "./DefinedText";
 import { Footer, Header } from "./commercial/CommercialChrome";
 
@@ -225,11 +230,13 @@ export function ServiceDetailPage({ page }: { page: ServicePage }) {
   if (!isCommercialServiceRoute(page.metadata.canonicalRoute)) {
     throw new Error(`Missing commercial service layer for ${page.metadata.canonicalRoute}`);
   }
+  const serviceRoute = page.metadata.canonicalRoute as ServiceAssetRoute;
   return (
     <>
       <Header />
       <main className="service-document" id="main-content" tabIndex={-1}>
         <CommercialServiceLayer route={page.metadata.canonicalRoute} />
+        <PrimaryServiceIllustration route={serviceRoute} />
 
         <nav className="service-document-index">
           <div className="section-shell">
@@ -254,9 +261,13 @@ export function ServiceDetailPage({ page }: { page: ServicePage }) {
               );
             }
             const sectionId = headingId(page.metadata.canonicalRoute, section.heading.text);
+            const visualPlacement = visualPlacementForSection(
+              serviceRoute,
+              section.heading.text,
+            );
             return (
               <section
-                className={`service-document-section service-document-section--${sectionIndex % 3}`}
+                className={`service-document-section service-document-section--${sectionIndex % 3}${visualPlacement ? " service-document-section--with-visual" : ""}`}
                 id={sectionId}
                 key={section.heading.text}
               >
@@ -275,6 +286,11 @@ export function ServiceDetailPage({ page }: { page: ServicePage }) {
                       ),
                     )}
                   </div>
+                  {visualPlacement ? (
+                    <div className="service-document-section__visual">
+                      {visualPlacement}
+                    </div>
+                  ) : null}
                 </div>
               </section>
             );
