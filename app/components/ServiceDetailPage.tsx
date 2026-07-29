@@ -261,9 +261,13 @@ export function ServiceDetailPage({ page }: { page: ServicePage }) {
               );
             }
             const sectionId = headingId(page.metadata.canonicalRoute, section.heading.text);
+            const visualPlacement = visualPlacementForSection(
+              serviceRoute,
+              section.heading.text,
+            );
             return (
               <section
-                className={`service-document-section service-document-section--${sectionIndex % 3}`}
+                className={`service-document-section service-document-section--${sectionIndex % 3}${visualPlacement ? " service-document-section--with-visual" : ""}`}
                 id={sectionId}
                 key={section.heading.text}
               >
@@ -281,8 +285,12 @@ export function ServiceDetailPage({ page }: { page: ServicePage }) {
                         `${sectionId}-${blockIndex}`,
                       ),
                     )}
-                    {visualPlacementForSection(serviceRoute, section.heading.text)}
                   </div>
+                  {visualPlacement ? (
+                    <div className="service-document-section__visual">
+                      {visualPlacement}
+                    </div>
+                  ) : null}
                 </div>
               </section>
             );

@@ -275,9 +275,11 @@
 .service-document-section--2 { background: #f7eddd; }
 .service-document-section__layout { display: grid; grid-template-columns: minmax(16rem, 0.6fr) minmax(24rem, 1fr); gap: clamp(3rem, 8vw, 8rem); align-items: start; }
 .service-document-section__layout > header { position: sticky; top: 10rem; }
+.service-document-section--with-visual .service-document-section__layout > header { position: static; }
 .service-document-section__layout > header > span { display: block; margin-bottom: 1.8rem; color: var(--copper-text); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 800; }
 .service-document-section h2 { max-width: 13ch; margin-bottom: 0; font-size: clamp(2rem, 3.2vw, 3.6rem); }
 .service-document-section__content { max-width: 48rem; }
+.service-document-section__visual { grid-column: 1 / -1; min-width: 0; }
 .service-document-section__content > p { color: #303638; }
 .service-document-section__content > h3 { max-width: 27ch; padding-top: 2.4rem; margin-top: 2.4rem; border-top: 1px solid var(--line-dark); font-size: clamp(1.5rem, 2vw, 2.15rem); scroll-margin-top: 10rem; }
 .service-document-section__content > h3:first-child { padding-top: 0; margin-top: 0; border-top: 0; }
@@ -464,26 +466,97 @@
 }
 
 .services-capability-marker {
-  display: grid;
-  grid-template-columns: 5.25rem minmax(0, 1fr);
-  gap: 0.7rem;
-  align-items: center;
-  margin: 0 0 0.5rem;
+  grid-area: visual;
+  min-width: 0;
+  margin: 0;
 }
 
 .services-capability-marker img {
   display: block;
-  width: 5.25rem;
-  height: 3.5rem;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
   border: 1px solid var(--commercial-line);
   object-fit: cover;
 }
 
 .services-capability-marker figcaption {
+  padding-top: 0.55rem;
   color: var(--muted);
-  font-size: 0.65rem;
+  font-size: 0.68rem;
   font-weight: 750;
   line-height: 1.35;
+}
+
+.commercial-services-page .commercial-problems__grid {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.35rem;
+}
+
+.commercial-services-page .commercial-problems__grid article,
+.commercial-services-page .commercial-problems__grid article:nth-child(1),
+.commercial-services-page .commercial-problems__grid article:nth-child(5) {
+  display: grid;
+  grid-template:
+    "visual title service" auto
+    "visual body service" 1fr
+    "visual body link" auto
+    / minmax(16rem, 0.58fr) minmax(19rem, 1fr) minmax(12rem, 0.4fr);
+  grid-column: 1 / -1;
+  gap: 0.7rem clamp(1.5rem, 3vw, 3rem);
+  min-height: 15rem;
+  padding: clamp(1rem, 2vw, 1.4rem);
+  overflow: hidden;
+  border-left: 0.4rem solid var(--verdigris);
+  box-shadow: 0 1rem 2.5rem rgb(17 18 20 / 6%);
+}
+
+.commercial-services-page .commercial-problems__grid article:nth-child(2) {
+  border-left-color: var(--burnished-gold);
+}
+
+.commercial-services-page .commercial-problems__grid article:nth-child(3) {
+  border-left-color: var(--copper);
+}
+
+.commercial-services-page .commercial-problems__grid article:nth-child(4) {
+  border-left-color: var(--dusty-plum);
+}
+
+.commercial-services-page .commercial-problems__grid article:nth-child(5) {
+  border-left-color: var(--ink);
+}
+
+.commercial-services-page .commercial-problems__grid article h3 {
+  grid-area: title;
+  align-self: end;
+  max-width: 22ch;
+  margin: 0;
+  font-size: clamp(1.55rem, 2.3vw, 2.35rem);
+}
+
+.commercial-services-page .commercial-problems__grid article > p {
+  grid-area: body;
+  max-width: 46rem;
+  margin: 0;
+  color: var(--muted);
+}
+
+.commercial-services-page .commercial-problems__grid article > strong {
+  grid-area: service;
+  align-self: center;
+  padding: 1rem 0 1rem 1.25rem;
+  border-left: 1px solid var(--commercial-line);
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+.commercial-services-page .commercial-problems__grid article > a {
+  grid-area: link;
+  align-self: end;
+  justify-self: start;
+  margin: 0;
+  color: var(--verdigris-text);
 }
 
 .services-process-figure {
@@ -579,8 +652,8 @@
 .service-visual-module,
 .service-proof-module {
   min-width: 0;
-  padding-top: clamp(2.2rem, 5vw, 4rem);
-  margin-top: clamp(2.2rem, 5vw, 4rem);
+  padding-top: clamp(2.8rem, 5vw, 4.5rem);
+  margin-top: clamp(3rem, 6vw, 5.5rem);
   border-top: 0.35rem solid var(--verdigris);
 }
 
@@ -597,14 +670,44 @@
 
 .service-visual-split {
   display: grid;
-  grid-template-columns: minmax(15rem, 0.72fr) minmax(24rem, 1.28fr);
-  gap: clamp(1.5rem, 4vw, 4rem);
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(3rem, 6vw, 6rem);
   align-items: start;
 }
 
+.service-visual-split--editorial > div:first-child {
+  display: grid;
+  grid-template-columns: minmax(16rem, 0.65fr) minmax(24rem, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  padding: clamp(1.5rem, 3vw, 3rem);
+  background:
+    linear-gradient(125deg, rgb(227 174 61 / 10%), transparent 52%),
+    rgb(255 255 255 / 45%);
+}
+
+.service-visual-split--editorial > div:first-child .service-visual-module__heading {
+  margin-bottom: 0;
+}
+
 .service-visual-split--editorial .service-asset-figure img {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 2;
   object-position: center;
+}
+
+[data-service-visual-module="growth-analysis"],
+[data-service-visual-module="migration-infrastructure"],
+[data-service-visual-module="research-notebook"] {
+  display: grid;
+  grid-template-columns: minmax(16rem, 0.62fr) minmax(24rem, 1.38fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: center;
+}
+
+[data-service-visual-module="growth-analysis"] .service-visual-module__heading,
+[data-service-visual-module="migration-infrastructure"] .service-visual-module__heading,
+[data-service-visual-module="research-notebook"] .service-visual-module__heading {
+  margin-bottom: 0;
 }
 
 .responsive-diagram-viewport {
@@ -661,27 +764,57 @@
 }
 
 .systems-flow {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.8rem;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0;
   padding: 0;
-  margin: 0;
+  margin: 1rem 0 0;
+  border-top: 1px solid var(--line-dark);
   list-style: none;
 }
 
 .systems-flow > li {
   position: relative;
   min-width: 0;
-  padding: 1rem;
-  border: 1px solid var(--line-dark);
-  background: rgb(255 255 255 / 58%);
+  padding: 2.8rem clamp(0.8rem, 1.5vw, 1.35rem) 1.35rem;
+  border: 0;
+  border-right: 1px solid var(--line-dark);
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 62%), rgb(255 255 255 / 25%));
+}
+
+.systems-flow > li:last-child {
+  border-right: 0;
+}
+
+.systems-flow > li::before {
+  position: absolute;
+  top: -0.24rem;
+  right: 0;
+  left: 0;
+  height: 0.24rem;
+  background: var(--verdigris);
+  content: "";
+}
+
+.systems-flow > li:nth-child(2)::before,
+.systems-flow > li:nth-child(5)::before {
+  background: var(--burnished-gold);
+}
+
+.systems-flow > li:nth-child(3)::before,
+.systems-flow > li:nth-child(6)::before {
+  background: var(--copper);
 }
 
 .systems-flow > li > span {
+  position: absolute;
+  top: 0.75rem;
+  left: clamp(0.8rem, 1.5vw, 1.35rem);
   display: inline-grid;
-  width: 2rem;
-  height: 2rem;
-  margin-bottom: 1.2rem;
+  width: 1.55rem;
+  height: 1.55rem;
   place-items: center;
   border-radius: 50%;
   background: var(--ink);
@@ -774,9 +907,19 @@
   display: grid;
   grid-template-columns: 2rem minmax(0, 1fr);
   gap: 0.6rem 0.8rem;
-  padding: 0.9rem;
-  border: 1px solid var(--line-dark);
-  background: rgb(255 255 255 / 55%);
+  padding: 1.15rem;
+  border: 0;
+  border-top: 0.25rem solid var(--verdigris);
+  background: rgb(255 255 255 / 58%);
+  box-shadow: 0 0.7rem 1.8rem rgb(17 18 20 / 5%);
+}
+
+.ownership-map li:nth-child(3n + 2) {
+  border-top-color: var(--burnished-gold);
+}
+
+.ownership-map li:nth-child(3n) {
+  border-top-color: var(--copper);
 }
 
 .ownership-map li > span {
@@ -855,7 +998,7 @@
 .service-proof-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
+  gap: clamp(1.2rem, 2.5vw, 2rem);
 }
 
 .service-proof-grid--1 {
@@ -871,6 +1014,7 @@
   overflow: hidden;
   border: 1px solid var(--line-dark);
   background: #fffdf7;
+  box-shadow: 0 1.2rem 3rem rgb(17 18 20 / 7%);
 }
 
 .service-proof-card figure {
@@ -910,7 +1054,7 @@
 }
 
 .service-proof-card__body {
-  padding: 1rem;
+  padding: clamp(1.15rem, 2vw, 1.65rem);
 }
 
 .service-proof-card__label {
@@ -1011,7 +1155,11 @@
   }
 
   .service-primary-visual__layout,
-  .service-visual-split {
+  .service-visual-split,
+  .service-visual-split--editorial > div:first-child,
+  [data-service-visual-module="growth-analysis"],
+  [data-service-visual-module="migration-infrastructure"],
+  [data-service-visual-module="research-notebook"] {
     grid-template-columns: 1fr;
   }
 
@@ -1022,6 +1170,10 @@
   .systems-flow,
   .ownership-map {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .systems-flow > li:nth-child(even) {
+    border-right: 0;
   }
 
   .decision-path {
@@ -1052,6 +1204,25 @@
 }
 
 @media (max-width: 54rem) {
+  .commercial-services-page .commercial-problems__grid article,
+  .commercial-services-page .commercial-problems__grid article:nth-child(1),
+  .commercial-services-page .commercial-problems__grid article:nth-child(5) {
+    grid-template:
+      "visual" auto
+      "title" auto
+      "body" auto
+      "service" auto
+      "link" auto
+      / minmax(0, 1fr);
+    gap: 0.9rem;
+  }
+
+  .commercial-services-page .commercial-problems__grid article > strong {
+    padding: 0.85rem 0 0;
+    border-top: 1px solid var(--commercial-line);
+    border-left: 0;
+  }
+
   .services-system-map li {
     grid-template-columns: 2rem minmax(0, 1fr);
   }
@@ -1066,6 +1237,15 @@
   .service-proof-grid,
   .systems-visual__service-index {
     grid-template-columns: 1fr;
+  }
+
+  .systems-flow > li {
+    border-right: 0;
+    border-bottom: 1px solid var(--line-dark);
+  }
+
+  .systems-flow > li:last-child {
+    border-bottom: 0;
   }
 
   .service-proof-card--property {
@@ -1093,15 +1273,6 @@
 }
 
 @media (max-width: 32rem) {
-  .services-capability-marker {
-    grid-template-columns: 4.2rem minmax(0, 1fr);
-  }
-
-  .services-capability-marker img {
-    width: 4.2rem;
-    height: 3rem;
-  }
-
   .decision-path {
     grid-template-columns: 1fr;
   }
