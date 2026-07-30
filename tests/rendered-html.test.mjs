@@ -135,11 +135,15 @@ test("pre-renders the commercial-reset Homepage with locked copy and four servic
     "Four services. Everything else is scope.",
     "Hosting should not become a leash.",
     "The price changes with the work, not the label.",
-    "Ordering and reservations can be simple or genuinely custom.",
     "Real systems. Live on the web.",
     "From first review to launch.",
     "Could your next website cost $0 per month to host?",
   ]) assert.ok(html.includes(text), `missing Homepage copy: ${text}`);
+  assert.doesNotMatch(
+    main,
+    /RESTAURANT EXAMPLE|Ordering and reservations can be simple or genuinely custom\./i,
+    "Homepage must not promote a restaurant-specific commercial section",
+  );
 
   assert.equal((html.match(/<h1\b/gi) ?? []).length, 1);
   assert.equal((main.match(/<h1\b/gi) ?? []).length, 1);
