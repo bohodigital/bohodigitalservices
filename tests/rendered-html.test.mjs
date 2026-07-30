@@ -170,9 +170,9 @@ test("pre-renders the compressed homepage with exact approved copy", async () =>
   assert.match(html, /href="\/tools\/"[^>]*>[\s\S]*?Explore Boho tools/i);
   assert.match(html, /href="\/about\/"[^>]*>[\s\S]*?About Boho/i);
   assert.match(html, /href="\/contact\/"[^>]*>[\s\S]*?Contact Boho/i);
-  assert.match(html, /googletagmanager\.com\/gtag\/js\?id=G-5CV8L2SE2R/i);
-  assert.match(html, /analytics\.bohodigitalservices\.com\/script\.js/i);
-  assert.match(html, /data-do-not-track="true"/i);
+  assert.match(html, /src="\/analytics-bootstrap\.js"/i);
+  assert.match(html, /data-ga-id="G-5CV8L2SE2R"/i);
+  assert.match(html, /data-umami-website-id="aecddac8-8ad4-49c4-b791-60b161c95155"/i);
   assert.match(html, /og-boho-digital-engineering-20260714\.png/i);
   assert.match(html, /class="hero__background" aria-hidden="true"/i);
   assert.match(html, /og-boho-digital-engineering-20260714\.png[^>]+alt=""/i);
@@ -206,26 +206,19 @@ test("renders every intentional public route and retires internal placeholder sh
   }
 });
 
-test("loads Google Analytics and first-party analytics on every public route", async () => {
+test("loads one shared analytics policy bootstrap on every public route", async () => {
   for (const route of publicRoutes) {
     const html = await (await render(route)).text();
     const scriptTags = html.match(/<script\b[^>]*>[\s\S]*?<\/script>/gi) ?? [];
-    const googleLoaderTags = scriptTags.filter((tag) =>
-      /src="https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=G-5CV8L2SE2R"/i.test(tag),
-    );
-    const googleConfigTags = scriptTags.filter((tag) =>
-      /window\.dataLayer = window\.dataLayer \|\| \[\]/.test(tag)
-      && /gtag\('config', 'G-5CV8L2SE2R'\)/.test(tag)
-      && !/self\.__next_f\.push/.test(tag),
-    );
-    const firstPartyTags = scriptTags.filter((tag) =>
-      /src="https:\/\/analytics\.bohodigitalservices\.com\/script\.js"/i.test(tag),
+    const bootstrapTags = scriptTags.filter((tag) =>
+      /src="\/analytics-bootstrap\.js"/i.test(tag),
     );
 
-    assert.equal(googleLoaderTags.length, 1, `${route} Google Analytics loader count`);
-    assert.equal(googleConfigTags.length, 1, `${route} Google Analytics config count`);
-    assert.equal(firstPartyTags.length, 1, `${route} first-party analytics loader count`);
-    assert.match(firstPartyTags[0], /data-website-id="aecddac8-8ad4-49c4-b791-60b161c95155"/i, `${route} first-party website ID`);
+    assert.equal(bootstrapTags.length, 1, `${route} shared bootstrap count`);
+    assert.match(bootstrapTags[0], /data-analytics-bootstrap="boho-v2"/i, `${route} bootstrap version`);
+    assert.match(bootstrapTags[0], /data-umami-domains="bohodigitalservices.com,www.bohodigitalservices.com"/i, `${route} Umami hosts`);
+    assert.match(bootstrapTags[0], /data-ga-public-hosts="bohodigitalservices.com,www.bohodigitalservices.com"/i, `${route} GA hosts`);
+    assert.doesNotMatch(html, /src="https:\/\/(?:www\.googletagmanager\.com|analytics\.bohodigitalservices\.com)/i, `${route} bypasses the policy gate`);
   }
 });
 

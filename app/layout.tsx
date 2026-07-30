@@ -100,24 +100,14 @@ export default function RootLayout({
           }}
         />
         <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-5CV8L2SE2R"
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-5CV8L2SE2R');`,
-          }}
-        />
-        <script
           defer
-          src="https://analytics.bohodigitalservices.com/script.js"
-          data-website-id="aecddac8-8ad4-49c4-b791-60b161c95155"
-          data-domains="bohodigitalservices.com,www.bohodigitalservices.com"
-          data-do-not-track="true"
-          data-exclude-search="true"
+          src="/analytics-bootstrap.js"
+          data-analytics-bootstrap="boho-v2"
+          data-umami-script-url="https://analytics.bohodigitalservices.com/script.js"
+          data-umami-website-id="aecddac8-8ad4-49c4-b791-60b161c95155"
+          data-umami-domains="bohodigitalservices.com,www.bohodigitalservices.com"
+          data-ga-id="G-5CV8L2SE2R"
+          data-ga-public-hosts="bohodigitalservices.com,www.bohodigitalservices.com"
         />
       </head>
       <body>
