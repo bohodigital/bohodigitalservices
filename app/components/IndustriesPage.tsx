@@ -321,7 +321,7 @@ export function IndustriesPage() {
                     event="industry_review_start"
                     section="hero"
                     destination="review_form"
-                    label="Start the free review"
+                    label="Get a free website review"
                     variant="secondary"
                   />
                 </div>
@@ -466,7 +466,7 @@ export function IndustriesPage() {
             </p>
             <div className="industries-actions">
               <TrackedButton href="/pricing/" event="industry_pricing_click" section="pricing-ledger" destination="pricing_page" label="See the Pricing & Scope Guide" />
-              <TrackedButton href="/start/" event="industry_review_start" section="pricing-ledger" destination="review_form" label="Start the free review" variant="secondary" />
+              <TrackedButton href="/start/" event="industry_review_start" section="pricing-ledger" destination="review_form" label="Get a free website review" variant="secondary" />
             </div>
           </div>
         </section>
@@ -536,7 +536,7 @@ export function IndustriesPage() {
                 The initial review uses public information only. If the request appears to fit current scope and capacity, Boho may discuss what appears useful and the leanest responsible next step. Paid work begins only through a specific written engagement.
               </p>
               <div className="industries-actions">
-                <TrackedButton href="/start/" event="industry_review_start" section="final-action" destination="review_form" label="Start the free review" />
+                <TrackedButton href="/start/" event="industry_review_start" section="final-action" destination="review_form" label="Get a free website review" />
                 <TrackedButton href="/pricing/" event="industry_pricing_click" section="final-action" destination="pricing_page" label="See public pricing" variant="secondary" />
                 <TrackedButton href="/services/" event="industry_page_click" section="final-action" destination="services_page" label="Compare services" variant="secondary" />
               </div>

@@ -1,129 +1,65 @@
-// Single maintained structured source for public-candidate prices and credit terms.
-// The governed intake Markdown remains immutable evidence; the generator validates
-// every rendered currency amount against this policy so copied prose cannot drift.
+// Canonical structured source for the four public services and their starting
+// prices. Public commercial surfaces consume this record or commercialReset.ts.
 
-export const pricingPolicyVersion = "service-pages-package-v1";
+export const pricingPolicyVersion = "boho-commercial-reset-phase-1";
 
 export const servicePriceSummaries = {
-  "/services/ongoing-seo/":
-    "Reporting from $95/month · ongoing SEO work from $450/month",
-  "/services/web-design-redesign/":
-    "Focused improvements from $750 · new sites and redesigns from $1,500",
-  "/services/provider-rescue/":
-    "Assessments from $350 · migration and rescue from $1,000",
-  "/services/research-audits-strategy/":
-    "Monthly reports from $95 · focused audits and research from $350",
-  "/services/custom-digital-solutions/":
-    "Custom-project review from $500 · focused custom builds from $2,500",
+  "/services/web-design-redesign/": "Business Websites — From $850",
+  "/services/ongoing-seo/": "Ongoing SEO & Local Growth — From $450/month",
+  "/services/#website-help": "Website Help — From $200",
+  "/services/custom-digital-solutions/": "Custom Systems — From $1,500",
 };
 
 export const pricingGroups = [
   {
-    id: "analytics-reporting",
-    eyebrow: "Measurement and decisions",
-    title: "Analytics platform and analyst-reviewed reporting",
+    key: "businessWebsites",
+    id: "business-websites",
+    eyebrow: "Build",
+    title: "Business Websites",
     offers: [
       [
-        "Boho Analytics Platform",
-        "Free",
-        "Free software you or your technical provider can install and run. It can bring supported website, search, form, and system data into one place. Boho does not provide it as a hosted customer dashboard.",
-      ],
-      [
-        "Analyst-Reviewed Monthly Report",
-        "Starting at $95 per month",
-        "Each month, an analyst checks the available data, explains what it does and does not show, lists the most important findings, and provides written next steps.",
+        "Business Websites",
+        "From $850",
+        "New website, redesign, restaurant website, or responsible replacement.",
       ],
     ],
   },
   {
+    key: "ongoingSeo",
     id: "ongoing-seo",
-    eyebrow: "Local visibility and leads",
-    title: "Ongoing SEO & Search Growth",
+    eyebrow: "Grow",
+    title: "Ongoing SEO & Local Growth",
     offers: [
       [
-        "Ongoing SEO & Search Growth",
-        "Starting at $450 per month",
-        "Monthly work for one website and one main market. Each month includes a review, one agreed priority, the improvements included in your plan, and a written record of what was completed.",
+        "Ongoing SEO & Local Growth",
+        "From $450/month",
+        "Continued search, local, content, technical, and analytics implementation.",
       ],
     ],
   },
   {
-    id: "web-design",
-    eyebrow: "Website work",
-    title: "Web design, improvement, and redesign",
+    key: "websiteHelp",
+    id: "website-help",
+    eyebrow: "Fix",
+    title: "Website Help",
     offers: [
       [
-        "Focused Website Improvement",
-        "Starting at $750",
-        "A one-time project that fixes a small number of important problems while keeping the parts of your current website that still work.",
-      ],
-      [
-        "New Website or Substantial Redesign",
-        "Starting at $1,500",
-        "A simple, complete website or major redesign with a limited number of pages and layouts, one main customer action, mobile-friendly pages, basic search setup, launch checks, and a handoff. You provide the core business information unless the proposal includes more content help.",
+        "Website Help",
+        "From $200",
+        "Repair, audit, provider issue, migration question, analytics, or ownership problem.",
       ],
     ],
   },
   {
-    id: "hosting-email",
-    eyebrow: "Defined infrastructure",
-    title: "Hosting and email scope",
+    key: "customSystems",
+    id: "custom-systems",
+    eyebrow: "Automate",
+    title: "Custom Systems",
     offers: [
       [
-        "Eligible managed hosting",
-        "Included only when stated",
-        "Standard managed hosting may be included at no separate hosting charge for eligible websites while an active qualifying retainer remains in good standing.",
-      ],
-      [
-        "Standalone hosting or defined email service",
-        "Separately scoped",
-        "Quoted separately. Your proposal will name the provider, account owner, service limits, outside costs, support, backups, email setup if included, and what happens if you leave. There is no one-size-fits-all public starting price.",
-      ],
-    ],
-  },
-  {
-    id: "provider-rescue",
-    eyebrow: "Ownership and continuity",
-    title: "Website Migration & Provider Rescue",
-    offers: [
-      [
-        "Provider Rescue Assessment",
-        "Starting at $350",
-        "A review of who owns and controls the website, what access is available, what other services depend on it, the main risks, and the recommended next step.",
-      ],
-      [
-        "Migration or Rescue Assistance",
-        "Starting at $1,000",
-        "A basic move for one small website and one domain when authorized access is available. It covers ordinary hosting and domain settings, a limited number of redirects, simple forms or contact actions, launch checks, and handoff.",
-      ],
-    ],
-  },
-  {
-    id: "audits-strategy",
-    eyebrow: "Research before recommendations",
-    title: "Standalone review, audit, or research",
-    offers: [
-      [
-        "Standalone Review, Audit, or Research",
-        "Starting at $350",
-        "A one-time review of one clear question about a small public website or digital setup, using limited available access, followed by a written recommendation.",
-      ],
-    ],
-  },
-  {
-    id: "custom-solutions",
-    eyebrow: "Focused custom engineering",
-    title: "Custom Web & Digital Solutions",
-    offers: [
-      [
-        "Custom Discovery and Feasibility",
-        "Starting at $500",
-        "A review of one repeated business process to decide whether a custom tool is practical. It covers a limited number of systems, available decision-makers, key risks, and a written recommendation.",
-      ],
-      [
-        "Focused Custom Build",
-        "Starting at $2,500",
-        "One small tool or simple connection between systems for one main task, with a limited number of users and systems. The starting scope includes clear inputs and outputs, a standard launch, testing, and documentation.",
+        "Custom Systems",
+        "From $1,500",
+        "Tool, integration, workflow, publishing system, or automation.",
       ],
     ],
   },
@@ -131,94 +67,70 @@ export const pricingGroups = [
 
 export const assessmentCreditPolicy = {
   summary:
-    "When an eligible one-time assessment, audit, or discovery project leads to a qualifying larger engagement in the same category, Boho credits 100% of the eligible fee toward that engagement.",
+    "When additional paid discovery is necessary, the proposal must define its scope and price before work begins and state whether it will be credited toward the related approved build.",
   required: [
-    "The assessment invoice is paid in full.",
-    "The later work concerns substantially the same business and system.",
-    "The larger engagement is in the same service category.",
-    "The proposal is accepted within 90 days.",
-    "The original research remains materially usable.",
+    "The written proposal identifies the related service category.",
+    "The proposal states the approval period.",
+    "The original work remains materially usable.",
   ],
   restrictions: [
     "The credit is non-transferable.",
     "The credit has no cash value.",
-    "The credit cannot exceed the professional-service fee for the qualifying larger engagement.",
-    "The credit does not apply to taxes, third-party software, domains, provider fees, advertising spend, travel, emergency or priority premiums, or other outside costs.",
-    "The credit does not normally apply to recurring monthly reports, hosting, or maintenance already delivered unless a specific written proposal says otherwise.",
+    "The credit cannot exceed the professional-service fee for the related approved work.",
+    "Third-party costs and unrelated work are separate.",
   ],
   changedCircumstances:
-    "If the relevant system or circumstances materially change after the assessment, additional research may be required. The eligible original assessment fee remains creditable, while newly required work may be added to the later scope.",
+    "If the relevant system or circumstances materially change, additional work may require a new written scope.",
 };
 
-function industryOffer(key, offerName, href) {
-  for (const group of pricingGroups) {
-    const offer = group.offers.find(([label]) => label === offerName);
-    if (offer) {
-      return { key, label: offer[0], display: offer[1], href };
-    }
-  }
-  throw new Error(`Missing governed public offer: ${offerName}`);
-}
-
-// Every Industries minimum except the separate free orientation resolves from
-// the exact governed offer tuple above. This is a route-specific view of the
-// maintained pricing source, not a second registry.
 export const industryPriceLedger = [
   {
-    key: "initial-review",
-    label: "Free Initial Review",
+    key: "free-review",
+    label: "Free Website Review",
     display: "Free",
     href: "/start/",
   },
-  industryOffer("analytics-platform", "Boho Analytics Platform", "/tools/"),
-  industryOffer(
-    "analyst-reporting",
-    "Analyst-Reviewed Monthly Report",
-    "/services/research-audits-strategy/",
-  ),
-  industryOffer(
-    "one-time-review",
-    "Standalone Review, Audit, or Research",
-    "/services/research-audits-strategy/",
-  ),
-  industryOffer(
-    "provider-assessment",
-    "Provider Rescue Assessment",
-    "/services/provider-rescue/",
-  ),
-  industryOffer(
-    "ongoing-seo",
-    "Ongoing SEO & Search Growth",
-    "/services/ongoing-seo/",
-  ),
-  industryOffer(
-    "focused-improvement",
-    "Focused Website Improvement",
-    "/services/web-design-redesign/",
-  ),
-  industryOffer(
-    "migration-assistance",
-    "Migration or Rescue Assistance",
-    "/services/provider-rescue/",
-  ),
-  industryOffer(
-    "new-website",
-    "New Website or Substantial Redesign",
-    "/services/web-design-redesign/",
-  ),
-  industryOffer(
-    "custom-discovery",
-    "Custom Discovery and Feasibility",
-    "/services/custom-digital-solutions/",
-  ),
-  industryOffer(
-    "focused-custom-build",
-    "Focused Custom Build",
-    "/services/custom-digital-solutions/",
-  ),
+  {
+    key: "business-websites",
+    label: "Business Websites",
+    display: "From $850",
+    href: "/services/web-design-redesign/",
+  },
+  {
+    key: "ongoing-seo",
+    label: "Ongoing SEO & Local Growth",
+    display: "From $450/month",
+    href: "/services/ongoing-seo/",
+  },
+  {
+    key: "website-help",
+    label: "Website Help",
+    display: "From $200",
+    href: "/services/#website-help",
+  },
+  {
+    key: "custom-systems",
+    label: "Custom Systems",
+    display: "From $1,500",
+    href: "/services/custom-digital-solutions/",
+  },
 ];
 
 export const approvedCurrencyAmounts = [
+  "$0",
+  "$200",
+  "$450",
+  "$850",
+  "$1,100",
+  "$1,500",
+  "$3,000",
+];
+
+// The five legacy Markdown service records remain immutable historical intake
+// evidence while Phase 1 renders the current service-detail adapter. Their
+// generator validates only those historical records and does not drive public
+// pricing.
+export const legacyGeneratedCurrencyAmounts = [
   "$95",
   "$350",
   "$450",

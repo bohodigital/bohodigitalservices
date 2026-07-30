@@ -303,7 +303,7 @@ export function AboutPage() {
                 <p>{define("The central problem with conventional digital services is much less mysterious.")}</p>
               </div>
               <div className="button-row about-hero__actions">
-                <ButtonLink href="/contact/">Talk to Someone Technical</ButtonLink>
+                <ButtonLink href="/start/">Get a free website review</ButtonLink>
                 <ButtonLink href="#why-i-built-boho" variant="secondary">Why I Built Boho</ButtonLink>
               </div>
               <p className="about-trust-line">Owner-operated · Research-led · Reusable systems · Direct technical access</p>
@@ -619,7 +619,7 @@ export function AboutPage() {
             <blockquote className="about-pullquote about-pullquote--dark">Direct access does not mean pretending every answer is immediate. It means knowing who is responsible for finding it.</blockquote>
             <div className="button-row">
               <ButtonLink href="/services/">Review Boho’s Services</ButtonLink>
-              <ButtonLink href="/contact/" variant="secondary">Talk to Someone Technical</ButtonLink>
+              <ButtonLink href="/start/" variant="secondary">Get a free website review</ButtonLink>
             </div>
           </div>
         </section>
@@ -677,7 +677,7 @@ export function AboutPage() {
               <p>{define("Boho will review the situation, help identify the actual problem, and explain whether there is a sensible next step.")}</p>
             </div>
             <div className="button-row">
-              <ButtonLink href="/contact/">Talk to Someone Technical</ButtonLink>
+              <ButtonLink href="/start/">Get a free website review</ButtonLink>
               <ButtonLink href="/services/" variant="secondary">Review Boho’s Services</ButtonLink>
             </div>
             <p className="about-final__trust">No sales relay. No obligation to buy a package. No need to arrive with a technical diagnosis.</p>

@@ -4,7 +4,7 @@ import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import {
-  approvedCurrencyAmounts,
+  legacyGeneratedCurrencyAmounts,
   pricingPolicyVersion,
 } from "../app/content/pricingPolicy.mjs";
 
@@ -817,7 +817,7 @@ function main() {
   const renderedCurrencyAmounts = [
     ...new Set(JSON.stringify(pages).match(/\$\d[\d,]*/g) ?? []),
   ].sort();
-  const approvedAmounts = [...approvedCurrencyAmounts].sort();
+  const approvedAmounts = [...legacyGeneratedCurrencyAmounts].sort();
   if (JSON.stringify(renderedCurrencyAmounts) !== JSON.stringify(approvedAmounts)) {
     fail(
       `rendered currency amounts do not match ${pricingPolicyVersion}: ` +

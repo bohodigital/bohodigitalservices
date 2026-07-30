@@ -28,7 +28,16 @@ export function CommercialContactPage() {
               <p>{startHero.many("Body paragraph 1")[0]}</p>
               <p>{startHero.many("Body paragraph 2")[0]}</p>
               <div className="button-row">
-                <a className="button-link button-link--primary" data-umami-event="commercial_primary_cta" href={startDestination}>{hero.one("Primary CTA")}</a>
+                <a
+                  className="button-link button-link--primary"
+                  data-analytics-event="free_review_click"
+                  data-analytics-service-context="general"
+                  data-analytics-source-page="contact"
+                  data-analytics-source-section="hero"
+                  href={startDestination}
+                >
+                  Get a free website review
+                </a>
                 <a className="button-link button-link--secondary" href={hero.one("Secondary destination")}>{hero.one("Secondary CTA")}</a>
               </div>
             </div>
@@ -52,14 +61,28 @@ export function CommercialContactPage() {
                   : index === 1
                     ? commercialSection("start", "path-2").one("Body")
                     : path.one("Body");
-                const label = index === 3
+                const label = index === 0
+                  ? "Get a free website review"
+                  : index === 3
                   ? correctionValue(emergencyCorrection.linkLabel)
                   : path.one("Link label");
                 return (
                   <article key={path.one("Heading")}>
                     <h3>{path.one("Heading")}</h3>
                     <p>{body}</p>
-                    <a href={href}>{label}</a>
+                    <a
+                      {...(index === 0
+                        ? {
+                            "data-analytics-event": "free_review_click",
+                            "data-analytics-service-context": "general",
+                            "data-analytics-source-page": "contact",
+                            "data-analytics-source-section": "contact_paths",
+                          }
+                        : {})}
+                      href={href}
+                    >
+                      {label}
+                    </a>
                   </article>
                 );
               })}
@@ -201,7 +224,16 @@ export function CommercialEmergencyPage() {
             <h2 id="emergency-final-title">{finalBoundary.one("Heading")}</h2>
             <p>{finalBoundary.one("Body")}</p>
             <div className="button-row">
-              <a className="button-link button-link--primary" href={finalBoundary.one("Primary destination")}>{finalBoundary.one("Primary CTA")}</a>
+              <a
+                className="button-link button-link--primary"
+                data-analytics-event="free_review_click"
+                data-analytics-service-context="website_help"
+                data-analytics-source-page="emergency"
+                data-analytics-source-section="final"
+                href={finalBoundary.one("Primary destination")}
+              >
+                Get a free website review
+              </a>
               <a className="button-link button-link--secondary" href={finalBoundary.one("Secondary destination")}>{finalBoundary.one("Secondary CTA")}</a>
             </div>
           </div>

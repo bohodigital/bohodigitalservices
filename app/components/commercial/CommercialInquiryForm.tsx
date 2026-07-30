@@ -1,7 +1,5 @@
 import {
-  commercialCorrections,
   commercialSection,
-  correctionValue,
 } from "../../content/commercial/presentation";
 import {
   CommercialInquiryFormClient,
@@ -22,14 +20,16 @@ function startFields(): ReadonlyArray<CommercialFormField> {
   const offer = commercialSection("start", "valuable-offer-or-workflow");
   const budget = commercialSection("start", "budget-context");
   const timing = commercialSection("start", "time-sensitivity");
-  const serviceOptions = commercialCorrections.contact.standardInquiry.options
-    .map(correctionValue);
-  const backendOptions = Object.fromEntries(serviceOptions.map((option) => [
-    option,
-    option
-      .replaceAll(" & ", " and ")
-      .replace("Research, Analytics and Improvement", "Research, Analytics, and Improvement"),
-  ]));
+  const serviceOptions = [
+    "Business Websites",
+    "Ongoing SEO & Local Growth",
+    "Website Help",
+    "Custom Systems",
+    "Not sure yet",
+  ];
+  const backendOptions = Object.fromEntries(
+    serviceOptions.map((option) => [option, option]),
+  );
   return [
     { publicName: "name", backendName: "name", type: "text", label: name.one("Label"), placeholder: name.one("Placeholder"), requirement: name.one("Required text"), required: true, maxLength: 120 },
     { publicName: "email", backendName: "email", type: "email", label: email.one("Label"), placeholder: email.one("Placeholder"), requirement: email.one("Required text"), required: true, maxLength: 254 },

@@ -104,7 +104,7 @@ export function ResourcesPage() {
             "Built by digital engineers. Explained in plain English.",
           ]}
           primary={{ label: "Choose a resource", href: "#resource-collections" }}
-          secondary={{ label: "Talk to someone technical", href: "/contact/" }}
+          secondary={{ label: "Get a free website review", href: "/start/" }}
           seenTerms={seenTerms}
         />
 
@@ -233,8 +233,8 @@ export function ResourcesPage() {
                   <h2 id="technical-second-opinion-title">Get a technical second opinion before the expensive decision.</h2>
                   <p>{define("Send the website, proposal, provider situation, or system that feels unclear. Boho will help identify the useful question and the smallest credible next step.")}</p>
                   <div className="button-row">
-                    <Link className="button-link button-link--primary" href="/contact/">
-                      <span className="button-link__label">Talk to someone technical</span>
+                    <Link className="button-link button-link--primary" href="/start/">
+                      <span className="button-link__label">Get a free website review</span>
                       <ArrowRight aria-hidden="true" size={17} />
                     </Link>
                     <Link className="resources-lab__text-link" href="/learn/provider-rescue/">Planning a provider exit?</Link>

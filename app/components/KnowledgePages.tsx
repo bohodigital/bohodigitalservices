@@ -288,7 +288,11 @@ export function ToolsPage() {
                 </header>
                 <div className="visual-library-index">
                   {publicVisuals.map((visual, index) => (
-                    <a href={`#visual-${visual.id}`} key={visual.id}>
+                    <a
+                      href={`#visual-${visual.id}`}
+                      id={visual.id === "lean-direct-operation" ? `visual-${visual.id}` : undefined}
+                      key={visual.id}
+                    >
                       <span aria-hidden="true"><Layers3 size={25} strokeWidth={1.7} />{String(index + 1).padStart(2, "0")}</span>
                       <strong>{visual.title}</strong>
                       <ArrowRight size={18} aria-hidden="true" />

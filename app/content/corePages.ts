@@ -14,7 +14,7 @@ export const corePages: PageConfig[] = [
       "Boho starts with what is not working, then recommends the smallest service that fits the problem.",
     ],
     theme: "mosaic",
-    primaryCta: { label: "Talk to Someone Technical", href: "/contact/" },
+    primaryCta: { label: "Get a free website review", href: "/start/" },
     secondaryCta: { label: "See What We Build", href: "/tools/" },
     sections: [
       {
@@ -382,7 +382,7 @@ export const corePages: PageConfig[] = [
       "Boho improves the local signals and customer-action paths that help people understand where you work, what you do, why you are credible, and how to take the next useful step.",
     ],
     theme: "research",
-    primaryCta: { label: "Talk to Someone Technical", href: "/contact/" },
+    primaryCta: { label: "Get a free website review", href: "/start/" },
     secondaryCta: { label: "See the Lead-System View", href: "/services/ongoing-seo/#customer-paths-and-conversion-clarity" },
     sections: [
       {
@@ -779,7 +779,7 @@ export const corePages: PageConfig[] = [
     headline: "I come from professional scientific research. I built Boho because this problem has a clear answer.",
     intro: [],
     theme: "editorial",
-    primaryCta: { label: "Talk to Someone Technical", href: "/contact/" },
+    primaryCta: { label: "Get a free website review", href: "/start/" },
     secondaryCta: { label: "Review Boho’s Services", href: "/services/" },
     sections: [],
   },
@@ -795,7 +795,7 @@ export const corePages: PageConfig[] = [
       "Use the project inquiry below, or the contact links in the site footer. Website issues can go directly to the webmaster link.",
     ],
     theme: "editorial",
-    primaryCta: { label: "Start a Project", href: "#project-inquiry" },
+    primaryCta: { label: "Get a free website review", href: "/start/" },
     secondaryCta: { label: "See What We Build", href: "/tools/" },
     sections: [
       {

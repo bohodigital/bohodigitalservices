@@ -97,9 +97,10 @@ export function MobileMenu({
         type="button"
         aria-expanded={open}
         aria-controls={panelId}
+        aria-label={open ? labels.close : labels.open}
         onClick={() => setOpen((current) => !current)}
       >
-        {open ? labels.close : labels.open}
+        {open ? "Close" : "Menu"}
       </button>
 
       {open ? (
@@ -114,6 +115,10 @@ export function MobileMenu({
           <div className="mobile-menu__panel-inner">
             <Link
               className="button-link button-link--primary mobile-menu__primary-cta"
+              data-analytics-event="free_review_click"
+              data-analytics-source-page="global"
+              data-analytics-source-section="mobile_menu"
+              data-analytics-service-context="general"
               href={action.href}
               onClick={closeMenu}
             >

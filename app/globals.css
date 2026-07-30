@@ -2,6 +2,7 @@
 @import "./about-page.css";
 @import "./service-pages.css";
 @import "./industries-page.css";
+@import "./commercial-reset.css";
 
 :root {
   --ink: #111214;
@@ -2648,12 +2649,19 @@ p {
   }
 
   .site-header__mobile-cta {
-    max-width: 7.5rem;
-    padding-inline: 0.6rem;
+    max-width: none;
+    padding-inline: 0.48rem;
+    font-size: 0.62rem;
+    white-space: nowrap;
   }
 
   .mobile-menu__trigger {
     min-width: 3.8rem;
+  }
+
+  .site-header .brand-bee {
+    width: 2.55rem;
+    height: 2.55rem;
   }
 
   .button-row,

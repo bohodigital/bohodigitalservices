@@ -1,7 +1,4 @@
-import {
-  commercialCorrections068,
-  commercialNavigationLinks,
-} from "./commercial/presentation";
+import { canonicalServices } from "./commercialReset";
 
 export type LocalHref = "/" | `/${string}` | `#${string}`;
 
@@ -21,28 +18,32 @@ export type ResourceNavigationGroup = {
   items: ReadonlyArray<NavigationLink>;
 };
 
-const commercialLinks = commercialNavigationLinks();
-const servicesOverview = commercialCorrections068.navigation.servicesOverview;
+export const serviceHeaderLinks: ReadonlyArray<NavigationLink> =
+  canonicalServices.map((service) => ({
+    label: service.label,
+    href: service.route,
+    description: service.priceDisplay,
+  }));
 
-export const serviceHeaderLinks: ReadonlyArray<NavigationLink> = [
-  servicesOverview,
-  ...commercialLinks.services,
+export const resourceHeaderLinks: ReadonlyArray<NavigationLink> = [
+  { label: "Resources overview", href: "/resources/" },
+  { label: "Website buying", href: "/learn/website-buying/" },
+  { label: "Provider rescue", href: "/learn/provider-rescue/" },
+  { label: "Plain-language glossary", href: "/learn/glossary/" },
 ];
-
-export const resourceHeaderLinks: ReadonlyArray<NavigationLink> = commercialLinks.resources;
-
-const resourcesLabel = commercialLinks.primary.find(({ href }) => href === "/resources/")?.label;
-if (!resourcesLabel) throw new Error("Commercial Resources navigation label is missing.");
 
 export const resourceNavigationGroups: ReadonlyArray<ResourceNavigationGroup> = [
-  { label: resourcesLabel, icon: "guides", items: resourceHeaderLinks },
+  { label: "Resources", icon: "guides", items: resourceHeaderLinks },
 ];
 
-export const primaryNavigation: ReadonlyArray<PrimaryNavigationItem> = commercialLinks.primary.map((link) => ({
-  ...link,
-  children: link.href === "/services/"
-    ? serviceHeaderLinks
-    : link.href === "/resources/"
-      ? resourceHeaderLinks
-      : undefined,
-}));
+export const primaryNavigation: ReadonlyArray<PrimaryNavigationItem> = [
+  {
+    label: "Services",
+    href: "/services/",
+    children: serviceHeaderLinks,
+  },
+  { label: "Industries", href: "/industries/" },
+  { label: "Pricing", href: "/pricing/" },
+  { label: "About", href: "/about/" },
+  { label: "Contact", href: "/contact/" },
+];

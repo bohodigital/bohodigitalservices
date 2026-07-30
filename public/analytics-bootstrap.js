@@ -63,6 +63,7 @@
   };
 
   const pendingUmamiPageviews = [];
+  const pendingUmamiEvents = [];
   let umamiReady = false;
   let lastPathname = null;
   let lastLocation = "";
@@ -115,6 +116,11 @@
       umami.track({ website: umamiWebsiteId, url: pageview.location });
       pendingUmamiPageviews.shift();
     }
+    while (pendingUmamiEvents.length > 0) {
+      const event = pendingUmamiEvents[0];
+      umami.track(event.name, event.properties);
+      pendingUmamiEvents.shift();
+    }
     return true;
   }
 
@@ -143,6 +149,46 @@
     }, 0);
   }
 
+  const commercialEventProperties = {
+    free_review_click: ["source_page", "source_section", "service_context"],
+    service_card_click: ["source_page", "service_name", "price_display"],
+    website_pricing_click: ["source_page", "source_section"],
+    hosting_eligibility_click: ["source_page", "source_section"],
+    pricing_service_click: ["service_name", "price_display"],
+    proof_project_click: ["project_name", "source_page"],
+  };
+
+  function datasetKey(property) {
+    return `analytics${property
+      .split("_")
+      .map((part) => `${part.slice(0, 1).toUpperCase()}${part.slice(1)}`)
+      .join("")}`;
+  }
+
+  function handleCommercialClick(event) {
+    const target = event && event.target;
+    if (!target || typeof target.closest !== "function") return;
+    const element = target.closest("[data-analytics-event]");
+    if (!element || !element.dataset) return;
+    const name = element.dataset.analyticsEvent;
+    const requiredProperties = commercialEventProperties[name];
+    if (!requiredProperties) return;
+
+    const properties = {};
+    for (const property of requiredProperties) {
+      const value = element.dataset[datasetKey(property)];
+      if (!value) return;
+      properties[property] = value;
+    }
+
+    window.gtag("event", name, properties);
+    if (umamiReady && window.umami && typeof window.umami.track === "function") {
+      window.umami.track(name, properties);
+    } else {
+      pendingUmamiEvents.push({ name, properties });
+    }
+  }
+
   for (const method of ["pushState", "replaceState"]) {
     const original = window.history[method];
     if (typeof original !== "function") continue;
@@ -157,6 +203,7 @@
     setGoogleLocation();
     schedulePageview();
   });
+  document.addEventListener("click", handleCommercialClick);
   emitPageview();
 
   const umami = document.createElement("script");

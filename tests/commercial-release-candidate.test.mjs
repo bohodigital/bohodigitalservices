@@ -36,30 +36,39 @@ test("renders exact incident routing and unique Start compatibility anchors", as
   assert.equal(countId(html, "visibility-check-request"), 1);
 });
 
-test("carries governed pricing choices into the editable Start form", async () => {
+test("carries the four canonical services into Pricing and the editable Start form", async () => {
+  const form = await source("app/components/commercial/CommercialInquiryForm.tsx");
   const client = await source("app/components/commercial/CommercialInquiryFormClient.tsx");
   const pricing = await source("app/components/PricingPage.tsx");
-  assert.match(pricing, /\/start\/\?path=\$\{path\}&offer=\$\{offerId\}/);
+  assert.match(pricing, /href="\/start\/"/);
+  for (const service of [
+    "Business Websites",
+    "Ongoing SEO & Local Growth",
+    "Website Help",
+    "Custom Systems",
+  ]) {
+    assert.ok(form.includes(`"${service}"`), `Start is missing ${service}`);
+  }
   assert.match(client, /new URLSearchParams\(search\)/);
   assert.match(client, /useSyncExternalStore/);
-  assert.match(client, /PRICING_OFFER_DEFAULTS/);
   assert.match(client, /service instanceof HTMLSelectElement/);
-  assert.match(client, /offer instanceof HTMLInputElement/);
   assert.match(client, /pricing_lead_complete/);
   assert.doesNotMatch(client, /message\s*=\s*(?:params|attribution)/);
 });
 
-test("maps Pricing compatibility aliases to meaningful groups", async () => {
+test("renders exactly four canonical Pricing rows with stable website and SEO anchors", async () => {
   const pricing = await render("/pricing/");
-  for (const [alias, group] of [
-    ["web-design", "build-repair"],
-    ["website-work", "build-repair"],
-    ["provider-rescue", "build-repair"],
-    ["analytics-reporting", "ongoing"],
-    ["audits-strategy", "diagnose"],
+  assert.equal(countId(pricing, "business-websites"), 1);
+  assert.equal(countId(pricing, "ongoing-seo"), 1);
+  const summary = pricing.match(/<table class="pricing-summary-table">[\s\S]*?<\/table>/)?.[0] ?? "";
+  assert.equal((summary.match(/<tr\b/g) ?? []).length, 5);
+  for (const service of [
+    "Business Websites",
+    "Ongoing SEO &amp; Local Growth",
+    "Website Help",
+    "Custom Systems",
   ]) {
-    assert.equal(countId(pricing, alias), 1, `${alias} alias count`);
-    assert.match(pricing, new RegExp(`<section[^>]+id="${group}"[\\s\\S]*?id="${alias}"[\\s\\S]*?<\\/section>`));
+    assert.ok(summary.includes(service), `Pricing is missing ${service}`);
   }
 });
 
@@ -95,28 +104,41 @@ test("bounds the complete emergency problem payload without truncation", async (
   assert.doesNotMatch(client, /\.slice\([^)]*EMERGENCY_PROBLEM_MAX_LENGTH/);
 });
 
-test("renders three exact decision fields on all five service routes", async () => {
-  for (const route of [
-    "/services/ongoing-seo/",
-    "/services/web-design-redesign/",
-    "/services/provider-rescue/",
-    "/services/custom-digital-solutions/",
-    "/services/research-audits-strategy/",
-  ]) {
+test("aligns all five indexed service routes to the four-service model", async () => {
+  const expectations = new Map([
+    ["/services/ongoing-seo/", ["ONGOING SEO &amp; LOCAL GROWTH · FROM $450/MONTH", "Ongoing SEO &amp; Local Growth — starting at $450 per month"]],
+    ["/services/web-design-redesign/", ["BUSINESS WEBSITES · FROM $850", "Business Websites — starting at $850"]],
+    ["/services/provider-rescue/", ["WEBSITE HELP · PROVIDER RESCUE", "Website Help — starting at $200"]],
+    ["/services/custom-digital-solutions/", ["CUSTOM SYSTEMS · FROM $1,500", "Custom Systems — starting at $1,500"]],
+    ["/services/research-audits-strategy/", ["WEBSITE HELP · RESEARCH, AUDITS, AND STRATEGY", "Website Help — starting at $200"]],
+  ]);
+  for (const [route, texts] of expectations) {
     const html = await render(route);
-    for (const label of ["What Boho needs from you", "What changes the price", "Example deliverable"]) {
-      assert.match(html, new RegExp(`<h2>${label}<\\/h2>[\\s\\S]*?<p>[^<]+<\\/p>`), `${route} lacks ${label}`);
-    }
+    for (const text of texts) assert.ok(html.includes(text), `${route} lacks ${text}`);
   }
 });
 
-test("resolves navigation labels from the accepted adapter", async () => {
+test("publishes the locked primary navigation and four-service menu", async () => {
   const navigation = await source("app/content/navigation.ts");
-  assert.match(navigation, /commercialNavigationLinks/);
-  assert.doesNotMatch(navigation, /\blabel:\s*"(?:Services|Industries|Pricing|Work|Resources|About|Contact|Local Visibility & Lead Systems|Websites & Managed Hosting|Provider Rescue & Migration|Custom Tools & Automation|Research, Analytics & Improvement|Services overview)"/);
+  const commercial = await source("app/content/commercialReset.ts");
+  for (const label of [
+    "Services",
+    "Industries",
+    "Pricing",
+    "About",
+    "Contact",
+    "Business Websites",
+    "Ongoing SEO & Local Growth",
+    "Website Help",
+    "Custom Systems",
+  ]) assert.ok(
+    navigation.includes(`"${label}"`) || commercial.includes(`"${label}"`),
+    `navigation is missing ${label}`,
+  );
+  assert.doesNotMatch(navigation, /Local Visibility & Lead Systems|Websites & Managed Hosting|Research, Analytics & Improvement|Custom Tools & Automation/);
   const mobile = await source("app/components/MobileMenu.tsx");
   assert.match(mobile, /item\.href/);
-  assert.match(await render("/"), /href="\/services\/"[^>]*>[\s\S]*?Services overview/);
+  assert.match(await render("/"), /href="\/services\/"[^>]*>Services<\/a>/);
 });
 
 test("preserves progressive-disclosure values while closed", async () => {
@@ -125,13 +147,11 @@ test("preserves progressive-disclosure values while closed", async () => {
   assert.doesNotMatch(client, /detailsOpen\s*\?\s*<div className="commercial-form__grid">\{optionalFields\.map\(renderField\)\}<\/div>\s*:\s*null/);
 });
 
-test("renders Homepage metadata from selected commercial slots", async () => {
+test("renders the locked Homepage metadata", async () => {
   const html = await render("/");
   const normalizedHtml = html.replaceAll("&amp;", "&");
-  const title = "Boho Digital Services | Web Design, Technical SEO & Digital Engineering";
-  const description = "Chicago-based Boho Digital Services builds and repairs websites, search visibility, provider migrations, analytics, and focused digital systems with public starting prices and documented work.";
-  const socialTitle = "Elegant websites and technical SEO, without the agency fog.";
-  const socialDescription = "Boho builds and repairs the systems that help people find a business, understand it, trust it, and take the next step.";
+  const title = "Business Websites from $850 | Free Hosting | Boho";
+  const description = "Custom business websites from $850 with eligible hosting at $0 per month in a Cloudflare account your business owns. Ongoing SEO, website help, and custom systems from Boho.";
   assert.deepEqual(
     [...normalizedHtml.matchAll(/<title>([^<]+)<\/title>/g)].map((match) => match[1]),
     [title],
@@ -139,10 +159,10 @@ test("renders Homepage metadata from selected commercial slots", async () => {
   );
   for (const [attribute, key, value] of [
     ["name", "description", description],
-    ["property", "og:title", socialTitle],
-    ["property", "og:description", socialDescription],
-    ["name", "twitter:title", socialTitle],
-    ["name", "twitter:description", socialDescription],
+    ["property", "og:title", title],
+    ["property", "og:description", description],
+    ["name", "twitter:title", title],
+    ["name", "twitter:description", description],
   ]) {
     const pattern = new RegExp(`<meta ${attribute}="${key}" content="([^"]*)"`, "g");
     assert.deepEqual(

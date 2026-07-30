@@ -3,9 +3,9 @@ import { DefinitionPopoverProvider } from "./components/DefinitionPopoverProvide
 import "./globals.css";
 
 const siteUrl = new URL("https://bohodigitalservices.com");
-const siteTitle = "Boho Digital Services | Web Design, Technical SEO & Digital Engineering";
+const siteTitle = "Business Websites from $850 | Free Hosting | Boho";
 const siteDescription =
-  "Chicago-based Boho Digital Services builds and repairs websites, search visibility, provider migrations, analytics, and focused digital systems with public starting prices and documented work.";
+  "Custom business websites from $850 with eligible hosting at $0 per month in a Cloudflare account your business owns. Ongoing SEO, website help, and custom systems from Boho.";
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -26,7 +26,7 @@ const organizationSchema = {
 
 export function generateMetadata(): Metadata {
   const socialImage = new URL(
-    "/og-boho-digital-engineering-20260714.png",
+    "/og-boho-commercial-reset-20260730.webp",
     siteUrl,
   ).toString();
 
@@ -56,25 +56,23 @@ export function generateMetadata(): Metadata {
       canonical: "/",
     },
     openGraph: {
-      title: "Elegant websites and technical SEO, without the agency fog.",
-      description:
-        "Boho builds and repairs the systems that help people find a business, understand it, trust it, and take the next step.",
+      title: siteTitle,
+      description: siteDescription,
       type: "website",
       url: siteUrl,
       images: [
         {
           url: socialImage,
-          width: 1536,
-          height: 1024,
-          alt: "Warm editorial collage representing Boho Digital Services digital engineering systems",
+          width: 1200,
+          height: 630,
+          alt: "Boho Digital Services: Business websites from $850. Hosting stays free.",
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Elegant websites and technical SEO, without the agency fog.",
-      description:
-        "Boho builds and repairs the systems that help people find a business, understand it, trust it, and take the next step.",
+      title: siteTitle,
+      description: siteDescription,
       images: [socialImage],
     },
   };

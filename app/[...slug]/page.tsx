@@ -48,7 +48,7 @@ export function generateStaticParams() {
 }
 
 type CommercialRouteMetadata = {
-  section: ReturnType<typeof commercialSection>;
+  section?: ReturnType<typeof commercialSection>;
   title?: string;
   description?: string;
   canonical?: string;
@@ -60,19 +60,23 @@ function commercialRouteMetadata(route: string): CommercialRouteMetadata | null 
   switch (route) {
     case "/services/":
       return {
-        section: commercialSection("service-provider-rescue", "services-overview"),
-        description: commercialSection("service-local-visibility", "services-overview").one("Meta description"),
-        canonical: commercialSection("services-overview", "services-overview").one("Canonical route"),
-        openGraphTitle: commercialSection("services-overview", "services-overview").one("Open Graph title"),
+        title: "Business Websites, SEO & Website Help | Boho",
+        description:
+          "Four clear services from Boho: business websites from $850, ongoing SEO from $450 per month, website help from $200, and custom systems from $1,500.",
+        canonical: "/services/",
+        openGraphTitle: "Business Websites, SEO & Website Help | Boho",
+        openGraphDescription:
+          "Four clear services from Boho: business websites from $850, ongoing SEO from $450 per month, website help from $200, and custom systems from $1,500.",
       };
     case "/pricing/":
       return {
-        section: commercialSection("pricing", "page-metadata"),
-        title: "Website, SEO & Digital Services Pricing | Boho",
-        description: "See clear starting prices for website design, SEO, provider rescue, audits, hosting, and custom automation. Start with an initial review.",
-        canonical: commercialSection("pricing", "pricing").one("Canonical route"),
-        openGraphTitle: "Clear starting prices for websites, SEO, rescue, and custom digital work.",
-        openGraphDescription: "Compare credible starting prices, scope boundaries, and next steps for one-time and ongoing digital work.",
+        title: "Website, SEO & Technical Services Pricing | Boho",
+        description:
+          "Business websites from $850, ongoing SEO from $450 per month, website help from $200, and custom systems from $1,500. Clear scope and client-owned hosting.",
+        canonical: "/pricing/",
+        openGraphTitle: "Website, SEO & Technical Services Pricing | Boho",
+        openGraphDescription:
+          "Business websites from $850, ongoing SEO from $450 per month, website help from $200, and custom systems from $1,500. Clear scope and client-owned hosting.",
       };
     case "/contact/":
       return {
@@ -84,17 +88,39 @@ function commercialRouteMetadata(route: string): CommercialRouteMetadata | null 
     case "/emergency/":
       return { section: commercialSection("emergency", "metadata") };
     case "/services/ongoing-seo/":
-      return { section: commercialSection("service-local-visibility", "local-visibility-lead-systems") };
+      return {
+        title: "Ongoing SEO & Local Growth | Boho",
+        description:
+          "Boho combines technical SEO, local visibility, content improvement, customer-path work, analytics, and implementation around the priorities that matter to the business.",
+        canonical: "/services/ongoing-seo/",
+      };
     case "/services/web-design-redesign/":
-      return { section: commercialSection("service-websites-hosting", "websites-managed-hosting") };
+      return {
+        title: "Business Websites from $850 | Boho",
+        description:
+          "Boho builds new websites and responsibly replaces weak ones. Straightforward static websites start at $850 and include eligible $0 hosting in a Cloudflare account controlled by the client.",
+        canonical: "/services/web-design-redesign/",
+      };
     case "/services/provider-rescue/":
-      return { section: commercialSection("service-provider-rescue", "provider-rescue-migration") };
+      return {
+        title: "Website Help for Provider Rescue & Migration | Boho",
+        description:
+          "Provider rescue and migration are forms of Website Help. One bounded issue or diagnosis starts at $200; larger recovery and migration work receives a written quote.",
+        canonical: "/services/provider-rescue/",
+      };
     case "/services/custom-digital-solutions/":
-      return { section: commercialSection("service-custom-tools", "custom-tools-automation") };
+      return {
+        title: "Custom Systems from $1,500 | Boho",
+        description:
+          "Boho builds focused tools, integrations, publishing systems, internal dashboards, data workflows, and automation when ordinary software does not solve the actual job.",
+        canonical: "/services/custom-digital-solutions/",
+      };
     case "/services/research-audits-strategy/":
       return {
-        section: commercialSection("service-research-analytics", "research-analytics-improvement"),
-        description: commercialSection("service-provider-rescue", "research-analytics-improvement").one("Meta description"),
+        title: "Website Help, Audits & Technical Reviews | Boho",
+        description:
+          "A focused audit or investigation is Website Help when one defined website, search, analytics, provider, migration, or technical question needs to be understood.",
+        canonical: "/services/research-audits-strategy/",
       };
     default:
       return null;
@@ -115,16 +141,19 @@ export async function generateMetadata({
 
   const commercial = commercialRouteMetadata(page.slug);
   if (commercial) {
-    const title = commercial.title ?? commercial.section.one("SEO title");
-    const description = commercial.description ?? commercial.section.one("Meta description");
-    const canonical = commercial.canonical ?? commercial.section.one("Canonical route");
+    const title = commercial.title ?? commercial.section?.one("SEO title");
+    const description = commercial.description ?? commercial.section?.one("Meta description");
+    const canonical = commercial.canonical ?? commercial.section?.one("Canonical route");
+    if (!title || !description || !canonical) {
+      throw new Error(`Commercial metadata is incomplete for ${page.slug}`);
+    }
     return {
       title: { absolute: title },
       description,
       alternates: { canonical },
       openGraph: {
-        title: commercial.openGraphTitle ?? commercial.section.optional("Open Graph title") ?? title,
-        description: commercial.openGraphDescription ?? commercial.section.optional("Open Graph description") ?? description,
+        title: commercial.openGraphTitle ?? commercial.section?.optional("Open Graph title") ?? title,
+        description: commercial.openGraphDescription ?? commercial.section?.optional("Open Graph description") ?? description,
         url: canonical,
       },
       robots: { index: true, follow: true },

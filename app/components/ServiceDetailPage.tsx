@@ -56,7 +56,37 @@ function containsBlockedAnalyticsAvailability(value: unknown) {
   ].some((pattern) => pattern.test(text));
 }
 
-function sectionize(blocks: readonly ServicePageBlock[]): BodySection[] {
+function containsRetiredCommercialLanguage(
+  value: unknown,
+  route: string,
+) {
+  const text = JSON.stringify(value);
+  const sharedPatterns = [
+    /Focused Website Improvement/i,
+    /Substantial Website Redesign/i,
+    /Provider Rescue Assessment/i,
+    /Migration (?:or Rescue )?Assistance/i,
+    /Analyst-Reviewed Monthly (?:Decision )?Report/i,
+    /Custom Discovery/i,
+    /Focused Custom Build/i,
+    /qualifying implementation retainer/i,
+    /qualifying service relationship/i,
+  ];
+  const routePatterns: Record<string, RegExp[]> = {
+    "/services/ongoing-seo/": [/\$95/i],
+    "/services/web-design-redesign/": [/\$750/i, /\$1,500 minimum/i, /Starting at \$1,500/i],
+    "/services/provider-rescue/": [/\$350/i, /\$1,000/i],
+    "/services/research-audits-strategy/": [/\$95/i, /\$350/i],
+    "/services/custom-digital-solutions/": [/\$500/i, /\$2,500/i],
+  };
+  return [...sharedPatterns, ...(routePatterns[route] ?? [])]
+    .some((pattern) => pattern.test(text));
+}
+
+function sectionize(
+  blocks: readonly ServicePageBlock[],
+  route: string,
+): BodySection[] {
   const sections: BodySection[] = [];
   for (const block of blocks) {
     if (block.type === "heading" && block.level === 2) {
@@ -69,7 +99,11 @@ function sectionize(blocks: readonly ServicePageBlock[]): BodySection[] {
     }
   }
   return sections.flatMap((section) => {
-    if (containsBlockedAnalyticsAvailability(section.heading)) return [];
+    if (
+      section.heading.text === "Frequently asked questions"
+      || containsBlockedAnalyticsAvailability(section.heading)
+      || containsRetiredCommercialLanguage(section, route)
+    ) return [];
     const safeBlocks = section.blocks.filter(
       (block) => !containsBlockedAnalyticsAvailability(block),
     );
@@ -226,7 +260,7 @@ function FaqSection({
 
 export function ServiceDetailPage({ page }: { page: ServicePage }) {
   const seenTerms = new Set<string>();
-  const sections = sectionize(page.body);
+  const sections = sectionize(page.body, page.metadata.canonicalRoute);
   if (!isCommercialServiceRoute(page.metadata.canonicalRoute)) {
     throw new Error(`Missing commercial service layer for ${page.metadata.canonicalRoute}`);
   }

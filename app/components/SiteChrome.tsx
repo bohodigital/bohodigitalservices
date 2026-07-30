@@ -6,6 +6,7 @@ import type {
   SelectHTMLAttributes,
   TextareaHTMLAttributes,
 } from "react";
+import { canonicalServices } from "../content/commercialReset";
 import { primaryNavigation } from "../content/navigation";
 import { DesktopNavigation } from "./DesktopNavigation";
 import { MobileMenu } from "./MobileMenu";
@@ -98,27 +99,11 @@ const footerGroups: ReadonlyArray<{
   {
     title: "Services",
     links: [
-      { label: "All services", href: "/services/" },
-      {
-        label: "Ongoing SEO & Search Growth",
-        href: "/services/ongoing-seo/",
-      },
-      {
-        label: "Web Design & Website Redesign",
-        href: "/services/web-design-redesign/",
-      },
-      {
-        label: "Website Migration & Provider Rescue",
-        href: "/services/provider-rescue/",
-      },
-      {
-        label: "Custom Web & Digital Solutions",
-        href: "/services/custom-digital-solutions/",
-      },
-      {
-        label: "Digital Research, SEO Audits & Strategy",
-        href: "/services/research-audits-strategy/",
-      },
+      ...canonicalServices.map(({ label, route }) => ({
+        label,
+        href: route,
+      })),
+      { label: "Pricing", href: "/pricing/" },
     ],
   },
   {
@@ -477,21 +462,32 @@ export function Header() {
         <DesktopNavigation navigation={primaryNavigation} />
 
         <div className="site-header__desktop-actions">
-          <Link className="site-header__utility-link" href="/contact/">
-            Contact
-          </Link>
-          <ButtonLink className="site-header__desktop-cta" href="/contact/">
-            Talk to Someone Technical
+          <ButtonLink
+            className="site-header__desktop-cta"
+            data-analytics-event="free_review_click"
+            data-analytics-source-page="global"
+            data-analytics-source-section="header"
+            data-analytics-service-context="general"
+            href="/start/"
+          >
+            Get a free website review
           </ButtonLink>
         </div>
 
         <div className="site-header__mobile-actions">
-          <ButtonLink className="site-header__mobile-cta" href="/contact/">
-            Talk Technical
+          <ButtonLink
+            className="site-header__mobile-cta"
+            data-analytics-event="free_review_click"
+            data-analytics-source-page="global"
+            data-analytics-source-section="mobile_header"
+            data-analytics-service-context="general"
+            href="/start/"
+          >
+            Get a free website review
           </ButtonLink>
 
           <MobileMenu
-            action={{ label: "Send the Situation", href: "/start/" }}
+            action={{ label: "Get a free website review", href: "/start/" }}
             labels={{
               open: "Open the site menu",
               close: "Close the site menu",
@@ -520,6 +516,7 @@ export function Footer() {
             Digital engineering for businesses that need visibility, lead
             systems, websites, and operational tools they can understand.
           </p>
+          <p>Boho Digital Services is operated by Republic of Bohemia LLC.</p>
           <div className="site-footer__contact-links">
             <a href="mailto:contact@bohemiandigital.org">
               contact@bohemiandigital.org
@@ -528,7 +525,15 @@ export function Footer() {
               Webmaster
             </a>
           </div>
-          <ButtonLink href="/contact/">Talk to Someone Technical</ButtonLink>
+          <ButtonLink
+            data-analytics-event="free_review_click"
+            data-analytics-source-page="global"
+            data-analytics-source-section="footer"
+            data-analytics-service-context="general"
+            href="/start/"
+          >
+            Get a free website review
+          </ButtonLink>
         </div>
 
         <div className="site-footer__link-groups">
@@ -584,7 +589,7 @@ export function Footer() {
           </a>
 
           <p className="site-footer__copyright">
-            {"©"} {currentYear} Boho Digital Services
+            {"©"} {currentYear} Republic of Bohemia LLC. Boho Digital Services is a trade name used for its digital-services work.
           </p>
         </div>
       </div>

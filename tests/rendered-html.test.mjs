@@ -111,77 +111,128 @@ function attributeValue(tag, attribute) {
   return tag.match(new RegExp(`\\b${attribute}="([^"]*)"`, "i"))?.[1];
 }
 
-test("pre-renders the compressed homepage with exact approved copy", async () => {
+test("pre-renders the commercial-reset Homepage with locked copy and four services", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
+  const main = mainContent(html);
   for (const text of [
-    "Websites, search, and digital systems built by engineers.",
-    "Boho builds and repairs websites, improves search visibility, fixes provider messes, and creates practical tools for work that should not stay manual.",
-    "No sales layer. The person explaining the work is responsible for doing it.",
-    "A website only works when the rest works with it.",
-    "Search, hosting, analytics, forms, content, and ownership all affect whether a website brings in business. We find the weak parts, fix them, and connect the pieces into something you can understand and control.",
-    "What Boho does.",
-    "Start with the problem. We will match it to the smallest useful project.",
-    "Better websites without the agency machinery.",
-    "Boho designs and rebuilds websites around what customers need to understand and what the business needs to control. You get direct technical communication, clear ownership, and a site that can keep growing.",
-    "Leave a bad provider without breaking the business.",
-    "We map what you own, recover access, move the site safely, preserve important URLs and tracking, and document the setup so the next provider cannot hold it hostage.",
-    "We build the systems behind the work.",
-    "Boho builds analytics, publishing, monitoring, security, and automation tools when ordinary software leaves a real gap. The working tools and owned websites are public proof of the technical depth.",
-    "Talk to someone who will understand the work.",
-    "Tell us what is broken, unclear, slow, expensive, or stuck. We will identify the smallest useful next step and explain it plainly.",
-    "No sales handoff. No mystery package. No obligation to keep buying.",
-  ]) {
-    assert.ok(html.includes(text), `missing homepage copy: ${text}`);
-  }
-
-  for (const text of [
-    "Understand the business",
-    "Find the failure",
-    "Fix the foundation",
-    "Improve the experience",
-    "Measure what happens",
-    "Keep improving",
-    "Improve technical health, search visibility, content, and measurement over time.",
-    "Build a clear, fast website that looks credible and makes the next step obvious.",
-    "Recover control of domains, hosting, email, forms, analytics, and broken migrations.",
-    "Get a technical diagnosis before spending money on the wrong fix.",
-    "Build internal tools, automations, data workflows, and systems ordinary software does not cover.",
-    "Explore Boho tools",
-    "About Boho",
-    "Start a project",
-    "Contact Boho",
-  ]) assert.ok(html.includes(text), `missing homepage copy: ${text}`);
+    "CUSTOM BUSINESS WEBSITES",
+    "Business websites from $850. Hosting stays free.",
+    "Eligible hosting costs $0 per month.",
+    "If you stop working with Boho, the website stays where it is.",
+    "For eligible static websites using Cloudflare’s Free plan.",
+    "Client ownership receipt",
+    "Eligible hosting",
+    "$0/month",
+    "Cloudflare account",
+    "Revocable",
+    "Active Boho contract required",
+    "FOUR WAYS TO WORK WITH BOHO",
+    "Build it. Grow it. Fix it. Automate it.",
+    "Four services. Everything else is scope.",
+    "Hosting should not become a leash.",
+    "The price changes with the work, not the label.",
+    "Ordering and reservations can be simple or genuinely custom.",
+    "Real systems. Live on the web.",
+    "From first review to launch.",
+    "Could your next website cost $0 per month to host?",
+  ]) assert.ok(html.includes(text), `missing Homepage copy: ${text}`);
 
   assert.equal((html.match(/<h1\b/gi) ?? []).length, 1);
-  assert.equal((html.match(/<h2\b/gi) ?? []).length, 9);
-  const main = html.match(/<main\b[\s\S]*?<\/main>/i)?.[0] ?? "";
   assert.equal((main.match(/<h1\b/gi) ?? []).length, 1);
-  assert.equal((main.match(/<h2\b/gi) ?? []).length, 6);
-  assert.equal((html.match(/class="service-card /g) ?? []).length, 5);
-  assert.equal((html.match(/class="method-summary-list__link"/g) ?? []).length, 6);
-  assert.match(main, /<section class="cta-band final-cta__band">/i);
-  assert.doesNotMatch(main, /<div class="cta-band final-cta__band">/i);
-  assert.match(html, /href="\/start\/"[^>]*>[\s\S]*?Start a project/i);
-  assert.match(html, /href="\/tools\/"[^>]*>[\s\S]*?See what we build/i);
-  assert.match(html, /href="\/tools\/"[^>]*>[\s\S]*?Explore Boho tools/i);
-  assert.match(html, /href="\/about\/"[^>]*>[\s\S]*?About Boho/i);
-  assert.match(html, /href="\/contact\/"[^>]*>[\s\S]*?Contact Boho/i);
+  assert.equal((main.match(/data-canonical-service-card/g) ?? []).length, 4);
+  for (const [service, price, href] of [
+    ["BUSINESS WEBSITES", "From $850", "/services/web-design-redesign/"],
+    ["ONGOING SEO &amp; LOCAL GROWTH", "From $450/month", "/services/ongoing-seo/"],
+    ["WEBSITE HELP", "From $200", "/services/#website-help"],
+    ["CUSTOM SYSTEMS", "From $1,500", "/services/custom-digital-solutions/"],
+  ]) {
+    assert.ok(main.includes(service), `Homepage is missing ${service}`);
+    assert.ok(main.includes(price), `Homepage is missing ${price}`);
+    assert.match(main, new RegExp(`href="${escapeRegExp(href)}"`));
+  }
+  assert.match(main, /href="\/start\/"[^>]*>[\s\S]*?Get a free website review/i);
+  assert.match(main, /href="\/pricing\/#business-websites"[^>]*>[\s\S]*?See website pricing/i);
   assert.match(html, /src="\/analytics-bootstrap\.js"/i);
   assert.match(html, /data-ga-id="G-5CV8L2SE2R"/i);
   assert.match(html, /data-umami-website-id="aecddac8-8ad4-49c4-b791-60b161c95155"/i);
-  assert.match(html, /og-boho-digital-engineering-20260714\.png/i);
-  assert.match(html, /class="hero__background" aria-hidden="true"/i);
-  assert.match(html, /og-boho-digital-engineering-20260714\.png[^>]+alt=""/i);
+  assert.match(html, /og-boho-commercial-reset-20260730\.webp/i);
   assert.doesNotMatch(html, /definition-term__trigger/i);
-  assert.doesNotMatch(html, /Most agencies start with a package/i);
-  assert.doesNotMatch(main, /A website is part of a larger system\./i);
-  assert.doesNotMatch(main, /A straightforward way to work\./i);
-  assert.doesNotMatch(main, /Tired of talking to people who cannot explain the system\?/i);
-  assert.doesNotMatch(main, /Start with the smallest useful project\./i);
+  assert.doesNotMatch(main, /The Whole System|Observation Record|Concept Interface|Starting Hypothesis/i);
+});
+
+test("enforces the commercial-reset price, hosting, FAQ, and CTA contract", async () => {
+  const canonicalRoutes = [
+    "/",
+    "/services/",
+    "/pricing/",
+    "/services/web-design-redesign/",
+    "/services/ongoing-seo/",
+    "/services/provider-rescue/",
+    "/services/research-audits-strategy/",
+    "/services/custom-digital-solutions/",
+    "/industries/",
+    "/about/",
+    "/resources/",
+    "/start/",
+  ];
+  const rendered = new Map();
+  for (const route of canonicalRoutes) {
+    const html = await (await render(route)).text();
+    rendered.set(route, html);
+    assert.match(html, /href="\/start\/"[^>]*>[\s\S]*?Get a free website review/i, `${route} lost the universal CTA`);
+    assert.doesNotMatch(
+      mainContent(html),
+      /\$95|\$350|\$500|\$750|\$1,000|\$2,500|Essential Website|Provider Rescue Assessment|Focused Website Improvement|Custom Discovery|Focused Custom Build/i,
+      `${route} exposes a retired product or price`,
+    );
+    assert.doesNotMatch(
+      mainContent(html),
+      /eligible website hosting[\s\S]{0,180}(?:requires|while|during)[\s\S]{0,100}(?:active|qualifying) (?:Boho )?(?:relationship|retainer)/i,
+      `${route} ties eligible website hosting to an active Boho relationship`,
+    );
+  }
+
+  const homepage = rendered.get("/");
+  assert.ok(homepage);
+  const homeMain = mainContent(homepage);
+  assert.ok(homeMain.includes("$850"));
+  assert.ok(homeMain.includes("$0/month"));
+  assert.ok(homeMain.includes("Hosting stays free"));
+  assert.equal((homeMain.match(/data-canonical-service-card/g) ?? []).length, 4);
+
+  const servicesMain = mainContent(rendered.get("/services/"));
+  assert.equal(
+    (servicesMain.match(/<h2 id="(?:business-websites|ongoing-seo|website-help|custom-systems)-title">/g) ?? []).length,
+    4,
+  );
+  for (const value of ["From $450/month", "From $200", "From $1,500"]) {
+    assert.ok(servicesMain.includes(value), `Services is missing ${value}`);
+  }
+
+  const faqScript = [...homeMain.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+    .map((match) => JSON.parse(match[1]))
+    .flatMap((value) => value["@graph"] ?? [value])
+    .find((value) => value["@type"] === "FAQPage");
+  assert.ok(faqScript, "Homepage FAQ schema is missing");
+  const visibleFaqs = [...homeMain.matchAll(/<details\b[^>]*><summary[^>]*>([\s\S]*?)<\/summary><div[^>]*><p>([\s\S]*?)<\/p><\/div><\/details>/g)]
+    .map((match) => ({
+      question: match[1]
+        .replace(/<span class="faq-item__icon"[\s\S]*?<\/span>/g, "")
+        .replace(/<[^>]+>/g, "")
+        .replaceAll("&amp;", "&"),
+      answer: match[2].replace(/<[^>]+>/g, "").replaceAll("&amp;", "&"),
+    }));
+  assert.deepEqual(
+    faqScript.mainEntity.map((entry) => ({
+      question: entry.name,
+      answer: entry.acceptedAnswer.text,
+    })),
+    visibleFaqs,
+  );
 });
 
 
@@ -260,24 +311,17 @@ test("renders the Industries decision system without commercial glossary interru
   }
 
   for (const [label, value] of [
-    ["Free Initial Review", "Free"],
-    ["Boho Analytics Platform", "Free"],
-    ["Analyst-Reviewed Monthly Report", "Starting at $95 per month"],
-    ["Ongoing SEO &amp; Search Growth", "Starting at $450 per month"],
-    ["Focused Website Improvement", "Starting at $750"],
-    ["New Website or Substantial Redesign", "Starting at $1,500"],
-    ["Provider Rescue Assessment", "Starting at $350"],
-    ["Migration or Rescue Assistance", "Starting at $1,000"],
-    ["Standalone Review, Audit, or Research", "Starting at $350"],
-    ["Custom Discovery and Feasibility", "Starting at $500"],
-    ["Focused Custom Build", "Starting at $2,500"],
+    ["Free Website Review", "Free"],
+    ["Business Websites", "From $850"],
+    ["Ongoing SEO &amp; Local Growth", "From $450/month"],
+    ["Website Help", "From $200"],
+    ["Custom Systems", "From $1,500"],
   ]) {
     assert.ok(hubMain.includes(label), `missing governed price label ${label}`);
     assert.ok(hubMain.includes(value), `missing governed price value ${value}`);
   }
 
-  assert.match(hubMain, /100% of the eligible fee/i);
-  assert.match(hubMain, /accepted within 90 days/i);
+  assert.doesNotMatch(hubMain, /\$95|\$350|\$500|\$750|\$1,000|\$2,500/i);
   assert.match(hubMain, /Evidence cards stay hidden until their destinations are complete and verified\./i);
   assert.match(hubMain, /does not publish fictional clients, fabricated testimonials/i);
   assert.equal(
@@ -387,7 +431,7 @@ test("renders the twelve-scene About story with scientific proof and unambiguous
     assert.match(html, new RegExp(`href="${url.replaceAll("/", "\\/")}"`, "i"));
   }
 
-  assert.match(html, /href="\/contact\/"[^>]*>[\s\S]*?Talk to Someone Technical/i);
+  assert.match(html, /href="\/start\/"[^>]*>[\s\S]*?Get a free website review/i);
   assert.match(html, /href="\/services\/"[^>]*>[\s\S]*?Review Boho’s Services/i);
   assert.match(html, /class="definition-term__popover"/i);
   assert.match(html, /That is the company I built\./i);
@@ -412,7 +456,7 @@ test("publishes the exact Contact, Start, and Emergency route split", async () =
   const contact = await (await render("/contact/")).text();
   const contactMain = contact.match(/<main\b[\s\S]*?<\/main>/i)?.[0] ?? "";
   assert.doesNotMatch(contactMain, /<form\b/i);
-  assert.match(contactMain, /href="\/start\/"[^>]*>Send the Situation/i);
+  assert.match(contactMain, /href="\/start\/"[^>]*>Get a free website review/i);
   assert.match(contactMain, /href="mailto:contact@bohemiandigital\.org"[^>]*>Email Boho/i);
   assert.match(contactMain, /href="mailto:webmaster@bohemiandigital\.org"[^>]*>Email the webmaster/i);
   assert.match(contactMain, /href="\/emergency\/"[^>]*>Emergency Website Help/i);
@@ -462,179 +506,116 @@ test("publishes the exact Contact, Start, and Emergency route split", async () =
   assert.doesNotMatch(clientSource, /data-umami-event-[a-z-]+=/i);
 });
 
-test("keeps candidate prices centralized and publishes the complete assessment-credit conditions", async () => {
+test("keeps the commercial-reset service keys, prices, and routes centralized", async () => {
   const pricing = await (await render("/pricing/")).text();
-  for (const anchor of [
-    "analytics-reporting",
-    "ongoing-seo",
-    "web-design",
-    "hosting-email",
-    "provider-rescue",
-    "audits-strategy",
-    "custom-solutions",
-  ]) {
+  for (const anchor of ["business-websites", "ongoing-seo"]) {
     assert.match(pricing, new RegExp(`id="${anchor}"`, "i"));
   }
-  for (const condition of [
-    /credited in full toward a larger engagement in the same service category/i,
-    /proposal controls eligibility, timing, and exclusions/i,
-    /included at no separate hosting charge for an eligible website/i,
-    /not a promise of unlimited infrastructure or unlimited support/i,
-  ]) {
-    assert.match(pricing, condition);
+  for (const value of ["$850", "$450/month", "$200", "$1,500"]) {
+    assert.ok(pricing.includes(value), `Pricing is missing ${value}`);
   }
 
   const servicesSource = await readFile(new URL("../app/components/ServicesPage.tsx", import.meta.url), "utf8");
   const pricingSource = await readFile(new URL("../app/components/PricingPage.tsx", import.meta.url), "utf8");
-  const coreSource = await readFile(new URL("../app/content/corePages.ts", import.meta.url), "utf8");
+  const commercialSource = await readFile(new URL("../app/content/commercialReset.ts", import.meta.url), "utf8");
+  const policySource = await readFile(new URL("../app/content/pricingPolicy.mjs", import.meta.url), "utf8");
   const generatorSource = await readFile(new URL("../scripts/generate-service-page-data.mjs", import.meta.url), "utf8");
-  assert.doesNotMatch(servicesSource, /\$\d/);
-  assert.doesNotMatch(pricingSource, /\$\d/);
-  assert.doesNotMatch(coreSource.slice(coreSource.indexOf('slug: "/pricing/"'), coreSource.indexOf('slug: "/about/"')), /\$\d/);
-  assert.match(generatorSource, /approvedCurrencyAmounts/);
+  assert.match(servicesSource, /canonicalServices/);
+  assert.match(pricingSource, /canonicalServices/);
+  for (const [key, label, price, route] of [
+    ["businessWebsites", "Business Websites", "From $850", "/services/web-design-redesign/"],
+    ["ongoingSeo", "Ongoing SEO & Local Growth", "From $450/month", "/services/ongoing-seo/"],
+    ["websiteHelp", "Website Help", "From $200", "/services/#website-help"],
+    ["customSystems", "Custom Systems", "From $1,500", "/services/custom-digital-solutions/"],
+  ]) {
+    for (const value of [key, label, price, route]) {
+      assert.ok(commercialSource.includes(value), `canonical source is missing ${value}`);
+      assert.ok(policySource.includes(value), `pricing policy is missing ${value}`);
+    }
+  }
+  assert.match(generatorSource, /legacyGeneratedCurrencyAmounts/);
   assert.match(generatorSource, /rendered currency amounts do not match/);
 });
 
-test("renders the buyer-led pricing decision system with governed offers and four chapter images", async () => {
+test("renders the simplified four-service Pricing page and matching FAQ schema", async () => {
   const pricing = await (await render("/pricing/")).text();
-  const pricingMain = pricing.match(/<main\b[\s\S]*?<\/main>/i)?.[0] ?? "";
-  const pricingSource = await readFile(new URL("../app/components/PricingPage.tsx", import.meta.url), "utf8");
-  const pricingInteractions = await readFile(new URL("../app/components/PricingInteractions.tsx", import.meta.url), "utf8");
-  const pricingStyles = await readFile(new URL("../app/components/PricingPage.module.css", import.meta.url), "utf8");
-
-  assert.match(pricingSource, /import styles from "\.\/PricingPage\.module\.css"/);
-  assert.match(pricingStyles, /\.sectionNav\s*\{[\s\S]*position:\s*sticky/i);
-  assert.match(pricingStyles, /\.pathGrid\s*\{[\s\S]*grid-template-columns:\s*repeat\(3/i);
-  assert.match(pricingStyles, /grid-template-columns:\s*minmax\(13rem,\s*1fr\)\s*minmax\(22rem,\s*1\.8fr\)\s*minmax\(10rem,\s*0\.65fr\)/);
-  assert.match(pricingStyles, /overflow-x:\s*auto/i);
+  const pricingMain = mainContent(pricing);
   assert.equal((pricing.match(/<h1\b/gi) ?? []).length, 1);
-  assert.equal((pricingMain.match(/<h2\b/gi) ?? []).length, 6);
-  const headingSequence = [...pricingMain.matchAll(/<h2\b[^>]*>([\s\S]*?)<\/h2>/gi)]
-    .map((match) => match[1].replace(/<[^>]+>/g, "").replaceAll("&amp;", "&"));
-  assert.deepEqual(headingSequence, [
-    "Start with the situation.",
-    "Diagnose before you commit.",
-    "Build or repair.",
-    "Operate and improve.",
-    "How Boho pricing works.",
-    "Not sure where to begin?",
-  ]);
-
   for (const phrase of [
-    "Clear starting prices for websites, SEO, rescue, and custom digital work.",
-    "You do not need to diagnose the solution before starting.",
-    "I need clarity first.",
-    "I need something built or fixed.",
-    "I need ongoing support.",
-    "Monthly reporting",
-    "Measurement and interpretation",
-    "Continued search improvement",
-    "Describe what is broken, unclear, slow, expensive, or stuck.",
+    "Four services. Clear starting prices.",
+    "Start with the outcome the business needs.",
+    "Pricing summary",
+    "Business Website scope examples",
+    "What can increase the scope?",
+    "Pricing FAQ",
   ]) {
     assert.ok(pricingMain.includes(phrase), `pricing guide is missing: ${phrase}`);
   }
-
-  for (const id of [
-    "pricing-paths",
-    "diagnose",
-    "build-repair",
-    "ongoing",
-    "how-pricing-works",
-    "provider-rescue",
-    "websites",
-    "web-design",
-    "custom-solutions",
-    "analytics-reporting",
+  const summary = pricingMain.match(/<table class="pricing-summary-table">[\s\S]*?<\/table>/i)?.[0] ?? "";
+  assert.equal((summary.match(/<tr\b/gi) ?? []).length, 5);
+  for (const [service, price] of [
+    ["Business Websites", "$850"],
+    ["Ongoing SEO &amp; Local Growth", "$450/month"],
+    ["Website Help", "$200"],
+    ["Custom Systems", "$1,500"],
   ]) {
-    assert.match(pricingMain, new RegExp(`id="${id}"`, "i"), `missing pricing anchor ${id}`);
+    assert.ok(summary.includes(service), `summary is missing ${service}`);
+    assert.ok(summary.includes(price), `summary is missing ${price}`);
   }
-
-  assert.equal((pricingMain.match(/data-pricing-offer="[^"]+"/gi) ?? []).length, 11);
-  assert.equal((pricingMain.match(/data-umami-event="pricing_offer_view"/gi) ?? []).length, 0);
-  assert.match(pricingInteractions, /pricing_offer_view/);
-  assert.match(pricingInteractions, /threshold:\s*\[0,\s*0\.55,\s*1\]/);
-  for (const event of [
-    "pricing_path_select",
-    "pricing_service_click",
-    "pricing_start_click",
-  ]) {
-    assert.match(pricingMain, new RegExp(`data-umami-event="${event}"`, "i"), `missing pricing event ${event}`);
-  }
-
-  const pricingImages = [...pricingMain.matchAll(/<img\b[^>]*\bsrc="([^"]+)"/gi)].map((match) => match[1]);
-  assert.equal(new Set(pricingImages.filter((source) => source.startsWith("/visuals/"))).size, 4);
-  assert.match(pricingMain, /href="\/start\/\?path=clarity&amp;offer=initial-review"/i);
-  assert.match(pricingMain, /href="\/start\/\?path=build-repair&amp;offer=new-website"/i);
-  assert.match(pricingMain, /href="\/start\/\?path=ongoing&amp;offer=ongoing-seo"/i);
-  assert.match(pricingMain, />Explore website design and redesign</i);
-  assert.match(pricingMain, />Explore ongoing SEO and search growth</i);
-  assert.match(pricingMain, />Explore provider rescue and migration</i);
-  assert.match(pricingMain, />Explore research and technical audits</i);
-  assert.match(pricingMain, />Explore custom tools and automation</i);
-  assert.doesNotMatch(pricingMain, /<details\b|role="tab"|data-carousel|client-only/i);
+  assert.equal((pricingMain.match(/data-analytics-event="pricing_service_click"/gi) ?? []).length, 4);
+  assert.match(pricingMain, /href="\/start\/"[^>]*>[\s\S]*?Get a free review/i);
   assert.doesNotMatch(pricingMain, /definition-term__trigger|definition-term__popover/i);
   assert.match(pricingMain, /"@type":"BreadcrumbList"/);
   assert.match(pricingMain, /"@type":"ItemList"/);
-  assert.match(pricing, /<title>Website, SEO &amp; Digital Services Pricing \| Boho<\/title>/i);
-  assert.match(pricing, /content="See clear starting prices for website design, SEO, provider rescue, audits, hosting, and custom automation\. Start with an initial review\."/i);
+  assert.match(pricingMain, /"@type":"FAQPage"/);
+  assert.equal((pricingMain.match(/"@type":"Offer"/g) ?? []).length, 4);
+  assert.match(pricing, /<title>Website, SEO &amp; Technical Services Pricing \| Boho<\/title>/i);
+  assert.match(pricing, /content="Business websites from \$850, ongoing SEO from \$450 per month, website help from \$200, and custom systems from \$1,500\. Clear scope and client-owned hosting\."/i);
   assert.match(pricing, /G-5CV8L2SE2R/);
   assert.match(pricing, /analytics\.bohodigitalservices\.com/);
-
-  for (const image of [
-    "/visuals/growth-analysis.webp",
-    "/visuals/services/research-audits-strategy-v1.webp",
-    "/visuals/services/web-design-redesign-v1.webp",
-    "/visuals/services/ongoing-seo-v1.webp",
-  ]) {
-    assert.match(pricing, new RegExp(`src="${image}"`, "i"), `missing pricing visual ${image}`);
-  }
 });
 
-test("publishes the commercial Services decision layer and exact pricing inventory", async () => {
+test("publishes exactly four canonical Services and aligns indexed detail routes", async () => {
   const services = await (await render("/services/")).text();
   for (const phrase of [
-    "Start with the problem. Buy only the work it actually needs.",
-    "Name what is going wrong before choosing the service.",
-    "Compare the smallest complete starting point.",
-    "Not every problem deserves a retainer.",
+    "FOUR SERVICES · PUBLIC STARTING PRICES",
+    "Build it. Grow it. Fix it. Automate it.",
+    "Audits, migrations, reporting, and discovery are parts of those jobs, not a maze of separate products.",
+    "Public starting prices. Written scope. Client-owned durable accounts. No mystery retainer.",
+    "Start with the outcome, not the technical label.",
   ]) {
     assert.match(services, new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"));
   }
+  const servicesMain = mainContent(services);
+  const canonicalSections = [
+    ["business-websites", "Business Websites", "From $850"],
+    ["ongoing-seo", "Ongoing SEO &amp; Local Growth", "From $450/month"],
+    ["website-help", "Website Help", "From $200"],
+    ["custom-systems", "Custom Systems", "From $1,500"],
+  ];
+  for (const [id, service, price] of canonicalSections) {
+    const section = servicesMain.match(new RegExp(`<section[^>]+id="${id}"[\\s\\S]*?<\\/section>`, "i"))?.[0] ?? "";
+    assert.ok(section, `Services is missing ${id}`);
+    assert.match(section, new RegExp(`<h2[^>]*>${service}<\\/h2>`, "i"));
+    assert.ok(section.includes(price), `${id} is missing ${price}`);
+  }
+  assert.equal((servicesMain.match(/class="reset-service-detail(?: |")/gi) ?? []).length, 4);
+  assert.equal((servicesMain.match(/"@type":"Service"/g) ?? []).length, 4);
 
   const serviceRoutes = [
-    "/services/ongoing-seo/",
-    "/services/web-design-redesign/",
-    "/services/provider-rescue/",
-    "/services/custom-digital-solutions/",
-    "/services/research-audits-strategy/",
+    ["/services/ongoing-seo/", "From $450/month"],
+    ["/services/web-design-redesign/", "From $850"],
+    ["/services/provider-rescue/", "From $200"],
+    ["/services/custom-digital-solutions/", "From $1,500"],
+    ["/services/research-audits-strategy/", "From $200"],
   ];
-  for (const route of serviceRoutes) {
+  for (const [route, price] of serviceRoutes) {
     const html = await (await render(route)).text();
-    assert.match(html, /commercial-service-layer/i, `${route} lacks its decision layer`);
-    assert.match(html, /Starting at \$|— Starting at \$/i, `${route} lacks starting pricing`);
-    assert.match(html, /This is a fit when/i, `${route} lacks fit guidance`);
-    assert.match(html, /Start somewhere else when/i, `${route} lacks not-fit guidance`);
-    assert.match(html, /Usually included/i, `${route} lacks included scope`);
-    assert.match(html, /Not included unless the proposal says so/i, `${route} lacks scope exclusions`);
+    assert.match(html, /reset-detail-hero/i, `${route} lacks its commercial alignment layer`);
+    assert.ok(html.includes(price), `${route} lacks ${price}`);
     assert.match(html, /href="\/start\/"/i, `${route} lacks the primary CTA`);
     assert.doesNotMatch(html, /Free Boho Analytics|publicly available Boho Analytics|open-source Boho Analytics/i);
-  }
-
-  const pricing = await (await render("/pricing/")).text();
-  for (const price of [
-    "Initial public review — Free",
-    "SEO reporting — Starting at $95 per month",
-    "SEO implementation — Starting at $450 per month",
-    "Focused website improvement — Starting at $750",
-    "New website — Starting at $1,500",
-    "Substantial redesign — Starting at $1,500",
-    "Provider Rescue Assessment — Starting at $350",
-    "Migration assistance — Starting at $1,000",
-    "Focused audit or strategy — Starting at $350",
-    "Custom discovery — Starting at $500",
-    "Focused custom build — Starting at $2,500",
-  ]) {
-    assert.ok(pricing.includes(price), `missing exact price: ${price}`);
+    assert.doesNotMatch(mainContent(html), /\$95|\$350|\$500|\$750|\$1,000|\$2,500/i);
   }
 });
 
@@ -749,7 +730,9 @@ test("restores the canonical Services asset system, proof, and accessible visual
     assert.match(html, /G-5CV8L2SE2R/i, `${route} lost Google Analytics`);
     assert.match(html, /analytics\.bohodigitalservices\.com/i, `${route} lost first-party analytics`);
     assert.doesNotMatch(main, /<img\b[^>]*\bsrc="https?:\/\//i, `${route} uses a remote runtime image`);
-    assert.doesNotMatch(main, /<details\b[\s\S]*?<img\b/i, `${route} hides a critical visual in an inactive disclosure`);
+    for (const disclosure of main.match(/<details\b[\s\S]*?<\/details>/gi) ?? []) {
+      assert.doesNotMatch(disclosure, /<img\b/i, `${route} hides a critical visual in an inactive disclosure`);
+    }
 
     for (const image of images) {
       const src = attributeValue(image, "src");
@@ -819,42 +802,18 @@ test("restores the canonical Services asset system, proof, and accessible visual
 
   const hubHtml = await (await render("/services/")).text();
   const hubMain = mainContent(hubHtml);
-  assert.doesNotMatch(
-    hubMain,
-    /Original service illustration|Original editorial illustration explaining the service concept/i,
-    "commissioned illustration disclaimer remains on the Services hub",
-  );
-  assert.match(hubMain, /data-services-system-map="true"/i);
-  assert.match(hubMain, /data-system-visual-id="lean-direct-operation"/i);
-  assert.match(hubMain, /systems-visual__text-alternative/i);
-  assert.equal(
-    imageTags(hubMain).filter((tag) => attributeValue(tag, "src") === "/diagrams/how-boho-works-v2-transparent.png").length,
-    1,
-    "owner-supplied process derivative occurrence",
-  );
-  assert.doesNotMatch(hubMain, /how-boho-works-v1\.png/i);
-  assert.doesNotMatch(serviceDetails, /how-boho-works-v2-transparent\.png/i);
-  for (const route of Object.keys(routeRequirements)) {
-    assert.match(hubMain, new RegExp(`href="${escapeRegExp(route)}"`, "i"), `hub capability link ${route}`);
-  }
-  for (const src of Object.values(routeRequirements).map(({ primary }) => primary)) {
-    assert.equal(
-      imageTags(hubMain).filter((tag) => attributeValue(tag, "src") === src).length,
-      1,
-      `hub thumbnail ${src}`,
-    );
-  }
+  assert.equal(imageTags(hubMain).length, 0, "Services hub should rely on hierarchy rather than an abstract asset gallery");
+  assert.equal((hubMain.match(/\bid="(?:business-websites|ongoing-seo|website-help|custom-systems)"/gi) ?? []).length, 4);
+  for (const route of [
+    "/services/web-design-redesign/",
+    "/services/ongoing-seo/",
+    "/services/provider-rescue/",
+    "/services/research-audits-strategy/",
+    "/services/custom-digital-solutions/",
+  ]) assert.match(hubMain, new RegExp(`href="${escapeRegExp(route)}"`, "i"), `hub service link ${route}`);
   assert.match(hubMain, /href="\/pricing\/"/i);
   assert.match(hubMain, /href="\/start\/"/i);
-
-  const allServiceContent = `${hubMain}\n${serviceDetails}`;
-  assert.equal(
-    imageTags(allServiceContent).filter((tag) => attributeValue(tag, "src") === "/diagrams/how-boho-works-v2-transparent.png").length,
-    1,
-  );
-  assert.doesNotMatch(allServiceContent, /met-water-textile\.webp/i);
-  const ledger = await readFile(new URL("../docs/services-asset-restoration-ledger.md", import.meta.url), "utf8");
-  assert.match(ledger, /met-water-textile\.webp[\s\S]*archive-approved/i);
+  assert.doesNotMatch(hubMain, /Figure|Observation Record|Concept Interface|Starting Hypothesis/i);
 
   const tools = await (await render("/tools/")).text();
   assert.equal((tools.match(/class="systems-visual /g) ?? []).length, 2);

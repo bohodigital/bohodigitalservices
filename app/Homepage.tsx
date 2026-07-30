@@ -1,269 +1,456 @@
 import {
-  AlignLeft,
-  BarChart3,
-  BriefcaseBusiness,
-  Compass,
-  Crosshair,
-  Globe2,
-  KeyRound,
-  MapPin,
-  MousePointerClick,
-  PanelsTopLeft,
-  RefreshCw,
-  Route,
-  SearchCheck,
-  ShieldCheck,
-  Target,
-  Wrench,
-} from "lucide-react";
-
-import {
   ButtonLink,
-  CtaBand,
+  FaqItem,
   Footer,
   Header,
-  TextLink,
 } from "./components/SiteChrome";
-import { operatingCycle } from "./content/operatingCycle";
+import {
+  canonicalServices,
+  homepageFaqs,
+  hostingQualification,
+  proofProjects,
+  websiteScopeExamples,
+} from "./content/commercialReset";
 
-const methodStages = [
-  ["Understand the business", "What do you sell, who needs it, and what action matters?"],
-  ["Find the failure", "Inspect the website, search visibility, providers, tracking, and handoffs."],
-  ["Fix the foundation", "Resolve ownership, hosting, forms, analytics, speed, and technical problems."],
-  ["Improve the experience", "Make the pages clearer, more useful, and easier to act on."],
-  ["Measure what happens", "Track real inquiries and decisions instead of decorative traffic numbers."],
-  ["Keep improving", "Build on evidence instead of selling a new package every month."],
+const ownershipReceipt = [
+  ["Website build", "From $850"],
+  ["Eligible hosting", "$0/month"],
+  ["Cloudflare account", "Yours"],
+  ["Source code", "Included"],
+  ["Boho access", "Revocable"],
+  ["Active Boho contract required", "No"],
 ] as const;
 
-const operatingCycleIcons = [
-  SearchCheck,
-  Crosshair,
-  Wrench,
-  Route,
-  BarChart3,
-  RefreshCw,
+const hostingSteps = [
+  {
+    heading: "Create the account",
+    copy: "The business uses its own email and recovery information.",
+  },
+  {
+    heading: "Invite Boho",
+    copy: "Boho receives authorized access. Password sharing is not required.",
+  },
+  {
+    heading: "Keep control",
+    copy:
+      "Continue with Boho, manage the site internally, or hire someone else. Leaving does not force a move or create a Boho hosting bill.",
+  },
 ] as const;
 
-const serviceCards = [
-  ["SEO & local visibility", "Improve technical health, search visibility, content, and measurement over time.", "Improve visibility", "/services/ongoing-seo/", "verdigris", MapPin],
-  ["Web design & redesign", "Build a clear, fast website that looks credible and makes the next step obvious.", "Plan the website", "/services/web-design-redesign/", "gold", PanelsTopLeft],
-  ["Provider rescue & migration", "Recover control of domains, hosting, email, forms, analytics, and broken migrations.", "Plan the rescue", "/services/provider-rescue/", "copper", Route],
-  ["Custom tools & automation", "Build internal tools, automations, data workflows, and systems ordinary software does not cover.", "Simplify the work", "/services/custom-digital-solutions/", "blue", Wrench],
-  ["Research & technical audits", "Get a technical diagnosis before spending money on the wrong fix.", "Get a clear review", "/services/research-audits-strategy/", "plum", SearchCheck],
+const restaurantExamples = [
+  {
+    heading: "Link",
+    copy:
+      "Send customers to an existing ordering, reservation, gift-card, or catering provider. This often fits a straightforward website scope.",
+  },
+  {
+    heading: "Embed",
+    copy:
+      "Place an official provider widget or richer inquiry flow inside the website. This usually adds configuration, styling, privacy review, and mobile testing.",
+  },
+  {
+    heading: "Connect",
+    copy:
+      "Exchange live information with a POS, reservation system, menu source, loyalty platform, or custom application. This requires a separate technical scope.",
+  },
 ] as const;
 
-const designLabels = [
-  ["Clear offer", AlignLeft],
-  ["Distinctive design", ShieldCheck],
-  ["Owned infrastructure", Compass],
-  ["Measurable actions", MousePointerClick],
+const processSteps = [
+  {
+    heading: "Free review",
+    copy: "Send the current website or describe the project.",
+  },
+  {
+    heading: "Written scope",
+    copy:
+      "Boho defines the pages, work, ownership, boundaries, price, and required inputs before the project begins.",
+  },
+  {
+    heading: "Build and review",
+    copy:
+      "The person explaining the project remains responsible for the work.",
+  },
+  {
+    heading: "Launch and handoff",
+    copy:
+      "The approved site launches in the agreed account with source and operating information documented.",
+  },
 ] as const;
 
-const migrationSteps = ["map", "preserve", "transfer", "verify", "records"] as const;
-const migrationSystems = ["Domain", "Website", "Hosting", "Analytics", "Forms", "Email connections"] as const;
-
-const toolCapabilities = [
-  "Workflow automation",
-  "Analytics and reporting",
-  "Validation and monitoring",
-] as const;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ItemList",
+      name: "Boho Digital Services",
+      itemListElement: canonicalServices.map((service, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "Service",
+          name: service.label,
+          url: `https://bohodigitalservices.com${service.route}`,
+          offers: {
+            "@type": "Offer",
+            name: `${service.label} — ${service.priceDisplay.toLowerCase()}`,
+            price: service.startingPrice,
+            priceCurrency: "USD",
+            description: service.priceDisplay,
+          },
+        },
+      })),
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: homepageFaqs.map(({ question, answer }) => ({
+        "@type": "Question",
+        name: question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: answer,
+        },
+      })),
+    },
+  ],
+};
 
 export default function Homepage() {
   return (
     <>
       <Header />
-      <main id="main-content">
-        <section className="home-section hero" aria-labelledby="hero-title">
-          <div className="hero__background" aria-hidden="true">
-            <img
-              src="/og-boho-digital-engineering-20260714.png"
-              width="1536"
-              height="1024"
-              alt=""
-              fetchPriority="high"
-            />
-          </div>
-          <div className="section-shell hero__layout">
-            <div className="hero__copy">
-              <p className="eyebrow eyebrow--on-dark">BOHO DIGITAL SERVICES</p>
-              <h1 id="hero-title">Websites, search, and digital systems built by engineers.</h1>
-              <p className="hero__body">Boho builds and repairs websites, improves search visibility, fixes provider messes, and creates practical tools for work that should not stay manual.</p>
-              <p className="hero__supporting-line">No sales layer. The person explaining the work is responsible for doing it.</p>
-              <div className="button-row hero__actions">
-                <ButtonLink href="/contact/">Start a project</ButtonLink>
-                <ButtonLink href="/tools/" variant="secondary">See what we build</ButtonLink>
+      <main className="reset-home" id="main-content">
+        <script
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+          type="application/ld+json"
+        />
+
+        <section className="reset-hero" aria-labelledby="reset-hero-title">
+          <div className="reset-shell reset-hero__grid">
+            <div className="reset-hero__copy">
+              <p className="reset-eyebrow">CUSTOM BUSINESS WEBSITES</p>
+              <h1 id="reset-hero-title">
+                Business websites from $850. Hosting stays free.
+              </h1>
+              <p className="reset-hero__body">
+                Boho builds fast, credible websites for local businesses in a
+                Cloudflare account your business owns. Eligible hosting costs $0
+                per month. If you stop working with Boho, the website stays
+                where it is.
+              </p>
+              <div className="reset-actions">
+                <ButtonLink
+                  data-analytics-event="free_review_click"
+                  data-analytics-source-page="homepage"
+                  data-analytics-source-section="hero"
+                  data-analytics-service-context="business_websites"
+                  href="/start/"
+                >
+                  Get a free website review
+                </ButtonLink>
+                <ButtonLink
+                  data-analytics-event="website_pricing_click"
+                  data-analytics-source-page="homepage"
+                  data-analytics-source-section="hero"
+                  href="/pricing/#business-websites"
+                  variant="secondary"
+                >
+                  See website pricing
+                </ButtonLink>
               </div>
+              <p className="reset-qualification">{hostingQualification}</p>
             </div>
+
+            <aside
+              className="ownership-receipt"
+              aria-label="Business website ownership and pricing"
+            >
+              <div className="ownership-receipt__heading">
+                <span>Client ownership receipt</span>
+                <strong>From $850</strong>
+              </div>
+              <dl>
+                {ownershipReceipt.map(([label, value]) => (
+                  <div key={label}>
+                    <dt>{label}</dt>
+                    <dd>{value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </aside>
           </div>
         </section>
 
-        <section className="home-section editorial-problem" aria-labelledby="problem-title">
-          <div className="section-shell editorial-problem__grid">
-            <div className="editorial-problem__statement">
-              <p className="eyebrow">THE WHOLE SYSTEM</p>
-              <h2 id="problem-title">A website only works when the rest works with it.</h2>
-            </div>
-            <div className="editorial-problem__body reading-width">
-              <p className="editorial-problem__lead">Search, hosting, analytics, forms, content, and ownership all affect whether a website brings in business. We find the weak parts, fix them, and connect the pieces into something you can understand and control.</p>
-              <div className="business-first-signals" aria-label="The larger system includes">
-                <span><BriefcaseBusiness size={19} aria-hidden="true" /> Search</span>
-                <span><Target size={19} aria-hidden="true" /> Hosting</span>
-                <span><MousePointerClick size={19} aria-hidden="true" /> Analytics</span>
-                <span><BarChart3 size={19} aria-hidden="true" /> Forms</span>
-              </div>
-            </div>
+        <section className="trust-strip" aria-label="Website ownership benefits">
+          <div className="reset-shell">
+            <ul>
+              <li>Client-owned account</li>
+              <li>Source and handoff included</li>
+              <li>Direct technical lead</li>
+              <li>No hosting penalty for leaving</li>
+            </ul>
           </div>
         </section>
 
-        <section className="home-section method" id="method" aria-label="Working method">
-          <div className="section-shell">
-            <ol className="method-summary-list" aria-label="Understand the business, find the failure, fix the foundation, improve the experience, measure what happens, keep improving">
-              {methodStages.map(([title, body], index) => {
-                const Icon = operatingCycleIcons[index];
-                return (
-                  <li key={title}>
-                    <a className="method-summary-list__link" href={operatingCycle[index].href}>
-                      <div className="method-summary-list__marker" aria-hidden="true">
-                        <span className="method-summary-list__icon"><Icon size={24} strokeWidth={1.8} /></span>
-                        <span className="method-summary-list__number">{String(index + 1).padStart(2, "0")}</span>
-                      </div>
-                      <div><h3>{title}</h3><p>{body}</p></div>
-                    </a>
-                  </li>
-                );
-              })}
-            </ol>
-          </div>
-        </section>
-
-        <section className="home-section services-mosaic" id="services" aria-labelledby="services-title">
-          <div className="section-shell">
-            <div className="section-heading section-heading--split">
-              <div>
-                <p className="eyebrow">SERVICES</p>
-                <h2 id="services-title">What Boho does.</h2>
-              </div>
-              <p className="reading-width">Start with the problem. We will match it to the smallest useful project.</p>
-            </div>
-            <div className="service-grid">
-              {serviceCards.map(([title, body, label, href, tone, Icon], index) => (
-                <article className={`service-card service-card--${tone} service-card--${index + 1}`} key={title}>
-                  <h3>{title}</h3>
-                  <p>{body}</p>
-                  <TextLink href={href}>{label}</TextLink>
-                  <span className="service-card__pattern" aria-hidden="true"><Icon size={38} strokeWidth={1.65} /></span>
+        <section
+          className="reset-section reset-services"
+          aria-labelledby="reset-services-title"
+        >
+          <div className="reset-shell">
+            <header className="reset-heading">
+              <p className="reset-eyebrow">FOUR WAYS TO WORK WITH BOHO</p>
+              <h2 id="reset-services-title">
+                Build it. Grow it. Fix it. Automate it.
+              </h2>
+              <p>Four services. Everything else is scope.</p>
+            </header>
+            <div className="reset-services__grid">
+              {canonicalServices.map((service) => (
+                <article
+                  className={`reset-service-card reset-service-card--${service.key}`}
+                  data-canonical-service-card
+                  key={service.key}
+                >
+                  <p className="reset-eyebrow">{service.eyebrow}</p>
+                  <p className="reset-price">{service.priceDisplay}</p>
+                  <p>{service.homepageCopy}</p>
+                  <a
+                    data-analytics-event="service_card_click"
+                    data-analytics-price-display={service.priceDisplay}
+                    data-analytics-service-name={service.label}
+                    data-analytics-source-page="homepage"
+                    href={service.route}
+                  >
+                    {service.homepageCta}
+                  </a>
                 </article>
               ))}
             </div>
-            <div className="section-action">
-              <ButtonLink href="/services/">View all services</ButtonLink>
-            </div>
           </div>
         </section>
 
-        <section className="home-section design-spotlight" id="design" aria-labelledby="design-title">
-          <div className="section-shell">
-            <div className="design-spotlight__intro">
-              <div className="section-heading">
-                <p className="eyebrow">WEB DESIGN</p>
-                <h2 id="design-title">Better websites without the agency machinery.</h2>
-              </div>
-              <div className="reading-width">
-                <p>Boho designs and rebuilds websites around what customers need to understand and what the business needs to control. You get direct technical communication, clear ownership, and a site that can keep growing.</p>
-                <div className="button-row">
-                  <ButtonLink href="/contact/">Explore website design</ButtonLink>
-                </div>
-              </div>
+        <section
+          className="reset-section reset-hosting"
+          aria-labelledby="reset-hosting-title"
+        >
+          <div className="reset-shell reset-hosting__grid">
+            <div className="reset-hosting__intro">
+              <p className="reset-eyebrow">CLIENT-OWNED HOSTING</p>
+              <h2 id="reset-hosting-title">
+                Hosting should not become a leash.
+              </h2>
+              <p>
+                Many ordinary business websites do not need a traditional
+                server or an agency-owned hosting subscription. When a website
+                qualifies, Boho builds it for Cloudflare’s Free plan in an
+                account controlled by the client.
+              </p>
+              <p className="reset-hosting__closing">
+                The website build is paid. Eligible hosting is free. The account
+                is yours.
+              </p>
+              <ButtonLink
+                data-analytics-event="hosting_eligibility_click"
+                data-analytics-source-page="homepage"
+                data-analytics-source-section="client_owned_hosting"
+                href="/start/"
+              >
+                Check whether my website qualifies
+              </ButtonLink>
             </div>
-            <ol className="design-principles design-principles--full" aria-label="Website design priorities">
-              {designLabels.map(([label, Icon], index) => (
-                <li key={label}>
-                  <div className="design-principle__marker" aria-hidden="true">
-                    <span className="design-principle__icon"><Icon size={26} strokeWidth={1.7} /></span>
-                    <span>{String(index + 1).padStart(2, "0")}</span>
+            <ol className="reset-step-list">
+              {hostingSteps.map((step, index) => (
+                <li key={step.heading}>
+                  <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h3>{step.heading}</h3>
+                    <p>{step.copy}</p>
                   </div>
-                  <h3>{label}</h3>
                 </li>
               ))}
             </ol>
           </div>
         </section>
 
-        <section className="home-section migration-rescue" aria-labelledby="migration-title">
-          <div className="section-shell migration-rescue__layout">
-            <div className="migration-rescue__copy">
-              <p className="eyebrow eyebrow--on-dark">PROVIDER RESCUE</p>
-              <h2 id="migration-title">Leave a bad provider without breaking the business.</h2>
-              <p>We map what you own, recover access, move the site safely, preserve important URLs and tracking, and document the setup so the next provider cannot hold it hostage.</p>
-              <div className="button-row">
-                <ButtonLink href="/contact/">See provider rescue</ButtonLink>
-              </div>
+        <section
+          className="reset-section reset-scopes"
+          id="business-websites"
+          aria-labelledby="reset-scopes-title"
+        >
+          <div className="reset-shell">
+            <header className="reset-heading">
+              <p className="reset-eyebrow">ONE WEBSITE SERVICE</p>
+              <h2 id="reset-scopes-title">
+                The price changes with the work, not the label.
+              </h2>
+              <p>
+                Every Boho website is a business website. The $850 starting
+                price covers a small, complete static site. More pages, content,
+                locations, and integrations increase the scope.
+              </p>
+            </header>
+            <div className="reset-scope-grid">
+              {websiteScopeExamples.map((scope) => (
+                <article key={scope.heading}>
+                  <h3>{scope.heading}</h3>
+                  <p className="reset-price">{scope.price}</p>
+                  <p>{scope.copy}</p>
+                </article>
+              ))}
             </div>
-            <div className="migration-rescue__visual">
-              <div className="migration-ledger" aria-label="Provider rescue systems">
-                <div className="migration-ledger__heading"><KeyRound size={28} strokeWidth={1.6} aria-hidden="true" /></div>
-                <ul>
-                  {migrationSystems.slice(0, 3).map((system) => <li key={system}><Globe2 size={20} aria-hidden="true" /><span><strong>{system}</strong></span></li>)}
-                </ul>
-              </div>
-              <div className="migration-map" aria-label="Provider rescue steps">
-                <ol className="migration-map__route">
-                  {migrationSteps.map((step, index) => <li key={step}><span className="migration-map__index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span><span className="migration-map__step">{step}</span></li>)}
-                </ol>
-                <div className="migration-map__systems" aria-label="Systems inventoried">{migrationSystems.map((system) => <span key={system}>{system}</span>)}</div>
-              </div>
+            <p className="reset-scope-note">
+              These are planning examples, not fixed packages. The written
+              proposal defines the exact pages, functionality, content
+              responsibilities, integrations, ownership, price, and third-party
+              costs before work begins.
+            </p>
+          </div>
+        </section>
+
+        <section
+          className="reset-section reset-restaurant"
+          aria-labelledby="reset-restaurant-title"
+        >
+          <div className="reset-shell">
+            <header className="reset-heading">
+              <p className="reset-eyebrow">RESTAURANT EXAMPLE</p>
+              <h2 id="reset-restaurant-title">
+                Ordering and reservations can be simple or genuinely custom.
+              </h2>
+              <p>
+                The price depends on whether the website links to an existing
+                provider, embeds the provider’s official interface, or
+                exchanges live information with another system.
+              </p>
+            </header>
+            <div className="reset-three-grid">
+              {restaurantExamples.map((example) => (
+                <article key={example.heading}>
+                  <h3>{example.heading}</h3>
+                  <p>{example.copy}</p>
+                </article>
+              ))}
+            </div>
+            <p className="reset-scope-note">
+              Third-party ordering, reservation, payment, delivery, domain,
+              subscription, and transaction fees are separate.
+            </p>
+          </div>
+        </section>
+
+        <section
+          className="reset-section reset-proof"
+          aria-labelledby="reset-proof-title"
+        >
+          <div className="reset-shell">
+            <header className="reset-heading">
+              <p className="reset-eyebrow">BUILT BY BOHO</p>
+              <h2 id="reset-proof-title">Real systems. Live on the web.</h2>
+              <p>
+                Boho builds and operates its own publishing, education,
+                analytics, and research properties. These are Boho-owned
+                projects, not client case studies or borrowed portfolio pieces.
+              </p>
+            </header>
+            <div className="reset-proof__grid">
+              {proofProjects.map((project) => (
+                <article key={project.name}>
+                  <a
+                    data-analytics-event="proof_project_click"
+                    data-analytics-project-name={project.name}
+                    data-analytics-source-page="homepage"
+                    href={project.href}
+                  >
+                    <img
+                      alt={project.alt}
+                      height="1000"
+                      loading="lazy"
+                      src={project.image}
+                      width="1440"
+                    />
+                    <span className="reset-eyebrow">{project.label}</span>
+                    <h3>{project.name}</h3>
+                    <p>{project.copy}</p>
+                  </a>
+                </article>
+              ))}
+            </div>
+            <div className="reset-section-action">
+              <ButtonLink href="/tools/" variant="secondary">
+                See what Boho builds
+              </ButtonLink>
             </div>
           </div>
         </section>
 
-        <section className="home-section lab-proof" aria-labelledby="tools-title">
-          <div className="section-shell lab-proof__layout">
-            <div className="lab-proof__copy">
-              <p className="eyebrow eyebrow--on-dark">TOOLS &amp; AUTOMATION</p>
-              <h2 id="tools-title">We build the systems behind the work.</h2>
-              <p>Boho builds analytics, publishing, monitoring, security, and automation tools when ordinary software leaves a real gap. The working tools and owned websites are public proof of the technical depth.</p>
-              <div className="button-row">
-                <ButtonLink href="/tools/">Explore Boho tools</ButtonLink>
-                <TextLink href="/about/">About Boho</TextLink>
-              </div>
-            </div>
-            <div className="evidence-board" aria-label="Tools and automation capabilities">
-              {toolCapabilities.map((capability, index) => (
-                <article className={`evidence-card evidence-card--${index + 1}`} key={capability}>
-                  <h3>{capability}</h3>
-                </article>
+        <section
+          className="reset-section reset-process"
+          aria-labelledby="reset-process-title"
+        >
+          <div className="reset-shell">
+            <header className="reset-heading">
+              <p className="reset-eyebrow">A CLEAR PROJECT PATH</p>
+              <h2 id="reset-process-title">From first review to launch.</h2>
+            </header>
+            <ol className="reset-process__grid">
+              {processSteps.map((step, index) => (
+                <li key={step.heading}>
+                  <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                  <h3>{step.heading}</h3>
+                  <p>{step.copy}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <section
+          className="reset-section reset-faq"
+          aria-labelledby="reset-faq-title"
+        >
+          <div className="reset-shell reset-faq__grid">
+            <header className="reset-heading">
+              <h2 id="reset-faq-title">Frequently asked questions</h2>
+            </header>
+            <div>
+              {homepageFaqs.map(({ question, answer }) => (
+                <FaqItem key={question} question={question}>
+                  <p>{answer}</p>
+                </FaqItem>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="home-section pricing-philosophy" aria-label="How Boho keeps work practical">
-          <div className="section-shell pricing-philosophy__inner">
-            <div className="pricing-philosophy__signals" aria-label="How Boho keeps work practical">
-              <span><Wrench size={20} aria-hidden="true" /> Diagnose</span>
-              <span><BriefcaseBusiness size={20} aria-hidden="true" /> Define</span>
-              <span><BarChart3 size={20} aria-hidden="true" /> Expand</span>
+        <section
+          className="reset-section reset-final"
+          aria-labelledby="reset-final-title"
+        >
+          <div className="reset-shell reset-final__grid">
+            <div>
+              <h2 id="reset-final-title">
+                Could your next website cost $0 per month to host?
+              </h2>
+              <p>
+                Send the current website or describe the business. Boho will
+                tell you whether the $850 starting scope fits, whether eligible
+                free hosting appears practical, and what would require a larger
+                project.
+              </p>
             </div>
-            <TextLink href="/pricing/">See starting prices</TextLink>
-          </div>
-        </section>
-
-        <section className="home-section final-cta" aria-labelledby="final-cta-title">
-          <div className="section-shell">
-            <CtaBand
-              className="final-cta__band"
-              eyebrow="START A CONVERSATION"
-              title="Talk to someone who will understand the work."
-              body={(
-                <>
-                  <p>Tell us what is broken, unclear, slow, expensive, or stuck. We will identify the smallest useful next step and explain it plainly.</p>
-                  <p>No sales handoff. No mystery package. No obligation to keep buying.</p>
-                </>
-              )}
-              primary={{ label: "Start a project", href: "/start/" }}
-              secondary={{ label: "Contact Boho", href: "/contact/" }}
-            />
-            <span id="final-cta-title" className="sr-only">Talk to someone who will understand the work.</span>
+            <div className="reset-actions">
+              <ButtonLink
+                data-analytics-event="free_review_click"
+                data-analytics-source-page="homepage"
+                data-analytics-source-section="final_cta"
+                data-analytics-service-context="business_websites"
+                href="/start/"
+              >
+                Get a free website review
+              </ButtonLink>
+              <ButtonLink href="/pricing/" variant="secondary">
+                View all pricing
+              </ButtonLink>
+            </div>
           </div>
         </section>
       </main>

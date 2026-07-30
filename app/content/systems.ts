@@ -323,7 +323,7 @@ export const systemVisuals = [
     id: "lean-direct-operation",
     title: "Lean direct operation versus layered provider overhead",
     publicInThisRelease: true,
-    route: "/services/",
+    route: "/tools/",
     section: "The work should leave the business with more control",
   },
 ] as const satisfies ReadonlyArray<SystemVisualDefinition>;

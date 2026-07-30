@@ -30,6 +30,7 @@ function execute({
   const appended = [];
   const timers = [];
   const listeners = new Map();
+  const documentListeners = new Map();
   const documentElement = { dataset: {} };
   const config = { dataset: {
     umamiScriptUrl: "https://analytics.bohodigitalservices.com/script.js",
@@ -60,6 +61,7 @@ function execute({
         dispatch(name) { scriptListeners.get(name)?.(); },
       };
     },
+    addEventListener(name, callback) { documentListeners.set(name, callback); },
   };
   const sessionStorage = {
     getItem(key) {
@@ -132,6 +134,13 @@ function execute({
       return count;
     },
     pop(value) { setLocation(value); listeners.get("popstate")?.(); },
+    click(dataset, nested = false) {
+      const trackedElement = { dataset };
+      const target = nested
+        ? { closest() { return trackedElement; } }
+        : { dataset, closest() { return this; } };
+      documentListeners.get("click")?.({ target });
+    },
   };
 }
 
@@ -143,7 +152,11 @@ function pageviews(result) {
 
 function activateUmami(result) {
   const tracked = [];
-  result.window.umami = { track(payload) { tracked.push(payload); } };
+  result.window.umami = {
+    track(...args) {
+      tracked.push(args.length === 1 ? args[0] : args);
+    },
+  };
   result.appended[0].dispatch("load");
   return tracked;
 }
@@ -269,4 +282,65 @@ test("source configures manual privacy-bounded pageviews without new identifiers
   assert.match(source, /allow_google_signals:\s*false/);
   assert.match(source, /allow_ad_personalization_signals:\s*false/);
   assert.doesNotMatch(source, /user_id|user_properties|localStorage|identify\(/i);
+});
+
+test("commercial clicks reach GA4 and Umami once with only required properties", () => {
+  const result = execute();
+  const umami = activateUmami(result);
+  result.click({
+    analyticsEvent: "free_review_click",
+    analyticsSourcePage: "homepage",
+    analyticsSourceSection: "hero",
+    analyticsServiceContext: "business_websites",
+    analyticsUnsafeFormText: "private request",
+  }, true);
+
+  const events = result.window.dataLayer
+    .map((entry) => Array.from(entry))
+    .filter((entry) => entry[0] === "event" && entry[1] === "free_review_click");
+  assert.equal(events.length, 1);
+  assert.deepEqual({ ...events[0][2] }, {
+    source_page: "homepage",
+    source_section: "hero",
+    service_context: "business_websites",
+  });
+  assert.deepEqual(JSON.parse(JSON.stringify(umami.at(-1))), [
+    "free_review_click",
+    {
+      source_page: "homepage",
+      source_section: "hero",
+      service_context: "business_websites",
+    },
+  ]);
+  assert.doesNotMatch(JSON.stringify({ events, umami }), /private request|unsafe_form_text/i);
+});
+
+test("commercial clicks queue for Umami and malformed or unknown events are ignored", () => {
+  const result = execute();
+  result.click({
+    analyticsEvent: "pricing_service_click",
+    analyticsServiceName: "Business Websites",
+    analyticsPriceDisplay: "From $850",
+  });
+  result.click({
+    analyticsEvent: "pricing_service_click",
+    analyticsServiceName: "Website Help",
+  });
+  result.click({
+    analyticsEvent: "unapproved_event",
+    analyticsSourcePage: "homepage",
+  });
+
+  const gaEvents = result.window.dataLayer
+    .map((entry) => Array.from(entry))
+    .filter((entry) => entry[0] === "event" && entry[1] !== "page_view");
+  assert.equal(gaEvents.length, 1);
+  const umami = activateUmami(result);
+  assert.deepEqual(JSON.parse(JSON.stringify(umami.at(-1))), [
+    "pricing_service_click",
+    {
+      service_name: "Business Websites",
+      price_display: "From $850",
+    },
+  ]);
 });

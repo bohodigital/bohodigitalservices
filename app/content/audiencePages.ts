@@ -13,7 +13,7 @@ export const audiencePages: PageConfig[] = [
     ],
     theme: "editorial",
     primaryCta: { label: "Find your customer path", href: "#customer-paths" },
-    secondaryCta: { label: "Start the free review", href: "/start/" },
+    secondaryCta: { label: "Get a free website review", href: "/start/" },
     sections: [
       {
         eyebrow: "Business-model fit",
@@ -558,7 +558,7 @@ export const audiencePages: PageConfig[] = [
     ],
     theme: "research",
     primaryCta: { label: "Choose a resource", href: "#resource-collections" },
-    secondaryCta: { label: "Talk to Someone Technical", href: "/contact/" },
+    secondaryCta: { label: "Get a free website review", href: "/start/" },
     sections: [],
   },
   {
@@ -1322,7 +1322,7 @@ export const audiencePages: PageConfig[] = [
       "Use this guide to test whether a website proposal names the real job, ownership model, hosting boundary, content responsibility, migration risk, verification plan, and exit path.",
     ],
     theme: "editorial",
-    primaryCta: { label: "Talk to Someone Technical", href: "/contact/" },
+    primaryCta: { label: "Get a free website review", href: "/start/" },
     secondaryCta: { label: "Explore Web Design & Website Redesign", href: "/services/web-design-redesign/" },
     sections: [
       {
