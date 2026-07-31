@@ -10,7 +10,7 @@ const pricingSummary = [
   {
     key: "businessWebsites",
     service: "Business Websites",
-    use: "New website, redesign, restaurant website, or responsible replacement",
+    use: "New website, redesign, or responsible replacement",
   },
   {
     key: "ongoingSeo",
@@ -32,7 +32,7 @@ const pricingSummary = [
 const quoteDrivers = [
   "More pages or unique templates",
   "More substantial copy and content work",
-  "Multiple services, locations, menus, or markets",
+  "Multiple services, locations, or markets",
   "Missing, inaccurate, or disorganized business information",
   "Content migration and redirect requirements",
   "Provider or ownership problems",

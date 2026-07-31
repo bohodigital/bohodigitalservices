@@ -1,16 +1,18 @@
 # Public-copy change inventory
 
-Authority: owner-provided commercial-reset audit dated 2026-07-30. The supplied audit supersedes the earlier request to remove the restaurant example only for the exact Link / Embed / Connect explanation. It does not authorize a restaurant service, landing page, or dedicated restaurant offer.
+Authority: latest owner direction dated 2026-07-30. It supersedes the audit instruction to add a restaurant example and requires the restaurant-specific direction to be removed completely.
 
 ## `/`
 
-- Restored the supplied `RESTAURANT EXAMPLE` eyebrow, heading, Link / Embed / Connect explanations, and third-party-fee qualification.
+- Removed the entire restaurant-specific example, including its eyebrow, heading, Link / Embed / Connect explanations, and third-party-fee qualification.
+- Removed restaurant-specific wording from the general Business Websites summary and website-scope examples.
 - Source: `app/content/commercialReset.ts` and `app/Homepage.tsx`.
-- No other homepage section or visual direction changed.
+- No replacement restaurant section, example, offer, or homepage direction remains.
 
 ## `/pricing/`
 
 - Preserved the four canonical services and prices from `canonicalServices`.
+- Removed restaurant-specific wording from the Business Websites use case and shared quote drivers.
 - Changed the content CTA to `Get a free website review`.
 - Added the client-owned eligible-hosting explanation using already approved homepage hosting language and `hostingQualification`.
 - Source: `app/components/PricingPage.tsx`.
@@ -45,6 +47,6 @@ Authority: owner-provided commercial-reset audit dated 2026-07-30. The supplied 
 
 ## Editorial statement
 
-Codex authored zero new public-facing marketing claims. New visible wording is either supplied in the 2026-07-30 audit, an approved canonical service label, or existing approved hosting copy reused unchanged.
+Codex authored zero new public-facing marketing claims. Restaurant-specific phrases were removed mechanically under the latest owner direction; all remaining visible wording is supplied or previously approved copy.
 
 Unresolved public-copy conflicts: none.

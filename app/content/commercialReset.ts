@@ -32,10 +32,10 @@ export const canonicalServices: ReadonlyArray<CanonicalService> = [
     route: "/services/web-design-redesign/",
     servicesAnchor: "business-websites",
     homepageCopy:
-      "New websites, redesigns, and straightforward restaurant or local-business sites. Eligible projects include $0 hosting in an account the client owns.",
+      "New websites, redesigns, and straightforward local-business sites. Eligible projects include $0 hosting in an account the client owns.",
     homepageCta: "Plan a business website",
     servicesDescription:
-      "A complete, responsive website for a local business, restaurant, professional practice, or service company. New build, redesign, or responsible replacement is determined by what already exists.",
+      "A complete, responsive website for a local business, professional practice, or service company. New build, redesign, or responsible replacement is determined by what already exists.",
     servicesCta: "Plan a business website",
   },
   {
@@ -156,7 +156,7 @@ export const websiteScopeExamples = [
     copy:
       "A small public website with up to five straightforward pages, one primary customer action, responsive design, light copy shaping, a contact path, search foundations, launch checks, and client-owned deployment.",
     servicesCopy:
-      "One location, up to five straightforward pages, one primary customer action, standard forms or external order and reservation links",
+      "One location, up to five straightforward pages, one primary customer action, standard forms",
   },
   {
     heading: "Expanded scope",
@@ -164,9 +164,9 @@ export const websiteScopeExamples = [
     servicesLabel: "Expanded",
     servicesPrice: "Usually $1,100–$1,500",
     copy:
-      "More pages, more substantial copy development, richer visual presentation, additional services, menus, forms, or content types.",
+      "More pages, more substantial copy development, richer visual presentation, additional services, forms, or content types.",
     servicesCopy:
-      "More pages, richer copy and design, menu presentation, catering or private-event content, provider widgets, gift cards, or additional forms",
+      "More pages, richer copy and design, provider widgets, or additional forms",
   },
   {
     heading: "Integrated or multi-location scope",
@@ -174,9 +174,9 @@ export const websiteScopeExamples = [
     servicesLabel: "Integrated or multi-location",
     servicesPrice: "Usually $1,500–$3,000+",
     copy:
-      "Multiple locations, ordering or reservation integrations, larger migrations, content-management needs, or several customer paths.",
+      "Multiple locations, larger migrations, content-management needs, or several customer paths.",
     servicesCopy:
-      "Multiple locations, several menus, content-management needs, provider migration, larger redirects, or several customer paths",
+      "Multiple locations, content-management needs, provider migration, larger redirects, or several customer paths",
   },
   {
     heading: "Custom application",
@@ -184,32 +184,14 @@ export const websiteScopeExamples = [
     servicesLabel: "Custom application",
     servicesPrice: "Quoted separately",
     copy:
-      "Customer accounts, live databases, custom payment flows, real-time inventory, complex booking logic, or custom ordering systems.",
+      "Customer accounts, live databases, custom payment flows, real-time inventory, or complex booking logic.",
     servicesCopy:
-      "POS synchronization, live availability, loyalty accounts, customer accounts, custom ordering, payment logic, or operational databases",
+      "Live availability, customer accounts, payment logic, or operational databases",
   },
 ] as const;
 
 export const sharedScopeNote =
   "Starting prices apply to the smallest complete scope. Pages, content, locations, integrations, migration condition, third-party systems, urgency, access, and custom functionality can change the quote. The written proposal states the exact work, price, ownership, dependencies, and outside costs before the project begins.";
-
-export const restaurantIntegrationExamples = [
-  {
-    heading: "Link",
-    copy:
-      "Send customers to an existing ordering, reservation, gift-card, or catering provider. This often fits a straightforward website scope.",
-  },
-  {
-    heading: "Embed",
-    copy:
-      "Place an official provider widget or richer inquiry flow inside the website. This usually adds configuration, styling, privacy review, and mobile testing.",
-  },
-  {
-    heading: "Connect",
-    copy:
-      "Exchange live information with a POS, reservation system, menu source, loyalty platform, or custom application. This requires a separate technical scope.",
-  },
-] as const;
 
 export const homepageFaqs = [
   {
@@ -230,7 +212,7 @@ export const homepageFaqs = [
   {
     question: "What websites may not qualify?",
     answer:
-      "Ecommerce, customer accounts, complex booking systems, large databases, high-volume applications, custom ordering systems, and websites requiring contractual service levels may need paid infrastructure.",
+      "Ecommerce, customer accounts, complex booking systems, large databases, high-volume applications, and websites requiring contractual service levels may need paid infrastructure.",
   },
   {
     question: "Who owns the domain and hosting account?",
@@ -278,7 +260,7 @@ export const pricingFaqs = [
   {
     question: "Are outside provider costs included?",
     answer:
-      "Only when the written proposal says so. Domains, ordering systems, reservation platforms, paid software, payment processing, licensing, email providers, and other third-party charges are otherwise separate.",
+      "Only when the written proposal says so. Domains, paid software, payment processing, licensing, email providers, and other third-party charges are otherwise separate.",
   },
 ] as const;
 

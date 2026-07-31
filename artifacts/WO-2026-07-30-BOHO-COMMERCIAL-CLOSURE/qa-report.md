@@ -9,7 +9,7 @@ Governing constitutions:
 - `boho.company` version `0.1.0`
 - `boho.operations-agents` version `0.1.0`
 
-Authorization: owner-provided commercial-reset audit dated 2026-07-30. Production deployment and Search Console recrawl remain separately gated.
+Authorization: latest owner direction dated 2026-07-30 removes the restaurant-specific direction and explicitly authorizes production deployment. Search Console recrawl remains separately gated.
 
 ## Automated release checks
 
@@ -25,6 +25,7 @@ Authorization: owner-provided commercial-reset audit dated 2026-07-30. Productio
 - Glossary routes: 153; accidental noindex routes: 0
 - `git diff --check`: passed
 - Rendered visible-content sweep: 183 HTML files, 0 retired commercial-language or retired-price hits
+- Rendered `/`, `/services/`, and `/pricing/`: 0 restaurant-specific commercial-direction hits
 
 GA4 `G-5CV8L2SE2R`, Umami website ID `aecddac8-8ad4-49c4-b791-60b161c95155`, and the shared analytics bootstrap remain present in rendered output.
 
@@ -32,7 +33,7 @@ GA4 `G-5CV8L2SE2R`, Umami website ID `aecddac8-8ad4-49c4-b791-60b161c95155`, and
 
 ### Desktop, 1440 × 900
 
-- Homepage: correct H1, Services navigation visible, free-review CTA visible, restaurant example present, zero horizontal overflow.
+- Homepage: correct H1, Services navigation visible, free-review CTA visible, no restaurant-specific commercial section, zero horizontal overflow.
 - Pricing: four rows only; `$850`, `$450/month`, `$200`, and `$1,500`; one content CTA; client-owned hosting explanation; zero horizontal overflow.
 - Tools: current free-review CTA and Custom Systems references; no retired shell copy; zero horizontal overflow.
 
@@ -40,7 +41,7 @@ GA4 `G-5CV8L2SE2R`, Umami website ID `aecddac8-8ad4-49c4-b791-60b161c95155`, and
 
 - Homepage first viewport shows the `$850` and free-hosting promise, the free-review CTA, and the beginning of the client ownership receipt.
 - Desktop navigation is hidden and the mobile Menu control is visible.
-- Restaurant Link / Embed / Connect cards collapse to one column with zero horizontal overflow.
+- Rendered homepage order moves directly from website scope into proof with no restaurant-specific section.
 - `/start/` shows the exact free-review promise and has zero horizontal overflow.
 - Start form renders the five supplied selector labels and `Request my free review`.
 
@@ -58,11 +59,9 @@ The localhost Turnstile widget emitted its expected non-production warning. No p
 - `screenshots/home-desktop-1440x900.jpg`
 - `screenshots/home-mobile-390x844.jpg`
 - `screenshots/pricing-top-desktop-1440x900.jpg`
-- `screenshots/restaurant-example-mobile-390x844.jpg`
 - `screenshots/start-mobile-390x844.jpg`
 
 ## Deferred release actions
 
-- No Pi, GitHub, Cloudflare Pages, DNS, or production deployment is included in this candidate.
-- Search Console recrawl is deferred until an approved production release.
-- P2 service-page shortening, Industries redesign, About redesign, a restaurant landing page, and a real Work page remain outside this corrective patch.
+- Search Console recrawl is deferred because it is a separate external account action.
+- P2 service-page shortening, Industries redesign, About redesign, and a real Work page remain outside this corrective patch.

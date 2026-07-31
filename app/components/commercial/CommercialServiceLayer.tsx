@@ -149,8 +149,8 @@ function RouteSpecificDetails({ route }: { route: CommercialServiceRoute }) {
             <summary>Does ecommerce qualify for the $850 starting scope?</summary>
             <p>
               No. Ecommerce, customer accounts, custom payment flows, live
-              databases, complex booking logic, and custom ordering systems
-              receive a separate written scope and quote.
+              databases, and complex booking logic receive a separate written
+              scope and quote.
             </p>
           </details>
           <details>

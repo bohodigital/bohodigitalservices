@@ -20,7 +20,7 @@ export const pricingGroups = [
       [
         "Business Websites",
         "From $850",
-        "New website, redesign, restaurant website, or responsible replacement.",
+        "New website, redesign, or responsible replacement.",
       ],
     ],
   },

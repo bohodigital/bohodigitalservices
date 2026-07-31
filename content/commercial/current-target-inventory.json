@@ -5,12 +5,12 @@
   "sources": [
     {
       "path": "app/Homepage.tsx",
-      "sha256": "1845345c197947179633152389d81b8f337db695852ea29029fd756af6afbd86",
-      "bytes": 15800,
+      "sha256": "75998fdc0ae59e0c051d1b1c4426b5c5c3536d36454a2ee553b4f0ceafb8938e",
+      "bytes": 14519,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 166,
+      "publicStringCount": 158,
       "importCount": 2,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
@@ -258,8 +258,8 @@
     },
     {
       "path": "app/components/PricingPage.tsx",
-      "sha256": "044a33c9dcec20551e9b7e121e978882a9308ad824f96bb21920d681a17da540",
-      "bytes": 9581,
+      "sha256": "a03fdf4a963bce158daf17a3f059390db4cb91ca381e5254cc3c3a3c5f6140ea",
+      "bytes": 9554,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
@@ -302,12 +302,12 @@
     },
     {
       "path": "app/components/ServicesPage.tsx",
-      "sha256": "eacd572f4925f70285ac888207fb7a85b97a20ef68e8ea6e1b46cfe976d26624",
-      "bytes": 14308,
+      "sha256": "e03e5e558125117712abe3ba0c624713ac765bad2c3b8f44d6a1261f2500893e",
+      "bytes": 14256,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 180,
+      "publicStringCount": 179,
       "importCount": 2,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
@@ -390,12 +390,12 @@
     },
     {
       "path": "app/content/commercialReset.ts",
-      "sha256": "71d3166d8f7e3085b596cbb6703c4913f967667aaa8be9089029bae56311d1d4",
-      "bytes": 13782,
+      "sha256": "bd065a203ba8a413715eb8315aeb4bd98e720b69a13e9835020ab5cc3464908f",
+      "bytes": 12788,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 149,
+      "publicStringCount": 143,
       "importCount": 0,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
@@ -1232,14 +1232,14 @@
     "reachable": 64,
     "authored": 65,
     "generatedMirrors": 1,
-    "publicStringsOnDemand": 12409,
+    "publicStringsOnDemand": 12394,
     "analyticsClaimContexts": 35
   },
   "fullDetail": {
     "committed": false,
     "generationCommand": "node scripts/commercial-copy-build.mjs --check --inventory-detail <path>",
-    "recordCount": 12409,
-    "deterministicDigest": "937917ead68a4930d7a995c99da901add2998c19f1f920fbe81e2287e5c6f2e0"
+    "recordCount": 12394,
+    "deterministicDigest": "928538bdc6217838dd5e928cf75c565b18ebe8aec9207afd52ff652e4794b9ff"
   },
   "securityScan": {
     "privateKeyMarkers": 0,
