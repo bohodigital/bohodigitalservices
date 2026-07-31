@@ -225,19 +225,19 @@ export const industryModels: IndustryModel[] = [
     ],
     serviceRoutes: [
       {
-        title: "Ongoing SEO & Search Growth",
+        title: "Ongoing SEO & Local Growth",
         body: "For a contractor with a sound foundation, ongoing work can improve priority service pages, local visibility, internal links, public-information consistency, and reporting around qualified customer actions. The work follows the services and locations the company actually wants to support; it does not promise rankings, inquiry volume, or project revenue.",
         href: "/services/ongoing-seo/",
         linkLabel: "Review ongoing search work",
       },
       {
-        title: "Web Design & Website Redesign",
+        title: "Business Websites",
         body: "A focused improvement or larger redesign can clarify project types, service areas, proof, mobile estimate paths, and the handoff after an inquiry. Scope depends on the current system, supplied content, required integrations, and the smallest complete solution that addresses the diagnosed problem.",
         href: "/services/web-design-redesign/",
         linkLabel: "Review website improvement",
       },
       {
-        title: "Website Migration & Provider Rescue",
+        title: "Website Help",
         body: "When access or ownership is uncertain, provider rescue can map the domain, hosting, website, analytics, business profiles, forms, and other dependencies before a move. Assessment comes before implementation so working lead paths are not casually placed at risk.",
         href: "/services/provider-rescue/",
         linkLabel: "Review provider rescue",
@@ -433,19 +433,19 @@ export const industryModels: IndustryModel[] = [
     ],
     serviceRoutes: [
       {
-        title: "Ongoing SEO & Search Growth",
+        title: "Ongoing SEO & Local Growth",
         body: "Ongoing work can improve priority service and location information, public-profile consistency, local discovery, review context, and reporting around calls, bookings, visits, or requests. Recommendations stay tied to real services and capacity, and do not promise rankings, appointment volume, or revenue.",
         href: "/services/ongoing-seo/",
         linkLabel: "Review local search support",
       },
       {
-        title: "Web Design & Website Redesign",
+        title: "Business Websites",
         body: "Website work can clarify services, team roles, locations, policies, booking choices, telephone paths, and mobile use. Boho scopes the smallest complete solution after confirming the operating model, supplied content, privacy boundaries, and any third-party scheduling system that must remain in the path.",
         href: "/services/web-design-redesign/",
         linkLabel: "Review website improvement",
       },
       {
-        title: "Digital Research, SEO Audits & Strategy",
+        title: "Website Help",
         body: "A standalone review can compare the website, public profiles, customer path, service structure, and available measurement before implementation begins. It is useful when the business needs a documented diagnosis or must decide which problem deserves attention first.",
         href: "/services/research-audits-strategy/",
         linkLabel: "Review audit and research options",
@@ -634,19 +634,19 @@ export const industryModels: IndustryModel[] = [
     ],
     serviceRoutes: [
       {
-        title: "Web Design & Website Redesign",
+        title: "Business Websites",
         body: "Website work can organise locations, menus, products, events, arrival details, reservations, pickup, and mobile actions around the real visit decision. Boho scopes the smallest complete improvement after identifying which information is stable, which changes often, and which external platforms remain responsible for transactions.",
         href: "/services/web-design-redesign/",
         linkLabel: "Review website improvement",
       },
       {
-        title: "Ongoing SEO & Search Growth",
+        title: "Ongoing SEO & Local Growth",
         body: "Ongoing work can improve local discovery, location pages, public-information consistency, internal links, seasonal updates, and reporting around available reservation, direction, event, and pickup signals. It does not promise foot traffic, reservations, search positions, or sales.",
         href: "/services/ongoing-seo/",
         linkLabel: "Review ongoing search work",
       },
       {
-        title: "Digital Research, SEO Audits & Strategy",
+        title: "Website Help",
         body: "A focused review can compare location information, mobile arrival planning, website structure, public profiles, reservation or ordering handoffs, and available measurement. The documented findings help the business choose a repair, focused improvement, or larger rebuild without assuming the answer in advance.",
         href: "/services/research-audits-strategy/",
         linkLabel: "Review audit and research options",
@@ -830,19 +830,19 @@ export const industryModels: IndustryModel[] = [
     ],
     serviceRoutes: [
       {
-        title: "Digital Research, SEO Audits & Strategy",
+        title: "Website Help",
         body: "A standalone review can examine catalog structure, priority categories and products, technical access, product information, policy clarity, shopping paths, and measurement disagreement. It creates a documented basis for deciding what to repair before any store change is assumed.",
         href: "/services/research-audits-strategy/",
         linkLabel: "Review ecommerce audit options",
       },
       {
-        title: "Web Design & Website Redesign",
+        title: "Business Websites",
         body: "Focused website work may improve catalog navigation, product-page hierarchy, mobile discovery, policy access, and the path into checkout. Ecommerce builds, account functions, payments, major migrations, and transaction systems are specifically scoped and quoted after platform access and feasibility are confirmed.",
         href: "/services/web-design-redesign/",
         linkLabel: "Review ecommerce website work",
       },
       {
-        title: "Custom Web & Digital Solutions",
+        title: "Custom Systems",
         body: "When the diagnosed problem is a missing workflow, catalog tool, data connection, or operational interface, a custom solution may be considered. Boho first checks whether the existing platform or a mature service can solve it more safely. Any build requires a specific written scope, verified access, and clear ownership boundaries.",
         href: "/services/custom-digital-solutions/",
         linkLabel: "Review custom solution boundaries",
@@ -1024,19 +1024,19 @@ export const industryModels: IndustryModel[] = [
     ],
     serviceRoutes: [
       {
-        title: "Digital Research, SEO Audits & Strategy",
+        title: "Website Help",
         body: "A focused review can examine positioning, buyer questions, service structure, content, people, proof, search visibility, inquiry paths, and available measurement. The result is a documented diagnosis that helps the firm choose the smallest useful next move before implementation is assumed.",
         href: "/services/research-audits-strategy/",
         linkLabel: "Review research and audit options",
       },
       {
-        title: "Web Design & Website Redesign",
+        title: "Business Websites",
         body: "Website work can make complex services, people, methods, evidence, educational material, and qualified inquiry routes easier to understand. Scope depends on the current system, supplied and approved content, professional review needs, integrations, and the smallest complete solution that addresses the diagnosed gap.",
         href: "/services/web-design-redesign/",
         linkLabel: "Review website improvement",
       },
       {
-        title: "Ongoing SEO & Search Growth",
+        title: "Ongoing SEO & Local Growth",
         body: "Ongoing work can strengthen priority service pages, useful educational content, technical health, internal links, search discovery, and reporting around qualified customer paths. It does not promise rankings, authority, proposal volume, sales-cycle changes, or revenue.",
         href: "/services/ongoing-seo/",
         linkLabel: "Review ongoing search work",

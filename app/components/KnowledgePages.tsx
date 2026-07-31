@@ -125,7 +125,7 @@ export function ToolsPage() {
             "Technical depth is useful when it produces a system the business can understand, verify, operate, and continue to own.",
           ]}
           primary={{ label: "Explore Boho Systems", href: "#system-families" }}
-          secondary={{ label: "Build the Missing Tool", href: "/contact/" }}
+          secondary={{ label: "Get a free website review", href: "/start/" }}
           seenTerms={seenTerms}
         />
 
@@ -135,7 +135,7 @@ export function ToolsPage() {
             title="Tools & systems"
             items={[
               { label: "Systems and proof", href: "/tools/" },
-              { label: "Custom Web & Digital Solutions", href: "/services/custom-digital-solutions/" },
+              { label: "Custom Systems", href: "/services/custom-digital-solutions/" },
               { label: "Buyer resources", href: "/resources/" },
               { label: "Technical glossary", href: "/learn/glossary/" },
             ]}
@@ -322,8 +322,8 @@ export function ToolsPage() {
                 <CtaBand
                   title="Bring the repeated work, the current system, and the part that keeps breaking."
                   body={<p>{define("Boho will help decide whether the useful move is repair, integration, focused custom engineering, or no new software at all.")}</p>}
-                  primary={{ label: "Build the Missing Tool", href: "/contact/" }}
-                  secondary={{ label: "Review Custom Web & Digital Solutions", href: "/services/custom-digital-solutions/" }}
+                  primary={{ label: "Get a free website review", href: "/start/" }}
+                  secondary={{ label: "Review Custom Systems", href: "/services/custom-digital-solutions/" }}
                 />
                 <span className="sr-only" id="tools-commercial-cta-title">Start a custom tools conversation.</span>
               </div>

@@ -22,6 +22,7 @@ import { inHouseBrandsByLabPath } from "../content/inHouseBrands";
 import { audiencePages } from "../content/audiencePages";
 import { industryModelsBySlug } from "../content/industries";
 import { commercialSection } from "../content/commercial/presentation";
+import { freeReviewPage } from "../content/commercialReset";
 import { corePages } from "../content/corePages";
 import { isRetiredPublicPage } from "../content/publicPages";
 import { servicePagesByRoute, serviceRoutePages } from "../content/serviceRoutePages";
@@ -84,7 +85,13 @@ function commercialRouteMetadata(route: string): CommercialRouteMetadata | null 
         description: commercialSection("contact", "contact").one("Open Graph description"),
       };
     case "/start/":
-      return { section: commercialSection("start", "start") };
+      return {
+        title: freeReviewPage.headline,
+        description: freeReviewPage.body,
+        canonical: "/start/",
+        openGraphTitle: freeReviewPage.headline,
+        openGraphDescription: freeReviewPage.body,
+      };
     case "/emergency/":
       return { section: commercialSection("emergency", "metadata") };
     case "/services/ongoing-seo/":

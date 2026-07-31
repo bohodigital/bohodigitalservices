@@ -39,16 +39,18 @@ test("renders exact incident routing and unique Start compatibility anchors", as
 test("carries the four canonical services into Pricing and the editable Start form", async () => {
   const form = await source("app/components/commercial/CommercialInquiryForm.tsx");
   const client = await source("app/components/commercial/CommercialInquiryFormClient.tsx");
+  const commercial = await source("app/content/commercialReset.ts");
   const pricing = await source("app/components/PricingPage.tsx");
   assert.match(pricing, /href="\/start\/"/);
   for (const service of [
-    "Business Websites",
+    "Business Website",
     "Ongoing SEO & Local Growth",
     "Website Help",
-    "Custom Systems",
+    "Custom System",
   ]) {
-    assert.ok(form.includes(`"${service}"`), `Start is missing ${service}`);
+    assert.ok(commercial.includes(`"${service}"`), `Start is missing ${service}`);
   }
+  assert.match(form, /freeReviewServiceOptions/);
   assert.match(client, /new URLSearchParams\(search\)/);
   assert.match(client, /useSyncExternalStore/);
   assert.match(client, /service instanceof HTMLSelectElement/);

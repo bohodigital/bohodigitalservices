@@ -2,6 +2,10 @@ import {
   commercialSection,
 } from "../../content/commercial/presentation";
 import {
+  freeReviewPage,
+  freeReviewServiceOptions,
+} from "../../content/commercialReset";
+import {
   CommercialInquiryFormClient,
   type CommercialFormField,
   type CommercialFormPresentation,
@@ -20,15 +24,12 @@ function startFields(): ReadonlyArray<CommercialFormField> {
   const offer = commercialSection("start", "valuable-offer-or-workflow");
   const budget = commercialSection("start", "budget-context");
   const timing = commercialSection("start", "time-sensitivity");
-  const serviceOptions = [
-    "Business Websites",
-    "Ongoing SEO & Local Growth",
-    "Website Help",
-    "Custom Systems",
-    "Not sure yet",
-  ];
+  const serviceOptions = freeReviewServiceOptions.map(({ label }) => label);
   const backendOptions = Object.fromEntries(
-    serviceOptions.map((option) => [option, option]),
+    freeReviewServiceOptions.map(({ label, backendValue }) => [
+      label,
+      backendValue,
+    ]),
   );
   return [
     { publicName: "name", backendName: "name", type: "text", label: name.one("Label"), placeholder: name.one("Placeholder"), requirement: name.one("Required text"), required: true, maxLength: 120 },
@@ -90,7 +91,9 @@ function presentation(kind: "start" | "emergency"): CommercialFormPresentation {
   return {
     kind,
     heading: {
-      title: heading.one(isStart ? "Title" : "Heading"),
+      title: isStart
+        ? freeReviewPage.formHeading
+        : heading.one("Heading"),
       body: heading.one(isStart ? "Body" : "Introduction"),
       requiredNote: heading.one("Required-fields note"),
     },
@@ -107,8 +110,10 @@ function presentation(kind: "start" | "emergency"): CommercialFormPresentation {
       requirement: commercialSection("emergency", "authority").one("Required text"),
     },
     submit: {
-      idle: submit.one("Submit label"),
-      pending: submit.one("Submitting label"),
+      idle: isStart ? freeReviewPage.submitLabel : submit.one("Submit label"),
+      pending: isStart
+        ? `${freeReviewPage.submitLabel}…`
+        : submit.one("Submitting label"),
     },
     disclosure: disclosure ? {
       closed: disclosure.one("Closed label"),

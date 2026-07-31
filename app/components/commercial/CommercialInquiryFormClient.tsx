@@ -11,6 +11,8 @@ import {
   type FormEvent,
 } from "react";
 
+import { freeReviewServiceLabels } from "../../content/commercialReset";
+
 export type CommercialFormField = {
   publicName: string;
   backendName: string;
@@ -107,21 +109,21 @@ const EMERGENCY_PROBLEM_ERROR =
   "Keep the incident description under 7,500 characters so the complete emergency message can be delivered.";
 
 const PRICING_OFFER_DEFAULTS: Readonly<Record<string, Pick<PricingAttribution, "offerLabel" | "service">>> = {
-  "free-review": { offerLabel: "Free Website Review", service: "Not sure yet" },
-  "initial-review": { offerLabel: "Free Website Review", service: "Not sure yet" },
-  "business-websites": { offerLabel: "Business Websites", service: "Business Websites" },
-  "focused-website-improvement": { offerLabel: "Business Websites", service: "Business Websites" },
-  "new-website": { offerLabel: "Business Websites", service: "Business Websites" },
-  "substantial-redesign": { offerLabel: "Business Websites", service: "Business Websites" },
-  "ongoing-seo": { offerLabel: "Ongoing SEO & Local Growth", service: "Ongoing SEO & Local Growth" },
-  "monthly-reporting": { offerLabel: "Ongoing SEO & Local Growth", service: "Ongoing SEO & Local Growth" },
-  "website-help": { offerLabel: "Website Help", service: "Website Help" },
-  "audit-research": { offerLabel: "Website Help", service: "Website Help" },
-  "provider-rescue-assessment": { offerLabel: "Website Help", service: "Website Help" },
-  "provider-rescue": { offerLabel: "Website Help", service: "Website Help" },
-  "custom-systems": { offerLabel: "Custom Systems", service: "Custom Systems" },
-  "custom-discovery": { offerLabel: "Custom Systems", service: "Custom Systems" },
-  "focused-custom-build": { offerLabel: "Custom Systems", service: "Custom Systems" },
+  "free-review": { offerLabel: "Free Website Review", service: freeReviewServiceLabels.unsure },
+  "initial-review": { offerLabel: "Free Website Review", service: freeReviewServiceLabels.unsure },
+  "business-websites": { offerLabel: "Business Websites", service: freeReviewServiceLabels.businessWebsite },
+  "focused-website-improvement": { offerLabel: "Business Websites", service: freeReviewServiceLabels.businessWebsite },
+  "new-website": { offerLabel: "Business Websites", service: freeReviewServiceLabels.businessWebsite },
+  "substantial-redesign": { offerLabel: "Business Websites", service: freeReviewServiceLabels.businessWebsite },
+  "ongoing-seo": { offerLabel: "Ongoing SEO & Local Growth", service: freeReviewServiceLabels.ongoingSeo },
+  "monthly-reporting": { offerLabel: "Ongoing SEO & Local Growth", service: freeReviewServiceLabels.ongoingSeo },
+  "website-help": { offerLabel: "Website Help", service: freeReviewServiceLabels.websiteHelp },
+  "audit-research": { offerLabel: "Website Help", service: freeReviewServiceLabels.websiteHelp },
+  "provider-rescue-assessment": { offerLabel: "Website Help", service: freeReviewServiceLabels.websiteHelp },
+  "provider-rescue": { offerLabel: "Website Help", service: freeReviewServiceLabels.websiteHelp },
+  "custom-systems": { offerLabel: "Custom Systems", service: freeReviewServiceLabels.customSystem },
+  "custom-discovery": { offerLabel: "Custom Systems", service: freeReviewServiceLabels.customSystem },
+  "focused-custom-build": { offerLabel: "Custom Systems", service: freeReviewServiceLabels.customSystem },
 };
 
 function pricingAttributionFromSearch(search: string): PricingAttribution | null {
@@ -132,7 +134,11 @@ function pricingAttributionFromSearch(search: string): PricingAttribution | null
   const offerId = params.get("offer") ?? undefined;
   const offer = offerId ? PRICING_OFFER_DEFAULTS[offerId] : undefined;
   const service = offer?.service
-    ?? (typedPath === "ongoing" ? "Ongoing SEO & Local Growth" : "Not sure yet");
+    ?? (
+      typedPath === "ongoing"
+        ? freeReviewServiceLabels.ongoingSeo
+        : freeReviewServiceLabels.unsure
+    );
   return {
     path: typedPath,
     analyticsPath: typedPath === "build-repair" ? "build_repair" : typedPath,

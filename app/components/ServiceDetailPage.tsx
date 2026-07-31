@@ -122,7 +122,12 @@ function RichText({
   text: string;
   seenTerms: Set<string>;
 }) {
-  const standaloneLink = text.match(/^\*\*(.+?):\*\*\s+`(\/[^`\s]+)`$/);
+  const canonicalText = text
+    .replaceAll("Websites & Managed Hosting", "Business Websites")
+    .replaceAll("Local Visibility & Lead Systems", "Ongoing SEO & Local Growth")
+    .replaceAll("Research, Analytics & Improvement", "Website Help")
+    .replaceAll("Custom Tools & Automation", "Custom Systems");
+  const standaloneLink = canonicalText.match(/^\*\*(.+?):\*\*\s+`(\/[^`\s]+)`$/);
   if (standaloneLink) {
     return (
       <Link className="service-document-link" href={standaloneLink[2]}>
@@ -132,7 +137,7 @@ function RichText({
     );
   }
 
-  const segments = text.split(/(\*\*[^*]+\*\*|`\/[^`\s]+`)/g).filter(Boolean);
+  const segments = canonicalText.split(/(\*\*[^*]+\*\*|`\/[^`\s]+`)/g).filter(Boolean);
   return segments.map((segment, index) => {
     if (segment.startsWith("**") && segment.endsWith("**")) {
       return (

@@ -51,8 +51,8 @@ const resourceCollections: ResourceCard[] = [
     meta: "Definitions",
   },
   {
-    title: "Web Design & Website Redesign",
-    description: "Review how a useful website, explicit ownership, managed hosting, maintenance, and recovery fit together as one operating system.",
+    title: "Business Websites",
+    description: "Review how a useful website, explicit ownership, client-owned eligible hosting, maintenance, and recovery fit together as one operating system.",
     href: "/services/web-design-redesign/",
     label: "Review the website service",
     icon: PanelsTopLeft,

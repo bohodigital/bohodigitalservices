@@ -1,4 +1,5 @@
 import type { PageConfig } from "./types";
+import { hostingQualification } from "./commercialReset";
 
 export const audiencePages: PageConfig[] = [
   {
@@ -884,7 +885,7 @@ export const audiencePages: PageConfig[] = [
     ],
     theme: "research",
     primaryCta: { label: "Explore Boho Systems", href: "#system-families" },
-    secondaryCta: { label: "Build the Missing Tool", href: "/contact/" },
+    secondaryCta: { label: "Get a free website review", href: "/start/" },
     sections: [],
   },
   {
@@ -1272,7 +1273,7 @@ export const audiencePages: PageConfig[] = [
     ],
     theme: "editorial",
     primaryCta: { label: "Back to practical guides", href: "/learn/" },
-    secondaryCta: { label: "Explore Ongoing SEO & Search Growth", href: "/services/ongoing-seo/" },
+    secondaryCta: { label: "Explore Ongoing SEO & Local Growth", href: "/services/ongoing-seo/" },
     draftLabel: "Draft guide shelf — no thin articles",
     sections: [
       {
@@ -1298,7 +1299,7 @@ export const audiencePages: PageConfig[] = [
     ],
     theme: "editorial",
     primaryCta: { label: "Back to practical guides", href: "/learn/" },
-    secondaryCta: { label: "Explore Ongoing SEO & Search Growth", href: "/services/ongoing-seo/#local-seo" },
+    secondaryCta: { label: "Explore Ongoing SEO & Local Growth", href: "/services/ongoing-seo/#local-seo" },
     draftLabel: "Draft guide shelf — content in development",
     sections: [
       {
@@ -1323,7 +1324,7 @@ export const audiencePages: PageConfig[] = [
     ],
     theme: "editorial",
     primaryCta: { label: "Get a free website review", href: "/start/" },
-    secondaryCta: { label: "Explore Web Design & Website Redesign", href: "/services/web-design-redesign/" },
+    secondaryCta: { label: "Explore Business Websites", href: "/services/web-design-redesign/" },
     sections: [
       {
         eyebrow: "Before comparing proposals",
@@ -1348,11 +1349,12 @@ export const audiencePages: PageConfig[] = [
         ],
       },
       {
-        eyebrow: "Managed hosting language",
-        title: "Read the provision and the boundary together.",
+        eyebrow: "Client-owned eligible hosting",
+        title: "Hosting should not become a leash.",
         body: [
-          "Standard managed hosting is included at no separate hosting charge for eligible websites while an active qualifying retainer remains in good standing.",
-          "That provision still requires a written definition of eligibility, platform limits, third-party charges, support, maintenance, ownership, termination, migration assistance, and any work outside the retainer. Included must not be translated into unlimited or permanent.",
+          "The website build is paid. Eligible hosting is free. The account is yours.",
+          "If you stop working with Boho, the website stays where it is.",
+          hostingQualification,
         ],
         tone: "verdigris",
       },
@@ -1378,7 +1380,7 @@ export const audiencePages: PageConfig[] = [
     theme: "editorial",
     primaryCta: { label: "Request a Technical Second Opinion", href: "/contact/" },
     secondaryCta: {
-      label: "Explore Website Migration & Provider Rescue",
+      label: "Explore Website Help",
       href: "/services/provider-rescue/",
     },
     sections: [

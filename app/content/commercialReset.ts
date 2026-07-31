@@ -101,6 +101,46 @@ export const freeReview = {
   route: "/start/" as const,
 };
 
+export const freeReviewPage = {
+  eyebrow: "FREE WEBSITE REVIEW",
+  headline: "Get a clear next step for your website.",
+  body:
+    "Send the current website or briefly describe what the business needs. Boho will review the visible situation and explain whether the best starting point is a business website, ongoing SEO, focused website help, or custom work.",
+  formHeading: "Request your free review",
+  submitLabel: "Request my free review",
+} as const;
+
+export const freeReviewServiceLabels = {
+  businessWebsite: "Business Website",
+  ongoingSeo: "Ongoing SEO & Local Growth",
+  websiteHelp: "Website Help",
+  customSystem: "Custom System",
+  unsure: "Not sure",
+} as const;
+
+export const freeReviewServiceOptions = [
+  {
+    label: freeReviewServiceLabels.businessWebsite,
+    backendValue: "Business Websites",
+  },
+  {
+    label: freeReviewServiceLabels.ongoingSeo,
+    backendValue: "Ongoing SEO & Local Growth",
+  },
+  {
+    label: freeReviewServiceLabels.websiteHelp,
+    backendValue: "Website Help",
+  },
+  {
+    label: freeReviewServiceLabels.customSystem,
+    backendValue: "Custom Systems",
+  },
+  {
+    label: freeReviewServiceLabels.unsure,
+    backendValue: "Not sure yet",
+  },
+] as const;
+
 export const hostingQualification =
   "For eligible static websites using Cloudflare’s Free plan. Domain registration, paid third-party services, ongoing maintenance, and infrastructure beyond the Free plan are separate. Cloudflare controls its plan, terms, limits, and availability.";
 
@@ -152,6 +192,24 @@ export const websiteScopeExamples = [
 
 export const sharedScopeNote =
   "Starting prices apply to the smallest complete scope. Pages, content, locations, integrations, migration condition, third-party systems, urgency, access, and custom functionality can change the quote. The written proposal states the exact work, price, ownership, dependencies, and outside costs before the project begins.";
+
+export const restaurantIntegrationExamples = [
+  {
+    heading: "Link",
+    copy:
+      "Send customers to an existing ordering, reservation, gift-card, or catering provider. This often fits a straightforward website scope.",
+  },
+  {
+    heading: "Embed",
+    copy:
+      "Place an official provider widget or richer inquiry flow inside the website. This usually adds configuration, styling, privacy review, and mobile testing.",
+  },
+  {
+    heading: "Connect",
+    copy:
+      "Exchange live information with a POS, reservation system, menu source, loyalty platform, or custom application. This requires a separate technical scope.",
+  },
+] as const;
 
 export const homepageFaqs = [
   {

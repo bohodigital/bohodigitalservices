@@ -9,6 +9,7 @@ import {
   homepageFaqs,
   hostingQualification,
   proofProjects,
+  restaurantIntegrationExamples,
   websiteScopeExamples,
 } from "./content/commercialReset";
 
@@ -284,6 +285,37 @@ export default function Homepage() {
               proposal defines the exact pages, functionality, content
               responsibilities, integrations, ownership, price, and third-party
               costs before work begins.
+            </p>
+          </div>
+        </section>
+
+        <section
+          className="reset-section reset-restaurant"
+          aria-labelledby="reset-restaurant-title"
+        >
+          <div className="reset-shell">
+            <header className="reset-heading">
+              <p className="reset-eyebrow">RESTAURANT EXAMPLE</p>
+              <h2 id="reset-restaurant-title">
+                Ordering and reservations can be simple or genuinely custom.
+              </h2>
+              <p>
+                The price depends on whether the website links to an existing
+                provider, embeds the provider’s official interface, or
+                exchanges live information with another system.
+              </p>
+            </header>
+            <div className="reset-three-grid">
+              {restaurantIntegrationExamples.map((example) => (
+                <article key={example.heading}>
+                  <h3>{example.heading}</h3>
+                  <p>{example.copy}</p>
+                </article>
+              ))}
+            </div>
+            <p className="reset-scope-note">
+              Third-party ordering, reservation, payment, delivery, domain,
+              subscription, and transaction fees are separate.
             </p>
           </div>
         </section>

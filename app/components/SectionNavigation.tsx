@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 
 import {
   resourceNavigationGroups,
+  serviceHeaderLinks,
   type LocalHref,
 } from "../content/navigation";
 
@@ -27,11 +28,7 @@ const sectionMenus: Record<
     title: "Services",
     items: [
       { label: "Service overview", href: "/services/" },
-      { label: "Ongoing SEO & Search Growth", href: "/services/ongoing-seo/" },
-      { label: "Web Design & Website Redesign", href: "/services/web-design-redesign/" },
-      { label: "Website Migration & Provider Rescue", href: "/services/provider-rescue/" },
-      { label: "Custom Web & Digital Solutions", href: "/services/custom-digital-solutions/" },
-      { label: "Digital Research, SEO Audits & Strategy", href: "/services/research-audits-strategy/" },
+      ...serviceHeaderLinks,
     ],
   },
   industries: {

@@ -135,16 +135,16 @@ test("pre-renders the commercial-reset Homepage with locked copy and four servic
     "Four services. Everything else is scope.",
     "Hosting should not become a leash.",
     "The price changes with the work, not the label.",
+    "RESTAURANT EXAMPLE",
+    "Ordering and reservations can be simple or genuinely custom.",
+    "Link",
+    "Embed",
+    "Connect",
+    "Third-party ordering, reservation, payment, delivery, domain,",
     "Real systems. Live on the web.",
     "From first review to launch.",
     "Could your next website cost $0 per month to host?",
   ]) assert.ok(html.includes(text), `missing Homepage copy: ${text}`);
-  assert.doesNotMatch(
-    main,
-    /RESTAURANT EXAMPLE|Ordering and reservations can be simple or genuinely custom\./i,
-    "Homepage must not promote a restaurant-specific commercial section",
-  );
-
   assert.equal((html.match(/<h1\b/gi) ?? []).length, 1);
   assert.equal((main.match(/<h1\b/gi) ?? []).length, 1);
   assert.equal((main.match(/data-canonical-service-card/g) ?? []).length, 4);
@@ -500,8 +500,25 @@ test("publishes the exact Contact, Start, and Emergency route split", async () =
   }
 
   const start = await (await render("/start/")).text();
+  const startMain = mainContent(start);
   const startForm = start.match(/<form\b[\s\S]*?<\/form>/i)?.[0] ?? "";
+  for (const text of [
+    "FREE WEBSITE REVIEW",
+    "Get a clear next step for your website.",
+    "Send the current website or briefly describe what the business needs.",
+    "Request your free review",
+    "Request my free review",
+  ]) assert.ok(startMain.includes(text), `/start/ is missing: ${text}`);
+  for (const option of [
+    "Business Website",
+    "Ongoing SEO &amp; Local Growth",
+    "Website Help",
+    "Custom System",
+    "Not sure",
+  ]) assert.match(startForm, new RegExp(`<option value="${option}">${option}</option>`));
+  assert.match(start, /<title>Get a clear next step for your website\.<\/title>/i);
   assert.doesNotMatch(startForm, /Emergency Website Help/i);
+  assert.doesNotMatch(startMain, /Send the Situation/i);
 
   const clientSource = await readFile(new URL("../app/components/commercial/CommercialInquiryFormClient.tsx", import.meta.url), "utf8");
   assert.match(clientSource, /\[200, 201, 202\]\.includes\(response\.status\) && payload\.ok === true/);
@@ -567,7 +584,7 @@ test("renders the simplified four-service Pricing page and matching FAQ schema",
     assert.ok(summary.includes(price), `summary is missing ${price}`);
   }
   assert.equal((pricingMain.match(/data-analytics-event="pricing_service_click"/gi) ?? []).length, 4);
-  assert.match(pricingMain, /href="\/start\/"[^>]*>[\s\S]*?Get a free review/i);
+  assert.match(pricingMain, /href="\/start\/"[^>]*>[\s\S]*?Get a free website review/i);
   assert.doesNotMatch(pricingMain, /definition-term__trigger|definition-term__popover/i);
   assert.match(pricingMain, /"@type":"BreadcrumbList"/);
   assert.match(pricingMain, /"@type":"ItemList"/);
@@ -872,7 +889,8 @@ test("realigns Tools around five system families, two decision visuals, and exac
   assert.match(tools, /We repair before replacing, integrate before rebuilding, and write custom software only when the missing capability is worth owning\./i);
   assert.match(tools, /Three public brands, three different search questions\./i);
   assert.match(tools, /Tools explains what Boho builds and operates\. The glossary explains the technical language underneath it\./i);
-  assert.match(tools, /Build the missing tool/i);
+  assert.match(tools, /Get a free website review/i);
+  assert.match(tools, /Review Custom Systems/i);
   for (const anchor of ["visual-layered-infrastructure", "system-families", "repair-integrate-build", "visual-repair-integrate-build", "selected-tools", "websites", "visual-systems-library", "glossary-bridge"]) {
     assert.match(tools, new RegExp(`id="${anchor}"`, "i"), `missing stable Tools anchor #${anchor}`);
   }
@@ -914,7 +932,7 @@ test("realigns Tools around five system families, two decision visuals, and exac
   assert.match(resources, /Website buying/i);
   assert.match(resources, /Provider rescue/i);
   assert.match(resources, /Plain-language glossary/i);
-  assert.match(resources, /Web Design &amp; Website Redesign/i);
+  assert.match(resources, /Business Websites/i);
   assert.match(resources, /Get a technical second opinion before the expensive decision/i);
   assert.doesNotMatch(resources, />\s*Lab\s*<|Tools &amp; systems|How Boho builds tools|secondary evidence|Rank Builder/i);
 

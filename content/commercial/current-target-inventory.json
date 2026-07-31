@@ -5,24 +5,24 @@
   "sources": [
     {
       "path": "app/Homepage.tsx",
-      "sha256": "75998fdc0ae59e0c051d1b1c4426b5c5c3536d36454a2ee553b4f0ceafb8938e",
-      "bytes": 14519,
+      "sha256": "1845345c197947179633152389d81b8f337db695852ea29029fd756af6afbd86",
+      "bytes": 15800,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 158,
+      "publicStringCount": 166,
       "importCount": 2,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
     {
       "path": "app/[...slug]/page.tsx",
-      "sha256": "972f5672bc03c41fa8100dc57bbd933d0b8e904e5285f664f92ad267b2913161",
-      "bytes": 8526,
+      "sha256": "e592a9bc15a31643f9ac93ecdd1ef115448c64c1c550454912e7af7cdd2c20e6",
+      "bytes": 8760,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
       "publicStringCount": 61,
-      "importCount": 18,
+      "importCount": 19,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
     {
@@ -225,8 +225,8 @@
     },
     {
       "path": "app/components/KnowledgePages.tsx",
-      "sha256": "aed71d19f2e9775b9552cfad459c1825c4730196d5052243492f0e12e39ecc92",
-      "bytes": 17866,
+      "sha256": "2136426c02b1df79d13ca202beaa1bf9970a159ecbf8bec12b1df3ea705d7983",
+      "bytes": 17836,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
@@ -258,19 +258,19 @@
     },
     {
       "path": "app/components/PricingPage.tsx",
-      "sha256": "47ebe92ec682db4d02d2ca0f557cbc77cbd2581dc96349fed821936ed11a56cf",
-      "bytes": 8489,
+      "sha256": "044a33c9dcec20551e9b7e121e978882a9308ad824f96bb21920d681a17da540",
+      "bytes": 9581,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 109,
+      "publicStringCount": 117,
       "importCount": 2,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
     {
       "path": "app/components/ResourcesPage.tsx",
-      "sha256": "591e1ffd947703a8d6a92b2b6309881a402f8be2e31e7d8416d3598fae9a46ee",
-      "bytes": 12877,
+      "sha256": "54cf4a65547946229434bd8e2b6f7b9642f0b06c7b7e6e5174058a9275f57bb1",
+      "bytes": 12879,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
@@ -280,8 +280,8 @@
     },
     {
       "path": "app/components/SectionNavigation.tsx",
-      "sha256": "2fe377f3215c7f5c25cdb069165ba47b86b5d3fd75ec2ca696fb92607a431460",
-      "bytes": 7356,
+      "sha256": "12cdd698cb96dd51073d348b154684e5464a4ca18c48af7df08cb6da4c8a9ad6",
+      "bytes": 6944,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
@@ -291,19 +291,19 @@
     },
     {
       "path": "app/components/ServiceDetailPage.tsx",
-      "sha256": "fc5c81d071fb1180433cf1ebe6657127424509e476d70f42e022bf1c4d7f6850",
-      "bytes": 10782,
+      "sha256": "8e42053c1f724c9d4108f3735846eac4f2a937c93258cb447288a5ab096ac2c7",
+      "bytes": 11110,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 53,
+      "publicStringCount": 57,
       "importCount": 4,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
     {
       "path": "app/components/ServicesPage.tsx",
-      "sha256": "6f11e07b6daa5ef20281427a06cfcbaca06068c90bf5306beb6020a51f00cbe1",
-      "bytes": 14300,
+      "sha256": "eacd572f4925f70285ac888207fb7a85b97a20ef68e8ea6e1b46cfe976d26624",
+      "bytes": 14308,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
@@ -379,23 +379,23 @@
     },
     {
       "path": "app/content/audiencePages.ts",
-      "sha256": "42d3c9b3cba3ff92f05ce4ae3ebe9dd723ace158e0215ef13088927a9d2074eb",
-      "bytes": 76079,
+      "sha256": "f8e79f4a2f266588ff3fc7baea643b2c57ea467d631c66bee40c774db22a39fa",
+      "bytes": 75844,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
       "publicStringCount": 894,
-      "importCount": 1,
+      "importCount": 2,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
     {
       "path": "app/content/commercialReset.ts",
-      "sha256": "07239fa41fb872e8bc962836ac060df228f978c97a85d4eb692cfa641bd5d1d6",
-      "bytes": 11914,
+      "sha256": "71d3166d8f7e3085b596cbb6703c4913f967667aaa8be9089029bae56311d1d4",
+      "bytes": 13782,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 128,
+      "publicStringCount": 149,
       "importCount": 0,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
@@ -456,8 +456,8 @@
     },
     {
       "path": "app/content/industries.ts",
-      "sha256": "2ce155631f0002784f08e0a3f06daf7b3dda8088e8f463a69642cd16b26007e0",
-      "bytes": 72821,
+      "sha256": "a1896336ca458694c6faf8ac09e16d62b049c341e2285f85c43410767af798cc",
+      "bytes": 72610,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
@@ -665,8 +665,8 @@
     },
     {
       "path": "content/routing/public-route-registry.json",
-      "sha256": "fc3a29b00f06a5b7229ec6f129bd9dd8105807ad97cd9199e1ad554333e0ae8e",
-      "bytes": 179517,
+      "sha256": "8e12ea7afc909940c4a9e08464008b15785adaff59d772aa51e78280511aef79",
+      "bytes": 179613,
       "classification": "authored-source",
       "reachable": false,
       "editorialAuthority": true,
@@ -1232,14 +1232,14 @@
     "reachable": 64,
     "authored": 65,
     "generatedMirrors": 1,
-    "publicStringsOnDemand": 12368,
+    "publicStringsOnDemand": 12409,
     "analyticsClaimContexts": 35
   },
   "fullDetail": {
     "committed": false,
     "generationCommand": "node scripts/commercial-copy-build.mjs --check --inventory-detail <path>",
-    "recordCount": 12368,
-    "deterministicDigest": "2db39395b99aa46ee602f25dfa6ef760d5edba6b044ad0bc93b3ca383d99f5d2"
+    "recordCount": 12409,
+    "deterministicDigest": "937917ead68a4930d7a995c99da901add2998c19f1f920fbe81e2287e5c6f2e0"
   },
   "securityScan": {
     "privateKeyMarkers": 0,

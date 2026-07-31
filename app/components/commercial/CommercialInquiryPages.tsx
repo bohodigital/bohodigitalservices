@@ -4,6 +4,7 @@ import {
   commercialSection,
   correctionValue,
 } from "../../content/commercial/presentation";
+import { freeReviewPage } from "../../content/commercialReset";
 import { Footer, Header } from "./CommercialChrome";
 import { CommercialInquiryForm } from "./CommercialInquiryForm";
 
@@ -102,10 +103,6 @@ export function CommercialContactPage() {
 }
 
 export function CommercialStartPage() {
-  const hero = commercialSection("start", "hero");
-  const bodyOne = hero.many("Body paragraph 1").at(-1);
-  const bodyTwo = hero.many("Body paragraph 2").at(-1);
-  if (!bodyOne || !bodyTwo) throw new Error("Start hero body is incomplete.");
   const incident = commercialCorrections068.start.incident;
   return (
     <>
@@ -114,11 +111,9 @@ export function CommercialStartPage() {
         <section className="commercial-hero" aria-labelledby="start-commercial-title">
           <div className="section-shell commercial-hero__grid">
             <div>
-              <p className="eyebrow eyebrow--on-dark">{hero.one("Eyebrow")}</p>
-              <h1 id="start-commercial-title">{hero.one("Headline")}</h1>
-              <p>{bodyOne}</p>
-              <p>{bodyTwo}</p>
-              <a className="button-link button-link--secondary" href={hero.one("Secondary destination")}>{hero.one("Secondary link")}</a>
+              <p className="eyebrow eyebrow--on-dark">{freeReviewPage.eyebrow}</p>
+              <h1 id="start-commercial-title">{freeReviewPage.headline}</h1>
+              <p>{freeReviewPage.body}</p>
             </div>
           </div>
         </section>
@@ -186,7 +181,7 @@ export function CommercialEmergencyPage() {
               <p className="eyebrow">{ordinary.one("Eyebrow")}</p>
               <h2>{ordinary.one("Heading")}</h2>
               <ul>{[ordinary.one("Items"), ...ordinary.many("value")].map((item) => <li key={item}>{item}</li>)}</ul>
-              <a href={ordinary.one("Standard destination")}>{ordinary.one("Standard link label")}</a>
+              <a href={ordinary.one("Standard destination")}>Get a free website review</a>
             </article>
           </div>
         </section>

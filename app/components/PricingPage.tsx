@@ -1,5 +1,6 @@
 import {
   canonicalServices,
+  hostingQualification,
   pricingFaqs,
   websiteScopeExamples,
 } from "../content/commercialReset";
@@ -124,7 +125,7 @@ export function PricingPage() {
                 data-analytics-source-section="hero"
                 href="/start/"
               >
-                Get a free review
+                Get a free website review
               </ButtonLink>
             </div>
             <aside className="pricing-summary-card">
@@ -202,6 +203,31 @@ export function PricingPage() {
               responsibilities, integrations, ownership, price, and third-party
               costs before work begins.
             </p>
+          </div>
+        </section>
+
+        <section
+          className="reset-section reset-hosting"
+          aria-labelledby="pricing-hosting-title"
+        >
+          <div className="reset-shell reset-hosting__grid">
+            <div className="reset-hosting__intro">
+              <p className="reset-eyebrow">CLIENT-OWNED ELIGIBLE HOSTING</p>
+              <h2 id="pricing-hosting-title">
+                Hosting should not become a leash.
+              </h2>
+              <p>
+                Many ordinary business websites do not need a traditional
+                server or an agency-owned hosting subscription. When a website
+                qualifies, Boho builds it for Cloudflare’s Free plan in an
+                account controlled by the client.
+              </p>
+              <p className="reset-hosting__closing">
+                The website build is paid. Eligible hosting is free. The account
+                is yours.
+              </p>
+              <p className="reset-qualification">{hostingQualification}</p>
+            </div>
           </div>
         </section>
 

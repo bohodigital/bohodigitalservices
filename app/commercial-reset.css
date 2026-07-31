@@ -402,6 +402,34 @@
   line-height: 1.6;
 }
 
+.reset-restaurant {
+  background: var(--graphite);
+  color: var(--warm-ivory);
+}
+
+.reset-restaurant .reset-heading > p:last-child {
+  color: rgba(255, 248, 235, 0.72);
+}
+
+.reset-three-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: rgba(255, 248, 235, 0.18);
+}
+
+.reset-three-grid article {
+  min-height: 15rem;
+  padding: clamp(1.5rem, 3vw, 2.7rem);
+  background: var(--graphite);
+}
+
+.reset-restaurant .reset-scope-note {
+  border-color: var(--burnished-gold);
+  background: rgba(227, 174, 61, 0.1);
+  color: var(--warm-ivory);
+}
+
 .reset-proof {
   background: var(--parchment);
 }
@@ -865,6 +893,7 @@
     min-height: 18rem;
   }
 
+  .reset-three-grid,
   .reset-proof__grid {
     grid-template-columns: minmax(0, 1fr);
   }
