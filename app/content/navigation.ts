@@ -22,7 +22,7 @@ export const serviceHeaderLinks: ReadonlyArray<NavigationLink> =
   canonicalServices.map((service) => ({
     label: service.label,
     href: service.route,
-    description: service.priceDisplay,
+    description: `${service.priceDisplay}\n${service.dropdownDescription}`,
   }));
 
 export const resourceHeaderLinks: ReadonlyArray<NavigationLink> = [
@@ -42,7 +42,7 @@ export const primaryNavigation: ReadonlyArray<PrimaryNavigationItem> = [
     href: "/services/",
     children: serviceHeaderLinks,
   },
-  { label: "Industries", href: "/industries/" },
+  { label: "Work", href: "/work/" },
   { label: "Pricing", href: "/pricing/" },
   { label: "About", href: "/about/" },
   { label: "Contact", href: "/contact/" },

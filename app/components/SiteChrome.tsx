@@ -107,12 +107,15 @@ const footerGroups: ReadonlyArray<{
     ],
   },
   {
-    title: "Resources",
+    title: "Work and resources",
     links: [
-      { label: "Resources overview", href: "/resources/" },
+      { label: "Work", href: "/work/" },
+      { label: "Tools & Systems", href: "/tools/" },
+      { label: "Industries", href: "/industries/" },
+      { label: "Buyer Resources", href: "/resources/" },
       { label: "Practical guides", href: "/learn/" },
       { label: "Plain-language glossary", href: "/learn/glossary/" },
-      { label: "Website buying", href: "/learn/website-buying/" },
+      { label: "Website Buying Guide", href: "/learn/website-buying/" },
     ],
   },
   {
@@ -121,15 +124,14 @@ const footerGroups: ReadonlyArray<{
       { label: "About", href: "/about/" },
       { label: "Contact", href: "/contact/" },
       { label: "Emergency Help", href: "/emergency/" },
+      { label: "Accessibility", href: "/accessibility/" },
+      { label: "Privacy", href: "/privacy/" },
+      { label: "Terms", href: "/terms/" },
     ],
   },
 ];
 
-const legalLinks: ReadonlyArray<LinkItem> = [
-  { label: "Privacy", href: "/privacy/" },
-  { label: "Terms", href: "/terms/" },
-  { label: "Accessibility", href: "/accessibility/" },
-];
+const legalLinks: ReadonlyArray<LinkItem> = [];
 
 function classNames(...values: Array<string | false | null | undefined>) {
   return values.filter(Boolean).join(" ");

@@ -143,7 +143,13 @@ export function MobileMenu({
                             <li key={child.href}>
                               <a href={child.href} onClick={closeMenu}>
                                 <strong>{child.label}</strong>
-                                {child.description ? <span>{child.description}</span> : null}
+                                {child.description ? (
+                                  <span>
+                                    {child.description.split("\n").map((line) => (
+                                      <span key={line}>{line}</span>
+                                    ))}
+                                  </span>
+                                ) : null}
                               </a>
                             </li>
                           ))}

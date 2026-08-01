@@ -18,6 +18,7 @@ export type CanonicalService = {
   homepageCta: string;
   servicesDescription: string;
   servicesCta: string;
+  dropdownDescription: string;
 };
 
 export const canonicalServices: ReadonlyArray<CanonicalService> = [
@@ -32,11 +33,12 @@ export const canonicalServices: ReadonlyArray<CanonicalService> = [
     route: "/services/web-design-redesign/",
     servicesAnchor: "business-websites",
     homepageCopy:
-      "New websites, redesigns, and straightforward local-business sites. Eligible projects include $0 hosting in an account the client owns.",
+      "New websites, redesigns, and straightforward sites for local businesses, professionals, and independent organizations. Eligible projects include $0 hosting in an account the client owns.",
     homepageCta: "Plan a business website",
     servicesDescription:
-      "A complete, responsive website for a local business, professional practice, or service company. New build, redesign, or responsible replacement is determined by what already exists.",
+      "A complete, responsive website for a local business, professional practice, service company, or independent organization. New build, redesign, or responsible replacement is determined by what already exists.",
     servicesCta: "Plan a business website",
+    dropdownDescription: "New websites and responsible redesigns.",
   },
   {
     key: "ongoingSeo",
@@ -54,6 +56,8 @@ export const canonicalServices: ReadonlyArray<CanonicalService> = [
     servicesDescription:
       "Ongoing technical SEO, local visibility, content improvement, internal linking, analytics, and implementation for businesses with a useful reason to keep improving.",
     servicesCta: "Improve search visibility",
+    dropdownDescription:
+      "Search, local visibility, content, analytics, and implementation.",
   },
   {
     key: "websiteHelp",
@@ -63,7 +67,7 @@ export const canonicalServices: ReadonlyArray<CanonicalService> = [
     priceDisplay: "From $200",
     startingPrice: 200,
     billing: "one-time",
-    route: "/services/#website-help",
+    route: "/services/website-help/",
     servicesAnchor: "website-help",
     homepageCopy:
       "Repairs, audits, provider trouble, migration problems, analytics issues, accessibility fixes, and ownership cleanup.",
@@ -71,6 +75,8 @@ export const canonicalServices: ReadonlyArray<CanonicalService> = [
     servicesDescription:
       "Fix one useful problem without automatically rebuilding everything. Website Help covers focused repairs, diagnosis, provider trouble, migration questions, analytics problems, accessibility issues, and ownership cleanup.",
     servicesCta: "Fix a website problem",
+    dropdownDescription:
+      "Repairs, audits, migrations, provider issues, and focused technical help.",
   },
   {
     key: "customSystems",
@@ -88,6 +94,8 @@ export const canonicalServices: ReadonlyArray<CanonicalService> = [
     servicesDescription:
       "Focused tools, integrations, publishing systems, internal dashboards, data workflows, and automation for repeated work that ordinary software does not solve economically.",
     servicesCta: "Discuss a custom system",
+    dropdownDescription:
+      "Focused tools, integrations, publishing systems, and automation.",
   },
 ] as const;
 
@@ -145,7 +153,7 @@ export const hostingQualification =
   "For eligible static websites using Cloudflare’s Free plan. Domain registration, paid third-party services, ongoing maintenance, and infrastructure beyond the Free plan are separate. Cloudflare controls its plan, terms, limits, and availability.";
 
 export const emailBenefitCopy =
-  "Eligible Ongoing SEO & Local Growth retainers include standard custom-domain business email hosting for one business domain at no additional Boho service charge while the retainer remains active and current. The written scope defines mailbox count, aliases, storage, sending limits, administration, migration, support, provider costs, and exit handling. Bulk marketing, office-suite licenses, regulated archiving, unusually high storage or sending, and unlimited support are separate.";
+  "Eligible active Ongoing SEO & Local Growth retainers include standard custom-domain email hosting for one business domain at no additional charge, subject to the mailbox, storage, sending, administration, and support limits stated in the written agreement.\n\nBulk marketing, office-suite licenses, regulated archiving, complex migrations, unusually high usage, and unlimited support are separate.\n\nWhen the SEO retainer ends, the client may assume the provider cost or migrate to another provider. The domain and business email addresses remain under the client’s control.";
 
 export const websiteScopeExamples = [
   {
@@ -154,9 +162,9 @@ export const websiteScopeExamples = [
     servicesLabel: "Straightforward",
     servicesPrice: "From $850",
     copy:
-      "A small public website with up to five straightforward pages, one primary customer action, responsive design, light copy shaping, a contact path, search foundations, launch checks, and client-owned deployment.",
+      "Up to five straightforward pages, one primary customer action, standard forms, and established third-party links.",
     servicesCopy:
-      "One location, up to five straightforward pages, one primary customer action, standard forms",
+      "One organization, up to five straightforward pages, one primary customer action, standard forms, and established third-party links.",
   },
   {
     heading: "Expanded scope",
@@ -164,9 +172,9 @@ export const websiteScopeExamples = [
     servicesLabel: "Expanded",
     servicesPrice: "Usually $1,100–$1,500",
     copy:
-      "More pages, more substantial copy development, richer visual presentation, additional services, forms, or content types.",
+      "More pages, deeper copy development, richer visual presentation, additional services, forms, resources, locations, or content types.",
     servicesCopy:
-      "More pages, richer copy and design, provider widgets, or additional forms",
+      "More pages, richer copy and design, additional services, resources, locations, forms, or content types.",
   },
   {
     heading: "Integrated or multi-location scope",
@@ -174,9 +182,9 @@ export const websiteScopeExamples = [
     servicesLabel: "Integrated or multi-location",
     servicesPrice: "Usually $1,500–$3,000+",
     copy:
-      "Multiple locations, larger migrations, content-management needs, or several customer paths.",
+      "Multiple locations, third-party integrations, larger migrations, content-management needs, or several customer paths.",
     servicesCopy:
-      "Multiple locations, content-management needs, provider migration, larger redirects, or several customer paths",
+      "Multiple locations, third-party integrations, content-management needs, provider migration, larger redirects, or several customer paths.",
   },
   {
     heading: "Custom application",
@@ -184,9 +192,9 @@ export const websiteScopeExamples = [
     servicesLabel: "Custom application",
     servicesPrice: "Quoted separately",
     copy:
-      "Customer accounts, live databases, custom payment flows, real-time inventory, or complex booking logic.",
+      "Customer accounts, live databases, custom payment flows, real-time data, complex scheduling, or bespoke operational systems.",
     servicesCopy:
-      "Live availability, customer accounts, payment logic, or operational databases",
+      "Customer accounts, real-time data, payment logic, complex scheduling, operational databases, or bespoke application behavior.",
   },
 ] as const;
 
@@ -212,7 +220,7 @@ export const homepageFaqs = [
   {
     question: "What websites may not qualify?",
     answer:
-      "Ecommerce, customer accounts, complex booking systems, large databases, high-volume applications, and websites requiring contractual service levels may need paid infrastructure.",
+      "Ecommerce, customer accounts, complex scheduling, large databases, high-volume applications, bespoke operational systems, and websites requiring contractual service levels may need paid infrastructure.",
   },
   {
     question: "Who owns the domain and hosting account?",
@@ -260,34 +268,34 @@ export const pricingFaqs = [
   {
     question: "Are outside provider costs included?",
     answer:
-      "Only when the written proposal says so. Domains, paid software, payment processing, licensing, email providers, and other third-party charges are otherwise separate.",
+      "Only when the written proposal says so. Domains, scheduling systems, ecommerce platforms, paid software, payment processing, licensing, email providers, and other third-party charges are otherwise separate.",
   },
 ] as const;
 
 export const proofProjects = [
   {
     name: "How Biscuit",
-    label: "BOHO-OWNED PROJECT",
+    label: "BOHO-OWNED PROPERTY",
     copy:
-      "Consumer publishing property with structured articles, media handling, search architecture, and a custom publishing workflow.",
+      "A consumer how-to publication with structured guides, media handling, topic architecture, search paths, and reusable publishing workflows.",
     href: "https://howbiscuit.com/",
     image: "/proof/about/how-biscuit-homepage.png",
     alt: "How Biscuit homepage showing category navigation, a practical guide hero, and supporting article sections.",
   },
   {
     name: "Rank Builder SEO",
-    label: "BOHO-OWNED PROJECT",
+    label: "BOHO-OWNED PROPERTY",
     copy:
-      "Technical SEO publication and research property with controlled topic architecture, internal linking, structured data, and analytics.",
+      "An SEO research and education property with controlled topic architecture, technical resources, internal linking, structured data, and measurement systems.",
     href: "https://rankbuilderseo.com/",
     image: "/proof/about/rank-builder-seo-homepage.png",
     alt: "Rank Builder SEO homepage showing its independent SEO research desk masthead and editorial hero.",
   },
   {
     name: "Better Grades",
-    label: "BOHO-OWNED PROJECT",
+    label: "BOHO-OWNED PROPERTY",
     copy:
-      "Educational publishing property with courses, practice pages, calculators, and search-focused learning resources.",
+      "An educational platform with courses, worked explanations, practice material, calculators, diagnostics, and large interconnected content systems.",
     href: "https://bettergrades.net/",
     image: "/proof/about/better-grades-homepage.png",
     alt: "Better Grades homepage showing its math-help search interface and interactive learning content.",
