@@ -52,7 +52,7 @@ const resourceCollections: ResourceCard[] = [
   },
   {
     title: "Business Websites",
-    description: "Review how a useful website, explicit ownership, client-owned eligible hosting, maintenance, and recovery fit together as one operating system.",
+    description: "Review how a useful website, client-owned hosting, maintenance, ownership, and recovery fit together as one understandable system.",
     href: "/services/web-design-redesign/",
     label: "Review the website service",
     icon: PanelsTopLeft,

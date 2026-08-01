@@ -39,7 +39,7 @@ export const corePages: PageConfig[] = [
             linkLabel: "Build the Lead System",
           },
           {
-            title: "Websites & Managed Hosting",
+            title: "Business Websites",
             body: "Design and operate useful, distinctive websites around ownership, search structure, accessibility, performance, customer action, and clearly bounded managed hosting.",
             href: "/services/web-design-redesign/",
             linkLabel: "Plan the Website System",
@@ -51,13 +51,13 @@ export const corePages: PageConfig[] = [
             linkLabel: "Plan the Rescue",
           },
           {
-            title: "Custom Tools & Automation",
+            title: "Custom Systems",
             body: "Engineer focused tools, integrations, and automations for repeated operational work that is slow, fragile, or difficult to audit by hand.",
             href: "/services/custom-digital-solutions/",
             linkLabel: "Explore Practical Automation",
           },
           {
-            title: "Research, Analytics & Improvement",
+            title: "Website Help",
             body: "Diagnose systems, map markets, inspect technical health, review measurement, prioritize the work, and run an accountable improvement cycle.",
             href: "/services/research-audits-strategy/",
             linkLabel: "Start With Evidence",
@@ -72,7 +72,7 @@ export const corePages: PageConfig[] = [
         items: [
           {
             title: "The website is outdated, unclear, or difficult to operate.",
-            body: "Start with Websites & Managed Hosting.",
+            body: "Start with Business Websites.",
             href: "/services/web-design-redesign/",
             linkLabel: "See the design service",
           },
@@ -90,13 +90,13 @@ export const corePages: PageConfig[] = [
           },
           {
             title: "Repeated internal work is slow or unreliable.",
-            body: "Start with Custom Tools & Automation.",
+            body: "Start with Custom Systems.",
             href: "/services/custom-digital-solutions/",
             linkLabel: "See operational engineering",
           },
           {
             title: "We do not know what is actually wrong.",
-            body: "Start with Research, Analytics & Improvement.",
+            body: "Start with Website Help.",
             href: "/services/research-audits-strategy/",
             linkLabel: "Begin with diagnosis",
           },
@@ -113,10 +113,10 @@ export const corePages: PageConfig[] = [
   },
   {
     slug: "/services/website-design-redesign/",
-    title: "Websites & Managed Hosting | Boho Digital Services",
+    title: "Business Websites | Boho Digital Services",
     metaDescription:
       "Boho designs, builds, and maintains useful websites around ownership, search structure, web accessibility, web performance, customer action, and a clearly governed hosting provision.",
-    eyebrow: "Websites & Managed Hosting",
+    eyebrow: "Business Websites",
     headline: "Websites built to explain the business, earn trust, and remain understandable to operate.",
     intro: [
       "Boho designs, redesigns, and supports websites for businesses that need clearer services, stronger identity, better search foundations, cleaner lead paths, and less infrastructure fog.",
@@ -293,17 +293,17 @@ export const corePages: PageConfig[] = [
   },
   {
     slug: "/services/custom-tools-automation/",
-    title: "Custom Tools & Automation | Boho Digital Services",
+    title: "Custom Systems | Boho Digital Services",
     metaDescription:
       "Boho engineers focused internal tools, integrations, and automations for repeated operational work that is slow, fragile, or difficult to audit by hand.",
-    eyebrow: "Custom Tools & Automation",
+    eyebrow: "Custom Systems",
     headline: "Build the smallest dependable tool for the repeated work that keeps wasting time.",
     intro: [
       "Boho engineers focused internal tools, integrations, validation utilities, reporting workflows, and automations when the business case is clearer than another manual checklist or disconnected subscription.",
       "This is scoped engineering, not a promise that every process should become software.",
     ],
     theme: "mosaic",
-    primaryCta: { label: "Build the Missing Tool", href: "/contact/" },
+    primaryCta: { label: "Discuss a custom system", href: "/start/" },
     secondaryCta: { label: "See the Systems and Proof", href: "/tools/" },
     sections: [
       {
@@ -678,10 +678,10 @@ export const corePages: PageConfig[] = [
   },
   {
     slug: "/services/research-audits-analytics/",
-    title: "Research, Analytics & Improvement | Boho Digital Services",
+    title: "Website Help | Boho Digital Services",
     metaDescription:
       "Boho traces data sources, collection limits, market evidence, website behavior, and business-specific events to support a useful next decision.",
-    eyebrow: "Research, Analytics & Improvement",
+    eyebrow: "Website Help",
     headline: "A dashboard is not a decision.",
     intro: [
       "Boho studies the business, market, competitors, website, search presence, data sources, collection methods, exclusions, platform disagreement, and measurement system to identify which improvements are most likely to deserve attention.",
@@ -885,10 +885,10 @@ export const corePages: PageConfig[] = [
         layout: "grid",
         items: [
           { title: "Ongoing SEO & Search Growth", body: servicePresentationByRoute["/services/ongoing-seo/"].summary, href: "/services/ongoing-seo/", linkLabel: "Review the service" },
-          { title: "Web Design & Website Redesign", body: servicePresentationByRoute["/services/web-design-redesign/"].summary, href: "/services/web-design-redesign/", linkLabel: "Review the service" },
+          { title: "Business Websites", body: servicePresentationByRoute["/services/web-design-redesign/"].summary, href: "/services/web-design-redesign/", linkLabel: "Review the service" },
           { title: "Website Migration & Provider Rescue", body: servicePresentationByRoute["/services/provider-rescue/"].summary, href: "/services/provider-rescue/", linkLabel: "Review the service" },
           { title: "Digital Research, SEO Audits & Strategy", body: servicePresentationByRoute["/services/research-audits-strategy/"].summary, href: "/services/research-audits-strategy/", linkLabel: "Review the service" },
-          { title: "Custom Web & Digital Solutions", body: servicePresentationByRoute["/services/custom-digital-solutions/"].summary, href: "/services/custom-digital-solutions/", linkLabel: "Review the service" },
+          { title: "Custom Systems", body: servicePresentationByRoute["/services/custom-digital-solutions/"].summary, href: "/services/custom-digital-solutions/", linkLabel: "Review the service" },
         ],
       },
       {

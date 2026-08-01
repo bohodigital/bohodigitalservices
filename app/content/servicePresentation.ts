@@ -11,7 +11,7 @@ export const servicePresentationByRoute = {
     caption: "Local discovery · clear next steps",
   },
   "/services/web-design-redesign/": {
-    title: "Web Design & Website Redesign",
+    title: "Business Websites",
     kicker: "A clear website that works well on phones and is easy to own",
     summary:
       "Repair, redesign, or build a website that quickly explains what you do, earns trust, and makes the next step obvious.",
@@ -38,7 +38,7 @@ export const servicePresentationByRoute = {
     caption: "What we found · what matters · what comes next",
   },
   "/services/custom-digital-solutions/": {
-    title: "Custom Web & Digital Solutions",
+    title: "Custom Systems",
     kicker: "A small tool for repeated work",
     summary:
       "Build a focused tool or connect existing software when a repeated task wastes time or causes mistakes. First, confirm that custom work is the right answer.",
