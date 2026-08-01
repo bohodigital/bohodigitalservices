@@ -11,7 +11,7 @@ const businessIncluded = [
   "A defined page and customer-action plan",
   "Responsive visual design",
   "Light copy shaping using accurate client-supplied facts",
-  "Contact, call, booking, or inquiry paths named in scope",
+  "Contact, call, scheduling, purchase, registration, or inquiry paths named in scope",
   "Basic accessibility and search foundations",
   "Analytics-ready launch",
   "Client-owned deployment and source handoff",
@@ -35,6 +35,7 @@ const websiteHelpExamples = [
   "One unclear high-value page",
   "Search indexing or redirect problem",
   "Incorrect analytics setup",
+  "Third-party action or integration failure",
   "Domain, hosting, or provider ownership review",
   "Provider exit planning",
   "Straightforward website move",
@@ -131,10 +132,9 @@ export function ServicesPage() {
               <p className="reset-eyebrow">FOUR SERVICES · PUBLIC STARTING PRICES</p>
               <h1 id="services-title">Build it. Grow it. Fix it. Automate it.</h1>
               <p>
-                Boho builds business websites, improves search visibility, fixes
-                website and provider problems, and creates focused technical
-                systems. Audits, migrations, reporting, and discovery are parts
-                of those jobs, not a maze of separate products.
+                Boho organizes the work around four clear outcomes. Audits,
+                migrations, reporting, and discovery are included only when the
+                job actually requires them.
               </p>
               <div className="reset-actions">
                 <ButtonLink
@@ -237,7 +237,7 @@ export function ServicesPage() {
                   increase the price.
                 </p>
                 <h3>Free business email with active SEO.</h3>
-                <p>{emailBenefitCopy}</p>
+                {emailBenefitCopy.split("\n\n").map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
               </article>
             </div>
             <ServiceAction serviceKey="ongoingSeo" />
@@ -309,11 +309,10 @@ export function ServicesPage() {
                 </p>
                 <h3>Discovery</h3>
                 <p>
-                  Discovery is not a separate public product. If a project
-                  cannot be responsibly quoted without additional paid
-                  discovery, the proposal will define that work and state
-                  whether the approved discovery fee will be credited toward
-                  the related build.
+                  When responsible scoping requires paid discovery, that work
+                  will be defined and priced in writing before it begins. The
+                  proposal will state whether the discovery fee is credited
+                  toward the related build.
                 </p>
               </article>
             </div>

@@ -10,7 +10,7 @@ const pricingSummary = [
   {
     key: "businessWebsites",
     service: "Business Websites",
-    use: "New website, redesign, or responsible replacement",
+    use: "New website, redesign, local-business site, or responsible replacement",
   },
   {
     key: "ongoingSeo",
@@ -32,7 +32,7 @@ const pricingSummary = [
 const quoteDrivers = [
   "More pages or unique templates",
   "More substantial copy and content work",
-  "Multiple services, locations, or markets",
+  "Multiple services, locations, content types, systems, or markets",
   "Missing, inaccurate, or disorganized business information",
   "Content migration and redirect requirements",
   "Provider or ownership problems",
@@ -160,15 +160,20 @@ export function PricingPage() {
                       >
                         <th scope="row">
                           <a
-                            data-analytics-event="pricing_service_click"
-                            data-analytics-price-display={service.priceDisplay}
-                            data-analytics-service-name={service.label}
+                            data-analytics-event="pricing_click"
+                            data-analytics-source-page="pricing"
+                            data-analytics-source-section="pricing_table"
                             href={service.route}
                           >
                             {row.service}
                           </a>
                         </th>
-                        <td>{service.priceDisplay.replace(/^From /, "")}</td>
+                        <td>
+                          {service.priceDisplay.replace(/^From /, "")}
+                          {service.key === "ongoingSeo" ? (
+                            <small>Standard business email hosting for one domain is included with eligible active retainers, subject to the written usage and support limits.</small>
+                          ) : null}
+                        </td>
                         <td>{row.use}</td>
                       </tr>
                     );
