@@ -1,5 +1,4 @@
 import type { PageConfig } from "./types";
-import { hostingQualification } from "./commercialReset";
 
 export const audiencePages: PageConfig[] = [
   {
@@ -1314,7 +1313,7 @@ export const audiencePages: PageConfig[] = [
   },
   {
     slug: "/learn/website-buying/",
-    title: "Website Buying & Redesign Guide | Boho Digital Services",
+    title: "Business Website Buying Guide | Ownership, Hosting & Scope | Boho",
     metaDescription:
       "A practical guide to buying, repairing, redesigning, and hosting a business website while preserving ownership, useful content, search value, and operating clarity.",
     eyebrow: "Resources · Buyer guide",
@@ -1349,12 +1348,10 @@ export const audiencePages: PageConfig[] = [
         ],
       },
       {
-        eyebrow: "Client-owned eligible hosting",
-        title: "Hosting should not become a leash.",
+        title: "Eligible client-owned hosting",
         body: [
-          "The website build is paid. Eligible hosting is free. The account is yours.",
-          "If you stop working with Boho, the website stays where it is.",
-          hostingQualification,
+          "Eligible websites may use Cloudflare’s Free plan in an account controlled by the client. Leaving Boho does not by itself create a hosting charge or require the website to move.",
+          "Domain registration, maintenance, technical support, paid providers, and infrastructure beyond the Free plan remain separate. Cloudflare controls its plan, terms, limits, and availability.",
         ],
         tone: "verdigris",
       },

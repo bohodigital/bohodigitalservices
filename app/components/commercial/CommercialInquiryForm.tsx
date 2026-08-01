@@ -32,18 +32,18 @@ function startFields(): ReadonlyArray<CommercialFormField> {
     ]),
   );
   return [
-    { publicName: "name", backendName: "name", type: "text", label: name.one("Label"), placeholder: name.one("Placeholder"), requirement: name.one("Required text"), required: true, maxLength: 120 },
-    { publicName: "email", backendName: "email", type: "email", label: email.one("Label"), placeholder: email.one("Placeholder"), requirement: email.one("Required text"), required: true, maxLength: 254 },
-    { publicName: "businessName", backendName: "businessName", type: "text", label: business.one("Label"), placeholder: business.one("Placeholder"), requirement: business.one("Required text"), required: true, maxLength: 180 },
-    { publicName: "website", backendName: "website", type: "url", label: website.one("Label"), placeholder: website.one("Placeholder"), hint: website.one("Hint"), requirement: website.one("Optional text"), required: false, maxLength: 500 },
-    { publicName: "service", backendName: "service", type: "select", label: service.one("Label"), requirement: service.one("Required text"), required: true, maxLength: 120, options: serviceOptions, backendOptions },
-    { publicName: "message", backendName: "message", type: "textarea", label: situation.one("Label"), placeholder: situation.one("Placeholder"), hint: situation.one("Hint"), requirement: situation.one("Required text"), required: true, maxLength: 8000 },
-    { publicName: "serviceArea", backendName: "serviceArea", type: "text", label: location.one("Label"), requirement: location.one("Optional text"), required: false, maxLength: 500 },
-    { publicName: "provider", backendName: "provider", type: "text", label: provider.one("Label"), hint: provider.one("Hint"), requirement: provider.one("Optional text"), required: false, maxLength: 500 },
-    { publicName: "valuableAction", backendName: "valuableAction", type: "text", label: action.one("Label"), placeholder: action.one("Placeholder"), requirement: action.one("Optional text"), required: false, maxLength: 500 },
-    { publicName: "valuableOffer", backendName: "valuableOffer", type: "text", label: offer.one("Label"), requirement: offer.one("Optional text"), required: false, maxLength: 500 },
-    { publicName: "budget", backendName: "budget", type: "select", label: budget.one("Label"), hint: budget.one("Hint"), requirement: budget.one("Optional text"), required: false, maxLength: 120, options: [budget.one("Options, in this order"), ...budget.many("value")] },
-    { publicName: "timing", backendName: "timing", type: "text", label: timing.one("Label"), placeholder: timing.one("Placeholder"), requirement: timing.one("Optional text"), required: false, maxLength: 500 },
+    { publicName: "name", backendName: "name", type: "text", label: "Name", placeholder: name.one("Placeholder"), requirement: name.one("Required text"), required: true, maxLength: 120 },
+    { publicName: "email", backendName: "email", type: "email", label: "Email", placeholder: email.one("Placeholder"), requirement: email.one("Required text"), required: true, maxLength: 254 },
+    { publicName: "businessName", backendName: "businessName", type: "text", label: "Business or organization", placeholder: business.one("Placeholder"), requirement: business.one("Required text"), required: true, maxLength: 180 },
+    { publicName: "website", backendName: "website", type: "url", label: "Existing website or public page", placeholder: website.one("Placeholder"), requirement: website.one("Optional text"), required: false, maxLength: 500 },
+    { publicName: "service", backendName: "service", type: "select", label: "What do you need?", requirement: service.one("Required text"), required: true, maxLength: 120, options: serviceOptions, backendOptions },
+    { publicName: "message", backendName: "message", type: "textarea", label: "Brief description", hint: "Explain what is happening, what matters most, and what would make the next step useful. Do not include passwords, recovery codes, payment information, private customer records, or other secrets.", requirement: situation.one("Required text"), required: true, maxLength: 8000 },
+    { publicName: "serviceArea", backendName: "serviceArea", type: "text", label: "City, region, or market", requirement: location.one("Optional text"), required: false, maxLength: 500 },
+    { publicName: "provider", backendName: "provider", type: "text", label: "Current provider or platform", requirement: provider.one("Optional text"), required: false, maxLength: 500 },
+    { publicName: "valuableAction", backendName: "valuableAction", type: "text", label: "Most valuable customer or operational action", placeholder: action.one("Placeholder"), requirement: action.one("Optional text"), required: false, maxLength: 500 },
+    { publicName: "valuableOffer", backendName: "valuableOffer", type: "text", label: "Most important service, product, or workflow", requirement: offer.one("Optional text"), required: false, maxLength: 500 },
+    { publicName: "budget", backendName: "budget", type: "select", label: "Budget context", requirement: budget.one("Optional text"), required: false, maxLength: 120, options: [budget.one("Options, in this order"), ...budget.many("value")] },
+    { publicName: "timing", backendName: "timing", type: "text", label: "Real deadline or time sensitivity", placeholder: timing.one("Placeholder"), requirement: timing.one("Optional text"), required: false, maxLength: 500 },
   ];
 }
 
@@ -94,15 +94,15 @@ function presentation(kind: "start" | "emergency"): CommercialFormPresentation {
       title: isStart
         ? freeReviewPage.formHeading
         : heading.one("Heading"),
-      body: heading.one(isStart ? "Body" : "Introduction"),
+      body: isStart ? "Send the current website or briefly describe what the business needs." : heading.one("Introduction"),
       requiredNote: heading.one("Required-fields note"),
     },
     fields: isStart ? startFields() : emergencyFields(),
     privacy: isStart
-      ? commercialSection("start", "privacy-note").one("value")
+      ? "Do not include passwords, recovery codes, payment information, private customer records, or other secrets."
       : consent.one("Privacy note"),
     consent: {
-      label: consent.one("Checkbox label"),
+      label: isStart ? "I agree that Boho may use this information to review and respond to my inquiry. I understand that submission does not create a client relationship, quote, emergency response, or guarantee of availability." : consent.one("Checkbox label"),
       requirement: consent.one("Required text"),
     },
     authority: isStart ? undefined : {
@@ -116,8 +116,8 @@ function presentation(kind: "start" | "emergency"): CommercialFormPresentation {
         : submit.one("Submitting label"),
     },
     disclosure: disclosure ? {
-      closed: disclosure.one("Closed label"),
-      open: disclosure.one("Open label"),
+      closed: "Add optional details",
+      open: "Hide optional details",
     } : undefined,
     validation: {
       required: validation.one("Required-field message"),
@@ -130,16 +130,16 @@ function presentation(kind: "start" | "emergency"): CommercialFormPresentation {
     },
     notices: {
       success: {
-        heading: success.one("Heading"),
-        body: success.one("Body"),
+        heading: isStart ? "Your review request was sent." : success.one("Heading"),
+        body: isStart ? "Boho will review the public information and reply through the email address provided. Submission does not create a client relationship or guarantee acceptance or timing." : success.one("Body"),
         links: [
           { label: success.one("Primary link"), href: successDestinations[0] },
           { label: success.one("Secondary link"), href: successDestinations[1] },
         ],
       },
       failure: {
-        heading: failure.one("Heading"),
-        body: failure.one("Body"),
+        heading: isStart ? "The request could not be sent." : failure.one("Heading"),
+        body: isStart ? "Your information has not been confirmed as delivered. Try again or contact Boho through the published email address." : failure.one("Body"),
         retry: failure.one("Retry label"),
         emailLabel: failure.one("Email fallback label"),
         emailHref: failure.one("Email fallback destination"),

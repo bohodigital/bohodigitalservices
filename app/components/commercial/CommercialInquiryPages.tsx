@@ -4,6 +4,7 @@ import {
   commercialSection,
   correctionValue,
 } from "../../content/commercial/presentation";
+import Link from "next/link";
 import { freeReviewPage } from "../../content/commercialReset";
 import { Footer, Header } from "./CommercialChrome";
 import { CommercialInquiryForm } from "./CommercialInquiryForm";
@@ -103,7 +104,6 @@ export function CommercialContactPage() {
 }
 
 export function CommercialStartPage() {
-  const incident = commercialCorrections068.start.incident;
   return (
     <>
       <Header />
@@ -114,17 +114,18 @@ export function CommercialStartPage() {
               <p className="eyebrow eyebrow--on-dark">{freeReviewPage.eyebrow}</p>
               <h1 id="start-commercial-title">{freeReviewPage.headline}</h1>
               <p>{freeReviewPage.body}</p>
+              <p><strong>The free review uses public information only. It is not a complete audit, private-account review, written strategy, quote, provider recovery, or implementation engagement.</strong></p>
+              <p>Boho normally replies to a standard inquiry within two business days. Submission does not create a client relationship, guarantee acceptance, or reserve availability.</p>
             </div>
           </div>
         </section>
         <section className="commercial-section commercial-incident-route" aria-labelledby="start-active-incident-title">
           <div className="section-shell">
-            <p className="eyebrow">{incident.eyebrow}</p>
-            <h2 id="start-active-incident-title">{incident.heading}</h2>
-            <p>{incident.body}</p>
-            <a className="button-link button-link--secondary" href={incident.destination}>
-              {incident.linkLabel}
-            </a>
+            <h2 id="start-active-incident-title">Active outage or launch failure?</h2>
+            <p>Use Emergency Help when a live website, form, launch, redirect, access problem, or provider action is actively affecting customers or operations.</p>
+            <Link className="button-link button-link--secondary" href="/emergency/">
+              Open Emergency Help
+            </Link>
           </div>
         </section>
         <section className="commercial-section commercial-form-section">
@@ -162,8 +163,8 @@ export function CommercialEmergencyPage() {
               <p>{hero.one("Body paragraph 1")}</p>
               <p>{hero.one("Body paragraph 2")}</p>
               <div className="button-row">
-                <a className="button-link button-link--primary" href={hero.one("Primary destination")}>{hero.one("Primary CTA")}</a>
-                <a className="button-link button-link--secondary" href={hero.one("Secondary destination")}>{hero.one("Secondary CTA")}</a>
+                <a className="button-link button-link--primary" href="#emergency-request">Describe the emergency</a>
+                <Link className="button-link button-link--secondary" href="/start/">Get a free website review</Link>
               </div>
               <strong>{hero.one("Trust line")}</strong>
             </div>
@@ -219,17 +220,17 @@ export function CommercialEmergencyPage() {
             <h2 id="emergency-final-title">{finalBoundary.one("Heading")}</h2>
             <p>{finalBoundary.one("Body")}</p>
             <div className="button-row">
-              <a
+              <Link
                 className="button-link button-link--primary"
                 data-analytics-event="free_review_click"
                 data-analytics-service-context="website_help"
                 data-analytics-source-page="emergency"
                 data-analytics-source-section="final"
-                href={finalBoundary.one("Primary destination")}
+                href="/start/"
               >
                 Get a free website review
-              </a>
-              <a className="button-link button-link--secondary" href={finalBoundary.one("Secondary destination")}>{finalBoundary.one("Secondary CTA")}</a>
+              </Link>
+              <a className="button-link button-link--secondary" href="#emergency-request">Describe the emergency</a>
             </div>
           </div>
         </section>

@@ -159,6 +159,7 @@ function trackCommercialEvent(
 ) {
   try {
     const analyticsWindow = window as unknown as {
+      gtag?: (command: "event", eventName: string, properties?: Readonly<Record<string, string>>) => void;
       umami?: {
         track(
           eventName: string,
@@ -166,6 +167,7 @@ function trackCommercialEvent(
         ): void;
       };
     };
+    analyticsWindow.gtag?.("event", event, properties);
     analyticsWindow.umami?.track(event, properties);
   } catch {
     // Analytics is privacy-safe, value-free, and best-effort.
@@ -189,6 +191,7 @@ export function CommercialInquiryFormClient({
   const pollTimerRef = useRef<number | null>(null);
   const submissionIdRef = useRef<string | null>(null);
   const pricingAttributionRef = useRef<PricingAttribution | null>(null);
+  const formStartedRef = useRef(false);
   const [turnstileToken, setTurnstileToken] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [detailsOpen, setDetailsOpen] = useState(false);
@@ -211,12 +214,6 @@ export function CommercialInquiryFormClient({
       pollTimerRef.current = null;
     }
   }, []);
-
-  useEffect(() => {
-    if (presentation.kind === "start") {
-      trackCommercialEvent("commercial_start_form_open");
-    }
-  }, [presentation.kind]);
 
   useEffect(() => {
     pricingAttributionRef.current = pricingContext;
@@ -383,10 +380,12 @@ export function CommercialInquiryFormClient({
         body: presentation.validation.body,
       });
       window.requestAnimationFrame(() => form.querySelector<HTMLElement>("[aria-invalid='true']")?.focus());
+      if (isStart) trackCommercialEvent("free_review_submit_failure", { failure_stage: "validation" });
       return;
     }
     if (!turnstileToken) {
       setNotice(failureNotice());
+      if (isStart) trackCommercialEvent("free_review_submit_failure", { failure_stage: "spam_protection" });
       return;
     }
 
@@ -422,10 +421,12 @@ export function CommercialInquiryFormClient({
         confirmedSuccess = true;
       } else {
         setNotice(failureNotice(response.status));
+        if (isStart) trackCommercialEvent("free_review_submit_failure", { failure_stage: "delivery" });
         resetTurnstile();
       }
     } catch {
       setNotice({ kind: "error", ...presentation.notices.network });
+      if (isStart) trackCommercialEvent("free_review_submit_failure", { failure_stage: "network" });
       resetTurnstile();
     } finally {
       window.clearTimeout(timeout);
@@ -437,6 +438,19 @@ export function CommercialInquiryFormClient({
       submissionIdRef.current = null;
       resetTurnstile();
       trackCommercialEvent(isStart ? "commercial_standard_inquiry_success" : "commercial_emergency_inquiry_success");
+      if (isStart) {
+        const selectedService = String(data.get("service") ?? "");
+        const serviceContext = selectedService === freeReviewServiceLabels.businessWebsite
+          ? "business_websites"
+          : selectedService === freeReviewServiceLabels.ongoingSeo
+            ? "ongoing_seo"
+            : selectedService === freeReviewServiceLabels.websiteHelp
+              ? "website_help"
+              : selectedService === freeReviewServiceLabels.customSystem
+                ? "custom_systems"
+                : "not_sure";
+        trackCommercialEvent("free_review_submit_success", { service_context: serviceContext });
+      }
       const attribution = pricingAttributionRef.current;
       if (isStart && attribution) {
         trackCommercialEvent("pricing_lead_complete", {
@@ -505,7 +519,17 @@ export function CommercialInquiryFormClient({
           </p>
         ) : null}
       </header>
-      <form ref={formRef} noValidate onSubmit={handleSubmit} aria-busy={submitting}>
+      <form
+        ref={formRef}
+        noValidate
+        onFocusCapture={() => {
+          if (!isStart || formStartedRef.current) return;
+          formStartedRef.current = true;
+          trackCommercialEvent("free_review_form_start", { source_page: "start" });
+        }}
+        onSubmit={handleSubmit}
+        aria-busy={submitting}
+      >
         <div className="commercial-form__grid">{primaryFields.map(renderField)}</div>
         {presentation.disclosure ? (
           <div className="commercial-form__disclosure">
