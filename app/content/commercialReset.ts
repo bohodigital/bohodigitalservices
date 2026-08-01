@@ -274,6 +274,15 @@ export const pricingFaqs = [
 
 export const proofProjects = [
   {
+    name: "Boho News",
+    label: "BOHO-OWNED PROPERTY",
+    copy:
+      "A multi-section news publication built for fast reporting, investigations, public documents, data presentations, corrections, search, feeds, and disciplined editorial governance.",
+    href: "https://www.bohonews.com/",
+    image: "/proof/about/boho-news-homepage.png",
+    alt: "Boho News homepage showing its market desk, news masthead, lead investigation, data report, and continuous latest-news desk.",
+  },
+  {
     name: "How Biscuit",
     label: "BOHO-OWNED PROPERTY",
     copy:

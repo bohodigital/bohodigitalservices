@@ -314,10 +314,10 @@ export default function Homepage() {
                   >
                     <img
                       alt={project.alt}
-                      height="1000"
+                      height="800"
                       loading="lazy"
                       src={project.image}
-                      width="1440"
+                      width="1280"
                     />
                     <span className="reset-eyebrow">{project.label}</span>
                     <h3>{project.name}</h3>

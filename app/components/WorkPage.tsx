@@ -7,7 +7,9 @@ const publicProperties = [
     name: "Boho News",
     category: "News and evidence publishing",
     href: "https://www.bohonews.com/",
-    copy: "Boho News is a multi-section publication built for rapid reporting, structured article formats, investigations, public documents, data presentations, corrections, search, feeds, and editorial governance.",
+    image: "/proof/about/boho-news-homepage.png",
+    alt: "Boho News homepage showing its market desk, news masthead, lead investigation, data report, and continuous latest-news desk.",
+    copy: "A multi-section news publication built for fast reporting, investigations, public documents, data presentations, corrections, search, feeds, and disciplined editorial governance.",
     demonstrates: [
       "Complex information architecture",
       "High-volume publishing",
@@ -127,7 +129,7 @@ export function WorkPage() {
                       rel="noopener noreferrer"
                       target="_blank"
                     >
-                      <img alt={property.alt} height="1000" loading="lazy" src={property.image} width="1440" />
+                      <img alt={property.alt} height="800" loading="lazy" src={property.image} width="1280" />
                     </a>
                   ) : null}
                   <div className="reset-work-card__body">
