@@ -17,7 +17,7 @@ Search Console URL exports, raw analytics URL exports, Cloudflare request logs, 
 
 ## Current inventory
 
-- Canonical indexable routes: 180
+- Canonical indexable routes: 182
 - Glossary hub routes: 1
 - Glossary detail routes: 153
 - Current routes missing a canonical: 0
@@ -28,9 +28,9 @@ The complete machine-readable inventory is `content/routing/public-route-registr
 ## Historical inventory
 
 - Tracked legacy HTML routes reviewed: 53
-- Historical routes that remain canonical: 7
-- Governed historical/retired records: 59
-- Verified redirect records: 41
+- Historical routes that remain canonical: 8
+- Governed historical/retired records: 58
+- Verified redirect records: 40
 - Unverified or unresolved records: 18
 - Legacy HTML routes without a registry decision: 0
 
@@ -86,7 +86,7 @@ The complete machine-readable inventory is `content/routing/public-route-registr
 - `/services/technical-seo-sprint/` — **REDIRECT** → `/services/research-audits-strategy/#technical-seo-and-site-health` — evidence: `_legacy-boho/current/_legacy-static/services/technical-seo-sprint/index.html`
 - `/services/website-optimization/` — **REDIRECT** → `/services/web-design-redesign/` — evidence: `_legacy-boho/current/_legacy-static/services/website-optimization/index.html`
 - `/terms/` — **PRESERVE** — evidence: `_legacy-boho/current/_legacy-static/terms/index.html`
-- `/work/` — **REDIRECT** → `/services/` — evidence: `_legacy-boho/current/_legacy-static/work/index.html`
+- `/work/` — **PRESERVE** — evidence: `_legacy-boho/current/_legacy-static/work/index.html`
 
 ## Vanity Metrics recovery
 

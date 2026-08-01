@@ -13,6 +13,8 @@ const siteUrl = "https://bohodigitalservices.com";
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [
     "/",
+    "/work/",
+    "/services/website-help/",
     ...corePages.filter((page) => !isRetiredPublicPage(page.slug)).map((page) => page.slug),
     ...audiencePages.filter((page) => !isRetiredPublicPage(page.slug)).map((page) => page.slug),
     ...serviceRoutePages.filter((page) => !isRetiredPublicPage(page.slug)).map((page) => page.slug),

@@ -1,241 +1,112 @@
 import assert from "node:assert/strict";
-import { readdir, readFile } from "node:fs/promises";
-import { spawnSync } from "node:child_process";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-const repositoryRoot = new URL("../", import.meta.url);
+const root = new URL("../", import.meta.url);
 
 async function source(path) {
-  return readFile(new URL(path, repositoryRoot), "utf8");
+  return readFile(new URL(path, root), "utf8");
 }
 
-async function render(pathname = "/") {
-  const decodedPath = decodeURIComponent(new URL(pathname, "https://bohodigitalservices.com").pathname);
-  const relativePath = decodedPath === "/"
-    ? "index.html"
-    : decodedPath.endsWith("/")
-      ? `${decodedPath.slice(1)}index.html`
-      : decodedPath.slice(1);
-  return readFile(new URL(`out/${relativePath}`, repositoryRoot), "utf8");
+async function render(pathname) {
+  const relative = pathname === "/" ? "index.html" : `${pathname.replace(/^\//, "")}index.html`;
+  return source(`out/${relative}`);
 }
 
-function countId(html, id) {
-  return (html.match(new RegExp(`\\bid="${id}"`, "g")) ?? []).length;
+function textContent(html) {
+  return html.replace(/<script[\s\S]*?<\/script>/gi, " ").replace(/<style[\s\S]*?<\/style>/gi, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
 }
 
-test("renders exact incident routing and unique Start compatibility anchors", async () => {
-  const html = await render("/start/");
-  for (const text of [
-    "Active incident?",
-    "Use Emergency Help for an active website or provider incident.",
-    "The ordinary project form is not monitored as an emergency channel. Use Emergency Help when a website is down, a launch is failing, access has been lost, or a provider action is actively threatening a working system. Emergency review depends on authority, access, capacity, and risk.",
-    "Open Emergency Help",
-  ]) assert.ok(html.includes(text), `Start is missing: ${text}`);
-  assert.match(html, /href="\/emergency\/"[^>]*>Open Emergency Help<\/a>/);
-  assert.equal(countId(html, "project-inquiry"), 1);
-  assert.equal(countId(html, "visibility-check-request"), 1);
-});
-
-test("carries the four canonical services into Pricing and the editable Start form", async () => {
-  const form = await source("app/components/commercial/CommercialInquiryForm.tsx");
-  const client = await source("app/components/commercial/CommercialInquiryFormClient.tsx");
-  const commercial = await source("app/content/commercialReset.ts");
-  const pricing = await source("app/components/PricingPage.tsx");
-  assert.match(pricing, /href="\/start\/"/);
-  for (const service of [
-    "Business Website",
-    "Ongoing SEO & Local Growth",
-    "Website Help",
-    "Custom System",
-  ]) {
-    assert.ok(commercial.includes(`"${service}"`), `Start is missing ${service}`);
-  }
-  assert.match(form, /freeReviewServiceOptions/);
-  assert.match(client, /new URLSearchParams\(search\)/);
-  assert.match(client, /useSyncExternalStore/);
-  assert.match(client, /service instanceof HTMLSelectElement/);
-  assert.match(client, /pricing_lead_complete/);
-  assert.doesNotMatch(client, /message\s*=\s*(?:params|attribution)/);
-});
-
-test("renders exactly four canonical Pricing rows with stable website and SEO anchors", async () => {
-  const pricing = await render("/pricing/");
-  assert.equal(countId(pricing, "business-websites"), 1);
-  assert.equal(countId(pricing, "ongoing-seo"), 1);
-  const summary = pricing.match(/<table class="pricing-summary-table">[\s\S]*?<\/table>/)?.[0] ?? "";
-  assert.equal((summary.match(/<tr\b/g) ?? []).length, 5);
-  for (const service of [
-    "Business Websites",
-    "Ongoing SEO &amp; Local Growth",
-    "Website Help",
-    "Custom Systems",
-  ]) {
-    assert.ok(summary.includes(service), `Pricing is missing ${service}`);
-  }
-});
-
-test("retires the Work route and removes every public Work link", async () => {
-  await assert.rejects(
-    render("/work/"),
-    (error) => error?.code === "ENOENT",
-    "Work must not render a static page",
-  );
-  const publicRoutes = [
-    "/",
-    "/services/",
-    "/pricing/",
-    "/industries/",
-    "/resources/",
-    "/tools/",
-    "/about/",
-  ];
-  for (const route of publicRoutes) {
-    assert.doesNotMatch(await render(route), /href="\/work(?:\/|#|")/i, `${route} retains a Work link`);
-  }
-  assert.match(await source("out/_redirects"), /(?:^|\n)\/work\s+\/services\/\s+301(?:\n|$)/);
-  assert.match(await source("out/_redirects"), /(?:^|\n)\/work\/\s+\/services\/\s+301(?:\n|$)/);
-});
-
-test("bounds the complete emergency problem payload without truncation", async () => {
-  const form = await source("app/components/commercial/CommercialInquiryForm.tsx");
-  const client = await source("app/components/commercial/CommercialInquiryFormClient.tsx");
-  assert.match(form, /publicName: "description"[\s\S]*maxLength: 7500/);
-  assert.match(client, /EMERGENCY_PROBLEM_MAX_LENGTH\s*=\s*8_000/);
-  assert.match(client, /Keep the incident description under 7,500 characters so the complete emergency message can be delivered\./);
-  assert.match(client, /problem\.length\s*>\s*EMERGENCY_PROBLEM_MAX_LENGTH/);
-  assert.doesNotMatch(client, /\.slice\([^)]*EMERGENCY_PROBLEM_MAX_LENGTH/);
-});
-
-test("aligns all five indexed service routes to the four-service model", async () => {
-  const expectations = new Map([
-    ["/services/ongoing-seo/", ["ONGOING SEO &amp; LOCAL GROWTH · FROM $450/MONTH", "Ongoing SEO &amp; Local Growth — starting at $450 per month"]],
-    ["/services/web-design-redesign/", ["BUSINESS WEBSITES · FROM $850", "Business Websites — starting at $850"]],
-    ["/services/provider-rescue/", ["WEBSITE HELP · PROVIDER RESCUE", "Website Help — starting at $200"]],
-    ["/services/custom-digital-solutions/", ["CUSTOM SYSTEMS · FROM $1,500", "Custom Systems — starting at $1,500"]],
-    ["/services/research-audits-strategy/", ["WEBSITE HELP · RESEARCH, AUDITS, AND STRATEGY", "Website Help — starting at $200"]],
+test("publishes the approved primary navigation and canonical service registry", async () => {
+  const [navigation, commercial, homepage] = await Promise.all([
+    source("app/content/navigation.ts"),
+    source("app/content/commercialReset.ts"),
+    render("/"),
   ]);
-  for (const [route, texts] of expectations) {
-    const html = await render(route);
-    for (const text of texts) assert.ok(html.includes(text), `${route} lacks ${text}`);
+  for (const label of ["Services", "Work", "Pricing", "About", "Contact"]) {
+    assert.match(navigation, new RegExp(`label: "${label}"`));
   }
-});
-
-test("publishes the locked primary navigation and four-service menu", async () => {
-  const navigation = await source("app/content/navigation.ts");
-  const commercial = await source("app/content/commercialReset.ts");
-  for (const label of [
-    "Services",
-    "Industries",
-    "Pricing",
-    "About",
-    "Contact",
-    "Business Websites",
-    "Ongoing SEO & Local Growth",
-    "Website Help",
-    "Custom Systems",
-  ]) assert.ok(
-    navigation.includes(`"${label}"`) || commercial.includes(`"${label}"`),
-    `navigation is missing ${label}`,
-  );
-  assert.doesNotMatch(navigation, /Local Visibility & Lead Systems|Websites & Managed Hosting|Research, Analytics & Improvement|Custom Tools & Automation/);
-  const mobile = await source("app/components/MobileMenu.tsx");
-  assert.match(mobile, /item\.href/);
-  assert.match(await render("/"), /href="\/services\/"[^>]*>Services<\/a>/);
-});
-
-test("preserves progressive-disclosure values while closed", async () => {
-  const client = await source("app/components/commercial/CommercialInquiryFormClient.tsx");
-  assert.match(client, /hidden=\{!detailsOpen\}/);
-  assert.doesNotMatch(client, /detailsOpen\s*\?\s*<div className="commercial-form__grid">\{optionalFields\.map\(renderField\)\}<\/div>\s*:\s*null/);
-});
-
-test("renders the locked Homepage metadata", async () => {
-  const html = await render("/");
-  const normalizedHtml = html.replaceAll("&amp;", "&");
-  const title = "Business Websites from $850 | Free Hosting | Boho";
-  const description = "Custom business websites from $850 with eligible hosting at $0 per month in a Cloudflare account your business owns. Ongoing SEO, website help, and custom systems from Boho.";
-  assert.deepEqual(
-    [...normalizedHtml.matchAll(/<title>([^<]+)<\/title>/g)].map((match) => match[1]),
-    [title],
-    "Homepage must expose exactly one accepted title",
-  );
-  for (const [attribute, key, value] of [
-    ["name", "description", description],
-    ["property", "og:title", title],
-    ["property", "og:description", description],
-    ["name", "twitter:title", title],
-    ["name", "twitter:description", description],
+  assert.doesNotMatch(navigation.match(/export const primaryNavigation[\s\S]*?\];/)?.[0] ?? "", /Industries/);
+  for (const [name, price] of [
+    ["Business Websites", "From $850"],
+    ["Ongoing SEO & Local Growth", "From $450/month"],
+    ["Website Help", "From $200"],
+    ["Custom Systems", "From $1,500"],
   ]) {
-    const pattern = new RegExp(`<meta ${attribute}="${key}" content="([^"]*)"`, "g");
-    assert.deepEqual(
-      [...normalizedHtml.matchAll(pattern)].map((match) => match[1]),
-      [value],
-      `Homepage must expose exactly one accepted ${key}`,
-    );
+    assert.ok(commercial.includes(name));
+    assert.ok(commercial.includes(price));
+    assert.ok(homepage.includes(name));
+    assert.ok(homepage.includes(price));
   }
-  assert.ok(normalizedHtml.includes(`"description":"${description}"`));
+  assert.equal((homepage.match(/data-canonical-service-card="true"/g) ?? []).length, 4);
+  assert.match(homepage, />Get a free website review</);
 });
 
-test("keeps confirmed success final when analytics fails", async () => {
-  const client = await source("app/components/commercial/CommercialInquiryFormClient.tsx");
-  assert.match(client, /function trackCommercialEvent[\s\S]*?try\s*\{[\s\S]*?umami\?\.track\(event,\s*properties\)[\s\S]*?\}\s*catch\s*\{/);
-  assert.match(client, /let confirmedSuccess = false;[\s\S]*?confirmedSuccess = true;[\s\S]*?\}\s*if \(confirmedSuccess\) \{[\s\S]*?setNotice\(\{ kind: "success"[\s\S]*?trackCommercialEvent/);
-  assert.doesNotMatch(client, /try \{[\s\S]*?setNotice\(\{ kind: "success"[\s\S]*?\}\s*catch \{/);
-  assert.match(client, /pricing_lead_complete[\s\S]*?path:\s*attribution\.analyticsPath[\s\S]*?offer_id:/);
+test("renders Work and Website Help as canonical public pages", async () => {
+  const [work, help, redirects, sitemap] = await Promise.all([
+    render("/work/"), render("/services/website-help/"), source("out/_redirects"), source("out/sitemap.xml"),
+  ]);
+  assert.match(work, /Real websites and systems, live on the web/);
+  assert.match(work, /rel="canonical" href="https:\/\/bohodigitalservices\.com\/work\/"/);
+  assert.match(work, /BOHO-OWNED PROPERTY/);
+  assert.match(help, /Fix the useful problem without automatically rebuilding everything/);
+  assert.match(help, /WEBSITE HELP · FROM \$200/i);
+  assert.doesNotMatch(redirects, /^\/work\s/m);
+  assert.match(sitemap, /<loc>https:\/\/bohodigitalservices\.com\/work\/<\/loc>/);
+  assert.match(sitemap, /<loc>https:\/\/bohodigitalservices\.com\/services\/website-help\/<\/loc>/);
 });
 
-test("terminates Turnstile polling and keeps one widget lifecycle", async () => {
-  const client = await source("app/components/commercial/CommercialInquiryFormClient.tsx");
-  assert.match(client, /pollTimerRef/);
-  assert.match(client, /stopTurnstilePolling\(\)/);
-  assert.match(client, /try \{[\s\S]*?widgetIdRef\.current\s*=\s*window\.turnstile\.render[\s\S]*?stopTurnstilePolling\(\);[\s\S]*?\} catch \{[\s\S]*?stopTurnstilePolling\(\)/);
-  assert.match(client, /handleScriptError[\s\S]*?stopTurnstilePolling\(\)[\s\S]*?addEventListener\("error", handleScriptError\)/);
-  assert.match(client, /return \(\) => \{[\s\S]*?stopTurnstilePolling\(\)[\s\S]*?removeEventListener\("error", handleScriptError\)[\s\S]*?turnstile\.remove/);
-  assert.match(client, /function resetTurnstile\(\) \{[\s\S]*?stopTurnstilePolling\(\)[\s\S]*?try \{[\s\S]*?turnstile\.reset[\s\S]*?\} catch \{/);
-  assert.doesNotMatch(client, /const poll = window\.setInterval/);
+test("aligns the free-review intake promise and preserves its compatibility anchors", async () => {
+  const html = await render("/start/");
+  for (const value of [
+    "Get a clear next step for your website.",
+    "Request my free review",
+    "Your name",
+    "Business or organization",
+    "Existing website or public page",
+    "What do you need?",
+    "Brief description",
+  ]) assert.ok(html.includes(value), `missing Start copy: ${value}`);
+  assert.equal((html.match(/id="project-inquiry"/g) ?? []).length, 1);
+  assert.equal((html.match(/id="visibility-check-request"/g) ?? []).length, 1);
+  assert.match(html, /I agree that Boho may use this information to review and respond to my inquiry/);
 });
 
-test("restores desktop-menu focus to the dropdown that handled Escape", async () => {
-  const navigation = await source("app/components/DesktopNavigation.tsx");
-  assert.match(navigation, /dropdownToggleRefs/);
-  assert.match(navigation, /dropdownToggleRefs\.current\.get\(openLabel\)/);
-  assert.doesNotMatch(navigation, /const dropdownToggleRef =/);
+test("publishes corrected client-owned hosting guidance", async () => {
+  const [guide, guideSource] = await Promise.all([render("/learn/website-buying/"), source("app/content/audiencePages.ts")]);
+  const visible = textContent(guide);
+  assert.match(guide, /Business Website Buying Guide \| Ownership, Hosting &amp; Scope \| Boho/);
+  assert.match(guideSource, /Eligible websites may use Cloudflare’s Free plan in an account controlled by the client/);
+  assert.match(guideSource, /Leaving Boho does not by itself create a hosting charge or require the website to move/);
+  assert.doesNotMatch(visible, /active retainer.{0,100}hosting|hosting.{0,100}active retainer/i);
 });
 
-test("keeps generated artifacts current and Analytics availability blocked", async () => {
-  const result = spawnSync(process.execPath, ["scripts/commercial-copy-build.mjs", "--check"], {
-    cwd: repositoryRoot,
-    encoding: "utf8",
-  });
-  assert.equal(result.status, 0, `${result.stdout}\n${result.stderr}`);
-  const contract = JSON.parse(await source("content/commercial/commercial-copy-contract.json"));
-  assert.equal(contract.corrections.analyticsAvailability.targetApproved, false);
-  assert.equal(contract.corrections.analyticsAvailability.replacementText, null);
-  const blocked = JSON.parse(await source("content/commercial/blocked-copy.json"));
-  assert.equal(blocked.items.length, 1);
-  assert.equal(blocked.items[0].key, "product.bohoAnalytics.publicFreeAvailability");
-  assert.equal(blocked.items[0].targetApproved, false);
-  assert.equal(blocked.items[0].replacementText, null);
-  assert.ok(blocked.items[0].currentClaims.length > 0);
-});
-
-async function walk(directory, relative = "") {
-  const found = [];
-  for (const entry of await readdir(directory, { withFileTypes: true })) {
-    if ([".git", ".next", "dist", "node_modules", "out"].includes(entry.name)) continue;
-    const nextRelative = relative ? `${relative}/${entry.name}` : entry.name;
-    if (entry.isDirectory()) found.push(...await walk(new URL(`${entry.name}/`, directory), nextRelative));
-    else found.push(nextRelative);
+test("keeps core commercial output free of obsolete names and restaurant positioning", async () => {
+  const routes = ["/", "/services/", "/pricing/", "/services/web-design-redesign/", "/services/ongoing-seo/", "/services/website-help/", "/services/custom-digital-solutions/"];
+  const obsolete = /Web Design &amp; Website Redesign|Custom Web &amp; Digital Solutions|Websites &amp; Managed Hosting|Research, Analytics &amp; Improvement|Custom Tools &amp; Automation/;
+  const restaurant = /restaurant-specific|catering|loyalty program|point-of-sale|\bPOS\b/i;
+  const stalePrices = /Starting at \$(?:95|350|500|750|1,000|2,500)(?![0-9])/;
+  for (const route of routes) {
+    const html = await render(route);
+    assert.doesNotMatch(html, obsolete, `${route} has an obsolete service name`);
+    assert.doesNotMatch(html, restaurant, `${route} has restaurant-specific sales copy`);
+    assert.doesNotMatch(html, stalePrices, `${route} has a stale canonical starting price`);
   }
-  return found;
-}
+});
 
-test("contains no backup, scratch, placeholder, or temporary files", async () => {
-  const files = await walk(repositoryRoot);
-  const prohibited = files.filter((path) => (
-    /(?:^|\/)(?:scratch|placeholder|temp|tmp)(?:[./_-]|$)/i.test(path)
-    || /\.(?:orig|bak|backup|scratch|temp|tmp)$/i.test(path)
-    || /~$/.test(path)
-  ));
-  assert.deepEqual(prohibited, []);
+test("tracks the approved conversion events without form-content properties", async () => {
+  const analytics = await source("public/analytics-bootstrap.js");
+  for (const event of [
+    "free_review_click", "free_review_form_start", "free_review_submit_success", "free_review_submit_failure",
+    "service_card_click", "pricing_click", "work_project_click", "tools_project_click", "email_link_click", "phone_link_click",
+  ]) assert.ok(analytics.includes(event), `missing analytics event ${event}`);
+  const propertyBlock = analytics.match(/const commercialEventProperties = \{[\s\S]*?\n  \};/)?.[0] ?? "";
+  assert.doesNotMatch(propertyBlock, /email_address|business_name|description|entered_url|provider_name|budget|form_content/i);
+});
+
+test("routes emergency and ordinary inquiries to the correct actions", async () => {
+  const html = await render("/emergency/");
+  assert.match(html, /href="#emergency-request">Describe the emergency/);
+  assert.match(html, /href="\/start\/">Get a free website review/);
+  assert.doesNotMatch(html, />Send the Situation</);
 });

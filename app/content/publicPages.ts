@@ -1,5 +1,4 @@
 const retiredPublicSlugs = new Set([
-  "/work/",
   "/services/ongoing-seo-growth/",
   "/services/local-seo-search-visibility/",
   "/services/lead-generation-conversion/",

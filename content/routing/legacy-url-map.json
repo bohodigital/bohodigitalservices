@@ -255,18 +255,6 @@
       "ownerReviewed": false
     },
     {
-      "source": "/work/",
-      "destination": "/services/",
-      "status": 301,
-      "disposition": "REDIRECT",
-      "reason": "The owner retired the standalone Work page and selected the current service architecture as its replacement.",
-      "evidence": "Explicit owner production instruction on 2026-07-26.",
-      "verified": true,
-      "sourceType": "retired-public-page",
-      "discoveredAt": "2026-07-26",
-      "ownerReviewed": true
-    },
-    {
       "source": "/case-notes/",
       "destination": "/services/",
       "status": 301,

@@ -150,12 +150,16 @@
   }
 
   const commercialEventProperties = {
-    free_review_click: ["source_page", "source_section", "service_context"],
+    free_review_click: ["source_page", "source_section", "service_context", "cta_label"],
+    free_review_form_start: ["source_page"],
+    free_review_submit_success: ["service_context"],
+    free_review_submit_failure: ["failure_stage"],
     service_card_click: ["source_page", "service_name", "price_display"],
-    website_pricing_click: ["source_page", "source_section"],
-    hosting_eligibility_click: ["source_page", "source_section"],
-    pricing_service_click: ["service_name", "price_display"],
-    proof_project_click: ["project_name", "source_page"],
+    pricing_click: ["source_page", "source_section"],
+    work_project_click: ["project_name", "destination_type"],
+    tools_project_click: ["project_name", "destination_type"],
+    email_link_click: ["source_page"],
+    phone_link_click: ["source_page"],
   };
 
   function datasetKey(property) {
@@ -168,15 +172,19 @@
   function handleCommercialClick(event) {
     const target = event && event.target;
     if (!target || typeof target.closest !== "function") return;
-    const element = target.closest("[data-analytics-event]");
+    const element = target.closest("[data-analytics-event], a[href^='mailto:'], a[href^='tel:']");
     if (!element || !element.dataset) return;
-    const name = element.dataset.analyticsEvent;
+    const href = element.getAttribute("href") || "";
+    const name = element.dataset.analyticsEvent
+      || (href.startsWith("mailto:") ? "email_link_click" : href.startsWith("tel:") ? "phone_link_click" : "");
     const requiredProperties = commercialEventProperties[name];
     if (!requiredProperties) return;
 
     const properties = {};
     for (const property of requiredProperties) {
-      const value = element.dataset[datasetKey(property)];
+      let value = element.dataset[datasetKey(property)];
+      if (!value && property === "source_page") value = window.location.pathname || "/";
+      if (!value && property === "cta_label") value = (element.textContent || "").trim().replace(/\s+/g, " ").slice(0, 80);
       if (!value) return;
       properties[property] = value;
     }

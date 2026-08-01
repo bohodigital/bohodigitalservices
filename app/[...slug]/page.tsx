@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import InteriorPage from "../components/InteriorPage";
-import { AboutPage } from "../components/AboutPage";
+import {
+  BuyerFacingAboutPage,
+  BuyerFacingIndustriesPage,
+  BuyerFacingIndustryDetailPage,
+} from "../components/BuyerFacingPages";
 import {
   CommercialContactPage,
   CommercialEmergencyPage,
@@ -13,11 +17,11 @@ import { GlossaryPage } from "../components/GlossaryPage";
 import { ResourcesPage } from "../components/ResourcesPage";
 import { InHouseBrandsPage } from "../components/InHouseBrandsPage";
 import { InHouseBrandPage } from "../components/InHouseBrandPage";
-import { IndustriesPage } from "../components/IndustriesPage";
-import { IndustryDetailPage } from "../components/IndustryDetailPage";
 import { PricingPage } from "../components/PricingPage";
-import { ServiceDetailPage } from "../components/ServiceDetailPage";
+import { PrimaryServicePage } from "../components/PrimaryServicePage";
 import { ServicesPage } from "../components/ServicesPage";
+import { WebsiteHelpPage } from "../components/WebsiteHelpPage";
+import { WorkPage } from "../components/WorkPage";
 import { inHouseBrandsByLabPath } from "../content/inHouseBrands";
 import { audiencePages } from "../content/audiencePages";
 import { industryModelsBySlug } from "../content/industries";
@@ -26,8 +30,34 @@ import { freeReviewPage } from "../content/commercialReset";
 import { corePages } from "../content/corePages";
 import { isRetiredPublicPage } from "../content/publicPages";
 import { servicePagesByRoute, serviceRoutePages } from "../content/serviceRoutePages";
+import type { PageConfig } from "../content/types";
 
-const pages = [...corePages, ...audiencePages, ...serviceRoutePages].filter(
+const closeoutPages: PageConfig[] = [
+  {
+    slug: "/work/",
+    title: "Work Built and Operated by Boho | Websites, Publishing & Systems",
+    metaDescription: "Inspect websites, publishing systems, educational platforms, analytics tools, and technical infrastructure built and operated by Boho Digital Services.",
+    eyebrow: "WORK BUILT BY BOHO",
+    headline: "Real websites and systems, live on the web.",
+    intro: [],
+    theme: "editorial",
+    primaryCta: { label: "Get a free website review", href: "/start/" },
+    sections: [],
+  },
+  {
+    slug: "/services/website-help/",
+    title: "Website Help from $200 | Repairs, Audits & Provider Problems | Boho",
+    metaDescription: "Focused website help from $200 for broken forms, mobile problems, analytics issues, migrations, provider trouble, accessibility fixes, and ownership cleanup.",
+    eyebrow: "WEBSITE HELP · FROM $200",
+    headline: "Fix the useful problem without automatically rebuilding everything.",
+    intro: [],
+    theme: "editorial",
+    primaryCta: { label: "Get a free website review", href: "/start/" },
+    sections: [],
+  },
+];
+
+const pages = [...corePages, ...audiencePages, ...serviceRoutePages, ...closeoutPages].filter(
   (page) => !isRetiredPublicPage(page.slug),
 );
 const pagesBySlug = new Map(pages.map((page) => [page.slug, page]));
@@ -79,6 +109,40 @@ function commercialRouteMetadata(route: string): CommercialRouteMetadata | null 
         openGraphDescription:
           "Business websites from $850, ongoing SEO from $450 per month, website help from $200, and custom systems from $1,500. Clear scope and client-owned hosting.",
       };
+    case "/work/":
+      return {
+        title: "Work Built and Operated by Boho | Websites, Publishing & Systems",
+        description: "Inspect websites, publishing systems, educational platforms, analytics tools, and technical infrastructure built and operated by Boho Digital Services.",
+        canonical: "/work/",
+      };
+    case "/services/website-help/":
+      return {
+        title: "Website Help from $200 | Repairs, Audits & Provider Problems | Boho",
+        description: "Focused website help from $200 for broken forms, mobile problems, analytics issues, migrations, provider trouble, accessibility fixes, and ownership cleanup.",
+        canonical: "/services/website-help/",
+      };
+    case "/about/":
+      return {
+        title: "About Boho Digital Services | Owner-Operated Digital Engineering",
+        description: "Boho Digital Services is an owner-operated digital engineering company combining scientific problem-solving, software, websites, SEO, and client-owned systems.",
+        canonical: "/about/",
+      };
+    case "/industries/":
+      return {
+        title: "Digital Services for Local, Professional & Online Businesses | Boho",
+        description: "See how Boho approaches websites, SEO, customer paths, and technical systems for project businesses, local services, physical locations, ecommerce, and professional firms.",
+        canonical: "/industries/",
+      };
+    case "/industries/home-improvement-contractors/":
+      return { title: "Digital Services for Project Businesses | Boho", description: "Contractors, trades, restoration firms, remodelers, and other project businesses need to make service, location, property, project, and proof fit clear before asking for an estimate or inspection.", canonical: route };
+    case "/industries/local-service-businesses/":
+      return { title: "Digital Services for Local Service Businesses | Boho", description: "Appointment-based, service-area, recurring, and location-based businesses need to communicate service fit, availability, people, policies, location, and the correct next action without forcing every customer through the same generic form.", canonical: route };
+    case "/industries/brick-and-mortar-retail-hospitality/":
+      return { title: "Digital Services for Physical Locations | Boho", description: "Retailers, venues, studios, offices, hospitality businesses, galleries, and other destinations need current public information that helps people decide whether, when, and how to visit.", canonical: route };
+    case "/industries/online-retail-ecommerce/":
+      return { title: "Digital Services for Product & Ecommerce Businesses | Boho", description: "Product sellers need clear category structure, complete product information, usable navigation, trustworthy policies, working purchase paths, and measurement that distinguishes discovery from completed business.", canonical: route };
+    case "/industries/professional-b2b-services/":
+      return { title: "Digital Services for Professional & B2B Services | Boho", description: "Professional firms, consultants, specialists, and B2B providers need to explain the problem they solve, who is responsible, how the work proceeds, what evidence supports it, and what a qualified next conversation requires.", canonical: route };
     case "/contact/":
       return {
         section: commercialSection("contact", "contact"),
@@ -86,8 +150,8 @@ function commercialRouteMetadata(route: string): CommercialRouteMetadata | null 
       };
     case "/start/":
       return {
-        title: freeReviewPage.headline,
-        description: freeReviewPage.body,
+        title: "Free Website Review | Boho Digital Services",
+        description: "Send your current website or project details for a free public review and a clear recommendation from Boho Digital Services.",
         canonical: "/start/",
         openGraphTitle: freeReviewPage.headline,
         openGraphDescription: freeReviewPage.body,
@@ -183,17 +247,19 @@ export default async function InteriorRoute({ params }: InteriorRouteProps) {
   if (!page) notFound();
 
   if (page.pageKind === "glossary") return <GlossaryPage />;
-  if (page.slug === "/about/") return <AboutPage />;
-  if (page.slug === "/industries/") return <IndustriesPage />;
+  if (page.slug === "/about/") return <BuyerFacingAboutPage />;
+  if (page.slug === "/industries/") return <BuyerFacingIndustriesPage />;
   const industryModel = industryModelsBySlug.get(page.slug);
-  if (industryModel) return <IndustryDetailPage model={industryModel} />;
+  if (industryModel) return <BuyerFacingIndustryDetailPage model={industryModel} />;
   if (page.slug === "/services/") return <ServicesPage />;
   if (page.slug === "/pricing/") return <PricingPage />;
+  if (page.slug === "/work/") return <WorkPage />;
+  if (page.slug === "/services/website-help/") return <WebsiteHelpPage />;
   if (page.slug === "/contact/") return <CommercialContactPage />;
   if (page.slug === "/start/") return <CommercialStartPage />;
   if (page.slug === "/emergency/") return <CommercialEmergencyPage />;
   const servicePage = servicePagesByRoute.get(page.slug);
-  if (servicePage) return <ServiceDetailPage page={servicePage} />;
+  if (servicePage) return <PrimaryServicePage route={page.slug} />;
   if (page.pageKind === "tools") return <ToolsPage />;
   if (page.pageKind === "resources") return <ResourcesPage />;
   if (page.pageKind === "brands") return <InHouseBrandsPage />;
