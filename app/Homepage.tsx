@@ -130,7 +130,7 @@ export default function Homepage() {
                   Get a free website review
                 </ButtonLink>
                 <ButtonLink
-                  data-analytics-event="website_pricing_click"
+                  data-analytics-event="pricing_click"
                   data-analytics-source-page="homepage"
                   data-analytics-source-section="hero"
                   href="/pricing/#business-websites"
@@ -231,7 +231,8 @@ export default function Homepage() {
                 is yours.
               </p>
               <ButtonLink
-                data-analytics-event="hosting_eligibility_click"
+                data-analytics-event="free_review_click"
+                data-analytics-service-context="business_websites"
                 data-analytics-source-page="homepage"
                 data-analytics-source-section="client_owned_hosting"
                 href="/start/"
@@ -297,18 +298,18 @@ export default function Homepage() {
               <p className="reset-eyebrow">BUILT BY BOHO</p>
               <h2 id="reset-proof-title">Real systems. Live on the web.</h2>
               <p>
-                Boho builds and operates its own publishing, education,
-                analytics, and research properties. These are Boho-owned
-                projects, not client case studies or borrowed portfolio pieces.
+                These are Boho-owned properties, not client case studies. They
+                demonstrate work that can be inspected directly; they do not
+                establish client outcomes.
               </p>
             </header>
             <div className="reset-proof__grid">
               {proofProjects.map((project) => (
                 <article key={project.name}>
                   <a
-                    data-analytics-event="proof_project_click"
+                    data-analytics-event="work_project_click"
+                    data-analytics-destination-type="live_property"
                     data-analytics-project-name={project.name}
-                    data-analytics-source-page="homepage"
                     href={project.href}
                   >
                     <img
@@ -326,8 +327,8 @@ export default function Homepage() {
               ))}
             </div>
             <div className="reset-section-action">
-              <ButtonLink href="/tools/" variant="secondary">
-                See what Boho builds
+              <ButtonLink href="/work/" variant="secondary">
+                See Boho’s work
               </ButtonLink>
             </div>
           </div>

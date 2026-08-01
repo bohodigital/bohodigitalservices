@@ -129,6 +129,10 @@ export function ToolsPage() {
           seenTerms={seenTerms}
         />
 
+        <div className="section-shell tools-work-link">
+          <Link href="/work/">See Boho’s public work <ArrowRight size={15} aria-hidden="true" /></Link>
+        </div>
+
         <div className="knowledge-section-layout">
           <SectionSidebar
             currentPath="/tools/"
@@ -325,7 +329,7 @@ export function ToolsPage() {
                   primary={{ label: "Get a free website review", href: "/start/" }}
                   secondary={{ label: "Review Custom Systems", href: "/services/custom-digital-solutions/" }}
                 />
-                <span className="sr-only" id="tools-commercial-cta-title">Start a custom tools conversation.</span>
+                <span className="sr-only" id="tools-commercial-cta-title">Discuss a custom system.</span>
               </div>
             </section>
           </div>
