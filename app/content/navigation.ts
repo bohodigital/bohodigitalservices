@@ -6,6 +6,9 @@ export type NavigationLink = {
   label: string;
   href: LocalHref;
   description?: string;
+  serviceName?: string;
+  priceDisplay?: string;
+  overview?: boolean;
 };
 
 export type PrimaryNavigationItem = NavigationLink & {
@@ -23,7 +26,19 @@ export const serviceHeaderLinks: ReadonlyArray<NavigationLink> =
     label: service.label,
     href: service.route,
     description: `${service.priceDisplay}\n${service.dropdownDescription}`,
+    serviceName: service.label,
+    priceDisplay: service.priceDisplay,
   }));
+
+export const serviceMenuLinks: ReadonlyArray<NavigationLink> = [
+  {
+    label: "All Services",
+    href: "/services/",
+    description: "Compare all four services and starting prices.",
+    overview: true,
+  },
+  ...serviceHeaderLinks,
+];
 
 export const resourceHeaderLinks: ReadonlyArray<NavigationLink> = [
   { label: "Resources overview", href: "/resources/" },
@@ -40,7 +55,7 @@ export const primaryNavigation: ReadonlyArray<PrimaryNavigationItem> = [
   {
     label: "Services",
     href: "/services/",
-    children: serviceHeaderLinks,
+    children: serviceMenuLinks,
   },
   { label: "Work", href: "/work/" },
   { label: "Pricing", href: "/pricing/" },

@@ -2,8 +2,33 @@
 
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 import type { PrimaryNavigationItem } from "../content/navigation";
+
+function normalizedPath(path: string) {
+  return path === "/" ? path : `${path.replace(/\/+$/, "")}/`;
+}
+
+function currentState(href: string, pathname: string, hasChildren = false) {
+  const target = normalizedPath(href);
+  const current = normalizedPath(pathname);
+  if (target === current) return "page" as const;
+  if (hasChildren && target !== "/" && current.startsWith(target)) return "location" as const;
+  return undefined;
+}
+
+function trackServiceNavigationOpen() {
+  const analyticsWindow = window as unknown as {
+    bohoTrackCommercialEvent?: (
+      event: string,
+      properties: Readonly<Record<string, string>>,
+    ) => void;
+  };
+  analyticsWindow.bohoTrackCommercialEvent?.("service_nav_open", {
+    device_context: "mobile",
+  });
+}
 
 const focusableSelector = [
   "a[href]",
@@ -32,6 +57,7 @@ export function MobileMenu({
   const panelId = `mobile-menu-${reactId}`;
   const triggerRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     if (!open) return;
@@ -133,18 +159,34 @@ export function MobileMenu({
                 {navigation.map((item) => (
                   <li key={item.href}>
                     {item.children?.length ? (
-                      <details className="mobile-menu__group">
-                        <summary>
+                      <details
+                        className="mobile-menu__group"
+                        onToggle={(event) => {
+                          if (event.currentTarget.open && item.label === "Services") {
+                            trackServiceNavigationOpen();
+                          }
+                        }}
+                      >
+                        <summary aria-current={currentState(item.href, pathname, true)}>
                           <span>{item.label}</span>
                           <ChevronDown aria-hidden="true" size={21} strokeWidth={2} />
                         </summary>
                         <ul className="mobile-menu__subnav">
                           {item.children.map((child) => (
                             <li key={child.href}>
-                              <a href={child.href} onClick={closeMenu}>
+                              <a
+                                href={child.href}
+                                aria-current={currentState(child.href, pathname)}
+                                data-overview={child.overview ? "true" : undefined}
+                                data-analytics-event={child.serviceName ? "service_nav_click" : undefined}
+                                data-analytics-service-name={child.serviceName}
+                                data-analytics-price-display={child.priceDisplay}
+                                data-analytics-source-page={pathname}
+                                onClick={closeMenu}
+                              >
                                 <strong>{child.label}</strong>
                                 {child.description ? (
-                                  <span>
+                                  <span className="mobile-menu__service-description">
                                     {child.description.split("\n").map((line) => (
                                       <span key={line}>{line}</span>
                                     ))}
@@ -159,6 +201,7 @@ export function MobileMenu({
                       <a
                         className="mobile-menu__nav-link"
                         href={item.href}
+                        aria-current={currentState(item.href, pathname)}
                         onClick={closeMenu}
                       >
                         {item.label}

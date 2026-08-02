@@ -135,10 +135,16 @@ function execute({
     },
     pop(value) { setLocation(value); listeners.get("popstate")?.(); },
     click(dataset, nested = false) {
-      const trackedElement = { dataset };
+      const trackedElement = {
+        dataset,
+        textContent: "Get a free website review",
+        getAttribute(name) {
+          return name === "href" ? "" : null;
+        },
+      };
       const target = nested
         ? { closest() { return trackedElement; } }
-        : { dataset, closest() { return this; } };
+        : { ...trackedElement, closest() { return this; } };
       documentListeners.get("click")?.({ target });
     },
   };
@@ -303,6 +309,7 @@ test("commercial clicks reach GA4 and Umami once with only required properties",
     source_page: "homepage",
     source_section: "hero",
     service_context: "business_websites",
+    cta_label: "Get a free website review",
   });
   assert.deepEqual(JSON.parse(JSON.stringify(umami.at(-1))), [
     "free_review_click",
@@ -310,6 +317,7 @@ test("commercial clicks reach GA4 and Umami once with only required properties",
       source_page: "homepage",
       source_section: "hero",
       service_context: "business_websites",
+      cta_label: "Get a free website review",
     },
   ]);
   assert.doesNotMatch(JSON.stringify({ events, umami }), /private request|unsafe_form_text/i);
@@ -318,12 +326,14 @@ test("commercial clicks reach GA4 and Umami once with only required properties",
 test("commercial clicks queue for Umami and malformed or unknown events are ignored", () => {
   const result = execute();
   result.click({
-    analyticsEvent: "pricing_service_click",
+    analyticsEvent: "service_nav_click",
+    analyticsSourcePage: "/services/",
     analyticsServiceName: "Business Websites",
     analyticsPriceDisplay: "From $850",
   });
   result.click({
-    analyticsEvent: "pricing_service_click",
+    analyticsEvent: "service_nav_click",
+    analyticsSourcePage: "/services/",
     analyticsServiceName: "Website Help",
   });
   result.click({
@@ -337,10 +347,27 @@ test("commercial clicks queue for Umami and malformed or unknown events are igno
   assert.equal(gaEvents.length, 1);
   const umami = activateUmami(result);
   assert.deepEqual(JSON.parse(JSON.stringify(umami.at(-1))), [
-    "pricing_service_click",
+    "service_nav_click",
     {
+      source_page: "/services/",
       service_name: "Business Websites",
       price_display: "From $850",
     },
   ]);
+});
+
+test("service navigation open events accept only the approved device context", () => {
+  const result = execute();
+  result.window.bohoTrackCommercialEvent("service_nav_open", {
+    device_context: "desktop",
+    private_form_content: "must not be sent",
+  });
+  result.window.bohoTrackCommercialEvent("service_nav_open", {});
+
+  const events = result.window.dataLayer
+    .map((entry) => Array.from(entry))
+    .filter((entry) => entry[0] === "event" && entry[1] === "service_nav_open");
+  assert.equal(events.length, 1);
+  assert.deepEqual({ ...events[0][2] }, { device_context: "desktop" });
+  assert.doesNotMatch(JSON.stringify(events), /private_form_content|must not be sent/i);
 });
