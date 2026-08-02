@@ -38,12 +38,12 @@
     },
     {
       "path": "app/components/AboutPage.tsx",
-      "sha256": "10eb3da0a80853fe9d421962b874829de68b144c91fde243e24bb2d6d8664f97",
-      "bytes": 42935,
+      "sha256": "d08529aad790f6af1c5a935d92d5c6ba15e34a0ff55887b580f9db9b45f8dd0a",
+      "bytes": 42028,
       "classification": "authored-source",
       "reachable": false,
       "editorialAuthority": true,
-      "publicStringCount": 491,
+      "publicStringCount": 475,
       "importCount": 2,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
@@ -1276,14 +1276,14 @@
     "reachable": 59,
     "authored": 69,
     "generatedMirrors": 1,
-    "publicStringsOnDemand": 13193,
+    "publicStringsOnDemand": 13177,
     "analyticsClaimContexts": 35
   },
   "fullDetail": {
     "committed": false,
     "generationCommand": "node scripts/commercial-copy-build.mjs --check --inventory-detail <path>",
-    "recordCount": 13193,
-    "deterministicDigest": "dbd7fbd22be98f439d6ed99bba2a2b975fd640b70e67691a476bef0d31be7246"
+    "recordCount": 13177,
+    "deterministicDigest": "9f550ace3a7ee3eefd411034c684463409aa288ce6ac107e837504683a50a0a7"
   },
   "securityScan": {
     "privateKeyMarkers": 0,
@@ -1295,7 +1295,7 @@
       },
       {
         "indicator": "absolute-url",
-        "count": 720
+        "count": 719
       },
       {
         "indicator": "analytics-id",

@@ -54,25 +54,6 @@ const reusableSystems = [
 
 const ownedProjects = [
   {
-    id: "boho-news",
-    title: "Boho News",
-    url: "https://www.bohonews.com/",
-    image: "/proof/about/boho-news-homepage.png",
-    alt: "Boho News homepage showing its market desk, news masthead, lead investigation, data report, and continuous latest-news desk.",
-    description:
-      "Boho News is a multi-section publication built for fast reporting, investigations, public documents, data presentations, corrections, search, feeds, and disciplined editorial governance.",
-    researchUses: [
-      "High-volume news publishing",
-      "Article, desk, and section taxonomies",
-      "Investigations and public-document handling",
-      "Data-report presentation",
-      "Corrections and editorial governance",
-      "Search, feeds, and continuous updates",
-      "Responsive information-dense layouts",
-    ],
-    cta: "Explore Boho News",
-  },
-  {
     id: "rank-builder-seo",
     title: "Rank Builder SEO",
     url: "https://rankbuilderseo.com/",
@@ -347,7 +328,6 @@ export function AboutPage() {
           <nav className="about-proof-strip" aria-label="Boho-owned live project previews">
             <div className="section-shell about-proof-strip__inner">
               <span>BOHO-OWNED LIVE PROJECTS</span>
-              <a href="#boho-news">Boho News</a>
               <a href="#rank-builder-seo">Rank Builder SEO</a>
               <a href="#how-biscuit">How Biscuit</a>
               <a href="#better-grades">Better Grades</a>
@@ -493,10 +473,10 @@ export function AboutPage() {
                   <figure className="about-project__visual">
                     <img
                       alt={project.alt}
-                      height={800}
+                      height={1000}
                       loading={index === 0 ? "eager" : "lazy"}
                       src={project.image}
-                      width={1280}
+                      width={1440}
                     />
                   </figure>
                   <div className="about-project__copy">
