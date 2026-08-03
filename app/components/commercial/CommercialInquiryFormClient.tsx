@@ -380,12 +380,13 @@ export function CommercialInquiryFormClient({
         body: presentation.validation.body,
       });
       window.requestAnimationFrame(() => form.querySelector<HTMLElement>("[aria-invalid='true']")?.focus());
-      if (isStart) trackCommercialEvent("free_review_submit_failure", { failure_stage: "validation" });
+      trackCommercialEvent(isStart ? "free_review_submit_failure" : "emergency_submit_failure", { failure_stage: "validation" });
       return;
     }
     if (!turnstileToken) {
+      setErrors({});
       setNotice(failureNotice());
-      if (isStart) trackCommercialEvent("free_review_submit_failure", { failure_stage: "spam_protection" });
+      trackCommercialEvent(isStart ? "free_review_submit_failure" : "emergency_submit_failure", { failure_stage: "spam_protection" });
       return;
     }
 
@@ -421,12 +422,12 @@ export function CommercialInquiryFormClient({
         confirmedSuccess = true;
       } else {
         setNotice(failureNotice(response.status));
-        if (isStart) trackCommercialEvent("free_review_submit_failure", { failure_stage: "delivery" });
+        trackCommercialEvent(isStart ? "free_review_submit_failure" : "emergency_submit_failure", { failure_stage: "delivery" });
         resetTurnstile();
       }
     } catch {
       setNotice({ kind: "error", ...presentation.notices.network });
-      if (isStart) trackCommercialEvent("free_review_submit_failure", { failure_stage: "network" });
+      trackCommercialEvent(isStart ? "free_review_submit_failure" : "emergency_submit_failure", { failure_stage: "network" });
       resetTurnstile();
     } finally {
       window.clearTimeout(timeout);
@@ -437,7 +438,7 @@ export function CommercialInquiryFormClient({
       form.reset();
       submissionIdRef.current = null;
       resetTurnstile();
-      trackCommercialEvent(isStart ? "commercial_standard_inquiry_success" : "commercial_emergency_inquiry_success");
+      trackCommercialEvent(isStart ? "commercial_standard_inquiry_success" : "emergency_submit_success");
       if (isStart) {
         const selectedService = String(data.get("service") ?? "");
         const serviceContext = selectedService === freeReviewServiceLabels.businessWebsite
@@ -523,9 +524,11 @@ export function CommercialInquiryFormClient({
         ref={formRef}
         noValidate
         onFocusCapture={() => {
-          if (!isStart || formStartedRef.current) return;
+          if (formStartedRef.current) return;
           formStartedRef.current = true;
-          trackCommercialEvent("free_review_form_start", { source_page: "start" });
+          trackCommercialEvent(isStart ? "free_review_form_start" : "emergency_form_start", {
+            source_page: isStart ? "start" : "emergency",
+          });
         }}
         onSubmit={handleSubmit}
         aria-busy={submitting}

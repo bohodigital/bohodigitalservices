@@ -104,12 +104,12 @@
     },
     {
       "path": "app/components/DesktopNavigation.tsx",
-      "sha256": "5dfa81e79cfc2cf2c66188dc36c3262eefc00b5ac60fa5e117044ce9b558b01b",
-      "bytes": 3992,
+      "sha256": "0314cae0c907d7f3ca303de8ffed3c05a22868f27807ed94ef0f8bdde71b4a97",
+      "bytes": 5799,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 22,
+      "publicStringCount": 31,
       "importCount": 1,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
@@ -247,12 +247,12 @@
     },
     {
       "path": "app/components/MobileMenu.tsx",
-      "sha256": "5faff5fb200d6ccdf88a533fc83bc181872c9638e549277b1511586e659dde07",
-      "bytes": 6036,
+      "sha256": "3c863ad04868dbfce9122bba83964f7374f5e5b44cd14244f875a04b342bed00",
+      "bytes": 7939,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 49,
+      "publicStringCount": 57,
       "importCount": 1,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
@@ -522,12 +522,12 @@
     },
     {
       "path": "app/content/navigation.ts",
-      "sha256": "f2b4b06e63a5fbb7cffcd20a2bdc556bbedf4a895eafd2e6ce4ab45cedefe2f1",
-      "bytes": 1493,
+      "sha256": "bba13743fe9400a8622e8eb6a70cbfc42c46e668ad93931338b32f65972d287a",
+      "bytes": 1875,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 21,
+      "publicStringCount": 24,
       "importCount": 1,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
@@ -1276,14 +1276,14 @@
     "reachable": 59,
     "authored": 69,
     "generatedMirrors": 1,
-    "publicStringsOnDemand": 13177,
+    "publicStringsOnDemand": 13197,
     "analyticsClaimContexts": 35
   },
   "fullDetail": {
     "committed": false,
     "generationCommand": "node scripts/commercial-copy-build.mjs --check --inventory-detail <path>",
-    "recordCount": 13177,
-    "deterministicDigest": "9f550ace3a7ee3eefd411034c684463409aa288ce6ac107e837504683a50a0a7"
+    "recordCount": 13197,
+    "deterministicDigest": "000b0fa0d9e33730a29c50d9fa4152777db334d068ac38ed639dc5d8166f2376"
   },
   "securityScan": {
     "privateKeyMarkers": 0,

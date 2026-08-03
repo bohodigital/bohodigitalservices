@@ -27,6 +27,7 @@ test("publishes the approved primary navigation and canonical service registry",
     assert.match(navigation, new RegExp(`label: "${label}"`));
   }
   assert.doesNotMatch(navigation.match(/export const primaryNavigation[\s\S]*?\];/)?.[0] ?? "", /Industries/);
+  assert.match(navigation, /label: "All Services"/);
   for (const [name, price] of [
     ["Business Websites", "From $850"],
     ["Ongoing SEO & Local Growth", "From $450/month"],
@@ -98,7 +99,8 @@ test("tracks the approved conversion events without form-content properties", as
   const analytics = await source("public/analytics-bootstrap.js");
   for (const event of [
     "free_review_click", "free_review_form_start", "free_review_submit_success", "free_review_submit_failure",
-    "service_card_click", "pricing_click", "work_project_click", "tools_project_click", "email_link_click", "phone_link_click",
+    "emergency_form_start", "emergency_submit_success", "emergency_submit_failure",
+    "service_card_click", "service_nav_open", "service_nav_click", "pricing_click", "work_project_click", "tools_project_click", "email_link_click", "phone_link_click",
   ]) assert.ok(analytics.includes(event), `missing analytics event ${event}`);
   const propertyBlock = analytics.match(/const commercialEventProperties = \{[\s\S]*?\n  \};/)?.[0] ?? "";
   assert.doesNotMatch(propertyBlock, /email_address|business_name|description|entered_url|provider_name|budget|form_content/i);

@@ -154,7 +154,12 @@
     free_review_form_start: ["source_page"],
     free_review_submit_success: ["service_context"],
     free_review_submit_failure: ["failure_stage"],
+    emergency_form_start: ["source_page"],
+    emergency_submit_success: [],
+    emergency_submit_failure: ["failure_stage"],
     service_card_click: ["source_page", "service_name", "price_display"],
+    service_nav_open: ["device_context"],
+    service_nav_click: ["source_page", "service_name", "price_display"],
     pricing_click: ["source_page", "source_section"],
     work_project_click: ["project_name", "destination_type"],
     tools_project_click: ["project_name", "destination_type"],
@@ -168,6 +173,25 @@
       .map((part) => `${part.slice(0, 1).toUpperCase()}${part.slice(1)}`)
       .join("")}`;
   }
+
+  function emitCommercialEvent(name, providedProperties) {
+    const requiredProperties = commercialEventProperties[name];
+    if (!requiredProperties) return;
+    const properties = {};
+    for (const property of requiredProperties) {
+      const value = providedProperties && providedProperties[property];
+      if (!value || typeof value !== "string") return;
+      properties[property] = value;
+    }
+    window.gtag("event", name, properties);
+    if (umamiReady && window.umami && typeof window.umami.track === "function") {
+      window.umami.track(name, properties);
+    } else {
+      pendingUmamiEvents.push({ name, properties });
+    }
+  }
+
+  window.bohoTrackCommercialEvent = emitCommercialEvent;
 
   function handleCommercialClick(event) {
     const target = event && event.target;
@@ -189,12 +213,7 @@
       properties[property] = value;
     }
 
-    window.gtag("event", name, properties);
-    if (umamiReady && window.umami && typeof window.umami.track === "function") {
-      window.umami.track(name, properties);
-    } else {
-      pendingUmamiEvents.push({ name, properties });
-    }
+    emitCommercialEvent(name, properties);
   }
 
   for (const method of ["pushState", "replaceState"]) {
