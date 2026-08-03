@@ -157,7 +157,11 @@ function commercialRouteMetadata(route: string): CommercialRouteMetadata | null 
         openGraphDescription: freeReviewPage.body,
       };
     case "/emergency/":
-      return { section: commercialSection("emergency", "metadata") };
+      return {
+        title: "Emergency Website Help | Outages, Launches, Access and Redirect Problems",
+        description: "Request urgent help for broken forms, failed launches, provider lockout, redirects, domain problems, tracking failures, migrations, and other active website incidents.",
+        canonical: "/emergency/",
+      };
     case "/services/ongoing-seo/":
       return {
         title: "Ongoing SEO & Local Growth | Boho",

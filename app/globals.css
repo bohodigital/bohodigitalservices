@@ -5931,6 +5931,15 @@ body,
 
   .definition-term__popover::after { display: none; }
 
+  .definition-term__close {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .definition-term__popover a {
+    min-height: 2.75rem;
+  }
+
   .knowledge-hero {
     min-height: 0;
   }

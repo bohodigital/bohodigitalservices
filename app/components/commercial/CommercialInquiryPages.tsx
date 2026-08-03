@@ -1,11 +1,11 @@
 import {
   commercialCorrections,
-  commercialCorrections068,
   commercialSection,
   correctionValue,
 } from "../../content/commercial/presentation";
 import Link from "next/link";
-import { freeReviewPage } from "../../content/commercialReset";
+import { commercialInquiryV2, freeReviewPage } from "../../content/commercialReset";
+import { DefinedText } from "../DefinedText";
 import { Footer, Header } from "./CommercialChrome";
 import { CommercialInquiryForm } from "./CommercialInquiryForm";
 
@@ -104,32 +104,50 @@ export function CommercialContactPage() {
 }
 
 export function CommercialStartPage() {
+  const { start } = commercialInquiryV2;
   return (
     <>
       <Header />
       <main className="commercial-page commercial-start-page" id="main-content" tabIndex={-1}>
-        <section className="commercial-hero" aria-labelledby="start-commercial-title">
-          <div className="section-shell commercial-hero__grid">
-            <div>
+        <section className="commercial-hero commercial-inquiry-hero" aria-labelledby="start-commercial-title">
+          <div className="section-shell commercial-inquiry-hero__grid">
+            <div className="commercial-inquiry-hero__copy">
               <p className="eyebrow eyebrow--on-dark">{freeReviewPage.eyebrow}</p>
               <h1 id="start-commercial-title">{freeReviewPage.headline}</h1>
               <p>{freeReviewPage.body}</p>
-              <p><strong>The free review uses public information only. It is not a complete audit, private-account review, written strategy, quote, provider recovery, or implementation engagement.</strong></p>
-              <p>Boho normally replies to a standard inquiry within two business days. Submission does not create a client relationship, guarantee acceptance, or reserve availability.</p>
+              <div className="button-row">
+                <a className="button-link button-link--primary" data-analytics-event="start_hero_cta_click" data-analytics-source-page="start" data-analytics-source-section="hero" href="#free-review-form">Start the free review</a>
+                <Link className="commercial-text-link commercial-text-link--on-dark" data-analytics-event="start_emergency_detour_click" data-analytics-source-page="start" data-analytics-source-section="hero" href="/emergency/">My website is actively broken</Link>
+              </div>
+              <p className="commercial-inquiry-hero__expectation">{start.expectation}</p>
             </div>
+            <aside className="commercial-review-slip" aria-labelledby="free-review-gives-title">
+              <p className="commercial-review-slip__kicker">INITIAL REVIEW</p>
+              <h2 id="free-review-gives-title">{start.reviewCard.heading}</h2>
+              <ul>{start.reviewCard.items.map((item) => <li key={item}>{item}</li>)}</ul>
+              <dl>{start.reviewCard.fields.map(([term, value]) => <div key={term}><dt>{term}</dt><dd>{value}</dd></div>)}</dl>
+              <p>{start.reviewCard.closing}</p>
+            </aside>
           </div>
         </section>
-        <section className="commercial-section commercial-incident-route" aria-labelledby="start-active-incident-title">
-          <div className="section-shell">
-            <h2 id="start-active-incident-title">Active outage or launch failure?</h2>
-            <p>Use Emergency Help when a live website, form, launch, redirect, access problem, or provider action is actively affecting customers or operations.</p>
-            <Link className="button-link button-link--secondary" href="/emergency/">
-              Open Emergency Help
-            </Link>
+        <section className="commercial-reassurance" aria-label="Reasons to trust the review">
+          <div className="section-shell commercial-reassurance__inner">
+            <ul>{start.reassurance.map((item) => <li key={item}>{item}</li>)}</ul>
+            <Link data-analytics-event="start_work_link_click" data-analytics-source-page="start" data-analytics-source-section="reassurance" href="/work/">See work built by Boho</Link>
           </div>
         </section>
-        <section className="commercial-section commercial-form-section">
-          <div className="section-shell"><CommercialInquiryForm kind="start" /></div>
+        <section className="commercial-section commercial-form-section" id="free-review-form">
+          <div className="section-shell commercial-form-layout">
+            <div>
+              <p className="commercial-definition-intro"><DefinedText text="The review looks at [[website-clarity]], [[seo|SEO]], and the most important [[customer-action]] when those are relevant." /></p>
+              <CommercialInquiryForm kind="start" />
+            </div>
+            <aside className="commercial-expectation-card">
+              <h2>{start.expectationCard.heading}</h2>
+              <ul>{start.expectationCard.items.map((item) => <li key={item}>{item}</li>)}</ul>
+              <Link data-analytics-event="start_pricing_link_click" data-analytics-source-page="start" data-analytics-source-section="before_send" href="/pricing/">See complete pricing</Link>
+            </aside>
+          </div>
         </section>
       </main>
       <Footer />
@@ -138,69 +156,58 @@ export function CommercialStartPage() {
 }
 
 export function CommercialEmergencyPage() {
-  const hero = commercialSection("emergency", "hero");
-  const appropriate = commercialSection("emergency", "appropriate-emergency-situations");
-  const ordinary = commercialSection("emergency", "not-an-emergency-route");
-  const process = commercialSection("emergency", "first-response-process");
-  const pricing = commercialSection("emergency", "availability-and-pricing");
-  const access = commercialSection("emergency", "authorized-access-boundary");
-  const responder = commercialSection("emergency", "when-boho-is-not-the-right-responder");
-  const finalBoundary = commercialSection("emergency", "final-boundary");
-  const processStages = [1, 2, 3, 4].map((number) => ({
-    heading: process.one(`Stage ${number} heading`),
-    body: process.one(`Stage ${number} body`),
-  }));
+  const { emergency } = commercialInquiryV2;
+  const seenTerms = new Set<string>();
 
   return (
     <>
       <Header />
       <main className="commercial-page commercial-emergency-page" id="main-content" tabIndex={-1}>
-        <section className="commercial-hero" aria-labelledby="emergency-commercial-title">
-          <div className="section-shell commercial-hero__grid">
-            <div>
-              <p className="eyebrow eyebrow--on-dark">{hero.one("Eyebrow")}</p>
-              <h1 id="emergency-commercial-title">{hero.one("Headline")}</h1>
-              <p>{hero.one("Body paragraph 1")}</p>
-              <p>{hero.one("Body paragraph 2")}</p>
+        <section className="commercial-hero commercial-inquiry-hero" aria-labelledby="emergency-commercial-title">
+          <div className="section-shell commercial-inquiry-hero__grid">
+            <div className="commercial-inquiry-hero__copy">
+              <p className="eyebrow eyebrow--on-dark">{emergency.eyebrow}</p>
+              <h1 id="emergency-commercial-title">{emergency.headline}</h1>
+              <p><DefinedText seenTerms={seenTerms} text={emergency.body.replace("redirect", "[[redirect]]")} /></p>
               <div className="button-row">
-                <a className="button-link button-link--primary" href="#emergency-request">Describe the emergency</a>
-                <Link className="button-link button-link--secondary" href="/start/">Get a free website review</Link>
+                <a className="button-link button-link--primary" data-analytics-event="emergency_hero_cta_click" data-analytics-source-page="emergency" data-analytics-source-section="hero" href="#emergency-request">Describe the emergency</a>
+                <Link className="commercial-text-link commercial-text-link--on-dark" data-analytics-event="emergency_standard_detour_click" data-analytics-source-page="emergency" data-analytics-source-section="hero" href="/start/">This can wait</Link>
               </div>
-              <strong>{hero.one("Trust line")}</strong>
+              <p className="commercial-inquiry-hero__expectation">{emergency.trust}</p>
             </div>
+            <aside className="commercial-first-response" aria-labelledby="first-response-title">
+              <p className="commercial-review-slip__kicker">FIRST RESPONSE</p>
+              <h2 id="first-response-title">{emergency.firstResponse.heading}</h2>
+              <ol>{emergency.firstResponse.steps.map(([heading, body], index) => <li key={heading}><span>{index + 1}</span><div><h3>{heading}</h3><p><DefinedText seenTerms={seenTerms} text={body.replaceAll("DNS", "[[dns|DNS]]")} /></p></div></li>)}</ol>
+              <p>{emergency.firstResponse.closing}</p>
+            </aside>
           </div>
         </section>
 
-        <section className="commercial-section commercial-emergency-split">
-          <div className="section-shell commercial-emergency-split__grid">
-            <article>
-              <p className="eyebrow">{appropriate.one("Eyebrow")}</p>
-              <h2>{appropriate.one("Heading")}</h2>
-              <ul>{[appropriate.one("Items"), ...appropriate.many("value")].map((item) => <li key={item}>{item}</li>)}</ul>
-            </article>
-            <article>
-              <p className="eyebrow">{ordinary.one("Eyebrow")}</p>
-              <h2>{ordinary.one("Heading")}</h2>
-              <ul>{[ordinary.one("Items"), ...ordinary.many("value")].map((item) => <li key={item}>{item}</li>)}</ul>
-              <a href={ordinary.one("Standard destination")}>Get a free website review</a>
-            </article>
+        <section className="commercial-section commercial-emergency-fit" aria-labelledby="emergency-fit-title">
+          <div className="section-shell">
+            <header className="commercial-section__heading"><p className="eyebrow">ACTIVE INCIDENTS</p><h2 id="emergency-fit-title">{emergency.fit.heading}</h2></header>
+            <div className="commercial-emergency-fit__grid">
+              {emergency.fit.cards.map(([heading, body]) => <article key={heading}><h3>{heading}</h3><p><DefinedText seenTerms={seenTerms} text={body.replace("domain", "[[domain-name|domain]]").replaceAll("analytics", "[[analytics]]")} /></p></article>)}
+            </div>
+            <div className="commercial-standard-route"><div><strong>Not active or urgent?</strong><p>Use the free website review for ordinary repairs, redesigns, audits, migrations, SEO questions, or provider concerns.</p></div><Link data-analytics-event="emergency_standard_detour_click" data-analytics-source-page="emergency" data-analytics-source-section="fit" href="/start/">Start the free website review</Link></div>
           </div>
         </section>
 
-        <section className="commercial-section commercial-timeline" aria-labelledby="emergency-process-title">
+        <section className="commercial-section commercial-timeline commercial-emergency-process" aria-labelledby="emergency-process-title">
           <div className="section-shell">
             <header className="commercial-section__heading">
-              <p className="eyebrow">{process.one("Eyebrow")}</p>
-              <h2 id="emergency-process-title">{process.one("Heading")}</h2>
+              <p className="eyebrow">CONTROLLED RESPONSE</p>
+              <h2 id="emergency-process-title">A four-stage response, without a recovery-time promise.</h2>
             </header>
-            <ol>{processStages.map((stage) => <li key={stage.heading}><h3>{stage.heading}</h3><p>{stage.body}</p></li>)}</ol>
+            <ol>{emergency.process.map(([heading, body], index) => <li key={heading}><span className="commercial-process-number">0{index + 1}</span><h3>{heading}</h3><p><DefinedText seenTerms={seenTerms} text={index === 1 ? `${body} Keep a [[rollback]] path when one exists.` : body} /></p></li>)}</ol>
           </div>
         </section>
 
-        <section className="commercial-section commercial-emergency-boundaries">
-          <div className="section-shell commercial-emergency-boundaries__grid">
-            <article><h2>{pricing.one("Heading")}</h2><p>{pricing.one("Body paragraph 1")}</p><p>{pricing.one("Body paragraph 2")}</p><p>{pricing.one("Body paragraph 3")}</p></article>
-            <article><h2>{access.one("Heading")}</h2><ul>{[access.one("Items"), ...access.many("value")].map((item) => <li key={item}>{item}</li>)}</ul></article>
+        <section className="commercial-section commercial-emergency-pricing" aria-labelledby="emergency-pricing-title">
+          <div className="section-shell commercial-emergency-pricing__inner">
+            <div><p className="eyebrow">SCOPE AND AVAILABILITY</p><h2 id="emergency-pricing-title">{emergency.pricing.heading}</h2></div>
+            <div><p>{emergency.pricing.body}</p><strong>{emergency.pricing.clarification}</strong></div>
           </div>
         </section>
 
@@ -208,30 +215,9 @@ export function CommercialEmergencyPage() {
           <div className="section-shell"><CommercialInquiryForm kind="emergency" /></div>
         </section>
 
-        <section className="commercial-section commercial-boundary" aria-labelledby="responder-title">
-          <div className="section-shell">
-            <h2 id="responder-title">{responder.one("Heading")}</h2>
-            <ul>{[responder.one("Items"), ...responder.many("value")].map((item) => <li key={item}>{item}</li>)}</ul>
-          </div>
-        </section>
-
-        <section className="commercial-section commercial-final" aria-labelledby="emergency-final-title">
-          <div className="section-shell">
-            <h2 id="emergency-final-title">{finalBoundary.one("Heading")}</h2>
-            <p>{finalBoundary.one("Body")}</p>
-            <div className="button-row">
-              <Link
-                className="button-link button-link--primary"
-                data-analytics-event="free_review_click"
-                data-analytics-service-context="website_help"
-                data-analytics-source-page="emergency"
-                data-analytics-source-section="final"
-                href="/start/"
-              >
-                Get a free website review
-              </Link>
-              <a className="button-link button-link--secondary" href="#emergency-request">Describe the emergency</a>
-            </div>
+        <section className="commercial-section commercial-emergency-boundaries" aria-label="Emergency service boundaries">
+          <div className="section-shell commercial-emergency-boundaries__grid">
+            {emergency.boundaries.map(([heading, body]) => <article key={heading}><h2>{heading}</h2><p>{body}</p></article>)}
           </div>
         </section>
       </main>

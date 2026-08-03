@@ -81,6 +81,26 @@ export function DefinitionTerm({
     clearScheduledClose();
     setPlacement(initialPlacement);
     activate(descriptionId);
+    try {
+      const analyticsWindow = window as unknown as {
+        bohoTrackCommercialEvent?: (
+          eventName: string,
+          properties: Readonly<Record<string, string>>,
+        ) => void;
+      };
+      const sourcePage = window.location.pathname === "/start/"
+        ? "start"
+        : window.location.pathname === "/emergency/"
+          ? "emergency"
+          : window.location.pathname;
+      analyticsWindow.bohoTrackCommercialEvent?.("definition_popover_open", {
+        source_page: sourcePage,
+        source_section: "contextual_definition",
+        term_slug: slug,
+      });
+    } catch {
+      // Definition access must never depend on analytics availability.
+    }
   };
 
   useEffect(() => {

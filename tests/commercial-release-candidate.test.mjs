@@ -60,8 +60,10 @@ test("renders Work and Website Help as canonical public pages", async () => {
 test("aligns the free-review intake promise and preserves its compatibility anchors", async () => {
   const html = await render("/start/");
   for (const value of [
-    "Get a clear next step for your website.",
-    "Request my free review",
+    "Tell us what you need. We’ll tell you the clearest next move.",
+    "Start the free review",
+    "What the free review gives you",
+    "Before you send",
     "Your name",
     "Business or organization",
     "Existing website or public page",
@@ -70,6 +72,9 @@ test("aligns the free-review intake promise and preserves its compatibility anch
   ]) assert.ok(html.includes(value), `missing Start copy: ${value}`);
   assert.equal((html.match(/id="project-inquiry"/g) ?? []).length, 1);
   assert.equal((html.match(/id="visibility-check-request"/g) ?? []).length, 1);
+  assert.equal((html.match(/name="service"/g) ?? []).length, 5);
+  assert.match(html, /type="radio"/);
+  assert.match(html, /Add optional project details|Add optional details/);
   assert.match(html, /I agree that Boho may use this information to review and respond to my inquiry/);
 });
 
@@ -100,6 +105,10 @@ test("tracks the approved conversion events without form-content properties", as
   for (const event of [
     "free_review_click", "free_review_form_start", "free_review_submit_success", "free_review_submit_failure",
     "emergency_form_start", "emergency_submit_success", "emergency_submit_failure",
+    "start_hero_cta_click", "start_emergency_detour_click", "start_service_category_select",
+    "start_optional_details_open", "free_review_submit_attempt", "definition_popover_open",
+    "emergency_hero_cta_click", "emergency_standard_detour_click", "emergency_incident_type_select", "emergency_submit_attempt",
+    "commercial_standard_inquiry_success", "pricing_lead_complete",
     "service_card_click", "service_nav_open", "service_nav_click", "pricing_click", "work_project_click", "tools_project_click", "email_link_click", "phone_link_click",
   ]) assert.ok(analytics.includes(event), `missing analytics event ${event}`);
   const propertyBlock = analytics.match(/const commercialEventProperties = \{[\s\S]*?\n  \};/)?.[0] ?? "";
@@ -109,6 +118,46 @@ test("tracks the approved conversion events without form-content properties", as
 test("routes emergency and ordinary inquiries to the correct actions", async () => {
   const html = await render("/emergency/");
   assert.match(html, /href="#emergency-request">Describe the emergency/);
-  assert.match(html, /href="\/start\/">Get a free website review/);
+  assert.match(html, /href="\/start\/">This can wait/);
+  assert.match(html, /Before changing anything else/);
+  assert.match(html, /Use Emergency Help when the problem is active and consequential/);
+  assert.match(html, /Urgent work is scoped before paid work begins/);
+  assert.match(html, /Contact and affected system/);
+  assert.match(html, /Incident facts/);
+  assert.match(html, /Impact and description/);
   assert.doesNotMatch(html, />Send the Situation</);
+});
+
+test("publishes exact Start and Emergency metadata", async () => {
+  const [start, emergency] = await Promise.all([render("/start/"), render("/emergency/")]);
+  assert.match(start, /<title>Free Website Review \| Boho Digital Services<\/title>/);
+  assert.match(start, /Send your current website or project details for a free public review and a clear recommendation from Boho Digital Services/);
+  assert.match(emergency, /<title>Emergency Website Help \| Outages, Launches, Access and Redirect Problems<\/title>/);
+  assert.match(emergency, /Request urgent help for broken forms, failed launches, provider lockout, redirects, domain problems, tracking failures, migrations, and other active website incidents/);
+});
+
+test("preserves inquiry delivery mappings and explicit success and failure states", async () => {
+  const [client, form, start, emergency] = await Promise.all([
+    source("app/components/commercial/CommercialInquiryFormClient.tsx"),
+    source("app/components/commercial/CommercialInquiryForm.tsx"),
+    render("/start/"),
+    render("/emergency/"),
+  ]);
+  assert.match(client, /boho-forms-intake\.local1agent0\.workers\.dev\/v1\/submissions/);
+  assert.match(client, /form_id: isStart \? "contact" : "emergency"/);
+  assert.match(client, /turnstile_action: isStart \? "boho_contact" : "boho_emergency"/);
+  assert.match(client, /\[200, 201, 202\]\.includes\(response\.status\) && payload\.ok === true/);
+  assert.match(client, /status === 429/);
+  assert.match(client, /failure_stage: "validation"/);
+  assert.match(client, /failure_stage: "spam_protection"/);
+  assert.match(client, /failure_stage: "delivery"/);
+  assert.match(client, /failure_stage: "network"/);
+  assert.match(client, /kind: "success"/);
+  for (const mapping of [
+    'backendName: "name"', 'backendName: "email"', 'backendName: "businessName"',
+    'backendName: "website"', 'backendName: "service"', 'backendName: "message"',
+    'backendName: "problem"', 'backendName: "began"', 'backendName: "priorChange"',
+    'backendName: "impact"',
+  ]) assert.ok(form.includes(mapping), `missing backend mapping: ${mapping}`);
+  assert.doesNotMatch(`${start}${emergency}`, /type="(?:file|tel)"/);
 });

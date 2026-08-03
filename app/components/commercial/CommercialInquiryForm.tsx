@@ -2,6 +2,7 @@ import {
   commercialSection,
 } from "../../content/commercial/presentation";
 import {
+  commercialInquiryV2,
   freeReviewPage,
   freeReviewServiceOptions,
 } from "../../content/commercialReset";
@@ -36,7 +37,7 @@ function startFields(): ReadonlyArray<CommercialFormField> {
     { publicName: "email", backendName: "email", type: "email", label: "Email", placeholder: email.one("Placeholder"), requirement: email.one("Required text"), required: true, maxLength: 254 },
     { publicName: "businessName", backendName: "businessName", type: "text", label: "Business or organization", placeholder: business.one("Placeholder"), requirement: business.one("Required text"), required: true, maxLength: 180 },
     { publicName: "website", backendName: "website", type: "url", label: "Existing website or public page", placeholder: website.one("Placeholder"), requirement: website.one("Optional text"), required: false, maxLength: 500 },
-    { publicName: "service", backendName: "service", type: "select", label: "What do you need?", requirement: service.one("Required text"), required: true, maxLength: 120, options: serviceOptions, backendOptions },
+    { publicName: "service", backendName: "service", type: "radio-card", label: "What do you need?", requirement: service.one("Required text"), required: true, maxLength: 120, options: serviceOptions, optionDetails: commercialInquiryV2.serviceCards, backendOptions },
     { publicName: "message", backendName: "message", type: "textarea", label: "Brief description", hint: "Explain what is happening, what matters most, and what would make the next step useful. Do not include passwords, recovery codes, payment information, private customer records, or other secrets.", requirement: situation.one("Required text"), required: true, maxLength: 8000 },
     { publicName: "serviceArea", backendName: "serviceArea", type: "text", label: "City, region, or market", requirement: location.one("Optional text"), required: false, maxLength: 500 },
     { publicName: "provider", backendName: "provider", type: "text", label: "Current provider or platform", requirement: provider.one("Optional text"), required: false, maxLength: 500 },
@@ -58,15 +59,15 @@ function emergencyFields(): ReadonlyArray<CommercialFormField> {
   const impact = commercialSection("emergency", "impact");
   const description = commercialSection("emergency", "incident-description");
   return [
-    { publicName: "name", backendName: "name", type: "text", label: name.one("Label"), placeholder: name.one("Placeholder"), requirement: name.one("Required text"), required: true, maxLength: 120 },
-    { publicName: "email", backendName: "email", type: "email", label: email.one("Label"), placeholder: email.one("Placeholder"), requirement: email.one("Required text"), required: true, maxLength: 254 },
-    { publicName: "businessName", backendName: "businessName", type: "text", label: business.one("Label"), requirement: business.one("Required text"), required: true, maxLength: 180 },
-    { publicName: "website", backendName: "website", type: "url", label: website.one("Label"), placeholder: website.one("Placeholder"), requirement: website.one("Required text"), required: true, maxLength: 500 },
-    { publicName: "incidentType", backendName: "problem", type: "select", label: incidentType.one("Label"), requirement: incidentType.one("Required text"), required: true, maxLength: 500, options: [incidentType.one("Options, in this order"), ...incidentType.many("value")] },
-    { publicName: "began", backendName: "began", type: "text", label: began.one("Label"), placeholder: began.one("Placeholder"), requirement: began.one("Required text"), required: true, maxLength: 500 },
-    { publicName: "priorChange", backendName: "priorChange", type: "text", label: change.one("Label"), placeholder: change.one("Placeholder"), requirement: change.one("Optional text"), required: false, maxLength: 8000 },
-    { publicName: "impact", backendName: "impact", type: "textarea", label: impact.one("Label"), placeholder: impact.one("Placeholder"), requirement: impact.one("Required text"), required: true, maxLength: 8000 },
-    { publicName: "description", backendName: "problem", type: "textarea", label: description.one("Label"), hint: description.one("Hint"), requirement: description.one("Required text"), required: true, maxLength: 7500 },
+    { publicName: "name", backendName: "name", type: "text", label: name.one("Label"), placeholder: name.one("Placeholder"), requirement: name.one("Required text"), required: true, maxLength: 120, group: "Contact and affected system" },
+    { publicName: "email", backendName: "email", type: "email", label: email.one("Label"), placeholder: email.one("Placeholder"), requirement: email.one("Required text"), required: true, maxLength: 254, group: "Contact and affected system" },
+    { publicName: "businessName", backendName: "businessName", type: "text", label: business.one("Label"), requirement: business.one("Required text"), required: true, maxLength: 180, group: "Contact and affected system" },
+    { publicName: "website", backendName: "website", type: "url", label: "Website or affected public system", placeholder: website.one("Placeholder"), requirement: website.one("Required text"), required: true, maxLength: 500, group: "Contact and affected system" },
+    { publicName: "incidentType", backendName: "problem", type: "select", label: incidentType.one("Label"), requirement: incidentType.one("Required text"), required: true, maxLength: 500, options: [incidentType.one("Options, in this order"), ...incidentType.many("value")], group: "Incident facts" },
+    { publicName: "began", backendName: "began", type: "text", label: "When did it begin?", placeholder: "Example: Today around 2:30 PM Central", requirement: began.one("Required text"), required: true, maxLength: 500, group: "Incident facts" },
+    { publicName: "priorChange", backendName: "priorChange", type: "text", label: "What changed immediately before it began?", placeholder: "Example: A new site launched, DNS changed, a plugin updated, or the provider changed account access.", requirement: change.one("Optional text"), required: false, maxLength: 8000, group: "Incident facts" },
+    { publicName: "impact", backendName: "impact", type: "textarea", label: "What is the business impact?", placeholder: "Example: Customers cannot submit the estimate form, the domain does not load, or paid traffic is reaching a missing page.", requirement: impact.one("Required text"), required: true, maxLength: 8000, group: "Impact and description" },
+    { publicName: "description", backendName: "problem", type: "textarea", label: "Describe what is happening", hint: "Include visible errors, affected pages, devices, providers, and troubleshooting already attempted. Do not include passwords, authentication codes, private customer information, payment data, or private keys.", requirement: description.one("Required text"), required: true, maxLength: 7500, group: "Impact and description" },
   ];
 }
 
@@ -94,8 +95,8 @@ function presentation(kind: "start" | "emergency"): CommercialFormPresentation {
       title: isStart
         ? freeReviewPage.formHeading
         : heading.one("Heading"),
-      body: isStart ? "Send the current website or briefly describe what the business needs." : heading.one("Introduction"),
-      requiredNote: heading.one("Required-fields note"),
+      body: isStart ? commercialInquiryV2.start.formBody : heading.one("Introduction"),
+      requiredNote: isStart ? commercialInquiryV2.start.requiredNote : heading.one("Required-fields note"),
     },
     fields: isStart ? startFields() : emergencyFields(),
     privacy: isStart
@@ -116,8 +117,8 @@ function presentation(kind: "start" | "emergency"): CommercialFormPresentation {
         : submit.one("Submitting label"),
     },
     disclosure: disclosure ? {
-      closed: "Add optional details",
-      open: "Hide optional details",
+      closed: "Add optional project details",
+      open: "Hide optional project details",
     } : undefined,
     validation: {
       required: validation.one("Required-field message"),
@@ -131,7 +132,7 @@ function presentation(kind: "start" | "emergency"): CommercialFormPresentation {
     notices: {
       success: {
         heading: isStart ? "Your review request was sent." : success.one("Heading"),
-        body: isStart ? "Boho will review the public information and reply through the email address provided. Submission does not create a client relationship or guarantee acceptance or timing." : success.one("Body"),
+        body: isStart ? commercialInquiryV2.start.success.body : success.one("Body"),
         links: [
           { label: success.one("Primary link"), href: successDestinations[0] },
           { label: success.one("Secondary link"), href: successDestinations[1] },

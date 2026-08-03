@@ -111,11 +111,111 @@ export const freeReview = {
 
 export const freeReviewPage = {
   eyebrow: "FREE WEBSITE REVIEW",
-  headline: "Get a clear next step for your website.",
+  headline: "Tell us what you need. We’ll tell you the clearest next move.",
   body:
-    "Send the current website or briefly describe what the business needs. Boho will review the visible situation and explain whether the best starting point is a business website, ongoing SEO, focused website help, or custom work.",
-  formHeading: "Request your free review",
-  submitLabel: "Request my free review",
+    "Send your current website or briefly describe the situation. Boho will review the public-facing experience and reply with a practical recommendation: build, improve, repair, automate, or leave it alone for now.",
+  formHeading: "Start with the basics.",
+  submitLabel: "Start the free review",
+} as const;
+
+export const commercialInquiryV2 = {
+  start: {
+    expectation:
+      "No phone number required. Do not send passwords or recovery codes. Boho normally replies to standard inquiries within two business days.",
+    reviewCard: {
+      heading: "What the free review gives you",
+      items: [
+        "One clearly prioritized observation.",
+        "The service path that appears most sensible.",
+        "A practical next action.",
+        "An honest answer when paid work is not yet justified.",
+      ],
+      closing:
+        "This is a focused review of public information, not a complete technical audit or private-account investigation.",
+      fields: [
+        ["Situation", "Public website or project"],
+        ["Review type", "Initial public review"],
+        ["Result", "Recommended next step"],
+        ["Cost", "Free"],
+      ],
+    },
+    reassurance: [
+      "Owner-operated",
+      "Direct technical lead",
+      "Client-controlled accounts",
+      "Real systems available to inspect",
+    ],
+    formBody:
+      "Your name, email, business, general need, and a brief description are enough to begin. Optional details can help Boho respond more precisely, but they are not required to submit the request.",
+    requiredNote: "Required fields are marked. Existing websites are helpful but not required.",
+    expectationCard: {
+      heading: "Before you send",
+      items: [
+        "Boho reviews public information first.",
+        "Do not submit passwords, private customer records, payment information, or recovery codes.",
+        "Submitting the form does not create a client relationship or reserve availability.",
+        "Urgent live incidents belong on the Emergency Help page.",
+      ],
+    },
+    success: {
+      heading: "Your review request was sent.",
+      body:
+        "Boho will review the public information and reply through the email address you provided. Submission does not create a client relationship or guarantee project acceptance or timing.",
+    },
+  },
+  emergency: {
+    eyebrow: "EMERGENCY WEBSITE HELP",
+    headline: "Something broke. Start with the safest next move.",
+    body:
+      "If a live website, form, domain, launch, redirect, tracking system, or provider problem is actively hurting customers or operations, send the facts. Boho will assess the impact, the likely failure point, and the safest available path.",
+    trust:
+      "Do not send passwords or recovery codes. Authorized access is arranged only after the problem, scope, and fit are understood.",
+    firstResponse: {
+      heading: "Before changing anything else",
+      steps: [
+        ["Record what happened", "Save the exact URL, visible error, approximate start time, affected device or browser, and screenshots when possible."],
+        ["Record what changed", "Note any launch, update, plugin, DNS, domain, provider, tracking, or account change made shortly before the problem appeared."],
+        ["Preserve access", "Do not repeatedly reset accounts, replace DNS records, delete deployments, or remove the last working version unless there is a documented reason."],
+      ],
+      closing:
+        "The goal is not to freeze forever. It is to stop untracked changes from destroying the evidence needed to diagnose the failure.",
+    },
+    fit: {
+      heading: "Use Emergency Help when the problem is active and consequential.",
+      cards: [
+        ["Customers cannot act", "Contact forms, booking, checkout, phone links, or other important customer paths are failing."],
+        ["The public site is unavailable", "The website or domain does not load, resolves incorrectly, or shows the wrong deployment."],
+        ["A launch or migration failed", "Pages disappeared, redirects broke, mobile layouts failed, or the replacement damaged important public paths."],
+        ["Access or provider control failed", "The business lost authorized access to a domain, host, website, analytics property, or another critical system."],
+        ["Search damage is actively spreading", "Important URLs were removed, redirected incorrectly, blocked, or replaced during a recent change."],
+        ["Measurement disappeared after a change", "Forms, analytics, or conversion events stopped working when the business urgently needs reliable operational information."],
+      ],
+    },
+    process: [
+      ["Triage the impact", "Determine what is failing, who is affected, when it started, and what business action is being lost."],
+      ["Stabilize the system", "Stop harmful changes, preserve working access and evidence, and identify the safest temporary state."],
+      ["Diagnose the cause", "Review the relevant website, domain, provider, deployment, redirect, form, analytics, or access path."],
+      ["Repair or route", "Complete the authorized repair when it fits Boho’s scope, or identify the provider or specialist that must take over."],
+    ],
+    pricing: {
+      heading: "Urgent work is scoped before paid work begins.",
+      body:
+        "Focused Website Help starts at $200. Urgency, uncertain access, multiple affected systems, recovery work, migration damage, or provider coordination can increase the scope. Boho confirms availability, boundaries, and price before implementation begins.",
+      clarification:
+        "Submitting an emergency request is not a paid engagement and does not guarantee immediate availability.",
+    },
+    boundaries: [
+      ["Authorized access only", "Boho works through owner-authorized accounts, provider invitations, and documented recovery processes. Boho does not bypass credentials, impersonate account owners, defeat platform security, or claim control it does not have."],
+      ["When another responder is required", "A registrar, hosting provider, email provider, payment processor, cybersecurity specialist, insurer, attorney, law-enforcement agency, or emergency service may control part of the response. When the incident belongs elsewhere, Boho should say so plainly rather than pretending every catastrophe is an upsell opportunity."],
+    ],
+  },
+  serviceCards: [
+    ["Business Website", "Business website", "Build a new website or responsibly replace an existing one.", "From $850"],
+    ["Ongoing SEO & Local Growth", "SEO and local growth", "Improve search visibility, content, measurement, and customer paths over time.", "From $450/month"],
+    ["Website Help", "Website help", "Fix, investigate, migrate, recover, or improve one defined website problem.", "From $200"],
+    ["Custom System", "Custom system", "Build a focused tool, integration, workflow, publishing system, or automation.", "From $1,500"],
+    ["Not sure", "Not sure yet", "Describe the situation and Boho will route it.", "No category required"],
+  ],
 } as const;
 
 export const freeReviewServiceLabels = {

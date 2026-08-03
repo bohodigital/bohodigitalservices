@@ -16,7 +16,7 @@ import { freeReviewServiceLabels } from "../../content/commercialReset";
 export type CommercialFormField = {
   publicName: string;
   backendName: string;
-  type: "text" | "email" | "url" | "textarea" | "select";
+  type: "text" | "email" | "url" | "textarea" | "select" | "radio-card";
   label: string;
   placeholder?: string;
   hint?: string;
@@ -24,7 +24,9 @@ export type CommercialFormField = {
   required: boolean;
   maxLength: number;
   options?: ReadonlyArray<string>;
+  optionDetails?: ReadonlyArray<readonly [string, string, string, string]>;
   backendOptions?: Readonly<Record<string, string>>;
+  group?: string;
 };
 
 type NoticeContent = {
@@ -85,6 +87,10 @@ type TurnstileApi = {
 declare global {
   interface Window {
     turnstile?: TurnstileApi;
+    bohoTrackCommercialEvent?: (
+      eventName: string,
+      properties?: Readonly<Record<string, string>>,
+    ) => void;
   }
 }
 
@@ -158,6 +164,10 @@ function trackCommercialEvent(
   properties?: Readonly<Record<string, string>>,
 ) {
   try {
+    if (window.bohoTrackCommercialEvent) {
+      window.bohoTrackCommercialEvent(event, properties);
+      return;
+    }
     const analyticsWindow = window as unknown as {
       gtag?: (command: "event", eventName: string, properties?: Readonly<Record<string, string>>) => void;
       umami?: {
@@ -186,6 +196,7 @@ export function CommercialInquiryFormClient({
   const reactId = useId().replace(/[^a-zA-Z0-9_-]/g, "");
   const formId = `commercial-${presentation.kind}-${reactId}`;
   const formRef = useRef<HTMLFormElement>(null);
+  const errorSummaryRef = useRef<HTMLDivElement>(null);
   const turnstileRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
   const pollTimerRef = useRef<number | null>(null);
@@ -220,12 +231,19 @@ export function CommercialInquiryFormClient({
     if (presentation.kind === "start" && pricingContext && formRef.current) {
       const service = formRef.current.elements.namedItem("service");
       if (service instanceof HTMLSelectElement) service.value = pricingContext.service;
+      if (service instanceof RadioNodeList) service.value = pricingContext.service;
       const offer = formRef.current.elements.namedItem("valuableOffer");
       if (offer instanceof HTMLInputElement && pricingContext.offerLabel) {
         offer.value = pricingContext.offerLabel;
       }
     }
   }, [presentation.kind, pricingContext]);
+
+  useEffect(() => {
+    if (notice?.kind === "error" && Object.keys(errors).length) {
+      errorSummaryRef.current?.focus();
+    }
+  }, [errors, notice]);
 
   useEffect(() => {
     let disposed = false;
@@ -371,6 +389,9 @@ export function CommercialInquiryFormClient({
     event.preventDefault();
     if (submitting) return;
     const form = event.currentTarget;
+    trackCommercialEvent(isStart ? "free_review_submit_attempt" : "emergency_submit_attempt", {
+      source_page: isStart ? "start" : "emergency",
+    });
     const nextErrors = validate(form);
     if (Object.keys(nextErrors).length) {
       setErrors(nextErrors);
@@ -379,7 +400,6 @@ export function CommercialInquiryFormClient({
         heading: presentation.validation.heading,
         body: presentation.validation.body,
       });
-      window.requestAnimationFrame(() => form.querySelector<HTMLElement>("[aria-invalid='true']")?.focus());
       trackCommercialEvent(isStart ? "free_review_submit_failure" : "emergency_submit_failure", { failure_stage: "validation" });
       return;
     }
@@ -486,6 +506,33 @@ export function CommercialInquiryFormClient({
       "aria-invalid": error ? true as const : undefined,
       "aria-describedby": describedBy,
     };
+    if (field.type === "radio-card") {
+      return (
+        <fieldset aria-describedby={error ? `${id}-error` : undefined} aria-invalid={error ? true : undefined} className="commercial-form__field commercial-form__field--radio-cards" id={id} key={field.publicName}>
+          <legend>{field.label}<span className="commercial-form__requirement">{field.requirement}</span></legend>
+          <span className="commercial-anchor-alias" id="visibility-check-request" />
+          <div className="commercial-radio-cards">
+            {field.optionDetails?.map(([value, title, description, price]) => (
+              <label className="commercial-radio-card" key={value}>
+                <input
+                  disabled={submitting}
+                  name={field.publicName}
+                  onChange={() => trackCommercialEvent("start_service_category_select", {
+                    source_page: "start",
+                    category: field.backendOptions?.[value] ?? value,
+                  })}
+                  required={field.required}
+                  type="radio"
+                  value={value}
+                />
+                <span><strong>{title}</strong><small>{description}</small><em>{price}</em></span>
+              </label>
+            ))}
+          </div>
+          {error ? <p id={`${id}-error`} role="alert">{error}</p> : null}
+        </fieldset>
+      );
+    }
     return (
       <div
         className="commercial-form__field"
@@ -495,7 +542,14 @@ export function CommercialInquiryFormClient({
         <label htmlFor={id}>{field.label}<span className="commercial-form__requirement">{field.requirement}</span></label>
         {field.type === "textarea" ? <textarea {...common} rows={6} /> :
           field.type === "select" ? (
-            <select {...common} defaultValue="">
+            <select {...common} defaultValue="" onChange={(event) => {
+              if (field.publicName === "incidentType") {
+                trackCommercialEvent("emergency_incident_type_select", {
+                  source_page: "emergency",
+                  category: event.currentTarget.value,
+                });
+              }
+            }}>
               <option value="" disabled>{field.label}</option>
               {field.options?.map((option) => <option key={option} value={option}>{option}</option>)}
             </select>
@@ -508,6 +562,27 @@ export function CommercialInquiryFormClient({
 
   const consentError = errors.consent;
   const authorityError = errors.authority;
+  const errorEntries = Object.entries(errors).map(([name, message]) => ({
+    name,
+    message,
+    label: presentation.fields.find((field) => field.publicName === name)?.label
+      ?? (name === "authority" ? "Authority confirmation" : "Consent"),
+  }));
+  const emergencyGroups = isStart
+    ? []
+    : ["Contact and affected system", "Incident facts", "Impact and description"];
+
+  if (notice?.kind === "success") {
+    return (
+      <div className="commercial-form commercial-form--success" id={isStart ? "project-inquiry" : "emergency-request"} role="status" tabIndex={-1}>
+        <div className="commercial-form__notice commercial-form__notice--success">
+          <h2>{notice.heading}</h2>
+          <p>{notice.body}</p>
+          <div className="commercial-form__notice-links">{notice.links?.map((link) => <a href={link.href} key={link.href}>{link.label}</a>)}</div>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="commercial-form" id={isStart ? "project-inquiry" : "emergency-request"}>
       <header>
@@ -533,10 +608,23 @@ export function CommercialInquiryFormClient({
         onSubmit={handleSubmit}
         aria-busy={submitting}
       >
-        <div className="commercial-form__grid">{primaryFields.map(renderField)}</div>
+        {isStart ? <div className="commercial-form__grid">{primaryFields.map(renderField)}</div> : (
+          <div className="commercial-form__groups">
+            {emergencyGroups.map((group) => (
+              <fieldset className="commercial-form__group" key={group}>
+                <legend>{group}</legend>
+                <div className="commercial-form__grid">{primaryFields.filter((field) => field.group === group).map(renderField)}</div>
+              </fieldset>
+            ))}
+          </div>
+        )}
         {presentation.disclosure ? (
           <div className="commercial-form__disclosure">
-            <button type="button" aria-expanded={detailsOpen} onClick={() => setDetailsOpen((open) => !open)}>
+            <button type="button" aria-expanded={detailsOpen} onClick={() => setDetailsOpen((open) => {
+              const next = !open;
+              if (next) trackCommercialEvent("start_optional_details_open", { source_page: "start" });
+              return next;
+            })}>
               {detailsOpen ? presentation.disclosure.open : presentation.disclosure.closed}
             </button>
             <div className="commercial-form__grid" hidden={!detailsOpen}>
@@ -563,9 +651,10 @@ export function CommercialInquiryFormClient({
           {submitting ? presentation.submit.pending : presentation.submit.idle}
         </button>
         {notice ? (
-          <div className={`commercial-form__notice commercial-form__notice--${notice.kind}`} role={notice.kind === "error" ? "alert" : "status"} tabIndex={-1}>
+          <div className={`commercial-form__notice commercial-form__notice--${notice.kind}`} ref={errorSummaryRef} role={notice.kind === "error" ? "alert" : "status"} tabIndex={-1}>
             <h3>{notice.heading}</h3>
             <p>{notice.body}</p>
+            {errorEntries.length ? <ul className="commercial-form__error-list">{errorEntries.map(({ name, label, message }) => <li key={name}><a href={`#${fieldId(formId, name)}`}>{label}: {message}</a></li>)}</ul> : null}
             <div className="commercial-form__notice-links">
               {notice.retry ? <button type="button" onClick={() => setNotice(null)}>{notice.retry}</button> : null}
               {notice.emailLabel && notice.emailHref ? <a href={notice.emailHref}>{notice.emailLabel}</a> : null}

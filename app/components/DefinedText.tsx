@@ -85,7 +85,7 @@ export function DefinedText({
       );
     }
 
-    if (entry) {
+    if (entry && !pageTerms.has(entry.slug)) {
       pageTerms.add(entry.slug);
       output.push(
         <DefinitionTerm
@@ -96,6 +96,8 @@ export function DefinedText({
           term={entry.term}
         />,
       );
+    } else if (entry) {
+      output.push(customLabel ?? entry.term);
     } else {
       output.push(customLabel ?? marker);
     }
