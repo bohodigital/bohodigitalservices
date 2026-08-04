@@ -35,8 +35,8 @@ import type { PageConfig } from "../content/types";
 const closeoutPages: PageConfig[] = [
   {
     slug: "/work/",
-    title: "Work Built and Operated by Boho | Websites, Publishing & Systems",
-    metaDescription: "Inspect websites, publishing systems, educational platforms, analytics tools, and technical infrastructure built and operated by Boho Digital Services.",
+    title: "Website Demo Library & Work Built by Boho | Boho Digital Services",
+    metaDescription: "Browse Boho's live website demo library by project level, then inspect public websites, publishing systems, and technical tools built and operated by Boho Digital Services.",
     eyebrow: "WORK BUILT BY BOHO",
     headline: "Real websites and systems, live on the web.",
     intro: [],
@@ -111,8 +111,8 @@ function commercialRouteMetadata(route: string): CommercialRouteMetadata | null 
       };
     case "/work/":
       return {
-        title: "Work Built and Operated by Boho | Websites, Publishing & Systems",
-        description: "Inspect websites, publishing systems, educational platforms, analytics tools, and technical infrastructure built and operated by Boho Digital Services.",
+        title: "Website Demo Library & Work Built by Boho | Boho Digital Services",
+        description: "Browse Boho's live website demo library by project level, then inspect public websites, publishing systems, and technical tools built and operated by Boho Digital Services.",
         canonical: "/work/",
       };
     case "/services/website-help/":

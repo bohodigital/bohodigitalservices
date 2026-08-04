@@ -16,8 +16,8 @@
     },
     {
       "path": "app/[...slug]/page.tsx",
-      "sha256": "7b26dc11792aa4892ab4c135d77c71e57bf2103d45ee861f8ce23364a0b41f58",
-      "bytes": 13875,
+      "sha256": "c6cbc5d22732e11a222d3181c783c0e4105530286606dd963712a9aee7716124",
+      "bytes": 13919,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
@@ -99,6 +99,17 @@
       "reachable": true,
       "editorialAuthority": true,
       "publicStringCount": 48,
+      "importCount": 1,
+      "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
+    },
+    {
+      "path": "app/components/DemoLibrary.tsx",
+      "sha256": "6ace3b35ef88c2e7e319353a8048b7ec120877580544e77f3511388e8decd787",
+      "bytes": 5100,
+      "classification": "authored-source",
+      "reachable": true,
+      "editorialAuthority": true,
+      "publicStringCount": 53,
       "importCount": 1,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
@@ -368,13 +379,13 @@
     },
     {
       "path": "app/components/WorkPage.tsx",
-      "sha256": "89efbf32b5f37e31812339c141f337966e2abdb3fc5518031701ce1104230723",
-      "bytes": 9348,
+      "sha256": "efe03765373355328ffc7ef6245d35fe0c3dbb4d369a3eab93008812c2364335",
+      "bytes": 10472,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 127,
-      "importCount": 2,
+      "publicStringCount": 139,
+      "importCount": 4,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
     {
@@ -452,6 +463,17 @@
       "editorialAuthority": true,
       "publicStringCount": 926,
       "importCount": 3,
+      "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
+    },
+    {
+      "path": "app/content/demoLibrary.ts",
+      "sha256": "a7072b592da2d908d15cb71a01e71c0bbad91177e659bf7630642e254fe487d6",
+      "bytes": 6131,
+      "classification": "authored-source",
+      "reachable": true,
+      "editorialAuthority": true,
+      "publicStringCount": 110,
+      "importCount": 0,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
     {
@@ -709,12 +731,12 @@
     },
     {
       "path": "content/routing/public-route-registry.json",
-      "sha256": "1a9525e67b70345936de9bed8a0af78115634905ec9189de89611562edf6242c",
-      "bytes": 180399,
+      "sha256": "28e8e62381c4c0f920a3fdd4fb2c4b86c0cf1f1b4dd925b1e0b79f5a12ee477a",
+      "bytes": 180421,
       "classification": "authored-source",
       "reachable": false,
       "editorialAuthority": true,
-      "publicStringCount": 1292,
+      "publicStringCount": 933,
       "importCount": 0,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
@@ -1272,18 +1294,18 @@
     }
   ],
   "counts": {
-    "sources": 73,
-    "reachable": 59,
-    "authored": 69,
+    "sources": 75,
+    "reachable": 61,
+    "authored": 71,
     "generatedMirrors": 1,
-    "publicStringsOnDemand": 13248,
+    "publicStringsOnDemand": 13064,
     "analyticsClaimContexts": 35
   },
   "fullDetail": {
     "committed": false,
     "generationCommand": "node scripts/commercial-copy-build.mjs --check --inventory-detail <path>",
-    "recordCount": 13248,
-    "deterministicDigest": "9f232c76f3ea1851507119e1d85eb844d0a5f100d771b984a9dc5ae87c9b2004"
+    "recordCount": 13064,
+    "deterministicDigest": "71d770b92ec7f5910aa3541bf40d3146340bd20e74503a2927da0b348d57111f"
   },
   "securityScan": {
     "privateKeyMarkers": 0,
@@ -1295,7 +1317,7 @@
       },
       {
         "indicator": "absolute-url",
-        "count": 719
+        "count": 727
       },
       {
         "indicator": "analytics-id",

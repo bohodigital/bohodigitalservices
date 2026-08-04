@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { selectedTools } from "../content/systems";
+import { demoProjects } from "../content/demoLibrary";
+import { DemoLibrary } from "./DemoLibrary";
 import { ButtonLink, Footer, Header } from "./SiteChrome";
 
 const publicProperties = [
@@ -72,8 +74,8 @@ const publicProperties = [
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "Work built and operated by Boho",
-  itemListElement: publicProperties.map((property, index) => ({
+  name: "Website demos and work built by Boho",
+  itemListElement: [...demoProjects, ...publicProperties].map((property, index) => ({
     "@type": "ListItem",
     position: index + 1,
     url: property.href,
@@ -94,18 +96,32 @@ export function WorkPage() {
           <div className="reset-shell reset-interior-hero__grid">
             <div>
               <p className="reset-eyebrow">WORK BUILT BY BOHO</p>
-              <h1 id="work-title">Real websites and systems, live on the web.</h1>
+              <h1 id="work-title">Real websites, demo builds, and systems—live on the web.</h1>
               <p>
-                Boho is a new service company, so it does not borrow client logos or invent case studies. The work below is owned and operated by Boho. It shows the design, publishing, search, data, and operational systems we can inspect directly.
+                Browse complete website demonstrations at three project levels, then inspect the public properties and technical systems Boho owns and operates. Every item is linked so you can judge the actual work for yourself.
               </p>
               <div className="reset-actions">
-                <ButtonLink href="/start/">Get a free website review</ButtonLink>
-                <ButtonLink href="/tools/" variant="secondary">Explore Boho’s technical systems</ButtonLink>
+                <ButtonLink href="#demo-library">Browse the demo library</ButtonLink>
+                <ButtonLink href="/start/" variant="secondary">Get a free website review</ButtonLink>
               </div>
             </div>
             <aside className="reset-interior-hero__receipt">
-              <p>Boho-owned work. Not client case studies. No fabricated performance claims.</p>
+              <p>Complete fictional demos plus Boho-owned work. No borrowed client logos. No invented performance claims.</p>
             </aside>
+          </div>
+        </section>
+
+        <section className="reset-section demo-library-section" id="demo-library" aria-labelledby="demo-library-title">
+          <div className="reset-shell">
+            <header className="reset-heading demo-library-heading">
+              <div>
+                <p className="reset-eyebrow">THE BOHO DEMO LIBRARY</p>
+                <h2 id="demo-library-title">Choose a level. Tour the real site.</h2>
+              </div>
+              <p>These are fictional businesses built to demonstrate what different website scopes can include. Filter by project level, scroll through the previews, and open any complete demo in a new tab.</p>
+            </header>
+            <p className="reset-proof-disclosure">Demo names, teams, locations, availability, reviews, credentials, and business details are fictional. They are design and functionality demonstrations—not client case studies or performance claims.</p>
+            <DemoLibrary />
           </div>
         </section>
 

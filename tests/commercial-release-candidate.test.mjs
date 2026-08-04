@@ -47,7 +47,12 @@ test("renders Work and Website Help as canonical public pages", async () => {
   const [work, help, redirects, sitemap] = await Promise.all([
     render("/work/"), render("/services/website-help/"), source("out/_redirects"), source("out/sitemap.xml"),
   ]);
-  assert.match(work, /Real websites and systems, live on the web/);
+  assert.match(work, /Real websites, demo builds, and systems—live on the web/);
+  assert.match(work, /THE BOHO DEMO LIBRARY/);
+  assert.match(work, /\$850 brochure sites/);
+  assert.match(work, /Expanded sites/);
+  assert.match(work, /High-end sites/);
+  assert.equal((work.match(/data-demo-card="true"/g) ?? []).length, 8);
   assert.match(work, /rel="canonical" href="https:\/\/bohodigitalservices\.com\/work\/"/);
   assert.match(work, /BOHO-OWNED PROPERTY/);
   assert.match(help, /Fix the useful problem without automatically rebuilding everything/);
