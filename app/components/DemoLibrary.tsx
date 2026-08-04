@@ -130,7 +130,11 @@ export function DemoLibrary() {
               </span>
               <span className="demo-library__preview-label">Full homepage preview · scroll to explore</span>
             </a>
-            <div className="demo-library__card-body">
+            <aside className="demo-library__card-body demo-library__notes" aria-label={`Boho's notes about ${demo.name}`}>
+              <div className="demo-library__notes-header">
+                <span>Boho&apos;s notes</span>
+                <strong>Separate from the demo website</strong>
+              </div>
               <div>
                 <p className="demo-library__slide-label">Demo {String(index + 1).padStart(2, "0")} · {demo.tierLabel}</p>
                 <p className="reset-eyebrow">{demo.businessType}</p>
@@ -149,7 +153,7 @@ export function DemoLibrary() {
                 >Visit the full live demo ↗</a>
                 <Link href="/start/">Start a similar project</Link>
               </div>
-            </div>
+            </aside>
           </article>
         ))}
       </div>
