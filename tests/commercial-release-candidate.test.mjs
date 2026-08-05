@@ -65,10 +65,10 @@ test("renders Work and Website Help as canonical public pages", async () => {
 test("aligns the free-review intake promise and preserves its compatibility anchors", async () => {
   const html = await render("/start/");
   for (const value of [
-    "Tell us what you need. We’ll tell you the clearest next move.",
-    "Start the free review",
-    "What the free review gives you",
-    "Before you send",
+    "Find out what your website actually needs.",
+    "Request my free review",
+    "A useful answer, not a mystery score.",
+    "Enough clarity to choose the next move.",
     "Your name",
     "Business or organization",
     "Existing website or public page",
@@ -81,6 +81,10 @@ test("aligns the free-review intake promise and preserves its compatibility anch
   assert.match(html, /type="radio"/);
   assert.match(html, /Add optional project details|Add optional details/);
   assert.match(html, /I agree that Boho may use this information to review and respond to my inquiry/);
+  assert.match(html, /data-analytics-event="start_hero_cta_click"/);
+  assert.match(html, /data-analytics-event="start_emergency_detour_click"/);
+  assert.match(html, /data-analytics-event="start_work_link_click"/);
+  assert.doesNotMatch(html, /class="[^"]*\bundefined\b/);
 });
 
 test("publishes corrected client-owned hosting guidance", async () => {
@@ -130,6 +134,9 @@ test("routes emergency and ordinary inquiries to the correct actions", async () 
   assert.match(html, /Contact and affected system/);
   assert.match(html, /Incident facts/);
   assert.match(html, /Impact and description/);
+  assert.match(html, /data-analytics-event="emergency_hero_cta_click"/);
+  assert.match(html, /data-analytics-event="emergency_standard_detour_click"/);
+  assert.doesNotMatch(html, /class="[^"]*\bundefined\b/);
   assert.doesNotMatch(html, />Send the Situation</);
 });
 

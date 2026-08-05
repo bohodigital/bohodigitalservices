@@ -731,7 +731,7 @@
     },
     {
       "path": "content/routing/public-route-registry.json",
-      "sha256": "28e8e62381c4c0f920a3fdd4fb2c4b86c0cf1f1b4dd925b1e0b79f5a12ee477a",
+      "sha256": "a1358ab16c07499142c6ed3fe84dafdf9d45461e966a3124ed64a381f10fbea5",
       "bytes": 180421,
       "classification": "authored-source",
       "reachable": false,
@@ -1305,7 +1305,7 @@
     "committed": false,
     "generationCommand": "node scripts/commercial-copy-build.mjs --check --inventory-detail <path>",
     "recordCount": 13094,
-    "deterministicDigest": "6ffb92afcdf0e275bc25dd80e3882c87bb056898239f51812552fe97ae31ff8a"
+    "deterministicDigest": "88cb0e2cfeb62b10086ddcde77e20ef9d4a7b40b66376bd3efbbea261b58f6ec"
   },
   "securityScan": {
     "privateKeyMarkers": 0,
