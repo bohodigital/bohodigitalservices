@@ -4,6 +4,7 @@ import {
   Footer,
   Header,
 } from "./components/SiteChrome";
+import { DemoLibrary } from "./components/DemoLibrary";
 import {
   canonicalServices,
   homepageFaqs,
@@ -286,6 +287,37 @@ export default function Homepage() {
               responsibilities, integrations, ownership, price, and third-party
               costs before work begins.
             </p>
+          </div>
+        </section>
+
+        <section
+          className="reset-section demo-library-section demo-library-section--home"
+          aria-labelledby="homepage-demo-library-title"
+        >
+          <div className="reset-shell">
+            <header className="reset-heading demo-library-heading">
+              <div>
+                <p className="reset-eyebrow">EXPLORE THE DEMO LIBRARY</p>
+                <h2 id="homepage-demo-library-title">
+                  See what different website scopes can become.
+                </h2>
+              </div>
+              <p>
+                Tour eight complete websites—from focused $850 brochure sites
+                to expanded and high-end builds. Filter the collection, explore
+                a full homepage preview, or open any live demo in a new tab.
+              </p>
+            </header>
+            <p className="reset-proof-disclosure">
+              These fictional businesses demonstrate design and functionality.
+              They are not client case studies or performance claims.
+            </p>
+            <DemoLibrary compact />
+            <div className="demo-library-section__action">
+              <ButtonLink href="/work/#demo-library" variant="secondary">
+                Open the full demo library
+              </ButtonLink>
+            </div>
           </div>
         </section>
 

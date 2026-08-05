@@ -7,7 +7,11 @@ import { demoProjects, demoTierOptions, type DemoTier } from "../content/demoLib
 
 type DemoFilter = "all" | DemoTier;
 
-export function DemoLibrary() {
+type DemoLibraryProps = {
+  compact?: boolean;
+};
+
+export function DemoLibrary({ compact = false }: DemoLibraryProps) {
   const [filter, setFilter] = useState<DemoFilter>("all");
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -58,7 +62,7 @@ export function DemoLibrary() {
   };
 
   return (
-    <div className="demo-library">
+    <div className={`demo-library${compact ? " demo-library--compact" : ""}`}>
       <div className="demo-library__toolbar">
         <div className="demo-library__filters" aria-label="Filter website demos by project level">
           {demoTierOptions.map((option) => (
@@ -171,23 +175,25 @@ export function DemoLibrary() {
         </div>
       ) : null}
 
-      <div className="demo-library__levels" aria-label="Website project levels">
-        <article>
-          <span>01</span>
-          <h3>$850 brochure sites</h3>
-          <p>Focused, polished sites for straightforward local businesses that need to explain the offer and make the next step obvious.</p>
-        </article>
-        <article>
-          <span>02</span>
-          <h3>Expanded sites</h3>
-          <p>Deeper service, location, project, and educational content for businesses with more search opportunities and customer paths.</p>
-        </article>
-        <article>
-          <span>03</span>
-          <h3>High-end sites</h3>
-          <p>Multi-location experiences with custom discovery tools, scheduling concepts, portals, business-system integrations, and LLM assistants.</p>
-        </article>
-      </div>
+      {!compact ? (
+        <div className="demo-library__levels" aria-label="Website project levels">
+          <article>
+            <span>01</span>
+            <h3>$850 brochure sites</h3>
+            <p>Focused, polished sites for straightforward local businesses that need to explain the offer and make the next step obvious.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Expanded sites</h3>
+            <p>Deeper service, location, project, and educational content for businesses with more search opportunities and customer paths.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>High-end sites</h3>
+            <p>Multi-location experiences with custom discovery tools, scheduling concepts, portals, business-system integrations, and LLM assistants.</p>
+          </article>
+        </div>
+      ) : null}
     </div>
   );
 }

@@ -1660,6 +1660,103 @@
   }
 }
 
+/* Compact homepage demo carousel */
+.demo-library-section--home {
+  padding-block: clamp(4.75rem, 7vw, 7rem);
+  background:
+    radial-gradient(circle at 8% 82%, rgba(222, 177, 74, 0.14), transparent 22rem),
+    radial-gradient(circle at 94% 12%, rgba(84, 169, 157, 0.22), transparent 26rem),
+    linear-gradient(138deg, #122529 0%, #0d171b 66%, #171c20 100%);
+}
+
+.demo-library-section--home .demo-library-heading {
+  margin-bottom: 1.75rem;
+}
+
+.demo-library--compact {
+  margin-top: clamp(1.75rem, 4vw, 3rem);
+}
+
+.demo-library--compact .demo-library__track {
+  grid-auto-columns: min(63rem, calc(100vw - 10rem));
+}
+
+.demo-library--compact .demo-library__card {
+  grid-template-columns: minmax(0, 1.45fr) minmax(18rem, 0.72fr);
+  min-height: 35rem;
+}
+
+.demo-library--compact .demo-library__homepage-frame {
+  height: 32.25rem;
+}
+
+.demo-library--compact .demo-library__card-body {
+  gap: 1.1rem;
+  padding: clamp(1.35rem, 2.5vw, 2rem);
+}
+
+.demo-library--compact .demo-library__notes-header {
+  margin: clamp(-2rem, -2.5vw, -1.35rem) clamp(-2rem, -2.5vw, -1.35rem) 1.25rem;
+}
+
+.demo-library--compact .demo-library__card-body h3 {
+  font-size: clamp(1.85rem, 2.6vw, 2.75rem);
+}
+
+.demo-library--compact .demo-library__card-body p:not(.reset-eyebrow) {
+  font-size: 0.92rem;
+}
+
+.demo-library-section__action {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.demo-library-section__action .button-link--secondary {
+  border-color: rgba(255, 248, 235, 0.42);
+  color: var(--warm-ivory);
+}
+
+@media (max-width: 70rem) {
+  .demo-library--compact .demo-library__track {
+    grid-auto-columns: min(56rem, calc(100vw - 5rem));
+  }
+
+  .demo-library--compact .demo-library__card {
+    grid-template-columns: minmax(0, 1.15fr) minmax(17rem, 0.85fr);
+  }
+}
+
+@media (max-width: 54rem) {
+  .demo-library--compact .demo-library__track {
+    grid-auto-columns: calc(100vw - 2.75rem);
+  }
+
+  .demo-library--compact .demo-library__card {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+
+  .demo-library--compact .demo-library__preview {
+    height: 29rem;
+  }
+
+  .demo-library--compact .demo-library__homepage-frame {
+    height: auto;
+  }
+}
+
+@media (max-width: 42rem) {
+  .demo-library--compact .demo-library__card-body {
+    padding: 1.25rem;
+  }
+
+  .demo-library--compact .demo-library__notes-header {
+    margin: -1.25rem -1.25rem 1.35rem;
+  }
+}
+
 /* Work page hero portfolio stack */
 .reset-work-hero {
   min-height: 43rem;

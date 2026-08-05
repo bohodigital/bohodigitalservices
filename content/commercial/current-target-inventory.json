@@ -5,13 +5,13 @@
   "sources": [
     {
       "path": "app/Homepage.tsx",
-      "sha256": "562934815cc03f9ffe484b29edf4c48f883e4671166990f9e1593043ab13eaaa",
-      "bytes": 14548,
+      "sha256": "12b14e6c73c90d90b6e91b2eb9d2a82b88a9d70e68d11b01873c52ae1e1ecfb8",
+      "bytes": 15943,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 159,
-      "importCount": 2,
+      "publicStringCount": 169,
+      "importCount": 3,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
     {
@@ -104,8 +104,8 @@
     },
     {
       "path": "app/components/DemoLibrary.tsx",
-      "sha256": "7deb715859ba0cb903b092b090a72eda73fb0198ad46910f6dbb3b1ae35ae46a",
-      "bytes": 8107,
+      "sha256": "f8856e060abf33bc66d2ac6ab91598228577bf120e42aad3d175bdbd39f929e6",
+      "bytes": 8309,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
@@ -1298,14 +1298,14 @@
     "reachable": 61,
     "authored": 71,
     "generatedMirrors": 1,
-    "publicStringsOnDemand": 13084,
+    "publicStringsOnDemand": 13094,
     "analyticsClaimContexts": 35
   },
   "fullDetail": {
     "committed": false,
     "generationCommand": "node scripts/commercial-copy-build.mjs --check --inventory-detail <path>",
-    "recordCount": 13084,
-    "deterministicDigest": "592ad93b5cafc82d195128487fada0143925e125d8d0e3cb9aaeb05e679a94b5"
+    "recordCount": 13094,
+    "deterministicDigest": "6ffb92afcdf0e275bc25dd80e3882c87bb056898239f51812552fe97ae31ff8a"
   },
   "securityScan": {
     "privateKeyMarkers": 0,
