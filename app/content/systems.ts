@@ -158,15 +158,15 @@ export const selectedTools: ReadonlyArray<SelectedToolProfile> = [
     relatedService: "/services/research-audits-strategy/",
     relatedGlossaryTerms: ["analytics", "google-search-console", "measurement-plan"],
     image: {
-      src: "/proof/tools/boho-analytics-platform.png",
-      alt: "Boho Analytics time-series plot builder using public example Search Console data.",
-      sourceUrl: "https://github.com/bohodigital/boho-analytics-platform/blob/main/docs/images/boho-analytics-plot-builder.png",
+      src: "/proof/tools/boho-analytics-dashboard-v2.png",
+      alt: "Boho Analytics Platform dashboard showing source-labeled summary cards and sanitized illustrative data.",
+      sourceUrl: "https://github.com/bohodigital/boho-analytics-platform/blob/main/docs/images/boho-analytics-dashboard.png",
       evidenceType: "repository-screenshot",
       width: 1440,
       height: 1050,
     },
-    lastVerified: "2026-07-16",
-    evidenceSource: "Public repository bohodigital/boho-analytics-platform main branch reviewed 2026-07-16",
+    lastVerified: "2026-08-05",
+    evidenceSource: "Public repository bohodigital/boho-analytics-platform main branch reviewed 2026-08-05",
   },
 ];
 

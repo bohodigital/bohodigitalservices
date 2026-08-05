@@ -8,6 +8,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 import { Footer, Header } from "./SiteChrome";
 import { DefinedText } from "./DefinedText";
@@ -154,16 +155,25 @@ export function ResourcesPage() {
                   <h2 id="analysis-dashboard-title">Use the Boho Analytics Platform without paying to unlock the dashboard.</h2>
                   <p>{define("A source-labeled view is useful only when it keeps unlike measurements distinct and makes collection limits visible.")}</p>
                 </header>
-                <div className="resources-decision-list">
-                  <a href="https://github.com/bohodigital/boho-analytics-platform" rel="noopener noreferrer" target="_blank">
-                    <span className="resource-icon" aria-hidden="true"><BarChart3 size={22} strokeWidth={1.9} /></span>
-                    <span>
-                      <strong>Boho Analytics Platform · Free</strong>
-                      <small>Public, MIT-licensed software for self-hosted, source-labeled website analytics, search performance, traffic infrastructure, and form-delivery monitoring. This is not a hosted customer dashboard offer.</small>
-                    </span>
-                    <ArrowRight aria-hidden="true" size={17} />
-                    <span className="sr-only"> (opens in a new tab)</span>
-                  </a>
+                <div className="resources-analytics-feature">
+                  <figure>
+                    <div className="resources-analytics-feature__browser">
+                      <span aria-hidden="true"><i /><i /><i /><b>Boho Analytics Platform</b></span>
+                      <Image src="/proof/tools/boho-analytics-dashboard-v2.png" alt="Current Boho Analytics Platform dashboard showing report controls, source-labeled summary cards, and sanitized illustrative metrics." width={1440} height={1050} unoptimized />
+                    </div>
+                    <figcaption>Sanitized illustrative data · Public repository screenshot · Not client data</figcaption>
+                  </figure>
+                  <div className="resources-decision-list">
+                    <a href="https://github.com/bohodigital/boho-analytics-platform" rel="noopener noreferrer" target="_blank">
+                      <span className="resource-icon" aria-hidden="true"><BarChart3 size={22} strokeWidth={1.9} /></span>
+                      <span>
+                        <strong>Boho Analytics Platform · Free</strong>
+                        <small>Public, MIT-licensed software for self-hosted, source-labeled website analytics, search performance, traffic infrastructure, and form-delivery monitoring. This is not a hosted customer dashboard offer.</small>
+                      </span>
+                      <ArrowRight aria-hidden="true" size={17} />
+                      <span className="sr-only"> (opens in a new tab)</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </section>

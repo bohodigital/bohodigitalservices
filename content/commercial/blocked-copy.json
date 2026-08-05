@@ -16,16 +16,27 @@
       ],
       "currentClaims": [
         {
-          "key": "analytics-claim.app-components-resourcespage-tsx.150-166",
+          "key": "analytics-claim.app-components-primaryservicepage-tsx.100-116",
+          "sourceFile": "app/components/PrimaryServicePage.tsx",
+          "sourceStartLine": 100,
+          "sourceEndLine": 116,
+          "signals": [
+            "public-access"
+          ],
+          "contextHash": "8c5aaa88dd176a7fec6f17d51a6cb3f43da21f6e39b2e8140abc5e832595532c",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.app-components-resourcespage-tsx.151-167",
           "sourceFile": "app/components/ResourcesPage.tsx",
-          "sourceStartLine": 150,
-          "sourceEndLine": 166,
+          "sourceStartLine": 151,
+          "sourceEndLine": 167,
           "signals": [
             "free-or-unpaid",
-            "public-access",
-            "self-hosted-or-open-source"
+            "public-access"
           ],
-          "contextHash": "9c4c6cb456f611a2753ceee323e6db93d7f326655a3bbdbfa0722ea3d412f5d1",
+          "contextHash": "5bd42797a667d4821e6bde1d31ef935db8e46d194f464e0ab82011813f75a16a",
           "disposition": "blocked-pending-current-product-verification",
           "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
         },
@@ -39,7 +50,35 @@
             "public-access",
             "self-hosted-or-open-source"
           ],
-          "contextHash": "0980580db5184fe8557c875e3d30fb81370cfd55126fb27b504e5c906fb8427d",
+          "contextHash": "694d532f3cddd2a2af7af05410f66718b9d4e33456e814109c2c648848be92e8",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.app-components-resourcespage-tsx.158-174",
+          "sourceFile": "app/components/ResourcesPage.tsx",
+          "sourceStartLine": 158,
+          "sourceEndLine": 174,
+          "signals": [
+            "free-or-unpaid",
+            "public-access",
+            "self-hosted-or-open-source"
+          ],
+          "contextHash": "e5b38f91c92e5a44ad2973970e24d3145f037a598023fe7ab84180c62d955163",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.app-components-resourcespage-tsx.166-182",
+          "sourceFile": "app/components/ResourcesPage.tsx",
+          "sourceStartLine": 166,
+          "sourceEndLine": 182,
+          "signals": [
+            "free-or-unpaid",
+            "public-access",
+            "self-hosted-or-open-source"
+          ],
+          "contextHash": "4289228904f9699c32e5d4f2790083b41c80765e148fe01bf1acf704d94f9653",
           "disposition": "blocked-pending-current-product-verification",
           "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
         },
@@ -79,6 +118,31 @@
             "public-access"
           ],
           "contextHash": "5c756100d7b4cd6b1c875d6736a56fefb03a72828636f4f7f6d28fb18039200f",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.app-components-serviceshowcase-tsx.50-66",
+          "sourceFile": "app/components/ServiceShowcase.tsx",
+          "sourceStartLine": 50,
+          "sourceEndLine": 66,
+          "signals": [
+            "public-access",
+            "self-hosted-or-open-source"
+          ],
+          "contextHash": "279f5788ffa5143db0caf15af02886435ba190ed4d5a35b742bf94e691f1f758",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.app-components-serviceshowcase-tsx.60-70",
+          "sourceFile": "app/components/ServiceShowcase.tsx",
+          "sourceStartLine": 60,
+          "sourceEndLine": 70,
+          "signals": [
+            "public-access"
+          ],
+          "contextHash": "5b48702ead3ec31f73d0823607449bfe9e7a25c2a1d942cca4d777884d2103f9",
           "disposition": "blocked-pending-current-product-verification",
           "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
         },
@@ -215,6 +279,66 @@
           "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
         },
         {
+          "key": "analytics-claim.app-content-serviceshowcases-ts.64-80",
+          "sourceFile": "app/content/serviceShowcases.ts",
+          "sourceStartLine": 64,
+          "sourceEndLine": 80,
+          "signals": [
+            "public-access"
+          ],
+          "contextHash": "a7487e5c692c008fa3e6d773afdbfc917ffe8bab1ef9e119347a0be73b48197f",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.app-content-serviceshowcases-ts.73-89",
+          "sourceFile": "app/content/serviceShowcases.ts",
+          "sourceStartLine": 73,
+          "sourceEndLine": 89,
+          "signals": [
+            "public-access"
+          ],
+          "contextHash": "15a09a642d708afa28121a6563895f8d270028f4bdaefc602b55c79bbf85340e",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.app-content-serviceshowcases-ts.74-90",
+          "sourceFile": "app/content/serviceShowcases.ts",
+          "sourceStartLine": 74,
+          "sourceEndLine": 90,
+          "signals": [
+            "public-access"
+          ],
+          "contextHash": "b626b1803e4bd39b20cf16fdecb82629b811d1883094c92311c12acbc9883f3c",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.app-content-serviceshowcases-ts.79-95",
+          "sourceFile": "app/content/serviceShowcases.ts",
+          "sourceStartLine": 79,
+          "sourceEndLine": 95,
+          "signals": [
+            "public-access"
+          ],
+          "contextHash": "436a0bc2c0851d388f62eedddbc2f0f464bb514b18688541f93bd4567eae2a0b",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.app-content-serviceshowcases-ts.80-96",
+          "sourceFile": "app/content/serviceShowcases.ts",
+          "sourceStartLine": 80,
+          "sourceEndLine": 96,
+          "signals": [
+            "public-access"
+          ],
+          "contextHash": "32402a7725c1061f89877e8c9edd5064ca254137111027423ce90eab082b879a",
+          "disposition": "blocked-pending-current-product-verification",
+          "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
           "key": "analytics-claim.app-content-systems-ts.146-162",
           "sourceFile": "app/content/systems.ts",
           "sourceStartLine": 146,
@@ -222,7 +346,7 @@
           "signals": [
             "public-access"
           ],
-          "contextHash": "bcf8829ddb95a40427020a7924c4d8644fd7dac6bc09532f363f0c1655e73305",
+          "contextHash": "a9f1a3f9c62d79d0af3c1bd13e560a17622be5214864e7cf9877ca1e1fd3d7aa",
           "disposition": "blocked-pending-current-product-verification",
           "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
         },
@@ -234,7 +358,7 @@
           "signals": [
             "public-access"
           ],
-          "contextHash": "1d358721db20f5828edd042cefb7bc160141977452065268856de7fc2ef82fe6",
+          "contextHash": "085a4b2d3434a330da7db35d9bb9321de5a625c875db93138b5649ba85675a99",
           "disposition": "blocked-pending-current-product-verification",
           "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
         },

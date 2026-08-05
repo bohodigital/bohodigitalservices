@@ -1,10 +1,12 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   canonicalServices,
   emailBenefitCopy,
   sharedScopeNote,
   websiteScopeExamples,
 } from "../content/commercialReset";
+import { servicesCatalog } from "../content/serviceShowcases";
 import { ButtonLink, Footer, Header } from "./SiteChrome";
 
 const businessIncluded = [
@@ -162,6 +164,24 @@ export function ServicesPage() {
                 ))}
               </dl>
             </aside>
+          </div>
+        </section>
+
+        <section className="reset-section services-visual-catalog" aria-labelledby="services-visual-catalog-title">
+          <div className="reset-shell">
+            <header className="reset-heading services-visual-catalog__heading">
+              <p className="reset-eyebrow">Explore the work visually</p>
+              <h2 id="services-visual-catalog-title">Five routes into one connected business system.</h2>
+              <p>Start with the outcome that is missing. Each service page now shows the evidence, examples, boundaries, process, and handoff behind the public starting price.</p>
+            </header>
+            <div className="services-visual-catalog__grid">
+              {servicesCatalog.map((service) => (
+                <Link href={service.route} className="services-visual-catalog__card" key={service.route}>
+                  <Image src={service.image} alt="" width={1200} height={800} unoptimized />
+                  <span><small>{service.price}</small><strong>{service.title}</strong><b>Explore service →</b></span>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
 
