@@ -133,7 +133,6 @@ export function DemoLibrary() {
             <aside className="demo-library__card-body demo-library__notes" aria-label={`Boho's notes about ${demo.name}`}>
               <div className="demo-library__notes-header">
                 <span>Boho&apos;s notes</span>
-                <strong>Separate from the demo website</strong>
               </div>
               <div>
                 <p className="demo-library__slide-label">Demo {String(index + 1).padStart(2, "0")} · {demo.tierLabel}</p>

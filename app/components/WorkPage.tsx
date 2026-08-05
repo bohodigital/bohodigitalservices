@@ -105,9 +105,30 @@ export function WorkPage() {
                 <ButtonLink href="/start/" variant="secondary">Get a free website review</ButtonLink>
               </div>
             </div>
-            <aside className="reset-interior-hero__receipt">
-              <p>Complete fictional demos plus Boho-owned work. No borrowed client logos. No invented performance claims.</p>
-            </aside>
+            <div className="reset-work-hero__showcase">
+              <div className="reset-work-hero__browser reset-work-hero__browser--primary" aria-hidden="true">
+                <span><i /><i /><i /><b>junkremoval.demos.bohodigitalservices.com</b></span>
+                <img alt="" height="4255" src="/demos/junk-removal-homepage.webp" width="960" />
+              </div>
+              <div className="reset-work-hero__browser reset-work-hero__browser--cafe" aria-hidden="true">
+                <span><i /><i /><i /><b>cafe.demos.bohodigitalservices.com</b></span>
+                <img alt="" height="3057" src="/demos/cafe-homepage.webp" width="960" />
+              </div>
+              <div className="reset-work-hero__browser reset-work-hero__browser--custom" aria-hidden="true">
+                <span><i /><i /><i /><b>pestcontrol.demos.bohodigitalservices.com</b></span>
+                <img alt="" height="5777" src="/demos/pest-control-homepage.webp" width="960" />
+              </div>
+              <aside className="reset-interior-hero__receipt reset-work-hero__receipt">
+                <span>LIVE WORK LIBRARY</span>
+                <strong>8 complete demos</strong>
+                <p>Fictional businesses, Boho-owned work, and public systems you can inspect for yourself.</p>
+                <ul aria-label="Demo project levels">
+                  <li>5 brochure</li>
+                  <li>1 expanded</li>
+                  <li>2 high-end</li>
+                </ul>
+              </aside>
+            </div>
           </div>
         </section>
 
