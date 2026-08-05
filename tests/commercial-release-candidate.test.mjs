@@ -148,6 +148,14 @@ test("publishes exact Start and Emergency metadata", async () => {
   assert.match(emergency, /Request urgent help for broken forms, failed launches, provider lockout, redirects, domain problems, tracking failures, migrations, and other active website incidents/);
 });
 
+test("publishes only the owner-approved public legal identity", async () => {
+  for (const route of ["/", "/privacy/", "/terms/"]) {
+    const html = await render(route);
+    assert.match(html, /Boho Digital Services LLC/);
+    assert.doesNotMatch(html, /Republic of Bohemia/);
+  }
+});
+
 test("preserves inquiry delivery mappings and explicit success and failure states", async () => {
   const [client, form, start, emergency] = await Promise.all([
     source("app/components/commercial/CommercialInquiryFormClient.tsx"),

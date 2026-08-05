@@ -518,7 +518,7 @@ export function Footer() {
             Digital engineering for businesses that need visibility, lead
             systems, websites, and operational tools they can understand.
           </p>
-          <p>Boho Digital Services is operated by Republic of Bohemia LLC.</p>
+          <p>Operated by Boho Digital Services LLC.</p>
           <div className="site-footer__contact-links">
             <a href="mailto:contact@bohemiandigital.org">
               contact@bohemiandigital.org
@@ -591,7 +591,7 @@ export function Footer() {
           </a>
 
           <p className="site-footer__copyright">
-            {"©"} {currentYear} Republic of Bohemia LLC. Boho Digital Services is a trade name used for its digital-services work.
+            {"©"} {currentYear} Boho Digital Services LLC.
           </p>
         </div>
       </div>

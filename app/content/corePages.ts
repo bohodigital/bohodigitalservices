@@ -1017,7 +1017,7 @@ export const corePages: PageConfig[] = [
       {
         title: "Business identity and contact",
         body: [
-          "Boho Digital Services is operated by Republic of Bohemia LLC. Privacy questions and requests may be sent to contact@bohemiandigital.org.",
+          "This website is operated by Boho Digital Services LLC. Privacy questions and requests may be sent to contact@bohemiandigital.org.",
         ],
         tone: "plum",
       },
@@ -1118,7 +1118,7 @@ export const corePages: PageConfig[] = [
       {
         title: "Contact and effective date",
         body: [
-          "Boho Digital Services is operated by Republic of Bohemia LLC. General inquiries may be sent to contact@bohemiandigital.org and website issues to webmaster@bohemiandigital.org.",
+          "This website is operated by Boho Digital Services LLC. General inquiries may be sent to contact@bohemiandigital.org and website issues to webmaster@bohemiandigital.org.",
           "Effective July 14, 2026.",
         ],
         tone: "dark",

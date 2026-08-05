@@ -346,8 +346,8 @@
     },
     {
       "path": "app/components/SiteChrome.tsx",
-      "sha256": "fe97c7c8a63c015a4d47e912f103070aa2daf9a6797cd67caf747a38555296ff",
-      "bytes": 22637,
+      "sha256": "98849c1b7a807d992d2c9129477ee8750f57a3b44f230951bb21eab69deecd5a",
+      "bytes": 22542,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
@@ -456,8 +456,8 @@
     },
     {
       "path": "app/content/corePages.ts",
-      "sha256": "fabaa04cc525f62fbb1a30a7ebb58daa457704cb31d77d59989a5f194fc89d3c",
-      "bytes": 75312,
+      "sha256": "5587d9ce57b476b62eb8f7a441b5e8d5544156c644393461c7e7a4b46109f6ce",
+      "bytes": 75298,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
@@ -1305,7 +1305,7 @@
     "committed": false,
     "generationCommand": "node scripts/commercial-copy-build.mjs --check --inventory-detail <path>",
     "recordCount": 13094,
-    "deterministicDigest": "88cb0e2cfeb62b10086ddcde77e20ef9d4a7b40b66376bd3efbbea261b58f6ec"
+    "deterministicDigest": "7d542e1323d8c8326fd9b7bbe8b9b574f1cf9b24dc023b537d195fe0990ca2be"
   },
   "securityScan": {
     "privateKeyMarkers": 0,
