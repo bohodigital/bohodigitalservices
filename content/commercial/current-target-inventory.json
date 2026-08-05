@@ -291,12 +291,12 @@
     },
     {
       "path": "app/components/PrimaryServicePage.tsx",
-      "sha256": "75e09ec80d1caf2e749290acd5d77e16a3531e5cc1695858576927223d7f10bf",
-      "bytes": 21335,
+      "sha256": "a9f647e9f1efb77595038746fcd6e37f3f50914abc7202566803b83a8192b92b",
+      "bytes": 21906,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 187,
+      "publicStringCount": 201,
       "importCount": 4,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
@@ -335,12 +335,12 @@
     },
     {
       "path": "app/components/ServiceShowcase.tsx",
-      "sha256": "8034b8dc18f84e7378928a44bfa12dd1bd6c6d22adb83ba478a13f24673fc04e",
-      "bytes": 3852,
+      "sha256": "7fb8edc646951db82cde394056c70f12c04e20757e9b3816e63095bc89589bef",
+      "bytes": 4287,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 31,
+      "publicStringCount": 36,
       "importCount": 2,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
@@ -632,12 +632,12 @@
     },
     {
       "path": "app/content/serviceShowcases.ts",
-      "sha256": "994b634ba517caea3eeffdbbda6036aabcf12e70b16ac8d1cb3ca00aa77ba629",
-      "bytes": 8986,
+      "sha256": "646fa409250081d394bf14ff77952dd8d595bd14b7ff815ce708ad4b975a9f7d",
+      "bytes": 9111,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 187,
+      "publicStringCount": 193,
       "importCount": 0,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
@@ -853,10 +853,10 @@
   ],
   "analyticsClaimContexts": [
     {
-      "key": "analytics-claim.app-components-primaryservicepage-tsx.100-116",
+      "key": "analytics-claim.app-components-primaryservicepage-tsx.107-123",
       "sourceFile": "app/components/PrimaryServicePage.tsx",
-      "sourceStartLine": 100,
-      "sourceEndLine": 116,
+      "sourceStartLine": 107,
+      "sourceEndLine": 123,
       "signals": [
         "public-access"
       ],
@@ -959,10 +959,10 @@
       "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
     },
     {
-      "key": "analytics-claim.app-components-serviceshowcase-tsx.50-66",
+      "key": "analytics-claim.app-components-serviceshowcase-tsx.53-69",
       "sourceFile": "app/components/ServiceShowcase.tsx",
-      "sourceStartLine": 50,
-      "sourceEndLine": 66,
+      "sourceStartLine": 53,
+      "sourceEndLine": 69,
       "signals": [
         "public-access",
         "self-hosted-or-open-source"
@@ -972,10 +972,10 @@
       "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
     },
     {
-      "key": "analytics-claim.app-components-serviceshowcase-tsx.60-70",
+      "key": "analytics-claim.app-components-serviceshowcase-tsx.63-73",
       "sourceFile": "app/components/ServiceShowcase.tsx",
-      "sourceStartLine": 60,
-      "sourceEndLine": 70,
+      "sourceStartLine": 63,
+      "sourceEndLine": 73,
       "signals": [
         "public-access"
       ],
@@ -1116,26 +1116,14 @@
       "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
     },
     {
-      "key": "analytics-claim.app-content-serviceshowcases-ts.64-80",
+      "key": "analytics-claim.app-content-serviceshowcases-ts.65-81",
       "sourceFile": "app/content/serviceShowcases.ts",
-      "sourceStartLine": 64,
-      "sourceEndLine": 80,
+      "sourceStartLine": 65,
+      "sourceEndLine": 81,
       "signals": [
         "public-access"
       ],
       "contextHash": "a7487e5c692c008fa3e6d773afdbfc917ffe8bab1ef9e119347a0be73b48197f",
-      "disposition": "blocked-pending-current-product-verification",
-      "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
-    },
-    {
-      "key": "analytics-claim.app-content-serviceshowcases-ts.73-89",
-      "sourceFile": "app/content/serviceShowcases.ts",
-      "sourceStartLine": 73,
-      "sourceEndLine": 89,
-      "signals": [
-        "public-access"
-      ],
-      "contextHash": "15a09a642d708afa28121a6563895f8d270028f4bdaefc602b55c79bbf85340e",
       "disposition": "blocked-pending-current-product-verification",
       "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
     },
@@ -1147,19 +1135,19 @@
       "signals": [
         "public-access"
       ],
-      "contextHash": "b626b1803e4bd39b20cf16fdecb82629b811d1883094c92311c12acbc9883f3c",
+      "contextHash": "15a09a642d708afa28121a6563895f8d270028f4bdaefc602b55c79bbf85340e",
       "disposition": "blocked-pending-current-product-verification",
       "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
     },
     {
-      "key": "analytics-claim.app-content-serviceshowcases-ts.79-95",
+      "key": "analytics-claim.app-content-serviceshowcases-ts.75-91",
       "sourceFile": "app/content/serviceShowcases.ts",
-      "sourceStartLine": 79,
-      "sourceEndLine": 95,
+      "sourceStartLine": 75,
+      "sourceEndLine": 91,
       "signals": [
         "public-access"
       ],
-      "contextHash": "436a0bc2c0851d388f62eedddbc2f0f464bb514b18688541f93bd4567eae2a0b",
+      "contextHash": "b626b1803e4bd39b20cf16fdecb82629b811d1883094c92311c12acbc9883f3c",
       "disposition": "blocked-pending-current-product-verification",
       "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
     },
@@ -1168,6 +1156,18 @@
       "sourceFile": "app/content/serviceShowcases.ts",
       "sourceStartLine": 80,
       "sourceEndLine": 96,
+      "signals": [
+        "public-access"
+      ],
+      "contextHash": "436a0bc2c0851d388f62eedddbc2f0f464bb514b18688541f93bd4567eae2a0b",
+      "disposition": "blocked-pending-current-product-verification",
+      "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+    },
+    {
+      "key": "analytics-claim.app-content-serviceshowcases-ts.81-97",
+      "sourceFile": "app/content/serviceShowcases.ts",
+      "sourceStartLine": 81,
+      "sourceEndLine": 97,
       "signals": [
         "public-access"
       ],
@@ -1444,14 +1444,14 @@
     "reachable": 63,
     "authored": 73,
     "generatedMirrors": 1,
-    "publicStringsOnDemand": 13281,
+    "publicStringsOnDemand": 13306,
     "analyticsClaimContexts": 45
   },
   "fullDetail": {
     "committed": false,
     "generationCommand": "node scripts/commercial-copy-build.mjs --check --inventory-detail <path>",
-    "recordCount": 13281,
-    "deterministicDigest": "c220f61a8cf2c05381658ce2b02a8a113969bf99287464cfa325c92e91671b29"
+    "recordCount": 13306,
+    "deterministicDigest": "be90f7e7477bd794fb36217ab7d06f9206993bc024a54afaccede04308c7941e"
   },
   "securityScan": {
     "privateKeyMarkers": 0,
@@ -1463,7 +1463,7 @@
       },
       {
         "indicator": "absolute-url",
-        "count": 728
+        "count": 738
       },
       {
         "indicator": "analytics-id",

@@ -16,18 +16,20 @@ export function ServiceShowcaseGallery({
   eyebrow = "Inspectable examples",
   title = "See the kind of work being discussed.",
   intro = "These are Boho demos, owned properties, public tools, and technical evidence—not unlabeled client claims.",
+  libraryHref,
 }: {
   route: PrimaryServiceRoute;
   eyebrow?: string;
   title?: string;
   intro?: string;
+  libraryHref?: `/${string}`;
 }) {
   return <section className="reset-section service-showcase" aria-labelledby={`${route.replaceAll("/", "-")}-showcase-title`}>
     <div className="reset-shell">
       <header className="reset-heading service-showcase__heading">
         <p className="reset-eyebrow">{eyebrow}</p>
         <h2 id={`${route.replaceAll("/", "-")}-showcase-title`}>{title}</h2>
-        <p>{intro}</p>
+        <div className="service-showcase__heading-side"><p>{intro}</p>{libraryHref ? <Link href={libraryHref}>Browse all eight demos →</Link> : null}</div>
       </header>
       <div className="service-showcase__grid">
         {serviceShowcases[route].map((asset, index) => <ShowcaseFigure asset={asset} featured={index === 0} key={`${asset.src}-${asset.caption}`} />)}
@@ -38,10 +40,11 @@ export function ServiceShowcaseGallery({
 
 function ShowcaseFigure({ asset, featured = false }: { asset: ServiceShowcaseAsset; featured?: boolean }) {
   return <figure className={`service-showcase__item${featured ? " service-showcase__item--featured" : ""}${asset.kind === "tall" ? " service-showcase__item--tall" : ""}`}>
+    {asset.href ? <a className="service-showcase__card-link" href={asset.href} rel="noopener noreferrer" target="_blank"><span className="sr-only">Open the {asset.caption} demo in a new tab</span></a> : null}
     <div className="service-showcase__media">
       <Image src={asset.src} alt={asset.alt} width={1440} height={1050} unoptimized />
     </div>
-    <figcaption><span>{asset.label}</span><strong>{asset.caption}</strong></figcaption>
+    <figcaption><span>{asset.label}</span><strong>{asset.caption}</strong>{asset.href ? <b>Tour the demo ↗</b> : null}</figcaption>
   </figure>;
 }
 

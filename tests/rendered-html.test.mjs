@@ -97,3 +97,20 @@ test("current analytics screenshot is labeled as illustrative public evidence", 
     assert.ok(html.includes("Not client data"), `${route} lacks the client-data disclaimer`);
   }
 });
+
+test("website service page presents the demo library and links every planning tier to a live demo", async () => {
+  const html = await render("/services/web-design-redesign/");
+  assert.ok(html.includes("Check out our demo library."));
+  assert.ok(html.includes("Browse all eight demos"));
+  assert.ok(html.includes("/work/#demo-library"));
+  for (const [label, host] of [
+    ["See an $850 demo", "junkremoval.demos.bohodigitalservices.com"],
+    ["See an expanded demo", "landscaping.demos.bohodigitalservices.com"],
+    ["See a multi-location demo", "dentistry.demos.bohodigitalservices.com"],
+    ["See an interactive demo", "pestcontrol.demos.bohodigitalservices.com"],
+  ]) {
+    assert.ok(html.includes(label), `website scope cards lack ${label}`);
+    assert.ok(html.includes(host), `website scope cards lack ${host}`);
+  }
+  assert.ok((html.match(/Tour the demo/gi) ?? []).length >= 6, "demo mosaic cards are not visibly actionable");
+});

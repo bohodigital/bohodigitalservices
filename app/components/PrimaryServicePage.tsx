@@ -24,6 +24,13 @@ const seoIncluded = [
 
 const customIncluded = ["One focused workflow", "Bounded inputs and outputs", "Human approval points", "Deployment, testing, and documentation"] as const;
 
+const websiteScopeDemoLinks = [
+  { href: "https://junkremoval.demos.bohodigitalservices.com/", label: "See an $850 demo" },
+  { href: "https://landscaping.demos.bohodigitalservices.com/", label: "See an expanded demo" },
+  { href: "https://dentistry.demos.bohodigitalservices.com/", label: "See a multi-location demo" },
+  { href: "https://pestcontrol.demos.bohodigitalservices.com/", label: "See an interactive demo" },
+] as const;
+
 function PageShell({ children }: { children: ReactNode }) {
   return <><Header /><main className="reset-primary-service" id="main-content" tabIndex={-1}>{children}</main><Footer /></>;
 }
@@ -56,8 +63,8 @@ function BusinessWebsitesPage() {
   return <PageShell>
     <ServiceHero route={route} eyebrow="BUSINESS WEBSITES · FROM $850" title="A complete website—not a loose stack of pages." copy="Responsive business websites designed around what a customer needs to understand, trust, and do next. New build, redesign, or responsible replacement is determined by what already exists." price="From $850" receipt="Eligible client-owned website hosting · $0/month" />
     <section className="reset-section"><div className="reset-shell reset-service-detail__split"><article><p className="reset-eyebrow">The fit</p><h2>Who it is for</h2><p>Local businesses, professional practices, service companies, and independent organizations that need a clear public home with durable ownership.</p><p>The result may be a compact brochure site or a deeper multi-page build. The proposal names the pages, customer actions, content responsibilities, integrations, and handoff.</p></article><article><p className="reset-eyebrow">The foundation</p><h2>What is included</h2><ul>{businessIncluded.map((item) => <li key={item}>{item}</li>)}</ul></article></div></section>
-    <ServiceShowcaseGallery route={route} eyebrow="Eight public demos" title="Different businesses need different customer paths." intro="These Boho-built demo sites show how the same core service can adapt to different industries, voices, page depth, and calls to action. They are demos—not client outcome claims." />
-    <section className="reset-section reset-scopes"><div className="reset-shell"><header className="reset-heading"><p className="reset-eyebrow">Public planning ranges</p><h2>What changes scope</h2></header><div className="reset-scope-grid">{websiteScopeExamples.map((scope) => <article key={scope.servicesLabel}><h3>{scope.servicesLabel}</h3><p className="reset-price">{scope.servicesPrice}</p><p>{scope.servicesCopy}</p></article>)}</div><p className="reset-scope-note">The written proposal defines the exact pages, functionality, content responsibilities, integrations, ownership, price, and third-party costs before work begins.</p></div></section>
+    <ServiceShowcaseGallery route={route} eyebrow="BOHO-BUILT WEBSITE DEMOS" title="Check out our demo library." intro="Open a site and tour the full experience." libraryHref="/work/#demo-library" />
+    <section className="reset-section reset-scopes"><div className="reset-shell"><header className="reset-heading"><p className="reset-eyebrow">Public planning ranges</p><h2>What changes scope</h2></header><div className="reset-scope-grid">{websiteScopeExamples.map((scope, index) => <article key={scope.servicesLabel}><h3>{scope.servicesLabel}</h3><p className="reset-price">{scope.servicesPrice}</p><p>{scope.servicesCopy}</p><a className="reset-scope-demo-link" href={websiteScopeDemoLinks[index].href} rel="noopener noreferrer" target="_blank">{websiteScopeDemoLinks[index].label} <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span></a></article>)}</div><p className="reset-scope-note">The written proposal defines the exact pages, functionality, content responsibilities, integrations, ownership, price, and third-party costs before work begins.</p></div></section>
     <ProcessSection />
     <Deliverables title="The launch should still make sense after the handoff." items={[["A complete public site", "The agreed pages, responsive layouts, and customer-action paths are built and verified together."], ["Ownership and access", "Durable accounts, source, domain responsibilities, and recovery paths are made understandable."], ["Launch verification", "Forms, links, major responsive states, basic accessibility, and search foundations are checked."], ["Plain-language handoff", "The client receives an understandable record of what exists, what it costs, and what may need attention later."]]} />
     <FaqSection items={homepageFaqs.map((item) => [item.question, item.answer] as const)} /><FinalCta />

@@ -3,6 +3,7 @@ export type ServiceShowcaseAsset = {
   alt: string;
   label: string;
   caption: string;
+  href?: string;
   kind?: "tall" | "wide";
 };
 
@@ -53,12 +54,12 @@ export const serviceHeroAssets: Record<PrimaryServiceRoute, ServiceShowcaseAsset
 
 export const serviceShowcases: Record<PrimaryServiceRoute, ServiceShowcaseAsset[]> = {
   "/services/web-design-redesign/": [
-    { src: "/demos/junk-removal-homepage.webp", alt: "Full homepage of the Boho junk removal demo website.", label: "Brochure website demo", caption: "Junk removal · Full service-business homepage", kind: "tall" },
-    { src: "/demos/cafe-homepage.webp", alt: "Full homepage of the Boho local cafe demo website.", label: "Brochure website demo", caption: "Local cafe · Menu, location, and social discovery", kind: "tall" },
-    { src: "/demos/landscaping-homepage.webp", alt: "Full homepage of the Boho landscaping demo website.", label: "Expanded website demo", caption: "Landscaping · Services, portfolio, and location depth", kind: "tall" },
-    { src: "/demos/dentistry-homepage.webp", alt: "Full homepage of the Boho dental clinic demo website.", label: "Advanced website demo", caption: "Dental clinic · Multi-location navigation and patient paths", kind: "tall" },
-    { src: "/demos/salon-homepage.webp", alt: "Full homepage of the Boho salon demo website.", label: "Brochure website demo", caption: "Salon · Visual services and appointment path", kind: "tall" },
-    { src: "/demos/pet-grooming-homepage.webp", alt: "Full homepage of the Boho pet grooming demo website.", label: "Brochure website demo", caption: "Pet grooming · Friendly local-service presentation", kind: "tall" },
+    { src: "/demos/junk-removal-homepage.webp", alt: "Full homepage of the Boho junk removal demo website.", label: "$850 demo", caption: "Junk Removal Service", href: "https://junkremoval.demos.bohodigitalservices.com/", kind: "tall" },
+    { src: "/demos/cafe-homepage.webp", alt: "Full homepage of the Boho local cafe demo website.", label: "$850 demo", caption: "Juniper & Finch Café", href: "https://cafe.demos.bohodigitalservices.com/", kind: "tall" },
+    { src: "/demos/landscaping-homepage.webp", alt: "Full homepage of the Boho landscaping demo website.", label: "Expanded demo", caption: "Field & Stone Landscaping", href: "https://landscaping.demos.bohodigitalservices.com/", kind: "tall" },
+    { src: "/demos/dentistry-homepage.webp", alt: "Full homepage of the Boho dental clinic demo website.", label: "High-end demo", caption: "Aurelia Dental & Orthodontics", href: "https://dentistry.demos.bohodigitalservices.com/", kind: "tall" },
+    { src: "/demos/salon-homepage.webp", alt: "Full homepage of the Boho salon demo website.", label: "$850 demo", caption: "Honey & Ash Salon", href: "https://salon.demos.bohodigitalservices.com/", kind: "tall" },
+    { src: "/demos/pet-grooming-homepage.webp", alt: "Full homepage of the Boho pet grooming demo website.", label: "$850 demo", caption: "Fuzz & Fern Pet Grooming", href: "https://grooming.demos.bohodigitalservices.com/", kind: "tall" },
   ],
   "/services/ongoing-seo/": [
     { src: "/proof/about/rank-builder-seo-homepage.png", alt: "Homepage of Rank Builder SEO, a Boho-owned public property.", label: "Boho-owned property", caption: "Rank Builder SEO · Search-focused information architecture", kind: "wide" },
