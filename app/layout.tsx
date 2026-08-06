@@ -3,14 +3,15 @@ import { DefinitionPopoverProvider } from "./components/DefinitionPopoverProvide
 import "./globals.css";
 
 const siteUrl = new URL("https://bohodigitalservices.com");
-const siteTitle = "Business Websites from $850 | Free Hosting | Boho";
+const siteTitle = "Boho Digital Services";
 const siteDescription =
-  "Custom business websites from $850 with eligible hosting at $0 per month in a Cloudflare account your business owns. Ongoing SEO, website help, and custom systems from Boho.";
+  "Chicago-based Boho Digital Services builds and repairs websites, search visibility, provider migrations, analytics, and focused digital systems with public starting prices and documented work.";
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "@id": "https://bohodigitalservices.com/#organization",
   name: "Boho Digital Services",
+  legalName: "Boho Digital Services LLC",
   url: "https://bohodigitalservices.com/",
   description: siteDescription,
   logo: {
@@ -25,55 +26,26 @@ const organizationSchema = {
 };
 
 export function generateMetadata(): Metadata {
-  const socialImage = new URL(
-    "/og-boho-commercial-reset-20260730.webp",
-    siteUrl,
-  ).toString();
-
   return {
     metadataBase: siteUrl,
     title: {
       default: siteTitle,
       template: "%s | Boho Digital Services",
     },
-    description: siteDescription,
     icons: {
       icon: [
         {
-          url: "/brand/boho-search-icon-v2.png",
-          type: "image/png",
-          sizes: "256x256",
+          url: "/favicon.ico",
+          type: "image/x-icon",
         },
-      ],
-      shortcut: "/brand/boho-search-icon-v2.png",
-      apple: "/brand/boho-bee-logo-v2-256.png",
-    },
-    robots: {
-      index: true,
-      follow: true,
-    },
-    alternates: {
-      canonical: "/",
-    },
-    openGraph: {
-      title: siteTitle,
-      description: siteDescription,
-      type: "website",
-      url: siteUrl,
-      images: [
         {
-          url: socialImage,
-          width: 1200,
-          height: 630,
-          alt: "Boho Digital Services: Business websites from $850. Hosting stays free.",
+          url: "/brand/boho-search-icon-v2-96.png",
+          type: "image/png",
+          sizes: "96x96",
         },
       ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: siteTitle,
-      description: siteDescription,
-      images: [socialImage],
+      shortcut: "/favicon.ico",
+      apple: "/brand/boho-bee-logo-v2-256.png",
     },
   };
 }

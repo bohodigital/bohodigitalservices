@@ -16,14 +16,14 @@
       ],
       "currentClaims": [
         {
-          "key": "analytics-claim.app-components-primaryservicepage-tsx.107-123",
+          "key": "analytics-claim.app-components-primaryservicepage-tsx.108-124",
           "sourceFile": "app/components/PrimaryServicePage.tsx",
-          "sourceStartLine": 107,
-          "sourceEndLine": 123,
+          "sourceStartLine": 108,
+          "sourceEndLine": 124,
           "signals": [
             "public-access"
           ],
-          "contextHash": "8c5aaa88dd176a7fec6f17d51a6cb3f43da21f6e39b2e8140abc5e832595532c",
+          "contextHash": "b3931fe8942f171d5c8ac198ac45859cf930073dd9ecb570dffc076a6e6ba1a4",
           "disposition": "blocked-pending-current-product-verification",
           "blockedCopyKey": "product.bohoAnalytics.publicFreeAvailability"
         },

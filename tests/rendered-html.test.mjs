@@ -37,7 +37,7 @@ test("resolves every rendered local page link and asset", async () => {
     const html = await render(route);
     for (const [, href] of html.matchAll(/<a\b[^>]*\shref="([^"]+)"/gi)) {
       if (!href.startsWith("/") || href.startsWith("//")) continue;
-      const [pathname] = href.split("#");
+      const pathname = new URL(href, "https://bohodigitalservices.com").pathname;
       if (!pathname) continue;
       const output = pathname === "/" ? "out/index.html" : pathname.endsWith("/") ? `out/${pathname.slice(1)}index.html` : `out${pathname}`;
       await assert.doesNotReject(access(new URL(output, root)), `${route} has broken link ${href}`);
@@ -70,11 +70,59 @@ test("FAQ structured data matches visible Homepage questions and answers", async
   }
 });
 
+test("publishes route-specific search metadata and useful structured data", async () => {
+  const [homepage, provider] = await Promise.all([
+    render("/"),
+    render("/services/provider-rescue/"),
+  ]);
+
+  for (const [html, values] of [
+    [homepage, {
+      title: "Boho Digital Services | Web Design, Technical SEO &amp; Digital Engineering",
+      description: "Chicago-based Boho Digital Services builds and repairs websites, search visibility, provider migrations, analytics, and focused digital systems with public starting prices and documented work.",
+      canonical: "https://bohodigitalservices.com/",
+    }],
+    [provider, {
+      title: "Website Migration, Ownership Recovery &amp; Provider Rescue | Boho",
+      description: "Map ownership and dependencies, preserve useful URLs and assets, leave an unsuitable provider, migrate carefully, and verify the agreed website and customer paths.",
+      canonical: "https://bohodigitalservices.com/services/provider-rescue/",
+    }],
+  ]) {
+    assert.ok(html.includes(`<title>${values.title}</title>`));
+    assert.ok(html.includes(`name="description" content="${values.description}"`));
+    assert.ok(html.includes(`rel="canonical" href="${values.canonical}"`));
+    assert.ok(html.includes(`property="og:url" content="${values.canonical}"`));
+    assert.match(html, /property="og:title" content="[^"]+"/);
+    assert.match(html, /property="og:description" content="[^"]+"/);
+    assert.match(html, /name="twitter:title" content="[^"]+"/);
+    assert.match(html, /name="twitter:description" content="[^"]+"/);
+  }
+
+  const homepageBlocks = [...homepage.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((match) => JSON.parse(match[1]));
+  const homepageGraph = homepageBlocks.flatMap((block) => block["@graph"] ?? [block]);
+  assert.ok(homepageGraph.some((item) => item["@type"] === "WebSite"));
+  assert.ok(homepageGraph.some((item) => item["@type"] === "ItemList"));
+
+  const providerBlocks = [...provider.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((match) => JSON.parse(match[1]));
+  const providerGraph = providerBlocks.flatMap((block) => block["@graph"] ?? [block]);
+  assert.ok(providerGraph.some((item) => item["@type"] === "BreadcrumbList"));
+  assert.ok(providerGraph.some((item) => item["@type"] === "Service"));
+  assert.doesNotMatch(`${homepage}${provider}`, /"@type":"Person"/);
+  assert.match(homepage, /href="\/brand\/boho-search-icon-v2-96\.png"/);
+});
+
+test("keeps the generated 404 out of search without publishing a canonical", async () => {
+  const html = await read("out/404.html");
+  assert.equal((html.match(/<meta name="robots" content="noindex"\/?/g) ?? []).length, 1);
+  assert.doesNotMatch(html, /rel="canonical"/);
+  assert.doesNotMatch(html, /name="description"/);
+});
+
 test("primary service pages render their completed visual evidence and handoff content", async () => {
   const expectations = new Map([
     ["/services/web-design-redesign/", [8, "/demos/junk-removal-homepage.webp", "The launch should still make sense after the handoff."]],
     ["/services/ongoing-seo/", [8, "/proof/about/rank-builder-seo-homepage.png", "Each cycle ends with work you can inspect."]],
-    ["/services/provider-rescue/", [7, "/diagrams/boho-hosting-architecture-v2.png", "A rescue should leave the next operator less dependent."]],
+    ["/services/provider-rescue/", [4, "/diagrams/boho-hosting-architecture-v2.png", "A rescue should leave the next operator less dependent."]],
     ["/services/research-audits-strategy/", [8, "/proof/tools/boho-analytics-dashboard-v2.png", "A review should make the decision easier."]],
     ["/services/custom-digital-solutions/", [8, "/proof/tools/boho-secret-broker.png", "A custom system needs more than working code."]],
   ]);

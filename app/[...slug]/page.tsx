@@ -87,6 +87,50 @@ type CommercialRouteMetadata = {
   openGraphDescription?: string;
 };
 
+const socialImage = {
+  url: "/boho-digital-services-social-v2.png",
+  width: 1200,
+  height: 630,
+};
+
+function routeMetadata({
+  title,
+  description,
+  canonical,
+  openGraphTitle,
+  openGraphDescription,
+}: {
+  title: string;
+  description: string;
+  canonical: string;
+  openGraphTitle?: string;
+  openGraphDescription?: string;
+}): Metadata {
+  const socialTitle = openGraphTitle ?? title;
+  const socialDescription = openGraphDescription ?? description;
+
+  return {
+    title: { absolute: title },
+    description,
+    alternates: { canonical },
+    robots: { index: true, follow: true },
+    openGraph: {
+      title: socialTitle,
+      description: socialDescription,
+      siteName: "Boho Digital Services",
+      type: "website",
+      url: canonical,
+      images: [socialImage],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: socialTitle,
+      description: socialDescription,
+      images: [socialImage.url],
+    },
+  };
+}
+
 function commercialRouteMetadata(route: string): CommercialRouteMetadata | null {
   switch (route) {
     case "/services/":
@@ -178,10 +222,13 @@ function commercialRouteMetadata(route: string): CommercialRouteMetadata | null 
       };
     case "/services/provider-rescue/":
       return {
-        title: "Website Help for Provider Rescue & Migration | Boho",
+        title: "Website Migration, Ownership Recovery & Provider Rescue | Boho",
         description:
-          "Provider rescue and migration are forms of Website Help. One bounded issue or diagnosis starts at $200; larger recovery and migration work receives a written quote.",
+          "Map ownership and dependencies, preserve useful URLs and assets, leave an unsuitable provider, migrate carefully, and verify the agreed website and customer paths.",
         canonical: "/services/provider-rescue/",
+        openGraphTitle: "Leave the bad provider without setting the useful parts on fire.",
+        openGraphDescription:
+          "Boho helps businesses leave unsuitable, uncooperative, or poorly documented providers while protecting the accounts, content, URLs, measurement history, and working systems worth keeping.",
       };
     case "/services/custom-digital-solutions/":
       return {
@@ -222,26 +269,26 @@ export async function generateMetadata({
     if (!title || !description || !canonical) {
       throw new Error(`Commercial metadata is incomplete for ${page.slug}`);
     }
-    return {
-      title: { absolute: title },
+    return routeMetadata({
+      title,
       description,
-      alternates: { canonical },
-      openGraph: {
-        title: commercial.openGraphTitle ?? commercial.section?.optional("Open Graph title") ?? title,
-        description: commercial.openGraphDescription ?? commercial.section?.optional("Open Graph description") ?? description,
-        url: canonical,
-      },
-      robots: { index: true, follow: true },
-    };
+      canonical,
+      openGraphTitle:
+        commercial.openGraphTitle
+        ?? commercial.section?.optional("Open Graph title")
+        ?? title,
+      openGraphDescription:
+        commercial.openGraphDescription
+        ?? commercial.section?.optional("Open Graph description")
+        ?? description,
+    });
   }
 
-  return {
-    title: { absolute: page.title },
+  return routeMetadata({
+    title: page.title,
     description: page.metaDescription,
-    alternates: { canonical: page.slug },
-    openGraph: { url: page.slug },
-    robots: { index: true, follow: true },
-  };
+    canonical: page.slug,
+  });
 }
 
 export default async function InteriorRoute({ params }: InteriorRouteProps) {

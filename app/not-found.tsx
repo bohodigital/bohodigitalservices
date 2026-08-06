@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import {
   ButtonLink,
   EditorialHeadline,
@@ -6,6 +8,10 @@ import {
   TextLink,
 } from "./components/SiteChrome";
 import { DefinedText } from "./components/DefinedText";
+
+export const metadata: Metadata = {
+  title: { absolute: "Page not found | Boho Digital Services" },
+};
 
 export default function NotFound() {
   const seenTerms = new Set<string>();

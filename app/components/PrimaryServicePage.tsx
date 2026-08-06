@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { emailBenefitCopy, homepageFaqs, websiteScopeExamples } from "../content/commercialReset";
 import type { PrimaryServiceRoute } from "../content/serviceShowcases";
 import { AnalyticsPlatformSpotlight, ServiceHeroVisual, ServiceShowcaseGallery } from "./ServiceShowcase";
+import { ProviderRescuePage } from "./ProviderRescuePage";
 import { ButtonLink, FaqItem, Footer, Header } from "./SiteChrome";
 
 const process = [
@@ -118,6 +119,6 @@ export function PrimaryServicePage({ route }: { route: string }) {
   if (route === "/services/web-design-redesign/") return <BusinessWebsitesPage />;
   if (route === "/services/ongoing-seo/") return <OngoingSeoPage />;
   if (route === "/services/custom-digital-solutions/") return <CustomSystemsPage />;
-  if (route === "/services/provider-rescue/") return <WebsiteHelpSubordinatePage kind="provider" />;
+  if (route === "/services/provider-rescue/") return <ProviderRescuePage />;
   return <WebsiteHelpSubordinatePage kind="review" />;
 }

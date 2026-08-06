@@ -10,6 +10,10 @@ import { Footer, Header } from "./CommercialChrome";
 import { CommercialInquiryForm } from "./CommercialInquiryForm";
 import styles from "./conversion-pages.module.css";
 
+const startProofProjects = proofProjects.filter(
+  (project) => project.name !== "Rank Builder SEO",
+);
+
 type DefinitionMark = {
   label: string;
   slug: string;
@@ -160,7 +164,7 @@ export function CommercialStartPage() {
               <DefinedCopy text={page.proof.body} terms={[{ label: "analytics", slug: "analytics" }]} />
             </p>
             <div className={styles.proofGrid}>
-              {proofProjects.map((project) => (
+              {startProofProjects.map((project) => (
                 <article key={project.name}>
                   <a
                     data-analytics-destination-type="live_property"

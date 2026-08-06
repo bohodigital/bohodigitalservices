@@ -1,91 +1,194 @@
+import Image from "next/image";
+import Link from "next/link";
+
+import styles from "./front-door.module.css";
+import { ButtonLink, FaqItem, Footer, Header } from "./components/SiteChrome";
+import { audiencePages } from "./content/audiencePages";
+import { commercialSection } from "./content/commercial/presentation";
 import {
-  ButtonLink,
-  FaqItem,
-  Footer,
-  Header,
-} from "./components/SiteChrome";
-import { DemoLibrary } from "./components/DemoLibrary";
-import {
-  canonicalServices,
-  homepageFaqs,
-  hostingQualification,
-  proofProjects,
-  websiteScopeExamples,
+  canonicalServicesByKey,
+  freeReview,
+  freeReviewPage,
+  providerRescuePage,
+  sharedScopeNote,
 } from "./content/commercialReset";
+import { demoProjects } from "./content/demoLibrary";
 
-const ownershipReceipt = [
-  ["Website build", "From $850"],
-  ["Eligible hosting", "$0/month"],
-  ["Cloudflare account", "Yours"],
-  ["Source code", "Included"],
-  ["Boho access", "Revocable"],
-  ["Active Boho contract required", "No"],
+const hero = commercialSection("homepage", "1-hero");
+const problemChooser = commercialSection("homepage", "3-problem-chooser");
+const ownership = commercialSection(
+  "homepage",
+  "6-ownership-and-provider-rescue-map",
+);
+const principles = commercialSection("homepage", "9-operating-principles");
+const finalIntake = commercialSection(
+  "homepage",
+  "10-final-intake-section",
+);
+const pricingHero = commercialSection("pricing", "hero");
+
+const websiteHelp = canonicalServicesByKey.get("websiteHelp");
+const businessWebsites = canonicalServicesByKey.get("businessWebsites");
+const ongoingSeo = canonicalServicesByKey.get("ongoingSeo");
+
+if (!websiteHelp || !businessWebsites || !ongoingSeo) {
+  throw new Error("The current front-door service ledger is incomplete.");
+}
+
+const situations = [
+  {
+    eyebrow: "Provider rescue",
+    title: problemChooser.one("Problem 3 heading"),
+    body: problemChooser.one("Problem 3 body"),
+    label: problemChooser.one("Problem 3 label"),
+    link: problemChooser.one("Problem 3 link"),
+    href: "/services/provider-rescue/" as const,
+    tone: "rescue",
+  },
+  {
+    eyebrow: websiteHelp.label,
+    title: "Fix the useful problem without automatically rebuilding everything.",
+    body: websiteHelp.homepageCopy,
+    label: websiteHelp.priceDisplay,
+    link: websiteHelp.homepageCta,
+    href: websiteHelp.route,
+    tone: "repair",
+  },
+  {
+    eyebrow: businessWebsites.label,
+    title: problemChooser.one("Problem 2 heading"),
+    body: problemChooser.one("Problem 2 body"),
+    label: businessWebsites.priceDisplay,
+    link: businessWebsites.homepageCta,
+    href: businessWebsites.route,
+    tone: "replace",
+  },
 ] as const;
 
-const hostingSteps = [
+const controlSystems = [
+  "Domain",
+  "DNS",
+  "Hosting",
+  "Content system",
+  "Forms",
+  "Analytics",
+  "Search accounts",
+  "Email connections",
+  "Repositories",
+  "Integrations",
+] as const;
+
+const controlStatuses = [
+  ownership.one("Status labels"),
+  ...ownership.many("value"),
+];
+
+const offerLadder = [
   {
-    heading: "Create the account",
-    copy: "The business uses its own email and recovery information.",
+    step: "01",
+    label: freeReview.label,
+    price: freeReview.priceDisplay,
+    body: freeReviewPage.body,
+    href: freeReview.route,
+    cta: "Get a free website review",
   },
   {
-    heading: "Invite Boho",
-    copy: "Boho receives authorized access. Password sharing is not required.",
+    step: "02",
+    label: websiteHelp.label,
+    price: websiteHelp.priceDisplay,
+    body: websiteHelp.homepageCopy,
+    href: websiteHelp.route,
+    cta: websiteHelp.homepageCta,
   },
   {
-    heading: "Keep control",
-    copy:
-      "Continue with Boho, manage the site internally, or hire someone else. Leaving does not force a move or create a Boho hosting bill.",
+    step: "03",
+    label: businessWebsites.label,
+    price: businessWebsites.priceDisplay,
+    body: businessWebsites.homepageCopy,
+    href: businessWebsites.route,
+    cta: businessWebsites.homepageCta,
+  },
+  {
+    step: "04",
+    label: ongoingSeo.label,
+    price: ongoingSeo.priceDisplay,
+    body: ongoingSeo.homepageCopy,
+    href: ongoingSeo.route,
+    cta: ongoingSeo.homepageCta,
   },
 ] as const;
 
-const processSteps = [
-  {
-    heading: "Free review",
-    copy: "Send the current website or describe the project.",
-  },
-  {
-    heading: "Written scope",
-    copy:
-      "Boho defines the pages, work, ownership, boundaries, price, and required inputs before the project begins.",
-  },
-  {
-    heading: "Build and review",
-    copy:
-      "The person explaining the project remains responsible for the work.",
-  },
-  {
-    heading: "Launch and handoff",
-    copy:
-      "The approved site launches in the agreed account with source and operating information documented.",
-  },
+const featuredDemos = [demoProjects[0], demoProjects[5], demoProjects[7]];
+
+const featuredGuideRoutes = [
+  "/learn/provider-rescue/",
+  "/learn/website-buying/",
+  "/learn/glossary/",
 ] as const;
+
+const featuredGuides = featuredGuideRoutes.map((route) => {
+  const guide = audiencePages.find((page) => page.slug === route);
+  if (!guide) throw new Error(`Featured guide is missing: ${route}`);
+  return guide;
+});
+
+const principleLabels = [
+  principles.one("Principle labels"),
+  ...principles.many("value"),
+];
 
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "WebSite",
+      "@id": "https://bohodigitalservices.com/#website",
+      url: "https://bohodigitalservices.com/",
+      name: "Boho Digital Services",
+      alternateName: "Boho",
+      publisher: {
+        "@id": "https://bohodigitalservices.com/#organization",
+      },
+    },
+    {
       "@type": "ItemList",
       name: "Boho Digital Services",
-      itemListElement: canonicalServices.map((service, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        item: {
-          "@type": "Service",
-          name: service.label,
-          url: `https://bohodigitalservices.com${service.route}`,
-          offers: {
-            "@type": "Offer",
-            name: `${service.label} — ${service.priceDisplay.toLowerCase()}`,
-            price: service.startingPrice,
-            priceCurrency: "USD",
-            description: service.priceDisplay,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          item: {
+            "@type": "Service",
+            name: "Provider Rescue",
+            url: "https://bohodigitalservices.com/services/provider-rescue/",
+            offers: {
+              "@type": "Offer",
+              price: 200,
+              priceCurrency: "USD",
+              description: "One bounded issue or diagnosis.",
+            },
           },
         },
-      })),
+        ...[websiteHelp, businessWebsites, ongoingSeo].map((service, index) => ({
+          "@type": "ListItem",
+          position: index + 2,
+          item: {
+            "@type": "Service",
+            name: service.label,
+            url: `https://bohodigitalservices.com${service.route}`,
+            offers: {
+              "@type": "Offer",
+              price: service.startingPrice,
+              priceCurrency: "USD",
+              description: service.priceDisplay,
+            },
+          },
+        })),
+      ],
     },
     {
       "@type": "FAQPage",
-      mainEntity: homepageFaqs.map(({ question, answer }) => ({
+      mainEntity: providerRescuePage.faqs.map(([question, answer]) => ({
         "@type": "Question",
         name: question,
         acceptedAnswer: {
@@ -101,219 +204,188 @@ export default function Homepage() {
   return (
     <>
       <Header />
-      <main className="reset-home" id="main-content">
+      <main className={styles.page} id="main-content" tabIndex={-1}>
         <script
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
           type="application/ld+json"
         />
 
-        <section className="reset-hero" aria-labelledby="reset-hero-title">
-          <div className="reset-shell reset-hero__grid">
-            <div className="reset-hero__copy">
-              <p className="reset-eyebrow">CUSTOM BUSINESS WEBSITES</p>
-              <h1 id="reset-hero-title">
-                Business websites from $850. Hosting stays free.
-              </h1>
-              <p className="reset-hero__body">
-                Boho builds fast, credible websites for local businesses in a
-                Cloudflare account your business owns. Eligible hosting costs $0
-                per month. If you stop working with Boho, the website stays
-                where it is.
-              </p>
-              <div className="reset-actions">
-                <ButtonLink
-                  data-analytics-event="free_review_click"
-                  data-analytics-source-page="homepage"
-                  data-analytics-source-section="hero"
-                  data-analytics-service-context="business_websites"
-                  href="/start/"
-                >
-                  Get a free website review
-                </ButtonLink>
-                <ButtonLink
-                  data-analytics-event="pricing_click"
-                  data-analytics-source-page="homepage"
-                  data-analytics-source-section="hero"
-                  href="/pricing/#business-websites"
-                  variant="secondary"
-                >
-                  See website pricing
-                </ButtonLink>
-              </div>
-              <p className="reset-qualification">{hostingQualification}</p>
-            </div>
-
-            <aside
-              className="ownership-receipt"
-              aria-label="Business website ownership and pricing"
-            >
-              <div className="ownership-receipt__heading">
-                <span>Client ownership receipt</span>
-                <strong>From $850</strong>
-              </div>
-              <dl>
-                {ownershipReceipt.map(([label, value]) => (
-                  <div key={label}>
-                    <dt>{label}</dt>
-                    <dd>{value}</dd>
-                  </div>
-                ))}
-              </dl>
-            </aside>
-          </div>
-        </section>
-
-        <section className="trust-strip" aria-label="Website ownership benefits">
-          <div className="reset-shell">
-            <ul>
-              <li>Client-owned account</li>
-              <li>Source and handoff included</li>
-              <li>Direct technical lead</li>
-              <li>No hosting penalty for leaving</li>
-            </ul>
-          </div>
-        </section>
-
-        <section
-          className="reset-section reset-services"
-          aria-labelledby="reset-services-title"
-        >
-          <div className="reset-shell">
-            <header className="reset-heading">
-              <p className="reset-eyebrow">FOUR WAYS TO WORK WITH BOHO</p>
-              <h2 id="reset-services-title">
-                Build it. Grow it. Fix it. Automate it.
-              </h2>
-              <p>Four services. Everything else is scope.</p>
-            </header>
-            <div className="reset-services__grid">
-              {canonicalServices.map((service) => (
-                <article
-                  className={`reset-service-card reset-service-card--${service.key}`}
-                  data-canonical-service-card
-                  key={service.key}
-                >
-                  <p className="reset-eyebrow">{service.eyebrow}</p>
-                  <p className="reset-price">{service.priceDisplay}</p>
-                  <p>{service.homepageCopy}</p>
-                  <a
-                    data-analytics-event="service_card_click"
-                    data-analytics-price-display={service.priceDisplay}
-                    data-analytics-service-name={service.label}
+        <section className={styles.hero} aria-labelledby="front-door-title">
+          <div className={styles.shell}>
+            <div className={styles.heroGrid}>
+              <div className={styles.heroCopy}>
+                <p className={styles.eyebrow}>{hero.one("Eyebrow")}</p>
+                <h1 id="front-door-title">{hero.one("Headline")}</h1>
+                <p className={styles.heroLead}>{hero.one("Body paragraph 1")}</p>
+                <p className={styles.heroSupport}>{hero.one("Body paragraph 2")}</p>
+                <div className={styles.actions}>
+                  <ButtonLink
+                    data-analytics-event="free_review_click"
+                    data-analytics-service-context="website_help"
                     data-analytics-source-page="homepage"
-                    href={service.route}
+                    data-analytics-source-section="hero"
+                    href="/start/"
                   >
-                    {service.homepageCta}
-                  </a>
+                    {hero.one("Primary CTA")}
+                  </ButtonLink>
+                  <ButtonLink href="/services/" variant="secondary">
+                    {hero.one("Secondary CTA")}
+                  </ButtonLink>
+                </div>
+                <div className={styles.heroTrust}>
+                  <span>{hero.one("Trust line")}</span>
+                  <span>{hero.one("Location line")}</span>
+                </div>
+              </div>
+
+              <aside className={styles.controlFile} aria-labelledby="control-file-title">
+                <header className={styles.controlFileHeader}>
+                  <div>
+                    <p>{providerRescuePage.eyebrow}</p>
+                    <h2 id="control-file-title">Recover control before making the move.</h2>
+                  </div>
+                  <strong>{providerRescuePage.priceDisplay}</strong>
+                </header>
+                <ul className={styles.controlFileList}>
+                  {providerRescuePage.inventory.map((item, index) => (
+                    <li key={item}>
+                      <span>{String(index + 1).padStart(2, "0")}</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <Link className={styles.controlFileLink} href="/services/provider-rescue/">
+                  {problemChooser.one("Problem 3 link")} <span aria-hidden="true">→</span>
+                </Link>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.situations} aria-labelledby="situations-title">
+          <div className={styles.shell}>
+            <header className={styles.sectionHeading}>
+              <p className={styles.eyebrow}>{problemChooser.one("Eyebrow")}</p>
+              <h2 id="situations-title">{problemChooser.one("Heading")}</h2>
+              <p>{problemChooser.one("Introduction")}</p>
+            </header>
+            <div className={styles.situationGrid}>
+              {situations.map((situation) => (
+                <article
+                  className={`${styles.situationCard} ${styles[situation.tone]}`}
+                  key={situation.href}
+                >
+                  <p className={styles.cardEyebrow}>{situation.eyebrow}</p>
+                  <h3>{situation.title}</h3>
+                  <p>{situation.body}</p>
+                  <strong>{situation.label}</strong>
+                  <a href={situation.href}>{situation.link} <span aria-hidden="true">→</span></a>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section
-          className="reset-section reset-hosting"
-          aria-labelledby="reset-hosting-title"
-        >
-          <div className="reset-shell reset-hosting__grid">
-            <div className="reset-hosting__intro">
-              <p className="reset-eyebrow">CLIENT-OWNED HOSTING</p>
-              <h2 id="reset-hosting-title">
-                Hosting should not become a leash.
-              </h2>
-              <p>
-                Many ordinary business websites do not need a traditional
-                server or an agency-owned hosting subscription. When a website
-                qualifies, Boho builds it for Cloudflare’s Free plan in an
-                account controlled by the client.
-              </p>
-              <p className="reset-hosting__closing">
-                The website build is paid. Eligible hosting is free. The account
-                is yours.
-              </p>
-              <ButtonLink
-                data-analytics-event="free_review_click"
-                data-analytics-service-context="business_websites"
-                data-analytics-source-page="homepage"
-                data-analytics-source-section="client_owned_hosting"
-                href="/start/"
-              >
-                Check whether my website qualifies
+        <section className={styles.ownership} aria-labelledby="ownership-title">
+          <div className={`${styles.shell} ${styles.ownershipGrid}`}>
+            <div className={styles.ownershipCopy}>
+              <p className={styles.eyebrow}>{ownership.one("Eyebrow")}</p>
+              <h2 id="ownership-title">{ownership.one("Heading")}</h2>
+              <p>{ownership.one("Body paragraph 1")}</p>
+              <p>{ownership.one("Body paragraph 2")}</p>
+              <ButtonLink href="/services/provider-rescue/" variant="secondary">
+                {ownership.one("Link")}
               </ButtonLink>
             </div>
-            <ol className="reset-step-list">
-              {hostingSteps.map((step, index) => (
-                <li key={step.heading}>
-                  <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-                  <div>
-                    <h3>{step.heading}</h3>
-                    <p>{step.copy}</p>
+            <div className={styles.systemMap} aria-label={ownership.one("Heading")}>
+              <div className={styles.systemMapGrid}>
+                {controlSystems.map((system, index) => (
+                  <div key={system}>
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <strong>{system}</strong>
                   </div>
+                ))}
+              </div>
+              <ul className={styles.statusLegend}>
+                {controlStatuses.map((status) => <li key={status}>{status}</li>)}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.decision} aria-labelledby="decision-title">
+          <div className={styles.shell}>
+            <header className={styles.sectionHeading}>
+              <p className={styles.eyebrow}>A controlled delivery path</p>
+              <h2 id="decision-title">Start with the current situation.</h2>
+            </header>
+            <ol className={styles.decisionPath}>
+              {providerRescuePage.decisions.map(([title, body], index) => (
+                <li key={title}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div><h3>{title}</h3><p>{body}</p></div>
                 </li>
               ))}
             </ol>
           </div>
         </section>
 
-        <section
-          className="reset-section reset-scopes"
-          id="business-websites"
-          aria-labelledby="reset-scopes-title"
-        >
-          <div className="reset-shell">
-            <header className="reset-heading">
-              <p className="reset-eyebrow">ONE WEBSITE SERVICE</p>
-              <h2 id="reset-scopes-title">
-                The price changes with the work, not the label.
-              </h2>
-              <p>
-                Every Boho website is a business website. The $850 starting
-                price covers a small, complete static site. More pages, content,
-                locations, and integrations increase the scope.
-              </p>
+        <section className={styles.offers} aria-labelledby="offers-title">
+          <div className={styles.shell}>
+            <header className={styles.sectionHeading}>
+              <p className={styles.eyebrow}>{pricingHero.one("Eyebrow")}</p>
+              <h2 id="offers-title">{pricingHero.one("Headline")}</h2>
+              <p>{pricingHero.one("Body paragraph 1")}</p>
             </header>
-            <div className="reset-scope-grid">
-              {websiteScopeExamples.map((scope) => (
-                <article key={scope.heading}>
-                  <h3>{scope.heading}</h3>
-                  <p className="reset-price">{scope.price}</p>
-                  <p>{scope.copy}</p>
+            <div className={styles.offerLadder}>
+              {offerLadder.map((offer) => (
+                <article key={offer.label}>
+                  <span>{offer.step}</span>
+                  <div>
+                    <p className={styles.cardEyebrow}>{offer.label}</p>
+                    <h3>{offer.price}</h3>
+                    <p>{offer.body}</p>
+                  </div>
+                  <a href={offer.href}>{offer.cta} <span aria-hidden="true">→</span></a>
                 </article>
               ))}
             </div>
-            <p className="reset-scope-note">
-              These are planning examples, not fixed packages. The written
-              proposal defines the exact pages, functionality, content
-              responsibilities, integrations, ownership, price, and third-party
-              costs before work begins.
-            </p>
+            <p className={styles.scopeNote}>{sharedScopeNote}</p>
+            <div className={styles.sectionAction}>
+              <ButtonLink href="/pricing/" variant="secondary">View all pricing</ButtonLink>
+            </div>
           </div>
         </section>
 
-        <section
-          className="reset-section demo-library-section demo-library-section--home"
-          aria-labelledby="homepage-demo-library-title"
-        >
-          <div className="reset-shell">
-            <header className="reset-heading demo-library-heading">
-              <div>
-                <p className="reset-eyebrow">EXPLORE THE DEMO LIBRARY</p>
-                <h2 id="homepage-demo-library-title">
-                  See what different website scopes can become.
-                </h2>
-              </div>
-              <p>
-                Tour eight complete websites—from focused $850 brochure sites
-                to expanded and high-end builds. Filter the collection, explore
-                a full homepage preview, or open any live demo in a new tab.
-              </p>
+        <section className={styles.demos} aria-labelledby="demos-title">
+          <div className={styles.shell}>
+            <header className={styles.sectionHeading}>
+              <p className={styles.eyebrow}>EXPLORE THE DEMO LIBRARY</p>
+              <h2 id="demos-title">See what different website scopes can become.</h2>
+              <p>These fictional businesses demonstrate design and functionality. They are not client case studies or performance claims.</p>
             </header>
-            <p className="reset-proof-disclosure">
-              These fictional businesses demonstrate design and functionality.
-              They are not client case studies or performance claims.
-            </p>
-            <DemoLibrary compact />
-            <div className="demo-library-section__action">
+            <div className={styles.demoGrid}>
+              {featuredDemos.map((demo) => (
+                <article key={demo.id}>
+                  <a href={demo.href} rel="noopener noreferrer" target="_blank">
+                    <div className={styles.demoFrame}>
+                      <span aria-hidden="true"><i /><i /><i /></span>
+                      <Image
+                        alt={demo.alt}
+                        height={demo.imageHeight}
+                        src={demo.image}
+                        unoptimized
+                        width={960}
+                      />
+                    </div>
+                    <p className={styles.cardEyebrow}>{demo.tierLabel}</p>
+                    <h3>{demo.name}</h3>
+                    <p>{demo.summary}</p>
+                  </a>
+                </article>
+              ))}
+            </div>
+            <div className={styles.sectionAction}>
               <ButtonLink href="/work/#demo-library" variant="secondary">
                 Open the full demo library
               </ButtonLink>
@@ -321,119 +393,68 @@ export default function Homepage() {
           </div>
         </section>
 
-        <section
-          className="reset-section reset-proof"
-          aria-labelledby="reset-proof-title"
-        >
-          <div className="reset-shell">
-            <header className="reset-heading">
-              <p className="reset-eyebrow">BUILT BY BOHO</p>
-              <h2 id="reset-proof-title">Real systems. Live on the web.</h2>
-              <p>
-                These are Boho-owned properties, not client case studies. They
-                demonstrate work that can be inspected directly; they do not
-                establish client outcomes.
-              </p>
+        <section className={styles.guides} aria-labelledby="guides-title">
+          <div className={`${styles.shell} ${styles.guidesLayout}`}>
+            <header className={styles.sectionHeading}>
+              <p className={styles.eyebrow}>Resources · Buyer guides</p>
+              <h2 id="guides-title">Make the expensive digital decision with fewer unknowns.</h2>
+              <p>Focused guidance for buying a website, protecting ownership, changing providers, and translating technical language before it becomes leverage.</p>
+              <ButtonLink href="/learn/" variant="secondary">Choose a Guide</ButtonLink>
             </header>
-            <div className="reset-proof__grid">
-              {proofProjects.map((project) => (
-                <article key={project.name}>
-                  <a
-                    data-analytics-event="work_project_click"
-                    data-analytics-destination-type="live_property"
-                    data-analytics-project-name={project.name}
-                    href={project.href}
-                  >
-                    <img
-                      alt={project.alt}
-                      height="800"
-                      loading="lazy"
-                      src={project.image}
-                      width="1280"
-                    />
-                    <span className="reset-eyebrow">{project.label}</span>
-                    <h3>{project.name}</h3>
-                    <p>{project.copy}</p>
-                  </a>
-                </article>
+            <div className={styles.guideList}>
+              {featuredGuides.map((guide, index) => (
+                <a href={guide.slug} key={guide.slug}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div><p>{guide.eyebrow}</p><h3>{guide.headline}</h3></div>
+                  <b aria-hidden="true">→</b>
+                </a>
               ))}
-            </div>
-            <div className="reset-section-action">
-              <ButtonLink href="/work/" variant="secondary">
-                See Boho’s work
-              </ButtonLink>
             </div>
           </div>
         </section>
 
-        <section
-          className="reset-section reset-process"
-          aria-labelledby="reset-process-title"
-        >
-          <div className="reset-shell">
-            <header className="reset-heading">
-              <p className="reset-eyebrow">A CLEAR PROJECT PATH</p>
-              <h2 id="reset-process-title">From first review to launch.</h2>
+        <section className={styles.trust} aria-labelledby="trust-title">
+          <div className={`${styles.shell} ${styles.trustGrid}`}>
+            <header>
+              <p className={styles.eyebrow}>{principles.one("Eyebrow")}</p>
+              <h2 id="trust-title">{principles.one("Heading")}</h2>
+              <p>{principles.one("Supporting sentence")}</p>
+              <p>Operated by Boho Digital Services LLC.</p>
             </header>
-            <ol className="reset-process__grid">
-              {processSteps.map((step, index) => (
-                <li key={step.heading}>
-                  <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-                  <h3>{step.heading}</h3>
-                  <p>{step.copy}</p>
-                </li>
-              ))}
-            </ol>
+            <ul>
+              {principleLabels.map((label) => <li key={label}>{label}</li>)}
+            </ul>
           </div>
         </section>
 
-        <section
-          className="reset-section reset-faq"
-          aria-labelledby="reset-faq-title"
-        >
-          <div className="reset-shell reset-faq__grid">
-            <header className="reset-heading">
-              <h2 id="reset-faq-title">Frequently asked questions</h2>
+        <section className={styles.faq} aria-labelledby="faq-title">
+          <div className={`${styles.shell} ${styles.faqGrid}`}>
+            <header className={styles.sectionHeading}>
+              <p className={styles.eyebrow}>Before the proposal</p>
+              <h2 id="faq-title">Frequently asked questions</h2>
             </header>
             <div>
-              {homepageFaqs.map(({ question, answer }) => (
-                <FaqItem key={question} question={question}>
-                  <p>{answer}</p>
-                </FaqItem>
+              {providerRescuePage.faqs.map(([question, answer]) => (
+                <FaqItem key={question} question={question}><p>{answer}</p></FaqItem>
               ))}
             </div>
           </div>
         </section>
 
-        <section
-          className="reset-section reset-final"
-          aria-labelledby="reset-final-title"
-        >
-          <div className="reset-shell reset-final__grid">
+        <section className={styles.finalCta} aria-labelledby="final-cta-title">
+          <div className={`${styles.shell} ${styles.finalCtaGrid}`}>
             <div>
-              <h2 id="reset-final-title">
-                Could your next website cost $0 per month to host?
-              </h2>
-              <p>
-                Send the current website or describe the business. Boho will
-                tell you whether the $850 starting scope fits, whether eligible
-                free hosting appears practical, and what would require a larger
-                project.
-              </p>
+              <p className={styles.eyebrow}>{finalIntake.one("Eyebrow")}</p>
+              <h2 id="final-cta-title">{finalIntake.one("Heading")}</h2>
+              <p>{finalIntake.one("Body paragraph 1")}</p>
+              <p>{finalIntake.one("Body paragraph 2")}</p>
             </div>
-            <div className="reset-actions">
-              <ButtonLink
-                data-analytics-event="free_review_click"
-                data-analytics-source-page="homepage"
-                data-analytics-source-section="final_cta"
-                data-analytics-service-context="business_websites"
-                href="/start/"
-              >
-                Get a free website review
-              </ButtonLink>
-              <ButtonLink href="/pricing/" variant="secondary">
-                View all pricing
-              </ButtonLink>
+            <div>
+              <div className={styles.actions}>
+                <ButtonLink href="/start/">{finalIntake.one("Primary CTA")}</ButtonLink>
+                <ButtonLink href="/emergency/" variant="secondary">{finalIntake.one("Emergency CTA")}</ButtonLink>
+              </div>
+              <p className={styles.privacy}>{finalIntake.one("Privacy line")}</p>
             </div>
           </div>
         </section>

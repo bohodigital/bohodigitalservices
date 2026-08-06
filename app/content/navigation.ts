@@ -21,14 +21,23 @@ export type ResourceNavigationGroup = {
   items: ReadonlyArray<NavigationLink>;
 };
 
-export const serviceHeaderLinks: ReadonlyArray<NavigationLink> =
-  canonicalServices.map((service) => ({
+export const serviceHeaderLinks: ReadonlyArray<NavigationLink> = [
+  {
+    label: "Provider Rescue",
+    href: "/services/provider-rescue/",
+    description:
+      "Website Help from $200\nProvider Rescue is focused Website Help for ownership, access, continuity, migration, and provider-exit problems.",
+    serviceName: "Provider Rescue",
+    priceDisplay: "Website Help from $200",
+  },
+  ...canonicalServices.map((service) => ({
     label: service.label,
     href: service.route,
     description: `${service.priceDisplay}\n${service.dropdownDescription}`,
     serviceName: service.label,
     priceDisplay: service.priceDisplay,
-  }));
+  })),
+];
 
 export const serviceMenuLinks: ReadonlyArray<NavigationLink> = [
   {
@@ -52,13 +61,13 @@ export const resourceNavigationGroups: ReadonlyArray<ResourceNavigationGroup> = 
 ];
 
 export const primaryNavigation: ReadonlyArray<PrimaryNavigationItem> = [
+  { label: "Provider Rescue", href: "/services/provider-rescue/" },
   {
     label: "Services",
     href: "/services/",
     children: serviceMenuLinks,
   },
-  { label: "Work", href: "/work/" },
   { label: "Pricing", href: "/pricing/" },
-  { label: "About", href: "/about/" },
-  { label: "Contact", href: "/contact/" },
+  { label: "Demo Library", href: "/work/" },
+  { label: "Practical guides", href: "/learn/" },
 ];

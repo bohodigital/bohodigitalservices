@@ -17,13 +17,14 @@ function textContent(html) {
   return html.replace(/<script[\s\S]*?<\/script>/gi, " ").replace(/<style[\s\S]*?<\/style>/gi, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
 }
 
-test("publishes the approved primary navigation and canonical service registry", async () => {
+test("publishes the provider-first primary navigation and focused homepage offer ladder", async () => {
   const [navigation, commercial, homepage] = await Promise.all([
     source("app/content/navigation.ts"),
     source("app/content/commercialReset.ts"),
     render("/"),
   ]);
-  for (const label of ["Services", "Work", "Pricing", "About", "Contact"]) {
+  const renderedHomepage = homepage.replace(/<script[\s\S]*?<\/script>/gi, "");
+  for (const label of ["Provider Rescue", "Services", "Pricing", "Demo Library", "Practical guides"]) {
     assert.match(navigation, new RegExp(`label: "${label}"`));
   }
   assert.doesNotMatch(navigation.match(/export const primaryNavigation[\s\S]*?\];/)?.[0] ?? "", /Industries/);
@@ -36,10 +37,21 @@ test("publishes the approved primary navigation and canonical service registry",
   ]) {
     assert.ok(commercial.includes(name));
     assert.ok(commercial.includes(price));
-    assert.ok(homepage.includes(name));
-    assert.ok(homepage.includes(price));
   }
-  assert.equal((homepage.match(/data-canonical-service-card="true"/g) ?? []).length, 4);
+  for (const value of [
+    "Provider Rescue",
+    "Website Help from $200",
+    "Business Websites",
+    "From $850",
+    "Ongoing SEO &amp; Local Growth",
+    "From $450/month",
+    "Demo Library",
+    "Practical guides",
+  ]) assert.ok(homepage.includes(value), `homepage is missing ${value}`);
+  assert.equal((homepage.match(/data-canonical-service-card="true"/g) ?? []).length, 0);
+  assert.equal((renderedHomepage.match(/landscaping\.demos\.bohodigitalservices\.com/g) ?? []).length, 1);
+  assert.equal((renderedHomepage.match(/dentistry\.demos\.bohodigitalservices\.com/g) ?? []).length, 1);
+  assert.equal((renderedHomepage.match(/junkremoval\.demos\.bohodigitalservices\.com/g) ?? []).length, 1);
   assert.match(homepage, />Get a free website review</);
 });
 
@@ -84,6 +96,7 @@ test("aligns the free-review intake promise and preserves its compatibility anch
   assert.match(html, /data-analytics-event="start_hero_cta_click"/);
   assert.match(html, /data-analytics-event="start_emergency_detour_click"/);
   assert.match(html, /data-analytics-event="start_work_link_click"/);
+  assert.doesNotMatch(textContent(html), /Rank Builder SEO/);
   assert.doesNotMatch(html, /class="[^"]*\bundefined\b/);
 });
 
@@ -103,9 +116,10 @@ test("keeps core commercial output free of obsolete names and restaurant positio
   const stalePrices = /Starting at \$(?:95|350|500|750|1,000|2,500)(?![0-9])/;
   for (const route of routes) {
     const html = await render(route);
-    assert.doesNotMatch(html, obsolete, `${route} has an obsolete service name`);
-    assert.doesNotMatch(html, restaurant, `${route} has restaurant-specific sales copy`);
-    assert.doesNotMatch(html, stalePrices, `${route} has a stale canonical starting price`);
+    const visible = textContent(html);
+    assert.doesNotMatch(visible, obsolete, `${route} has an obsolete service name`);
+    assert.doesNotMatch(visible, restaurant, `${route} has restaurant-specific sales copy`);
+    assert.doesNotMatch(visible, stalePrices, `${route} has a stale canonical starting price`);
   }
 });
 

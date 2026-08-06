@@ -6809,11 +6809,11 @@ body,
 
 @media (max-width: 30rem) {
   .site-header__brand-word {
-    display: none;
+    display: inline;
   }
 
   .site-header__brand {
-    grid-template-columns: auto;
+    grid-template-columns: auto auto;
   }
 
   .site-header__dropdown {

@@ -301,6 +301,86 @@ export const websiteScopeExamples = [
 export const sharedScopeNote =
   "Starting prices apply to the smallest complete scope. Pages, content, locations, integrations, migration condition, third-party systems, urgency, access, and custom functionality can change the quote. The written proposal states the exact work, price, ownership, dependencies, and outside costs before the project begins.";
 
+// Current-reset prices are authoritative. The non-price rescue language below
+// is mechanically consolidated from the existing public Provider Rescue,
+// Website Help, Emergency Help, and approved commercial-copy records.
+export const providerRescuePage = {
+  eyebrow: "WEBSITE HELP · FROM $200",
+  headline: "Leave the bad provider without setting the useful parts on fire.",
+  introduction:
+    "Boho helps businesses leave unsuitable, uncooperative, or poorly documented providers while protecting the accounts, content, URLs, measurement history, and working systems worth keeping.",
+  priceDisplay: "Website Help from $200",
+  receipt: "One bounded issue · Ownership first · Written next step",
+  authority:
+    "A provider rescue begins with an ownership and dependency map. Boho does not claim access it does not have, bypass account security, impersonate the owner, or guarantee that a registrar, host, platform, or former provider will approve a recovery request.",
+  urgency:
+    "Urgent work is accepted only when the required access, authority, capacity, and risk controls are available. Priority work may cost more, and urgency does not remove the need for verification or a rollback plan.",
+  fitHeading: "When ownership or continuity is unclear",
+  fitBody:
+    "Use Provider Rescue when access is fragmented, a provider relationship is ending, a domain or website must be recovered, or a move could break a working customer path.",
+  scopeNote:
+    "The starting price applies to one bounded issue or diagnosis. Larger recovery, migration, investigation, or implementation work receives a written quote after review.",
+  situations: [
+    "The business needs to leave a website, SEO, hosting, analytics, email, or technology provider.",
+    "Ownership, access, DNS, hosting, forms, analytics, search accounts, email, or integrations are unclear.",
+    "A redesign or migration must preserve useful pages, URLs, data, or customer paths.",
+    "A recent launch or provider change damaged forms, redirects, search visibility, tracking, or access.",
+  ],
+  inventory: [
+    "Domain, DNS, hosting, source, and account ownership",
+    "Current access and recovery paths",
+    "Forms, analytics, email, redirects, and third-party dependencies",
+    "Backup, migration, verification, and rollback needs",
+    "A sequenced provider-exit or recovery plan",
+  ],
+  decisions: [
+    [
+      "Stabilize the system",
+      "Stop harmful changes, preserve working access and evidence, and identify the safest temporary state.",
+    ],
+    [
+      "Migration help",
+      "Move a website or supporting system while preserving the URLs, content, customer paths, and account control that should survive.",
+    ],
+    [
+      "Business Websites",
+      "A complete, responsive website for a local business, professional practice, service company, or independent organization. New build, redesign, or responsible replacement is determined by what already exists.",
+    ],
+  ],
+  deliverables: [
+    [
+      "Ownership and access inventory",
+      "Identify who controls the domain, hosting, source, accounts, analytics, forms, content, profiles, and recovery paths.",
+    ],
+    [
+      "Dependency map",
+      "Document the systems and third parties that must keep working during a repair, recovery, or move.",
+    ],
+    [
+      "Exit or recovery plan",
+      "Sequence the smallest responsible changes, including backups, redirects, verification, and rollback where applicable.",
+    ],
+    [
+      "Verification record",
+      "Record what was recovered or moved, what was tested, and which limitations or follow-up risks remain.",
+    ],
+  ],
+  faqs: [
+    [
+      "Can Boho move a website when the current provider is uncooperative?",
+      "Sometimes, but the available domain access, source, content, backups, credentials, and third-party accounts determine the responsible options. The first step is an ownership and access inventory.",
+    ],
+    [
+      "Will the existing website go offline during a move?",
+      "The migration plan is designed to reduce avoidable interruption, but risk depends on the current system and access. Verification and rollback expectations are defined before material changes.",
+    ],
+    [
+      "Does the $200 starting price include a full migration?",
+      "Not necessarily. It can cover one bounded ownership, access, or diagnosis issue. Larger recovery or migration work receives a written quote after review.",
+    ],
+  ],
+} as const;
+
 export const homepageFaqs = [
   {
     question: "Is the website itself free?",

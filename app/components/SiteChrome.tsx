@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type {
   AnchorHTMLAttributes,
@@ -99,6 +100,7 @@ const footerGroups: ReadonlyArray<{
   {
     title: "Services",
     links: [
+      { label: "Provider Rescue", href: "/services/provider-rescue/" },
       ...canonicalServices.map(({ label, route }) => ({
         label,
         href: route,
@@ -109,7 +111,7 @@ const footerGroups: ReadonlyArray<{
   {
     title: "Work and resources",
     links: [
-      { label: "Work", href: "/work/" },
+      { label: "Demo Library", href: "/work/" },
       { label: "Tools & Systems", href: "/tools/" },
       { label: "Industries", href: "/industries/" },
       { label: "Buyer Resources", href: "/resources/" },
@@ -432,10 +434,11 @@ export function GlossaryCrossLink({
 function BrandBee() {
   return (
     <span className="brand-bee" aria-hidden="true">
-      <img
+      <Image
         src="/brand/boho-bee-logo-v2-transparent.png"
-        width="256"
-        height="256"
+        width={256}
+        height={256}
+        unoptimized
         alt=""
       />
     </span>
@@ -477,17 +480,6 @@ export function Header() {
         </div>
 
         <div className="site-header__mobile-actions">
-          <ButtonLink
-            className="site-header__mobile-cta"
-            data-analytics-event="free_review_click"
-            data-analytics-source-page="global"
-            data-analytics-source-section="mobile_header"
-            data-analytics-service-context="general"
-            href="/start/"
-          >
-            Get a free website review
-          </ButtonLink>
-
           <MobileMenu
             action={{ label: "Get a free website review", href: "/start/" }}
             labels={{
@@ -515,9 +507,9 @@ export function Footer() {
             <span>Boho Digital Services</span>
           </Link>
           <p className="site-footer__brand-statement">
-            Digital engineering for businesses that need visibility, lead
-            systems, websites, and operational tools they can understand.
+            Elegant websites and technical SEO, without the agency fog.
           </p>
+          <p>Chicago-based. Remote work available.</p>
           <p>Operated by Boho Digital Services LLC.</p>
           <div className="site-footer__contact-links">
             <a href="mailto:contact@bohemiandigital.org">
@@ -580,12 +572,12 @@ export function Footer() {
             aria-label="Boho Digital on GitHub"
             title="Boho Digital on GitHub"
           >
-            <img
+            <Image
               src="/brand/github-invertocat-white.svg"
-              width="24"
-              height="24"
+              width={24}
+              height={24}
               loading="lazy"
-              decoding="async"
+              unoptimized
               alt=""
             />
           </a>
