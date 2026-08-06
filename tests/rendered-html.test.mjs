@@ -122,7 +122,6 @@ test("primary service pages render their completed visual evidence and handoff c
   const expectations = new Map([
     ["/services/web-design-redesign/", [8, "/demos/junk-removal-homepage.webp", "The launch should still make sense after the handoff."]],
     ["/services/ongoing-seo/", [8, "/proof/about/rank-builder-seo-homepage.png", "Each cycle ends with work you can inspect."]],
-    ["/services/provider-rescue/", [4, "/diagrams/boho-hosting-architecture-v2.png", "A rescue should leave the next operator less dependent."]],
     ["/services/research-audits-strategy/", [8, "/proof/tools/boho-analytics-dashboard-v2.png", "A review should make the decision easier."]],
     ["/services/custom-digital-solutions/", [8, "/proof/tools/boho-secret-broker.png", "A custom system needs more than working code."]],
   ]);
@@ -134,6 +133,14 @@ test("primary service pages render their completed visual evidence and handoff c
     assert.ok(html.includes(requiredHeading), `${route} lacks its completed handoff section`);
     assert.doesNotMatch(html, /<article[^>]*>\s*<\/article>/i, `${route} contains a blank card`);
   }
+});
+
+test("keeps Provider Rescue text-led and free of decorative AI evidence", async () => {
+  const html = await render("/services/provider-rescue/");
+  assert.ok(html.includes("A rescue should leave the next operator less dependent."));
+  assert.ok(html.includes("Start with one bounded issue."));
+  assert.doesNotMatch(html, /\/visuals\/services\/provider-rescue-v1\.webp/);
+  assert.doesNotMatch(html, /\/diagrams\/boho-hosting-architecture-v2\.png/);
 });
 
 test("current analytics screenshot is labeled as illustrative public evidence", async () => {

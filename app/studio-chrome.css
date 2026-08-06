@@ -1,0 +1,81 @@
+:root {
+  --font-display: Georgia, "Times New Roman", serif;
+  --font-body: Arial, Helvetica, sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+.button-link,
+.button-link:hover,
+.button-link--primary,
+.button-link--primary:hover {
+  box-shadow: none;
+  transform: none;
+}
+
+.site-header {
+  min-height: 4.5rem;
+  background: #171816;
+  backdrop-filter: none;
+}
+
+.site-header::after {
+  content: none;
+}
+
+.site-header__inner {
+  min-height: 4.5rem;
+}
+
+.brand-bee {
+  width: 2.6rem;
+  height: 2.6rem;
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.site-header__brand-word {
+  font-size: 1.55rem;
+}
+
+.mobile-menu__panel {
+  inset: 4.5rem 0 0;
+  background: #171816;
+}
+
+.site-footer {
+  padding-block: clamp(4rem, 7vw, 5.5rem) 2rem;
+}
+
+.site-footer::before {
+  content: none;
+}
+
+.site-footer__inner {
+  gap: clamp(3rem, 6vw, 6rem);
+}
+
+.site-footer__brand {
+  font-size: clamp(1.8rem, 2.5vw, 2.65rem);
+}
+
+.site-footer__brand .brand-bee {
+  width: 3.25rem;
+  height: 3.25rem;
+}
+
+.site-footer__link-groups {
+  gap: 2rem;
+}
+
+@media (max-width: 72rem) {
+  .site-header {
+    background: #171816;
+  }
+}
