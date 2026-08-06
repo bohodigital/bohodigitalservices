@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import styles from "./front-door.module.css";
+import styles from "./front-door-home.module.css";
 import { ButtonLink, FaqItem, Footer, Header } from "./components/SiteChrome";
 import { audiencePages } from "./content/audiencePages";
 import { commercialSection } from "./content/commercial/presentation";
@@ -215,6 +215,10 @@ export default function Homepage() {
             <div className={styles.heroGrid}>
               <div className={styles.heroCopy}>
                 <p className={styles.eyebrow}>{hero.one("Eyebrow")}</p>
+                <p className={styles.heroRescueSignal}>
+                  <span>Provider Rescue</span>
+                  <strong>{providerRescuePage.priceDisplay}</strong>
+                </p>
                 <h1 id="front-door-title">{hero.one("Headline")}</h1>
                 <p className={styles.heroLead}>{hero.one("Body paragraph 1")}</p>
                 <p className={styles.heroSupport}>{hero.one("Body paragraph 2")}</p>
@@ -239,6 +243,10 @@ export default function Homepage() {
               </div>
 
               <aside className={styles.controlFile} aria-labelledby="control-file-title">
+                <div className={styles.controlFileTopline} aria-hidden="true">
+                  <span>Provider exit map</span>
+                  <span>Control / transfer</span>
+                </div>
                 <header className={styles.controlFileHeader}>
                   <div>
                     <p>{providerRescuePage.eyebrow}</p>
@@ -248,9 +256,12 @@ export default function Homepage() {
                 </header>
                 <ul className={styles.controlFileList}>
                   {providerRescuePage.inventory.map((item, index) => (
-                    <li key={item}>
+                    <li
+                      className={styles[`controlItem${index + 1}`]}
+                      key={item}
+                    >
                       <span>{String(index + 1).padStart(2, "0")}</span>
-                      {item}
+                      <strong>{item}</strong>
                     </li>
                   ))}
                 </ul>
@@ -270,9 +281,9 @@ export default function Homepage() {
               <p>{problemChooser.one("Introduction")}</p>
             </header>
             <div className={styles.situationGrid}>
-              {situations.map((situation) => (
+              {situations.map((situation, index) => (
                 <article
-                  className={`${styles.situationCard} ${styles[situation.tone]}`}
+                  className={`${styles.situationCard} ${styles[situation.tone]} ${styles[`situationCard${index + 1}`]}`}
                   key={situation.href}
                 >
                   <p className={styles.cardEyebrow}>{situation.eyebrow}</p>
@@ -300,7 +311,10 @@ export default function Homepage() {
             <div className={styles.systemMap} aria-label={ownership.one("Heading")}>
               <div className={styles.systemMapGrid}>
                 {controlSystems.map((system, index) => (
-                  <div key={system}>
+                  <div
+                    className={styles[`systemCell${index + 1}`]}
+                    key={system}
+                  >
                     <span>{String(index + 1).padStart(2, "0")}</span>
                     <strong>{system}</strong>
                   </div>
@@ -321,7 +335,7 @@ export default function Homepage() {
             </header>
             <ol className={styles.decisionPath}>
               {providerRescuePage.decisions.map(([title, body], index) => (
-                <li key={title}>
+                <li className={styles[`decisionStep${index + 1}`]} key={title}>
                   <span>{String(index + 1).padStart(2, "0")}</span>
                   <div><h3>{title}</h3><p>{body}</p></div>
                 </li>
@@ -338,8 +352,8 @@ export default function Homepage() {
               <p>{pricingHero.one("Body paragraph 1")}</p>
             </header>
             <div className={styles.offerLadder}>
-              {offerLadder.map((offer) => (
-                <article key={offer.label}>
+              {offerLadder.map((offer, index) => (
+                <article className={styles[`offerCard${index + 1}`]} key={offer.label}>
                   <span>{offer.step}</span>
                   <div>
                     <p className={styles.cardEyebrow}>{offer.label}</p>
@@ -365,8 +379,8 @@ export default function Homepage() {
               <p>These fictional businesses demonstrate design and functionality. They are not client case studies or performance claims.</p>
             </header>
             <div className={styles.demoGrid}>
-              {featuredDemos.map((demo) => (
-                <article key={demo.id}>
+              {featuredDemos.map((demo, index) => (
+                <article className={styles[`demoCard${index + 1}`]} key={demo.id}>
                   <a href={demo.href} rel="noopener noreferrer" target="_blank">
                     <div className={styles.demoFrame}>
                       <span aria-hidden="true"><i /><i /><i /></span>
@@ -403,7 +417,11 @@ export default function Homepage() {
             </header>
             <div className={styles.guideList}>
               {featuredGuides.map((guide, index) => (
-                <a href={guide.slug} key={guide.slug}>
+                <a
+                  className={styles[`guideCard${index + 1}`]}
+                  href={guide.slug}
+                  key={guide.slug}
+                >
                   <span>{String(index + 1).padStart(2, "0")}</span>
                   <div><p>{guide.eyebrow}</p><h3>{guide.headline}</h3></div>
                   <b aria-hidden="true">→</b>
@@ -422,7 +440,12 @@ export default function Homepage() {
               <p>Operated by Boho Digital Services LLC.</p>
             </header>
             <ul>
-              {principleLabels.map((label) => <li key={label}>{label}</li>)}
+              {principleLabels.map((label, index) => (
+                <li className={styles[`principle${index + 1}`]} key={label}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  {label}
+                </li>
+              ))}
             </ul>
           </div>
         </section>
@@ -442,6 +465,12 @@ export default function Homepage() {
         </section>
 
         <section className={styles.finalCta} aria-labelledby="final-cta-title">
+          <div className={styles.finalMosaic} aria-hidden="true">
+            <span />
+            <span />
+            <span />
+            <span />
+          </div>
           <div className={`${styles.shell} ${styles.finalCtaGrid}`}>
             <div>
               <p className={styles.eyebrow}>{finalIntake.one("Eyebrow")}</p>

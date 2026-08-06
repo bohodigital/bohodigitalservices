@@ -5,12 +5,12 @@
   "sources": [
     {
       "path": "app/Homepage.tsx",
-      "sha256": "f5175db327280cd03ce5b57d5029be9ea3b3c56ca86d7404bec3c53e70bd547f",
-      "bytes": 17351,
+      "sha256": "2f659f9e56034c65e93b9d8e4f7dbe91b146724d010188c3d059dfeec0453d2e",
+      "bytes": 18647,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 68,
+      "publicStringCount": 77,
       "importCount": 4,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
@@ -709,12 +709,12 @@
     },
     {
       "path": "app/page.tsx",
-      "sha256": "6888552823b28f50265a66aa511326d4e246522f0e9ad61ebfeecdcda3f6d4c1",
-      "bytes": 1344,
+      "sha256": "85f7a61ee98dc1b34704ad27330d488bdbf7ebe2865d1bf39e241bb7849c23ea",
+      "bytes": 1310,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 13,
+      "publicStringCount": 14,
       "importCount": 1,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
@@ -764,8 +764,8 @@
     },
     {
       "path": "content/routing/public-route-registry.json",
-      "sha256": "5b9f82e8693914e6485a93ab4ba87381dc1cd8e981027b4b1b1a3af9351571ea",
-      "bytes": 180474,
+      "sha256": "f065cb6f9bec2de69286dd9951c25ab6ecf07d976f7fa6f32bdbcdfc51059003",
+      "bytes": 180466,
       "classification": "authored-source",
       "reachable": false,
       "editorialAuthority": true,
@@ -1444,14 +1444,14 @@
     "reachable": 63,
     "authored": 74,
     "generatedMirrors": 1,
-    "publicStringsOnDemand": 13295,
+    "publicStringsOnDemand": 13305,
     "analyticsClaimContexts": 45
   },
   "fullDetail": {
     "committed": false,
     "generationCommand": "node scripts/commercial-copy-build.mjs --check --inventory-detail <path>",
-    "recordCount": 13295,
-    "deterministicDigest": "4be082ad33fb9a7e374a81a3d142c3369950f3f7a2a1f6cbd10e1095d79a34dc"
+    "recordCount": 13305,
+    "deterministicDigest": "b0e3718c2b15aeace30fbaaedb071609bcef3f5f9421a20f002ca1b2c7548444"
   },
   "securityScan": {
     "privateKeyMarkers": 0,
