@@ -7,8 +7,7 @@ import type {
   SelectHTMLAttributes,
   TextareaHTMLAttributes,
 } from "react";
-import beeLogo from "../../public/brand/boho-bee-logo-v2-transparent.png";
-import githubMark from "../../public/brand/github-invertocat-white.svg";
+import { canonicalServices } from "../content/commercialReset";
 import { primaryNavigation } from "../content/navigation";
 import { DesktopNavigation } from "./DesktopNavigation";
 import { MobileMenu } from "./MobileMenu";
@@ -102,19 +101,23 @@ const footerGroups: ReadonlyArray<{
     title: "Services",
     links: [
       { label: "Provider Rescue", href: "/services/provider-rescue/" },
-      { label: "Website Help", href: "/services/website-help/" },
-      { label: "Business Websites", href: "/services/web-design-redesign/" },
-      { label: "Ongoing SEO", href: "/services/ongoing-seo/" },
+      ...canonicalServices.map(({ label, route }) => ({
+        label,
+        href: route,
+      })),
       { label: "Pricing", href: "/pricing/" },
     ],
   },
   {
-    title: "Explore",
+    title: "Work and resources",
     links: [
       { label: "Demo Library", href: "/work/" },
-      { label: "Buyer Guides", href: "/learn/" },
-      { label: "Plain-language glossary", href: "/learn/glossary/" },
+      { label: "Tools & Systems", href: "/tools/" },
       { label: "Industries", href: "/industries/" },
+      { label: "Buyer Resources", href: "/resources/" },
+      { label: "Practical guides", href: "/learn/" },
+      { label: "Plain-language glossary", href: "/learn/glossary/" },
+      { label: "Website Buying Guide", href: "/learn/website-buying/" },
     ],
   },
   {
@@ -122,9 +125,10 @@ const footerGroups: ReadonlyArray<{
     links: [
       { label: "About", href: "/about/" },
       { label: "Contact", href: "/contact/" },
+      { label: "Emergency Help", href: "/emergency/" },
+      { label: "Accessibility", href: "/accessibility/" },
       { label: "Privacy", href: "/privacy/" },
       { label: "Terms", href: "/terms/" },
-      { label: "Accessibility", href: "/accessibility/" },
     ],
   },
 ];
@@ -431,7 +435,7 @@ function BrandBee() {
   return (
     <span className="brand-bee" aria-hidden="true">
       <Image
-        src={beeLogo}
+        src="/brand/boho-bee-logo-v2-transparent.png"
         width={256}
         height={256}
         unoptimized
@@ -569,7 +573,7 @@ export function Footer() {
             title="Boho Digital on GitHub"
           >
             <Image
-              src={githubMark}
+              src="/brand/github-invertocat-white.svg"
               width={24}
               height={24}
               loading="lazy"

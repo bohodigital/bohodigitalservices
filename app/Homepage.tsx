@@ -21,7 +21,10 @@ const ownership = commercialSection(
   "6-ownership-and-provider-rescue-map",
 );
 const principles = commercialSection("homepage", "9-operating-principles");
-const finalIntake = commercialSection("homepage", "10-final-intake-section");
+const finalIntake = commercialSection(
+  "homepage",
+  "10-final-intake-section",
+);
 const pricingHero = commercialSection("pricing", "hero");
 
 const websiteHelp = canonicalServicesByKey.get("websiteHelp");
@@ -40,6 +43,7 @@ const situations = [
     label: problemChooser.one("Problem 3 label"),
     link: problemChooser.one("Problem 3 link"),
     href: "/services/provider-rescue/" as const,
+    tone: "rescue",
   },
   {
     eyebrow: websiteHelp.label,
@@ -48,6 +52,7 @@ const situations = [
     label: websiteHelp.priceDisplay,
     link: websiteHelp.homepageCta,
     href: websiteHelp.route,
+    tone: "repair",
   },
   {
     eyebrow: businessWebsites.label,
@@ -56,11 +61,31 @@ const situations = [
     label: businessWebsites.priceDisplay,
     link: businessWebsites.homepageCta,
     href: businessWebsites.route,
+    tone: "replace",
   },
 ] as const;
 
+const controlSystems = [
+  "Domain",
+  "DNS",
+  "Hosting",
+  "Content system",
+  "Forms",
+  "Analytics",
+  "Search accounts",
+  "Email connections",
+  "Repositories",
+  "Integrations",
+] as const;
+
+const controlStatuses = [
+  ownership.one("Status labels"),
+  ...ownership.many("value"),
+];
+
 const offerLadder = [
   {
+    step: "01",
     label: freeReview.label,
     price: freeReview.priceDisplay,
     body: freeReviewPage.body,
@@ -68,6 +93,7 @@ const offerLadder = [
     cta: "Get a free website review",
   },
   {
+    step: "02",
     label: websiteHelp.label,
     price: websiteHelp.priceDisplay,
     body: websiteHelp.homepageCopy,
@@ -75,6 +101,7 @@ const offerLadder = [
     cta: websiteHelp.homepageCta,
   },
   {
+    step: "03",
     label: businessWebsites.label,
     price: businessWebsites.priceDisplay,
     body: businessWebsites.homepageCopy,
@@ -82,6 +109,7 @@ const offerLadder = [
     cta: businessWebsites.homepageCta,
   },
   {
+    step: "04",
     label: ongoingSeo.label,
     price: ongoingSeo.priceDisplay,
     body: ongoingSeo.homepageCopy,
@@ -118,7 +146,9 @@ const structuredData = {
       url: "https://bohodigitalservices.com/",
       name: "Boho Digital Services",
       alternateName: "Boho",
-      publisher: { "@id": "https://bohodigitalservices.com/#organization" },
+      publisher: {
+        "@id": "https://bohodigitalservices.com/#organization",
+      },
     },
     {
       "@type": "ItemList",
@@ -161,7 +191,10 @@ const structuredData = {
       mainEntity: providerRescuePage.faqs.map(([question, answer]) => ({
         "@type": "Question",
         name: question,
-        acceptedAnswer: { "@type": "Answer", text: answer },
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: answer,
+        },
       })),
     },
   ],
@@ -178,44 +211,54 @@ export default function Homepage() {
         />
 
         <section className={styles.hero} aria-labelledby="front-door-title">
-          <div className={`${styles.shell} ${styles.heroGrid}`}>
-            <div className={styles.heroCopy}>
-              <p className={styles.eyebrow}>{hero.one("Eyebrow")}</p>
-              <h1 id="front-door-title">{hero.one("Headline")}</h1>
-              <p className={styles.heroLead}>{hero.one("Body paragraph 1")}</p>
-              <p className={styles.heroSupport}>{hero.one("Body paragraph 2")}</p>
-              <div className={styles.actions}>
-                <ButtonLink
-                  data-analytics-event="free_review_click"
-                  data-analytics-service-context="website_help"
-                  data-analytics-source-page="homepage"
-                  data-analytics-source-section="hero"
-                  href="/start/"
-                >
-                  {hero.one("Primary CTA")}
-                </ButtonLink>
-                <ButtonLink href="/services/" variant="secondary">
-                  {hero.one("Secondary CTA")}
-                </ButtonLink>
+          <div className={styles.shell}>
+            <div className={styles.heroGrid}>
+              <div className={styles.heroCopy}>
+                <p className={styles.eyebrow}>{hero.one("Eyebrow")}</p>
+                <h1 id="front-door-title">{hero.one("Headline")}</h1>
+                <p className={styles.heroLead}>{hero.one("Body paragraph 1")}</p>
+                <p className={styles.heroSupport}>{hero.one("Body paragraph 2")}</p>
+                <div className={styles.actions}>
+                  <ButtonLink
+                    data-analytics-event="free_review_click"
+                    data-analytics-service-context="website_help"
+                    data-analytics-source-page="homepage"
+                    data-analytics-source-section="hero"
+                    href="/start/"
+                  >
+                    {hero.one("Primary CTA")}
+                  </ButtonLink>
+                  <ButtonLink href="/services/" variant="secondary">
+                    {hero.one("Secondary CTA")}
+                  </ButtonLink>
+                </div>
+                <div className={styles.heroTrust}>
+                  <span>{hero.one("Trust line")}</span>
+                  <span>{hero.one("Location line")}</span>
+                </div>
               </div>
-              <p className={styles.heroTrust}>
-                {hero.one("Trust line")} <span aria-hidden="true">·</span>{" "}
-                {hero.one("Location line")}
-              </p>
-            </div>
 
-            <aside className={styles.rescueSummary} aria-labelledby="rescue-summary-title">
-              <p className={styles.cardEyebrow}>{providerRescuePage.eyebrow}</p>
-              <h2 id="rescue-summary-title">{providerRescuePage.fitHeading}</h2>
-              <p>{providerRescuePage.fitBody}</p>
-              <div className={styles.summaryReceipt}>
-                <strong>{providerRescuePage.priceDisplay}</strong>
-                <span>{providerRescuePage.receipt}</span>
-              </div>
-              <Link href="/services/provider-rescue/">
-                {problemChooser.one("Problem 3 link")} <span aria-hidden="true">→</span>
-              </Link>
-            </aside>
+              <aside className={styles.controlFile} aria-labelledby="control-file-title">
+                <header className={styles.controlFileHeader}>
+                  <div>
+                    <p>{providerRescuePage.eyebrow}</p>
+                    <h2 id="control-file-title">Recover control before making the move.</h2>
+                  </div>
+                  <strong>{providerRescuePage.priceDisplay}</strong>
+                </header>
+                <ul className={styles.controlFileList}>
+                  {providerRescuePage.inventory.map((item, index) => (
+                    <li key={item}>
+                      <span>{String(index + 1).padStart(2, "0")}</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <Link className={styles.controlFileLink} href="/services/provider-rescue/">
+                  {problemChooser.one("Problem 3 link")} <span aria-hidden="true">→</span>
+                </Link>
+              </aside>
+            </div>
           </div>
         </section>
 
@@ -228,32 +271,55 @@ export default function Homepage() {
             </header>
             <div className={styles.situationGrid}>
               {situations.map((situation) => (
-                <article className={styles.situationCard} key={situation.href}>
+                <article
+                  className={`${styles.situationCard} ${styles[situation.tone]}`}
+                  key={situation.href}
+                >
                   <p className={styles.cardEyebrow}>{situation.eyebrow}</p>
                   <h3>{situation.title}</h3>
                   <p>{situation.body}</p>
                   <strong>{situation.label}</strong>
-                  <Link href={situation.href}>
-                    {situation.link} <span aria-hidden="true">→</span>
-                  </Link>
+                  <a href={situation.href}>{situation.link} <span aria-hidden="true">→</span></a>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section className={styles.process} aria-labelledby="ownership-title">
-          <div className={`${styles.shell} ${styles.processGrid}`}>
-            <div className={styles.processCopy}>
+        <section className={styles.ownership} aria-labelledby="ownership-title">
+          <div className={`${styles.shell} ${styles.ownershipGrid}`}>
+            <div className={styles.ownershipCopy}>
               <p className={styles.eyebrow}>{ownership.one("Eyebrow")}</p>
               <h2 id="ownership-title">{ownership.one("Heading")}</h2>
               <p>{ownership.one("Body paragraph 1")}</p>
               <p>{ownership.one("Body paragraph 2")}</p>
-              <Link className={styles.textLink} href="/services/provider-rescue/">
-                {ownership.one("Link")} <span aria-hidden="true">→</span>
-              </Link>
+              <ButtonLink href="/services/provider-rescue/" variant="secondary">
+                {ownership.one("Link")}
+              </ButtonLink>
             </div>
-            <ol className={styles.processList}>
+            <div className={styles.systemMap} aria-label={ownership.one("Heading")}>
+              <div className={styles.systemMapGrid}>
+                {controlSystems.map((system, index) => (
+                  <div key={system}>
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <strong>{system}</strong>
+                  </div>
+                ))}
+              </div>
+              <ul className={styles.statusLegend}>
+                {controlStatuses.map((status) => <li key={status}>{status}</li>)}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.decision} aria-labelledby="decision-title">
+          <div className={styles.shell}>
+            <header className={styles.sectionHeading}>
+              <p className={styles.eyebrow}>A controlled delivery path</p>
+              <h2 id="decision-title">Start with the current situation.</h2>
+            </header>
+            <ol className={styles.decisionPath}>
               {providerRescuePage.decisions.map(([title, body], index) => (
                 <li key={title}>
                   <span>{String(index + 1).padStart(2, "0")}</span>
@@ -264,10 +330,37 @@ export default function Homepage() {
           </div>
         </section>
 
+        <section className={styles.offers} aria-labelledby="offers-title">
+          <div className={styles.shell}>
+            <header className={styles.sectionHeading}>
+              <p className={styles.eyebrow}>{pricingHero.one("Eyebrow")}</p>
+              <h2 id="offers-title">{pricingHero.one("Headline")}</h2>
+              <p>{pricingHero.one("Body paragraph 1")}</p>
+            </header>
+            <div className={styles.offerLadder}>
+              {offerLadder.map((offer) => (
+                <article key={offer.label}>
+                  <span>{offer.step}</span>
+                  <div>
+                    <p className={styles.cardEyebrow}>{offer.label}</p>
+                    <h3>{offer.price}</h3>
+                    <p>{offer.body}</p>
+                  </div>
+                  <a href={offer.href}>{offer.cta} <span aria-hidden="true">→</span></a>
+                </article>
+              ))}
+            </div>
+            <p className={styles.scopeNote}>{sharedScopeNote}</p>
+            <div className={styles.sectionAction}>
+              <ButtonLink href="/pricing/" variant="secondary">View all pricing</ButtonLink>
+            </div>
+          </div>
+        </section>
+
         <section className={styles.demos} aria-labelledby="demos-title">
           <div className={styles.shell}>
             <header className={styles.sectionHeading}>
-              <p className={styles.eyebrow}>Explore the demo library</p>
+              <p className={styles.eyebrow}>EXPLORE THE DEMO LIBRARY</p>
               <h2 id="demos-title">See what different website scopes can become.</h2>
               <p>These fictional businesses demonstrate design and functionality. They are not client case studies or performance claims.</p>
             </header>
@@ -275,16 +368,17 @@ export default function Homepage() {
               {featuredDemos.map((demo) => (
                 <article key={demo.id}>
                   <a href={demo.href} rel="noopener noreferrer" target="_blank">
-                    <div className={styles.demoImage}>
+                    <div className={styles.demoFrame}>
+                      <span aria-hidden="true"><i /><i /><i /></span>
                       <Image
-                        alt={`${demo.name} website demo preview.`}
-                        fill
-                        sizes="(max-width: 48rem) 100vw, 33vw"
-                        src={demo.image.replace("-homepage", "")}
+                        alt={demo.alt}
+                        height={demo.imageHeight}
+                        src={demo.image}
                         unoptimized
+                        width={960}
                       />
                     </div>
-                    <p className={styles.cardEyebrow}>{demo.tierLabel} · Fictional demo</p>
+                    <p className={styles.cardEyebrow}>{demo.tierLabel}</p>
                     <h3>{demo.name}</h3>
                     <p>{demo.summary}</p>
                   </a>
@@ -299,56 +393,37 @@ export default function Homepage() {
           </div>
         </section>
 
-        <section className={styles.offers} aria-labelledby="offers-title">
-          <div className={`${styles.shell} ${styles.offersGrid}`}>
+        <section className={styles.guides} aria-labelledby="guides-title">
+          <div className={`${styles.shell} ${styles.guidesLayout}`}>
             <header className={styles.sectionHeading}>
-              <p className={styles.eyebrow}>{pricingHero.one("Eyebrow")}</p>
-              <h2 id="offers-title">{pricingHero.one("Headline")}</h2>
-              <p>{pricingHero.one("Body paragraph 1")}</p>
-              <ButtonLink href="/pricing/" variant="secondary">View all pricing</ButtonLink>
+              <p className={styles.eyebrow}>Resources · Buyer guides</p>
+              <h2 id="guides-title">Make the expensive digital decision with fewer unknowns.</h2>
+              <p>Focused guidance for buying a website, protecting ownership, changing providers, and translating technical language before it becomes leverage.</p>
+              <ButtonLink href="/learn/" variant="secondary">Choose a Guide</ButtonLink>
             </header>
-            <div>
-              <div className={styles.priceList}>
-                {offerLadder.map((offer) => (
-                  <article key={offer.label}>
-                    <div>
-                      <p className={styles.cardEyebrow}>{offer.label}</p>
-                      <h3>{offer.price}</h3>
-                      <p>{offer.body}</p>
-                    </div>
-                    <Link href={offer.href}>{offer.cta} <span aria-hidden="true">→</span></Link>
-                  </article>
-                ))}
-              </div>
-              <p className={styles.scopeNote}>{sharedScopeNote}</p>
+            <div className={styles.guideList}>
+              {featuredGuides.map((guide, index) => (
+                <a href={guide.slug} key={guide.slug}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div><p>{guide.eyebrow}</p><h3>{guide.headline}</h3></div>
+                  <b aria-hidden="true">→</b>
+                </a>
+              ))}
             </div>
           </div>
         </section>
 
-        <section className={styles.resources} aria-labelledby="guides-title">
-          <div className={`${styles.shell} ${styles.resourcesGrid}`}>
-            <div>
-              <p className={styles.eyebrow}>Resources · Buyer guides</p>
-              <h2 id="guides-title">Make the expensive digital decision with fewer unknowns.</h2>
-              <p>Focused guidance for buying a website, protecting ownership, changing providers, and translating technical language before it becomes leverage.</p>
-              <div className={styles.guideList}>
-                {featuredGuides.map((guide) => (
-                  <Link href={guide.slug} key={guide.slug}>
-                    <span><small>{guide.eyebrow}</small>{guide.headline}</span>
-                    <b aria-hidden="true">→</b>
-                  </Link>
-                ))}
-              </div>
-            </div>
-            <aside className={styles.standard} aria-labelledby="standard-title">
-              <p className={styles.cardEyebrow}>{principles.one("Eyebrow")}</p>
-              <h2 id="standard-title">{principles.one("Heading")}</h2>
+        <section className={styles.trust} aria-labelledby="trust-title">
+          <div className={`${styles.shell} ${styles.trustGrid}`}>
+            <header>
+              <p className={styles.eyebrow}>{principles.one("Eyebrow")}</p>
+              <h2 id="trust-title">{principles.one("Heading")}</h2>
               <p>{principles.one("Supporting sentence")}</p>
-              <ul>
-                {principleLabels.map((label) => <li key={label}>{label}</li>)}
-              </ul>
-              <p className={styles.operator}>Operated by Boho Digital Services LLC.</p>
-            </aside>
+              <p>Operated by Boho Digital Services LLC.</p>
+            </header>
+            <ul>
+              {principleLabels.map((label) => <li key={label}>{label}</li>)}
+            </ul>
           </div>
         </section>
 

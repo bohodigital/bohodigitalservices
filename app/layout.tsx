@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { DefinitionPopoverProvider } from "./components/DefinitionPopoverProvider";
 import "./globals.css";
-import "./studio-chrome.css";
 
 const siteUrl = new URL("https://bohodigitalservices.com");
 const siteTitle = "Boho Digital Services";

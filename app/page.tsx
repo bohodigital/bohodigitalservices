@@ -19,9 +19,9 @@ export const metadata: Metadata = {
     url: "/",
     images: [
       {
-        url: "/og.png",
-        width: 1730,
-        height: 909,
+        url: "/boho-digital-services-social-v2.png",
+        width: 1200,
+        height: 630,
       },
     ],
   },
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: "Elegant websites and technical SEO, without the agency fog.",
     description:
       "Boho builds and repairs the systems that help people find a business, understand it, trust it, and take the next step.",
-    images: ["/og.png"],
+    images: ["/boho-digital-services-social-v2.png"],
   },
   robots: { index: true, follow: true },
 };

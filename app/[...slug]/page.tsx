@@ -88,9 +88,9 @@ type CommercialRouteMetadata = {
 };
 
 const socialImage = {
-  url: "/og.png",
-  width: 1730,
-  height: 909,
+  url: "/boho-digital-services-social-v2.png",
+  width: 1200,
+  height: 630,
 };
 
 function routeMetadata({
