@@ -95,10 +95,10 @@ export function WorkPage() {
         <section className="reset-interior-hero reset-work-hero" aria-labelledby="work-title">
           <div className="reset-shell reset-interior-hero__grid">
             <div>
-              <p className="reset-eyebrow">WORK BUILT BY BOHO</p>
-              <h1 id="work-title">Real websites, demo builds, and systems—live on the web.</h1>
+              <p className="reset-eyebrow">WORK DESIGNED AND BUILT BY BOHO</p>
+              <h1 id="work-title">Websites and systems you can inspect for yourself.</h1>
               <p>
-                Browse complete website demonstrations at three project levels, then inspect the public properties and technical systems Boho owns and operates. Every item is linked so you can judge the actual work for yourself.
+                The demo businesses are fictional. The websites are real Boho-owned builds designed to show what different project scopes can include. The library also includes public properties and technical systems Boho built and operates.
               </p>
               <div className="reset-actions">
                 <ButtonLink href="#demo-library">Browse the demo library</ButtonLink>
@@ -120,8 +120,8 @@ export function WorkPage() {
               </div>
               <aside className="reset-interior-hero__receipt reset-work-hero__receipt">
                 <span>LIVE WORK LIBRARY</span>
-                <strong>8 complete demos</strong>
-                <p>Fictional businesses, Boho-owned work, and public systems you can inspect for yourself.</p>
+                <strong>8 complete Boho-built demos</strong>
+                <p>Fictional businesses. Real design and development.</p>
                 <ul aria-label="Demo project levels">
                   <li>5 brochure</li>
                   <li>1 expanded</li>
@@ -137,11 +137,11 @@ export function WorkPage() {
             <header className="reset-heading demo-library-heading">
               <div>
                 <p className="reset-eyebrow">THE BOHO DEMO LIBRARY</p>
-                <h2 id="demo-library-title">Choose a level. Tour the real site.</h2>
+                <h2 id="demo-library-title">Pick a scope. Tour a complete Boho-built website.</h2>
               </div>
-              <p>These are fictional businesses built to demonstrate what different website scopes can include. Filter by project level, scroll through the previews, and open any complete demo in a new tab.</p>
+              <p>Every demo&apos;s site design and implementation were created by Boho for the fictional business shown. Names, teams, locations, reviews, credentials, and business details are fictional; the websites and interactions are real demonstrations of our work.</p>
             </header>
-            <p className="reset-proof-disclosure">Demo names, teams, locations, availability, reviews, credentials, and business details are fictional. They are design and functionality demonstrations—not client case studies or performance claims.</p>
+            <p className="reset-proof-disclosure">Every demo&apos;s site design and implementation were created by Boho for demonstration. Some demos use licensed stock photography, imagery generated for Boho, maps, or reused Boho brand assets; those asset sources are separate from Boho&apos;s ownership of the site design and implementation. This is not client work and makes no traffic, ranking, conversion, or revenue claim.</p>
             <DemoLibrary />
           </div>
         </section>
@@ -189,8 +189,8 @@ export function WorkPage() {
           <div className="reset-shell">
             <header className="reset-heading">
               <p className="reset-eyebrow">PUBLIC TECHNICAL SYSTEMS</p>
-              <h2 id="work-tools-title">Tools that support the work</h2>
-              <p>Boho also develops public tools and internal operating systems when repeated work deserves a reliable technical solution.</p>
+              <h2 id="work-tools-title">We build the tools we need to do the work properly.</h2>
+              <p>Boho develops focused tools when repeated work deserves a reliable technical solution. Each system below links to public source or an inspectable product profile.</p>
             </header>
             <div className="reset-services__grid">
               {selectedTools.map((tool) => (

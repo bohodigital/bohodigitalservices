@@ -119,10 +119,10 @@ export function ToolsPage() {
         <KnowledgeHero
           eyebrow="Tools, systems, and proof"
           breadcrumbMode="tools-root"
-          title="Systems built to make digital work cheaper, clearer, and easier to operate."
+          title="We build the tools we need to do the work properly."
           intro={[
-            "Boho combines mature infrastructure with focused engineering. We use established platforms for source control, hosting, delivery, search, analytics, and communication, then build the workflows, controls, integrations, monitoring, publishing systems, and business-specific tools that connect them.",
-            "Technical depth is useful when it produces a system the business can understand, verify, operate, and continue to own.",
+            "Boho builds websites, runs ongoing organic SEO, and develops focused software when ordinary tools leave an important operating gap.",
+            "These public systems are inspectable technical proof—not claims about client results. Technical depth is useful when it produces a system the business can understand, verify, operate, and continue to own.",
           ]}
           primary={{ label: "Explore Boho Systems", href: "#system-families" }}
           secondary={{ label: "Get a free website review", href: "/start/" }}
@@ -199,8 +199,8 @@ export function ToolsPage() {
               <div className="section-shell">
                 <header className="tools-systems-heading">
                   <p className="eyebrow eyebrow--on-dark">Selected custom tools</p>
-                  <EditorialHeadline as="h2"><span id="selected-tools-title">A deliberately narrow custom-tool registry.</span></EditorialHeadline>
-                  <p>{define("These three identities remain separate from the mature infrastructure that supports Boho work.")}</p>
+                  <EditorialHeadline as="h2"><span id="selected-tools-title">Built by Boho. Available to inspect.</span></EditorialHeadline>
+                  <p>{define("These focused systems were developed for real internal jobs, with public source and documentation for the selected releases.")}</p>
                 </header>
                 <div className="selected-tool-grid">
                   {selectedTools.map((tool, index) => (

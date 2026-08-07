@@ -51,10 +51,10 @@ export const canonicalServices: ReadonlyArray<CanonicalService> = [
     route: "/services/ongoing-seo/",
     servicesAnchor: "ongoing-seo",
     homepageCopy:
-      "Ongoing technical SEO, local visibility, content improvement, analytics, and implementation. Standard business email hosting is included with eligible active plans.",
+      "Ongoing organic search work across technical SEO, local visibility, content improvement, analytics, and implementation. Standard business email hosting is included with eligible active plans.",
     homepageCta: "Improve search visibility",
     servicesDescription:
-      "Ongoing technical SEO, local visibility, content improvement, internal linking, analytics, and implementation for businesses with a useful reason to keep improving.",
+      "Ongoing organic search work across technical SEO, local visibility, content improvement, internal linking, analytics, and implementation for businesses with a useful reason to keep improving.",
     servicesCta: "Improve search visibility",
     dropdownDescription:
       "Search, local visibility, content, analytics, and implementation.",

@@ -146,6 +146,47 @@ test("current analytics product evidence is public, open source, and unmistakabl
   }
 });
 
+test("states Boho's four core offers plainly before presenting technical proof", async () => {
+  const [homepage, seo, work, resources, tools] = await Promise.all([
+    render("/"),
+    render("/services/ongoing-seo/"),
+    render("/work/"),
+    render("/resources/"),
+    render("/tools/"),
+  ]);
+
+  for (const phrase of [
+    "We design and build websites.",
+    "Organic SEO",
+    "Tour website designs we built and own.",
+    "Use the analytics software we built for our own SEO work.",
+    "We built the analytics software we use for SEO. You can use it too—free.",
+  ]) assert.ok(homepage.includes(phrase), `homepage lacks the plain-language promise: ${phrase}`);
+
+  assert.match(seo, /Ongoing organic SEO—with implementation, not just reports/i);
+  assert.match(work, /site design and implementation were created by Boho/i);
+  assert.match(resources, /Built by Boho for the SEO work we actually do/i);
+  assert.match(resources, /Use our analytics software yourself—free/i);
+  assert.match(resources, /\$0 MIT software license/i);
+  assert.match(tools, /We build the tools we need to do the work properly/i);
+
+  for (const html of [homepage, seo]) {
+    assert.match(html, /Free means a \$0 software license/i);
+    assert.match(html, /does not mean free hosting/i);
+  }
+  assert.match(resources, /Free means a \$0 software license/i);
+  assert.match(resources, /not free hosting/i);
+  assert.match(resources, /Private mappings, credentials, schedules, client data/i);
+  assert.match(resources, /Boho.s private MCP server/i);
+
+  const homepageSoftwareTile = homepage.match(/<a[^>]*data-home-capability="analytics"[^>]*>/)?.[0];
+  assert.ok(homepageSoftwareTile, "homepage lacks its free-software capability tile");
+  assert.match(homepageSoftwareTile, /href="\/resources\/#analysis-dashboard"/);
+  assert.match(homepageSoftwareTile, /target="_blank"/);
+  assert.match(homepageSoftwareTile, /rel="noopener noreferrer"/);
+  assert.match(homepageSoftwareTile, /aria-label="[^"]*opens in a new tab[^"]*"/i);
+});
+
 test("homepage product mosaic opens internal product tours in new tabs before outbound documentation", async () => {
   const html = await render("/");
   for (const [modifier, href] of [
@@ -174,7 +215,7 @@ test("resources provides complete internal landing sections and keeps deliberate
     "Compare the signals without erasing where they came from.",
     "Build the chart the decision actually requires.",
     "See where pages lead—and where the site structure runs out of road.",
-    "The software stays free whether or not you hire Boho.",
+    "Your copy of the current public release remains free to use.",
   ]) assert.ok(html.includes(phrase), `resources tour lacks: ${phrase}`);
   assert.match(html, /href="https:\/\/github\.com\/bohodigital\/boho-analytics-platform"[^>]*target="_blank"/);
   assert.match(html, /href="https:\/\/github\.com\/bohodigital\/boho-analytics-platform\/blob\/main\/docs\/providers\.md"[^>]*target="_blank"/);

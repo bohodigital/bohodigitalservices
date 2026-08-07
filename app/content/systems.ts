@@ -151,8 +151,8 @@ export const selectedTools: ReadonlyArray<SelectedToolProfile> = [
   {
     id: "analysis-dashboard",
     displayName: "Boho Analytics Platform",
-    shortPublicSummary: "A locally owned command center for source-labeled website analytics, search performance, traffic infrastructure, and form-delivery monitoring.",
-    publicMemo: "The platform brings approved Umami, Cloudflare, Google Analytics, Search Console, and form-monitoring aggregates into one source-labeled view without silently blending unlike metrics. Its Site Graph engine separately maps revision-pinned pages and internal-link pathways; that structural evidence is never presented as visitor behavior, conversion performance, or search authority.",
+    shortPublicSummary: "Built by Boho for its own SEO work, this MIT-licensed, self-hosted command center keeps website evidence source-labeled in one place. A technical operator can run the public core for DIY measurement or inspect the method.",
+    publicMemo: "Boho designed and built the application and product architecture on mature open-source foundations and provider APIs. The public release contains the analytics and Site Graph core behind Boho’s own SEO workflow. It brings approved Umami, Cloudflare, Google Analytics, Search Console, and form-monitoring aggregates into one source-labeled view without silently blending unlike metrics. Site Graph separately maps revision-pinned pages and internal-link pathways; that structural evidence is never presented as visitor behavior, conversion performance, or search authority. Private mappings, credentials, schedules, client data, deployment configuration, reports, and internal integrations are not part of the public release.",
     systemFamily: "measurement-search-signals",
     currentStatus: "Stable · v0.2.0",
     publicAvailability: "Public GitHub repository · self-hosted",

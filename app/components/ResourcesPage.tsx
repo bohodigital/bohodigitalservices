@@ -163,23 +163,43 @@ export function ResourcesPage() {
             <section className="resources-analytics-tour" id="analysis-dashboard" aria-labelledby="analysis-dashboard-title">
               <div className="section-shell">
                 <header className="resources-analytics-tour__hero">
-                  <p className="eyebrow eyebrow--on-dark">Free + open source · Public release v0.2.0</p>
-                  <h2 id="analysis-dashboard-title">Put the useful website evidence in one place—without pretending it all means the same thing.</h2>
-                  <p>{define("Boho Analytics brings approved GA4, Google Search Console, self-hosted Umami, Cloudflare, and form-monitoring aggregates into one private, source-labeled command center. Site Graph adds revision-pinned pages and internal links from the same public MIT-licensed repository.")}</p>
+                  <p className="eyebrow eyebrow--on-dark">Built by Boho for the SEO work we actually do · Public release v0.2.0</p>
+                  <h2 id="analysis-dashboard-title">Use our analytics software yourself—free.</h2>
+                  <p>{define("Want to handle the measurement side of organic SEO yourself? Boho Analytics is the in-house command center behind our measurement workflow. Self-host the public release, or inspect how Boho keeps search, traffic, infrastructure, forms, and website structure separate before making recommendations.")}</p>
                   <ul className="resources-analytics-tour__badges" aria-label="Product characteristics">
                     <li>$0 MIT software license</li>
                     <li>Self-hosted</li>
                     <li>Python 3.11+ and SQLite</li>
-                    <li>No paid dashboard login</li>
+                    <li>Documented blank-config quick start</li>
+                    <li>No Boho software subscription</li>
                   </ul>
+                  <p className="resources-analytics-tour__license-boundary"><strong>Free means a $0 software license</strong>—not free hosting, provider accounts, SEO labor, support, or custom integrations.</p>
                   <div className="resources-analytics-tour__actions">
                     <a data-analytics-destination-type="setup_documentation" data-analytics-event="tools_project_click" data-analytics-project-name="Boho Analytics Platform" href={analyticsQuickStart} rel="noopener noreferrer" target="_blank">
-                      Use it free from GitHub <ArrowRight aria-hidden="true" size={17} /><span className="sr-only"> (opens in a new tab)</span>
+                      Get the free software from GitHub <ArrowRight aria-hidden="true" size={17} /><span className="sr-only"> (opens in a new tab)</span>
                     </a>
                     <Link href="/services/ongoing-seo/">See what comes with SEO <ArrowRight aria-hidden="true" size={17} /></Link>
                     <Link href="/">Back to the Boho homepage</Link>
                   </div>
                 </header>
+
+                <div className="resources-analytics-promise" aria-label="Why Boho Analytics is public">
+                  <article>
+                    <span>Built for real work</span>
+                    <strong>We use it.</strong>
+                    <p>Boho designed the platform to run its own source-labeled SEO measurement—not as a detached side project.</p>
+                  </article>
+                  <article>
+                    <span>Free on purpose</span>
+                    <strong>You can use it.</strong>
+                    <p>The current MIT-licensed public core helps people trying DIY measurement or not ready for an SEO retainer—and makes our measurement method inspectable before money changes hands.</p>
+                  </article>
+                  <article>
+                    <span>No Boho software lock-in</span>
+                    <strong>Another expert can audit it.</strong>
+                    <p>Use it yourself or hand the source and documentation to a technical person, host, or another provider.</p>
+                  </article>
+                </div>
 
                 <div className="resources-analytics-sources" aria-label="Evidence sources kept distinct by Boho Analytics">
                   <article><strong>Search Console</strong><span>Impressions, clicks, click-through rate, and average position</span></article>
@@ -254,16 +274,17 @@ export function ResourcesPage() {
                       <div className="resources-product-tour__graph-detail">
                         <Image src="/proof/tools/boho-site-graph-demo-provider-rescue-20260806.webp" alt="Boho Site Graph showing a synthetic two-hop structural neighborhood around a Provider Rescue page." width={1280} height={720} unoptimized />
                       </div>
-                      <figcaption>Synthetic website · Complete structural accounting · Not visitor behavior</figcaption>
+                      <figcaption>Synthetic website · Complete stored edges for this snapshot · Not visitor behavior</figcaption>
                     </figure>
                   </article>
                 </div>
 
                 <aside className="resources-analytics-terms" aria-label="Boho Analytics operating and service boundaries">
                   <div>
-                    <span>Operate it yourself</span>
-                    <strong>The software stays free whether or not you hire Boho.</strong>
-                    <p>Configure, self-host, modify, and use the MIT-licensed release independently. Hosting, provider charges, maintenance, upgrades, support, custom connectors, and recovery work are separate.</p>
+                    <span>Self-host it—or hand it off</span>
+                    <strong>Your copy of the current public release remains free to use.</strong>
+                    <p>You or another technical operator can configure, self-host, copy, and modify the public analytics and Site Graph core behind Boho&apos;s workflow. Hosting, provider accounts, maintenance, upgrades, support, custom connectors, and recovery work are separate.</p>
+                    <p>This release does not include a Boho-hosted analytics instance. It is designed for private loopback operation; remote access requires a secure tunnel or authenticated HTTPS proxy, and the built-in server should not be exposed directly to the public internet. Private mappings, credentials, schedules, client data, deployment configuration, reports, and internal integrations—including Boho&apos;s private MCP server—are not published.</p>
                   </div>
                   <div>
                     <span>Use it with Ongoing SEO</span>

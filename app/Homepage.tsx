@@ -303,6 +303,35 @@ export default function Homepage() {
                 </article>
               ))}
             </div>
+            <nav className={styles.capabilityGrid} aria-label="What Boho Digital Services does">
+              <Link className={styles.capabilityWebsite} href="/services/web-design-redesign/">
+                <span>Websites</span>
+                <strong>We design and build websites.</strong>
+                <small>From focused business sites to custom digital experiences.</small>
+              </Link>
+              <Link className={styles.capabilitySeo} href="/services/ongoing-seo/">
+                <span>Organic SEO</span>
+                <strong>We improve how customers find you.</strong>
+                <small>Ongoing implementation—not a report that substitutes for work.</small>
+              </Link>
+              <Link className={styles.capabilityDemos} href="/work/#demo-library">
+                <span>Demo library</span>
+                <strong>Tour website designs we built and own.</strong>
+                <small>Complete sites for fictional businesses, open for inspection.</small>
+              </Link>
+              <a
+                aria-label="Explore the free Boho Analytics software on Boho Digital Services (opens in a new tab)"
+                className={styles.capabilityAnalytics}
+                data-home-capability="analytics"
+                href="/resources/#analysis-dashboard"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <span>Free Boho software</span>
+                <strong>Use the analytics software we built for our own SEO work.</strong>
+                <small>The current release has a $0 MIT license and remains available whether or not you hire us. ↗</small>
+              </a>
+            </nav>
           </div>
         </section>
 
@@ -398,8 +427,8 @@ export default function Homepage() {
           <div className={styles.shell}>
             <header className={styles.sectionHeading}>
               <p className={styles.eyebrow}>EXPLORE THE DEMO LIBRARY</p>
-              <h2 id="demos-title">See what different website scopes can become.</h2>
-              <p>These fictional businesses demonstrate design and functionality. They are not client case studies or performance claims.</p>
+              <h2 id="demos-title">Tour websites designed and built by Boho.</h2>
+              <p>Every demo uses an original, Boho-owned site design and implementation created for the fictional business shown. They are complete demonstrations of design and functionality—not client case studies or performance claims.</p>
             </header>
             <div className={styles.demoGrid}>
               {featuredDemos.map((demo, index) => (

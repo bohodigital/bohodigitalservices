@@ -121,26 +121,49 @@ const analyticsPlotBuilderTour = "/resources/#boho-analytics-plot-builder";
 const siteGraphTour = "/resources/#boho-site-graph";
 
 type AnalyticsProductAdProps = {
+  context?: "overview" | "research" | "seo";
   headingId?: string;
   placement?: "homepage" | "service";
   sourcePage?: string;
 };
 
 export function AnalyticsProductAd({
+  context = "overview",
   headingId = "analytics-product-ad-title",
   placement = "service",
   sourcePage = "service-page",
 }: AnalyticsProductAdProps) {
+  const message = context === "seo"
+    ? {
+        kicker: "Built for this work",
+        title: "The in-house measurement system behind this SEO service.",
+        prompt: "Month one includes the approved, straightforward connections needed for the written scope.",
+        detail: "Boho Analytics keeps search, traffic, form, infrastructure, and website-structure evidence source-labeled in one view. Your copy of the current public release remains free to self-host if you later handle the measurement yourself.",
+      }
+    : context === "research"
+      ? {
+          kicker: "Boho-built evidence system",
+          title: "The analytics system behind Boho’s website and search research.",
+          prompt: "Want to handle the measurement side of organic SEO yourself?",
+          detail: "Self-host the public Boho Analytics release, or inspect how it keeps different evidence sources separate before recommendations are made.",
+        }
+      : {
+          kicker: "Built for Boho SEO",
+          title: "We built the analytics software we use for SEO. You can use it too—free.",
+          prompt: "Want to handle the measurement side of organic SEO yourself?",
+          detail: "Self-host the public Boho Analytics release, or inspect how it keeps different evidence sources separate before recommendations are made.",
+        };
+
   return <section
     className={`reset-section analytics-product-ad analytics-product-ad--${placement}`}
     aria-labelledby={headingId}
   >
     <div className="reset-shell analytics-product-ad__shell">
       <header className="analytics-product-ad__intro">
-        <p className="analytics-product-ad__kicker"><span>Free + open source</span><strong>MIT licensed</strong></p>
+        <p className="analytics-product-ad__kicker"><span>{message.kicker}</span><strong>Free + open source</strong></p>
         <p className="reset-eyebrow">Boho Analytics Platform + Site Graph</p>
-        <h2 id={headingId}>Your search, traffic, and form evidence—one honest view.</h2>
-        <p className="analytics-product-ad__lead">Boho Analytics brings the website records that usually live in separate tools into one source-labeled command center. Each source keeps its own name, coverage window, and limitations.</p>
+        <h2 id={headingId}>{message.title}</h2>
+        <p className="analytics-product-ad__lead"><strong>{message.prompt}</strong> {message.detail}</p>
         <ul className="analytics-product-ad__sources" aria-label="Supported evidence sources">
           <li>GA4</li>
           <li>Search Console</li>
@@ -150,6 +173,16 @@ export function AnalyticsProductAd({
         </ul>
         <p className="analytics-product-ad__principle">Search clicks are not sessions. Edge requests are not visitors.</p>
         <div className="analytics-product-ad__actions">
+          <a
+            data-analytics-destination-type="internal_tool_detail"
+            data-analytics-event="tools_project_click"
+            data-analytics-project-name="Boho Analytics Platform"
+            href="/resources/#analysis-dashboard"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Tour the free software <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span>
+          </a>
           <Link
             data-analytics-event="service_card_click"
             data-analytics-price-display="From $450/month"
@@ -158,18 +191,8 @@ export function AnalyticsProductAd({
             data-analytics-source-section="analytics-product-ad"
             href="/services/ongoing-seo/"
           >
-            See what comes with SEO <span aria-hidden="true">→</span>
+            See how Boho does ongoing SEO <span aria-hidden="true">→</span>
           </Link>
-          <a
-            data-analytics-destination-type="setup_documentation"
-            data-analytics-event="tools_project_click"
-            data-analytics-project-name="Boho Analytics Platform"
-            href={analyticsQuickStart}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Use it free from GitHub <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span>
-          </a>
         </div>
       </header>
 
@@ -264,17 +287,17 @@ export function AnalyticsProductAd({
           rel="noopener noreferrer"
           target="_blank"
         >
-          <span>No retainer · no lock-in</span>
-          <strong>The MIT-licensed software remains self-hostable and configurable whether or not you retain Boho for SEO.</strong>
+          <span>No Boho software lock-in</span>
+          <strong>The current MIT-licensed public release may be self-hosted, configured, copied, and modified whether or not you retain Boho for SEO.</strong>
           <b>Review the self-hosting boundaries ↗</b><span className="sr-only"> (opens in a new tab)</span>
         </a>
       </div>
 
-      <p className="analytics-product-ad__boundary"><strong>The software license costs $0.</strong> Hosting or provider charges, later support, and custom connectors are separate unless they are included in a written scope.</p>
+      <p className="analytics-product-ad__boundary"><strong>Free means a $0 software license.</strong> It does not mean free hosting, provider accounts, SEO labor, support, maintenance, or custom integrations. <a data-analytics-destination-type="setup_documentation" data-analytics-event="tools_project_click" data-analytics-project-name="Boho Analytics Platform" href={analyticsQuickStart} rel="noopener noreferrer" target="_blank">Open the blank-configuration quick start ↗<span className="sr-only"> (opens in a new tab)</span></a></p>
     </div>
   </section>;
 }
 
-export function AnalyticsPlatformSpotlight() {
-  return <AnalyticsProductAd />;
+export function AnalyticsPlatformSpotlight({ context = "research" }: { context?: "research" | "seo" }) {
+  return <AnalyticsProductAd context={context} />;
 }

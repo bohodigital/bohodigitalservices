@@ -351,6 +351,74 @@
   gap: 1rem;
 }
 
+.capabilityGrid {
+  display: grid;
+  margin: clamp(2.8rem, 5vw, 4.5rem) 0 0;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.capabilityGrid > a {
+  position: relative;
+  display: flex;
+  min-height: 11.5rem;
+  flex-direction: column;
+  gap: 0.65rem;
+  justify-content: flex-end;
+  padding: 1.15rem;
+  overflow: hidden;
+  border: 1px solid rgba(17, 18, 20, 0.2);
+  color: var(--front-ink);
+  box-shadow: 0.45rem 0.45rem 0 rgba(17, 18, 20, 0.08);
+  text-decoration: none;
+}
+
+.capabilityGrid > a::after {
+  position: absolute;
+  top: -2.2rem;
+  right: -2.2rem;
+  width: 6rem;
+  height: 6rem;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  opacity: 0.18;
+  content: "";
+}
+
+.capabilityGrid span {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-mono);
+  font-size: 0.61rem;
+  font-weight: 850;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.capabilityGrid strong {
+  position: relative;
+  z-index: 1;
+  max-width: 18ch;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.9vw, 1.9rem);
+  font-weight: 650;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+
+.capabilityGrid small {
+  position: relative;
+  z-index: 1;
+  color: rgba(17, 18, 20, 0.7);
+  font-size: 0.68rem;
+  line-height: 1.45;
+}
+
+.capabilityWebsite { grid-column: span 3; background: #f4d893; }
+.capabilitySeo { grid-column: span 3; background: #a8d7cd; }
+.capabilityDemos { grid-column: span 3; background: #dbb3d0; }
+.capabilityAnalytics { grid-column: span 3; background: #add5e4; }
+
 .situationGrid > article {
   min-width: 0;
 }
@@ -944,6 +1012,7 @@
 
 @media (hover: hover) {
   .situationCard,
+  .capabilityGrid > a,
   .offerCard,
   .demoGrid article > a,
   .guideList > a {
@@ -952,6 +1021,8 @@
 
   .situationCard:hover,
   .situationCard:focus-visible,
+  .capabilityGrid > a:hover,
+  .capabilityGrid > a:focus-visible,
   .offerCard:hover,
   .offerCard:focus-visible,
   .demoGrid article > a:hover,
@@ -988,6 +1059,11 @@
   .situationCard1 { grid-column: 1 / -1; grid-row: auto; min-height: 26rem; }
   .situationCard2,
   .situationCard3 { grid-column: span 6; }
+
+  .capabilityWebsite,
+  .capabilitySeo,
+  .capabilityDemos,
+  .capabilityAnalytics { grid-column: span 6; }
 
   .systemMap { max-width: 44rem; }
   .decisionStep1,
@@ -1061,6 +1137,10 @@
   .situationCard1,
   .situationCard2,
   .situationCard3,
+  .capabilityWebsite,
+  .capabilitySeo,
+  .capabilityDemos,
+  .capabilityAnalytics,
   .decisionStep1,
   .decisionStep2,
   .decisionStep3,
@@ -1075,6 +1155,7 @@
   }
 
   .situationCard { min-height: 21rem; }
+  .capabilityGrid > a { min-height: 9.5rem; }
   .decisionPath li { min-height: 18rem; }
 
   .systemMapGrid > div { grid-column: span 6; min-height: 5.2rem; }
@@ -1098,6 +1179,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .situationCard,
+  .capabilityGrid > a,
   .offerCard,
   .demoGrid article > a,
   .guideList > a,
@@ -1117,6 +1199,7 @@
 
   .controlFile,
   .situationCard,
+  .capabilityGrid > a,
   .systemMap,
   .decisionPath li,
   .offerCard,
