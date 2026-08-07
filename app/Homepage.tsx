@@ -283,14 +283,22 @@ export default function Homepage() {
             <div className={styles.situationGrid}>
               {situations.map((situation, index) => (
                 <article
-                  className={`${styles.situationCard} ${styles[situation.tone]} ${styles[`situationCard${index + 1}`]}`}
+                  className={styles[`situationCard${index + 1}`]}
                   key={situation.href}
                 >
-                  <p className={styles.cardEyebrow}>{situation.eyebrow}</p>
-                  <h3>{situation.title}</h3>
-                  <p>{situation.body}</p>
-                  <strong>{situation.label}</strong>
-                  <a href={situation.href}>{situation.link} <span aria-hidden="true">→</span></a>
+                  <Link
+                    aria-label={`${situation.title}: ${situation.link}`}
+                    className={`${styles.situationCard} ${styles[situation.tone]}`}
+                    href={situation.href}
+                  >
+                    <p className={styles.cardEyebrow}>{situation.eyebrow}</p>
+                    <h3>{situation.title}</h3>
+                    <p>{situation.body}</p>
+                    <strong>{situation.label}</strong>
+                    <span className={styles.cardAction}>
+                      {situation.link} <span aria-hidden="true">→</span>
+                    </span>
+                  </Link>
                 </article>
               ))}
             </div>
@@ -354,13 +362,21 @@ export default function Homepage() {
             <div className={styles.offerLadder}>
               {offerLadder.map((offer, index) => (
                 <article className={styles[`offerCard${index + 1}`]} key={offer.label}>
-                  <span>{offer.step}</span>
-                  <div>
-                    <p className={styles.cardEyebrow}>{offer.label}</p>
-                    <h3>{offer.price}</h3>
-                    <p>{offer.body}</p>
-                  </div>
-                  <a href={offer.href}>{offer.cta} <span aria-hidden="true">→</span></a>
+                  <Link
+                    aria-label={`${offer.label}: ${offer.price}. ${offer.cta}`}
+                    className={styles.offerCard}
+                    href={offer.href}
+                  >
+                    <span>{offer.step}</span>
+                    <div>
+                      <p className={styles.cardEyebrow}>{offer.label}</p>
+                      <h3>{offer.price}</h3>
+                      <p>{offer.body}</p>
+                    </div>
+                    <span className={styles.cardAction}>
+                      {offer.cta} <span aria-hidden="true">→</span>
+                    </span>
+                  </Link>
                 </article>
               ))}
             </div>

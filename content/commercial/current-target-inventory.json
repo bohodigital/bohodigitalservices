@@ -5,12 +5,12 @@
   "sources": [
     {
       "path": "app/Homepage.tsx",
-      "sha256": "2f659f9e56034c65e93b9d8e4f7dbe91b146724d010188c3d059dfeec0453d2e",
-      "bytes": 18647,
+      "sha256": "8733894f8ac442712a45a909d2fc8d159fc7fa33de57722f2e649bb4327cd167",
+      "bytes": 19242,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 77,
+      "publicStringCount": 78,
       "importCount": 4,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
@@ -1444,14 +1444,14 @@
     "reachable": 63,
     "authored": 74,
     "generatedMirrors": 1,
-    "publicStringsOnDemand": 13305,
+    "publicStringsOnDemand": 13306,
     "analyticsClaimContexts": 45
   },
   "fullDetail": {
     "committed": false,
     "generationCommand": "node scripts/commercial-copy-build.mjs --check --inventory-detail <path>",
-    "recordCount": 13305,
-    "deterministicDigest": "b0e3718c2b15aeace30fbaaedb071609bcef3f5f9421a20f002ca1b2c7548444"
+    "recordCount": 13306,
+    "deterministicDigest": "a38d852c80368bd8e18947710dd7b1e0fb07ef36887544f83c83edad7320c3a9"
   },
   "securityScan": {
     "privateKeyMarkers": 0,

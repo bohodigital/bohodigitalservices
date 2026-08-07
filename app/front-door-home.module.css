@@ -351,16 +351,23 @@
   gap: 1rem;
 }
 
+.situationGrid > article {
+  min-width: 0;
+}
+
 .situationCard {
   position: relative;
   display: flex;
+  height: 100%;
   min-height: 19rem;
   flex-direction: column;
   align-items: flex-start;
   padding: clamp(1.6rem, 3.2vw, 2.8rem);
   overflow: hidden;
   border: 1px solid rgba(17, 18, 20, 0.18);
+  color: inherit;
   box-shadow: 0.8rem 0.8rem 0 rgba(17, 18, 20, 0.08);
+  text-decoration: none;
 }
 
 .situationCard::after {
@@ -399,7 +406,7 @@
   text-transform: uppercase;
 }
 
-.situationCard > a {
+.situationCard > .cardAction {
   display: inline-flex;
   min-height: 2.7rem;
   align-items: center;
@@ -407,6 +414,7 @@
   margin-top: 0.7rem;
   font-size: 0.82rem;
   font-weight: 850;
+  text-decoration: underline;
   text-underline-offset: 0.25rem;
 }
 
@@ -619,17 +627,24 @@
 }
 
 .offerLadder article {
+  min-width: 0;
+}
+
+.offerCard {
   position: relative;
   display: grid;
+  height: 100%;
   min-width: 0;
   padding: clamp(1.5rem, 3vw, 2.5rem);
   overflow: hidden;
   grid-template-rows: auto 1fr auto;
   border: 1px solid var(--front-line);
+  color: inherit;
   box-shadow: 0.75rem 0.75rem 0 rgba(17, 18, 20, 0.09);
+  text-decoration: none;
 }
 
-.offerLadder article::after {
+.offerCard::after {
   position: absolute;
   top: -2.6rem;
   right: -2rem;
@@ -641,7 +656,7 @@
   content: "";
 }
 
-.offerLadder article > span {
+.offerCard > span:first-child {
   width: fit-content;
   padding: 0.3rem 0.45rem;
   border: 1px solid currentColor;
@@ -650,7 +665,7 @@
   font-weight: 850;
 }
 
-.offerLadder article > div {
+.offerCard > div {
   position: relative;
   z-index: 1;
   align-self: end;
@@ -661,13 +676,14 @@
 .offerLadder h3 { margin-bottom: 0.8rem; font-size: clamp(2rem, 3.2vw, 3.4rem); }
 .offerLadder div > p:last-child { max-width: 36rem; margin-bottom: 0; font-size: 0.86rem; }
 
-.offerLadder article > a {
+.offerCard > .cardAction {
   position: relative;
   z-index: 1;
   width: fit-content;
   margin-top: 1.25rem;
   font-size: 0.78rem;
   font-weight: 850;
+  text-decoration: underline;
   text-underline-offset: 0.25rem;
 }
 
@@ -928,16 +944,16 @@
 
 @media (hover: hover) {
   .situationCard,
-  .offerLadder article,
+  .offerCard,
   .demoGrid article > a,
   .guideList > a {
     transition: transform 180ms ease, box-shadow 180ms ease;
   }
 
   .situationCard:hover,
-  .situationCard:focus-within,
-  .offerLadder article:hover,
-  .offerLadder article:focus-within,
+  .situationCard:focus-visible,
+  .offerCard:hover,
+  .offerCard:focus-visible,
   .demoGrid article > a:hover,
   .demoGrid article > a:focus-visible,
   .guideList > a:hover,
@@ -1082,7 +1098,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .situationCard,
-  .offerLadder article,
+  .offerCard,
   .demoGrid article > a,
   .guideList > a,
   .trustGrid li {
@@ -1103,7 +1119,7 @@
   .situationCard,
   .systemMap,
   .decisionPath li,
-  .offerLadder article,
+  .offerCard,
   .demoGrid article > a,
   .guideList > a,
   .trustGrid li {
