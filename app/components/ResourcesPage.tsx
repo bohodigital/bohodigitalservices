@@ -88,6 +88,11 @@ const decisionRoutes = [
   },
 ];
 
+const analyticsRepository = "https://github.com/bohodigital/boho-analytics-platform";
+const analyticsQuickStart = `${analyticsRepository}#quick-start-with-a-blank-configuration`;
+const analyticsProviderDocs = `${analyticsRepository}/blob/main/docs/providers.md`;
+const siteGraphDocs = `${analyticsRepository}/blob/main/docs/site-graph/engine.md`;
+
 export function ResourcesPage() {
   const seenTerms = new Set<string>();
   const define = (text: string) => <DefinedText autoDefine seenTerms={seenTerms} text={text} />;
@@ -115,6 +120,9 @@ export function ResourcesPage() {
             anchors={[
               { label: "Resource collections", href: "#resource-collections" },
               { label: "Open-source analytics", href: "#analysis-dashboard" },
+              { label: "Command center", href: "#boho-analytics-command-center" },
+              { label: "Plot Builder", href: "#boho-analytics-plot-builder" },
+              { label: "Site Graph", href: "#boho-site-graph" },
               { label: "Provider rescue checklist", href: "#provider-rescue-checklist" },
               { label: "Choose by decision", href: "#choose-by-decision" },
               { label: "Boho report standard", href: "#report-standard" },
@@ -152,50 +160,118 @@ export function ResourcesPage() {
               </div>
             </section>
 
-            <section className="resources-decisions" id="analysis-dashboard" aria-labelledby="analysis-dashboard-title">
-              <div className="section-shell resources-decisions__layout">
-                <header className="resources-heading">
-                  <p className="eyebrow">Free + open source</p>
-                  <h2 id="analysis-dashboard-title">One command center for the useful signals. No software lock-in.</h2>
-                  <p>{define("Boho Analytics brings approved GA4, Google Search Console, self-hosted Umami, Cloudflare, and form-delivery evidence into one locally owned, source-labeled view while keeping unlike measurements distinct.")}</p>
-                </header>
-                <div className="resources-analytics-feature">
-                  <figure>
-                    <div className="resources-analytics-feature__browser">
-                      <span aria-hidden="true"><i /><i /><i /><b>Boho Analytics Platform</b></span>
-                      <Image src="/proof/tools/boho-analytics-demo-command-center-20260806.webp" alt="Boho Analytics Platform growth command center showing clearly labeled demo data, complete report coverage, and source-specific comparison cards for Search Console, Umami, and durable form leads." width={1280} height={720} unoptimized />
-                    </div>
-                    <figcaption>Synthetic demo data · Public open-source software · No client data</figcaption>
-                  </figure>
-                  <div className="resources-decision-list">
-                    <a href="https://github.com/bohodigital/boho-analytics-platform" rel="noopener noreferrer" target="_blank">
-                      <span className="resource-icon" aria-hidden="true"><BarChart3 size={22} strokeWidth={1.9} /></span>
-                      <span>
-                        <strong>Boho Analytics Platform · MIT licensed</strong>
-                        <small>Clone it, self-host it, and keep using it with your own provider accounts whether or not you retain Boho. There is no software license fee, and use is not tied to a paid dashboard login.</small>
-                      </span>
-                      <ArrowRight aria-hidden="true" size={17} />
-                      <span className="sr-only"> (opens in a new tab)</span>
+            <section className="resources-analytics-tour" id="analysis-dashboard" aria-labelledby="analysis-dashboard-title">
+              <div className="section-shell">
+                <header className="resources-analytics-tour__hero">
+                  <p className="eyebrow eyebrow--on-dark">Free + open source · Public release v0.2.0</p>
+                  <h2 id="analysis-dashboard-title">Put the useful website evidence in one place—without pretending it all means the same thing.</h2>
+                  <p>{define("Boho Analytics brings approved GA4, Google Search Console, self-hosted Umami, Cloudflare, and form-monitoring aggregates into one private, source-labeled command center. Site Graph adds revision-pinned pages and internal links from the same public MIT-licensed repository.")}</p>
+                  <ul className="resources-analytics-tour__badges" aria-label="Product characteristics">
+                    <li>$0 MIT software license</li>
+                    <li>Self-hosted</li>
+                    <li>Python 3.11+ and SQLite</li>
+                    <li>No paid dashboard login</li>
+                  </ul>
+                  <div className="resources-analytics-tour__actions">
+                    <a data-analytics-destination-type="setup_documentation" data-analytics-event="tools_project_click" data-analytics-project-name="Boho Analytics Platform" href={analyticsQuickStart} rel="noopener noreferrer" target="_blank">
+                      Use it free from GitHub <ArrowRight aria-hidden="true" size={17} /><span className="sr-only"> (opens in a new tab)</span>
                     </a>
-                    <Link href="/services/ongoing-seo/">
-                      <span className="resource-icon" aria-hidden="true"><MousePointerClick size={22} strokeWidth={1.9} /></span>
-                      <span>
-                        <strong>Month-one setup is included with Ongoing SEO</strong>
-                        <small>For one straightforward website, the first month includes connecting the approved GA4, Search Console, and forms evidence used for the work, plus configuring and connecting one self-hosted Umami instance. Nonstandard tracking repair, consent implementation, ecommerce event design, historical reconstruction, unsupported integrations, and third-party infrastructure costs require separate approval.</small>
-                      </span>
-                      <ArrowRight aria-hidden="true" size={17} />
-                    </Link>
-                    <a href="https://github.com/bohodigital/boho-analytics-platform/blob/main/docs/site-graph/engine.md" rel="noopener noreferrer" target="_blank">
-                      <span className="resource-icon" aria-hidden="true"><PanelsTopLeft size={22} strokeWidth={1.9} /></span>
-                      <span>
-                        <strong>Site Graph · Structural evidence</strong>
-                        <small>Map revision-pinned pages and internal-link layers, inspect two-hop neighborhoods, and find goal distance, orphaned pages, dead ends, and shell dependence. It describes site structure—not visits, attention, conversion, or search rankings.</small>
-                      </span>
-                      <ArrowRight aria-hidden="true" size={17} />
-                      <span className="sr-only"> (opens in a new tab)</span>
-                    </a>
+                    <Link href="/services/ongoing-seo/">See what comes with SEO <ArrowRight aria-hidden="true" size={17} /></Link>
+                    <Link href="/">Back to the Boho homepage</Link>
                   </div>
+                </header>
+
+                <div className="resources-analytics-sources" aria-label="Evidence sources kept distinct by Boho Analytics">
+                  <article><strong>Search Console</strong><span>Impressions, clicks, click-through rate, and average position</span></article>
+                  <article><strong>GA4</strong><span>Acquisition, engagement, and configured key events</span></article>
+                  <article><strong>Self-hosted Umami</strong><span>Visits, sessions, pages, and privacy-focused usage evidence</span></article>
+                  <article><strong>Cloudflare + forms</strong><span>Edge traffic plus durable acceptance and delivery status</span></article>
                 </div>
+
+                <div className="resources-product-tours">
+                  <article className="resources-product-tour resources-product-tour--command" id="boho-analytics-command-center">
+                    <div className="resources-product-tour__copy">
+                      <p className="eyebrow">Source-labeled overview</p>
+                      <h3>Compare the signals without erasing where they came from.</h3>
+                      <p>The command center keeps each source’s exact reporting window, previous-period comparison, coverage, freshness, and data health visible. A failed provider sync does not silently erase the other evidence or turn missing data into a zero.</p>
+                      <ul>
+                        <li>Review search, traffic, infrastructure, and form evidence together.</li>
+                        <li>See freshness and coverage before interpreting a number.</li>
+                        <li>Keep provider-specific meanings intact instead of inventing one blended score.</li>
+                      </ul>
+                      <p className="resources-product-tour__boundary"><strong>Important:</strong> search clicks are not sessions, and edge requests are not visitors.</p>
+                      <a href={analyticsRepository} rel="noopener noreferrer" target="_blank">Inspect the public source <ArrowRight aria-hidden="true" size={16} /><span className="sr-only"> (opens in a new tab)</span></a>
+                    </div>
+                    <figure>
+                      <div className="resources-analytics-feature__browser">
+                        <span aria-hidden="true"><i /><i /><i /><b>Growth command center</b></span>
+                        <Image src="/proof/tools/boho-analytics-demo-command-center-20260806.webp" alt="Boho Analytics Platform growth command center showing clearly labeled synthetic demo data, complete report coverage, and source-specific comparison cards for Search Console, Umami, and durable form leads." width={1280} height={720} unoptimized />
+                      </div>
+                      <figcaption>Synthetic demonstration · No client data · Every metric keeps its source label</figcaption>
+                    </figure>
+                  </article>
+
+                  <article className="resources-product-tour resources-product-tour--plot" id="boho-analytics-plot-builder">
+                    <div className="resources-product-tour__copy">
+                      <p className="eyebrow">Answer a specific question</p>
+                      <h3>Build the chart the decision actually requires.</h3>
+                      <p>Plot Builder lets an operator choose a stored source, metric, website, reporting window, chart form, and previous-period comparison. The same bounded evidence can be exported as JSON or CSV for further review.</p>
+                      <ul>
+                        <li>Choose line, area, or bar views without changing the underlying source.</li>
+                        <li>Compare a period without hiding the dates being compared.</li>
+                        <li>Export the normalized evidence instead of trapping it in the interface.</li>
+                      </ul>
+                      <p className="resources-product-tour__boundary"><strong>Read-only by design:</strong> the browser reads normalized local aggregates; it does not contact providers or trigger a sync.</p>
+                      <a href={analyticsProviderDocs} rel="noopener noreferrer" target="_blank">Read the provider setup notes <ArrowRight aria-hidden="true" size={16} /><span className="sr-only"> (opens in a new tab)</span></a>
+                    </div>
+                    <figure>
+                      <div className="resources-analytics-feature__browser">
+                        <span aria-hidden="true"><i /><i /><i /><b>Source-specific Plot Builder</b></span>
+                        <Image src="/proof/tools/boho-analytics-demo-plot-builder-20260806.webp" alt="Boho Analytics Platform Plot Builder showing synthetic Search Console click data, source controls, and a previous-period comparison." width={1280} height={720} unoptimized />
+                      </div>
+                      <figcaption>Synthetic Search Console demonstration · No client data · Stored local aggregates</figcaption>
+                    </figure>
+                  </article>
+
+                  <article className="resources-product-tour resources-product-tour--graph" id="boho-site-graph">
+                    <div className="resources-product-tour__copy">
+                      <p className="eyebrow">Revision-pinned structural evidence</p>
+                      <h3>See where pages lead—and where the site structure runs out of road.</h3>
+                      <p>Site Graph maps a specific revision’s pages and internal-link layers: contextual, related, action, menu, breadcrumb, and utility. It can inspect two-hop neighborhoods, goal distance, orphans, dead ends, unresolved targets, and dependence on the shared site shell.</p>
+                      <ul>
+                        <li>Pin the evidence to a known website revision.</li>
+                        <li>Separate navigation layers instead of treating every link as equivalent.</li>
+                        <li>Use bounded maps for legibility while retaining complete tables and exports.</li>
+                      </ul>
+                      <p className="resources-product-tour__boundary"><strong>Structural only:</strong> Site Graph does not establish visitor behavior, conversions, search authority, or rankings.</p>
+                      <a href={siteGraphDocs} rel="noopener noreferrer" target="_blank">Read the engine documentation <ArrowRight aria-hidden="true" size={16} /><span className="sr-only"> (opens in a new tab)</span></a>
+                    </div>
+                    <figure className="resources-product-tour__graph-figure">
+                      <div className="resources-analytics-feature__browser">
+                        <span aria-hidden="true"><i /><i /><i /><b>Site Graph overview</b></span>
+                        <Image src="/proof/tools/boho-site-graph-demo-overview-20260806.webp" alt="Boho Site Graph overview showing a synthetic demo website, internal-link evidence, graph controls, and a structural-evidence disclaimer." width={1280} height={720} unoptimized />
+                      </div>
+                      <div className="resources-product-tour__graph-detail">
+                        <Image src="/proof/tools/boho-site-graph-demo-provider-rescue-20260806.webp" alt="Boho Site Graph showing a synthetic two-hop structural neighborhood around a Provider Rescue page." width={1280} height={720} unoptimized />
+                      </div>
+                      <figcaption>Synthetic website · Complete structural accounting · Not visitor behavior</figcaption>
+                    </figure>
+                  </article>
+                </div>
+
+                <aside className="resources-analytics-terms" aria-label="Boho Analytics operating and service boundaries">
+                  <div>
+                    <span>Operate it yourself</span>
+                    <strong>The software stays free whether or not you hire Boho.</strong>
+                    <p>Configure, self-host, modify, and use the MIT-licensed release independently. Hosting, provider charges, maintenance, upgrades, support, custom connectors, and recovery work are separate.</p>
+                  </div>
+                  <div>
+                    <span>Use it with Ongoing SEO</span>
+                    <strong>Approved, straightforward connections are part of month one.</strong>
+                    <p>For the written SEO scope, Boho configures the approved GA4, Search Console, forms evidence, and one compatible self-hosted Umami instance already needed for the work. Nonstandard repair and unsupported integrations require separate approval.</p>
+                    <Link href="/services/ongoing-seo/">Review the SEO scope <ArrowRight aria-hidden="true" size={16} /></Link>
+                  </div>
+                </aside>
               </div>
             </section>
 

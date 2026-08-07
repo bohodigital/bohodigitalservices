@@ -146,13 +146,63 @@ test("current analytics product evidence is public, open source, and unmistakabl
   }
 });
 
-test("homepage product mosaic links every raised product tile to its referenced destination", async () => {
+test("homepage product mosaic opens internal product tours in new tabs before outbound documentation", async () => {
   const html = await render("/");
-  assert.match(html, /class="analytics-product-ad__visual analytics-product-ad__visual--command"[^>]*href="https:\/\/github\.com\/bohodigital\/boho-analytics-platform"/);
-  assert.match(html, /class="analytics-product-ad__visual analytics-product-ad__visual--plot"[^>]*href="https:\/\/github\.com\/bohodigital\/boho-analytics-platform\/blob\/main\/docs\/providers\.md"/);
-  assert.match(html, /class="analytics-product-ad__visual analytics-product-ad__visual--graph"[^>]*href="https:\/\/github\.com\/bohodigital\/boho-analytics-platform\/blob\/main\/docs\/site-graph\/engine\.md"/);
+  for (const [modifier, href] of [
+    ["command", "/resources/#boho-analytics-command-center"],
+    ["plot", "/resources/#boho-analytics-plot-builder"],
+    ["graph", "/resources/#boho-site-graph"],
+  ]) {
+    const card = html.match(new RegExp(`<a[^>]*class="analytics-product-ad__visual analytics-product-ad__visual--${modifier}"[^>]*>`))?.[0];
+    assert.ok(card, `homepage lacks the ${modifier} product preview`);
+    assert.ok(card.includes(`href="${href}"`), `${modifier} preview bypasses its internal product tour`);
+    assert.ok(card.includes('target="_blank"'), `${modifier} preview does not preserve the homepage tab`);
+    assert.ok(card.includes('rel="noopener noreferrer"'), `${modifier} preview lacks safe new-tab behavior`);
+    assert.ok(card.includes('data-analytics-destination-type="internal_tool_detail"'));
+  }
   assert.match(html, /class="analytics-product-ad__term analytics-product-ad__term--seo"[^>]*href="\/services\/ongoing-seo\/"/);
-  assert.match(html, /class="analytics-product-ad__term analytics-product-ad__term--open"[^>]*href="https:\/\/github\.com\/bohodigital\/boho-analytics-platform#quick-start-with-a-blank-configuration"/);
+  assert.match(html, /class="analytics-product-ad__term analytics-product-ad__term--open"[^>]*href="\/resources\/#analysis-dashboard"[^>]*target="_blank"/);
+  assert.match(html, /href="https:\/\/github\.com\/bohodigital\/boho-analytics-platform#quick-start-with-a-blank-configuration"[^>]*target="_blank"/);
+});
+
+test("resources provides complete internal landing sections and keeps deliberate source links outbound", async () => {
+  const html = await render("/resources/");
+  for (const id of ["analysis-dashboard", "boho-analytics-command-center", "boho-analytics-plot-builder", "boho-site-graph"]) {
+    assert.match(html, new RegExp(`id="${id}"`), `resources lacks #${id}`);
+  }
+  for (const phrase of [
+    "Compare the signals without erasing where they came from.",
+    "Build the chart the decision actually requires.",
+    "See where pages lead—and where the site structure runs out of road.",
+    "The software stays free whether or not you hire Boho.",
+  ]) assert.ok(html.includes(phrase), `resources tour lacks: ${phrase}`);
+  assert.match(html, /href="https:\/\/github\.com\/bohodigital\/boho-analytics-platform"[^>]*target="_blank"/);
+  assert.match(html, /href="https:\/\/github\.com\/bohodigital\/boho-analytics-platform\/blob\/main\/docs\/providers\.md"[^>]*target="_blank"/);
+  assert.match(html, /href="https:\/\/github\.com\/bohodigital\/boho-analytics-platform\/blob\/main\/docs\/site-graph\/engine\.md"[^>]*target="_blank"/);
+});
+
+test("software showcase previews stay on Boho product profiles before linking to repositories", async () => {
+  const [research, custom, tools, work] = await Promise.all([
+    render("/services/research-audits-strategy/"),
+    render("/services/custom-digital-solutions/"),
+    render("/tools/"),
+    render("/work/"),
+  ]);
+
+  for (const html of [research, custom]) {
+    for (const href of [
+      "/resources/#boho-analytics-command-center",
+      "/resources/#boho-analytics-plot-builder",
+      "/resources/#boho-site-graph",
+    ]) assert.match(html, new RegExp(`class="service-showcase__card-link" href="${href}"[^>]*target="_blank"`));
+    assert.doesNotMatch(html, /class="service-showcase__card-link" href="https:\/\/github\.com\/bohodigital\//);
+  }
+  assert.match(custom, /class="service-showcase__card-link" href="\/tools\/#secret-broker"[^>]*target="_blank"/);
+  assert.match(custom, /class="service-showcase__card-link" href="\/tools\/#bsuite-mcp-monitor"[^>]*target="_blank"/);
+
+  for (const id of ["secret-broker", "bsuite-mcp-monitor"]) assert.match(tools, new RegExp(`id="${id}"`));
+  assert.match(work, /class="reset-work-tool-card__link"[^>]*href="\/resources\/#analysis-dashboard"[^>]*target="_blank"/);
+  assert.doesNotMatch(work, /class="reset-work-tool-card__link"[^>]*href="https:\/\/github\.com\/bohodigital\//);
 });
 
 test("website service page presents the demo library and links every planning tier to a live demo", async () => {

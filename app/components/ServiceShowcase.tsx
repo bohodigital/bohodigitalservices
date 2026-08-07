@@ -11,8 +11,23 @@ type ShowcaseDestination = {
   href: string;
 };
 
+const internalToolTours = new Map<string, { action: string; name: string }>([
+  ["/resources/#boho-analytics-command-center", { action: "Explore the command center", name: "Boho Analytics command center" }],
+  ["/resources/#boho-analytics-plot-builder", { action: "Explore Plot Builder", name: "Boho Analytics Plot Builder" }],
+  ["/resources/#boho-site-graph", { action: "Explore Site Graph", name: "Boho Site Graph" }],
+]);
+
 function verifiedShowcaseDestination(asset: ServiceShowcaseAsset): ShowcaseDestination | undefined {
   if (asset.href) {
+    const internalToolTour = internalToolTours.get(asset.href);
+    if (internalToolTour) {
+      return {
+        action: internalToolTour.action,
+        accessibleLabel: `Explore the ${internalToolTour.name} on Boho Digital Services in a new tab`,
+        href: asset.href,
+      };
+    }
+
     return {
       action: "Tour the demo",
       accessibleLabel: `Open the ${asset.caption} demo in a new tab`,
@@ -44,9 +59,9 @@ function verifiedShowcaseDestination(asset: ServiceShowcaseAsset): ShowcaseDesti
   ));
   if (tool) {
     return {
-      action: "Inspect the repository",
-      accessibleLabel: `Open the ${tool.displayName} public repository in a new tab`,
-      href: tool.repositoryUrl,
+      action: "Explore the tool",
+      accessibleLabel: `Explore the ${tool.displayName} profile on Boho Digital Services in a new tab`,
+      href: tool.profileHref,
     };
   }
 
@@ -101,8 +116,9 @@ function ShowcaseFigure({ asset, featured = false }: { asset: ServiceShowcaseAss
 
 const analyticsRepository = "https://github.com/bohodigital/boho-analytics-platform";
 const analyticsQuickStart = `${analyticsRepository}#quick-start-with-a-blank-configuration`;
-const analyticsProviderDocs = `${analyticsRepository}/blob/main/docs/providers.md`;
-const siteGraphDocs = `${analyticsRepository}/blob/main/docs/site-graph/engine.md`;
+const analyticsCommandCenterTour = "/resources/#boho-analytics-command-center";
+const analyticsPlotBuilderTour = "/resources/#boho-analytics-plot-builder";
+const siteGraphTour = "/resources/#boho-site-graph";
 
 type AnalyticsProductAdProps = {
   headingId?: string;
@@ -159,12 +175,12 @@ export function AnalyticsProductAd({
 
       <div className="analytics-product-ad__mosaic" aria-label="Boho Analytics demo views">
         <a
-          aria-label="Inspect the Boho Analytics Platform public repository (opens in a new tab)"
+          aria-label="Explore the Boho Analytics command center on Boho Digital Services (opens in a new tab)"
           className="analytics-product-ad__visual analytics-product-ad__visual--command"
-          data-analytics-destination-type="public_repository"
+          data-analytics-destination-type="internal_tool_detail"
           data-analytics-event="tools_project_click"
           data-analytics-project-name="Boho Analytics Platform"
-          href={analyticsRepository}
+          href={analyticsCommandCenterTour}
           rel="noopener noreferrer"
           target="_blank"
         >
@@ -177,16 +193,16 @@ export function AnalyticsProductAd({
             unoptimized
             width={1280}
           />
-          <span className="analytics-product-ad__caption"><small>One operational view</small><strong>Command center</strong><b>Inspect the public source ↗</b></span>
+          <span className="analytics-product-ad__caption"><small>One operational view</small><strong>Command center</strong><b>Explore the command center ↗</b></span>
         </a>
 
         <a
-          aria-label="Read the Boho Analytics provider documentation (opens in a new tab)"
+          aria-label="Explore Boho Analytics Plot Builder on Boho Digital Services (opens in a new tab)"
           className="analytics-product-ad__visual analytics-product-ad__visual--plot"
-          data-analytics-destination-type="setup_documentation"
+          data-analytics-destination-type="internal_tool_detail"
           data-analytics-event="tools_project_click"
           data-analytics-project-name="Boho Analytics Platform"
-          href={analyticsProviderDocs}
+          href={analyticsPlotBuilderTour}
           rel="noopener noreferrer"
           target="_blank"
         >
@@ -199,16 +215,16 @@ export function AnalyticsProductAd({
             unoptimized
             width={1280}
           />
-          <span className="analytics-product-ad__caption"><small>Compare without blending</small><strong>Plot builder</strong><b>Read the provider docs ↗</b></span>
+          <span className="analytics-product-ad__caption"><small>Compare without blending</small><strong>Plot builder</strong><b>Explore Plot Builder ↗</b></span>
         </a>
 
         <a
-          aria-label="Read the Boho Site Graph engine documentation (opens in a new tab)"
+          aria-label="Explore Boho Site Graph on Boho Digital Services (opens in a new tab)"
           className="analytics-product-ad__visual analytics-product-ad__visual--graph"
-          data-analytics-destination-type="site_graph_documentation"
+          data-analytics-destination-type="internal_tool_detail"
           data-analytics-event="tools_project_click"
           data-analytics-project-name="Boho Site Graph"
-          href={siteGraphDocs}
+          href={siteGraphTour}
           rel="noopener noreferrer"
           target="_blank"
         >
@@ -221,7 +237,7 @@ export function AnalyticsProductAd({
             unoptimized
             width={1280}
           />
-          <span className="analytics-product-ad__caption"><small>Structure, not visitor behavior</small><strong>Site Graph</strong><b>Read the engine docs ↗</b></span>
+          <span className="analytics-product-ad__caption"><small>Structure, not visitor behavior</small><strong>Site Graph</strong><b>Explore Site Graph ↗</b></span>
         </a>
       </div>
 
@@ -241,16 +257,16 @@ export function AnalyticsProductAd({
         </Link>
         <a
           className="analytics-product-ad__term analytics-product-ad__term--open"
-          data-analytics-destination-type="setup_documentation"
+          data-analytics-destination-type="internal_tool_detail"
           data-analytics-event="tools_project_click"
           data-analytics-project-name="Boho Analytics Platform"
-          href={analyticsQuickStart}
+          href="/resources/#analysis-dashboard"
           rel="noopener noreferrer"
           target="_blank"
         >
           <span>No retainer · no lock-in</span>
           <strong>The MIT-licensed software remains self-hostable and configurable whether or not you retain Boho for SEO.</strong>
-          <b>Open the setup guide ↗</b><span className="sr-only"> (opens in a new tab)</span>
+          <b>Review the self-hosting boundaries ↗</b><span className="sr-only"> (opens in a new tab)</span>
         </a>
       </div>
 

@@ -204,7 +204,7 @@ export function ToolsPage() {
                 </header>
                 <div className="selected-tool-grid">
                   {selectedTools.map((tool, index) => (
-                    <article className="selected-tool-card" data-selected-tool-id={tool.id} key={tool.id}>
+                    <article className="selected-tool-card" data-selected-tool-id={tool.id} id={tool.id} key={tool.id}>
                       <figure
                         className="selected-tool-card__media"
                         data-evidence-type={tool.image.evidenceType}

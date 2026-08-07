@@ -196,19 +196,19 @@ export function WorkPage() {
               {selectedTools.map((tool) => (
                 <article className="reset-service-card" key={tool.id}>
                   <a
-                    aria-label={`View the ${tool.displayName} public repository (opens in a new tab)`}
+                    aria-label={`Explore the ${tool.displayName} profile on Boho Digital Services (opens in a new tab)`}
                     className="reset-work-tool-card__link"
-                    data-analytics-destination-type="public_repository"
+                    data-analytics-destination-type="internal_tool_detail"
                     data-analytics-event="tools_project_click"
                     data-analytics-project-name={tool.displayName}
-                    href={tool.repositoryUrl}
+                    href={tool.profileHref}
                     rel="noopener noreferrer"
                     target="_blank"
                   >
                     <img alt={tool.image.alt} height={tool.image.height} loading="lazy" src={tool.image.src} width={tool.image.width} />
                     <h3>{tool.displayName}</h3>
                     <p>{tool.shortPublicSummary}</p>
-                    <span className="reset-card-action">View public repository <span aria-hidden="true">↗</span></span>
+                    <span className="reset-card-action">Explore the tool <span aria-hidden="true">↗</span></span>
                   </a>
                 </article>
               ))}

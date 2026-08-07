@@ -73,6 +73,7 @@ export type SelectedToolProfile = {
   displayName: string;
   shortPublicSummary: string;
   publicMemo: string;
+  profileHref: `/${string}`;
   problemAddressed?: string;
   bohoRole?: "built" | "integrated" | "extended" | "automated" | "operated" | "adapted";
   systemFamily?: SystemFamilyId;
@@ -109,6 +110,7 @@ export const selectedTools: ReadonlyArray<SelectedToolProfile> = [
     publicAvailability: "Public GitHub repository",
     openSourceStatus: "MIT licensed",
     repositoryUrl: "https://github.com/bohodigital/bsuite-mcp-monitor",
+    profileHref: "/tools/#bsuite-mcp-monitor",
     relatedService: "/services/custom-digital-solutions/",
     relatedGlossaryTerms: ["mcp", "monitoring", "automation"],
     image: {
@@ -132,6 +134,7 @@ export const selectedTools: ReadonlyArray<SelectedToolProfile> = [
     publicAvailability: "Public GitHub repository",
     openSourceStatus: "MIT licensed",
     repositoryUrl: "https://github.com/bohodigital/boho-secret-broker",
+    profileHref: "/tools/#secret-broker",
     relatedService: "/services/custom-digital-solutions/",
     relatedGlossaryTerms: ["mcp", "api-key", "tls"],
     image: {
@@ -155,6 +158,7 @@ export const selectedTools: ReadonlyArray<SelectedToolProfile> = [
     publicAvailability: "Public GitHub repository · self-hosted",
     openSourceStatus: "MIT licensed · no software license fee",
     repositoryUrl: "https://github.com/bohodigital/boho-analytics-platform",
+    profileHref: "/resources/#analysis-dashboard",
     maturePlatformsUsed: ["Python 3.11+", "SQLite", "Google Analytics Data API", "Google Search Console API", "Umami API", "Cloudflare GraphQL and D1"],
     dataHandled: ["Source-labeled aggregate analytics", "Search performance", "Traffic infrastructure", "Form acceptance and delivery counts", "Revision-pinned website structure"],
     limitations: [
