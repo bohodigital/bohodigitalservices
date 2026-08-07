@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">The difference between zero, missing, and stale data</title>
+  <desc id="desc">Three colorful cards compare a confirmed zero, an absent value, and an outdated value. Each card states what the condition means, how to respond, and why missing data must never silently become zero.</desc>
+  <defs>
+    <filter id="shadow" x="-12%" y="-12%" width="124%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#111214" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .sans { font-family: Arial, Helvetica, sans-serif; }
+      .mono { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+      .ink { fill: #111214; }
+      .muted { fill: #4b5558; }
+      .label { font-size: 19px; font-weight: 850; letter-spacing: 2.4px; }
+      .state { font-size: 37px; font-weight: 900; letter-spacing: -0.8px; }
+      .body { font-size: 20px; font-weight: 550; }
+      .action { font-size: 19px; font-weight: 750; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1000" fill="#fff8eb"/>
+  <path d="M0 0H1600V22H0Z" fill="#111214"/>
+  <path d="M0 22H380V34H0Z" fill="#54a99d"/>
+  <path d="M380 22H745V34H380Z" fill="#e3ae3d"/>
+  <path d="M745 22H1100V34H745Z" fill="#d97850"/>
+  <path d="M1100 22H1600V34H1100Z" fill="#bd79a7"/>
+
+  <g class="sans">
+    <rect x="80" y="70" width="396" height="40" rx="20" fill="#1e5e5b"/>
+    <text x="105" y="97" fill="#fff8eb" class="label">DATA HEALTH · PLAIN LANGUAGE</text>
+    <text x="80" y="169" class="ink" font-size="56" font-weight="850" letter-spacing="-1.6">Zero is a value. Missing is an absence.</text>
+    <text x="80" y="222" class="ink" font-size="46" font-weight="800" letter-spacing="-1.1">Stale is old evidence.</text>
+    <text x="82" y="262" class="muted" font-size="22" font-weight="550">The distinction changes what you can responsibly say—and what you should do next.</text>
+  </g>
+
+  <g aria-hidden="true">
+    <circle cx="1380" cy="92" r="39" fill="#54a99d"/>
+    <rect x="1432" y="68" width="76" height="48" rx="8" fill="#e3ae3d" transform="rotate(6 1470 92)"/>
+    <path d="M1340 153h59v59h-59z" fill="#d97850" transform="rotate(-8 1369.5 182.5)"/>
+    <circle cx="1476" cy="177" r="25" fill="#bd79a7"/>
+  </g>
+
+  <!-- Zero -->
+  <g class="sans" filter="url(#shadow)">
+    <rect x="80" y="320" width="455" height="450" rx="26" fill="#d8eee8" stroke="#1e5e5b" stroke-width="2"/>
+    <path d="M80 346a26 26 0 0 1 26-26h403a26 26 0 0 1 26 26v25H80Z" fill="#1e5e5b"/>
+    <text x="116" y="420" class="label" fill="#174d4a">STATE 01</text>
+    <circle cx="173" cy="505" r="60" fill="#1e5e5b"/>
+    <text x="173" y="528" text-anchor="middle" fill="#fff8eb" font-size="67" font-weight="900">0</text>
+    <text x="260" y="480" class="state ink" style="font-size:32px">CONFIRMED</text>
+    <text x="260" y="516" class="state ink" style="font-size:32px">ZERO</text>
+    <text x="260" y="548" class="mono" fill="#174d4a" font-size="16" font-weight="750">forms.pending = 0</text>
+    <text x="116" y="604" class="body muted">The source answered. The field exists.</text>
+    <text x="116" y="636" class="body muted">The measured value is actually zero.</text>
+    <rect x="116" y="674" width="383" height="66" rx="15" fill="#1e5e5b"/>
+    <text x="138" y="700" fill="#fff8eb" class="action">Safe language:</text>
+    <text x="138" y="726" fill="#fff8eb" font-size="18" font-weight="550">“None recorded for this scope and period.”</text>
+  </g>
+
+  <!-- Missing -->
+  <g class="sans" filter="url(#shadow)">
+    <rect x="573" y="320" width="455" height="450" rx="26" fill="#f6d7c5" stroke="#b85e3d" stroke-width="2"/>
+    <path d="M573 346a26 26 0 0 1 26-26h403a26 26 0 0 1 26 26v25H573Z" fill="#b85e3d"/>
+    <text x="609" y="420" class="label" fill="#78371f">STATE 02</text>
+    <rect x="609" y="445" width="120" height="120" rx="26" fill="none" stroke="#b85e3d" stroke-width="5" stroke-dasharray="12 11"/>
+    <text x="669" y="523" text-anchor="middle" fill="#b85e3d" font-size="68" font-weight="850">—</text>
+    <text x="753" y="488" class="state ink">MISSING</text>
+    <text x="753" y="523" class="mono" fill="#78371f" font-size="17" font-weight="750">forms.pending = —</text>
+    <text x="609" y="604" class="body muted">The field or source is absent, blocked,</text>
+    <text x="609" y="636" class="body muted">or failed to arrive. The value is unknown.</text>
+    <rect x="609" y="674" width="383" height="66" rx="15" fill="#b85e3d"/>
+    <text x="631" y="700" fill="#fff8eb" class="action">Do next:</text>
+    <text x="631" y="726" fill="#fff8eb" font-size="18" font-weight="550">Check ingestion, permissions, and schema.</text>
+  </g>
+
+  <!-- Stale -->
+  <g class="sans" filter="url(#shadow)">
+    <rect x="1065" y="320" width="455" height="450" rx="26" fill="#e5d8e2" stroke="#6a354f" stroke-width="2"/>
+    <path d="M1065 346a26 26 0 0 1 26-26h403a26 26 0 0 1 26 26v25h-455Z" fill="#6a354f"/>
+    <text x="1101" y="420" class="label" fill="#6a354f">STATE 03</text>
+    <circle cx="1161" cy="505" r="60" fill="#6a354f"/>
+    <circle cx="1161" cy="505" r="38" fill="none" stroke="#fff8eb" stroke-width="5"/>
+    <path d="M1161 477v31l23 16" fill="none" stroke="#fff8eb" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="1245" y="488" class="state ink">STALE</text>
+    <text x="1245" y="523" class="mono" fill="#6a354f" font-size="17" font-weight="750">updated 3 days ago</text>
+    <text x="1101" y="604" class="body muted">A prior value exists, but it is outside</text>
+    <text x="1101" y="636" class="body muted">the freshness window for this decision.</text>
+    <rect x="1101" y="674" width="383" height="66" rx="15" fill="#6a354f"/>
+    <text x="1123" y="700" fill="#fff8eb" class="action">Do next:</text>
+    <text x="1123" y="726" fill="#fff8eb" font-size="18" font-weight="550">Show the timestamp; refresh before acting.</text>
+  </g>
+
+  <g class="sans">
+    <rect x="80" y="812" width="1440" height="146" rx="20" fill="#1d2024"/>
+    <text x="116" y="852" fill="#f4d893" font-size="21" font-weight="850" letter-spacing="1.2">THREE QUESTIONS BEFORE YOU REPORT A NUMBER</text>
+    <rect x="1135" y="824" width="358" height="46" rx="23" fill="#fff8eb"/>
+    <text x="1314" y="853" text-anchor="middle" class="ink" font-size="16" font-weight="800">Synthetic demonstration · Not client data</text>
+    <circle cx="129" cy="902" r="18" fill="#54a99d"/>
+    <text x="129" y="909" text-anchor="middle" fill="#111214" font-size="17" font-weight="900">1</text>
+    <text x="160" y="909" fill="#fff8eb" font-size="20" font-weight="650">Did the source answer?</text>
+    <circle cx="500" cy="902" r="18" fill="#e3ae3d"/>
+    <text x="500" y="909" text-anchor="middle" fill="#111214" font-size="17" font-weight="900">2</text>
+    <text x="531" y="909" fill="#fff8eb" font-size="20" font-weight="650">Is the value present?</text>
+    <circle cx="842" cy="902" r="18" fill="#d97850"/>
+    <text x="842" y="909" text-anchor="middle" fill="#111214" font-size="17" font-weight="900">3</text>
+    <text x="873" y="909" fill="#fff8eb" font-size="20" font-weight="650">Is it fresh enough for this use?</text>
+  </g>
+</svg>

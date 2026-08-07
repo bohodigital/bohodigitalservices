@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Four Google Search Console signals and the questions they answer</title>
+  <desc id="desc">A colorful editorial mosaic explains 2,645 impressions, 114 clicks, 4.31 percent click-through rate, and 12.65 average position using synthetic demonstration data, with a plain-language caveat for each metric.</desc>
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#111214" flood-opacity="0.11"/>
+    </filter>
+    <style>
+      .sans { font-family: Arial, Helvetica, sans-serif; }
+      .mono { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+      .ink { fill: #111214; }
+      .muted { fill: #4b5558; }
+      .label { font-size: 19px; font-weight: 800; letter-spacing: 2.5px; }
+      .metric { font-size: 56px; font-weight: 850; letter-spacing: -1.5px; }
+      .question { font-size: 29px; font-weight: 800; letter-spacing: -0.3px; }
+      .body { font-size: 20px; font-weight: 500; }
+      .caveat { font-size: 17px; font-weight: 650; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1000" fill="#fff8eb"/>
+  <path d="M0 0H1600V20H0Z" fill="#1d2024"/>
+  <path d="M0 20H385V31H0Z" fill="#54a99d"/>
+  <path d="M385 20H690V31H385Z" fill="#e3ae3d"/>
+  <path d="M690 20H1015V31H690Z" fill="#d97850"/>
+  <path d="M1015 20H1320V31H1015Z" fill="#bd79a7"/>
+  <path d="M1320 20H1600V31H1320Z" fill="#5794ae"/>
+
+  <g aria-hidden="true" opacity="0.92">
+    <rect x="1338" y="70" width="62" height="62" rx="8" fill="#e3ae3d" transform="rotate(7 1369 101)"/>
+    <circle cx="1460" cy="97" r="39" fill="#54a99d"/>
+    <path d="M1514 61h46v77h-46z" fill="#bd79a7" transform="rotate(-8 1537 99.5)"/>
+    <path d="M1288 143l49-22 25 55-49 22z" fill="#d97850"/>
+    <circle cx="1432" cy="174" r="18" fill="#2f6176"/>
+  </g>
+
+  <g class="sans">
+    <rect x="80" y="72" width="420" height="40" rx="20" fill="#1e5e5b"/>
+    <text x="105" y="99" fill="#fff8eb" class="label" style="font-size:18px">GSC · SYNTHETIC WALK-THROUGH</text>
+    <text x="80" y="170" class="ink" font-size="58" font-weight="850" letter-spacing="-1.8">Four signals. Four different questions.</text>
+    <text x="82" y="214" class="muted" font-size="23" font-weight="550">Read the evidence precisely before deciding what to change.</text>
+  </g>
+
+  <!-- Impressions -->
+  <g filter="url(#shadow)" class="sans">
+    <rect x="80" y="270" width="700" height="270" rx="24" fill="#d8eee8" stroke="#1e5e5b" stroke-width="2"/>
+    <path d="M80 294a24 24 0 0 1 24-24h652a24 24 0 0 1 24 24v9H80Z" fill="#1e5e5b"/>
+    <text x="116" y="345" class="label" fill="#174d4a">01 · IMPRESSIONS</text>
+    <text x="116" y="416" class="metric ink">2,645</text>
+    <rect x="116" y="446" width="164" height="37" rx="18.5" fill="#1e5e5b"/>
+    <text x="138" y="471" fill="#fff8eb" class="mono" font-size="16" font-weight="750">RESULTS SHOWN</text>
+    <path d="M328 337V492" stroke="#1e5e5b" stroke-width="2" stroke-dasharray="6 8" opacity="0.45"/>
+    <text x="366" y="369" class="question ink">Did Google show a result?</text>
+    <text x="366" y="409" class="body muted">A page appeared in a search result</text>
+    <text x="366" y="439" class="body muted">for the measured property and period.</text>
+    <text x="366" y="492" class="caveat" fill="#174d4a">Not a visit. A result can show without a click.</text>
+  </g>
+
+  <!-- Clicks -->
+  <g filter="url(#shadow)" class="sans">
+    <rect x="820" y="270" width="700" height="270" rx="24" fill="#d9edf4" stroke="#2f6176" stroke-width="2"/>
+    <path d="M820 294a24 24 0 0 1 24-24h652a24 24 0 0 1 24 24v9H820Z" fill="#2f6176"/>
+    <text x="856" y="345" class="label" fill="#2f6176">02 · CLICKS</text>
+    <text x="856" y="416" class="metric ink">114</text>
+    <rect x="856" y="446" width="166" height="37" rx="18.5" fill="#2f6176"/>
+    <text x="878" y="471" fill="#fff8eb" class="mono" font-size="16" font-weight="750">GSC CLICKS</text>
+    <path d="M1068 337V492" stroke="#2f6176" stroke-width="2" stroke-dasharray="6 8" opacity="0.45"/>
+    <text x="1106" y="369" class="question ink">Did a searcher choose it?</text>
+    <text x="1106" y="409" class="body muted">A click left Google for the site,</text>
+    <text x="1106" y="439" class="body muted">under Search Console’s definition.</text>
+    <text x="1106" y="492" class="caveat" fill="#2f6176">Not a session, form lead, or sale.</text>
+  </g>
+
+  <!-- CTR -->
+  <g filter="url(#shadow)" class="sans">
+    <rect x="80" y="580" width="700" height="270" rx="24" fill="#f6d7c5" stroke="#b85e3d" stroke-width="2"/>
+    <path d="M80 604a24 24 0 0 1 24-24h652a24 24 0 0 1 24 24v9H80Z" fill="#b85e3d"/>
+    <text x="116" y="655" class="label" fill="#78371f">03 · CLICK-THROUGH RATE</text>
+    <text x="116" y="726" class="metric ink">4.31%</text>
+    <rect x="116" y="756" width="192" height="37" rx="18.5" fill="#b85e3d"/>
+    <text x="139" y="781" fill="#fff8eb" class="mono" font-size="16" font-weight="750">114 ÷ 2,645</text>
+    <path d="M328 647V802" stroke="#b85e3d" stroke-width="2" stroke-dasharray="6 8" opacity="0.45"/>
+    <text x="366" y="679" class="question ink">How often did a showing</text>
+    <text x="366" y="712" class="question ink">earn a click?</text>
+    <text x="366" y="752" class="body muted">Clicks divided by impressions.</text>
+    <text x="366" y="802" class="caveat" fill="#78371f">Context changes by query, device, and result type.</text>
+  </g>
+
+  <!-- Position -->
+  <g filter="url(#shadow)" class="sans">
+    <rect x="820" y="580" width="700" height="270" rx="24" fill="#eed7e7" stroke="#6a354f" stroke-width="2"/>
+    <path d="M820 604a24 24 0 0 1 24-24h652a24 24 0 0 1 24 24v9H820Z" fill="#6a354f"/>
+    <text x="856" y="655" class="label" fill="#6a354f">04 · AVERAGE POSITION</text>
+    <text x="856" y="726" class="metric ink">12.65</text>
+    <rect x="856" y="756" width="186" height="37" rx="18.5" fill="#6a354f"/>
+    <text x="879" y="781" fill="#fff8eb" class="mono" font-size="16" font-weight="750">WEIGHTED AVG.</text>
+    <path d="M1068 647V802" stroke="#6a354f" stroke-width="2" stroke-dasharray="6 8" opacity="0.45"/>
+    <text x="1106" y="679" class="question ink">Where did results appear,</text>
+    <text x="1106" y="712" class="question ink">on average?</text>
+    <text x="1106" y="752" class="body muted">Impression-weighted across the period.</text>
+    <text x="1106" y="802" class="caveat" fill="#6a354f">Not a fixed rank or a promise of “page two.”</text>
+  </g>
+
+  <g class="sans">
+    <rect x="80" y="890" width="1440" height="66" rx="16" fill="#1d2024"/>
+    <circle cx="115" cy="923" r="10" fill="#e3ae3d"/>
+    <text x="142" y="930" fill="#fff8eb" font-size="21" font-weight="750">Synthetic demonstration · Not client data</text>
+    <text x="935" y="930" fill="#f4d893" font-size="18" font-weight="650">Example period: July 1–3, 2026 · Search type: web</text>
+  </g>
+</svg>

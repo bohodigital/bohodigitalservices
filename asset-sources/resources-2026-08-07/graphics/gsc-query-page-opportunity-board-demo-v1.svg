@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100" role="img" aria-labelledby="title desc">
+  <title id="title">Synthetic Google Search Console query and page opportunity board</title>
+  <desc id="desc">A Boho workflow explainer groups six synthetic query and landing-page rows into already visible, page-two opportunity, and longer-term work zones. Each row shows impressions, clicks, click-through rate, average position, and a suggested next action. It is explicitly not a dashboard screenshot or client data.</desc>
+  <defs>
+    <filter id="shadow" x="-8%" y="-16%" width="116%" height="142%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#111214" flood-opacity="0.1"/>
+    </filter>
+    <style>
+      .sans { font-family: Arial, Helvetica, sans-serif; }
+      .mono { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+      .ink { fill: #111214; }
+      .muted { fill: #4b5558; }
+      .label { font-size: 17px; font-weight: 850; letter-spacing: 1.7px; }
+      .query { font-size: 22px; font-weight: 850; }
+      .path { font-size: 14px; font-weight: 650; }
+      .metric { font-size: 18px; font-weight: 850; }
+      .metric-label { font-size: 12px; font-weight: 800; letter-spacing: 1px; }
+      .action { font-size: 16px; font-weight: 750; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1100" fill="#fff8eb"/>
+  <path d="M0 0H1600V22H0Z" fill="#111214"/>
+  <path d="M0 22H346V34H0Z" fill="#54a99d"/>
+  <path d="M346 22H660V34H346Z" fill="#e3ae3d"/>
+  <path d="M660 22H984V34H660Z" fill="#d97850"/>
+  <path d="M984 22H1288V34H984Z" fill="#bd79a7"/>
+  <path d="M1288 22H1600V34H1288Z" fill="#5794ae"/>
+
+  <g class="sans">
+    <rect x="72" y="67" width="386" height="40" rx="20" fill="#1d2024"/>
+    <text x="97" y="94" fill="#f4d893" class="label">BOHO WORKFLOW EXPLAINER · GSC</text>
+    <text x="72" y="165" class="ink" font-size="54" font-weight="850" letter-spacing="-1.6">Query + page opportunity board</text>
+    <text x="74" y="207" class="muted" font-size="22" font-weight="550">Pair each search with its landing page, then choose a next move from the evidence—not the position alone.</text>
+  </g>
+
+  <g aria-hidden="true">
+    <rect x="1378" y="65" width="58" height="58" rx="8" fill="#e3ae3d" transform="rotate(-7 1407 94)"/>
+    <circle cx="1484" cy="90" r="34" fill="#54a99d"/>
+    <path d="M1322 145h72v45h-72z" fill="#d97850" transform="rotate(6 1358 167.5)"/>
+    <circle cx="1453" cy="167" r="22" fill="#bd79a7"/>
+    <path d="M1510 139l47 17-17 47-47-17z" fill="#5794ae"/>
+  </g>
+
+  <!-- Zone guide -->
+  <g class="sans" filter="url(#shadow)">
+    <rect x="72" y="250" width="468" height="102" rx="20" fill="#d8eee8" stroke="#1e5e5b" stroke-width="2"/>
+    <rect x="72" y="250" width="18" height="102" rx="9" fill="#1e5e5b"/>
+    <text x="114" y="287" class="label" fill="#174d4a">ALREADY VISIBLE</text>
+    <text x="114" y="318" class="ink" font-size="20" font-weight="750">Position 1–10: protect; improve CTR.</text>
+    <text x="114" y="340" class="muted" font-size="15" font-weight="600">Visible does not mean finished.</text>
+
+    <rect x="566" y="250" width="468" height="102" rx="20" fill="#f4e3b5" stroke="#9b6a0b" stroke-width="2"/>
+    <rect x="566" y="250" width="18" height="102" rx="9" fill="#e3ae3d"/>
+    <text x="608" y="287" class="label" fill="#80521b">PAGE-TWO OPPORTUNITY</text>
+    <text x="608" y="318" class="ink" font-size="20" font-weight="750">Position 11–20: strengthen page + links.</text>
+    <text x="608" y="340" class="muted" font-size="15" font-weight="600">A practical work queue, not a promise.</text>
+
+    <rect x="1060" y="250" width="468" height="102" rx="20" fill="#e5d8e2" stroke="#6a354f" stroke-width="2"/>
+    <rect x="1060" y="250" width="18" height="102" rx="9" fill="#6a354f"/>
+    <text x="1102" y="287" class="label" fill="#6a354f">LONGER-TERM WORK</text>
+    <text x="1102" y="318" class="ink" font-size="20" font-weight="750">Position 21+: build relevance and authority.</text>
+    <text x="1102" y="340" class="muted" font-size="15" font-weight="600">Often a page or market-fit question first.</text>
+  </g>
+
+  <!-- Table labels -->
+  <g class="sans">
+    <rect x="72" y="388" width="1456" height="44" rx="12" fill="#1d2024"/>
+    <text x="96" y="416" fill="#f4d893" class="label">ZONE</text>
+    <text x="274" y="416" fill="#f4d893" class="label">QUERY + LANDING PAGE</text>
+    <text x="921" y="416" text-anchor="middle" fill="#f4d893" class="label">IMPRESSIONS</text>
+    <text x="1043" y="416" text-anchor="middle" fill="#f4d893" class="label">CLICKS</text>
+    <text x="1128" y="416" text-anchor="middle" fill="#f4d893" class="label">CTR</text>
+    <text x="1224" y="416" text-anchor="middle" fill="#f4d893" class="label">POSITION</text>
+    <text x="1300" y="416" fill="#f4d893" class="label">NEXT MOVE</text>
+  </g>
+
+  <!-- Row 1 -->
+  <g class="sans">
+    <rect x="72" y="444" width="1456" height="80" rx="14" fill="#e6f1ee" stroke="#1e5e5b" stroke-opacity="0.36"/>
+    <rect x="72" y="444" width="12" height="80" rx="6" fill="#1e5e5b"/>
+    <rect x="101" y="465" width="130" height="38" rx="19" fill="#1e5e5b"/>
+    <text x="166" y="490" text-anchor="middle" fill="#fff8eb" font-size="15" font-weight="850">VISIBLE</text>
+    <text x="274" y="477" class="query ink">website ownership checklist</text>
+    <text x="274" y="505" class="path mono" fill="#174d4a">/resources/ownership-checklist/</text>
+    <text x="921" y="487" text-anchor="middle" class="metric ink">930</text>
+    <text x="1043" y="487" text-anchor="middle" class="metric ink">31</text>
+    <text x="1128" y="487" text-anchor="middle" class="metric ink">3.33%</text>
+    <text x="1224" y="487" text-anchor="middle" class="metric ink">5.6</text>
+    <text x="1300" y="479" class="action" fill="#174d4a">Protect and update</text>
+  </g>
+
+  <!-- Row 2 -->
+  <g class="sans">
+    <rect x="72" y="534" width="1456" height="80" rx="14" fill="#f4f8f7" stroke="#1e5e5b" stroke-opacity="0.28"/>
+    <rect x="72" y="534" width="12" height="80" rx="6" fill="#1e5e5b"/>
+    <rect x="101" y="555" width="130" height="38" rx="19" fill="#1e5e5b"/>
+    <text x="166" y="580" text-anchor="middle" fill="#fff8eb" font-size="15" font-weight="850">VISIBLE</text>
+    <text x="274" y="567" class="query ink">leave website agency</text>
+    <text x="274" y="595" class="path mono" fill="#174d4a">/guides/leave-your-web-agency/</text>
+    <text x="921" y="577" text-anchor="middle" class="metric ink">1,260</text>
+    <text x="1043" y="577" text-anchor="middle" class="metric ink">9</text>
+    <text x="1128" y="577" text-anchor="middle" class="metric ink">0.71%</text>
+    <text x="1224" y="577" text-anchor="middle" class="metric ink">8.9</text>
+    <text x="1300" y="569" class="action" fill="#174d4a">Rewrite title/snippet</text>
+  </g>
+
+  <!-- Row 3 -->
+  <g class="sans">
+    <rect x="72" y="624" width="1456" height="80" rx="14" fill="#e6f1ee" stroke="#1e5e5b" stroke-opacity="0.36"/>
+    <rect x="72" y="624" width="12" height="80" rx="6" fill="#1e5e5b"/>
+    <rect x="101" y="645" width="130" height="38" rx="19" fill="#1e5e5b"/>
+    <text x="166" y="670" text-anchor="middle" fill="#fff8eb" font-size="15" font-weight="850">VISIBLE</text>
+    <text x="274" y="657" class="query ink">emergency website migration</text>
+    <text x="274" y="685" class="path mono" fill="#174d4a">/services/provider-rescue/</text>
+    <text x="921" y="667" text-anchor="middle" class="metric ink">1,840</text>
+    <text x="1043" y="667" text-anchor="middle" class="metric ink">42</text>
+    <text x="1128" y="667" text-anchor="middle" class="metric ink">2.28%</text>
+    <text x="1224" y="667" text-anchor="middle" class="metric ink">7.8</text>
+    <text x="1300" y="651" class="action" fill="#174d4a">Preserve relevance;</text>
+    <text x="1300" y="676" class="action" fill="#174d4a">clarify CTA</text>
+  </g>
+
+  <!-- Row 4 -->
+  <g class="sans">
+    <rect x="72" y="714" width="1456" height="80" rx="14" fill="#f8edcc" stroke="#9b6a0b" stroke-opacity="0.38"/>
+    <rect x="72" y="714" width="12" height="80" rx="6" fill="#e3ae3d"/>
+    <rect x="101" y="735" width="130" height="38" rx="19" fill="#9b6a0b"/>
+    <text x="166" y="760" text-anchor="middle" fill="#fff8eb" font-size="15" font-weight="850">PAGE TWO</text>
+    <text x="274" y="747" class="query ink">small business seo chicago</text>
+    <text x="274" y="775" class="path mono" fill="#80521b">/services/ongoing-seo/</text>
+    <text x="921" y="757" text-anchor="middle" class="metric ink">2,410</text>
+    <text x="1043" y="757" text-anchor="middle" class="metric ink">18</text>
+    <text x="1128" y="757" text-anchor="middle" class="metric ink">0.75%</text>
+    <text x="1224" y="757" text-anchor="middle" class="metric ink">13.4</text>
+    <text x="1300" y="741" class="action" fill="#80521b">Strengthen page</text>
+    <text x="1300" y="766" class="action" fill="#80521b">and internal links</text>
+  </g>
+
+  <!-- Row 5 -->
+  <g class="sans">
+    <rect x="72" y="804" width="1456" height="80" rx="14" fill="#f0e5ed" stroke="#6a354f" stroke-opacity="0.34"/>
+    <rect x="72" y="804" width="12" height="80" rx="6" fill="#6a354f"/>
+    <rect x="101" y="825" width="130" height="38" rx="19" fill="#6a354f"/>
+    <text x="166" y="850" text-anchor="middle" fill="#fff8eb" font-size="15" font-weight="850">LONGER</text>
+    <text x="274" y="837" class="query ink">free website analytics</text>
+    <text x="274" y="865" class="path mono" fill="#6a354f">/resources/free-analytics/</text>
+    <text x="921" y="847" text-anchor="middle" class="metric ink">1,670</text>
+    <text x="1043" y="847" text-anchor="middle" class="metric ink">6</text>
+    <text x="1128" y="847" text-anchor="middle" class="metric ink">0.36%</text>
+    <text x="1224" y="847" text-anchor="middle" class="metric ink">22.1</text>
+    <text x="1300" y="831" class="action" fill="#6a354f">Build a dedicated</text>
+    <text x="1300" y="856" class="action" fill="#6a354f">useful page</text>
+  </g>
+
+  <!-- Row 6 -->
+  <g class="sans">
+    <rect x="72" y="894" width="1456" height="80" rx="14" fill="#e9e2e8" stroke="#6a354f" stroke-opacity="0.34"/>
+    <rect x="72" y="894" width="12" height="80" rx="6" fill="#6a354f"/>
+    <rect x="101" y="915" width="130" height="38" rx="19" fill="#6a354f"/>
+    <text x="166" y="940" text-anchor="middle" fill="#fff8eb" font-size="15" font-weight="850">LONGER</text>
+    <text x="274" y="927" class="query ink">web design chicago</text>
+    <text x="274" y="955" class="path mono" fill="#6a354f">/services/web-design/</text>
+    <text x="921" y="937" text-anchor="middle" class="metric ink">3,120</text>
+    <text x="1043" y="937" text-anchor="middle" class="metric ink">11</text>
+    <text x="1128" y="937" text-anchor="middle" class="metric ink">0.35%</text>
+    <text x="1224" y="937" text-anchor="middle" class="metric ink">31.8</text>
+    <text x="1300" y="921" class="action" fill="#6a354f">Long-term relevance</text>
+    <text x="1300" y="946" class="action" fill="#6a354f">and authority</text>
+  </g>
+
+  <g class="sans">
+    <rect x="72" y="1001" width="1456" height="72" rx="18" fill="#1d2024"/>
+    <text x="100" y="1029" fill="#f4d893" font-size="17" font-weight="850">Synthetic educational example · Not a v0.2 dashboard screenshot · Not client data</text>
+    <text x="100" y="1054" fill="#fff8eb" font-size="15" font-weight="550">Provider-limited/privacy boundary: GSC detail can be limited and privacy-protected; an absent query is not zero. Never publish query data that could identify a person.</text>
+  </g>
+</svg>

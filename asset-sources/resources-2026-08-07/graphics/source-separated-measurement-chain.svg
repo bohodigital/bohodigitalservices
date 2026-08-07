@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">A source-separated measurement chain from search impression to qualified inquiry</title>
+  <desc id="desc">A six-stage colorful mosaic maps a Google Search Console impression, Search Console click, GA4 or Umami visit, accepted form, delivered notification, and human-qualified inquiry. A prominent warning explains that the units differ and the chain is not a guaranteed funnel.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0L12 6L0 12Z" fill="#4b5558"/>
+    </marker>
+    <filter id="shadow" x="-12%" y="-12%" width="124%" height="140%">
+      <feDropShadow dx="0" dy="9" stdDeviation="10" flood-color="#111214" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .sans { font-family: Arial, Helvetica, sans-serif; }
+      .mono { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+      .ink { fill: #111214; }
+      .muted { fill: #4b5558; }
+      .stage { font-size: 26px; font-weight: 850; letter-spacing: -0.25px; }
+      .source { font-size: 15px; font-weight: 800; letter-spacing: 1.6px; }
+      .unit { font-size: 18px; font-weight: 550; }
+      .number { font-size: 19px; font-weight: 850; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1000" fill="#fff8eb"/>
+  <path d="M0 0H1600V22H0Z" fill="#111214"/>
+  <path d="M0 22H330V34H0Z" fill="#54a99d"/>
+  <path d="M330 22H638V34H330Z" fill="#5794ae"/>
+  <path d="M638 22H968V34H638Z" fill="#e3ae3d"/>
+  <path d="M968 22H1260V34H968Z" fill="#d97850"/>
+  <path d="M1260 22H1600V34H1260Z" fill="#bd79a7"/>
+
+  <g class="sans">
+    <rect x="80" y="71" width="480" height="40" rx="20" fill="#1d2024"/>
+    <text x="105" y="98" fill="#f4d893" font-size="18" font-weight="850" letter-spacing="2.2">MEASUREMENT MAP · UNITS CHANGE</text>
+    <text x="80" y="172" class="ink" font-size="58" font-weight="850" letter-spacing="-1.8">One journey. Six kinds of evidence.</text>
+    <text x="82" y="215" class="muted" font-size="23" font-weight="550">Keep every source label attached, or a clean-looking chart can tell the wrong story.</text>
+  </g>
+
+  <g aria-hidden="true">
+    <rect x="1350" y="70" width="64" height="64" rx="9" fill="#e3ae3d" transform="rotate(-7 1382 102)"/>
+    <path d="M1440 66h82v47h-82z" fill="#54a99d" transform="rotate(5 1481 89.5)"/>
+    <circle cx="1465" cy="157" r="26" fill="#bd79a7"/>
+    <path d="M1530 136l40 18-18 40-40-18z" fill="#5794ae"/>
+  </g>
+
+  <!-- Row one connectors -->
+  <path d="M510 390H563" stroke="#4b5558" stroke-width="4" stroke-dasharray="7 8" marker-end="url(#arrow)"/>
+  <path d="M1010 390H1063" stroke="#4b5558" stroke-width="4" stroke-dasharray="7 8" marker-end="url(#arrow)"/>
+  <path d="M1285 511C1285 562 1266 585 1215 585" fill="none" stroke="#4b5558" stroke-width="4" stroke-dasharray="7 8" marker-end="url(#arrow)"/>
+  <!-- Row two flows right-to-left to preserve sequence -->
+  <path d="M1070 704H1017" stroke="#4b5558" stroke-width="4" stroke-dasharray="7 8" marker-end="url(#arrow)"/>
+  <path d="M570 704H517" stroke="#4b5558" stroke-width="4" stroke-dasharray="7 8" marker-end="url(#arrow)"/>
+
+  <!-- Stage 1 -->
+  <g class="sans" filter="url(#shadow)">
+    <rect x="80" y="285" width="430" height="226" rx="24" fill="#d8eee8" stroke="#1e5e5b" stroke-width="2"/>
+    <path d="M80 309a24 24 0 0 1 24-24h382a24 24 0 0 1 24 24v20H80Z" fill="#1e5e5b"/>
+    <circle cx="124" cy="368" r="24" fill="#1e5e5b"/>
+    <text x="124" y="375" text-anchor="middle" fill="#fff8eb" class="number">1</text>
+    <text x="164" y="376" class="stage ink">GSC impression</text>
+    <text x="120" y="418" class="source" fill="#174d4a">SOURCE · GOOGLE SEARCH CONSOLE</text>
+    <text x="120" y="456" class="unit muted">Unit: one search result shown</text>
+    <text x="120" y="486" class="unit muted">within the measured property and period</text>
+  </g>
+
+  <!-- Stage 2 -->
+  <g class="sans" filter="url(#shadow)">
+    <rect x="580" y="285" width="430" height="226" rx="24" fill="#d9edf4" stroke="#2f6176" stroke-width="2"/>
+    <path d="M580 309a24 24 0 0 1 24-24h382a24 24 0 0 1 24 24v20H580Z" fill="#2f6176"/>
+    <circle cx="624" cy="368" r="24" fill="#2f6176"/>
+    <text x="624" y="375" text-anchor="middle" fill="#fff8eb" class="number">2</text>
+    <text x="664" y="376" class="stage ink">GSC click</text>
+    <text x="620" y="418" class="source" fill="#2f6176">SOURCE · GOOGLE SEARCH CONSOLE</text>
+    <text x="620" y="456" class="unit muted">Unit: one click leaving Google</text>
+    <text x="620" y="486" class="unit muted">under Search Console’s definition</text>
+  </g>
+
+  <!-- Stage 3 -->
+  <g class="sans" filter="url(#shadow)">
+    <rect x="1080" y="285" width="440" height="226" rx="24" fill="#f4e3b5" stroke="#9b6a0b" stroke-width="2"/>
+    <path d="M1080 309a24 24 0 0 1 24-24h392a24 24 0 0 1 24 24v20h-440Z" fill="#e3ae3d"/>
+    <circle cx="1124" cy="368" r="24" fill="#9b6a0b"/>
+    <text x="1124" y="375" text-anchor="middle" fill="#fff8eb" class="number">3</text>
+    <text x="1164" y="376" class="stage ink">GA4 / Umami visit</text>
+    <text x="1120" y="418" class="source" fill="#80521b">SOURCE · BROWSER ANALYTICS</text>
+    <text x="1120" y="456" class="unit muted">Unit: provider-defined visit or event</text>
+    <text x="1120" y="486" class="unit muted">after consent, filtering, and processing</text>
+  </g>
+
+  <!-- Stage 4 -->
+  <g class="sans" filter="url(#shadow)">
+    <rect x="1080" y="590" width="440" height="226" rx="24" fill="#f6d7c5" stroke="#b85e3d" stroke-width="2"/>
+    <path d="M1080 614a24 24 0 0 1 24-24h392a24 24 0 0 1 24 24v20h-440Z" fill="#b85e3d"/>
+    <circle cx="1124" cy="673" r="24" fill="#b85e3d"/>
+    <text x="1124" y="680" text-anchor="middle" fill="#fff8eb" class="number">4</text>
+    <text x="1164" y="681" class="stage ink">Form accepted</text>
+    <text x="1120" y="723" class="source" fill="#78371f">SOURCE · FORM SERVICE</text>
+    <text x="1120" y="761" class="unit muted">Unit: one server-accepted submission</text>
+    <text x="1120" y="791" class="unit muted">after validation—not yet a qualified lead</text>
+  </g>
+
+  <!-- Stage 5 -->
+  <g class="sans" filter="url(#shadow)">
+    <rect x="580" y="590" width="430" height="226" rx="24" fill="#eed7e7" stroke="#6a354f" stroke-width="2"/>
+    <path d="M580 614a24 24 0 0 1 24-24h382a24 24 0 0 1 24 24v20H580Z" fill="#6a354f"/>
+    <circle cx="624" cy="673" r="24" fill="#6a354f"/>
+    <text x="624" y="680" text-anchor="middle" fill="#fff8eb" class="number">5</text>
+    <text x="664" y="681" class="stage ink">Notification delivered</text>
+    <text x="620" y="723" class="source" fill="#6a354f">SOURCE · DELIVERY SYSTEM</text>
+    <text x="620" y="761" class="unit muted">Unit: one delivery confirmation</text>
+    <text x="620" y="791" class="unit muted">for the configured notification route</text>
+  </g>
+
+  <!-- Stage 6 -->
+  <g class="sans" filter="url(#shadow)">
+    <rect x="80" y="590" width="430" height="226" rx="24" fill="#d6e9e6" stroke="#1e5e5b" stroke-width="2"/>
+    <path d="M80 614a24 24 0 0 1 24-24h382a24 24 0 0 1 24 24v20H80Z" fill="#1d2024"/>
+    <circle cx="124" cy="673" r="24" fill="#1d2024"/>
+    <text x="124" y="680" text-anchor="middle" fill="#f4d893" class="number">6</text>
+    <text x="164" y="681" class="stage ink">Qualified inquiry</text>
+    <text x="120" y="723" class="source" fill="#174d4a">SOURCE · HUMAN OR CRM REVIEW</text>
+    <text x="120" y="761" class="unit muted">Unit: one inquiry judged relevant</text>
+    <text x="120" y="791" class="unit muted">using an explicit business definition</text>
+  </g>
+
+  <g class="sans">
+    <rect x="80" y="842" width="1440" height="116" rx="18" fill="#1d2024"/>
+    <rect x="100" y="862" width="12" height="76" rx="6" fill="#e3ae3d"/>
+    <text x="138" y="877" fill="#f4d893" font-size="22" font-weight="850">NOT A GUARANTEED FUNNEL</text>
+    <rect x="1085" y="854" width="410" height="38" rx="19" fill="#fff8eb"/>
+    <text x="1290" y="879" text-anchor="middle" class="ink" font-size="17" font-weight="800">Synthetic demonstration · Not client data</text>
+    <text x="138" y="914" fill="#fff8eb" font-size="19" font-weight="600">Counts may not match: tools define, filter, time, and attribute events differently.</text>
+    <text x="138" y="941" fill="#fff8eb" font-size="19" font-weight="600">A joined path must be proven—not assumed.</text>
+  </g>
+</svg>
