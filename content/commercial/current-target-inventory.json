@@ -5,12 +5,12 @@
   "sources": [
     {
       "path": "app/Homepage.tsx",
-      "sha256": "c78adf98e6799e842d39d3035c7e96ce81530074d28b0bf15ffb69f809456ddc",
-      "bytes": 21493,
+      "sha256": "4657f74592f92638a6d6fdc46e1699f743b1a343bd7d07b349456130dc394c24",
+      "bytes": 19583,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 100,
+      "publicStringCount": 104,
       "importCount": 6,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
@@ -1259,10 +1259,22 @@
       "commercialCopyKey": "product.bohoAnalytics.publicFreeAvailability"
     },
     {
-      "key": "analytics-claim.app-homepage-tsx.320-336",
+      "key": "analytics-claim.app-homepage-tsx.259-275",
       "sourceFile": "app/Homepage.tsx",
-      "sourceStartLine": 320,
-      "sourceEndLine": 336,
+      "sourceStartLine": 259,
+      "sourceEndLine": 275,
+      "signals": [
+        "free-or-unpaid"
+      ],
+      "contextHash": "87e9a190ef1ac1af5d281ad14f32823a59ce09db490b685a6c89a1ff8e0e97e9",
+      "disposition": "approved-with-verified-software-and-service-boundaries",
+      "commercialCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+    },
+    {
+      "key": "analytics-claim.app-homepage-tsx.278-294",
+      "sourceFile": "app/Homepage.tsx",
+      "sourceStartLine": 278,
+      "sourceEndLine": 294,
       "signals": [
         "free-or-unpaid",
         "public-access"
@@ -1516,14 +1528,14 @@
     "reachable": 64,
     "authored": 75,
     "generatedMirrors": 1,
-    "publicStringsOnDemand": 13419,
-    "analyticsClaimContexts": 49
+    "publicStringsOnDemand": 13423,
+    "analyticsClaimContexts": 50
   },
   "fullDetail": {
     "committed": false,
     "generationCommand": "node scripts/commercial-copy-build.mjs --check --inventory-detail <path>",
-    "recordCount": 13419,
-    "deterministicDigest": "3b84fcc6e99441eade2db34290ddfc75fd6afc4467d561a910f0f3a4ee606a93"
+    "recordCount": 13423,
+    "deterministicDigest": "27252ab23c08fc4347231a581c5061b73155e0d483ab18f0b92500c8d461d587"
   },
   "securityScan": {
     "privateKeyMarkers": 0,

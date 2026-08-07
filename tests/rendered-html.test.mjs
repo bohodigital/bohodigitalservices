@@ -149,13 +149,7 @@ test("current analytics product evidence is public, open source, and unmistakabl
 test("homepage carries visual evidence without turning evidence images into file links", async () => {
   const homepage = await render("/");
 
-  for (const id of ["provider-rescue-control-map", "analytics-workspace"]) {
-    assert.match(
-      homepage,
-      new RegExp(`data-evidence-plate="${id}"`),
-      `homepage lacks ${id}`,
-    );
-  }
+  assert.match(homepage, /data-evidence-plate="provider-rescue-control-map"/);
 
   for (const route of publicRoutes) {
     const html = await render(route);
@@ -165,6 +159,26 @@ test("homepage carries visual evidence without turning evidence images into file
       `${route} turns an evidence image into a raw-file link`,
     );
   }
+});
+
+test("homepage introduces the whole offer before problem selection and proof", async () => {
+  const homepage = await render("/");
+  const offer = homepage.indexOf("What Boho actually does");
+  const problems = homepage.indexOf("Start with what is going wrong");
+  const rescueProof = homepage.indexOf('data-evidence-plate="provider-rescue-control-map"');
+  const pricing = homepage.indexOf("Starting prices without the agency guessing game.");
+  const demos = homepage.indexOf("Tour websites designed and built by Boho.");
+  const analytics = homepage.indexOf("We built the analytics software we use for SEO. You can use it too—free.");
+
+  for (const [label, position] of Object.entries({ offer, problems, rescueProof, pricing, demos, analytics })) {
+    assert.ok(position >= 0, `homepage lacks ${label}`);
+  }
+
+  assert.ok(offer < problems, "the plain-language offer should precede problem selection");
+  assert.ok(problems < rescueProof, "problem selection should precede rescue proof");
+  assert.ok(rescueProof < pricing, "rescue proof should precede pricing");
+  assert.ok(pricing < demos, "pricing should precede website proof");
+  assert.ok(demos < analytics, "website proof should precede analytics proof");
 });
 
 test("states Boho's four core offers plainly before presenting technical proof", async () => {

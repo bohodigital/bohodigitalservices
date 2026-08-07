@@ -18,10 +18,6 @@ import { demoProjects } from "./content/demoLibrary";
 
 const hero = commercialSection("homepage", "1-hero");
 const problemChooser = commercialSection("homepage", "3-problem-chooser");
-const ownership = commercialSection(
-  "homepage",
-  "6-ownership-and-provider-rescue-map",
-);
 const principles = commercialSection("homepage", "9-operating-principles");
 const finalIntake = commercialSection(
   "homepage",
@@ -66,24 +62,6 @@ const situations = [
     tone: "replace",
   },
 ] as const;
-
-const controlSystems = [
-  "Domain",
-  "DNS",
-  "Hosting",
-  "Content system",
-  "Forms",
-  "Analytics",
-  "Search accounts",
-  "Email connections",
-  "Repositories",
-  "Integrations",
-] as const;
-
-const controlStatuses = [
-  ownership.one("Status labels"),
-  ...ownership.many("value"),
-];
 
 const offerLadder = [
   {
@@ -230,9 +208,9 @@ export default function Homepage() {
                     data-analytics-service-context="provider_rescue"
                     data-analytics-source-page="homepage"
                     data-analytics-source-section="hero"
-                    href="/start/?path=build-repair&offer=provider-rescue"
+                  href="/start/?path=build-repair&offer=provider-rescue"
                   >
-                    {hero.one("Primary CTA")}
+                    Get a free website review
                   </ButtonLink>
                   <ButtonLink href="/services/" variant="secondary">
                     {hero.one("Secondary CTA")}
@@ -275,35 +253,15 @@ export default function Homepage() {
           </div>
         </section>
 
-        <section className={styles.situations} aria-labelledby="situations-title">
+        <section className={styles.capabilities} aria-labelledby="capabilities-title">
           <div className={styles.shell}>
-            <header className={styles.sectionHeading}>
-              <p className={styles.eyebrow}>{problemChooser.one("Eyebrow")}</p>
-              <h2 id="situations-title">{problemChooser.one("Heading")}</h2>
-              <p>{problemChooser.one("Introduction")}</p>
+            <header className={styles.capabilityHeading}>
+              <div>
+                <p className={styles.eyebrow}>What Boho actually does</p>
+                <h2 id="capabilities-title">We build websites, improve organic search, and make the software behind the work.</h2>
+              </div>
+              <p>Tour original Boho-owned website demos. Use Boho Analytics yourself for free. Or send the current problem and start with the smallest useful next step.</p>
             </header>
-            <div className={styles.situationGrid}>
-              {situations.map((situation, index) => (
-                <article
-                  className={styles[`situationCard${index + 1}`]}
-                  key={situation.href}
-                >
-                  <Link
-                    aria-label={`${situation.title}: ${situation.link}`}
-                    className={`${styles.situationCard} ${styles[situation.tone]}`}
-                    href={situation.href}
-                  >
-                    <p className={styles.cardEyebrow}>{situation.eyebrow}</p>
-                    <h3>{situation.title}</h3>
-                    <p>{situation.body}</p>
-                    <strong>{situation.label}</strong>
-                    <span className={styles.cardAction}>
-                      {situation.link} <span aria-hidden="true">→</span>
-                    </span>
-                  </Link>
-                </article>
-              ))}
-            </div>
             <nav className={styles.capabilityGrid} aria-label="What Boho Digital Services does">
               <Link className={styles.capabilityWebsite} href="/services/web-design-redesign/">
                 <span>Websites</span>
@@ -336,54 +294,39 @@ export default function Homepage() {
           </div>
         </section>
 
-        <section className={styles.ownership} aria-labelledby="ownership-title">
-          <div className={`${styles.shell} ${styles.ownershipGrid}`}>
-            <div className={styles.ownershipCopy}>
-              <p className={styles.eyebrow}>{ownership.one("Eyebrow")}</p>
-              <h2 id="ownership-title">{ownership.one("Heading")}</h2>
-              <p>{ownership.one("Body paragraph 1")}</p>
-              <p>{ownership.one("Body paragraph 2")}</p>
-              <ButtonLink href="/services/provider-rescue/" variant="secondary">
-                {ownership.one("Link")}
-              </ButtonLink>
-            </div>
-            <div className={styles.systemMap} aria-label={ownership.one("Heading")}>
-              <div className={styles.systemMapGrid}>
-                {controlSystems.map((system, index) => (
-                  <div
-                    className={styles[`systemCell${index + 1}`]}
-                    key={system}
+        <section className={styles.situations} aria-labelledby="situations-title">
+          <div className={styles.shell}>
+            <header className={styles.sectionHeading}>
+              <p className={styles.eyebrow}>{problemChooser.one("Eyebrow")}</p>
+              <h2 id="situations-title">{problemChooser.one("Heading")}</h2>
+              <p>{problemChooser.one("Introduction")}</p>
+            </header>
+            <div className={styles.situationGrid}>
+              {situations.map((situation, index) => (
+                <article
+                  className={styles[`situationCard${index + 1}`]}
+                  key={situation.href}
+                >
+                  <Link
+                    aria-label={`${situation.title}: ${situation.link}`}
+                    className={`${styles.situationCard} ${styles[situation.tone]}`}
+                    href={situation.href}
                   >
-                    <span>{String(index + 1).padStart(2, "0")}</span>
-                    <strong>{system}</strong>
-                  </div>
-                ))}
-              </div>
-              <ul className={styles.statusLegend}>
-                {controlStatuses.map((status) => <li key={status}>{status}</li>)}
-              </ul>
+                    <p className={styles.cardEyebrow}>{situation.eyebrow}</p>
+                    <h3>{situation.title}</h3>
+                    <p>{situation.body}</p>
+                    <strong>{situation.label}</strong>
+                    <span className={styles.cardAction}>
+                      {situation.link} <span aria-hidden="true">→</span>
+                    </span>
+                  </Link>
+                </article>
+              ))}
             </div>
           </div>
         </section>
 
         <EvidencePlate id="provider-rescue-control-map" />
-
-        <section className={styles.decision} aria-labelledby="decision-title">
-          <div className={styles.shell}>
-            <header className={styles.sectionHeading}>
-              <p className={styles.eyebrow}>A controlled delivery path</p>
-              <h2 id="decision-title">Start with the current situation.</h2>
-            </header>
-            <ol className={styles.decisionPath}>
-              {providerRescuePage.decisions.map(([title, body], index) => (
-                <li className={styles[`decisionStep${index + 1}`]} key={title}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <div><h3>{title}</h3><p>{body}</p></div>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
 
         <section className={styles.offers} aria-labelledby="offers-title">
           <div className={styles.shell}>
@@ -420,14 +363,6 @@ export default function Homepage() {
           </div>
         </section>
 
-        <AnalyticsProductAd
-          headingId="homepage-analytics-product-title"
-          placement="homepage"
-          sourcePage="homepage"
-        />
-
-        <EvidencePlate id="analytics-workspace" />
-
         <section className={styles.demos} aria-labelledby="demos-title">
           <div className={styles.shell}>
             <header className={styles.sectionHeading}>
@@ -463,6 +398,12 @@ export default function Homepage() {
             </div>
           </div>
         </section>
+
+        <AnalyticsProductAd
+          headingId="homepage-analytics-product-title"
+          placement="homepage"
+          sourcePage="homepage"
+        />
 
         <section className={styles.guides} aria-labelledby="guides-title">
           <div className={`${styles.shell} ${styles.guidesLayout}`}>

@@ -414,10 +414,22 @@
           "commercialCopyKey": "product.bohoAnalytics.publicFreeAvailability"
         },
         {
-          "key": "analytics-claim.app-homepage-tsx.320-336",
+          "key": "analytics-claim.app-homepage-tsx.259-275",
           "sourceFile": "app/Homepage.tsx",
-          "sourceStartLine": 320,
-          "sourceEndLine": 336,
+          "sourceStartLine": 259,
+          "sourceEndLine": 275,
+          "signals": [
+            "free-or-unpaid"
+          ],
+          "contextHash": "87e9a190ef1ac1af5d281ad14f32823a59ce09db490b685a6c89a1ff8e0e97e9",
+          "disposition": "approved-with-verified-software-and-service-boundaries",
+          "commercialCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.app-homepage-tsx.278-294",
+          "sourceFile": "app/Homepage.tsx",
+          "sourceStartLine": 278,
+          "sourceEndLine": 294,
           "signals": [
             "free-or-unpaid",
             "public-access"
