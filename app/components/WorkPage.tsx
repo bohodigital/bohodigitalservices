@@ -157,33 +157,28 @@ export function WorkPage() {
             <div className="reset-work-grid">
               {publicProperties.map((property) => (
                 <article className="reset-work-card" key={property.name}>
-                  {"image" in property ? (
-                    <a
-                      data-analytics-destination-type="live_property"
-                      data-analytics-event="work_project_click"
-                      data-analytics-project-name={property.name}
-                      href={property.href}
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
+                  <a
+                    aria-label={`Visit ${property.name} live property (opens in a new tab)`}
+                    className="reset-work-card__link"
+                    data-analytics-destination-type="live_property"
+                    data-analytics-event="work_project_click"
+                    data-analytics-project-name={property.name}
+                    href={property.href}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {"image" in property ? (
                       <img alt={property.alt} height="800" loading="lazy" src={property.image} width="1280" />
-                    </a>
-                  ) : null}
-                  <div className="reset-work-card__body">
-                    <p className="reset-eyebrow">BOHO-OWNED PROPERTY · {property.category}</p>
-                    <h3>{property.name}</h3>
-                    <p>{property.copy}</p>
-                    <h4>Demonstrates</h4>
-                    <ul>{property.demonstrates.map((item) => <li key={item}>{item}</li>)}</ul>
-                    <a
-                      data-analytics-destination-type="live_property"
-                      data-analytics-event="work_project_click"
-                      data-analytics-project-name={property.name}
-                      href={property.href}
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >Visit live property</a>
-                  </div>
+                    ) : null}
+                    <div className="reset-work-card__body">
+                      <p className="reset-eyebrow">BOHO-OWNED PROPERTY · {property.category}</p>
+                      <h3>{property.name}</h3>
+                      <p>{property.copy}</p>
+                      <h4>Demonstrates</h4>
+                      <ul>{property.demonstrates.map((item) => <li key={item}>{item}</li>)}</ul>
+                      <span className="reset-card-action">Visit live property <span aria-hidden="true">↗</span></span>
+                    </div>
+                  </a>
                 </article>
               ))}
             </div>
@@ -200,17 +195,21 @@ export function WorkPage() {
             <div className="reset-services__grid">
               {selectedTools.map((tool) => (
                 <article className="reset-service-card" key={tool.id}>
-                  <img alt={tool.image.alt} height={tool.image.height} loading="lazy" src={tool.image.src} width={tool.image.width} />
-                  <h3>{tool.displayName}</h3>
-                  <p>{tool.shortPublicSummary}</p>
                   <a
+                    aria-label={`View the ${tool.displayName} public repository (opens in a new tab)`}
+                    className="reset-work-tool-card__link"
                     data-analytics-destination-type="public_repository"
                     data-analytics-event="tools_project_click"
                     data-analytics-project-name={tool.displayName}
                     href={tool.repositoryUrl}
                     rel="noopener noreferrer"
                     target="_blank"
-                  >View public repository</a>
+                  >
+                    <img alt={tool.image.alt} height={tool.image.height} loading="lazy" src={tool.image.src} width={tool.image.width} />
+                    <h3>{tool.displayName}</h3>
+                    <p>{tool.shortPublicSummary}</p>
+                    <span className="reset-card-action">View public repository <span aria-hidden="true">↗</span></span>
+                  </a>
                 </article>
               ))}
             </div>

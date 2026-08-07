@@ -53,6 +53,8 @@ test("publishes the provider-first primary navigation and focused homepage offer
   assert.equal((renderedHomepage.match(/dentistry\.demos\.bohodigitalservices\.com/g) ?? []).length, 1);
   assert.equal((renderedHomepage.match(/junkremoval\.demos\.bohodigitalservices\.com/g) ?? []).length, 1);
   assert.match(homepage, />Get a free website review</);
+  assert.match(homepage, /href="\/start\/\?path=build-repair&amp;offer=provider-rescue"/);
+  assert.match(homepage, /data-analytics-service-context="provider_rescue"/);
 });
 
 test("renders Work and Website Help as canonical public pages", async () => {
@@ -139,7 +141,7 @@ test("tracks the approved conversion events without form-content properties", as
 });
 
 test("routes emergency and ordinary inquiries to the correct actions", async () => {
-  const html = await render("/emergency/");
+  const [html, contact] = await Promise.all([render("/emergency/"), render("/contact/")]);
   assert.match(html, /href="#emergency-request">Describe the emergency/);
   assert.match(html, /href="\/start\/">This can wait/);
   assert.match(html, /Before changing anything else/);
@@ -152,6 +154,9 @@ test("routes emergency and ordinary inquiries to the correct actions", async () 
   assert.match(html, /data-analytics-event="emergency_standard_detour_click"/);
   assert.doesNotMatch(html, /class="[^"]*\bundefined\b/);
   assert.doesNotMatch(html, />Send the Situation</);
+  assert.match(contact, /data-analytics-event="service_card_click"/);
+  assert.match(contact, /data-analytics-service-name="Provider Rescue"/);
+  assert.match(contact, /data-analytics-event="emergency_hero_cta_click"/);
 });
 
 test("publishes exact Start and Emergency metadata", async () => {
@@ -187,6 +192,9 @@ test("preserves inquiry delivery mappings and explicit success and failure state
   assert.match(client, /failure_stage: "delivery"/);
   assert.match(client, /failure_stage: "network"/);
   assert.match(client, /kind: "success"/);
+  assert.match(client, /"provider-rescue": \{ analyticsServiceContext: "provider_rescue", offerLabel: "Provider Rescue", service: freeReviewServiceLabels\.websiteHelp \}/);
+  assert.match(client, /output\.valuableOffer = enteredOffer && enteredOffer !== requestedOffer/);
+  assert.match(client, /Your request: <strong>\{pricingContext\.offerLabel \?\? pricingContext\.path\}<\/strong>/);
   for (const mapping of [
     'backendName: "name"', 'backendName: "email"', 'backendName: "businessName"',
     'backendName: "website"', 'backendName: "service"', 'backendName: "message"',

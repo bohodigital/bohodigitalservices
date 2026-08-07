@@ -1300,8 +1300,17 @@
   object-position: top center;
 }
 
-.service-showcase__item:hover .service-showcase__media img {
+.service-showcase__item--linked {
+  cursor: pointer;
+}
+
+.service-showcase__item--linked:hover .service-showcase__media img,
+.service-showcase__item--linked:focus-within .service-showcase__media img {
   transform: scale(1.025);
+}
+
+.service-showcase__item:not(.service-showcase__item--linked) .service-showcase__media img {
+  transition: none;
 }
 
 .service-showcase figcaption {
@@ -2559,5 +2568,152 @@
 
   .reset-work-hero__receipt > p {
     display: none;
+  }
+}
+
+/* Interaction integrity: a lifting single-destination card is one complete link. */
+.reset-work-card,
+.reset-work-tools .reset-service-card,
+.reset-industry-grid > .reset-service-card,
+.resources-page .resource-collection-card:has(> .resource-collection-card__link) {
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.reset-work-card__link {
+  display: flex;
+  height: 100%;
+  flex: 1;
+  flex-direction: column;
+  color: inherit;
+  text-decoration: none;
+}
+
+.reset-work-card {
+  display: flex;
+}
+
+.reset-work-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.reset-work-card__body .reset-card-action {
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.reset-work-tools .reset-service-card,
+.reset-industry-grid > .reset-service-card {
+  padding: 0;
+}
+
+.reset-work-tools .reset-service-card > .reset-work-tool-card__link,
+.reset-industry-grid > .reset-service-card > .reset-industry-card__link {
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+  padding: clamp(1.5rem, 3vw, 2.6rem);
+  color: inherit;
+  text-decoration: none;
+}
+
+.reset-work-tools .reset-service-card > .reset-work-tool-card__link {
+  gap: 1rem;
+}
+
+.reset-work-tools .reset-service-card > .reset-work-tool-card__link > p {
+  margin-bottom: 0;
+}
+
+.reset-card-action {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  font-size: 0.84rem;
+  font-weight: 850;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.22em;
+}
+
+.reset-service-card::after {
+  pointer-events: none;
+}
+
+.reset-work-card:hover,
+.reset-work-card:focus-within,
+.reset-work-tools .reset-service-card:hover,
+.reset-work-tools .reset-service-card:focus-within,
+.reset-industry-grid > .reset-service-card:hover,
+.reset-industry-grid > .reset-service-card:focus-within,
+.resources-page .resource-collection-card:has(> .resource-collection-card__link):hover,
+.resources-page .resource-collection-card:has(> .resource-collection-card__link):focus-within {
+  border-color: var(--verdigris);
+  box-shadow: 0 1.2rem 2.8rem rgba(17, 18, 20, 0.13);
+  transform: translateY(-0.3rem);
+}
+
+.reset-work-card__link:focus-visible,
+.reset-work-tool-card__link:focus-visible,
+.reset-industry-card__link:focus-visible {
+  outline: 0.22rem solid var(--verdigris);
+  outline-offset: -0.42rem;
+}
+
+.resources-page .resource-collection-card:has(> .resource-collection-card__link) {
+  position: relative;
+}
+
+.resources-page .resource-collection-card > .resource-collection-card__link {
+  position: static;
+  border-radius: inherit;
+}
+
+.resources-page .resource-collection-card > .resource-collection-card__link::after {
+  position: absolute;
+  z-index: 1;
+  border-radius: inherit;
+  content: "";
+  inset: 0;
+}
+
+.resources-page .resource-collection-card > .resource-collection-card__link:focus-visible {
+  outline: none;
+}
+
+.resources-page .resource-collection-card > .resource-collection-card__link:focus-visible::after {
+  outline: 0.22rem solid var(--verdigris);
+  outline-offset: -0.42rem;
+}
+
+.resources-page .resource-collection-card .definition-term {
+  z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reset-work-card,
+  .reset-work-tools .reset-service-card,
+  .reset-industry-grid > .reset-service-card,
+  .resources-page .resource-collection-card:has(> .resource-collection-card__link),
+  .service-showcase__item--linked .service-showcase__media img {
+    transition: none;
+    transform: none !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .reset-work-card__link:focus-visible,
+  .reset-work-tool-card__link:focus-visible,
+  .reset-industry-card__link:focus-visible,
+  .resources-page .resource-collection-card > .resource-collection-card__link:focus-visible::after {
+    outline-color: CanvasText;
   }
 }

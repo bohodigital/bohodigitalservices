@@ -78,8 +78,8 @@ test("publishes route-specific search metadata and useful structured data", asyn
 
   for (const [html, values] of [
     [homepage, {
-      title: "Boho Digital Services | Web Design, Technical SEO &amp; Digital Engineering",
-      description: "Chicago-based Boho Digital Services builds and repairs websites, search visibility, provider migrations, analytics, and focused digital systems with public starting prices and documented work.",
+      title: "Provider Rescue &amp; Website Help | Boho Digital Services",
+      description: "Recover control of your domain, hosting, content, analytics, and accounts before changing website providers. Chicago-based website help starts at $200.",
       canonical: "https://bohodigitalservices.com/",
     }],
     [provider, {

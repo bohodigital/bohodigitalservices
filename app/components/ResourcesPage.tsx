@@ -138,7 +138,11 @@ export function ResourcesPage() {
                       <p className="resource-collection-card__meta">{resource.meta}</p>
                       <h3>{resource.title}</h3>
                       <p>{define(resource.description)}</p>
-                      <a href={resource.href}>
+                      <a
+                        aria-label={`${resource.title}: ${resource.label}`}
+                        className="resource-collection-card__link"
+                        href={resource.href}
+                      >
                         <span>{resource.label}</span>
                         <ArrowRight aria-hidden="true" size={17} />
                       </a>

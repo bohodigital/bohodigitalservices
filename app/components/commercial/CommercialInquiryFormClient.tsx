@@ -99,6 +99,7 @@ type FormValue = string | boolean;
 type PricingAttribution = {
   path: "clarity" | "build-repair" | "ongoing";
   analyticsPath: "clarity" | "build_repair" | "ongoing";
+  analyticsServiceContext: string;
   offerId?: string;
   offerLabel?: string;
   service: string;
@@ -114,22 +115,22 @@ const EMERGENCY_PROBLEM_MAX_LENGTH = 8_000;
 const EMERGENCY_PROBLEM_ERROR =
   "Keep the incident description under 7,500 characters so the complete emergency message can be delivered.";
 
-const PRICING_OFFER_DEFAULTS: Readonly<Record<string, Pick<PricingAttribution, "offerLabel" | "service">>> = {
-  "free-review": { offerLabel: "Free Website Review", service: freeReviewServiceLabels.unsure },
-  "initial-review": { offerLabel: "Free Website Review", service: freeReviewServiceLabels.unsure },
-  "business-websites": { offerLabel: "Business Websites", service: freeReviewServiceLabels.businessWebsite },
-  "focused-website-improvement": { offerLabel: "Business Websites", service: freeReviewServiceLabels.businessWebsite },
-  "new-website": { offerLabel: "Business Websites", service: freeReviewServiceLabels.businessWebsite },
-  "substantial-redesign": { offerLabel: "Business Websites", service: freeReviewServiceLabels.businessWebsite },
-  "ongoing-seo": { offerLabel: "Ongoing SEO & Local Growth", service: freeReviewServiceLabels.ongoingSeo },
-  "monthly-reporting": { offerLabel: "Ongoing SEO & Local Growth", service: freeReviewServiceLabels.ongoingSeo },
-  "website-help": { offerLabel: "Website Help", service: freeReviewServiceLabels.websiteHelp },
-  "audit-research": { offerLabel: "Website Help", service: freeReviewServiceLabels.websiteHelp },
-  "provider-rescue-assessment": { offerLabel: "Website Help", service: freeReviewServiceLabels.websiteHelp },
-  "provider-rescue": { offerLabel: "Website Help", service: freeReviewServiceLabels.websiteHelp },
-  "custom-systems": { offerLabel: "Custom Systems", service: freeReviewServiceLabels.customSystem },
-  "custom-discovery": { offerLabel: "Custom Systems", service: freeReviewServiceLabels.customSystem },
-  "focused-custom-build": { offerLabel: "Custom Systems", service: freeReviewServiceLabels.customSystem },
+const PRICING_OFFER_DEFAULTS: Readonly<Record<string, Pick<PricingAttribution, "analyticsServiceContext" | "offerLabel" | "service">>> = {
+  "free-review": { analyticsServiceContext: "not_sure", offerLabel: "Free Website Review", service: freeReviewServiceLabels.unsure },
+  "initial-review": { analyticsServiceContext: "not_sure", offerLabel: "Free Website Review", service: freeReviewServiceLabels.unsure },
+  "business-websites": { analyticsServiceContext: "business_websites", offerLabel: "Business Websites", service: freeReviewServiceLabels.businessWebsite },
+  "focused-website-improvement": { analyticsServiceContext: "business_websites", offerLabel: "Business Websites", service: freeReviewServiceLabels.businessWebsite },
+  "new-website": { analyticsServiceContext: "business_websites", offerLabel: "Business Websites", service: freeReviewServiceLabels.businessWebsite },
+  "substantial-redesign": { analyticsServiceContext: "business_websites", offerLabel: "Business Websites", service: freeReviewServiceLabels.businessWebsite },
+  "ongoing-seo": { analyticsServiceContext: "ongoing_seo", offerLabel: "Ongoing SEO & Local Growth", service: freeReviewServiceLabels.ongoingSeo },
+  "monthly-reporting": { analyticsServiceContext: "ongoing_seo", offerLabel: "Ongoing SEO & Local Growth", service: freeReviewServiceLabels.ongoingSeo },
+  "website-help": { analyticsServiceContext: "website_help", offerLabel: "Website Help", service: freeReviewServiceLabels.websiteHelp },
+  "audit-research": { analyticsServiceContext: "website_help", offerLabel: "Website Help", service: freeReviewServiceLabels.websiteHelp },
+  "provider-rescue-assessment": { analyticsServiceContext: "provider_rescue", offerLabel: "Provider Rescue Assessment", service: freeReviewServiceLabels.websiteHelp },
+  "provider-rescue": { analyticsServiceContext: "provider_rescue", offerLabel: "Provider Rescue", service: freeReviewServiceLabels.websiteHelp },
+  "custom-systems": { analyticsServiceContext: "custom_systems", offerLabel: "Custom Systems", service: freeReviewServiceLabels.customSystem },
+  "custom-discovery": { analyticsServiceContext: "custom_systems", offerLabel: "Custom Systems", service: freeReviewServiceLabels.customSystem },
+  "focused-custom-build": { analyticsServiceContext: "custom_systems", offerLabel: "Custom Systems", service: freeReviewServiceLabels.customSystem },
 };
 
 function pricingAttributionFromSearch(search: string): PricingAttribution | null {
@@ -148,6 +149,8 @@ function pricingAttributionFromSearch(search: string): PricingAttribution | null
   return {
     path: typedPath,
     analyticsPath: typedPath === "build-repair" ? "build_repair" : typedPath,
+    analyticsServiceContext: offer?.analyticsServiceContext
+      ?? (typedPath === "ongoing" ? "ongoing_seo" : "not_sure"),
     offerId: offer ? offerId : undefined,
     offerLabel: offer?.offerLabel,
     service,
@@ -370,6 +373,15 @@ export function CommercialInquiryFormClient({
     }
     if (isStart) {
       output.businessType = presentation.compatibilityFallback;
+      const requestedOffer = pricingAttributionRef.current?.offerLabel;
+      if (requestedOffer) {
+        const enteredOffer = typeof output.valuableOffer === "string"
+          ? output.valuableOffer
+          : "";
+        output.valuableOffer = enteredOffer && enteredOffer !== requestedOffer
+          ? `${requestedOffer} — ${enteredOffer}`.slice(0, 500)
+          : requestedOffer;
+      }
     } else {
       output.priorChange = output.priorChange || presentation.compatibilityFallback;
       output.platform = output.website || presentation.compatibilityFallback;
@@ -461,15 +473,18 @@ export function CommercialInquiryFormClient({
       trackCommercialEvent(isStart ? "commercial_standard_inquiry_success" : "emergency_submit_success");
       if (isStart) {
         const selectedService = String(data.get("service") ?? "");
-        const serviceContext = selectedService === freeReviewServiceLabels.businessWebsite
-          ? "business_websites"
-          : selectedService === freeReviewServiceLabels.ongoingSeo
-            ? "ongoing_seo"
-            : selectedService === freeReviewServiceLabels.websiteHelp
-              ? "website_help"
-              : selectedService === freeReviewServiceLabels.customSystem
-                ? "custom_systems"
-                : "not_sure";
+        const attribution = pricingAttributionRef.current;
+        const serviceContext = attribution && selectedService === attribution.service
+          ? attribution.analyticsServiceContext
+          : selectedService === freeReviewServiceLabels.businessWebsite
+            ? "business_websites"
+            : selectedService === freeReviewServiceLabels.ongoingSeo
+              ? "ongoing_seo"
+              : selectedService === freeReviewServiceLabels.websiteHelp
+                ? "website_help"
+                : selectedService === freeReviewServiceLabels.customSystem
+                  ? "custom_systems"
+                  : "not_sure";
         trackCommercialEvent("free_review_submit_success", { service_context: serviceContext });
       }
       const attribution = pricingAttributionRef.current;
@@ -507,27 +522,43 @@ export function CommercialInquiryFormClient({
       "aria-describedby": describedBy,
     };
     if (field.type === "radio-card") {
+      const providerRescueOffer = pricingContext?.offerId === "provider-rescue"
+        || pricingContext?.offerId === "provider-rescue-assessment";
       return (
         <fieldset aria-describedby={error ? `${id}-error` : undefined} aria-invalid={error ? true : undefined} className="commercial-form__field commercial-form__field--radio-cards" id={id} key={field.publicName}>
           <legend>{field.label}<span className="commercial-form__requirement">{field.requirement}</span></legend>
           <span className="commercial-anchor-alias" id="visibility-check-request" />
           <div className="commercial-radio-cards">
-            {field.optionDetails?.map(([value, title, description, price]) => (
-              <label className="commercial-radio-card" key={value}>
-                <input
-                  disabled={submitting}
-                  name={field.publicName}
-                  onChange={() => trackCommercialEvent("start_service_category_select", {
-                    source_page: "start",
-                    category: field.backendOptions?.[value] ?? value,
-                  })}
-                  required={field.required}
-                  type="radio"
-                  value={value}
-                />
-                <span><strong>{title}</strong><small>{description}</small><em>{price}</em></span>
-              </label>
-            ))}
+            {field.optionDetails?.map(([value, title, description, price]) => {
+              const isAttributedProviderRescue = providerRescueOffer
+                && value === pricingContext.service;
+              return (
+                <label className="commercial-radio-card" key={value}>
+                  <input
+                    disabled={submitting}
+                    name={field.publicName}
+                    onChange={() => trackCommercialEvent("start_service_category_select", {
+                      source_page: "start",
+                      category: isAttributedProviderRescue
+                        ? "Provider Rescue"
+                        : field.backendOptions?.[value] ?? value,
+                    })}
+                    required={field.required}
+                    type="radio"
+                    value={value}
+                  />
+                  <span>
+                    <strong>{isAttributedProviderRescue ? pricingContext.offerLabel : title}</strong>
+                    <small>
+                      {isAttributedProviderRescue
+                        ? `Ownership, access, continuity, provider-exit, and migration help. ${description}`
+                        : description}
+                    </small>
+                    <em>{price}</em>
+                  </span>
+                </label>
+              );
+            })}
           </div>
           {error ? <p id={`${id}-error`} role="alert">{error}</p> : null}
         </fieldset>
@@ -590,8 +621,8 @@ export function CommercialInquiryFormClient({
         <p>{presentation.heading.body}</p>
         <p>{presentation.heading.requiredNote}</p>
         {pricingContext ? (
-          <p className="commercial-form__pricing-context">
-            Pricing path selected: <strong>{pricingContext.offerLabel ?? pricingContext.path}</strong>. The matching service is preselected below, and you can change it.
+          <p className="commercial-form__pricing-context" role="status">
+            Your request: <strong>{pricingContext.offerLabel ?? pricingContext.path}</strong>. Boho will keep that context with this inquiry. The compatible service category is preselected below, and you can change it.
           </p>
         ) : null}
       </header>

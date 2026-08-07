@@ -1,7 +1,57 @@
 import Image from "next/image";
 import Link from "next/link";
+import { demoProjects } from "../content/demoLibrary";
 import type { PrimaryServiceRoute, ServiceShowcaseAsset } from "../content/serviceShowcases";
 import { serviceHeroAssets, serviceShowcases } from "../content/serviceShowcases";
+import { ownedWebsites, selectedTools } from "../content/systems";
+
+type ShowcaseDestination = {
+  action: string;
+  accessibleLabel: string;
+  href: string;
+};
+
+function verifiedShowcaseDestination(asset: ServiceShowcaseAsset): ShowcaseDestination | undefined {
+  if (asset.href) {
+    return {
+      action: "Tour the demo",
+      accessibleLabel: `Open the ${asset.caption} demo in a new tab`,
+      href: asset.href,
+    };
+  }
+
+  const demo = demoProjects.find((project) => project.image === asset.src);
+  if (demo) {
+    return {
+      action: "Tour the demo",
+      accessibleLabel: `Open the ${demo.name} demo in a new tab`,
+      href: demo.href,
+    };
+  }
+
+  const property = ownedWebsites.find((website) => asset.caption.startsWith(`${website.name} ·`));
+  if (property) {
+    return {
+      action: "Visit the property",
+      accessibleLabel: `Open ${property.name} in a new tab`,
+      href: property.url,
+    };
+  }
+
+  const tool = selectedTools.find((candidate) => (
+    candidate.image.src === asset.src
+    || (candidate.id === "analysis-dashboard" && asset.src === "/proof/tools/boho-analytics-platform.png")
+  ));
+  if (tool) {
+    return {
+      action: "Inspect the repository",
+      accessibleLabel: `Open the ${tool.displayName} public repository in a new tab`,
+      href: tool.repositoryUrl,
+    };
+  }
+
+  return undefined;
+}
 
 export function ServiceHeroVisual({ route }: { route: PrimaryServiceRoute }) {
   const asset = serviceHeroAssets[route];
@@ -39,12 +89,13 @@ export function ServiceShowcaseGallery({
 }
 
 function ShowcaseFigure({ asset, featured = false }: { asset: ServiceShowcaseAsset; featured?: boolean }) {
-  return <figure className={`service-showcase__item${featured ? " service-showcase__item--featured" : ""}${asset.kind === "tall" ? " service-showcase__item--tall" : ""}`}>
-    {asset.href ? <a className="service-showcase__card-link" href={asset.href} rel="noopener noreferrer" target="_blank"><span className="sr-only">Open the {asset.caption} demo in a new tab</span></a> : null}
+  const destination = verifiedShowcaseDestination(asset);
+  return <figure className={`service-showcase__item${featured ? " service-showcase__item--featured" : ""}${asset.kind === "tall" ? " service-showcase__item--tall" : ""}${destination ? " service-showcase__item--linked" : ""}`}>
+    {destination ? <a aria-label={destination.accessibleLabel} className="service-showcase__card-link" href={destination.href} rel="noopener noreferrer" target="_blank" /> : null}
     <div className="service-showcase__media">
       <Image src={asset.src} alt={asset.alt} width={1440} height={1050} unoptimized />
     </div>
-    <figcaption><span>{asset.label}</span><strong>{asset.caption}</strong>{asset.href ? <b>Tour the demo ↗</b> : null}</figcaption>
+    <figcaption><span>{asset.label}</span><strong>{asset.caption}</strong>{destination ? <b>{destination.action} ↗</b> : null}</figcaption>
   </figure>;
 }
 
