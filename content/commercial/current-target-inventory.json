@@ -5,13 +5,13 @@
   "sources": [
     {
       "path": "app/Homepage.tsx",
-      "sha256": "f8163a699121276ff2b9309937b33ecedbe1fbf6b23171c69efa561bab6e0621",
-      "bytes": 21321,
+      "sha256": "c78adf98e6799e842d39d3035c7e96ce81530074d28b0bf15ffb69f809456ddc",
+      "bytes": 21493,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
       "publicStringCount": 100,
-      "importCount": 5,
+      "importCount": 6,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
     {
@@ -137,12 +137,12 @@
     },
     {
       "path": "app/components/EvidencePlate.tsx",
-      "sha256": "c2b9c1caa501cf43fbb7934899527819c15ce9dc36a4c6f8e14fa1d34f602398",
-      "bytes": 6590,
+      "sha256": "17d7e88c6c2be533353ebdc34639461a93141c894f354455786bd200bf0bfaa5",
+      "bytes": 6321,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 66,
+      "publicStringCount": 62,
       "importCount": 0,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
@@ -1259,10 +1259,10 @@
       "commercialCopyKey": "product.bohoAnalytics.publicFreeAvailability"
     },
     {
-      "key": "analytics-claim.app-homepage-tsx.319-335",
+      "key": "analytics-claim.app-homepage-tsx.320-336",
       "sourceFile": "app/Homepage.tsx",
-      "sourceStartLine": 319,
-      "sourceEndLine": 335,
+      "sourceStartLine": 320,
+      "sourceEndLine": 336,
       "signals": [
         "free-or-unpaid",
         "public-access"
@@ -1516,14 +1516,14 @@
     "reachable": 64,
     "authored": 75,
     "generatedMirrors": 1,
-    "publicStringsOnDemand": 13423,
+    "publicStringsOnDemand": 13419,
     "analyticsClaimContexts": 49
   },
   "fullDetail": {
     "committed": false,
     "generationCommand": "node scripts/commercial-copy-build.mjs --check --inventory-detail <path>",
-    "recordCount": 13423,
-    "deterministicDigest": "bfa403a305846d79224492ba6026245690f9ed3859b833c9d662869cda2fa21f"
+    "recordCount": 13419,
+    "deterministicDigest": "3b84fcc6e99441eade2db34290ddfc75fd6afc4467d561a910f0f3a4ee606a93"
   },
   "securityScan": {
     "privateKeyMarkers": 0,

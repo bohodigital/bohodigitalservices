@@ -146,6 +146,27 @@ test("current analytics product evidence is public, open source, and unmistakabl
   }
 });
 
+test("homepage carries visual evidence without turning evidence images into file links", async () => {
+  const homepage = await render("/");
+
+  for (const id of ["provider-rescue-control-map", "analytics-workspace"]) {
+    assert.match(
+      homepage,
+      new RegExp(`data-evidence-plate="${id}"`),
+      `homepage lacks ${id}`,
+    );
+  }
+
+  for (const route of publicRoutes) {
+    const html = await render(route);
+    assert.doesNotMatch(
+      html,
+      /<a\b[^>]*href="\/visuals\/evidence-plates\//i,
+      `${route} turns an evidence image into a raw-file link`,
+    );
+  }
+});
+
 test("states Boho's four core offers plainly before presenting technical proof", async () => {
   const [homepage, seo, work, resources, tools] = await Promise.all([
     render("/"),

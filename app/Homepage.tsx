@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import styles from "./front-door-home.module.css";
+import { EvidencePlate } from "./components/EvidencePlate";
 import { AnalyticsProductAd } from "./components/ServiceShowcase";
 import { ButtonLink, FaqItem, Footer, Header } from "./components/SiteChrome";
 import { audiencePages } from "./content/audiencePages";
@@ -365,6 +366,8 @@ export default function Homepage() {
           </div>
         </section>
 
+        <EvidencePlate id="provider-rescue-control-map" />
+
         <section className={styles.decision} aria-labelledby="decision-title">
           <div className={styles.shell}>
             <header className={styles.sectionHeading}>
@@ -422,6 +425,8 @@ export default function Homepage() {
           placement="homepage"
           sourcePage="homepage"
         />
+
+        <EvidencePlate id="analytics-workspace" />
 
         <section className={styles.demos} aria-labelledby="demos-title">
           <div className={styles.shell}>

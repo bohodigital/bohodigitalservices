@@ -85,19 +85,6 @@
     clamp(0.9rem, 2vw, 1.5rem) clamp(0.9rem, 2vw, 1.5rem) 0 color-mix(in srgb, var(--plate-accent) 45%, transparent);
   display: block;
   overflow: hidden;
-  transition: box-shadow 160ms ease, transform 160ms ease;
-}
-
-.frame:hover {
-  box-shadow:
-    clamp(0.65rem, 1.2vw, 1rem) clamp(0.65rem, 1.2vw, 1rem) 0 var(--plate-shadow),
-    clamp(1.1rem, 2.3vw, 1.8rem) clamp(1.1rem, 2.3vw, 1.8rem) 0 color-mix(in srgb, var(--plate-accent) 52%, transparent);
-  transform: translate(-2px, -2px);
-}
-
-.frame:focus-visible {
-  outline: 4px solid var(--plate-accent);
-  outline-offset: 5px;
 }
 
 .frame img {
@@ -125,11 +112,6 @@
   text-align: right;
 }
 
-.fullSizeHint {
-  color: var(--plate-accent);
-  white-space: nowrap;
-}
-
 @media (max-width: 760px) {
   .header {
     align-items: start;
@@ -153,15 +135,5 @@
 
   .disclosure {
     text-align: left;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .frame {
-    transition: none;
-  }
-
-  .frame:hover {
-    transform: none;
   }
 }

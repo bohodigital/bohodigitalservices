@@ -109,13 +109,7 @@ export function EvidencePlate({ id }: { id: EvidencePlateId }) {
         </header>
 
         <figure className={styles.figure}>
-          <a
-            aria-label={`Open “${plate.title}” at full size in a new tab`}
-            className={styles.frame}
-            href={src}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
+          <div className={styles.frame}>
             <Image
               alt={plate.alt}
               height={1000}
@@ -124,11 +118,10 @@ export function EvidencePlate({ id }: { id: EvidencePlateId }) {
               unoptimized
               width={1600}
             />
-          </a>
+          </div>
           <figcaption>
             <span>Boho evidence plate</span>
             <span className={styles.disclosure}>{plate.disclosure}</span>
-            <span className={styles.fullSizeHint}>Open full-size plate ↗</span>
           </figcaption>
         </figure>
       </div>
