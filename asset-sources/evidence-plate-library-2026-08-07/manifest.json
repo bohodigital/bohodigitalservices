@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "library": "Boho Evidence Plates",
+  "created": "2026-08-07",
+  "status": "review_assets_not_live_placements",
+  "render": {
+    "viewport": { "width": 1600, "height": 1000 },
+    "format": "png_and_webp",
+    "entrypoint": "index.html",
+    "queryParameter": "plate"
+  },
+  "plates": [
+    {
+      "id": "analytics-workspace",
+      "title": "One workspace. Separate evidence.",
+      "job": "prove",
+      "primaryRoutes": ["/resources/", "/services/research-audits-strategy/"],
+      "sources": [
+        "sources/boho-analytics-demo-command-center-20260806.webp",
+        "sources/boho-analytics-demo-plot-builder-20260806.webp",
+        "sources/boho-site-graph-demo-provider-rescue-20260806.webp"
+      ],
+      "disclosure": "Synthetic demonstration data. No client results. Real Boho software.",
+      "alt": "Editorial mosaic of three real Boho software screens showing the Analytics command center, Plot Builder, and Site Graph, all using synthetic demonstration data."
+    },
+    {
+      "id": "gsc-opportunity",
+      "title": "Visibility is rising. The click is not.",
+      "job": "compare",
+      "primaryRoutes": ["/resources/", "/services/ongoing-seo/"],
+      "sources": ["data/gsc-opportunity.json"],
+      "disclosure": "Synthetic educational data for a fictional service business. Not client performance or a forecast.",
+      "alt": "Two aligned trend charts show synthetic weekly search impressions rising while click-through rate falls, beside a five-row query and landing-page decision ledger."
+    },
+    {
+      "id": "provider-rescue-control-map",
+      "title": "Move the website without losing the business.",
+      "job": "orient",
+      "primaryRoutes": ["/services/provider-rescue/", "/learn/provider-rescue/"],
+      "sources": [],
+      "disclosure": "Illustrative control map. Every real rescue begins with an inventory.",
+      "alt": "Website dependency map connecting domain, DNS, hosting, source, forms, and analytics with example control states and a five-step safe move order."
+    },
+    {
+      "id": "owned-demo-mosaic",
+      "title": "Different businesses. Different websites.",
+      "job": "prove",
+      "primaryRoutes": ["/services/web-design-redesign/", "/industries/"],
+      "sources": [
+        "sources/junk-removal.webp",
+        "sources/cafe.webp",
+        "sources/landscaping.webp",
+        "sources/dentistry.webp"
+      ],
+      "disclosure": "Boho-owned demonstration designs for fictional businesses. Not client work.",
+      "alt": "Mosaic of four Boho-owned demonstration website designs for junk removal, a neighborhood cafe, landscaping, and a multi-location dental group."
+    },
+    {
+      "id": "custom-systems-workbench",
+      "title": "We build the tools behind the work.",
+      "job": "prove",
+      "primaryRoutes": ["/services/custom-digital-solutions/", "/tools/"],
+      "sources": [
+        "sources/boho-analytics-demo-command-center-20260806.webp",
+        "sources/boho-secret-broker.png",
+        "sources/boho-site-graph-demo-overview-20260806.webp"
+      ],
+      "disclosure": "Actual Boho-built interfaces. Analytics and graph screens use synthetic demo data.",
+      "alt": "Dark editorial workbench combining actual Boho Analytics, Secret Broker, and Site Graph interfaces."
+    },
+    {
+      "id": "measurement-ledger",
+      "title": "Different sources answer different questions.",
+      "job": "explain",
+      "primaryRoutes": ["/resources/", "/services/research-audits-strategy/"],
+      "sources": [],
+      "disclosure": "Public architecture explanation. Provider counts are not silently added or deduplicated.",
+      "alt": "Four-row measurement ledger explaining what Search Console, GA4, Umami, and form-delivery evidence each observe and what decisions they can support."
+    },
+    {
+      "id": "customer-paths",
+      "title": "One website. Five kinds of next step.",
+      "job": "orient",
+      "primaryRoutes": ["/industries/"],
+      "sources": [],
+      "disclosure": "Customer-path model, not recorded visitor behavior.",
+      "alt": "Customer-path diagram showing a shared Discover, Understand, and Trust sequence branching to Estimate, Book, Visit, Buy, or Discuss."
+    },
+    {
+      "id": "proposal-anatomy",
+      "title": "A proposal should tell you who owns what.",
+      "job": "explain",
+      "primaryRoutes": ["/learn/website-buying/", "/resources/"],
+      "sources": [],
+      "disclosure": "Buyer guidance, not legal advice. Contract terms vary.",
+      "alt": "Website proposal review ledger listing scope, content, domain, hosting, forms, analytics, migration, and handoff requirements with corresponding warning signs."
+    }
+  ]
+}

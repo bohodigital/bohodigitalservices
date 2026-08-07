@@ -1,0 +1,23 @@
+{
+  "status": "synthetic_demo",
+  "audience": "fictional service business",
+  "searchType": "web",
+  "grain": "complete_week",
+  "weeks": [
+    { "week": "May 04", "impressions": 3100, "clicks": 46, "ctr": 1.48, "position": 24.8 },
+    { "week": "May 11", "impressions": 3420, "clicks": 50, "ctr": 1.46, "position": 23.9 },
+    { "week": "May 18", "impressions": 3290, "clicks": 47, "ctr": 1.43, "position": 24.2 },
+    { "week": "May 25", "impressions": 3860, "clicks": 52, "ctr": 1.35, "position": 22.6 },
+    { "week": "Jun 01", "impressions": 4210, "clicks": 55, "ctr": 1.31, "position": 21.7 },
+    { "week": "Jun 08", "impressions": 4080, "clicks": 53, "ctr": 1.30, "position": 20.9 },
+    { "week": "Jun 15", "impressions": 4710, "clicks": 57, "ctr": 1.21, "position": 19.8 },
+    { "week": "Jun 22", "impressions": 5120, "clicks": 60, "ctr": 1.17, "position": 18.9 }
+  ],
+  "queries": [
+    { "query": "website ownership checklist", "page": "/resources/ownership-checklist/", "impressions": 930, "clicks": 31, "ctr": 3.33, "position": 5.6, "action": "Protect and update" },
+    { "query": "leave website agency", "page": "/guides/leave-your-web-agency/", "impressions": 1260, "clicks": 9, "ctr": 0.71, "position": 8.9, "action": "Rewrite title and snippet" },
+    { "query": "small business seo chicago", "page": "/services/ongoing-seo/", "impressions": 2410, "clicks": 18, "ctr": 0.75, "position": 13.4, "action": "Strengthen page and links" },
+    { "query": "emergency website migration", "page": "/services/provider-rescue/", "impressions": 1840, "clicks": 42, "ctr": 2.28, "position": 7.8, "action": "Clarify the next step" },
+    { "query": "free website analytics", "page": "/resources/free-analytics/", "impressions": 1670, "clicks": 6, "ctr": 0.36, "position": 22.1, "action": "Build the useful page" }
+  ]
+}
