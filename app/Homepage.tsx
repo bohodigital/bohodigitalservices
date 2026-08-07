@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import styles from "./front-door-home.module.css";
+import { AnalyticsProductAd } from "./components/ServiceShowcase";
 import { ButtonLink, FaqItem, Footer, Header } from "./components/SiteChrome";
 import { audiencePages } from "./content/audiencePages";
 import { commercialSection } from "./content/commercial/presentation";
@@ -386,6 +387,12 @@ export default function Homepage() {
             </div>
           </div>
         </section>
+
+        <AnalyticsProductAd
+          headingId="homepage-analytics-product-title"
+          placement="homepage"
+          sourcePage="homepage"
+        />
 
         <section className={styles.demos} aria-labelledby="demos-title">
           <div className={styles.shell}>

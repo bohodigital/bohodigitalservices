@@ -31,6 +31,7 @@ export const PACKETS = [
   ["WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047", "emergency"],
   ["WO-2026-07-24-BOHO-CHATGPT-DIRECT-REVIEW-PROTOCOL-048", "review-protocol"],
   ["WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049", "cross-packet-corrections"],
+  ["WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050", "analytics-product-availability"],
 ].map(([key, surface], snapshotOrdinal) => ({
   key, surface, snapshotOrdinal: snapshotOrdinal + 1, file: `${key}.md`,
   editorialAuthority: key.endsWith("-048") ? "review-protocol" : "chatgpt",
@@ -52,9 +53,11 @@ const EXPECTED_PACKET_HASHES = {
   "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047": "5a01517f2dc9302cda0dd4642b5bcff848037fe47b145e712311d6e3c5e51c67",
   "WO-2026-07-24-BOHO-CHATGPT-DIRECT-REVIEW-PROTOCOL-048": "12b7575baa750ea11630496aa21b6c78207794d4ad1480e9d28331e8d79dc482",
   "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049": "abbcbeb66fc5b44847069eeaf00a97d875b5389d1790373cb5f7a7c78ab12862",
+  "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050": "4906598d6da4cb1626bea8b655a62ff9ad5ebf51c31de4951841a55b529aaed5",
 };
 
 export const BINDING_PRECEDENCE = [
+  ["050", "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050"],
   ["049", "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049"],
   ["045", "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045"],
   ["040", "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040"],
@@ -79,7 +82,8 @@ export const REQUIRED_COVERAGE_CATEGORIES = [
   "homepage", "services-overview", "service-local-visibility", "service-websites-hosting",
   "service-provider-rescue", "service-custom-tools", "service-research-analytics", "pricing",
   "work-evidence", "contact", "start", "emergency", "navigation-footer", "forms-states",
-  "metadata-schema", "visuals-accessibility", "routes-fragments", "packet-049-corrections",
+    "metadata-schema", "visuals-accessibility", "routes-fragments", "packet-049-corrections",
+    "packet-050-analytics-availability",
 ];
 
 const REQUIRED_SERVICE_NAMES = [
@@ -95,8 +99,9 @@ const REQUIRED_PRICE_STRINGS = [
   "Focused custom build — Starting at $2,500",
 ];
 const CORRECTION_PACKET_KEY = "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049";
+const ANALYTICS_AVAILABILITY_PACKET_KEY = "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050";
 const REPORTING_PRODUCT_KEY = "product.seoReporting.monthly";
-const ANALYTICS_BLOCK_KEY = "product.bohoAnalytics.publicFreeAvailability";
+const ANALYTICS_AVAILABILITY_KEY = "product.bohoAnalytics.publicFreeAvailability";
 const REQUIRED_CURRENT_SOURCES = [
   "app/page.tsx", "app/not-found.tsx", "app/[...slug]/page.tsx", "app/learn/glossary/[term]/page.tsx",
   "app/robots.ts", "scripts/generate-service-page-data.mjs", "app/content/servicePages.generated.ts",
@@ -129,6 +134,15 @@ const SUPERSESSIONS = [
   ], action: "replace" },
   { key: "work.artifact.glossary.current-status", selected: `${CORRECTION_PACKET_KEY}:107:0`, displaced: [
     "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038:186:0",
+  ], action: "replace" },
+  { key: "analytics.availability.key", selected: `${ANALYTICS_AVAILABILITY_PACKET_KEY}:12:0`, displaced: [
+    `${CORRECTION_PACKET_KEY}:175:0`,
+  ], action: "replace" },
+  { key: "analytics.availability.status", selected: `${ANALYTICS_AVAILABILITY_PACKET_KEY}:15:0`, displaced: [
+    `${CORRECTION_PACKET_KEY}:178:0`,
+  ], action: "replace" },
+  { key: "analytics.availability.verification", selected: `${ANALYTICS_AVAILABILITY_PACKET_KEY}:18:0`, displaced: [
+    `${CORRECTION_PACKET_KEY}:181:0`,
   ], action: "replace" },
 ];
 
@@ -180,6 +194,7 @@ function inferPageKey(surface, headings, field, value) {
   if (surface === "visual-accessibility") return "visuals-accessibility";
   if (surface === "route-fragment-compatibility") return "routes-fragments";
   if (surface === "cross-packet-corrections") return "packet-049-corrections";
+  if (surface === "analytics-product-availability") return "service-research-analytics";
   if (/local visibility|ongoing seo/.test(context)) return "service-local-visibility";
   if (/websites & managed hosting|web design|redesign/.test(context)) return "service-websites-hosting";
   if (/provider rescue|migration/.test(context)) return "service-provider-rescue";
@@ -312,13 +327,16 @@ export function validateParserCoverage(records) {
   return REQUIRED_PARSER_FORMATS.filter((format) => !formats.has(format)).map((format) => `parser format missing: ${format}`);
 }
 
-function sourcedValue(bundle, line, tokenIndex = 0) {
-  const packet = bundle.packets.find(({ key }) => key === CORRECTION_PACKET_KEY);
+function sourcedValueFrom(bundle, packetKey, line, tokenIndex = 0) {
+  const packet = bundle.packets.find(({ key }) => key === packetKey);
   const sourceLine = packet?.content.split("\n")[line - 1] ?? "";
   const tokens = [...sourceLine.matchAll(/`([^`]+)`/g)].map((match) => match[1]);
-  if (tokens[tokenIndex] === undefined) throw new Error(`Missing correction token ${tokenIndex} at ${CORRECTION_PACKET_KEY}:${line}`);
-  return { value: tokens[tokenIndex], sourcePacket: CORRECTION_PACKET_KEY, sourceLine: line, sourceLocation: `${CORRECTION_PACKET_KEY}.md:${line}${tokenIndex ? `:token${tokenIndex}` : ""}` };
+  if (tokens[tokenIndex] === undefined) throw new Error(`Missing correction token ${tokenIndex} at ${packetKey}:${line}`);
+  return { value: tokens[tokenIndex], sourcePacket: packetKey, sourceLine: line, sourceLocation: `${packetKey}.md:${line}${tokenIndex ? `:token${tokenIndex}` : ""}` };
 }
+
+const sourcedValue = (bundle, line, tokenIndex = 0) => sourcedValueFrom(bundle, CORRECTION_PACKET_KEY, line, tokenIndex);
+const sourcedAnalyticsValue = (bundle, line, tokenIndex = 0) => sourcedValueFrom(bundle, ANALYTICS_AVAILABILITY_PACKET_KEY, line, tokenIndex);
 
 function buildCorrections(bundle) {
   return {
@@ -353,7 +371,24 @@ function buildCorrections(bundle) {
       canonicalAnchor: sourcedValue(bundle, 131, 1), compatibilityAlias: sourcedValue(bundle, 155),
       crossReference: { eyebrow: sourcedValue(bundle, 138), heading: sourcedValue(bundle, 141), body: sourcedValue(bundle, 144), price: sourcedValue(bundle, 147), linkLabel: sourcedValue(bundle, 150), destination: sourcedValue(bundle, 153) },
     },
-    analyticsAvailability: { key: sourcedValue(bundle, 175), status: sourcedValue(bundle, 178), reason: sourcedValue(bundle, 181), targetApproved: false, replacementText: null },
+    analyticsAvailability: {
+      key: sourcedAnalyticsValue(bundle, 12), status: sourcedAnalyticsValue(bundle, 15),
+      verificationBasis: sourcedAnalyticsValue(bundle, 18), softwareLicensePrice: sourcedAnalyticsValue(bundle, 23),
+      independentUse: sourcedAnalyticsValue(bundle, 26), publicRepository: sourcedAnalyticsValue(bundle, 29),
+      publicDocumentation: sourcedAnalyticsValue(bundle, 32), publicAccessBoundary: sourcedAnalyticsValue(bundle, 37),
+      installationBoundary: sourcedAnalyticsValue(bundle, 40), uptimeBoundary: sourcedAnalyticsValue(bundle, 43),
+      costBoundary: sourcedAnalyticsValue(bundle, 46), supportedSourceBoundary: sourcedAnalyticsValue(bundle, 49),
+      privacyBoundary: sourcedAnalyticsValue(bundle, 52), includedConfiguration: sourcedAnalyticsValue(bundle, 57),
+      configurationBoundary: sourcedAnalyticsValue(bundle, 60), afterFirstMonthBoundary: sourcedAnalyticsValue(bundle, 63),
+      reportingBoundary: sourcedAnalyticsValue(bundle, 68), primaryStatement: sourcedAnalyticsValue(bundle, 73),
+      requiredProductQualification: sourcedAnalyticsValue(bundle, 76),
+      requiredSeoConfigurationStatement: sourcedAnalyticsValue(bundle, 79),
+      targetApproved: true, replacementText: sourcedAnalyticsValue(bundle, 73),
+      supersedes: {
+        sourcePacket: CORRECTION_PACKET_KEY,
+        sourceLocations: [`${CORRECTION_PACKET_KEY}.md:175`, `${CORRECTION_PACKET_KEY}.md:178`, `${CORRECTION_PACKET_KEY}.md:181`],
+      },
+    },
   };
 }
 
@@ -468,7 +503,8 @@ export function detectAnalyticsClaimContexts(text, sourceFile) {
     results.push({
       key: `analytics-claim.${slug(sourceFile)}.${start + 1}-${end}`, sourceFile,
       sourceStartLine: start + 1, sourceEndLine: end, signals, contextHash: sha256(context),
-      disposition: "blocked-pending-current-product-verification", blockedCopyKey: ANALYTICS_BLOCK_KEY,
+      disposition: "approved-with-verified-software-and-service-boundaries",
+      commercialCopyKey: ANALYTICS_AVAILABILITY_KEY,
     });
   }
   return results;
@@ -569,6 +605,7 @@ function coverageFor(slots) {
     if (key === "routes-fragments") return selectedRecord.classification === "route" || selectedRecord.pageKey === key;
     if (key === "navigation-footer") return selectedRecord.classification === "navigation" || selectedRecord.pageKey === key;
     if (key === "packet-049-corrections") return selectedRecord.sourcePacket === CORRECTION_PACKET_KEY;
+    if (key === "packet-050-analytics-availability") return selectedRecord.sourcePacket === ANALYTICS_AVAILABILITY_PACKET_KEY;
     return selectedRecord.pageKey === key;
   }).map(({ key: slotKey }) => slotKey);
   const categories = REQUIRED_COVERAGE_CATEGORIES.map((key) => ({ key, selectedSlotKeys: selectedFor(key) }));
@@ -584,23 +621,30 @@ function adaptersFor(slots) {
   return {
     schemaVersion: 1,
     pages: ADAPTER_PAGE_KEYS.map((key) => ({ key, selectedSlotKeys: active.filter(({ selectedRecord }) => selectedRecord.pageKey === key).map(({ key: slotKey }) => slotKey) })),
-    blockedSlotKeys: [ANALYTICS_BLOCK_KEY],
+    blockedSlotKeys: [],
   };
 }
 
 function buildAdapterSource() {
-  return `// Generated by scripts/commercial-copy-build.mjs. Do not edit.\nimport { commercialCopyContract } from "./contract";\nimport type { CommercialCopyRecord } from "./types";\n\nexport const commercialAdapterPageKeys = ${JSON.stringify(ADAPTER_PAGE_KEYS)} as const;\nexport type CommercialAdapterPageKey = (typeof commercialAdapterPageKeys)[number];\nconst blockedSlotKeys = new Set<string>([${JSON.stringify(ANALYTICS_BLOCK_KEY)}]);\n\nexport function assertCommercialSlotAvailable(slotKey: string): void {\n  if (blockedSlotKeys.has(slotKey)) throw new Error(\`blocked commercial-copy slot requested: \${slotKey}\`);\n}\n\nexport function getCommercialPageAdapter(pageKey: CommercialAdapterPageKey): ReadonlyArray<CommercialCopyRecord> {\n  return commercialCopyContract.records.filter((record) => record.pageKey === pageKey);\n}\n\n${ADAPTER_PAGE_KEYS.map((key) => `export const ${key.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())}CommercialAdapter = () => getCommercialPageAdapter(${JSON.stringify(key)});`).join("\n")}\n`;
+  return `// Generated by scripts/commercial-copy-build.mjs. Do not edit.\nimport { commercialCopyContract } from "./contract";\nimport type { CommercialCopyRecord } from "./types";\n\nexport const commercialAdapterPageKeys = ${JSON.stringify(ADAPTER_PAGE_KEYS)} as const;\nexport type CommercialAdapterPageKey = (typeof commercialAdapterPageKeys)[number];\nconst blockedSlotKeys = new Set<string>();\n\nexport function assertCommercialSlotAvailable(slotKey: string): void {\n  if (blockedSlotKeys.has(slotKey)) throw new Error(\`blocked commercial-copy slot requested: \${slotKey}\`);\n}\n\nexport function getCommercialPageAdapter(pageKey: CommercialAdapterPageKey): ReadonlyArray<CommercialCopyRecord> {\n  return commercialCopyContract.records.filter((record) => record.pageKey === pageKey);\n}\n\n${ADAPTER_PAGE_KEYS.map((key) => `export const ${key.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())}CommercialAdapter = () => getCommercialPageAdapter(${JSON.stringify(key)});`).join("\n")}\n`;
 }
 
-function buildBlocked(inventory, corrections) {
+function buildBlocked(bundle, inventory, corrections) {
+  const formerStatus = sourcedValue(bundle, 178);
   return {
-    schemaVersion: 2,
-    policy: "No placeholder, guessed value, synonym, summary, caption, alt text, metadata, field state, mobile variant, coming-soon status, request-access status, free-dashboard wording, or other replacement may stand in for a blocked semantic slot.",
-    items: [{
-      key: ANALYTICS_BLOCK_KEY, status: corrections.analyticsAvailability.status.value,
-      reason: corrections.analyticsAvailability.reason.value, targetApproved: false, replacementText: null,
-      sourcePacket: CORRECTION_PACKET_KEY,
-      sourceLocations: [corrections.analyticsAvailability.key.sourceLocation, corrections.analyticsAvailability.status.sourceLocation, corrections.analyticsAvailability.reason.sourceLocation],
+    schemaVersion: 3,
+    policy: "Only active unresolved commercial-copy slots appear in items. Superseded blocks remain as provenance and do not prevent use of the later approved record.",
+    items: [],
+    supersededItems: [{
+      key: ANALYTICS_AVAILABILITY_KEY,
+      previousStatus: formerStatus.value,
+      previousReason: sourcedValue(bundle, 181).value,
+      previousSourcePacket: CORRECTION_PACKET_KEY,
+      previousSourceLocations: corrections.analyticsAvailability.supersedes.sourceLocations,
+      supersededBy: ANALYTICS_AVAILABILITY_PACKET_KEY,
+      currentStatus: corrections.analyticsAvailability.status.value,
+      targetApproved: true,
+      replacementText: corrections.analyticsAvailability.replacementText.value,
       currentClaims: inventory.analyticsClaimContexts.map((claim) => ({ ...claim })),
     }],
   };
@@ -625,7 +669,7 @@ export async function buildArtifacts(bundle) {
   const collisionReport = buildCollisionReport(records, explicitCollisions);
   const corrections = buildCorrections(bundle);
   const { compact: inventory, detail: inventoryDetail } = await buildCurrentInventory();
-  const blocked = buildBlocked(inventory, corrections);
+  const blocked = buildBlocked(bundle, inventory, corrections);
   const coverage = coverageFor(semanticSlots);
   const adapters = adaptersFor(semanticSlots);
   const activeRecords = semanticSlots.filter(({ selectionAction }) => selectionAction !== "remove").map(({ selectedRecord }) => selectedRecord);
@@ -685,22 +729,51 @@ export function validateArtifacts(bundle, artifactsOrContract, legacyInventory, 
     if (source.path === "app/content/servicePages.generated.ts" && source.reachable !== true) findings.push("generated service-page mirror marked unreachable");
   }
   const expectedCorrections = buildCorrections(bundle);
-  const block = blocked?.items?.find(({ key }) => key === ANALYTICS_BLOCK_KEY);
-  if (!block || blocked.items.length !== 1 || block.status !== expectedCorrections.analyticsAvailability.status.value || block.reason !== expectedCorrections.analyticsAvailability.reason.value || block.targetApproved !== false || block.replacementText !== null) findings.push("blocked record mismatch");
-  if (block && json(block.currentClaims) !== json(inventory.analyticsClaimContexts)) findings.push("blocked current-claim registry mismatch");
-  if (!block?.currentClaims?.some(({ sourceFile }) => sourceFile === "content/service-pages/04-digital-research-seo-audits-strategy.md") || !block?.currentClaims?.some(({ sourceFile }) => sourceFile === "app/content/servicePages.generated.ts")) findings.push("contextual Analytics claim coverage missing");
-  if (contract?.records?.some(({ exactValue }) => /Boho Analytics Platform.*(?:coming soon|request access|free dashboard|without paying)/i.test(exactValue))) findings.push("blocked Analytics availability is target-approved");
+  const analytics = expectedCorrections.analyticsAvailability;
+  const superseded = blocked?.supersededItems?.find(({ key }) => key === ANALYTICS_AVAILABILITY_KEY);
+  if (
+    blocked?.schemaVersion !== 3 || blocked?.items?.length !== 0 || blocked?.supersededItems?.length !== 1
+    || !superseded || superseded.previousStatus !== sourcedValue(bundle, 178).value
+    || superseded.previousReason !== sourcedValue(bundle, 181).value
+    || superseded.previousSourcePacket !== CORRECTION_PACKET_KEY
+    || superseded.supersededBy !== ANALYTICS_AVAILABILITY_PACKET_KEY
+    || superseded.currentStatus !== analytics.status.value || superseded.targetApproved !== true
+    || superseded.replacementText !== analytics.primaryStatement.value
+  ) findings.push("analytics availability supersession mismatch");
+  if (superseded && json(superseded.currentClaims) !== json(inventory.analyticsClaimContexts)) findings.push("analytics availability current-claim registry mismatch");
+  if (
+    !superseded?.currentClaims?.some(({ sourceFile }) => sourceFile === "content/service-pages/04-digital-research-seo-audits-strategy.md")
+    || !superseded?.currentClaims?.some(({ sourceFile }) => sourceFile === "app/content/servicePages.generated.ts")
+  ) findings.push("contextual Analytics claim coverage missing");
+  if (inventory?.analyticsClaimContexts?.some(({ disposition, commercialCopyKey }) => (
+    disposition !== "approved-with-verified-software-and-service-boundaries"
+    || commercialCopyKey !== ANALYTICS_AVAILABILITY_KEY
+  ))) findings.push("analytics claim disposition mismatch");
+  const requiredAnalyticsValues = [
+    "softwareLicensePrice", "independentUse", "publicRepository", "publicDocumentation",
+    "publicAccessBoundary", "installationBoundary", "uptimeBoundary", "costBoundary",
+    "supportedSourceBoundary", "privacyBoundary", "includedConfiguration", "configurationBoundary",
+    "afterFirstMonthBoundary", "reportingBoundary", "primaryStatement",
+    "requiredProductQualification", "requiredSeoConfigurationStatement",
+  ].map((field) => analytics[field].value);
+  for (const value of requiredAnalyticsValues) {
+    if (!contract?.records?.some(({ exactValue }) => exactValue === value)) findings.push(`missing approved Analytics boundary: ${sha256(value).slice(0, 12)}`);
+  }
+  if (
+    analytics.key.value !== ANALYTICS_AVAILABILITY_KEY || analytics.targetApproved !== true
+    || analytics.replacementText.value !== analytics.primaryStatement.value
+  ) findings.push("Analytics availability approval mismatch");
+  if (contract?.records?.some(({ exactValue }) => [sourcedValue(bundle, 178).value, sourcedValue(bundle, 181).value].includes(exactValue))) findings.push("superseded Analytics block remains active");
   for (const name of REQUIRED_SERVICE_NAMES) if (!contract?.records?.some(({ exactValue }) => exactValue === name)) findings.push(`missing approved service name: ${name}`);
   for (const price of REQUIRED_PRICE_STRINGS) if (!contract?.records?.some(({ exactValue }) => exactValue === price)) findings.push(`missing approved price: ${price}`);
   if (contract?.products?.length !== 1 || contract.products[0].key !== REPORTING_PRODUCT_KEY) findings.push("reporting product count mismatch");
   if (contract?.pricingAnchors?.canonical?.productKey !== contract?.pricingAnchors?.compatibilityAlias?.productKey) findings.push("pricing alias product mismatch");
-  if (json(contract?.corrections) !== json(expectedCorrections)) findings.push("packet 049 correction mismatch");
+  if (json(contract?.corrections) !== json(expectedCorrections)) findings.push("commercial correction packet mismatch");
   if (json(adapters?.pages?.map(({ key }) => key)) !== json(ADAPTER_PAGE_KEYS)) findings.push("adapter page schema mismatch");
   for (const page of adapters?.pages ?? []) {
     if (!page.selectedSlotKeys.length) findings.push(`adapter page empty: ${page.key}`);
-    if (page.selectedSlotKeys.includes(ANALYTICS_BLOCK_KEY)) findings.push(`adapter exposes blocked slot: ${page.key}`);
   }
-  if (!adapters?.blockedSlotKeys?.includes(ANALYTICS_BLOCK_KEY)) findings.push("adapter blocked-slot registry missing");
+  if (adapters?.blockedSlotKeys?.length !== 0) findings.push("adapter retains superseded blocked slots");
   if (inventory?.securityScan && Object.values(inventory.securityScan).some((value) => Array.isArray(value) && value.some((item) => item.matches || item.values))) findings.push("security scan reproduces matched values");
   if (artifactDigests) {
     const computed = artifactDigestsFor({ contract, inventory, blocked, collisionReport, coverage, adapterSource });

@@ -114,7 +114,7 @@ export function ResourcesPage() {
             currentPath="/resources/"
             anchors={[
               { label: "Resource collections", href: "#resource-collections" },
-              { label: "Free analytics platform", href: "#analysis-dashboard" },
+              { label: "Open-source analytics", href: "#analysis-dashboard" },
               { label: "Provider rescue checklist", href: "#provider-rescue-checklist" },
               { label: "Choose by decision", href: "#choose-by-decision" },
               { label: "Boho report standard", href: "#report-standard" },
@@ -155,24 +155,41 @@ export function ResourcesPage() {
             <section className="resources-decisions" id="analysis-dashboard" aria-labelledby="analysis-dashboard-title">
               <div className="section-shell resources-decisions__layout">
                 <header className="resources-heading">
-                  <p className="eyebrow">Free public software</p>
-                  <h2 id="analysis-dashboard-title">Use the Boho Analytics Platform without paying to unlock the dashboard.</h2>
-                  <p>{define("A source-labeled view is useful only when it keeps unlike measurements distinct and makes collection limits visible.")}</p>
+                  <p className="eyebrow">Free + open source</p>
+                  <h2 id="analysis-dashboard-title">One command center for the useful signals. No software lock-in.</h2>
+                  <p>{define("Boho Analytics brings approved GA4, Google Search Console, self-hosted Umami, Cloudflare, and form-delivery evidence into one locally owned, source-labeled view while keeping unlike measurements distinct.")}</p>
                 </header>
                 <div className="resources-analytics-feature">
                   <figure>
                     <div className="resources-analytics-feature__browser">
                       <span aria-hidden="true"><i /><i /><i /><b>Boho Analytics Platform</b></span>
-                      <Image src="/proof/tools/boho-analytics-dashboard-v2.png" alt="Current Boho Analytics Platform dashboard showing report controls, source-labeled summary cards, and sanitized illustrative metrics." width={1440} height={1050} unoptimized />
+                      <Image src="/proof/tools/boho-analytics-demo-command-center-20260806.webp" alt="Boho Analytics Platform growth command center showing clearly labeled demo data, complete report coverage, and source-specific comparison cards for Search Console, Umami, and durable form leads." width={1280} height={720} unoptimized />
                     </div>
-                    <figcaption>Sanitized illustrative data · Public repository screenshot · Not client data</figcaption>
+                    <figcaption>Synthetic demo data · Public open-source software · No client data</figcaption>
                   </figure>
                   <div className="resources-decision-list">
                     <a href="https://github.com/bohodigital/boho-analytics-platform" rel="noopener noreferrer" target="_blank">
                       <span className="resource-icon" aria-hidden="true"><BarChart3 size={22} strokeWidth={1.9} /></span>
                       <span>
-                        <strong>Boho Analytics Platform · Free</strong>
-                        <small>Public, MIT-licensed software for self-hosted, source-labeled website analytics, search performance, traffic infrastructure, and form-delivery monitoring. This is not a hosted customer dashboard offer.</small>
+                        <strong>Boho Analytics Platform · MIT licensed</strong>
+                        <small>Clone it, self-host it, and keep using it with your own provider accounts whether or not you retain Boho. There is no software license fee, and use is not tied to a paid dashboard login.</small>
+                      </span>
+                      <ArrowRight aria-hidden="true" size={17} />
+                      <span className="sr-only"> (opens in a new tab)</span>
+                    </a>
+                    <Link href="/services/ongoing-seo/">
+                      <span className="resource-icon" aria-hidden="true"><MousePointerClick size={22} strokeWidth={1.9} /></span>
+                      <span>
+                        <strong>Month-one setup is included with Ongoing SEO</strong>
+                        <small>For one straightforward website, the first month includes connecting the approved GA4, Search Console, and forms evidence used for the work, plus configuring and connecting one self-hosted Umami instance. Nonstandard tracking repair, consent implementation, ecommerce event design, historical reconstruction, unsupported integrations, and third-party infrastructure costs require separate approval.</small>
+                      </span>
+                      <ArrowRight aria-hidden="true" size={17} />
+                    </Link>
+                    <a href="https://github.com/bohodigital/boho-analytics-platform/blob/main/docs/site-graph/engine.md" rel="noopener noreferrer" target="_blank">
+                      <span className="resource-icon" aria-hidden="true"><PanelsTopLeft size={22} strokeWidth={1.9} /></span>
+                      <span>
+                        <strong>Site Graph · Structural evidence</strong>
+                        <small>Map revision-pinned pages and internal-link layers, inspect two-hop neighborhoods, and find goal distance, orphaned pages, dead ends, and shell dependence. It describes site structure—not visits, attention, conversion, or search rankings.</small>
                       </span>
                       <ArrowRight aria-hidden="true" size={17} />
                       <span className="sr-only"> (opens in a new tab)</span>

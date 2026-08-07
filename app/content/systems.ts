@@ -88,7 +88,7 @@ export type SelectedToolProfile = {
   relatedService?: `/${string}`;
   relatedGlossaryTerms?: ReadonlyArray<string>;
   image: {
-    src: `/proof/tools/${string}.png`;
+    src: `/proof/tools/${string}.${"png" | "webp"}`;
     alt: string;
     sourceUrl: `https://${string}`;
     evidenceType: "repository-screenshot" | "github-repository-preview";
@@ -148,25 +148,33 @@ export const selectedTools: ReadonlyArray<SelectedToolProfile> = [
   {
     id: "analysis-dashboard",
     displayName: "Boho Analytics Platform",
-    shortPublicSummary: "A lightweight dashboard for source-labeled website analytics, search performance, traffic infrastructure, and form-delivery monitoring.",
-    publicMemo: "The dashboard puts Umami, Cloudflare, Google Analytics, Search Console, and form-monitoring records into one source-labeled view. For SEO work, it helps separate discovery signals from on-site behavior and infrastructure traffic instead of silently treating unlike metrics as the same thing.",
+    shortPublicSummary: "A locally owned command center for source-labeled website analytics, search performance, traffic infrastructure, and form-delivery monitoring.",
+    publicMemo: "The platform brings approved Umami, Cloudflare, Google Analytics, Search Console, and form-monitoring aggregates into one source-labeled view without silently blending unlike metrics. Its Site Graph engine separately maps revision-pinned pages and internal-link pathways; that structural evidence is never presented as visitor behavior, conversion performance, or search authority.",
     systemFamily: "measurement-search-signals",
-    currentStatus: "Stable · v0.1.0",
-    publicAvailability: "Public GitHub repository",
-    openSourceStatus: "MIT licensed",
+    currentStatus: "Stable · v0.2.0",
+    publicAvailability: "Public GitHub repository · self-hosted",
+    openSourceStatus: "MIT licensed · no software license fee",
     repositoryUrl: "https://github.com/bohodigital/boho-analytics-platform",
-    relatedService: "/services/research-audits-strategy/",
+    maturePlatformsUsed: ["Python 3.11+", "SQLite", "Google Analytics Data API", "Google Search Console API", "Umami API", "Cloudflare GraphQL and D1"],
+    dataHandled: ["Source-labeled aggregate analytics", "Search performance", "Traffic infrastructure", "Form acceptance and delivery counts", "Revision-pinned website structure"],
+    limitations: [
+      "Self-hosted software, not a free Boho-hosted customer dashboard.",
+      "Provider accounts, credentials, deployment configuration, and infrastructure remain operator-controlled.",
+      "Site Graph is structural evidence and does not establish visitor behavior, conversion performance, or search rankings.",
+    ],
+    ownershipAndPortabilityNote: "The public MIT-licensed code can be configured and operated independently, including after a Boho engagement ends. Provider accounts and private deployment configuration should remain under the client's approved control.",
+    relatedService: "/services/ongoing-seo/",
     relatedGlossaryTerms: ["analytics", "google-search-console", "measurement-plan"],
     image: {
-      src: "/proof/tools/boho-analytics-dashboard-v2.png",
-      alt: "Boho Analytics Platform dashboard showing source-labeled summary cards and sanitized illustrative data.",
-      sourceUrl: "https://github.com/bohodigital/boho-analytics-platform/blob/main/docs/images/boho-analytics-dashboard.png",
+      src: "/proof/tools/boho-analytics-demo-command-center-20260806.webp",
+      alt: "Boho Analytics Platform growth command center showing clearly labeled synthetic demo data and source-specific comparison cards.",
+      sourceUrl: "https://github.com/bohodigital/boho-analytics-platform",
       evidenceType: "repository-screenshot",
-      width: 1440,
-      height: 1050,
+      width: 1280,
+      height: 720,
     },
-    lastVerified: "2026-08-05",
-    evidenceSource: "Public repository bohodigital/boho-analytics-platform main branch reviewed 2026-08-05",
+    lastVerified: "2026-08-06",
+    evidenceSource: "Public bohodigital/boho-analytics-platform v0.2.0 source, documentation, and fixture-only demo reviewed 2026-08-06",
   },
 ];
 

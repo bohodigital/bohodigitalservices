@@ -99,25 +99,166 @@ function ShowcaseFigure({ asset, featured = false }: { asset: ServiceShowcaseAss
   </figure>;
 }
 
-export function AnalyticsPlatformSpotlight() {
-  return <section className="reset-section analytics-spotlight" aria-labelledby="analytics-spotlight-title">
-    <div className="reset-shell analytics-spotlight__grid">
-      <div className="analytics-spotlight__copy">
-        <p className="reset-eyebrow">Current public platform</p>
-        <h2 id="analytics-spotlight-title">Measurements stay source-labeled.</h2>
-        <p>The Boho Analytics Platform brings website analytics, search performance, traffic infrastructure, and form-delivery monitoring into one inspectable view without pretending unlike measurements are interchangeable.</p>
-        <ul>
-          <li>Source-specific reporting and plot controls</li>
-          <li>Visible collection windows and limitations</li>
-          <li>Self-hosted, MIT-licensed public software</li>
-          <li>Designed to support a decision—not manufacture a result</li>
+const analyticsRepository = "https://github.com/bohodigital/boho-analytics-platform";
+const analyticsQuickStart = `${analyticsRepository}#quick-start-with-a-blank-configuration`;
+const analyticsProviderDocs = `${analyticsRepository}/blob/main/docs/providers.md`;
+const siteGraphDocs = `${analyticsRepository}/blob/main/docs/site-graph/engine.md`;
+
+type AnalyticsProductAdProps = {
+  headingId?: string;
+  placement?: "homepage" | "service";
+  sourcePage?: string;
+};
+
+export function AnalyticsProductAd({
+  headingId = "analytics-product-ad-title",
+  placement = "service",
+  sourcePage = "service-page",
+}: AnalyticsProductAdProps) {
+  return <section
+    className={`reset-section analytics-product-ad analytics-product-ad--${placement}`}
+    aria-labelledby={headingId}
+  >
+    <div className="reset-shell analytics-product-ad__shell">
+      <header className="analytics-product-ad__intro">
+        <p className="analytics-product-ad__kicker"><span>Free + open source</span><strong>MIT licensed</strong></p>
+        <p className="reset-eyebrow">Boho Analytics Platform + Site Graph</p>
+        <h2 id={headingId}>Your search, traffic, and form evidence—one honest view.</h2>
+        <p className="analytics-product-ad__lead">Boho Analytics brings the website records that usually live in separate tools into one source-labeled command center. Each source keeps its own name, coverage window, and limitations.</p>
+        <ul className="analytics-product-ad__sources" aria-label="Supported evidence sources">
+          <li>GA4</li>
+          <li>Search Console</li>
+          <li>Self-hosted Umami</li>
+          <li>Cloudflare</li>
+          <li>Durable forms + inbox evidence</li>
         </ul>
-        <Link href="https://github.com/bohodigital/boho-analytics-platform" rel="noopener noreferrer" target="_blank">Inspect the public repository <span className="sr-only">(opens in a new tab)</span></Link>
+        <p className="analytics-product-ad__principle">Search clicks are not sessions. Edge requests are not visitors.</p>
+        <div className="analytics-product-ad__actions">
+          <Link
+            data-analytics-event="service_card_click"
+            data-analytics-price-display="From $450/month"
+            data-analytics-service-name="Ongoing SEO & Local Growth"
+            data-analytics-source-page={sourcePage}
+            data-analytics-source-section="analytics-product-ad"
+            href="/services/ongoing-seo/"
+          >
+            See what comes with SEO <span aria-hidden="true">→</span>
+          </Link>
+          <a
+            data-analytics-destination-type="setup_documentation"
+            data-analytics-event="tools_project_click"
+            data-analytics-project-name="Boho Analytics Platform"
+            href={analyticsQuickStart}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Use it free from GitHub <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span>
+          </a>
+        </div>
+      </header>
+
+      <div className="analytics-product-ad__mosaic" aria-label="Boho Analytics demo views">
+        <a
+          aria-label="Inspect the Boho Analytics Platform public repository (opens in a new tab)"
+          className="analytics-product-ad__visual analytics-product-ad__visual--command"
+          data-analytics-destination-type="public_repository"
+          data-analytics-event="tools_project_click"
+          data-analytics-project-name="Boho Analytics Platform"
+          href={analyticsRepository}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <span className="analytics-product-ad__demo-label">Synthetic demo · no client data</span>
+          <span className="analytics-product-ad__browser" aria-hidden="true"><i /><i /><i /><b>Growth command center</b></span>
+          <Image
+            alt="Boho Analytics demo command center showing source-labeled Search Console clicks, Umami visits and page views, durable leads, and report coverage."
+            height={720}
+            src="/proof/tools/boho-analytics-demo-command-center-20260806.webp"
+            unoptimized
+            width={1280}
+          />
+          <span className="analytics-product-ad__caption"><small>One operational view</small><strong>Command center</strong><b>Inspect the public source ↗</b></span>
+        </a>
+
+        <a
+          aria-label="Read the Boho Analytics provider documentation (opens in a new tab)"
+          className="analytics-product-ad__visual analytics-product-ad__visual--plot"
+          data-analytics-destination-type="setup_documentation"
+          data-analytics-event="tools_project_click"
+          data-analytics-project-name="Boho Analytics Platform"
+          href={analyticsProviderDocs}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <span className="analytics-product-ad__demo-label">Synthetic demo · no client data</span>
+          <span className="analytics-product-ad__browser" aria-hidden="true"><i /><i /><i /><b>Source-specific plots</b></span>
+          <Image
+            alt="Boho Analytics demo plot builder showing Search Console source controls, comparison settings, exports, and a source-labeled trend chart."
+            height={720}
+            src="/proof/tools/boho-analytics-demo-plot-builder-20260806.webp"
+            unoptimized
+            width={1280}
+          />
+          <span className="analytics-product-ad__caption"><small>Compare without blending</small><strong>Plot builder</strong><b>Read the provider docs ↗</b></span>
+        </a>
+
+        <a
+          aria-label="Read the Boho Site Graph engine documentation (opens in a new tab)"
+          className="analytics-product-ad__visual analytics-product-ad__visual--graph"
+          data-analytics-destination-type="site_graph_documentation"
+          data-analytics-event="tools_project_click"
+          data-analytics-project-name="Boho Site Graph"
+          href={siteGraphDocs}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <span className="analytics-product-ad__demo-label">Synthetic demo site · structural evidence</span>
+          <span className="analytics-product-ad__browser" aria-hidden="true"><i /><i /><i /><b>Provider Rescue neighborhood</b></span>
+          <Image
+            alt="Boho Site Graph mapping a synthetic service-site demo's Provider Rescue page and nearby internal-link pathways."
+            height={720}
+            src="/proof/tools/boho-site-graph-demo-provider-rescue-20260806.webp"
+            unoptimized
+            width={1280}
+          />
+          <span className="analytics-product-ad__caption"><small>Structure, not visitor behavior</small><strong>Site Graph</strong><b>Read the engine docs ↗</b></span>
+        </a>
       </div>
-      <figure className="analytics-spotlight__figure">
-        <div className="analytics-spotlight__browser"><span aria-hidden="true"><i /><i /><i /><b>Boho Analytics Platform</b></span><Image src="/proof/tools/boho-analytics-dashboard-v2.png" alt="Boho Analytics Platform dashboard with report controls, source-labeled summary cards, and sanitized illustrative metrics." width={1440} height={1050} unoptimized /></div>
-        <figcaption>Sanitized illustrative data · Public repository screenshot · Not client data</figcaption>
-      </figure>
+
+      <div className="analytics-product-ad__terms">
+        <Link
+          className="analytics-product-ad__term analytics-product-ad__term--seo"
+          data-analytics-event="service_card_click"
+          data-analytics-price-display="From $450/month"
+          data-analytics-service-name="Ongoing SEO & Local Growth"
+          data-analytics-source-page={sourcePage}
+          data-analytics-source-section="analytics-product-ad-terms"
+          href="/services/ongoing-seo/"
+        >
+          <span>Month one · active SEO</span>
+          <strong>We configure the approved GA4, Search Console, forms-evidence, and self-hosted Umami connections already needed for the work.</strong>
+          <b>Review the SEO scope →</b>
+        </Link>
+        <a
+          className="analytics-product-ad__term analytics-product-ad__term--open"
+          data-analytics-destination-type="setup_documentation"
+          data-analytics-event="tools_project_click"
+          data-analytics-project-name="Boho Analytics Platform"
+          href={analyticsQuickStart}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <span>No retainer · no lock-in</span>
+          <strong>The MIT-licensed software remains self-hostable and configurable whether or not you retain Boho for SEO.</strong>
+          <b>Open the setup guide ↗</b><span className="sr-only"> (opens in a new tab)</span>
+        </a>
+      </div>
+
+      <p className="analytics-product-ad__boundary"><strong>The software license costs $0.</strong> Hosting or provider charges, later support, and custom connectors are separate unless they are included in a written scope.</p>
     </div>
   </section>;
+}
+
+export function AnalyticsPlatformSpotlight() {
+  return <AnalyticsProductAd />;
 }

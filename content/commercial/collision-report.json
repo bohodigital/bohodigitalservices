@@ -2,69 +2,74 @@
   "schemaVersion": 1,
   "bindingPrecedence": [
     {
+      "packet": "050",
+      "authority": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "bindingRank": 0
+    },
+    {
       "packet": "049",
       "authority": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
-      "bindingRank": 0
+      "bindingRank": 1
     },
     {
       "packet": "045",
       "authority": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
-      "bindingRank": 1
+      "bindingRank": 2
     },
     {
       "packet": "040",
       "authority": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
-      "bindingRank": 2
+      "bindingRank": 3
     },
     {
       "packet": "039",
       "authority": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
-      "bindingRank": 3
+      "bindingRank": 4
     },
     {
       "packet": "038",
       "authority": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
-      "bindingRank": 4
+      "bindingRank": 5
     },
     {
       "packet": "037",
       "authority": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
-      "bindingRank": 5
+      "bindingRank": 6
     },
     {
       "packet": "036",
       "authority": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
-      "bindingRank": 6
+      "bindingRank": 7
     },
     {
       "packet": "035",
       "authority": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
-      "bindingRank": 7
+      "bindingRank": 8
     },
     {
       "packet": "034",
       "authority": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034",
-      "bindingRank": 8
+      "bindingRank": 9
     },
     {
       "packet": "041",
       "authority": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
-      "bindingRank": 9
+      "bindingRank": 10
     },
     {
       "packet": "047",
       "authority": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
-      "bindingRank": 10
+      "bindingRank": 11
     },
     {
       "packet": "043",
       "authority": "WO-2026-07-24-BOHO-CHATGPT-VISUAL-ACCESSIBLE-COPY-043",
-      "bindingRank": 11
+      "bindingRank": 12
     },
     {
       "packet": "prior",
       "authority": "prior-governed-sources",
-      "bindingRank": 12
+      "bindingRank": 13
     }
   ],
   "collisions": [
@@ -6360,6 +6365,57 @@
       "supersession": null
     },
     {
+      "key": "duplicate.915304f181df3882",
+      "collisionKind": "cross-packet-exact-duplicate",
+      "valueKind": "identical",
+      "exactValueHash": "915304f181df388263422935c72513db027d2625c52aa7a67c8efd908f94b7dd",
+      "selectedRecord": {
+        "key": "record.050.0012.0",
+        "semanticSlotKey": "slot.analytics.availability.key",
+        "exactValue": "product.bohoAnalytics.publicFreeAvailability",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:12",
+        "sourceStartLine": 12,
+        "sourceEndLine": 12,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "Key",
+        "format": "backtick",
+        "relationship": null
+      },
+      "displacedRecords": [
+        {
+          "key": "record.050.0083.0",
+          "semanticSlotKey": "slot.service-research-analytics.7-validator-supersession.value.form-state.050.0083.0",
+          "exactValue": "product.bohoAnalytics.publicFreeAvailability",
+          "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+          "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:83",
+          "sourceStartLine": 83,
+          "sourceEndLine": 83,
+          "classification": "form-state",
+          "pageKey": "service-research-analytics",
+          "field": "value",
+          "format": "bullet",
+          "relationship": null
+        },
+        {
+          "key": "record.049.0175.0",
+          "semanticSlotKey": "slot.analytics.availability.key",
+          "exactValue": "product.bohoAnalytics.publicFreeAvailability",
+          "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:175",
+          "sourceStartLine": 175,
+          "sourceEndLine": 175,
+          "classification": "form-state",
+          "pageKey": "packet-049-corrections",
+          "field": "Key",
+          "format": "backtick",
+          "relationship": null
+        }
+      ],
+      "supersession": null
+    },
+    {
       "key": "duplicate.916aa7f99c6876e9",
       "collisionKind": "cross-packet-exact-duplicate",
       "valueKind": "identical",
@@ -11145,6 +11201,135 @@
       "supersession": null
     },
     {
+      "key": "semantic.slot-analytics-availability-key",
+      "collisionKind": "semantic-slot",
+      "valueKind": "identical",
+      "selectedRecord": {
+        "key": "record.050.0012.0",
+        "semanticSlotKey": "slot.analytics.availability.key",
+        "exactValue": "product.bohoAnalytics.publicFreeAvailability",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:12",
+        "sourceStartLine": 12,
+        "sourceEndLine": 12,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "Key",
+        "format": "backtick",
+        "relationship": null
+      },
+      "displacedRecords": [
+        {
+          "key": "record.049.0175.0",
+          "semanticSlotKey": "slot.analytics.availability.key",
+          "exactValue": "product.bohoAnalytics.publicFreeAvailability",
+          "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:175",
+          "sourceStartLine": 175,
+          "sourceEndLine": 175,
+          "classification": "form-state",
+          "pageKey": "packet-049-corrections",
+          "field": "Key",
+          "format": "backtick",
+          "relationship": null
+        }
+      ],
+      "supersession": {
+        "key": "analytics.availability.key",
+        "action": "replace",
+        "selected": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050:12:0",
+        "displaced": [
+          "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049:175:0"
+        ]
+      }
+    },
+    {
+      "key": "semantic.slot-analytics-availability-status",
+      "collisionKind": "semantic-slot",
+      "valueKind": "different",
+      "selectedRecord": {
+        "key": "record.050.0015.0",
+        "semanticSlotKey": "slot.analytics.availability.status",
+        "exactValue": "Approved with verified software and service boundaries",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:15",
+        "sourceStartLine": 15,
+        "sourceEndLine": 15,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "Status",
+        "format": "backtick",
+        "relationship": null
+      },
+      "displacedRecords": [
+        {
+          "key": "record.049.0178.0",
+          "semanticSlotKey": "slot.analytics.availability.status",
+          "exactValue": "Blocked pending current product verification",
+          "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:178",
+          "sourceStartLine": 178,
+          "sourceEndLine": 178,
+          "classification": "form-state",
+          "pageKey": "packet-049-corrections",
+          "field": "Status",
+          "format": "backtick",
+          "relationship": null
+        }
+      ],
+      "supersession": {
+        "key": "analytics.availability.status",
+        "action": "replace",
+        "selected": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050:15:0",
+        "displaced": [
+          "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049:178:0"
+        ]
+      }
+    },
+    {
+      "key": "semantic.slot-analytics-availability-verification",
+      "collisionKind": "semantic-slot",
+      "valueKind": "different",
+      "selectedRecord": {
+        "key": "record.050.0018.0",
+        "semanticSlotKey": "slot.analytics.availability.verification",
+        "exactValue": "Verified public source release v0.2.0; MIT license; Python 3.11 or newer; SQLite storage; private loopback-first web interface; operator-triggered or scheduled read-only provider syncs.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:18",
+        "sourceStartLine": 18,
+        "sourceEndLine": 18,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "Verification basis",
+        "format": "backtick",
+        "relationship": null
+      },
+      "displacedRecords": [
+        {
+          "key": "record.049.0181.0",
+          "semanticSlotKey": "slot.analytics.availability.verification",
+          "exactValue": "The current repository contains the claim, but the commercial V3 program has not yet verified a stable public access contract or current product boundary.",
+          "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:181",
+          "sourceStartLine": 181,
+          "sourceEndLine": 181,
+          "classification": "form-state",
+          "pageKey": "packet-049-corrections",
+          "field": "Reason",
+          "format": "backtick",
+          "relationship": null
+        }
+      ],
+      "supersession": {
+        "key": "analytics.availability.verification",
+        "action": "replace",
+        "selected": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050:18:0",
+        "displaced": [
+          "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049:181:0"
+        ]
+      }
+    },
+    {
       "key": "semantic.slot-contact-path-count-heading",
       "collisionKind": "semantic-slot",
       "valueKind": "different",
@@ -11472,11 +11657,11 @@
     }
   ],
   "metrics": {
-    "total": 190,
-    "exactDuplicate": 183,
-    "semantic": 7,
-    "selectedRecords": 190,
-    "displacedRecords": 481
+    "total": 194,
+    "exactDuplicate": 184,
+    "semantic": 10,
+    "selectedRecords": 194,
+    "displacedRecords": 486
   },
   "unresolvedCount": 0
 }

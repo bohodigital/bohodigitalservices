@@ -62,9 +62,30 @@ export type CommercialCopyCorrections = {
   analyticsAvailability: {
     key: SourcedCommercialValue;
     status: SourcedCommercialValue;
-    reason: SourcedCommercialValue;
-    targetApproved: false;
-    replacementText: null;
+    verificationBasis: SourcedCommercialValue;
+    softwareLicensePrice: SourcedCommercialValue;
+    independentUse: SourcedCommercialValue;
+    publicRepository: SourcedCommercialValue;
+    publicDocumentation: SourcedCommercialValue;
+    publicAccessBoundary: SourcedCommercialValue;
+    installationBoundary: SourcedCommercialValue;
+    uptimeBoundary: SourcedCommercialValue;
+    costBoundary: SourcedCommercialValue;
+    supportedSourceBoundary: SourcedCommercialValue;
+    privacyBoundary: SourcedCommercialValue;
+    includedConfiguration: SourcedCommercialValue;
+    configurationBoundary: SourcedCommercialValue;
+    afterFirstMonthBoundary: SourcedCommercialValue;
+    reportingBoundary: SourcedCommercialValue;
+    primaryStatement: SourcedCommercialValue;
+    requiredProductQualification: SourcedCommercialValue;
+    requiredSeoConfigurationStatement: SourcedCommercialValue;
+    targetApproved: true;
+    replacementText: SourcedCommercialValue;
+    supersedes: {
+      sourcePacket: string;
+      sourceLocations: ReadonlyArray<string>;
+    };
   };
 };
 

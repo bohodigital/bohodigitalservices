@@ -28,7 +28,8 @@ test("the hardened contract passes every invariant", () => {
   assert.equal(built.contract.approvedPriceStrings.length, 11);
   assert.equal(built.contract.approvedEvidenceSourceClasses.length, 7);
   assert.equal(built.contract.products.length, 1);
-  assert.equal(built.blocked.items.length, 1);
+  assert.equal(built.blocked.items.length, 0);
+  assert.equal(built.blocked.supersededItems.length, 1);
   assert.equal(built.collisionReport.unresolvedCount, 0);
   assert.ok(built.contract.semanticSlots.length > 1_000);
   assert.ok(built.contract.semanticSlots.every((slot) => slot.selectedRecord?.sourceLocation));
@@ -37,7 +38,7 @@ test("the hardened contract passes every invariant", () => {
 
 test("binding precedence is exact and independent of chronology and packet numbers", async () => {
   assert.deepEqual(BINDING_PRECEDENCE.map(({ packet }) => packet), [
-    "049", "045", "040", "039", "038", "037", "036", "035", "034", "041", "047", "043", "prior",
+    "050", "049", "045", "040", "039", "038", "037", "036", "035", "034", "041", "047", "043", "prior",
   ]);
   const reordered = clone(bundle);
   reordered.packets.reverse();
@@ -94,6 +95,7 @@ test("expected-slot coverage is exhaustive and fails on omission", () => {
   assert.equal(built.coverage.missingSlotCount, 0);
   assert.match(findingsFor(({ coverage }) => { coverage.categories.find(({ key }) => key === "forms-states").selectedSlotKeys = []; }), /coverage category empty: forms-states/);
   assert.match(findingsFor(({ coverage }) => { coverage.categories = coverage.categories.filter(({ key }) => key !== "packet-049-corrections"); }), /coverage category missing: packet-049-corrections/);
+  assert.match(findingsFor(({ coverage }) => { coverage.categories = coverage.categories.filter(({ key }) => key !== "packet-050-analytics-availability"); }), /coverage category missing: packet-050-analytics-availability/);
 });
 
 test("compact inventory models governed inputs, provenance, generation, and reachability", () => {
@@ -114,34 +116,53 @@ test("compact inventory models governed inputs, provenance, generation, and reac
   assert.equal("records" in built.inventory, false);
 });
 
-test("contextual Analytics availability claims are blocked across semantic variants", () => {
+test("contextual Analytics availability is approved only with the verified software and service boundaries", () => {
   const claims = detectAnalyticsClaimContexts("# Boho Analytics Platform\nUse the dashboard publicly without paying.\nSelf-hosted and open-source access is free.", "fixture.md");
   assert.ok(claims.some(({ signals }) => signals.includes("public-access")));
   assert.ok(claims.some(({ signals }) => signals.includes("free-or-unpaid")));
   assert.ok(claims.some(({ signals }) => signals.includes("self-hosted-or-open-source")));
-  const blocked = built.blocked.items[0];
-  assert.deepEqual([blocked.key, blocked.targetApproved, blocked.replacementText], ["product.bohoAnalytics.publicFreeAvailability", false, null]);
-  assert.ok(blocked.currentClaims.some(({ sourceFile }) => sourceFile === "content/service-pages/04-digital-research-seo-audits-strategy.md"));
-  assert.ok(blocked.currentClaims.some(({ sourceFile }) => sourceFile === "app/content/servicePages.generated.ts"));
-  assert.match(findingsFor(({ blocked: mutated }) => { mutated.items[0].currentClaims.pop(); }), /blocked current-claim registry mismatch/);
-  assert.throws(() => validateAdapterRequest("product.bohoAnalytics.publicFreeAvailability", built.blocked), /blocked commercial-copy slot/);
+  assert.ok(claims.every(({ disposition }) => disposition === "approved-with-verified-software-and-service-boundaries"));
+  assert.ok(claims.every(({ commercialCopyKey }) => commercialCopyKey === "product.bohoAnalytics.publicFreeAvailability"));
+  assert.deepEqual(built.blocked.items, []);
+  const superseded = built.blocked.supersededItems[0];
+  assert.deepEqual(
+    [superseded.key, superseded.targetApproved, superseded.supersededBy, superseded.currentStatus],
+    [
+      "product.bohoAnalytics.publicFreeAvailability",
+      true,
+      "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "Approved with verified software and service boundaries",
+    ],
+  );
+  assert.ok(superseded.currentClaims.some(({ sourceFile }) => sourceFile === "content/service-pages/04-digital-research-seo-audits-strategy.md"));
+  assert.ok(superseded.currentClaims.some(({ sourceFile }) => sourceFile === "app/content/servicePages.generated.ts"));
+  const availability = built.contract.corrections.analyticsAvailability;
+  assert.equal(availability.softwareLicensePrice.value, "$0 MIT software license");
+  assert.match(availability.independentUse.value, /independently whether or not the business has an active Boho SEO engagement/);
+  assert.match(availability.publicAccessBoundary.value, /not a Boho-hosted customer dashboard, hosted SaaS account/);
+  assert.match(availability.installationBoundary.value, /PyPI package availability is not promised/);
+  assert.match(availability.costBoundary.value, /hosting, infrastructure, provider accounts, third-party charges/);
+  assert.match(availability.includedConfiguration.value, /first month of an active ongoing SEO engagement/);
+  assert.match(availability.afterFirstMonthBoundary.value, /software remains available under the MIT License/);
+  assert.match(findingsFor(({ blocked: mutated }) => { mutated.supersededItems[0].currentClaims.pop(); }), /analytics availability current-claim registry mismatch/);
+  assert.equal(validateAdapterRequest("product.bohoAnalytics.publicFreeAvailability", built.blocked), "product.bohoAnalytics.publicFreeAvailability");
 });
 
-test("page-specific adapters are schema-valid and exclude blocked slots", () => {
+test("page-specific adapters are schema-valid and retain no superseded blocked slots", () => {
   const required = [
     "homepage", "services-overview", "pricing", "work-evidence", "contact", "start", "emergency",
     "service-local-visibility", "service-websites-hosting", "service-provider-rescue", "service-custom-tools", "service-research-analytics",
   ];
   assert.deepEqual(built.adapters.pages.map(({ key }) => key), required);
   assert.ok(built.adapters.pages.every(({ selectedSlotKeys }) => selectedSlotKeys.length));
-  assert.ok(built.adapters.pages.every(({ selectedSlotKeys }) => !selectedSlotKeys.includes("product.bohoAnalytics.publicFreeAvailability")));
-  assert.equal(built.adapters.blockedSlotKeys.includes("product.bohoAnalytics.publicFreeAvailability"), true);
+  assert.deepEqual(built.adapters.blockedSlotKeys, []);
+  assert.ok(built.contract.records.some(({ sourcePacket }) => sourcePacket === "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050"));
 });
 
 test("mutation gates cover authority, source omission, blocking, and stale artifacts", () => {
   assert.match(findingsFor(({ inventory }) => { inventory.sources.find(({ classification }) => classification === "generated-mirror").editorialAuthority = true; }), /generated source has editorial authority/);
   assert.match(findingsFor(({ inventory }) => { inventory.sources = inventory.sources.filter(({ path }) => path !== "app/page.tsx"); }), /required current source missing: app\/page.tsx/);
-  assert.match(findingsFor(({ blocked }) => { blocked.items[0].targetApproved = true; }), /blocked record mismatch/);
+  assert.match(findingsFor(({ blocked }) => { blocked.supersededItems[0].targetApproved = false; }), /analytics availability supersession mismatch/);
   assert.match(findingsFor(({ artifactDigests }) => { artifactDigests.inventory = "0".repeat(64); }), /artifact digest mismatch: inventory/);
 });
 

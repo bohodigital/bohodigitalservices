@@ -4,7 +4,7 @@ import type { CommercialCopyRecord } from "./types";
 
 export const commercialAdapterPageKeys = ["homepage","services-overview","pricing","work-evidence","contact","start","emergency","service-local-visibility","service-websites-hosting","service-provider-rescue","service-custom-tools","service-research-analytics"] as const;
 export type CommercialAdapterPageKey = (typeof commercialAdapterPageKeys)[number];
-const blockedSlotKeys = new Set<string>(["product.bohoAnalytics.publicFreeAvailability"]);
+const blockedSlotKeys = new Set<string>();
 
 export function assertCommercialSlotAvailable(slotKey: string): void {
   if (blockedSlotKeys.has(slotKey)) throw new Error(`blocked commercial-copy slot requested: ${slotKey}`);

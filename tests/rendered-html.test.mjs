@@ -123,7 +123,7 @@ test("primary service pages render their completed visual evidence and handoff c
     ["/services/web-design-redesign/", [8, "/demos/junk-removal-homepage.webp", "The launch should still make sense after the handoff."]],
     ["/services/ongoing-seo/", [8, "/proof/about/rank-builder-seo-homepage.png", "Each cycle ends with work you can inspect."]],
     ["/services/provider-rescue/", [4, "/diagrams/boho-hosting-architecture-v2.png", "A rescue should leave the next operator less dependent."]],
-    ["/services/research-audits-strategy/", [8, "/proof/tools/boho-analytics-dashboard-v2.png", "A review should make the decision easier."]],
+    ["/services/research-audits-strategy/", [8, "/proof/tools/boho-analytics-demo-command-center-20260806.webp", "A review should make the decision easier."]],
     ["/services/custom-digital-solutions/", [8, "/proof/tools/boho-secret-broker.png", "A custom system needs more than working code."]],
   ]);
 
@@ -136,14 +136,23 @@ test("primary service pages render their completed visual evidence and handoff c
   }
 });
 
-test("current analytics screenshot is labeled as illustrative public evidence", async () => {
-  for (const route of ["/resources/", "/services/research-audits-strategy/"]) {
+test("current analytics product evidence is public, open source, and unmistakably synthetic", async () => {
+  for (const route of ["/", "/resources/", "/services/research-audits-strategy/"]) {
     const html = await render(route);
-    assert.ok(html.includes("/proof/tools/boho-analytics-dashboard-v2.png"), `${route} lacks the current dashboard`);
-    assert.ok(html.includes("Sanitized illustrative data"), `${route} lacks the data disclaimer`);
-    assert.ok(html.includes("Public repository screenshot"), `${route} lacks the evidence label`);
-    assert.ok(html.includes("Not client data"), `${route} lacks the client-data disclaimer`);
+    assert.ok(html.includes("/proof/tools/boho-analytics-demo-command-center-20260806.webp"), `${route} lacks the current dashboard`);
+    assert.match(html, /Synthetic demo/i, `${route} lacks the synthetic-data disclaimer`);
+    assert.match(html, /open.source/i, `${route} lacks the open-source label`);
+    assert.match(html, /No client data/i, `${route} lacks the client-data disclaimer`);
   }
+});
+
+test("homepage product mosaic links every raised product tile to its referenced destination", async () => {
+  const html = await render("/");
+  assert.match(html, /class="analytics-product-ad__visual analytics-product-ad__visual--command"[^>]*href="https:\/\/github\.com\/bohodigital\/boho-analytics-platform"/);
+  assert.match(html, /class="analytics-product-ad__visual analytics-product-ad__visual--plot"[^>]*href="https:\/\/github\.com\/bohodigital\/boho-analytics-platform\/blob\/main\/docs\/providers\.md"/);
+  assert.match(html, /class="analytics-product-ad__visual analytics-product-ad__visual--graph"[^>]*href="https:\/\/github\.com\/bohodigital\/boho-analytics-platform\/blob\/main\/docs\/site-graph\/engine\.md"/);
+  assert.match(html, /class="analytics-product-ad__term analytics-product-ad__term--seo"[^>]*href="\/services\/ongoing-seo\/"/);
+  assert.match(html, /class="analytics-product-ad__term analytics-product-ad__term--open"[^>]*href="https:\/\/github\.com\/bohodigital\/boho-analytics-platform#quick-start-with-a-blank-configuration"/);
 });
 
 test("website service page presents the demo library and links every planning tier to a live demo", async () => {

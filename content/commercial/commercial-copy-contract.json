@@ -6,69 +6,74 @@
   "workerCopyAuthority": "none",
   "bindingPrecedence": [
     {
+      "packet": "050",
+      "authority": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "bindingRank": 0
+    },
+    {
       "packet": "049",
       "authority": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
-      "bindingRank": 0
+      "bindingRank": 1
     },
     {
       "packet": "045",
       "authority": "WO-2026-07-24-BOHO-ROUTE-ANCHOR-COMPATIBILITY-045",
-      "bindingRank": 1
+      "bindingRank": 2
     },
     {
       "packet": "040",
       "authority": "WO-2026-07-24-BOHO-CHATGPT-COMMERCIAL-METADATA-040",
-      "bindingRank": 2
+      "bindingRank": 3
     },
     {
       "packet": "039",
       "authority": "WO-2026-07-24-BOHO-CHATGPT-CONTACT-NAV-FOOTER-COPY-039",
-      "bindingRank": 3
+      "bindingRank": 4
     },
     {
       "packet": "038",
       "authority": "WO-2026-07-24-BOHO-CHATGPT-WORK-EVIDENCE-COPY-038",
-      "bindingRank": 4
+      "bindingRank": 5
     },
     {
       "packet": "037",
       "authority": "WO-2026-07-24-BOHO-CHATGPT-PRICING-COPY-037",
-      "bindingRank": 5
+      "bindingRank": 6
     },
     {
       "packet": "036",
       "authority": "WO-2026-07-24-BOHO-CHATGPT-HOMEPAGE-COPY-036",
-      "bindingRank": 6
+      "bindingRank": 7
     },
     {
       "packet": "035",
       "authority": "WO-2026-07-24-BOHO-CHATGPT-SERVICE-COMMERCIAL-LAYERS-035",
-      "bindingRank": 7
+      "bindingRank": 8
     },
     {
       "packet": "034",
       "authority": "WO-2026-07-24-BOHO-CHATGPT-TIMELINE-COPY-034",
-      "bindingRank": 8
+      "bindingRank": 9
     },
     {
       "packet": "041",
       "authority": "WO-2026-07-24-BOHO-CHATGPT-SERVICES-OVERVIEW-COPY-041",
-      "bindingRank": 9
+      "bindingRank": 10
     },
     {
       "packet": "047",
       "authority": "WO-2026-07-24-BOHO-CHATGPT-EMERGENCY-COPY-047",
-      "bindingRank": 10
+      "bindingRank": 11
     },
     {
       "packet": "043",
       "authority": "WO-2026-07-24-BOHO-CHATGPT-VISUAL-ACCESSIBLE-COPY-043",
-      "bindingRank": 11
+      "bindingRank": 12
     },
     {
       "packet": "prior",
       "authority": "prior-governed-sources",
-      "bindingRank": 12
+      "bindingRank": 13
     }
   ],
   "structuralAuthorities": [
@@ -180,6 +185,12 @@
       "surface": "route-fragment-compatibility",
       "sha256": "47d94f4a6f5e00bba2cf9ade9cc4e3c13d400421117639ec5051752812839d1f",
       "lineCount": 185
+    },
+    {
+      "key": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "surface": "analytics-product-availability",
+      "sha256": "4906598d6da4cb1626bea8b655a62ff9ad5ebf51c31de4951841a55b529aaed5",
+      "lineCount": 89
     }
   ],
   "approvedServiceNames": [
@@ -563,27 +574,268 @@
     "analyticsAvailability": {
       "key": {
         "value": "product.bohoAnalytics.publicFreeAvailability",
-        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
-        "sourceLine": 175,
-        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:175"
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLine": 12,
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:12"
       },
       "status": {
-        "value": "Blocked pending current product verification",
-        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
-        "sourceLine": 178,
-        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:178"
+        "value": "Approved with verified software and service boundaries",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLine": 15,
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:15"
       },
-      "reason": {
-        "value": "The current repository contains the claim, but the commercial V3 program has not yet verified a stable public access contract or current product boundary.",
-        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
-        "sourceLine": 181,
-        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:181"
+      "verificationBasis": {
+        "value": "Verified public source release v0.2.0; MIT license; Python 3.11 or newer; SQLite storage; private loopback-first web interface; operator-triggered or scheduled read-only provider syncs.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLine": 18,
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:18"
       },
-      "targetApproved": false,
-      "replacementText": null
+      "softwareLicensePrice": {
+        "value": "$0 MIT software license",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLine": 23,
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:23"
+      },
+      "independentUse": {
+        "value": "Boho Analytics Platform is free and open-source software under the MIT License. A business or its technical provider may configure, self-host, modify, and use the software independently whether or not the business has an active Boho SEO engagement.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLine": 26,
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:26"
+      },
+      "publicRepository": {
+        "value": "https://github.com/bohodigital/boho-analytics-platform",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLine": 29,
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:29"
+      },
+      "publicDocumentation": {
+        "value": "https://github.com/bohodigital/boho-analytics-platform#readme",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLine": 32,
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:32"
+      },
+      "publicAccessBoundary": {
+        "value": "The public offer is source code and documentation for self-hosted software. It is not a Boho-hosted customer dashboard, hosted SaaS account, public analytics instance, or browser-triggered provider-sync service.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLine": 37,
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:37"
+      },
+      "installationBoundary": {
+        "value": "The verified installation path is from the public source repository. PyPI package availability is not promised.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLine": 40,
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:40"
+      },
+      "uptimeBoundary": {
+        "value": "No hosted-service availability, uptime, monitoring, backup, retention, maintenance, or incident-response promise is included with the $0 software license.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLine": 43,
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:43"
+      },
+      "costBoundary": {
+        "value": "The $0 software license does not include hosting, infrastructure, provider accounts, third-party charges, credential or account recovery, later support, custom connectors, unsupported integrations, historical reconstruction, or separately scoped implementation work.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLine": 46,
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:46"
+      },
+      "supportedSourceBoundary": {
+        "value": "The verified platform supports self-hosted Umami, Cloudflare traffic analytics, Google Analytics 4, Google Search Console, Cloudflare D1 form state, and a compatible read-only forms inbox. Fixture replay is for demonstrations and testing. Each live connection still requires compatible resources, authorized access, private configuration, and provider-specific verification.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLine": 49,
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:49"
+      },
+      "privacyBoundary": {
+        "value": "The dashboard reads normalized local aggregates. It does not promise a raw-event warehouse and does not persist raw sessions, visitor identifiers, IP addresses, user agents, form payloads, message bodies, arbitrary event parameters, or unrestricted external referrer URLs.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLine": 52,
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:52"
+      },
+      "includedConfiguration": {
+        "value": "The first month of an active ongoing SEO engagement includes configuration of the approved GA4, Google Search Console, Cloudflare D1 forms, compatible forms-inbox, and self-hosted Umami connections needed for the written scope of that work.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLine": 57,
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:57"
+      },
+      "configurationBoundary": {
+        "value": "Included configuration requires authorized access, compatible provider resources, and the client-controlled accounts or infrastructure needed for the approved connection. It does not create a hosted SaaS entitlement or expand the written SEO scope into unsupported repair, recovery, integration, or development work.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLine": 60,
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:60"
+      },
+      "afterFirstMonthBoundary": {
+        "value": "The software remains available under the MIT License after an SEO engagement ends. Hosting, provider charges, later administration, support, maintenance, monitoring, upgrades, custom connectors, and new integrations are separate unless a later written scope includes them.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLine": 63,
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:63"
+      },
+      "reportingBoundary": {
+        "value": "The $0 software license and the analyst-reviewed reporting product are separate. SEO reporting — Starting at $95 per month pays for approved analyst review, explanation, and recommendations; it does not buy access to the open-source software.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLine": 68,
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:68"
+      },
+      "primaryStatement": {
+        "value": "Boho Analytics Platform is free and open source under the MIT License. You or your technical provider can self-host and use it with or without an active Boho SEO engagement.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLine": 73,
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:73"
+      },
+      "requiredProductQualification": {
+        "value": "This is a $0 software license, not a free hosted dashboard or SaaS account. Hosting, provider accounts, third-party charges, later support, and custom connectors are separate.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLine": 76,
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:76"
+      },
+      "requiredSeoConfigurationStatement": {
+        "value": "The first month of active ongoing SEO includes configuration of the approved GA4, Google Search Console, forms, and self-hosted Umami connections needed for the written scope, subject to authorized access and provider compatibility.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLine": 79,
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:79"
+      },
+      "targetApproved": true,
+      "replacementText": {
+        "value": "Boho Analytics Platform is free and open source under the MIT License. You or your technical provider can self-host and use it with or without an active Boho SEO engagement.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLine": 73,
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:73"
+      },
+      "supersedes": {
+        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "sourceLocations": [
+          "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:175",
+          "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:178",
+          "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:181"
+        ]
+      }
     }
   },
   "semanticSlots": [
+    {
+      "key": "slot.analytics.availability.key",
+      "selectionAction": "replace",
+      "selectedRecord": {
+        "key": "record.050.0012.0",
+        "semanticSlotKey": "slot.analytics.availability.key",
+        "exactValue": "product.bohoAnalytics.publicFreeAvailability",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:12",
+        "sourceStartLine": 12,
+        "sourceEndLine": 12,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "Key",
+        "format": "backtick",
+        "relationship": null
+      },
+      "displacedRecords": [
+        {
+          "key": "record.049.0175.0",
+          "semanticSlotKey": "slot.analytics.availability.key",
+          "exactValue": "product.bohoAnalytics.publicFreeAvailability",
+          "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:175",
+          "sourceStartLine": 175,
+          "sourceEndLine": 175,
+          "classification": "form-state",
+          "pageKey": "packet-049-corrections",
+          "field": "Key",
+          "format": "backtick",
+          "relationship": null
+        }
+      ],
+      "supersession": {
+        "key": "analytics.availability.key",
+        "action": "replace",
+        "selected": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050:12:0",
+        "displaced": [
+          "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049:175:0"
+        ]
+      }
+    },
+    {
+      "key": "slot.analytics.availability.status",
+      "selectionAction": "replace",
+      "selectedRecord": {
+        "key": "record.050.0015.0",
+        "semanticSlotKey": "slot.analytics.availability.status",
+        "exactValue": "Approved with verified software and service boundaries",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:15",
+        "sourceStartLine": 15,
+        "sourceEndLine": 15,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "Status",
+        "format": "backtick",
+        "relationship": null
+      },
+      "displacedRecords": [
+        {
+          "key": "record.049.0178.0",
+          "semanticSlotKey": "slot.analytics.availability.status",
+          "exactValue": "Blocked pending current product verification",
+          "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:178",
+          "sourceStartLine": 178,
+          "sourceEndLine": 178,
+          "classification": "form-state",
+          "pageKey": "packet-049-corrections",
+          "field": "Status",
+          "format": "backtick",
+          "relationship": null
+        }
+      ],
+      "supersession": {
+        "key": "analytics.availability.status",
+        "action": "replace",
+        "selected": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050:15:0",
+        "displaced": [
+          "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049:178:0"
+        ]
+      }
+    },
+    {
+      "key": "slot.analytics.availability.verification",
+      "selectionAction": "replace",
+      "selectedRecord": {
+        "key": "record.050.0018.0",
+        "semanticSlotKey": "slot.analytics.availability.verification",
+        "exactValue": "Verified public source release v0.2.0; MIT license; Python 3.11 or newer; SQLite storage; private loopback-first web interface; operator-triggered or scheduled read-only provider syncs.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:18",
+        "sourceStartLine": 18,
+        "sourceEndLine": 18,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "Verification basis",
+        "format": "backtick",
+        "relationship": null
+      },
+      "displacedRecords": [
+        {
+          "key": "record.049.0181.0",
+          "semanticSlotKey": "slot.analytics.availability.verification",
+          "exactValue": "The current repository contains the claim, but the commercial V3 program has not yet verified a stable public access contract or current product boundary.",
+          "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+          "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:181",
+          "sourceStartLine": 181,
+          "sourceEndLine": 181,
+          "classification": "form-state",
+          "pageKey": "packet-049-corrections",
+          "field": "Reason",
+          "format": "backtick",
+          "relationship": null
+        }
+      ],
+      "supersession": {
+        "key": "analytics.availability.verification",
+        "action": "replace",
+        "selected": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050:18:0",
+        "displaced": [
+          "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049:181:0"
+        ]
+      }
+    },
     {
       "key": "slot.contact.contact-paths.section-eyebrow.visible-text.039.0118.0",
       "selectionAction": "select",
@@ -9365,66 +9617,6 @@
         "classification": "visible-text",
         "pageKey": "packet-049-corrections",
         "field": "value",
-        "format": "backtick",
-        "relationship": null
-      },
-      "displacedRecords": [],
-      "supersession": null
-    },
-    {
-      "key": "slot.packet-049-corrections.6-boho-analytics-platform-availability-claim.key.form-state.049.0175.0",
-      "selectionAction": "select",
-      "selectedRecord": {
-        "key": "record.049.0175.0",
-        "semanticSlotKey": "slot.packet-049-corrections.6-boho-analytics-platform-availability-claim.key.form-state.049.0175.0",
-        "exactValue": "product.bohoAnalytics.publicFreeAvailability",
-        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
-        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:175",
-        "sourceStartLine": 175,
-        "sourceEndLine": 175,
-        "classification": "form-state",
-        "pageKey": "packet-049-corrections",
-        "field": "Key",
-        "format": "backtick",
-        "relationship": null
-      },
-      "displacedRecords": [],
-      "supersession": null
-    },
-    {
-      "key": "slot.packet-049-corrections.6-boho-analytics-platform-availability-claim.reason.form-state.049.0181.0",
-      "selectionAction": "select",
-      "selectedRecord": {
-        "key": "record.049.0181.0",
-        "semanticSlotKey": "slot.packet-049-corrections.6-boho-analytics-platform-availability-claim.reason.form-state.049.0181.0",
-        "exactValue": "The current repository contains the claim, but the commercial V3 program has not yet verified a stable public access contract or current product boundary.",
-        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
-        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:181",
-        "sourceStartLine": 181,
-        "sourceEndLine": 181,
-        "classification": "form-state",
-        "pageKey": "packet-049-corrections",
-        "field": "Reason",
-        "format": "backtick",
-        "relationship": null
-      },
-      "displacedRecords": [],
-      "supersession": null
-    },
-    {
-      "key": "slot.packet-049-corrections.6-boho-analytics-platform-availability-claim.status.form-state.049.0178.0",
-      "selectionAction": "select",
-      "selectedRecord": {
-        "key": "record.049.0178.0",
-        "semanticSlotKey": "slot.packet-049-corrections.6-boho-analytics-platform-availability-claim.status.form-state.049.0178.0",
-        "exactValue": "Blocked pending current product verification",
-        "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
-        "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:178",
-        "sourceStartLine": 178,
-        "sourceEndLine": 178,
-        "classification": "form-state",
-        "pageKey": "packet-049-corrections",
-        "field": "Status",
         "format": "backtick",
         "relationship": null
       },
@@ -18769,6 +18961,407 @@
         "classification": "metadata",
         "pageKey": "service-provider-rescue",
         "field": "Schema description",
+        "format": "backtick",
+        "relationship": null
+      },
+      "displacedRecords": [],
+      "supersession": null
+    },
+    {
+      "key": "slot.service-research-analytics.2-software-license-and-independent-use.independent-use-statement.form-state.050.0026.0",
+      "selectionAction": "select",
+      "selectedRecord": {
+        "key": "record.050.0026.0",
+        "semanticSlotKey": "slot.service-research-analytics.2-software-license-and-independent-use.independent-use-statement.form-state.050.0026.0",
+        "exactValue": "Boho Analytics Platform is free and open-source software under the MIT License. A business or its technical provider may configure, self-host, modify, and use the software independently whether or not the business has an active Boho SEO engagement.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:26",
+        "sourceStartLine": 26,
+        "sourceEndLine": 26,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "Independent-use statement",
+        "format": "backtick",
+        "relationship": null
+      },
+      "displacedRecords": [],
+      "supersession": null
+    },
+    {
+      "key": "slot.service-research-analytics.2-software-license-and-independent-use.public-documentation.form-state.050.0032.0",
+      "selectionAction": "select",
+      "selectedRecord": {
+        "key": "record.050.0032.0",
+        "semanticSlotKey": "slot.service-research-analytics.2-software-license-and-independent-use.public-documentation.form-state.050.0032.0",
+        "exactValue": "https://github.com/bohodigital/boho-analytics-platform#readme",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:32",
+        "sourceStartLine": 32,
+        "sourceEndLine": 32,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "Public documentation",
+        "format": "backtick",
+        "relationship": null
+      },
+      "displacedRecords": [],
+      "supersession": null
+    },
+    {
+      "key": "slot.service-research-analytics.2-software-license-and-independent-use.public-repository.form-state.050.0029.0",
+      "selectionAction": "select",
+      "selectedRecord": {
+        "key": "record.050.0029.0",
+        "semanticSlotKey": "slot.service-research-analytics.2-software-license-and-independent-use.public-repository.form-state.050.0029.0",
+        "exactValue": "https://github.com/bohodigital/boho-analytics-platform",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:29",
+        "sourceStartLine": 29,
+        "sourceEndLine": 29,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "Public repository",
+        "format": "backtick",
+        "relationship": null
+      },
+      "displacedRecords": [],
+      "supersession": null
+    },
+    {
+      "key": "slot.service-research-analytics.2-software-license-and-independent-use.software-license-price.form-state.050.0023.0",
+      "selectionAction": "select",
+      "selectedRecord": {
+        "key": "record.050.0023.0",
+        "semanticSlotKey": "slot.service-research-analytics.2-software-license-and-independent-use.software-license-price.form-state.050.0023.0",
+        "exactValue": "$0 MIT software license",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:23",
+        "sourceStartLine": 23,
+        "sourceEndLine": 23,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "Software-license price",
+        "format": "backtick",
+        "relationship": null
+      },
+      "displacedRecords": [],
+      "supersession": null
+    },
+    {
+      "key": "slot.service-research-analytics.3-product-and-cost-boundaries.cost-boundary.form-state.050.0046.0",
+      "selectionAction": "select",
+      "selectedRecord": {
+        "key": "record.050.0046.0",
+        "semanticSlotKey": "slot.service-research-analytics.3-product-and-cost-boundaries.cost-boundary.form-state.050.0046.0",
+        "exactValue": "The $0 software license does not include hosting, infrastructure, provider accounts, third-party charges, credential or account recovery, later support, custom connectors, unsupported integrations, historical reconstruction, or separately scoped implementation work.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:46",
+        "sourceStartLine": 46,
+        "sourceEndLine": 46,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "Cost boundary",
+        "format": "backtick",
+        "relationship": null
+      },
+      "displacedRecords": [],
+      "supersession": null
+    },
+    {
+      "key": "slot.service-research-analytics.3-product-and-cost-boundaries.installation-boundary.form-state.050.0040.0",
+      "selectionAction": "select",
+      "selectedRecord": {
+        "key": "record.050.0040.0",
+        "semanticSlotKey": "slot.service-research-analytics.3-product-and-cost-boundaries.installation-boundary.form-state.050.0040.0",
+        "exactValue": "The verified installation path is from the public source repository. PyPI package availability is not promised.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:40",
+        "sourceStartLine": 40,
+        "sourceEndLine": 40,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "Installation boundary",
+        "format": "backtick",
+        "relationship": null
+      },
+      "displacedRecords": [],
+      "supersession": null
+    },
+    {
+      "key": "slot.service-research-analytics.3-product-and-cost-boundaries.privacy-boundary.form-state.050.0052.0",
+      "selectionAction": "select",
+      "selectedRecord": {
+        "key": "record.050.0052.0",
+        "semanticSlotKey": "slot.service-research-analytics.3-product-and-cost-boundaries.privacy-boundary.form-state.050.0052.0",
+        "exactValue": "The dashboard reads normalized local aggregates. It does not promise a raw-event warehouse and does not persist raw sessions, visitor identifiers, IP addresses, user agents, form payloads, message bodies, arbitrary event parameters, or unrestricted external referrer URLs.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:52",
+        "sourceStartLine": 52,
+        "sourceEndLine": 52,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "Privacy boundary",
+        "format": "backtick",
+        "relationship": null
+      },
+      "displacedRecords": [],
+      "supersession": null
+    },
+    {
+      "key": "slot.service-research-analytics.3-product-and-cost-boundaries.public-access-boundary.form-state.050.0037.0",
+      "selectionAction": "select",
+      "selectedRecord": {
+        "key": "record.050.0037.0",
+        "semanticSlotKey": "slot.service-research-analytics.3-product-and-cost-boundaries.public-access-boundary.form-state.050.0037.0",
+        "exactValue": "The public offer is source code and documentation for self-hosted software. It is not a Boho-hosted customer dashboard, hosted SaaS account, public analytics instance, or browser-triggered provider-sync service.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:37",
+        "sourceStartLine": 37,
+        "sourceEndLine": 37,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "Public-access boundary",
+        "format": "backtick",
+        "relationship": null
+      },
+      "displacedRecords": [],
+      "supersession": null
+    },
+    {
+      "key": "slot.service-research-analytics.3-product-and-cost-boundaries.supported-source-boundary.form-state.050.0049.0",
+      "selectionAction": "select",
+      "selectedRecord": {
+        "key": "record.050.0049.0",
+        "semanticSlotKey": "slot.service-research-analytics.3-product-and-cost-boundaries.supported-source-boundary.form-state.050.0049.0",
+        "exactValue": "The verified platform supports self-hosted Umami, Cloudflare traffic analytics, Google Analytics 4, Google Search Console, Cloudflare D1 form state, and a compatible read-only forms inbox. Fixture replay is for demonstrations and testing. Each live connection still requires compatible resources, authorized access, private configuration, and provider-specific verification.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:49",
+        "sourceStartLine": 49,
+        "sourceEndLine": 49,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "Supported-source boundary",
+        "format": "backtick",
+        "relationship": null
+      },
+      "displacedRecords": [],
+      "supersession": null
+    },
+    {
+      "key": "slot.service-research-analytics.3-product-and-cost-boundaries.uptime-boundary.form-state.050.0043.0",
+      "selectionAction": "select",
+      "selectedRecord": {
+        "key": "record.050.0043.0",
+        "semanticSlotKey": "slot.service-research-analytics.3-product-and-cost-boundaries.uptime-boundary.form-state.050.0043.0",
+        "exactValue": "No hosted-service availability, uptime, monitoring, backup, retention, maintenance, or incident-response promise is included with the $0 software license.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:43",
+        "sourceStartLine": 43,
+        "sourceEndLine": 43,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "Uptime boundary",
+        "format": "backtick",
+        "relationship": null
+      },
+      "displacedRecords": [],
+      "supersession": null
+    },
+    {
+      "key": "slot.service-research-analytics.4-ongoing-seo-first-month-configuration.after-first-month-boundary.form-state.050.0063.0",
+      "selectionAction": "select",
+      "selectedRecord": {
+        "key": "record.050.0063.0",
+        "semanticSlotKey": "slot.service-research-analytics.4-ongoing-seo-first-month-configuration.after-first-month-boundary.form-state.050.0063.0",
+        "exactValue": "The software remains available under the MIT License after an SEO engagement ends. Hosting, provider charges, later administration, support, maintenance, monitoring, upgrades, custom connectors, and new integrations are separate unless a later written scope includes them.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:63",
+        "sourceStartLine": 63,
+        "sourceEndLine": 63,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "After-first-month boundary",
+        "format": "backtick",
+        "relationship": null
+      },
+      "displacedRecords": [],
+      "supersession": null
+    },
+    {
+      "key": "slot.service-research-analytics.4-ongoing-seo-first-month-configuration.configuration-boundary.form-state.050.0060.0",
+      "selectionAction": "select",
+      "selectedRecord": {
+        "key": "record.050.0060.0",
+        "semanticSlotKey": "slot.service-research-analytics.4-ongoing-seo-first-month-configuration.configuration-boundary.form-state.050.0060.0",
+        "exactValue": "Included configuration requires authorized access, compatible provider resources, and the client-controlled accounts or infrastructure needed for the approved connection. It does not create a hosted SaaS entitlement or expand the written SEO scope into unsupported repair, recovery, integration, or development work.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:60",
+        "sourceStartLine": 60,
+        "sourceEndLine": 60,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "Configuration boundary",
+        "format": "backtick",
+        "relationship": null
+      },
+      "displacedRecords": [],
+      "supersession": null
+    },
+    {
+      "key": "slot.service-research-analytics.4-ongoing-seo-first-month-configuration.included-configuration.form-state.050.0057.0",
+      "selectionAction": "select",
+      "selectedRecord": {
+        "key": "record.050.0057.0",
+        "semanticSlotKey": "slot.service-research-analytics.4-ongoing-seo-first-month-configuration.included-configuration.form-state.050.0057.0",
+        "exactValue": "The first month of an active ongoing SEO engagement includes configuration of the approved GA4, Google Search Console, Cloudflare D1 forms, compatible forms-inbox, and self-hosted Umami connections needed for the written scope of that work.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:57",
+        "sourceStartLine": 57,
+        "sourceEndLine": 57,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "Included configuration",
+        "format": "backtick",
+        "relationship": null
+      },
+      "displacedRecords": [],
+      "supersession": null
+    },
+    {
+      "key": "slot.service-research-analytics.5-relationship-to-paid-reporting.reporting-boundary.form-state.050.0068.0",
+      "selectionAction": "select",
+      "selectedRecord": {
+        "key": "record.050.0068.0",
+        "semanticSlotKey": "slot.service-research-analytics.5-relationship-to-paid-reporting.reporting-boundary.form-state.050.0068.0",
+        "exactValue": "The $0 software license and the analyst-reviewed reporting product are separate. SEO reporting — Starting at $95 per month pays for approved analyst review, explanation, and recommendations; it does not buy access to the open-source software.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:68",
+        "sourceStartLine": 68,
+        "sourceEndLine": 68,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "Reporting boundary",
+        "format": "backtick",
+        "relationship": null,
+        "canonicalProductKey": "product.seoReporting.monthly"
+      },
+      "displacedRecords": [],
+      "supersession": null
+    },
+    {
+      "key": "slot.service-research-analytics.6-approved-public-copy-set.primary-statement.form-state.050.0073.0",
+      "selectionAction": "select",
+      "selectedRecord": {
+        "key": "record.050.0073.0",
+        "semanticSlotKey": "slot.service-research-analytics.6-approved-public-copy-set.primary-statement.form-state.050.0073.0",
+        "exactValue": "Boho Analytics Platform is free and open source under the MIT License. You or your technical provider can self-host and use it with or without an active Boho SEO engagement.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:73",
+        "sourceStartLine": 73,
+        "sourceEndLine": 73,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "Primary statement",
+        "format": "backtick",
+        "relationship": null
+      },
+      "displacedRecords": [],
+      "supersession": null
+    },
+    {
+      "key": "slot.service-research-analytics.6-approved-public-copy-set.required-product-qualification.form-state.050.0076.0",
+      "selectionAction": "select",
+      "selectedRecord": {
+        "key": "record.050.0076.0",
+        "semanticSlotKey": "slot.service-research-analytics.6-approved-public-copy-set.required-product-qualification.form-state.050.0076.0",
+        "exactValue": "This is a $0 software license, not a free hosted dashboard or SaaS account. Hosting, provider accounts, third-party charges, later support, and custom connectors are separate.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:76",
+        "sourceStartLine": 76,
+        "sourceEndLine": 76,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "Required product qualification",
+        "format": "backtick",
+        "relationship": null
+      },
+      "displacedRecords": [],
+      "supersession": null
+    },
+    {
+      "key": "slot.service-research-analytics.6-approved-public-copy-set.required-seo-configuration-statement.form-state.050.0079.0",
+      "selectionAction": "select",
+      "selectedRecord": {
+        "key": "record.050.0079.0",
+        "semanticSlotKey": "slot.service-research-analytics.6-approved-public-copy-set.required-seo-configuration-statement.form-state.050.0079.0",
+        "exactValue": "The first month of active ongoing SEO includes configuration of the approved GA4, Google Search Console, forms, and self-hosted Umami connections needed for the written scope, subject to authorized access and provider compatibility.",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:79",
+        "sourceStartLine": 79,
+        "sourceEndLine": 79,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "Required SEO-configuration statement",
+        "format": "backtick",
+        "relationship": null
+      },
+      "displacedRecords": [],
+      "supersession": null
+    },
+    {
+      "key": "slot.service-research-analytics.7-validator-supersession.value.form-state.050.0083.0",
+      "selectionAction": "select",
+      "selectedRecord": {
+        "key": "record.050.0083.0",
+        "semanticSlotKey": "slot.service-research-analytics.7-validator-supersession.value.form-state.050.0083.0",
+        "exactValue": "product.bohoAnalytics.publicFreeAvailability",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:83",
+        "sourceStartLine": 83,
+        "sourceEndLine": 83,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "value",
+        "format": "bullet",
+        "relationship": null
+      },
+      "displacedRecords": [],
+      "supersession": null
+    },
+    {
+      "key": "slot.service-research-analytics.7-validator-supersession.value.form-state.050.0086.0",
+      "selectionAction": "select",
+      "selectedRecord": {
+        "key": "record.050.0086.0",
+        "semanticSlotKey": "slot.service-research-analytics.7-validator-supersession.value.form-state.050.0086.0",
+        "exactValue": "free",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:86",
+        "sourceStartLine": 86,
+        "sourceEndLine": 86,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "value",
+        "format": "bullet",
+        "relationship": null
+      },
+      "displacedRecords": [],
+      "supersession": null
+    },
+    {
+      "key": "slot.service-research-analytics.boho-analytics-platform-availability-verification-and-commercial-boundary.value.form-state.050.0007.0",
+      "selectionAction": "select",
+      "selectedRecord": {
+        "key": "record.050.0007.0",
+        "semanticSlotKey": "slot.service-research-analytics.boho-analytics-platform-availability-verification-and-commercial-boundary.value.form-state.050.0007.0",
+        "exactValue": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+        "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+        "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:7",
+        "sourceStartLine": 7,
+        "sourceEndLine": 7,
+        "classification": "form-state",
+        "pageKey": "service-research-analytics",
+        "field": "value",
         "format": "backtick",
         "relationship": null
       },
@@ -31049,6 +31642,48 @@
   ],
   "records": [
     {
+      "key": "record.050.0012.0",
+      "semanticSlotKey": "slot.analytics.availability.key",
+      "exactValue": "product.bohoAnalytics.publicFreeAvailability",
+      "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:12",
+      "sourceStartLine": 12,
+      "sourceEndLine": 12,
+      "classification": "form-state",
+      "pageKey": "service-research-analytics",
+      "field": "Key",
+      "format": "backtick",
+      "relationship": null
+    },
+    {
+      "key": "record.050.0015.0",
+      "semanticSlotKey": "slot.analytics.availability.status",
+      "exactValue": "Approved with verified software and service boundaries",
+      "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:15",
+      "sourceStartLine": 15,
+      "sourceEndLine": 15,
+      "classification": "form-state",
+      "pageKey": "service-research-analytics",
+      "field": "Status",
+      "format": "backtick",
+      "relationship": null
+    },
+    {
+      "key": "record.050.0018.0",
+      "semanticSlotKey": "slot.analytics.availability.verification",
+      "exactValue": "Verified public source release v0.2.0; MIT license; Python 3.11 or newer; SQLite storage; private loopback-first web interface; operator-triggered or scheduled read-only provider syncs.",
+      "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:18",
+      "sourceStartLine": 18,
+      "sourceEndLine": 18,
+      "classification": "form-state",
+      "pageKey": "service-research-analytics",
+      "field": "Verification basis",
+      "format": "backtick",
+      "relationship": null
+    },
+    {
       "key": "record.039.0118.0",
       "semanticSlotKey": "slot.contact.contact-paths.section-eyebrow.visible-text.039.0118.0",
       "exactValue": "Choose the right path",
@@ -37235,48 +37870,6 @@
       "classification": "visible-text",
       "pageKey": "packet-049-corrections",
       "field": "value",
-      "format": "backtick",
-      "relationship": null
-    },
-    {
-      "key": "record.049.0175.0",
-      "semanticSlotKey": "slot.packet-049-corrections.6-boho-analytics-platform-availability-claim.key.form-state.049.0175.0",
-      "exactValue": "product.bohoAnalytics.publicFreeAvailability",
-      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
-      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:175",
-      "sourceStartLine": 175,
-      "sourceEndLine": 175,
-      "classification": "form-state",
-      "pageKey": "packet-049-corrections",
-      "field": "Key",
-      "format": "backtick",
-      "relationship": null
-    },
-    {
-      "key": "record.049.0181.0",
-      "semanticSlotKey": "slot.packet-049-corrections.6-boho-analytics-platform-availability-claim.reason.form-state.049.0181.0",
-      "exactValue": "The current repository contains the claim, but the commercial V3 program has not yet verified a stable public access contract or current product boundary.",
-      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
-      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:181",
-      "sourceStartLine": 181,
-      "sourceEndLine": 181,
-      "classification": "form-state",
-      "pageKey": "packet-049-corrections",
-      "field": "Reason",
-      "format": "backtick",
-      "relationship": null
-    },
-    {
-      "key": "record.049.0178.0",
-      "semanticSlotKey": "slot.packet-049-corrections.6-boho-analytics-platform-availability-claim.status.form-state.049.0178.0",
-      "exactValue": "Blocked pending current product verification",
-      "sourcePacket": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
-      "sourceLocation": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049.md:178",
-      "sourceStartLine": 178,
-      "sourceEndLine": 178,
-      "classification": "form-state",
-      "pageKey": "packet-049-corrections",
-      "field": "Status",
       "format": "backtick",
       "relationship": null
     },
@@ -43849,6 +44442,287 @@
       "classification": "metadata",
       "pageKey": "service-provider-rescue",
       "field": "Schema description",
+      "format": "backtick",
+      "relationship": null
+    },
+    {
+      "key": "record.050.0026.0",
+      "semanticSlotKey": "slot.service-research-analytics.2-software-license-and-independent-use.independent-use-statement.form-state.050.0026.0",
+      "exactValue": "Boho Analytics Platform is free and open-source software under the MIT License. A business or its technical provider may configure, self-host, modify, and use the software independently whether or not the business has an active Boho SEO engagement.",
+      "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:26",
+      "sourceStartLine": 26,
+      "sourceEndLine": 26,
+      "classification": "form-state",
+      "pageKey": "service-research-analytics",
+      "field": "Independent-use statement",
+      "format": "backtick",
+      "relationship": null
+    },
+    {
+      "key": "record.050.0032.0",
+      "semanticSlotKey": "slot.service-research-analytics.2-software-license-and-independent-use.public-documentation.form-state.050.0032.0",
+      "exactValue": "https://github.com/bohodigital/boho-analytics-platform#readme",
+      "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:32",
+      "sourceStartLine": 32,
+      "sourceEndLine": 32,
+      "classification": "form-state",
+      "pageKey": "service-research-analytics",
+      "field": "Public documentation",
+      "format": "backtick",
+      "relationship": null
+    },
+    {
+      "key": "record.050.0029.0",
+      "semanticSlotKey": "slot.service-research-analytics.2-software-license-and-independent-use.public-repository.form-state.050.0029.0",
+      "exactValue": "https://github.com/bohodigital/boho-analytics-platform",
+      "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:29",
+      "sourceStartLine": 29,
+      "sourceEndLine": 29,
+      "classification": "form-state",
+      "pageKey": "service-research-analytics",
+      "field": "Public repository",
+      "format": "backtick",
+      "relationship": null
+    },
+    {
+      "key": "record.050.0023.0",
+      "semanticSlotKey": "slot.service-research-analytics.2-software-license-and-independent-use.software-license-price.form-state.050.0023.0",
+      "exactValue": "$0 MIT software license",
+      "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:23",
+      "sourceStartLine": 23,
+      "sourceEndLine": 23,
+      "classification": "form-state",
+      "pageKey": "service-research-analytics",
+      "field": "Software-license price",
+      "format": "backtick",
+      "relationship": null
+    },
+    {
+      "key": "record.050.0046.0",
+      "semanticSlotKey": "slot.service-research-analytics.3-product-and-cost-boundaries.cost-boundary.form-state.050.0046.0",
+      "exactValue": "The $0 software license does not include hosting, infrastructure, provider accounts, third-party charges, credential or account recovery, later support, custom connectors, unsupported integrations, historical reconstruction, or separately scoped implementation work.",
+      "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:46",
+      "sourceStartLine": 46,
+      "sourceEndLine": 46,
+      "classification": "form-state",
+      "pageKey": "service-research-analytics",
+      "field": "Cost boundary",
+      "format": "backtick",
+      "relationship": null
+    },
+    {
+      "key": "record.050.0040.0",
+      "semanticSlotKey": "slot.service-research-analytics.3-product-and-cost-boundaries.installation-boundary.form-state.050.0040.0",
+      "exactValue": "The verified installation path is from the public source repository. PyPI package availability is not promised.",
+      "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:40",
+      "sourceStartLine": 40,
+      "sourceEndLine": 40,
+      "classification": "form-state",
+      "pageKey": "service-research-analytics",
+      "field": "Installation boundary",
+      "format": "backtick",
+      "relationship": null
+    },
+    {
+      "key": "record.050.0052.0",
+      "semanticSlotKey": "slot.service-research-analytics.3-product-and-cost-boundaries.privacy-boundary.form-state.050.0052.0",
+      "exactValue": "The dashboard reads normalized local aggregates. It does not promise a raw-event warehouse and does not persist raw sessions, visitor identifiers, IP addresses, user agents, form payloads, message bodies, arbitrary event parameters, or unrestricted external referrer URLs.",
+      "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:52",
+      "sourceStartLine": 52,
+      "sourceEndLine": 52,
+      "classification": "form-state",
+      "pageKey": "service-research-analytics",
+      "field": "Privacy boundary",
+      "format": "backtick",
+      "relationship": null
+    },
+    {
+      "key": "record.050.0037.0",
+      "semanticSlotKey": "slot.service-research-analytics.3-product-and-cost-boundaries.public-access-boundary.form-state.050.0037.0",
+      "exactValue": "The public offer is source code and documentation for self-hosted software. It is not a Boho-hosted customer dashboard, hosted SaaS account, public analytics instance, or browser-triggered provider-sync service.",
+      "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:37",
+      "sourceStartLine": 37,
+      "sourceEndLine": 37,
+      "classification": "form-state",
+      "pageKey": "service-research-analytics",
+      "field": "Public-access boundary",
+      "format": "backtick",
+      "relationship": null
+    },
+    {
+      "key": "record.050.0049.0",
+      "semanticSlotKey": "slot.service-research-analytics.3-product-and-cost-boundaries.supported-source-boundary.form-state.050.0049.0",
+      "exactValue": "The verified platform supports self-hosted Umami, Cloudflare traffic analytics, Google Analytics 4, Google Search Console, Cloudflare D1 form state, and a compatible read-only forms inbox. Fixture replay is for demonstrations and testing. Each live connection still requires compatible resources, authorized access, private configuration, and provider-specific verification.",
+      "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:49",
+      "sourceStartLine": 49,
+      "sourceEndLine": 49,
+      "classification": "form-state",
+      "pageKey": "service-research-analytics",
+      "field": "Supported-source boundary",
+      "format": "backtick",
+      "relationship": null
+    },
+    {
+      "key": "record.050.0043.0",
+      "semanticSlotKey": "slot.service-research-analytics.3-product-and-cost-boundaries.uptime-boundary.form-state.050.0043.0",
+      "exactValue": "No hosted-service availability, uptime, monitoring, backup, retention, maintenance, or incident-response promise is included with the $0 software license.",
+      "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:43",
+      "sourceStartLine": 43,
+      "sourceEndLine": 43,
+      "classification": "form-state",
+      "pageKey": "service-research-analytics",
+      "field": "Uptime boundary",
+      "format": "backtick",
+      "relationship": null
+    },
+    {
+      "key": "record.050.0063.0",
+      "semanticSlotKey": "slot.service-research-analytics.4-ongoing-seo-first-month-configuration.after-first-month-boundary.form-state.050.0063.0",
+      "exactValue": "The software remains available under the MIT License after an SEO engagement ends. Hosting, provider charges, later administration, support, maintenance, monitoring, upgrades, custom connectors, and new integrations are separate unless a later written scope includes them.",
+      "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:63",
+      "sourceStartLine": 63,
+      "sourceEndLine": 63,
+      "classification": "form-state",
+      "pageKey": "service-research-analytics",
+      "field": "After-first-month boundary",
+      "format": "backtick",
+      "relationship": null
+    },
+    {
+      "key": "record.050.0060.0",
+      "semanticSlotKey": "slot.service-research-analytics.4-ongoing-seo-first-month-configuration.configuration-boundary.form-state.050.0060.0",
+      "exactValue": "Included configuration requires authorized access, compatible provider resources, and the client-controlled accounts or infrastructure needed for the approved connection. It does not create a hosted SaaS entitlement or expand the written SEO scope into unsupported repair, recovery, integration, or development work.",
+      "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:60",
+      "sourceStartLine": 60,
+      "sourceEndLine": 60,
+      "classification": "form-state",
+      "pageKey": "service-research-analytics",
+      "field": "Configuration boundary",
+      "format": "backtick",
+      "relationship": null
+    },
+    {
+      "key": "record.050.0057.0",
+      "semanticSlotKey": "slot.service-research-analytics.4-ongoing-seo-first-month-configuration.included-configuration.form-state.050.0057.0",
+      "exactValue": "The first month of an active ongoing SEO engagement includes configuration of the approved GA4, Google Search Console, Cloudflare D1 forms, compatible forms-inbox, and self-hosted Umami connections needed for the written scope of that work.",
+      "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:57",
+      "sourceStartLine": 57,
+      "sourceEndLine": 57,
+      "classification": "form-state",
+      "pageKey": "service-research-analytics",
+      "field": "Included configuration",
+      "format": "backtick",
+      "relationship": null
+    },
+    {
+      "key": "record.050.0068.0",
+      "semanticSlotKey": "slot.service-research-analytics.5-relationship-to-paid-reporting.reporting-boundary.form-state.050.0068.0",
+      "exactValue": "The $0 software license and the analyst-reviewed reporting product are separate. SEO reporting — Starting at $95 per month pays for approved analyst review, explanation, and recommendations; it does not buy access to the open-source software.",
+      "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:68",
+      "sourceStartLine": 68,
+      "sourceEndLine": 68,
+      "classification": "form-state",
+      "pageKey": "service-research-analytics",
+      "field": "Reporting boundary",
+      "format": "backtick",
+      "relationship": null,
+      "canonicalProductKey": "product.seoReporting.monthly"
+    },
+    {
+      "key": "record.050.0073.0",
+      "semanticSlotKey": "slot.service-research-analytics.6-approved-public-copy-set.primary-statement.form-state.050.0073.0",
+      "exactValue": "Boho Analytics Platform is free and open source under the MIT License. You or your technical provider can self-host and use it with or without an active Boho SEO engagement.",
+      "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:73",
+      "sourceStartLine": 73,
+      "sourceEndLine": 73,
+      "classification": "form-state",
+      "pageKey": "service-research-analytics",
+      "field": "Primary statement",
+      "format": "backtick",
+      "relationship": null
+    },
+    {
+      "key": "record.050.0076.0",
+      "semanticSlotKey": "slot.service-research-analytics.6-approved-public-copy-set.required-product-qualification.form-state.050.0076.0",
+      "exactValue": "This is a $0 software license, not a free hosted dashboard or SaaS account. Hosting, provider accounts, third-party charges, later support, and custom connectors are separate.",
+      "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:76",
+      "sourceStartLine": 76,
+      "sourceEndLine": 76,
+      "classification": "form-state",
+      "pageKey": "service-research-analytics",
+      "field": "Required product qualification",
+      "format": "backtick",
+      "relationship": null
+    },
+    {
+      "key": "record.050.0079.0",
+      "semanticSlotKey": "slot.service-research-analytics.6-approved-public-copy-set.required-seo-configuration-statement.form-state.050.0079.0",
+      "exactValue": "The first month of active ongoing SEO includes configuration of the approved GA4, Google Search Console, forms, and self-hosted Umami connections needed for the written scope, subject to authorized access and provider compatibility.",
+      "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:79",
+      "sourceStartLine": 79,
+      "sourceEndLine": 79,
+      "classification": "form-state",
+      "pageKey": "service-research-analytics",
+      "field": "Required SEO-configuration statement",
+      "format": "backtick",
+      "relationship": null
+    },
+    {
+      "key": "record.050.0083.0",
+      "semanticSlotKey": "slot.service-research-analytics.7-validator-supersession.value.form-state.050.0083.0",
+      "exactValue": "product.bohoAnalytics.publicFreeAvailability",
+      "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:83",
+      "sourceStartLine": 83,
+      "sourceEndLine": 83,
+      "classification": "form-state",
+      "pageKey": "service-research-analytics",
+      "field": "value",
+      "format": "bullet",
+      "relationship": null
+    },
+    {
+      "key": "record.050.0086.0",
+      "semanticSlotKey": "slot.service-research-analytics.7-validator-supersession.value.form-state.050.0086.0",
+      "exactValue": "free",
+      "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:86",
+      "sourceStartLine": 86,
+      "sourceEndLine": 86,
+      "classification": "form-state",
+      "pageKey": "service-research-analytics",
+      "field": "value",
+      "format": "bullet",
+      "relationship": null
+    },
+    {
+      "key": "record.050.0007.0",
+      "semanticSlotKey": "slot.service-research-analytics.boho-analytics-platform-availability-verification-and-commercial-boundary.value.form-state.050.0007.0",
+      "exactValue": "WO-2026-07-24-BOHO-CHATGPT-CROSS-PACKET-CORRECTIONS-049",
+      "sourcePacket": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050",
+      "sourceLocation": "WO-2026-08-06-BOHO-CHATGPT-ANALYTICS-AVAILABILITY-050.md:7",
+      "sourceStartLine": 7,
+      "sourceEndLine": 7,
+      "classification": "form-state",
+      "pageKey": "service-research-analytics",
+      "field": "value",
       "format": "backtick",
       "relationship": null
     },
@@ -53400,6 +54274,29 @@
       {
         "key": "service-research-analytics",
         "selectedSlotKeys": [
+          "slot.analytics.availability.key",
+          "slot.analytics.availability.status",
+          "slot.analytics.availability.verification",
+          "slot.service-research-analytics.2-software-license-and-independent-use.independent-use-statement.form-state.050.0026.0",
+          "slot.service-research-analytics.2-software-license-and-independent-use.public-documentation.form-state.050.0032.0",
+          "slot.service-research-analytics.2-software-license-and-independent-use.public-repository.form-state.050.0029.0",
+          "slot.service-research-analytics.2-software-license-and-independent-use.software-license-price.form-state.050.0023.0",
+          "slot.service-research-analytics.3-product-and-cost-boundaries.cost-boundary.form-state.050.0046.0",
+          "slot.service-research-analytics.3-product-and-cost-boundaries.installation-boundary.form-state.050.0040.0",
+          "slot.service-research-analytics.3-product-and-cost-boundaries.privacy-boundary.form-state.050.0052.0",
+          "slot.service-research-analytics.3-product-and-cost-boundaries.public-access-boundary.form-state.050.0037.0",
+          "slot.service-research-analytics.3-product-and-cost-boundaries.supported-source-boundary.form-state.050.0049.0",
+          "slot.service-research-analytics.3-product-and-cost-boundaries.uptime-boundary.form-state.050.0043.0",
+          "slot.service-research-analytics.4-ongoing-seo-first-month-configuration.after-first-month-boundary.form-state.050.0063.0",
+          "slot.service-research-analytics.4-ongoing-seo-first-month-configuration.configuration-boundary.form-state.050.0060.0",
+          "slot.service-research-analytics.4-ongoing-seo-first-month-configuration.included-configuration.form-state.050.0057.0",
+          "slot.service-research-analytics.5-relationship-to-paid-reporting.reporting-boundary.form-state.050.0068.0",
+          "slot.service-research-analytics.6-approved-public-copy-set.primary-statement.form-state.050.0073.0",
+          "slot.service-research-analytics.6-approved-public-copy-set.required-product-qualification.form-state.050.0076.0",
+          "slot.service-research-analytics.6-approved-public-copy-set.required-seo-configuration-statement.form-state.050.0079.0",
+          "slot.service-research-analytics.7-validator-supersession.value.form-state.050.0083.0",
+          "slot.service-research-analytics.7-validator-supersession.value.form-state.050.0086.0",
+          "slot.service-research-analytics.boho-analytics-platform-availability-verification-and-commercial-boundary.value.form-state.050.0007.0",
           "slot.service-research-analytics.first-pass-editorial-changes.value.price.021.0067.0",
           "slot.service-research-analytics.first-pass-editorial-changes.value.visible-text.021.0055.0",
           "slot.service-research-analytics.research-analytics-improvement.audit-limitation.evidence.035.0322.0",
@@ -53452,10 +54349,8 @@
         ]
       }
     ],
-    "blockedSlotKeys": [
-      "product.bohoAnalytics.publicFreeAvailability"
-    ]
+    "blockedSlotKeys": []
   },
-  "collisionReportDigest": "ba9b63e0c63f49633a379b6f9f9eae3a3fc46580a7b0bd6d710ea0fef6cc95ab",
-  "coverageDigest": "4b61e20f5c96d3d9f4aacba4cd7c0f106d000d460b760d009a82ae107b6c383c"
+  "collisionReportDigest": "6545641ab1637e08dc6951c2f0330726504038af21d17ea2349024eda9204b03",
+  "coverageDigest": "79b3e3050214cf15c79c431dde255ca82344a26d38232a950864997f72ef1f02"
 }

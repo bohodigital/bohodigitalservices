@@ -41,21 +41,6 @@ function headingId(route: string, text: string) {
   return slugifyHeading(text);
 }
 
-function containsBlockedAnalyticsAvailability(value: unknown) {
-  const text = JSON.stringify(value);
-  return [
-    /Supported dashboard access/i,
-    /Boho Analytics Platform.{0,200}(?:free|public|open.source|self.host|dashboard|access)/i,
-    /(?:free|public|open.source|self.host|dashboard|access).{0,200}Boho Analytics Platform/i,
-    /free (?:public repository|platform) or paid report/i,
-    /use the free (?:public repository|platform)/i,
-    /recommend the free platform/i,
-    /merely for access to the dashboard/i,
-    /Boho Analytics Platform components/i,
-    /Explore the (?:platform|public repository)/i,
-  ].some((pattern) => pattern.test(text));
-}
-
 function containsRetiredCommercialLanguage(
   value: unknown,
   route: string,
@@ -101,17 +86,9 @@ function sectionize(
   return sections.flatMap((section) => {
     if (
       section.heading.text === "Frequently asked questions"
-      || containsBlockedAnalyticsAvailability(section.heading)
       || containsRetiredCommercialLanguage(section, route)
     ) return [];
-    const safeBlocks = section.blocks.filter(
-      (block) => !containsBlockedAnalyticsAvailability(block),
-    );
-    if (containsBlockedAnalyticsAvailability({
-      heading: section.heading,
-      blocks: safeBlocks,
-    })) return [];
-    return [{ ...section, blocks: safeBlocks }];
+    return [section];
   });
 }
 
