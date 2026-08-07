@@ -6,6 +6,7 @@ import type {
 import { BookOpenCheck, FlaskConical, PanelsTopLeft, SearchCheck } from "lucide-react";
 import { DefinedText } from "./DefinedText";
 import { DraftForm } from "./DraftForm";
+import { EvidencePlate, type EvidencePlateId } from "./EvidencePlate";
 import { SectionSidebar, type SectionAnchor } from "./SectionNavigation";
 import {
   Breadcrumbs,
@@ -297,6 +298,8 @@ export function InteriorPage(props: InteriorPageProps) {
   const shouldRenderRelatedCta =
     Boolean(primaryHref) && !primaryHref?.startsWith("#") && !primaryHref?.startsWith("mailto:");
   const seenTerms = new Set<string>();
+  const leadEvidencePlate: EvidencePlateId | undefined =
+    page.slug === "/learn/website-buying/" ? "proposal-anatomy" : undefined;
   const pageAnchors: SectionAnchor[] = page.sections.map((section, index) => ({
     label: section.title,
     href: `#${sectionId(section, index)}` as `#${string}`,
@@ -360,6 +363,8 @@ export function InteriorPage(props: InteriorPageProps) {
             </div>
           </div>
         </section>
+
+        {leadEvidencePlate ? <EvidencePlate id={leadEvidencePlate} /> : null}
 
         <div className="section-navigation-layout">
           <SectionSidebar anchors={pageAnchors} currentPath={page.slug} />

@@ -60,13 +60,13 @@
     },
     {
       "path": "app/components/BuyerFacingPages.tsx",
-      "sha256": "d5ca45a86907b8f5a933cb56fd56679ba89c741e1ae9d72c5bc3fd7ba0fe7da0",
-      "bytes": 21149,
+      "sha256": "fd20be8012f6a7abae4c263f0daa25ff53ee0160a1fd6da08210b14089145b6f",
+      "bytes": 21242,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 310,
-      "importCount": 3,
+      "publicStringCount": 311,
+      "importCount": 4,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
     {
@@ -133,6 +133,17 @@
       "editorialAuthority": true,
       "publicStringCount": 174,
       "importCount": 5,
+      "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
+    },
+    {
+      "path": "app/components/EvidencePlate.tsx",
+      "sha256": "c2b9c1caa501cf43fbb7934899527819c15ce9dc36a4c6f8e14fa1d34f602398",
+      "bytes": 6590,
+      "classification": "authored-source",
+      "reachable": true,
+      "editorialAuthority": true,
+      "publicStringCount": 66,
+      "importCount": 0,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
     {
@@ -236,13 +247,13 @@
     },
     {
       "path": "app/components/InteriorPage.tsx",
-      "sha256": "8620b917cf96dbb857395d47ea5711e037d72140eb59a99e4dec971d44108822",
-      "bytes": 12794,
+      "sha256": "5e8fc2ea4d049d402a9187572f6aee7c020170c00e2ff731ec983ff93e3fc18e",
+      "bytes": 13078,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 92,
-      "importCount": 5,
+      "publicStringCount": 93,
+      "importCount": 6,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
     {
@@ -291,35 +302,35 @@
     },
     {
       "path": "app/components/PrimaryServicePage.tsx",
-      "sha256": "639001ed4c3e3a06dbef4970295f13efaa8777cd960b740948cfd79f9104a8d8",
-      "bytes": 22034,
+      "sha256": "073fa9efa93c1f0b8065050d10c619bcd40ed3374ef28427051a64b9fe9468c2",
+      "bytes": 22284,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 201,
-      "importCount": 5,
+      "publicStringCount": 205,
+      "importCount": 6,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
     {
       "path": "app/components/ProviderRescuePage.tsx",
-      "sha256": "4eb6aca8d4beb84d16b8500c5bee70c85261614068044602be8c6b4156da3e48",
-      "bytes": 12483,
+      "sha256": "4821ffba83db95b522c7fede4cfa622be351ee2f6aba8315be9622495d3080cd",
+      "bytes": 12592,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
       "publicStringCount": 64,
-      "importCount": 3,
+      "importCount": 4,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
     {
       "path": "app/components/ResourcesPage.tsx",
-      "sha256": "1b2060e505d6347bf3f38c8f0e04d7a43f1a35d4d1995ec5132e100964db4840",
-      "bytes": 24793,
+      "sha256": "7782f1443136154e8425175eb6f2242ef98ab35e2f2b2f0d043bcc99ac01c410",
+      "bytes": 24988,
       "classification": "authored-source",
       "reachable": true,
       "editorialAuthority": true,
-      "publicStringCount": 145,
-      "importCount": 4,
+      "publicStringCount": 146,
+      "importCount": 5,
       "provenance": "repository:a201d64a1c74cfb31406a1aa571cd8b3768f569f"
     },
     {
@@ -853,22 +864,35 @@
   ],
   "analyticsClaimContexts": [
     {
-      "key": "analytics-claim.app-components-primaryservicepage-tsx.108-124",
-      "sourceFile": "app/components/PrimaryServicePage.tsx",
-      "sourceStartLine": 108,
-      "sourceEndLine": 124,
+      "key": "analytics-claim.app-components-evidenceplate-tsx.57-73",
+      "sourceFile": "app/components/EvidencePlate.tsx",
+      "sourceStartLine": 57,
+      "sourceEndLine": 73,
       "signals": [
-        "public-access"
+        "public-access",
+        "self-hosted-or-open-source"
       ],
-      "contextHash": "050be17360696d7517a26ead574d160138bedafe69c019dcbeba5a75e1c98bae",
+      "contextHash": "5d96454ff777b0c992946ba73ee732908eae513f99a837913de027dfa8fc4288",
       "disposition": "approved-with-verified-software-and-service-boundaries",
       "commercialCopyKey": "product.bohoAnalytics.publicFreeAvailability"
     },
     {
-      "key": "analytics-claim.app-components-resourcespage-tsx.164-180",
+      "key": "analytics-claim.app-components-primaryservicepage-tsx.113-129",
+      "sourceFile": "app/components/PrimaryServicePage.tsx",
+      "sourceStartLine": 113,
+      "sourceEndLine": 129,
+      "signals": [
+        "public-access"
+      ],
+      "contextHash": "26eb41b6a23b7d022337d3e28ef2bdf79a424120dbbe5cf5858a581df752b030",
+      "disposition": "approved-with-verified-software-and-service-boundaries",
+      "commercialCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+    },
+    {
+      "key": "analytics-claim.app-components-resourcespage-tsx.168-184",
       "sourceFile": "app/components/ResourcesPage.tsx",
-      "sourceStartLine": 164,
-      "sourceEndLine": 180,
+      "sourceStartLine": 168,
+      "sourceEndLine": 184,
       "signals": [
         "free-or-unpaid",
         "public-access",
@@ -879,10 +903,10 @@
       "commercialCopyKey": "product.bohoAnalytics.publicFreeAvailability"
     },
     {
-      "key": "analytics-claim.app-components-resourcespage-tsx.174-190",
+      "key": "analytics-claim.app-components-resourcespage-tsx.178-194",
       "sourceFile": "app/components/ResourcesPage.tsx",
-      "sourceStartLine": 174,
-      "sourceEndLine": 190,
+      "sourceStartLine": 178,
+      "sourceEndLine": 194,
       "signals": [
         "free-or-unpaid",
         "public-access"
@@ -892,10 +916,10 @@
       "commercialCopyKey": "product.bohoAnalytics.publicFreeAvailability"
     },
     {
-      "key": "analytics-claim.app-components-resourcespage-tsx.182-198",
+      "key": "analytics-claim.app-components-resourcespage-tsx.186-202",
       "sourceFile": "app/components/ResourcesPage.tsx",
-      "sourceStartLine": 182,
-      "sourceEndLine": 198,
+      "sourceStartLine": 186,
+      "sourceEndLine": 202,
       "signals": [
         "free-or-unpaid",
         "public-access"
@@ -905,10 +929,10 @@
       "commercialCopyKey": "product.bohoAnalytics.publicFreeAvailability"
     },
     {
-      "key": "analytics-claim.app-components-resourcespage-tsx.200-216",
+      "key": "analytics-claim.app-components-resourcespage-tsx.204-220",
       "sourceFile": "app/components/ResourcesPage.tsx",
-      "sourceStartLine": 200,
-      "sourceEndLine": 216,
+      "sourceStartLine": 204,
+      "sourceEndLine": 220,
       "signals": [
         "self-hosted-or-open-source"
       ],
@@ -917,10 +941,10 @@
       "commercialCopyKey": "product.bohoAnalytics.publicFreeAvailability"
     },
     {
-      "key": "analytics-claim.app-components-resourcespage-tsx.278-294",
+      "key": "analytics-claim.app-components-resourcespage-tsx.282-298",
       "sourceFile": "app/components/ResourcesPage.tsx",
-      "sourceStartLine": 278,
-      "sourceEndLine": 294,
+      "sourceStartLine": 282,
+      "sourceEndLine": 298,
       "signals": [
         "free-or-unpaid",
         "public-access",
@@ -1488,18 +1512,18 @@
     }
   ],
   "counts": {
-    "sources": 77,
-    "reachable": 63,
-    "authored": 74,
+    "sources": 78,
+    "reachable": 64,
+    "authored": 75,
     "generatedMirrors": 1,
-    "publicStringsOnDemand": 13350,
-    "analyticsClaimContexts": 48
+    "publicStringsOnDemand": 13423,
+    "analyticsClaimContexts": 49
   },
   "fullDetail": {
     "committed": false,
     "generationCommand": "node scripts/commercial-copy-build.mjs --check --inventory-detail <path>",
-    "recordCount": 13350,
-    "deterministicDigest": "535d0f6a6800e0655e5df47747b3d1618442bb5576743a13894207b31edcea11"
+    "recordCount": 13423,
+    "deterministicDigest": "bfa403a305846d79224492ba6026245690f9ed3859b833c9d662869cda2fa21f"
   },
   "securityScan": {
     "privateKeyMarkers": 0,
@@ -1519,7 +1543,7 @@
       },
       {
         "indicator": "secret-shaped-word",
-        "count": 98
+        "count": 99
       }
     ]
   }

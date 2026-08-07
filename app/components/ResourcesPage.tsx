@@ -12,6 +12,7 @@ import Image from "next/image";
 
 import { Footer, Header } from "./SiteChrome";
 import { DefinedText } from "./DefinedText";
+import { EvidencePlate } from "./EvidencePlate";
 import { KnowledgeHero } from "./KnowledgePages";
 import { SectionSidebar } from "./SectionNavigation";
 
@@ -119,6 +120,7 @@ export function ResourcesPage() {
             currentPath="/resources/"
             anchors={[
               { label: "Resource collections", href: "#resource-collections" },
+              { label: "Analytics evidence map", href: "#evidence-analytics-workspace" },
               { label: "Open-source analytics", href: "#analysis-dashboard" },
               { label: "Command center", href: "#boho-analytics-command-center" },
               { label: "Plot Builder", href: "#boho-analytics-plot-builder" },
@@ -159,6 +161,8 @@ export function ResourcesPage() {
                 </div>
               </div>
             </section>
+
+            <EvidencePlate id="analytics-workspace" />
 
             <section className="resources-analytics-tour" id="analysis-dashboard" aria-labelledby="analysis-dashboard-title">
               <div className="section-shell">

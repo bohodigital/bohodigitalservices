@@ -11,6 +11,7 @@ import {
   Footer,
   Header,
 } from "./SiteChrome";
+import { EvidencePlate } from "./EvidencePlate";
 
 const route = "/services/provider-rescue/" as const;
 const heroAsset = serviceHeroAssets[route];
@@ -166,6 +167,8 @@ export function ProviderRescuePage() {
             </div>
           </div>
         </section>
+
+        <EvidencePlate id="provider-rescue-control-map" />
 
         <section className={`${styles.rescueSection} ${styles.rescueDecisionSection}`} aria-labelledby="rescue-decision-title">
           <div className={styles.shell}>

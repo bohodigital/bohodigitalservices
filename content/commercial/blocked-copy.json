@@ -19,22 +19,35 @@
       "replacementText": "Boho Analytics Platform is free and open source under the MIT License. You or your technical provider can self-host and use it with or without an active Boho SEO engagement.",
       "currentClaims": [
         {
-          "key": "analytics-claim.app-components-primaryservicepage-tsx.108-124",
-          "sourceFile": "app/components/PrimaryServicePage.tsx",
-          "sourceStartLine": 108,
-          "sourceEndLine": 124,
+          "key": "analytics-claim.app-components-evidenceplate-tsx.57-73",
+          "sourceFile": "app/components/EvidencePlate.tsx",
+          "sourceStartLine": 57,
+          "sourceEndLine": 73,
           "signals": [
-            "public-access"
+            "public-access",
+            "self-hosted-or-open-source"
           ],
-          "contextHash": "050be17360696d7517a26ead574d160138bedafe69c019dcbeba5a75e1c98bae",
+          "contextHash": "5d96454ff777b0c992946ba73ee732908eae513f99a837913de027dfa8fc4288",
           "disposition": "approved-with-verified-software-and-service-boundaries",
           "commercialCopyKey": "product.bohoAnalytics.publicFreeAvailability"
         },
         {
-          "key": "analytics-claim.app-components-resourcespage-tsx.164-180",
+          "key": "analytics-claim.app-components-primaryservicepage-tsx.113-129",
+          "sourceFile": "app/components/PrimaryServicePage.tsx",
+          "sourceStartLine": 113,
+          "sourceEndLine": 129,
+          "signals": [
+            "public-access"
+          ],
+          "contextHash": "26eb41b6a23b7d022337d3e28ef2bdf79a424120dbbe5cf5858a581df752b030",
+          "disposition": "approved-with-verified-software-and-service-boundaries",
+          "commercialCopyKey": "product.bohoAnalytics.publicFreeAvailability"
+        },
+        {
+          "key": "analytics-claim.app-components-resourcespage-tsx.168-184",
           "sourceFile": "app/components/ResourcesPage.tsx",
-          "sourceStartLine": 164,
-          "sourceEndLine": 180,
+          "sourceStartLine": 168,
+          "sourceEndLine": 184,
           "signals": [
             "free-or-unpaid",
             "public-access",
@@ -45,10 +58,10 @@
           "commercialCopyKey": "product.bohoAnalytics.publicFreeAvailability"
         },
         {
-          "key": "analytics-claim.app-components-resourcespage-tsx.174-190",
+          "key": "analytics-claim.app-components-resourcespage-tsx.178-194",
           "sourceFile": "app/components/ResourcesPage.tsx",
-          "sourceStartLine": 174,
-          "sourceEndLine": 190,
+          "sourceStartLine": 178,
+          "sourceEndLine": 194,
           "signals": [
             "free-or-unpaid",
             "public-access"
@@ -58,10 +71,10 @@
           "commercialCopyKey": "product.bohoAnalytics.publicFreeAvailability"
         },
         {
-          "key": "analytics-claim.app-components-resourcespage-tsx.182-198",
+          "key": "analytics-claim.app-components-resourcespage-tsx.186-202",
           "sourceFile": "app/components/ResourcesPage.tsx",
-          "sourceStartLine": 182,
-          "sourceEndLine": 198,
+          "sourceStartLine": 186,
+          "sourceEndLine": 202,
           "signals": [
             "free-or-unpaid",
             "public-access"
@@ -71,10 +84,10 @@
           "commercialCopyKey": "product.bohoAnalytics.publicFreeAvailability"
         },
         {
-          "key": "analytics-claim.app-components-resourcespage-tsx.200-216",
+          "key": "analytics-claim.app-components-resourcespage-tsx.204-220",
           "sourceFile": "app/components/ResourcesPage.tsx",
-          "sourceStartLine": 200,
-          "sourceEndLine": 216,
+          "sourceStartLine": 204,
+          "sourceEndLine": 220,
           "signals": [
             "self-hosted-or-open-source"
           ],
@@ -83,10 +96,10 @@
           "commercialCopyKey": "product.bohoAnalytics.publicFreeAvailability"
         },
         {
-          "key": "analytics-claim.app-components-resourcespage-tsx.278-294",
+          "key": "analytics-claim.app-components-resourcespage-tsx.282-298",
           "sourceFile": "app/components/ResourcesPage.tsx",
-          "sourceStartLine": 278,
-          "sourceEndLine": 294,
+          "sourceStartLine": 282,
+          "sourceEndLine": 298,
           "signals": [
             "free-or-unpaid",
             "public-access",
